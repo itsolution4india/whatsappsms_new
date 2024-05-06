@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
+    <title>
+        I.T. Solutions 4 India
+    </title>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+
+
+
+    <!-- Font Awesome Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <!-- CSS Files -->
+    <link id="pagestyle" href="/static/assets/css/material-dashboard.css?v=3.1.0" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        #ols {
+            list-style-type: none;
+            counter-reset: step;
+        }
+
+        #ols #lis {
+            counter-increment: step;
+            margin-bottom: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+
+        }
+
+        #ols #lis::before {
+            content: counter(step);
+            color: #fff;
+            background-color: #af25a89e;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        #ols #clis {
+            font-size: 16px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            list-style-type: disc;
+        }
+
+        #best-bulk-sms-provider {
+            font-size: 30px;
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 80px;
+            margin-left: 130px;
+            text-shadow: 2px 2px 10px grey;
+
+        }
+
+        p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        /* Create two equal columns that sits next to each other */
+        .column {
+            flex: 50%;
+            padding: 0 4px;
+        }
+
+        .column img {
+            margin-top: 8px;
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+
+<body class="g-sidenav-show  " style="background-color: #ffffff;">
+    <aside
+        class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
+        id="sidenav-main">
+        <div class="sidenav-header">
+            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+                aria-hidden="true" id="iconSidenav"></i>
+            <a class="navbar-brand m-0" href=" https://itsolutions4india.com/" target="_blank">
+                <img src="/static/assets/img/itwhite.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold text-white">I.T. Solutions 4 India</span>
+            </a>
+        </div>
+        <hr class="horizontal light mt-0 mb-2">
+        <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white active bg-gradient-primary" href="#">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">dashboard</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="/send-sms/">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">dashboard</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Send SMS</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="/campaign/">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">table_view</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Campaign</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="#">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">receipt_long</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Purchase History</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="/reports/">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">list</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="#">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">contacts</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Contact</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="#">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">send</i>
+                        </div>
+                        <span class="nav-link-text ms-1">SMS</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages
+                    </h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="#">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">description</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Docs</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="/pages/sign-in.html">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">policy</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Privacy Policy</span>
+                    </a>
+                </li>
+                <!-- <li class="nav-item">
+          <a class="nav-link text-white " href="../pages/sign-up.html">
+            <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="material-icons opacity-10">assignment</i>
+            </div>
+            <span class="nav-link-text ms-1">Sign Up</span>
+          </a>
+        </li> -->
+            </ul>
+        </div>
+        <div class="sidenav-footer position-absolute w-100 bottom-0 ">
+            <div class="mx-3">
+                <a class="btn btn-outline-primary mt-4 w-100" href="https://www.itsolution4india.com/about.php"
+                    type="button">About I.T. Solutions</a>
+            </div>
+        </div>
+    </aside>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+        <!-- Navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+            data-scroll="true">
+            <div class="container-fluid py-1 px-3">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a>
+                        </li>
+                        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+                    </ol>
+                    <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+                </nav>
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                        <div class="input-group input-group-outline">
+                            <label class="form-label">Search here...</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <ul class="navbar-nav  justify-content-end">
+
+                        <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa fa-bell cursor-pointer"></i>
+                            </a>
+                            <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                                aria-labelledby="dropdownMenuButton">
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="/static/assets/img/small-logos/logo-spotify.svg"
+                                                    class="avatar avatar-sm  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">I.T. Solutions</span> from i.t.
+                                                    solutions
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    13 minutes ago
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="mb-2">
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="my-auto">
+                                                <img src="/static/assets/img/small-logos/logo-spotify.svg"
+                                                    class="avatar avatar-sm bg-gradient-dark  me-3 ">
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    <span class="font-weight-bold">I.T. Solutions</span> by it solutions
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    1 day
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                                        <div class="d-flex py-1">
+                                            <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                                                <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                                                    <title>credit-card</title>
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <g transform="translate(-2169.000000, -745.000000)"
+                                                            fill="#FFFFFF" fill-rule="nonzero">
+                                                            <g transform="translate(1716.000000, 291.000000)">
+                                                                <g transform="translate(453.000000, 454.000000)">
+                                                                    <path class="color-background"
+                                                                        d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                                                        opacity="0.593633743"></path>
+                                                                    <path class="color-background"
+                                                                        d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z">
+                                                                    </path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                            <div class="d-flex flex-column justify-content-center">
+                                                <h6 class="text-sm font-weight-normal mb-1">
+                                                    Payment successfully completed
+                                                </h6>
+                                                <p class="text-xs text-secondary mb-0">
+                                                    <i class="fa fa-clock me-1"></i>
+                                                    2 days
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <a href="#" class="nav-link text-body font-weight-bold px-0">
+                                <i class="fa fa-user me-sm-1"></i>
+                                <span class="d-sm-inline d-none">Log out</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+
+        <div class="container-fluid ">
+            <div class="card" style="height: 500px;border: 0; border-color: transparent; overflow-y: auto;">
+                <!-- style="height: 500px; background-image: url('/static/assets/img/whatsapp.png'); background-size: 1050px 500px; background-repeat: no-repeat; background-position: center; border-bottom: 1px solid rgba(202, 202, 202, 0.76); " -->
+                <img src="/static/assets/img/whatsapp.png" style="width: 1000px; height: 500px;  margin-left: 120px;">
+            </div>
+
+
+
+
+            <div class="row mt-8" style="height: 500px; overflow-y: hidden; border: white;position: relative;">
+                <div class="card w-40" style="border-color: white; ">
+                    <img src="/static/assets/img/about-left-image.png" width="400px" height="350px"
+                        style="margin-top: 50px;">
+                </div>
+                <div class="card w-60" style="border-color: white;">
+                    <h5 id="best-bulk-sms-provider" style="position: absolute;">Best Bulk SMS Provider in India</h5>
+                    <ul
+                        style="position: absolute;color: white; font-size: 24px; font-weight: 700; letter-spacing: 1px; margin-top: 150px; margin-left: 100px; text-shadow: 2px 2px 10px grey;">
+                        <li style="margin-top: 10px;">Properly Integrated</li>
+                        <li style="margin-top: 10px;">Timely Execution</li>
+                        <li style="margin-top: 10px;">Technical Support</li>
+                        <li style="margin-top: 10px;">Versatile Plateform</li>
+                        <li style="margin-top: 10px;">24/7 Support</li>
+                    </ul>
+                    <img src="/static/assets/img/cta-bg.png" height="500px">
+                </div>
+            </div>
+
+            <!-- <hr class="mt-5" style="height: 20px; background: rgb(244,192,88);
+                            background: linear-gradient(90deg, rgba(244,192,88,0.8688725490196079) 0%,
+                            rgba(255,0,241,0.4767156862745098) 100%); border: 0;"> -->
+
+
+
+            <div class="row mt-8">
+                <div class="card w-60" style="height: 500px; border: 0px; border-color: white;">
+
+                    <h3 style="text-align: center; color: #252559; font-weight: 700; letter-spacing: 1px;">Instructions
+                        Guide</h3>
+                    <ol id="ols" style="margin-top: 35px;">
+
+                        <li id="lis">Step 1 - Go to Campaign page
+                            <ol id="ols" style="margin-top: 10px; font-size: 18px;">
+                                <li id="clis">Fill all the requirements</li>
+                                <li id="clis">Click save button</li>
+                                <li id="clis">Check your template status
+                                    <ol id="ols">
+                                        <li>- If your template is approved then follow <u>Step 2</u></li>
+                                        <li>- If template is pending then please wait until approval</li>
+                                    </ol>
+                                </li>
+
+                            </ol>
+                        </li>
+                        <li id="lis" style="margin-top: 30px;">Step 2 - Now go to Send SMS page</li>
+                        <li id="lis" style="margin-top: 30px;">Step 3 - Upload your file of contacts</li>
+                        <li id="lis" style="margin-top: 30px;">Step 4 - Click on send button</li>
+                        <li id="lis" style="margin-top: 30px;">Step 5 - To check report, Go to Report Page</li>
+                    </ol>
+
+                </div>
+                <div class="card w-35" style="border-color: white; margin-left: 20px; overflow-y: auto;">
+                    <h4 style="text-align: center; color: #252559; font-weight: 700; letter-spacing: 1px;">Page View
+                    </h4>
+                    <div class="gallery">
+                        <div class="column">
+                            <img src="/static/assets/img/ches.png" width="350px" height="200px"
+                                style="margin-left: 20px; margin-top: 20px; box-shadow: 2px 2px 5px rgba(196, 196, 196, 0.797); border-radius: 5px;">
+                            <!-- <img src="/static/assets/img/bg-smart-home-1.jpg" width="170px" height="170px" style="margin-left: 20px; margin-top: 30px;">
+                            <img src="/static/assets/img/bg-smart-home-1.jpg" width="170px" height="170px" style="margin-left: 20px; margin-top: 30px;"> -->
+                            <img src="/static/assets/img/pagev.png" width="350px" height="200px"
+                                style="margin-left: 20px; margin-top: 20px; box-shadow: 2px 2px 5px rgba(196, 196, 196, 0.797); border-radius: 5px;">
+                        </div>
+
+                    </div>
+
+                </div>
+                <img src="/static/assets/img/strip.png" width="1250px" height="200px">
+
+
+                <!-- <div class="container mt-10" style="height: 500px; border: 1px solid transparent; box-sizing: border-box;">
+  
+                <div
+                    style="width:450px ; height: 450px; position: absolute; background-image: url('/static/assets/img/about-left-image.png'); background-size: contain; background-repeat: no-repeat;">
+                </div>
+                <div style="float:right; position: relative;">
+                    <div style="position: absolute;">
+                        <p
+                            style="font-size: 32px; color: white; text-shadow: 1px 1px 4px grey; font-weight: 800; margin-top: 80px; margin-left: 120px; letter-spacing: 2px;">
+                            Best Bulk SMS Provider in India</p>
+                        <ul
+                            style="font-size: 20px; color: white; text-shadow: 1px 1px 4px grey; font-weight: 400; margin-left: 100px; margin-top: 30px;">
+                            <li>Properly Integrated</li>
+                            <li>Technical Support</li>
+                            <li>Versatile plateform</li>
+                            <li>Instand Lead Generation</li>
+                            <li>Original Content</li>
+                            <li>Simpler Execution</li>
+                        </ul>
+                    </div>
+                    <img src="/static/assets/img/cta-bg.png" style="width: 750px; height: 500px;">
+
+                </div>
+            </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!-- 
+            <footer class="footer py-4  ">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-lg-between">
+                        <div class="col-lg-6 mb-lg-0 mb-4">
+                            <div class="copyright text-center text-sm text-muted text-lg-start">
+                                ©
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                Developed by <i class="fa fa-globe"></i>
+                                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">I.T.
+                                    Solutions</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer> -->
+            </div>
+    </main>
+
+    <!-- Important JS Files -->
+    <!--   Core JS Files   -->
+    <script src="/static/assets/js/core/popper.min.js"></script>
+    <script src="/static/assets/js/core/bootstrap.min.js"></script>
+    <script src="/static/assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="/static/assets/js/plugins/smooth-scrollbar.min.js"></script>
+    <script src="/static/assets/js/plugins/chartjs.min.js"></script>
+    <!-- JS Files Ends -->
+
+    <script>
+        var ctx = document.getElementById("chart-bars").getContext("2d");
+
+        new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Send", "Delivered", "Failed"],
+                datasets: [{
+                    label: "Messages",
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderRadius: 4,
+                    borderSkipped: false,
+                    backgroundColor: "rgba(255, 255, 255, .8)",
+                    data: [30000, 25000, 5500],
+                    maxBarThickness: 80,
+                },],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false,
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            suggestedMin: 0,
+                            suggestedMax: 500,
+                            beginAtZero: true,
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 500,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                            color: "#fff"
+                        },
+                    },
+                    x: {
+                        grid: {
+                            drawBorder: false,
+                            display: true,
+                            drawOnChartArea: true,
+                            drawTicks: false,
+                            borderDash: [5, 5],
+                            color: 'rgba(255, 255, 255, .2)'
+                        },
+                        ticks: {
+                            display: true,
+                            color: '#f8f9fa',
+                            padding: 10,
+                            font: {
+                                size: 14,
+                                weight: 500,
+                                family: "Roboto",
+                                style: 'normal',
+                                lineHeight: 2
+                            },
+                        }
+                    },
+                },
+            },
+        });
+
+    </script>
+    <script>
+        var win = navigator.platform.indexOf('Win') > -1;
+        if (win && document.querySelector('#sidenav-scrollbar')) {
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+    <script>
+        document.getElementById("show-more").addEventListener("click", function () {
+            document.getElementById("table-container").style.maxHeight = "200px"; // Remove max-height to show complete table
+            console.log('event clicked')
+        });
+    </script>
+    <!-- Github buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="/static/assets/js/material-dashboard.min.js?v=3.1.0"></script>
+</body>
+
+</html>

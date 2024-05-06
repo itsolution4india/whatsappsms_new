@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>
+    WhatsAppSms
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
+  
+
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <style>
+    #profile {
+      /* margin-left: 50px; */
+      margin-left: 50px;
+    }
+
+    #table-container {
+      max-height: 155px;
+      /* Set maximum height for the table container */
+      overflow-y: auto;
+
+      /* Add vertical scrollbar if necessary */
+    }
+
+    select {
+      border: 1px solid transparent;
+      border-radius: 5px;
+      box-shadow: 0.2px 0.2px 2px grey;
+    }
+  </style>
+
+
+</head>
+
+<body class="g-sidenav-show  bg-gray-100">
+
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
+      navbar-scroll="true">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+
+          <h4 class="font-weight-bolder mb-0">Dashboard</h4>
+        </nav>
+        
+    
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3" style="  background: #f5f5f5;
+            box-shadow: 0 3px 10px lightblue; border-radius: 6px;">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">IP Address</p>
+                    <h5 class="font-weight-bolder mb-0">
+                      {{ ip_address }}
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-4 text-end"
+                  style="border-radius: 5px; width: 80px; background-image: url('/static/ip.png'); background-size: 40px 40px; background-repeat: no-repeat;">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-body p-3"
+              style=" background:#f5f5f5;   box-shadow: 0 3px 10px lightblue; border-radius: 6px;">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Your Coins</p>
+                    <h5 class="font-weight-bolder mb-0">
+                      {{ coins }}
+                    </h5>
+                  </div>
+                </div>
+                <div class="col-4 text-end"
+                  style="border-radius: 5px; width: 80px; background-image: url('/static/coin.png'); background-size: 40px 40px; background-repeat: no-repeat;">
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ip address and coins end -->
+
+
+
+      <div class="row mt-4">
+        <div class="col-lg-5 mb-lg-0 mb-4">
+          <div class="card z-index-2">
+            <div class="card-body p-3" style="height: 400px;
+           box-shadow: 0 3px 10px rgb(199, 199, 199); border-radius: 6px;">
+
+              <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <h5>Send SMS</h5>
+                <br>
+                <div class="mb-3">
+                  <label class="form-label" for="params">Template ID</label>
+                  <input type="text" id="params" name="params" class="form-control">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Upload Your Text File</label>
+                  <input type="file" class="form-control" id="id_files" name="files" accept=".txt" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+  <!-- Feedback messages -->
+             {% if error_message %}
+              <div style=" color: red;">
+                  {{ error_message }}
+            </div>
+            {% elif success_message %}
+            <div style="color: green;">
+              {{ success_message }}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Data Table -->
+      <div class=" col-lg-7">
+        <div class="card z-index-2">
+          <div class="card-header pb-0" style="background-color: rgb(63, 63, 63); color: white;">
+            <h5>Reports</h5>
+          </div>
+          <div class="card-body p-3" style="
+          box-shadow: 0 3px 10px rgb(199, 199, 199); border-radius: 6px;">
+            <div class="chart" id="table-container">
+              <table class="table" style="text-align: center; font-size: 13px;">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Send Messages</th>
+                    <th scope="col">Delivered Messages</th>
+                    <th scope="col">Failed Messages</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for report in report_list %}
+                  <tr>
+                    <td>{{report.message_date}}</td>
+                    <td>{{report.message_send}}</td>
+                    <td>{{report.message_delivery}}</td>
+                    <td>{{report.message_failed}}</td>
+
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+            </div>
+            <button class="btn btn-dark" id="show-more-btn" style="margin-top: 30px;">Show More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("show-more-btn").addEventListener("click", function () {
+        document.getElementById("table-container").style.maxHeight = "220px"; // Remove max-height to show complete table
+        console.log('event clicked')
+      });
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"></script>
+ 
+</body>
+
+</html>

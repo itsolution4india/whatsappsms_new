@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        opacity:0.7;
+    }
+    .container {
+        max-width: 30%;
+        margin: 0 auto;
+        padding: 15px;
+        /* padding-right: -90px; */
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 70px;
+        text-align: left;
+        justify-content: space-between;
+        padding-bottom: 50px;
+    }
+    
+    #username,#password
+    {
+        margin-left: 30px;
+        width: 80%;
+        height: 40px;
+        border-radius: 5px;
+        text-indent: 15px;
+    }
+   
+    input[type="submit"]:hover {
+        background: #0056b3;
+        /* margin-left: 25px; */
+    }
+    .terms {
+        margin-top: 10px;
+        /* margin-left: 30px; */
+    }
+    
+    /* Target the form using the form class */
+ 
+
+/* Add more styles as needed */
+.form-class input[type="email"],
+.form-class input[type="password"], 
+
+.form-class textarea {
+    width: 90%; /* Make inputs take full width */
+    padding: 8px; /* Padding inside input fields */
+    border: 1px solid #ccc; /* Border around input fields */
+    border-radius: 4px; /* Rounded corners */
+}
+
+
+</style>
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<hr style="height: 40px;margin-top: -10px; background-color: rgb(62, 168, 62);margin-left:-1%; margin-right: -1%; ">
+<div class="container">
+    <h1 style="margin-left: 30px;margin-top: 5px;font-family:'sans-serif';">Member Login</h1>
+    <p style="margin-left: 30px; font-size: 15px;">Please Provide Your Details</p>
+    <form method="post"  class="form-class">    
+     {% csrf_token %}
+     {{ form.as_p }}
+
+        <input type="checkbox" id="agree" name="agree" required style="margin-left: 30px;">
+        <label for="agree" class="terms" style="color: green; font-size: 13px;">Agree &<a href="#" style="color: green; text-decoration: none; font-size: 13px;">terms conditions</a></label>
+
+        <input type="submit" value="Login" style="margin-left: 95px;background-color: #04AA6D; width: 70px;height: 35px;border-radius: 5px;">
+    </form>
+</div>
+<br>
+<a href="reset-password/" style="margin-left: 615px; color: green; text-decoration: none;font-size: 13px;">Reset Password</a>
+
+</body>
+</html>
