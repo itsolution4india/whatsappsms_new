@@ -3,7 +3,6 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 from django.db import models
 from django.conf import settings
 from django.db.models.signals import post_save
-from decimal import Decimal
 from django.utils.html import format_html
 from django.core.validators import FileExtensionValidator, MaxValueValidator
 from django.utils import timezone
@@ -27,7 +26,7 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
-    coins=models.DecimalField(max_digits=10,decimal_places=2, default=Decimal('0.00'))
+    coins=models.IntegerField(null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

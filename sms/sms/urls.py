@@ -9,6 +9,7 @@ urlpatterns = [
     path("", views.user_login, name="login"),
     path("send-sms/", views.Send_Sms, name="send-sms"),
     path('reports/', views.Reports, name='reports'),
+    path('reports/<int:report_id>/download/',views.download_pdf, name='download_pdf'),
     path('campaign/', views.Campaign, name='campaign'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
     path("reset-password/", views.initiate_password_reset, name="initiate_password_reset"),

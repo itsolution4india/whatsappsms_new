@@ -134,15 +134,15 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="#">
+          <a class="nav-link text-white " href="https://www.itsolution4india.com/blogs.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">description</i>
             </div>
-            <span class="nav-link-text ms-1">Docs</span>
+            <span class="nav-link-text ms-1">Blogs</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="/pages/sign-in.html">
+          <a class="nav-link text-white " href="https://www.itsolution4india.com/privacy-policy.php">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">policy</i>
             </div>
@@ -297,7 +297,7 @@
                   <i class="material-icons text-primary text-white">currency_rupee</i>
                 </div>
                 <div class="text-end pt-1">
-                  <p class="text-sm mb-0 text-capitalize font-weight-bold">Remaining Coins</p>
+                  <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Count</p>
                   <h4 class="mb-0">{{ coins }}</h4>
                 </div>
               </div>
@@ -328,15 +328,16 @@
                 </div>
               </div>
               <div class="card-body">
-                <form method="POST" action="" enctype="multipart/form-data">
+               <form method="POST" action="" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="mb-3">
-                    <label class="form-label">Template ID</label>
-                    <input type="text" class="form-control">
+                    <label class="form-label" for="params">Template ID</label>
+                    <input type="text" id="params" name="params" class="form-control">
+                   
                   </div>
                   <div class="mb-3">
-                    <label class="form-label">Upload Text File</label>
-                    <input type="file" class="form-control">
+                    <label class="form-label">Upload Your Text File</label>
+                    <input type="file" class="form-control" id="id_files" name="files" accept=".txt" required>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

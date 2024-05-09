@@ -101,15 +101,15 @@
                     </h6>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="#">
+                    <a class="nav-link text-white " href="https://www.itsolution4india.com/blogs.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">description</i>
                         </div>
-                        <span class="nav-link-text ms-1">Docs</span>
+                        <span class="nav-link-text ms-1">Blogs</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="/pages/sign-in.html">
+                    <a class="nav-link text-white " href="https://www.itsolution4india.com/privacy-policy.php">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">policy</i>
                         </div>
@@ -283,17 +283,19 @@
                                         <td>{{ report.message_failed }}</td>
                                         <td>
                                             {% if report.report_file %}
-                                                <a href="{{ report.report_file.url }}" class="btn btn-link text-dark text-sm mb-0 px-0 ms-4" download="{{ report.original_filename }}">
+                                                <a href="{% url 'download_pdf' report_id=report.id %}" class="btn btn-link text-dark text-sm mb-0 px-0 ms-4" download="{{ report.report_file.name }}">
                                                     <i class="material-icons text-lg position-relative me-1">picture_as_pdf</i>
                                                     Download
                                                 </a>
                                             {% else %}
-                                                No file available
+                                                Awaited file
                                             {% endif %}
                                         </td>
                                     </tr>
                                     {% endfor %}
-                                </tbody>
+                                </tbody>             
+                                   
+                                        
                             </table>                            
                         </div>
                         <button class="btn btn-dark w-25 m-3" id="show-more">Show More</button>

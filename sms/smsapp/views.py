@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm
 from decimal import Decimal
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
@@ -28,6 +28,10 @@ from datetime import datetime
 
 
 # View for user login
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
 def user_login(request):
     from .forms import UserLoginForm  # Assuming form is in the same app
 
@@ -53,7 +57,6 @@ def user_login(request):
         form = UserLoginForm()
 
     return render(request, "login.html", {"form": form})
-
 
 @login_required
 def logout_view(request):
@@ -96,11 +99,17 @@ def Send_Sms(request):
             try:
                 file_content = uploaded_file.read()
                 final_count,contact_list=remove_duplicate_and_invalid_contacts(file_content)
-                url = "http://192.168.29.2000:3000/send_messages/"
-                api_response = requests.post(url, json={"template_id": template_id, "contact_list": contact_list})
+                url = "http://13.239.113.104/whatsapp/send_messages/"
+                params = {"template_id": template_id}
+                headers = {"Content-Type": "application/json", "Accept": "application/json"}
+                data = contact_list
 
+                api_response = requests.post(url, params=params, headers=headers, json=data)
+                 
                 if api_response.status_code == 200:
+                   
                     success_message = api_response.json()
+                    
                     subtract_coins(request, final_count)
                     new_message_info = ReportInfo(
                         email=request.user,
@@ -110,9 +119,8 @@ def Send_Sms(request):
                         message_failed=2,
                     )
                     new_message_info.save()
-                    print("New row added successfully!")
-                    # Set session variable to indicate coins deduction
-                    request.session["coins_deducted"] = True
+                    #print("New row added successfully!")
+                  
                     return render(
                         request,
                         "send-sms.html",
@@ -254,28 +262,19 @@ def send_otp(email):
 import re
 
 def validate_phone_number(phone_number):
-    
     pattern = re.compile(r'^(\+\d{1,3})?\s?\(?\d{1,4}\)?[\s.-]?\d{3}[\s.-]?\d{4}$')
     return bool(pattern.match(phone_number))
 
-
-
-def remove_duplicate_and_invalid_contacts(file_path):
-
+def remove_duplicate_and_invalid_contacts(file_content):
     unique_valid_contacts = set()
-  
-
-    
-    with open(file_path, 'r') as file:
-        for line in file:
-            phone_number = line.strip()
-
-            if validate_phone_number(phone_number):
-                unique_valid_contacts.add(phone_number)
-            else:
-                continue
-                #print(f"Warning: Invalid phone number '{phone_number}' found and skipped.")
-    return len(unique_valid_contacts),list(unique_valid_contacts)
+    for line in file_content.splitlines():
+        phone_number = line.strip().decode('utf-8') 
+        if validate_phone_number(phone_number):
+            unique_valid_contacts.add(phone_number)
+        else:
+            continue
+            #print(f"Warning: Invalid phone number '{phone_number}' found and skipped.")
+    return len(unique_valid_contacts), list(unique_valid_contacts)
         
 
 
@@ -292,7 +291,7 @@ def subtract_coins(request, final_count):
     )  # No need to use get_object_or_404 because request.user is already the authenticated user
 
     # Calculate the amount of coins to subtract based on final_count
-    final_coins = Decimal(final_count) * Decimal("0.10")
+    final_coins = final_count
 
     # Check if the user has enough coins to proceed
     if user.coins >= final_coins:
@@ -311,9 +310,10 @@ def subtract_coins(request, final_count):
 
 @login_required
 def Campaign(request):
+    # Retrieve the campaign list outside the POST condition
     campaign_list = CampaignData.objects.filter(email=request.user)
-    if request.method == 'POST':
 
+    if request.method == 'POST':
         template_id = request.POST.get('template_id')
         sub_service = request.POST.get('sub_service')
         template_data = request.POST.get('template_data')
@@ -322,13 +322,30 @@ def Campaign(request):
         video = request.FILES.get("video")
         pdf = request.FILES.get("pdf")
 
-        CampaignData.objects.create(email=request.user,template_id=template_id,sub_service=sub_service,template_data=template_data,text=text, image=image, video=video, pdf=pdf)
-        email=request.user
-        print(email)
-        send_email_change_notification(email, template_id)
-        campaign_list = CampaignData.objects.filter(email=request.user)
-        return render(request, "Campaign.html",{"campaign_list": campaign_list})
-    return render(request, "Campaign.html",{"campaign_list": campaign_list})
+        try:
+            # Attempt to create a new campaign
+            CampaignData.objects.create(
+                email=request.user,
+                template_id=template_id,
+                sub_service=sub_service,
+                template_data=template_data,
+                text=text,
+                image=image,
+                video=video,
+                pdf=pdf
+            )
+            send_email_change_notification(request.user, template_id)
+            return render(request, "Campaign.html", {"campaign_list": campaign_list})
+        except IntegrityError as e:
+            # If the template_id already exists, return the existing campaign list
+                    
+            campaign_list = CampaignData.objects.filter(email=request.user)
+            return render(request, "Campaign.html", {"campaign_list": campaign_list})
+
+
+
+    return render(request, "Campaign.html", {"campaign_list": campaign_list})
+
 
 
 @login_required
@@ -336,5 +353,16 @@ def Reports(request):
     report_list = ReportInfo.objects.filter(email=request.user)
     return render(request, 'reports.html', {"report_list":report_list})
 
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+@login_required
+def download_pdf(request, report_id):
+    report = get_object_or_404(ReportInfo, pk=report_id)
+    if report.email != request.user:
+        return HttpResponse("You don't have permission to download this PDF.", status=403)
+    with open(report.report_file.path, 'rb') as f:
+        response = HttpResponse(f.read(), content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{report.report_file.name}"'
+        return response
 
 
