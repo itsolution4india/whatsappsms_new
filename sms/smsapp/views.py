@@ -67,6 +67,15 @@ def logout_view(request):
 def user_dashboard(request):
     return render(request, "dashboard.html")
 
+def generate_file_auto():
+    file_name = "example.txt"
+    file_content = "This is some example content.\nIt will be written to a file."
+    try:
+        with open(file_name, 'w') as file:
+            file.write(file_content)
+        print(f"File '{file_name}' generated successfully!")
+    except Exception as e:
+        print(f"Error occurred while generating file '{file_name}': {str(e)}")
 
 # View for file upload page
 @login_required
@@ -77,55 +86,46 @@ def Send_Sms(request):
             coins = request.user.coins
             report_list = ReportInfo.objects.filter(email=request.user)
             campaign_list = CampaignData.objects.filter(email=request.user)
-            new_message_info = None
+            #new_message_info = None
 
             template_id = request.POST.get("params")
             uploaded_file = request.FILES.get("files")
-
-            if not uploaded_file:
-                error_message = "No file was uploaded"
-                return render(
-                    request,
-                    "send-sms.html",
-                    {
-                        "error_message": error_message,
-                        "ip_address": ip_address,
-                        "coins": coins,
-                        "report_list": report_list,
-                        "campaign_list":campaign_list,
-                    },
-                )
-
+            contacts=request.POST.get("contact_number")
+            final_count, contact_list = validate_phone_numbers(contacts, uploaded_file)
+    
+    
             try:
-                file_content = uploaded_file.read()
-                final_count,contact_list=remove_duplicate_and_invalid_contacts(file_content)
                 url = "http://13.239.113.104/whatsapp/send_messages/"
                 params = {"template_id": template_id}
                 headers = {"Content-Type": "application/json", "Accept": "application/json"}
                 data = contact_list
-
+                
                 api_response = requests.post(url, params=params, headers=headers, json=data)
-                 
+                print(api_response.raise_for_status())
+                print(api_response.text)
+                subtract_coins(request, final_count)
+    
+
+    
                 if api_response.status_code == 200:
-                   
-                    success_message = api_response.json()
-                    
-                    subtract_coins(request, final_count)
+                    '''
                     new_message_info = ReportInfo(
                         email=request.user,
                         message_date=datetime.now(),
                         message_delivery=final_count,
                         message_send=final_count,
                         message_failed=2,
+                        report_file=generate_file_auto(),
+
                     )
                     new_message_info.save()
-                    #print("New row added successfully!")
-                  
+                
+                  '''
                     return render(
                         request,
                         "send-sms.html",
                         {
-                            "success_message": success_message,
+                            
                             "ip_address": ip_address,
                             "coins": coins,
                             "report_list": report_list,
@@ -133,12 +133,12 @@ def Send_Sms(request):
                         },
                     )
                 else:
-                    error_message = f"API request failed with status code: {api_response.status_code}"
+                   
                     return render(
                         request,
                         "send-sms.html",
                         {
-                            "error_message": error_message,
+                            
                             "ip_address": ip_address,
                             "coins": coins,
                             "report_list": report_list,
@@ -146,12 +146,12 @@ def Send_Sms(request):
                         },
                     )
             except requests.RequestException as e:
-                error_message = f"Error occurred during API request: {e}"
+                
                 return render(
                     request,
                     "send-sms.html",
                     {
-                        "error_message": error_message,
+                        
                         "ip_address": ip_address,
                         "coins": coins,
                         "report_list": report_list,
@@ -261,56 +261,81 @@ def send_otp(email):
 #Valid _and _ Duplicate method
 import re
 
-def validate_phone_number(phone_number):
-    pattern = re.compile(r'^(\+\d{1,3})?\s?\(?\d{1,4}\)?[\s.-]?\d{3}[\s.-]?\d{4}$')
-    return bool(pattern.match(phone_number))
 
-def remove_duplicate_and_invalid_contacts(file_content):
-    unique_valid_contacts = set()
-    for line in file_content.splitlines():
-        phone_number = line.strip().decode('utf-8') 
-        if validate_phone_number(phone_number):
-            unique_valid_contacts.add(phone_number)
-        else:
-            continue
-            #print(f"Warning: Invalid phone number '{phone_number}' found and skipped.")
-    return len(unique_valid_contacts), list(unique_valid_contacts)
+def validate_phone_numbers(contacts, uploaded_file):
+    valid_numbers = set()
+    pattern = re.compile(r'^(\+91[\s-]?)?[0]?(91)?[6789]\d{9}$')
+
+    # Parse contacts from POST request
+    if contacts:
+        numbers_list = set(contacts.split("\r\n"))
+    else:
+        numbers_list = set()
+
+    # Parse contacts from uploaded file
+    if uploaded_file:
+        file_content = uploaded_file.read()
+        for line in file_content.splitlines():
+            phone_number = line.strip().decode('utf-8')
+            numbers_list.add(phone_number)
+
+    # Validate phone numbers
+    for phone_number in numbers_list:
+        if pattern.match(phone_number):
+            valid_numbers.add(phone_number)
+    from django.http import request
+    whitelist_number,blacklist_number=whitelist_blacklist(request)
+    def fnn(valid_numbers,discount):
+        discount1=(len(valid_numbers)*discount)//100
+        return discount1
+    def whitelist(valid_numbers, whitelist_number, blacklist_numbers, discount):
+        final_list = []
         
+        for i in valid_numbers:
+            if i in whitelist_number and i not in blacklist_numbers:
+                final_list.append(i)
+        
+                
+        
+        count = 0
+        for j in valid_numbers:
+            if j not in whitelist_number and j not in blacklist_numbers:
+                count+=1
+                if count > discount:
+                    final_list.append(j)
+                else:
+                    continue
+        return final_list
+    discount=0
+    valid_numbers=list(valid_numbers)
+    discountnumber=fnn(valid_numbers,discount)
 
+    final_list=whitelist(valid_numbers,whitelist_number,blacklist_number,discountnumber)
 
-
+    #print(len(valid_numbers),final_list)
+    return len(valid_numbers), final_list
 
 from django.contrib import messages
 
-
 @login_required
 def subtract_coins(request, final_count):
-    # Retrieve the current logged-in user
-    user = (
-        request.user
-    )  # No need to use get_object_or_404 because request.user is already the authenticated user
-
-    # Calculate the amount of coins to subtract based on final_count
+    user = request.user
+    if user is None or user.coins is None:
+        messages.error(request, "User or user coins not found.")
+        return
     final_coins = final_count
-
-    # Check if the user has enough coins to proceed
-    if user.coins >= final_coins:
-        # Subtract the coins and save the user object
+    if user.coins >= final_coins: 
         user.coins -= final_coins
         user.save()
-
-        # Provide feedback to the user about the successful transaction
-        messages.success(
-            request, f"Successfully subtracted {final_coins} coins from your account."
-        )
+        messages.success(request, f"Successfully subtracted {final_coins} coins from your account.")
     else:
-        # Notify the user that they do not have enough coins
         messages.error(request, "You don't have enough coins to proceed.")
-
 
 @login_required
 def Campaign(request):
     # Retrieve the campaign list outside the POST condition
+    
+
     campaign_list = CampaignData.objects.filter(email=request.user)
 
     if request.method == 'POST':
@@ -346,6 +371,13 @@ def Campaign(request):
 
     return render(request, "Campaign.html", {"campaign_list": campaign_list})
 
+@login_required
+def delete_campaign(request, template_id): 
+    campaign_data = get_object_or_404(CampaignData, template_id=template_id)
+    campaign_data.delete()
+    return redirect('campaign')
+
+
 
 
 @login_required
@@ -365,4 +397,18 @@ def download_pdf(request, report_id):
         response['Content-Disposition'] = f'attachment; filename="{report.report_file.name}"'
         return response
 
+
+from .models import Whitelist_Blacklist
+
+def whitelist_blacklist(request):
+    # Fetch all objects from the Whitelist_Blacklist model
+    whitelist_blacklists = Whitelist_Blacklist.objects.all()
+    whitelist_phones = [obj.whitelist_phone for obj in whitelist_blacklists]
+    whitelist_phones_cleaned = [phone for sublist in whitelist_phones for phone in sublist.split('\r\n')]
+    #print(whitelist_phones_cleaned)
+
+    blacklist_phones = [obj.blacklist_phone for obj in whitelist_blacklists]
+    blacklist_phones_cleaned = [phone for sublist in blacklist_phones for phone in sublist.split('\r\n')]
+    
+    return whitelist_phones_cleaned ,blacklist_phones_cleaned
 

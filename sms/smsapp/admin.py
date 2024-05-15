@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from .models import CustomUser,Whitelist_Blacklist,ReportInfo,CampaignData
 from .emailsend import main_send
 from django.utils.html import format_html
+from django import forms
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('email', 'username', 'coins', 'is_staff')
@@ -39,32 +40,30 @@ class CustomUserAdmin(UserAdmin):
         # Save the object
         super().save_model(request, obj, form, change)
 
- 
-
 admin.site.register(CustomUser, CustomUserAdmin)
-
-
-
+class WhitelistBlacklistAdminForm(forms.ModelForm):
+    class Meta:
+        model = Whitelist_Blacklist
+        fields = '__all__'
+        widgets = {
+            'whitelist_phone': forms.Textarea(attrs={'placeholder': '+9197857XXXXX'}),
+            'blacklist_phone': forms.Textarea(attrs={'placeholder': '+9197857XXXXX'}),
+        }
 
 class Whitelist_BlacklistAdmin(admin.ModelAdmin):
-    list_display = ('email', 'whitelist_phone', 'blacklist_phone')
-    actions = ['modify_whitelist_file', 'modify_blacklist_file']
-
-    def has_change_permission(self, request, obj=None):
-        
-        return request.user.is_superuser
+    list_display = ('whitelist_phone', 'blacklist_phone')
+    search_fields = ('whitelist_phone', 'blacklist_phone')
     
-    def modify_whitelist_file(self, request, queryset):
-        
-        pass
+    fieldsets = (
+        (None, {
+            'fields': ('whitelist_phone', 'blacklist_phone'),
+            'description': "Enter new phone numbers to be whitelist and blacklist, each on a new line."
+        }),
+    )
+    form = WhitelistBlacklistAdminForm
 
-    def modify_blacklist_file(self, request, queryset):
+admin.site.register(Whitelist_Blacklist, Whitelist_BlacklistAdmin)
 
-        pass
-
-    modify_whitelist_file.short_description = "Modify whitelist files"
-    modify_blacklist_file.short_description = "Modify blacklist files"
-admin.site.register(Whitelist_Blacklist,Whitelist_BlacklistAdmin)
 
 class ReportInfoAdmin(admin.ModelAdmin):
     list_display = (
@@ -134,7 +133,7 @@ class CampaignDataAdmin(admin.ModelAdmin):
         "pdf",
         "video",
     )
-
+    
     def voice_display(self, obj):
         if obj.voice:
             return format_html(

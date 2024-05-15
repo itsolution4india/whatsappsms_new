@@ -26,7 +26,7 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
-    coins=models.IntegerField(null=True)
+    coins=models.IntegerField()
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -37,18 +37,18 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+       
    
 
 
 
 class Whitelist_Blacklist(models.Model):
-    email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    whitelist_phone = models.FileField(upload_to='documents/whitelist/')
-    blacklist_phone = models.FileField(upload_to='documents/blacklist/')
-
-    def __str__(self):
-        return self.email
     
+    whitelist_phone = models.TextField()
+    blacklist_phone = models.TextField()
+    objects = CustomUserManager()
+
+
 
 
 class ReportInfo(models.Model):
@@ -57,7 +57,7 @@ class ReportInfo(models.Model):
     message_send = models.IntegerField()
     message_delivery = models.IntegerField()
     message_failed = models.IntegerField()
-    report_file = models.FileField(upload_to='reports/')
+    report_file = models.FileField(upload_to='reports/',null=True)
     original_filename = models.CharField(max_length=255, default=timezone.now().strftime('%Y-%m-%d-%H-%M-%S'))
 
     def save(self, *args, **kwargs):
@@ -137,6 +137,6 @@ class CampaignData(models.Model):
     uploaded_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f'{self.email}'
+        return f'{self.email,self.template_id}'
 
     
