@@ -75,33 +75,6 @@
         }
 
 
-
-        .file-input {
-            display: none;
-        }
-
-        /* Style for the custom radio button */
-        .file-label {
-            display: inline-block;
-            cursor: pointer;
-            padding: 8px 16px;
-            border: 1px solid #ccc;
-            border-radius: 50px;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-
-        /* Style for when the radio button is checked */
-        .file-label.checked {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        /* Style for the file input text */
-        .file-text {
-            display: none;
-        }
-
         .action-btn {
             background-color: #4CAF50;
             color: white;
@@ -379,7 +352,7 @@
                 <div class="content-wrapper">
                     <!-- Content -->
 
-                    <div class="container-xxl flex-grow-1 container-p-y" style="height: 1100px;">
+                    <div class="container-xxl flex-grow-1 container-p-y" style="height: 1200px;">
 
                         <form method="POST" enctype="multipart/form-data" action="{% url 'campaign' %}">
                             {% csrf_token %}
@@ -441,29 +414,34 @@
                                             <label class="form-label mt-5 fs-6" style="display: block;">Upload
                                                 Data</label>
                                             <div class="form-check form-check-inline mt-4">
-                                                <input type="file" class="file-input" id="fileInput" name="text">
                                                 <label for="fileInput" class="file-label" id="fileLabel">Text</label>
+                                                <input type="file" class="form-control" id="fileInput" name="text">
+                                                
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="file" class="file-input" id="fileInput" name="voice">
-                                                <label for="fileInput" class="file-label" id="fileLabel">Voice</label>
+                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Voice</label>
+                                                <input type="file" class="form-control" id="fileInput" name="voice">
+                                                
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="file" class="file-input" id="fileInput" name="image">
-                                                <label for="fileInput" class="file-label" id="fileLabel">Image</label>
+                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Image</label>
+                                                <input type="file" class="form-control" id="fileInput" name="image">
+                                                
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="file" class="file-input" id="fileInput" name="video">
-                                                <label for="fileInput" class="file-label" id="fileLabel">Video</label>
+                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Video</label>
+                                                <input type="file" class="form-control" id="fileInput" name="video">
+                                               
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input type="file" class="file-input" id="fileInput" name="pdf">
-                                                <label for="fileInput" class="file-label" id="fileLabel">PDF</label>
+                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">PDF</label>
+                                                <input type="file" class="form-control" id="fileInput" name="pdf">
+                                                
                                             </div>
                                         </div>
 
                                         <!-- submit button -->
-                                        <button class="btn btn-primary mt-4" id="run">Submit</button>
+                                        <button class="btn btn-primary mt-4" style="width: 100px;" id="run">Submit</button>
                                     </form>
                                 </div>
 
