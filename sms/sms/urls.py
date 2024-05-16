@@ -12,6 +12,7 @@ urlpatterns = [
     path('reports/<int:report_id>/download/',views.download_pdf, name='download_pdf'),
     path('campaign/', views.Campaign, name='campaign'),
     path('campaign/delete/<str:template_id>/', views.delete_campaign, name='delete_campaign'),
+    path('media_upload/', views.upload_media, name='upload_media'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
     path("reset-password/", views.initiate_password_reset, name="initiate_password_reset"),
     path("otp-verification/<str:email>/<str:token>/",views.verify_otp,name="otp_verification"),

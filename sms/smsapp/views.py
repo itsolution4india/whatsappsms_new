@@ -89,20 +89,22 @@ def Send_Sms(request):
             #new_message_info = None
 
             template_id = request.POST.get("params")
+            media_id=request.POST.get("media_id")
             uploaded_file = request.FILES.get("files")
             contacts=request.POST.get("contact_number")
             final_count, contact_list = validate_phone_numbers(contacts, uploaded_file)
-    
+            print(media_id)
+            print(contact_list)
     
             try:
                 url = "http://13.239.113.104/whatsapp/send_messages/"
-                params = {"template_id": template_id}
+                params = {"template_id": template_id,"media_id":media_id}
                 headers = {"Content-Type": "application/json", "Accept": "application/json"}
                 data = contact_list
                 
+                
                 api_response = requests.post(url, params=params, headers=headers, json=data)
-                print(api_response.raise_for_status())
-                print(api_response.text)
+                print(api_response.status_code)
                 subtract_coins(request, final_count)
     
 
@@ -307,11 +309,12 @@ def validate_phone_numbers(contacts, uploaded_file):
                     continue
         return final_list
     discount=0
+    #print(discount)
     valid_numbers=list(valid_numbers)
     discountnumber=fnn(valid_numbers,discount)
 
     final_list=whitelist(valid_numbers,whitelist_number,blacklist_number,discountnumber)
-
+    print(final_list)
     #print(len(valid_numbers),final_list)
     return len(valid_numbers), final_list
 
@@ -341,11 +344,9 @@ def Campaign(request):
     if request.method == 'POST':
         template_id = request.POST.get('template_id')
         sub_service = request.POST.get('sub_service')
+        media_type=request.POST.get('media_type')
         template_data = request.POST.get('template_data')
-        text = request.FILES.get("text")
-        image = request.FILES.get("image")
-        video = request.FILES.get("video")
-        pdf = request.FILES.get("pdf")
+
 
         try:
             # Attempt to create a new campaign
@@ -353,11 +354,9 @@ def Campaign(request):
                 email=request.user,
                 template_id=template_id,
                 sub_service=sub_service,
+                media_type=media_type,
                 template_data=template_data,
-                text=text,
-                image=image,
-                video=video,
-                pdf=pdf
+
             )
             send_email_change_notification(request.user, template_id)
             return render(request, "Campaign.html", {"campaign_list": campaign_list})
@@ -411,4 +410,61 @@ def whitelist_blacklist(request):
     blacklist_phones_cleaned = [phone for sublist in blacklist_phones for phone in sublist.split('\r\n')]
     
     return whitelist_phones_cleaned ,blacklist_phones_cleaned
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import requests
+
+def get_media_format(file_extension):
+    media_formats = {
+        'jpg': 'image/jpeg',
+        'jpeg': 'image/jpeg',
+        'png': 'image/png',
+        'gif': 'image/gif',
+        'bmp': 'image/bmp',
+        'svg': 'image/svg+xml',
+        'mp4': 'video/mp4',
+        'avi': 'video/avi',
+        'mov': 'video/quicktime',
+        'wmv': 'video/x-ms-wmv',
+        'flv': 'video/x-flv',
+        'mkv': 'video/x-matroska',
+        'pdf': 'application/pdf',
+        'txt': 'text/plain',
+    }
+    return media_formats.get(file_extension.lower(), 'application/octet-stream')
+
+def generate_id(template_id, media_type, file):
+    url = "https://automate.nexgplatforms.com/api/v1/wa/upload"
+    headers = {
+        "Authorization": "cTlQLW44Mi05aFF1UEoxUmw3VGp5MGlxRFpqWkdXRXRTVHViUUk3d3VrSTo=",
+        "accept": "application/json",
+    }
+    data = {
+        "templateid": template_id,
+        "serviceType": "transactional"
+    }
+    files = [
+       ('file', (file.name, file.file, media_type))
+    ]
+    response = requests.post(url=url, headers=headers, data=data, files=files)
+    return response.json()
+@login_required
+@csrf_exempt
+def upload_media(request):
+    if request.method == 'POST':
+        template_id = request.POST.get('template_id')
+        file = request.FILES['file']
+        print(file)
+        file_extension = file.name.split('.')[-1]
+        print(file_extension)
+        media_type = get_media_format(file_extension)
+        print(media_type)
+        response = generate_id(template_id, media_type, file)
+        print(response)
+        return render(request, "media-file.html", {'response': response.get('data', {}).get('media_transaction_key')})
+    else:
+        return render(request, "media-file.html")
+        
 

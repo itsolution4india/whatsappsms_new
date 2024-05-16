@@ -27,6 +27,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
     coins=models.IntegerField()
+    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
@@ -88,52 +89,10 @@ class CampaignData(models.Model):
 
     template_id = models.CharField(max_length=100, primary_key=True)
     sub_service = models.CharField(max_length=100)
+    media_type=models.CharField(max_length=100)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
     template_data = models.TextField()
-    voice = models.FileField(
-        upload_to="uploads/voice/",
-        validators=[FileExtensionValidator(allowed_extensions=["voice"]),
-                    MaxValueValidator(5 * 1024 * 1024),
-                    ],
-                    null=True,
-                    blank=True
-    )
-    text = models.FileField(
-        upload_to="uploads/text/",
-        validators=[
-            FileExtensionValidator(allowed_extensions=["txt"]),
-            MaxValueValidator(5 * 1024 * 1024),
-        ],
-        null=True,
-        blank=True,
-    )
-    image = models.ImageField(
-        upload_to="uploads/images/",
-        validators=[
-            FileExtensionValidator(allowed_extensions=["jpg", "jpeg", "png", "gif"]),
-            MaxValueValidator(3 * 1024 * 1024),
-        ],
-        null=True,
-        blank=True,
-    )
-    pdf = models.FileField(
-        upload_to="uploads/pdfs/",
-        validators=[
-            FileExtensionValidator(allowed_extensions=["pdf"]),
-            MaxValueValidator(5 * 1024 * 1024),
-        ],
-        null=True,
-        blank=True,
-    )
-    video = models.FileField(
-        upload_to="uploads/videos/",
-        validators=[
-            FileExtensionValidator(allowed_extensions=["mp4", "avi", "mov", "wmv"]),
-            MaxValueValidator(5 * 1024 * 1024),
-        ],
-        null=True,
-        blank=True,
-    )
+   
     uploaded_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):

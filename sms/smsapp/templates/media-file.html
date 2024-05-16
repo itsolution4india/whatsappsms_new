@@ -117,29 +117,42 @@
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="/media_upload/" class="menu-link">
+                    <li class="menu-item active">
+                        <a href="/media-file/" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-                            <div data-i18n="Tables">Media ID</div>
+                            <div>Media File</div>
                         </a>
                     </li>
 
                     <li class="menu-item">
                         <a href="/send-sms/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <i class="menu-icon tf-icons bx bx-send"></i>
                             <div data-i18n="Analytics">Send SMS</div>
+                        </a>
+                    </li>
+
+                 
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-history"></i>
+                            <div data-i18n="Authentications">Purchase History</div>
                         </a>
                     </li>
 
 
                     <!-- Tables -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="/reports" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
-
+                    <li class="menu-item">
+                        <a href="#" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-contact"></i>
+                            <div data-i18n="Tables">Contacts</div>
+                        </a>
+                    </li>
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -148,29 +161,32 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/website-designing/web-development.php"
-                                    class="menu-link">
+                                <a href="#" class="menu-link">
+                                    <div data-i18n="Vertical Form">Software Development</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="#" class="menu-link">
                                     <div data-i18n="Horizontal Form">Web Development</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/digital-marketing.php" class="menu-link">
+                                <a href="#" class="menu-link">
                                     <div data-i18n="Horizontal Form">Digital Marketing</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/bulk-sms.php" class="menu-link">
+                                <a href="#" class="menu-link">
                                     <div data-i18n="Horizontal Form">Bulk SMS</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/bulk-sms/lead-generation.php"
-                                    class="menu-link">
+                                <a href="#" class="menu-link">
                                     <div data-i18n="Horizontal Form">Lead Generation</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/dlt-registration.php" class="menu-link">
+                                <a href="#" class="menu-link">
                                     <div data-i18n="Horizontal Form">DLT Registration</div>
                                 </a>
                             </li>
@@ -178,13 +194,13 @@
                     </li>
 
                     <li class="menu-item">
-                        <a href="https://www.itsolution4india.com/privacy-policy.php" class="menu-link">
+                        <a href="#" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-check-shield"></i>
                             <div data-i18n="Documentation">Privacy Policy</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="https://www.itsolution4india.com/contact.php" class="menu-link">
+                        <a href="#" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-support"></i>
                             <div data-i18n="Documentation">Support</div>
                         </a>
@@ -240,8 +256,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block"></span>
-                                                    <small class="text-muted"></small>
+                                                    <span class="fw-semibold d-block">Software Engineer</span>
+                                                    <small class="text-muted">Python</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -299,42 +315,27 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
 
                         <div class="row">
-                            <div class="w-100 p-3 text-white rounded-top bg-dark">
-                                Message Report</div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Send Messages</th>
-                                        <th scope="col">Delivered Messages</th>
-                                        <th scope="col">Failed Messages</th>
-                                        <th scope="col">Download</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for report in report_list %}
-                                    <tr>
-                                        <td>{{ report.message_date }}</td>
-                                        <td>{{ report.message_send }}</td>
-                                        <td>{{ report.message_delivery }}</td>
-                                        <td>{{ report.message_failed }}</td>
-                                        <td>
-                                            {% if report.report_file %}
-                                            <a href="{% url 'download_pdf' report_id=report.id %}"
-                                                download="{{ report.report_file.name }}">
-                                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
-                                                    <i class='bx bxs-file-pdf' style='color:#ba0505'></i>
-                                                    Download
-                                                </button>
-                                            </a>
-                                            {% else %}
-                                            No file available
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                            <div class="w-100 p-3 text-white rounded-top bg-dark fs-5">
+                                Media File
+                            </div>
+                            <div class="card w-50" style="box-shadow: none;">
+                                <form action="{% url 'upload_media' %}" method="post" enctype="multipart/form-data" class="w-75">
+                                    {% csrf_token %}
+                                    <label class="form-label mt-5 fs-6">Template ID</label>
+                                    <input class="form-control mt-2" type="text" name="template_id">
+                                    <label class="form-label mt-5">
+                                        <h6>Upload File (max. 5 mb)</h6>
+                                    </label>
+                                    <input class="form-control" type="file" name="file" id="fileInput">
+                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                </form>
+                                <p id="responseMessage">Media Id:{{response}} </p>
+                            </div>
+                            
+                            <div class="card w-50" style="box-shadow: none;">
+
+                                <div id="fileIcon" style="width: 250px; height: 250px;"></div>
+                            </div>
                         </div>
                     </div>
                     <!-- / Content -->
@@ -342,6 +343,67 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+
+
+    function submitForm() {
+        var form = document.getElementById('uploadForm');
+        var formData = new FormData(form);
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '{% url "upload_media" %}', true);
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById('responseMessage').textContent = 'Response: ' + JSON.stringify(response);
+            } else {
+                document.getElementById('responseMessage').textContent = 'Error: ' + xhr.statusText;
+            }
+        };
+        
+        xhr.send(formData);
+    }
+
+        document.getElementById('fileInput').addEventListener('change', function (event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const fileType = getFileType(file);
+                const icon = getIconForFileType(fileType);
+                displayIcon(icon, file.name);
+            }
+        });
+
+
+        function getFileType(file) {
+            const fileType = file.type.split('/')[0];
+            return fileType;
+        }
+
+        function getIconForFileType(fileType) {
+            switch (fileType) {
+                case 'text':
+                    return 'bx bxs-file-text';
+                case 'image':
+                    return 'bx bxs-image';
+                case 'audio':
+                    return 'bx bxs-music';
+                case 'video':
+                    return 'bx bxs-video';
+                default:
+                    return 'bx bxs-file-blank'; // You can use a generic icon for unknown file types
+            }
+        }
+
+        function displayIcon(icon, filename) {
+            const fileIconDiv = document.getElementById('fileIcon');
+            fileIconDiv.innerHTML = `<i class="${icon}" style="font-size: 250px; width: 250px; height: 250px;"></i> ${filename}`;
+        }
+
+    </script>
+
     <!-- / Layout wrapper -->
 
 

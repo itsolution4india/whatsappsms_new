@@ -8,13 +8,13 @@ from django.utils.html import format_html
 from django import forms
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'username', 'coins', 'is_staff')
+    list_display = ('email', 'username', 'coins','discount', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email', 'username')
     ordering = ('email',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'coins', 'password')}),
+        (None, {'fields': ('email', 'coins','discount', 'password')}),
         (_('Personal info'), {'fields': ('username',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         
@@ -23,7 +23,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'coins', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser'),
+            'fields': ('email', 'username', 'coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser'),
         }),
     )
     
@@ -110,67 +110,22 @@ class CampaignDataAdmin(admin.ModelAdmin):
         "email",
         "template_id",
         "sub_service",
+        "media_type",
         "template_data",
         "status",
         "uploaded_at",
-        "voice_display",
-        "text_display",
-        "image_display",
-        "pdf_display",
-        "video_display",
+
     ]
-    readonly_fields = ["voice", "text", "image", "pdf", "video"]
+    
     fields = (
         "email",
         "template_id",
         "sub_service",
+        "media_type",
         "template_data",
         "status",
         "uploaded_at",
-        "voice",
-        "text",
-        "image",
-        "pdf",
-        "video",
+
     )
     
-    def voice_display(self, obj):
-        if obj.voice:
-            return format_html(
-                '<audio controls><source src="{0}" type="audio/mpeg">Your browser does not support the audio element.</audio>',
-                obj.voice.url,
-            )
-        return "No voice message"
-
-    def image_display(self, obj):
-        if obj.image:
-            return format_html(
-                '<img src="{0}" style="max-height: 200px; max-width: 200px;" />',
-                obj.image.url,
-            )
-        return "No image"
-    
-    def text_display(self, obj):
-        if obj.text:
-            return format_html(
-                '<a href="{0}">Download Text File</a>',
-                obj.text.url,
-            )
-        return "No text file"
-
-    def pdf_display(self, obj):
-        if obj.pdf:
-            return format_html(
-                '<a href="{0}" target="_blank">Open PDF</a>', obj.pdf.url
-            )
-        return "No PDF"
-
-    def video_display(self, obj):
-        if obj.video:
-            return format_html(
-                '<video width="320" height="240" controls><source src="{0}" type="video/mp4">Your browser does not support the video tag.</video>',
-                obj.video.url,
-            )
-        return "No video"
-
 admin.site.register(CampaignData, CampaignDataAdmin)

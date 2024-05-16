@@ -175,7 +175,12 @@
                             <div>Campaign</div>
                         </a>
                     </li>
-
+                    <li class="menu-item">
+                        <a href="/media_upload/" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-file-plus"></i>
+                            <div data-i18n="Tables">Media ID</div>
+                        </a>
+                    </li>
                     <li class="menu-item">
                         <a href="/send-sms/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -193,12 +198,7 @@
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-contact"></i>
-                            <div data-i18n="Tables">Contacts</div>
-                        </a>
-                    </li>
+                 
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -373,6 +373,15 @@
                                                 <option name="">Marketing</option>
                                                 <option name="">Utility</option>
                                             </select>
+                                            <label class="form-label mt-4">Media Type</label>
+                                            <select class="form-select" aria-label="Default select example"
+                                            name="media_type">
+                                            <option selected>None</option>
+                                            <option >Text</option>
+                                            <option name="">Document</option>
+                                            <option name="">Video</option>
+                                            <option name="">Image</option>
+                                        </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label mt-5 fs-6">Template Data</label>
@@ -561,7 +570,8 @@
                                         <tr>
                                             <th scope="col">Template ID</th>
                                             <th scope="col">Category</th>
-                                            <th scope="col">Template Data</th>
+                                            <th scope="col">Media Type</th>
+                                            <th scope="col">Template Message</th>
                                             <th scope="col">Status</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Action</th>
@@ -572,6 +582,7 @@
                                         <tr>
                                             <td>{{ campaign.template_id }}</td>
                                             <td>{{ campaign.sub_service }}</td>
+                                            <td>{{ campaign.media_type }}</td>
                                             <td>{{ campaign.template_data }}</td>
                                             <td>{{ campaign.status }}</td>
                                             <td>{{ campaign.uploaded_at }}</td>
