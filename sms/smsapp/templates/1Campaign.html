@@ -1,0 +1,721 @@
+<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
+    data-template="vertical-menu-template-free" style="height: 1500px;">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+
+    <meta name="description" content="" />
+
+    <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="/static/assets/vendor/fonts/boxicons.css" />
+
+    <link rel="stylesheet" href="/static/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="/static/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="/static/assets/css/demo.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="/static/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <!-- Page CSS -->
+    <!-- Helpers -->
+    <script src="/static/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="/static/assets/js/config.js"></script>
+
+    <!-- custom css -->
+
+    <style>
+        #ols {
+            list-style-type: none;
+            counter-reset: step;
+        }
+
+        #ols #lis {
+            counter-increment: step;
+            margin-bottom: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 18px;
+
+        }
+
+        #ols #lis::before {
+            content: counter(step);
+            color: #fff;
+            background-color: #af25a89e;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        #ols #clis {
+            font-size: 16px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            list-style-type: disc;
+        }
+
+
+        #pageview1:hover {
+            width: 450px;
+            height: 250px;
+        }
+
+
+        .action-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .action-btn {
+            background-color: #3e8e41;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+            <!-- Menu -->
+
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                <div class="app-brand demo">
+                    <a href="/dashboard/" class="app-brand-link">
+                        <i class="menu-icon tf-icons bx bx-globe"></i>
+                        <span class="app-brand-text menu-text fw-bolder fs-4">IT Solutions</span>
+                    </a>
+
+                    <a href="javascript:void(0);"
+                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                        <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                    </a>
+                </div>
+
+                <div class="menu-inner-shadow"></div>
+
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                    <li class="menu-item">
+                        <a href="/dashboard/" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
+                            <div data-i18n="Analytics">Dashboard</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Pages</span>
+                    </li>
+
+                    <li class="menu-item active">
+                        <a href="/campaign/" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-unite"></i>
+                            <div>Campaign</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="/media_upload/" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-file-plus"></i>
+                            <div data-i18n="Tables">Media ID</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="/send-sms/" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Send SMS</div>
+                        </a>
+                    </li>
+
+
+                    <!-- Tables -->
+                    <li class="menu-item">
+                        <a href="/reports" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-report"></i>
+                            <div data-i18n="Tables">Reports</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bxs-category"></i>
+                            <div data-i18n="Form Layouts">Services</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="https://www.itsolution4india.com/website-designing/web-development.php"
+                                    class="menu-link">
+                                    <div data-i18n="Horizontal Form">Web Development</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://www.itsolution4india.com/digital-marketing.php" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Digital Marketing</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://www.itsolution4india.com/bulk-sms.php" class="menu-link">
+                                    <div data-i18n="Horizontal Form">Bulk SMS</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://www.itsolution4india.com/bulk-sms/lead-generation.php"
+                                    class="menu-link">
+                                    <div data-i18n="Horizontal Form">Lead Generation</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="https://www.itsolution4india.com/dlt-registration.php" class="menu-link">
+                                    <div data-i18n="Horizontal Form">DLT Registration</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="https://www.itsolution4india.com/privacy-policy.php" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-check-shield"></i>
+                            <div data-i18n="Documentation">Privacy Policy</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="https://www.itsolution4india.com/contact.php" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-support"></i>
+                            <div data-i18n="Documentation">Support</div>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            <!-- / Menu -->
+
+            <!-- Layout container -->
+            <div class="layout-page" style="background-color: white; height: fit-content;">
+                <!-- Navbar -->
+
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center "
+                    id="layout-navbar" style="background-color: black;">
+                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                            <i class="bx bx-menu bx-sm"></i>
+                        </a>
+                    </div>
+
+                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
+                        <!-- Search -->
+                        <div class="navbar-nav align-items-center">
+                            <div class="nav-item d-flex align-items-center">
+                                <i class="bx bx-search fs-4 lh-0"></i>
+                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
+                                    aria-label="Search..." />
+                            </div>
+                        </div>
+                        <!-- /Search -->
+
+                        <ul class="navbar-nav flex-row align-items-center ms-auto">
+                            <!-- Place this tag where you want the button to render. -->
+
+
+                            <!-- User -->
+                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
+                                    data-bs-toggle="dropdown">
+                                    <div class="avatar avatar-online">
+                                        <img src="/static/assets/img/avatars/1.png" alt
+                                            class="w-px-40 h-auto rounded-circle" />
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="/static/assets/img/avatars/1.png" alt
+                                                            class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block"></span>
+                                                    <small class="text-muted"></small>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="bx bx-user me-2"></i>
+                                            <span class="align-middle">My Profile</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'logout' %}">
+                                            <i class="bx bx-power-off me-2"></i>
+                                            <span class="align-middle">Log Out</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--/ User -->
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- / Navbar -->
+
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    <!-- Content -->
+
+                    <div class="container-xxl flex-grow-1 container-p-y" style="height: 1200px;">
+
+                        <form method="POST" enctype="multipart/form-data" action="{% url 'campaign' %}">
+                            {% csrf_token %}
+                            <div class="row" style="height: 800px; box-shadow: none;">
+                                <h6 class="text-center mt-4">Total Credit: 1999:5000</h6>
+
+                                <div class="card w-50" style="box-shadow: none;">
+                                    <form action="" style="width: 100%;">
+                                        <div class="mb-3 w-50">
+                                            <label class="form-label">Template ID</label>
+                                            <input type="text" name="template_id" class="form-control">
+
+                                            <label class="form-label mt-4">Sub Services</label>
+                                            <select class="form-select" aria-label="Default select example"
+                                                name="sub_service">
+                                                <option selected>None</option>
+                                                <option name="">Authentication</option>
+                                                <option name="">Marketing</option>
+                                                <option name="">Utility</option>
+                                            </select>
+                                            <label class="form-label mt-4">Media Type</label>
+                                            <select class="form-select" aria-label="Default select example"
+                                                name="media_type">
+                                                <option selected>None</option>
+                                                <option>Text</option>
+                                                <option name="">Document</option>
+                                                <option name="">Video</option>
+                                                <option name="">Image</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label mt-5 fs-6">Template Data</label>
+                                            <textarea id="userInput" name="template_data" class="one form-control"
+                                                style="height: 250px;"></textarea>
+                                            <label class="form-label mt-5 fs-6">Footer</label>
+                                            <input type="text" class="form-control" id="call-extension">
+
+                                            <div class="form-group mt-3">
+                                                <label for="actionType" class="form-label">Select Action Type:</label>
+                                                <select id="actionType" name="actionType"
+                                                    onchange="handleSelectionChange()" class="form-select">
+                                                    <option value="">--Select--</option>
+                                                    <option value="callToAction">Call to Action</option>
+                                                    <option value="visitWebsite">Visit Website</option>
+                                                </select>
+                                            </div>
+                                            <div id="callToActionFields" class="hidden">
+                                                <div class="form-group">
+                                                    <label for="buttonName" class="form-label">Button Name:</label>
+                                                    <input type="text" id="buttonName" name="buttonName"
+                                                        placeholder="Enter button name" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="contactNumber" class="form-label">Contact
+                                                        Number:</label>
+                                                    <input type="text" id="contactNumber" name="contactNumber"
+                                                        placeholder="Enter contact number" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div id="visitWebsiteFields" class="hidden">
+                                                <div class="form-group">
+                                                    <label for="websiteUrl" class="form-label">Button Name</label>
+                                                    <input type="text" id="buttonName" name="buttonName"
+                                                        placeholder="Enter button name" class="form-control">
+
+                                                    <label for="websiteUrl" class="form-label">Website URL:</label>
+                                                    <input type="text" id="websiteUrl" name="websiteUrl"
+                                                        placeholder="Enter website URL" class="form-control">
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="mb-3"
+                                            style="border: 1px solid transparent; box-sizing: border-box; border-radius: 5px; overflow-y: auto;">
+                                            <label class="form-label mt-3 fs-6" for="fontSize"
+                                                style="display: block;">Font
+                                                Size</label>
+                                            <select class="form-select" id="fontSize" onchange="changeTextSize()"
+                                                style="width: 70px; display: inline-block;">
+                                                <option value="small">15</option>
+                                                <option value="medium" selected>25</option>
+                                                <option value="large">35</option>
+                                            </select>
+                                            <div class="bg-dark"
+                                                style="width: 80px; height: 30px; display: inline-block; margin-left: 20px; border-radius: 5px; color: white; text-align: center; cursor: pointer;"
+                                                onclick="toggleBold()">
+                                                Bold</div>
+                                            <div class="bg-dark"
+                                                style="width: 80px; height: 30px; display: inline-block; margin-left: 20px; border-radius: 5px; color: white; text-align: center; cursor: pointer;"
+                                                onclick="toggleItalic()">
+                                                Italic</div>
+                                            <div class="bg-dark"
+                                                style="width: 80px; height: 30px; display: inline-block; margin-left: 20px; border-radius: 5px; color: white; text-align: center; cursor: pointer;"
+                                                onclick="toggleUnderline()">
+                                                Underline</div>
+                                            <div class="first-btn btn btn-primary mt-3" style="margin-left: 20px;">Start
+                                                picker
+                                            </div>
+                                        </div>
+
+                                        <!-- div for upload data -->
+
+
+                                        <!-- submit button -->
+                                        <button class="btn btn-primary mt-4" style="width: 100px;"
+                                            id="run">Submit</button>
+                                    </form>
+                                </div>
+
+
+                                <div class="card w-50" style="overflow-y: auto; box-shadow: none;">
+                                    <h5 style="text-align: center;">Preview</h5>
+                                    <div class="card"
+                                        style="width: 300px; height: 400px; background-color: #333; margin-left: auto; margin-right: auto; background-image: url('/static/assets/img/backgrounds/whatsappbg.png'); background-size: cover; overflow-x: auto;overflow-clip-margin: inherit; position: relative;">
+                                        <div class="w-100 p-3 text-white rounded-top"
+                                            style="background-color: #075E54;position: absolute;">
+                                            WhatsApp</div>
+                                        <div class="card mt-4"
+                                            style="width: 80%; min-height: 300px; background-color: white; margin-left: 30px; top: 50px; position: absolute; ">
+                                            <p id="output"
+                                                style="width: 90%; text-indent: 10px; margin-top: 10px; margin-left: auto; margin-right: auto;">
+                                                Hello</p>
+                                            <div
+                                                style="width: 100%; height: 40px; background-color: white; text-indent: 20px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10;">
+                                                <i class='bx bx-phone-call hidden' style='color:#195bf4;'
+                                                    id="call-foot">
+                                                    <p style="display: inline; font-size: 12px;">Hello</p>
+                                                </i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="card" style="box-shadow: none;">
+
+                                        <div class="card"
+                                            style="width: 70%; margin-left: auto; margin-right: auto; margin-top: 100px; text-indent: 20px;">
+                                            <div class="w-100 p-3 text-white rounded-top bg-dark">
+                                                Preview</div>
+                                            <h5 class="card-title mt-3">Message Tier</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Limit: 10K </h6>
+                                            <hr>
+
+                                            <h5 class="card-title">Campaign</h5>
+                                            <h6 class="card-subtitle mb-2 text-muted">Name: </h6>
+                                            <hr>
+
+                                            <!-- <h5 class="card-title">Message Tier</h5> -->
+                                            <h6 class="card-subtitle mb-2 text-muted">Channel: WhatsApp</h6>
+                                            <hr>
+
+                                            <h6 class="card-subtitle mb-2 text-muted">Time: 2024-19-24 15:29:26</h6>
+                                            <hr>
+
+                                            <h6 class="card-subtitle mb-2 text-muted">Upload Type: Simple</h6>
+                                            <hr>
+
+                                            <h6 class="card-subtitle mb-2 text-muted">Sub-Service: WhatsApp Promo</h6>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+                            <script>
+                                var textarea = document.getElementById("userInput");
+                                var output = document.getElementById("output");
+                                var fontSizeSelect = document.getElementById("fontSize");
+                                var callExtension = document.getElementById('buttonName');
+                                var callFoot = document.getElementById('call-foot');
+
+                                callExtension.addEventListener("input", updateCallFoot);
+
+                                function updateCallFoot() {
+                                    var callEx = callExtension.value;
+                                    callFoot.textContent = callEx;
+                                    callFoot.style.fontSize = '15px'
+                                    callFoot.style.marginLeft = "40px"
+                                    callFoot.style.display = 'inline'
+                                }
+
+
+                                textarea.addEventListener("input", updateOutput);
+
+                                function updateOutput() {
+                                    var inputValue = textarea.value;
+                                    output.textContent = inputValue;
+                                }
+
+                                function toggleBold() {
+                                    output.style.fontWeight = (output.style.fontWeight === "bold") ? "normal" : "bold";
+                                }
+
+                                function toggleItalic() {
+                                    output.style.fontStyle = (output.style.fontStyle === "italic") ? "normal" : "italic";
+                                }
+
+                                function toggleUnderline() {
+                                    output.style.textDecoration = (output.style.textDecoration === "underline") ? "none" : "underline";
+                                }
+
+                                function changeTextSize() {
+                                    var selectedSize = fontSizeSelect.value;
+                                    output.style.fontSize = selectedSize;
+                                }
+
+                                function handleSelectionChange() {
+                                    const actionType = document.getElementById('actionType').value;
+                                    const callToActionFields = document.getElementById('callToActionFields');
+                                    const visitWebsiteFields = document.getElementById('visitWebsiteFields');
+
+                                    // Hide all fields initially
+                                    callToActionFields.classList.add('hidden');
+                                    visitWebsiteFields.classList.add('hidden');
+
+                                    // Show relevant fields based on selection
+                                    if (actionType === 'callToAction') {
+                                        callToActionFields.classList.remove('hidden');
+                                    } else if (actionType === 'visitWebsite') {
+                                        visitWebsiteFields.classList.remove('hidden');
+                                    }
+                                }
+                            </script>
+
+
+
+                    </div>
+
+                    <div class="container-xxl flex-grow-1 container-p-y mt-5"
+                        style="height: 500px; box-sizing: border-box;">
+
+
+                        <!-- second row for template id status table -->
+                        <div class="row">
+                            <div class="card" style="min-height: 400px; box-shadow: none; overflow-y: auto;">
+
+                                <table class="table">
+                                    <div class="w-100 p-3 text-white bg-dark rounded-top text-center fs-5">
+                                        Template Status Report
+                                    </div>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Template ID</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Media Type</th>
+                                            <th scope="col">Template Message</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for campaign in campaign_list %}
+                                        <tr>
+                                            <td>{{ campaign.template_id }}</td>
+                                            <td>{{ campaign.sub_service }}</td>
+                                            <td>{{ campaign.media_type }}</td>
+                                            <td>{{ campaign.template_data }}</td>
+                                            <td>{{ campaign.status }}</td>
+                                            <td>{{ campaign.uploaded_at }}</td>
+                                            <td>
+                                                {% if campaign.template_id %}
+                                                <a
+                                                    href="{% url 'delete_campaign' template_id=campaign.template_id %}?delete={{ campaign.template_data }}">
+                                                    <button
+                                                        class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">Delete</button>
+                                                </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+
+
+
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+                    <!-- / Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- / Layout wrapper -->
+
+
+    <!-- All Important Javascript files -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+    <script src="/static/assets/vendor/js/bootstrap.js"></script>
+    <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="/static/assets/vendor/js/vanillaEmojiPicker.js"></script>
+
+
+    <script>
+
+        new EmojiPicker({
+            trigger: [
+                {
+                    selector: '.first-btn',
+                    insertInto: ['.one', '.two'] // '.selector' can be used without array
+                },
+                {
+                    selector: '.second-btn',
+                    insertInto: '.two'
+                }
+            ],
+            closeButton: true,
+            //specialButtons: green
+        });
+
+    </script>
+
+
+    <script src="/static/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="/static/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+    <!-- Main JS -->
+    <script src="/static/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <script src="/static/assets/js/dashboards-analytics.js"></script>
+
+</body>
+
+</html>

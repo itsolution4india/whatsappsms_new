@@ -7,6 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.user_login, name="login"),
+    path("logout/",views.logout_view,name="logout"),
     path("send-sms/", views.Send_Sms, name="send-sms"),
     path('reports/', views.Reports, name='reports'),
     path('reports/<int:report_id>/download/',views.download_pdf, name='download_pdf'),

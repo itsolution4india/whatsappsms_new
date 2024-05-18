@@ -44,7 +44,7 @@
         <div class="app-brand demo">
           <a href="/dashboard/" class="app-brand-link">
             <i class="menu-icon tf-icons bx bx-globe"></i>
-            <span class="app-brand-text menu-text fw-bolder fs-4">I.T. Solutions</span>
+            <span class="app-brand-text menu-text fw-bolder fs-4">IT Solutions</span>
           </a>
 
           <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -194,8 +194,7 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block"></span>
-                          <small class="text-muted"></small>
+                          <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ ip }}</span>
                         </div>
                       </div>
                     </a>
@@ -210,25 +209,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="#">
-                      <i class="bx bx-cog me-2"></i>
-                      <span class="align-middle">Settings</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
-                      <span class="d-flex align-items-center align-middle">
-                        <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                        <span class="flex-grow-1 align-middle">Billing</span>
-                        <span class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                      </span>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="{% url 'logout' %}">
                       <i class="bx bx-power-off me-2"></i>
                       <span class="align-middle">Log Out</span>
                     </a>
@@ -258,7 +239,7 @@
                           Click on <span class="fw-bold">Campaign Page button</span> to generate more Template IDs
                         </p>
 
-                        <a href="javascript:;" class="btn btn-sm btn-outline-primary">Campaign</a>
+                        <a href="/campaign/" class="btn btn-sm btn-outline-primary">Campaign</a>
                       </div>
 
                     </div>
@@ -294,7 +275,7 @@
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">I.P. Address</span>
-                        <h3 class="card-title mb-2">{{ ip_address }}</h3>
+                        <h3 class="card-title mb-2">{{ ip}}</h3>
                       </div>
                     </div>
                   </div>
@@ -356,6 +337,13 @@
                           name="contact_number"></textarea>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
+                         {% if messages %}
+                         {% for message in messages %}
+                          {% if message.tags == 'success' %}
+                              <div class="alert alert-success">{{ message }}</div>
+                          {% endif %}
+                        {% endfor %}
+                     {% endif %}
 
                     </form>
                     <!-- Feedback messages -->

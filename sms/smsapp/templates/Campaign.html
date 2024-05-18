@@ -132,6 +132,40 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -143,9 +177,9 @@
 
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
-                    <a href="index.html" class="app-brand-link">
+                    <a href="/dashboard/" class="app-brand-link">
                         <i class="menu-icon tf-icons bx bx-globe"></i>
-                        <span class="app-brand-text menu-text fw-bolder fs-4">I.T. Solutions</span>
+                        <span class="app-brand-text menu-text fw-bolder fs-4">IT Solutions</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -175,12 +209,14 @@
                             <div>Campaign</div>
                         </a>
                     </li>
+
                     <li class="menu-item">
                         <a href="/media_upload/" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-file-plus"></i>
                             <div data-i18n="Tables">Media ID</div>
                         </a>
                     </li>
+
                     <li class="menu-item">
                         <a href="/send-sms/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
@@ -189,17 +225,16 @@
                     </li>
 
 
+                    <!-- Tables -->
                     <li class="menu-item">
-
-                        <!-- Tables -->
-                    <li class="menu-item">
-                        <a href="/reports/" class="menu-link">
+                        <a href="/reports" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
-                 
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
+
+                    <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span>
+                    </li>
                     <li class="menu-item">
                         <a href="javascript:void(0);" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bxs-category"></i>
@@ -299,8 +334,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block"></span>
-                                                    <small class="text-muted"></small>
+                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ ip }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -315,26 +349,10 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-cog me-2"></i>
-                                            <span class="align-middle">Settings</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <span class="d-flex align-items-center align-middle">
-                                                <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                                <span class="flex-grow-1 align-middle">Billing</span>
-                                                <span
-                                                    class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{% url 'logout' %}">
                                             <i class="bx bx-power-off me-2"></i>
                                             <span class="align-middle">Log Out</span>
                                         </a>
@@ -375,20 +393,56 @@
                                             </select>
                                             <label class="form-label mt-4">Media Type</label>
                                             <select class="form-select" aria-label="Default select example"
-                                            name="media_type">
-                                            <option selected>None</option>
-                                            <option >Text</option>
-                                            <option name="">Document</option>
-                                            <option name="">Video</option>
-                                            <option name="">Image</option>
-                                        </select>
+                                                name="media_type">
+                                                <option selected>None</option>
+                                                <option>Text</option>
+                                                <option name="">Document</option>
+                                                <option name="">Video</option>
+                                                <option name="">Image</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label mt-5 fs-6">Template Data</label>
                                             <textarea id="userInput" name="template_data" class="one form-control"
-                                                style="height: 100px;"></textarea>
+                                                style="height: 250px;"></textarea>
                                             <label class="form-label mt-5 fs-6">Footer</label>
                                             <input type="text" class="form-control" id="call-extension">
+
+                                            <div class="form-group mt-3">
+                                                <label for="actionType" class="form-label">Select Action Type:</label>
+                                                <select id="actionType" name="actionType"
+                                                    onchange="handleSelectionChange()" class="form-select">
+                                                    <option value="">--Select--</option>
+                                                    <option value="callToAction">Call to Action</option>
+                                                    <option value="visitWebsite">Visit Website</option>
+                                                </select>
+                                            </div>
+                                            <div id="callToActionFields" class="hidden">
+                                                <div class="form-group">
+                                                    <label for="buttonName" class="form-label">Button Name:</label>
+                                                    <input type="text" id="buttonName" name="buttonName"
+                                                        placeholder="Enter button name" class="form-control">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="contactNumber" class="form-label">Contact
+                                                        Number:</label>
+                                                    <input type="text" id="contactNumber" name="contactNumber"
+                                                        placeholder="Enter contact number" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div id="visitWebsiteFields" class="hidden">
+                                                <div class="form-group">
+                                                    <label for="websiteUrl" class="form-label">Button Name</label>
+                                                    <input type="text" id="buttonName" name="buttonName"
+                                                        placeholder="Enter button name" class="form-control">
+
+                                                    <label for="websiteUrl" class="form-label">Website URL:</label>
+                                                    <input type="text" id="websiteUrl" name="websiteUrl"
+                                                        placeholder="Enter website URL" class="form-control">
+
+                                                </div>
+                                            </div>
+
                                         </div>
                                         <div class="mb-3"
                                             style="border: 1px solid transparent; box-sizing: border-box; border-radius: 5px; overflow-y: auto;">
@@ -419,38 +473,11 @@
                                         </div>
 
                                         <!-- div for upload data -->
-                                        <div class="mb-3">
-                                            <label class="form-label mt-5 fs-6" style="display: block;">Upload
-                                                Data</label>
-                                            <div class="form-check form-check-inline mt-4">
-                                                <label for="fileInput" class="file-label" id="fileLabel">Text</label>
-                                                <input type="file" class="form-control" id="fileInput" name="text">
-                                                
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Voice</label>
-                                                <input type="file" class="form-control" id="fileInput" name="voice">
-                                                
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Image</label>
-                                                <input type="file" class="form-control" id="fileInput" name="image">
-                                                
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">Video</label>
-                                                <input type="file" class="form-control" id="fileInput" name="video">
-                                               
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <label for="fileInput" class="file-label mt-2" id="fileLabel">PDF</label>
-                                                <input type="file" class="form-control" id="fileInput" name="pdf">
-                                                
-                                            </div>
-                                        </div>
+
 
                                         <!-- submit button -->
-                                        <button class="btn btn-primary mt-4" style="width: 100px;" id="run">Submit</button>
+                                        <button class="btn btn-primary mt-4" style="width: 100px;"
+                                            id="run">Submit</button>
                                     </form>
                                 </div>
 
@@ -467,9 +494,12 @@
                                             <p id="output"
                                                 style="width: 90%; text-indent: 10px; margin-top: 10px; margin-left: auto; margin-right: auto;">
                                                 Hello</p>
-                                            <div id="call-foot"
-                                                style="width: 100%; height: 40px; color: #007bff; background-color: white; text-indent: 20px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10;">
-                                                <!-- <i class='bx bxs-phone-call' style='color:#38b0fa'></i> -->
+                                            <div
+                                                style="width: 100%; height: 40px; background-color: white; text-indent: 20px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10;">
+                                                <i class='bx bx-phone-call hidden' style='color:#195bf4;'
+                                                    id="call-foot">
+                                                    <p style="display: inline; font-size: 12px;">Hello</p>
+                                                </i>
                                             </div>
                                         </div>
 
@@ -514,7 +544,7 @@
                                 var textarea = document.getElementById("userInput");
                                 var output = document.getElementById("output");
                                 var fontSizeSelect = document.getElementById("fontSize");
-                                var callExtension = document.getElementById('call-extension');
+                                var callExtension = document.getElementById('buttonName');
                                 var callFoot = document.getElementById('call-foot');
 
                                 callExtension.addEventListener("input", updateCallFoot);
@@ -522,6 +552,9 @@
                                 function updateCallFoot() {
                                     var callEx = callExtension.value;
                                     callFoot.textContent = callEx;
+                                    callFoot.style.fontSize = '15px'
+                                    callFoot.style.marginLeft = "40px"
+                                    callFoot.style.display = 'inline'
                                 }
 
 
@@ -547,6 +580,23 @@
                                 function changeTextSize() {
                                     var selectedSize = fontSizeSelect.value;
                                     output.style.fontSize = selectedSize;
+                                }
+
+                                function handleSelectionChange() {
+                                    const actionType = document.getElementById('actionType').value;
+                                    const callToActionFields = document.getElementById('callToActionFields');
+                                    const visitWebsiteFields = document.getElementById('visitWebsiteFields');
+
+                                    // Hide all fields initially
+                                    callToActionFields.classList.add('hidden');
+                                    visitWebsiteFields.classList.add('hidden');
+
+                                    // Show relevant fields based on selection
+                                    if (actionType === 'callToAction') {
+                                        callToActionFields.classList.remove('hidden');
+                                    } else if (actionType === 'visitWebsite') {
+                                        visitWebsiteFields.classList.remove('hidden');
+                                    }
                                 }
                             </script>
 
@@ -587,12 +637,13 @@
                                             <td>{{ campaign.status }}</td>
                                             <td>{{ campaign.uploaded_at }}</td>
                                             <td>
+                                                {% if campaign.template_id %}
                                                 <a
                                                     href="{% url 'delete_campaign' template_id=campaign.template_id %}?delete={{ campaign.template_data }}">
                                                     <button
                                                         class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">Delete</button>
-
                                                 </a>
+                                                {% endif %}
                                             </td>
                                         </tr>
                                         {% endfor %}

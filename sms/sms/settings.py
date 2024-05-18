@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY ='django-insecure-ux$&02l*ri@g!fp$@@8g7kxd4#ix6$_=xo!r+bzmz3@f2&=i@6'
 DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['127.0.0.1', '13.239.113.104']
+ALLOWED_HOSTS = ['127.0.0.1', '13.239.113.104','whtsappdealnow.in', 'www.whtsappdealnow.in']
 
 # CORS Configuration
 CORS_ALLOWED_ORIGINS = [
@@ -15,7 +15,7 @@ CORS_ALLOWED_ORIGINS = [
     # Add more origins as needed
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://13.239.113.104', 'https://13.239.113.104']
+CSRF_TRUSTED_ORIGINS = ["http://13.239.113.104", 'https://13.239.113.104']
 
 SECURE_HSTS_SECONDS=15780000
 SECURE_SSL_REDIRECT=False
