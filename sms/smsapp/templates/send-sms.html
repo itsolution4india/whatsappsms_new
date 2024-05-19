@@ -194,7 +194,7 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ ip }}</span>
+                          <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ username }}</span>
                         </div>
                       </div>
                     </a>
@@ -275,7 +275,7 @@
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">I.P. Address</span>
-                        <h3 class="card-title mb-2">{{ ip}}</h3>
+                        <h3 class="card-title mb-2">{{ ip_address}}</h3>
                       </div>
                     </div>
                   </div>
@@ -490,8 +490,7 @@
                           <th scope="col">Date</th>
                           <th scope="col">Send Messages</th>
                           <th scope="col">Delivered Messages</th>
-                          <th scope="col">Failed Messages</th>
-
+                        
                         </tr>
                       </thead>
                       <tbody>
@@ -500,7 +499,7 @@
                           <td>{{report.message_date}}</td>
                           <td>{{report.message_send}}</td>
                           <td>{{report.message_delivery}}</td>
-                          <td>{{report.message_failed}}</td>
+                          
                         </tr>
                         {% endfor %}
                       </tbody>

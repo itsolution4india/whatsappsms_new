@@ -4,16 +4,21 @@ from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
 from .models import CustomUser
+from io import BytesIO
 from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm
 from decimal import Decimal
+
+from django.contrib.auth import authenticate, login 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from .campaignmail import send_email_change_notification
 import logging
-from .models import ReportInfo,CampaignData,ReportFile
+from .models import ReportInfo,CampaignData
 from django.contrib.auth import logout
 import requests
 
@@ -21,7 +26,10 @@ import requests
 logger = logging.getLogger(__name__)
 from datetime import datetime
 
+
+# View for user login
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 def user_login(request):
@@ -51,69 +59,102 @@ def user_login(request):
     return render(request, "login.html", {"form": form})
 
 @login_required
-def username(request):
-    username=request.user
-    return username
-
-@login_required
 def logout_view(request):
     logout(request)
     return redirect("login")
 
 @login_required
 def user_dashboard(request):
-    return render(request, "dashboard.html",{"username":username(request)})
+    return render(request, "dashboard.html")
 
+def generate_file_auto():
+    file_name = "example.txt"
+    file_content = "This is some example content.\nIt will be written to a file."
+    try:
+        with open(file_name, 'w') as file:
+            file.write(file_content)
+        print(f"File '{file_name}' generated successfully!")
+    except Exception as e:
+        print(f"Error occurred while generating file '{file_name}': {str(e)}")
+
+# View for file upload page
 @login_required
 def Send_Sms(request):
-    
     if request.user.is_authenticated:
-        ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
         if request.method == "POST":
-            
+            ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
             coins = request.user.coins
             report_list = ReportInfo.objects.filter(email=request.user)
             campaign_list = CampaignData.objects.filter(email=request.user)
-            new_message_info = None
+            #new_message_info = None
 
             template_id = request.POST.get("params")
             media_id=request.POST.get("media_id")
             uploaded_file = request.FILES.get("files")
             contacts=request.POST.get("contact_number")
-            user = request.user  
-            discount = show_discount(user)
-            print(discount)
-            final_count, contact_list = validate_phone_numbers(contacts, uploaded_file,discount)
-           
+            final_count, contact_list = validate_phone_numbers(contacts, uploaded_file)
+            print(media_id)
+            print(contact_list)
     
             try:
-                url = "http://www.whtsappdealnow.in/whatsapp/send_messages/"
+                url = "http://13.239.113.104/whatsapp/send_messages/"
                 params = {"template_id": template_id,"media_id":media_id}
                 headers = {"Content-Type": "application/json", "Accept": "application/json"}
                 data = contact_list
                 
                 
-                requests.post(url, params=params, headers=headers, json=data)
+                api_response = requests.post(url, params=params, headers=headers, json=data)
+                print(api_response.status_code)
                 subtract_coins(request, final_count)
-                new_message_info = ReportInfo(
-                    email=request.user,
-                    message_date=datetime.now(),
-                    message_delivery=final_count,
-                    message_send=final_count,
-                    message_failed=2,
+    
+
+    
+                if api_response.status_code == 200:
+                    '''
+                    new_message_info = ReportInfo(
+                        email=request.user,
+                        message_date=datetime.now(),
+                        message_delivery=final_count,
+                        message_send=final_count,
+                        message_failed=2,
+                        report_file=generate_file_auto(),
 
                     )
-                new_message_info.save()
-                return redirect('send-sms')
-               
+                    new_message_info.save()
+                
+                  '''
+                    return render(
+                        request,
+                        "send-sms.html",
+                        {
+                            
+                            "ip_address": ip_address,
+                            "coins": coins,
+                            "report_list": report_list,
+                            "campaign_list":campaign_list,
+                        },
+                    )
+                else:
+                   
+                    return render(
+                        request,
+                        "send-sms.html",
+                        {
+                            
+                            "ip_address": ip_address,
+                            "coins": coins,
+                            "report_list": report_list,
+                            "campaign_list":campaign_list,
+                        },
+                    )
             except requests.RequestException as e:
                 
                 return render(
                     request,
                     "send-sms.html",
                     {
-                        "ip_address":ip_address,
-                        "username":username(request),
+                        
+                        "ip_address": ip_address,
                         "coins": coins,
                         "report_list": report_list,
                         "campaign_list":campaign_list,
@@ -121,15 +162,15 @@ def Send_Sms(request):
                 )
 
         else:
-            
+            ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
             coins = request.user.coins
             report_list = ReportInfo.objects.filter(email=request.user)
             campaign_list = CampaignData.objects.filter(email=request.user)
             return render(
                 request,
                 "send-sms.html",
-                {   "ip_address":ip_address,
-                    "username":username(request),
+                {
+                    "ip_address": ip_address,
                     "coins": coins,
                     "report_list": report_list,
                     "campaign_list":campaign_list,
@@ -202,14 +243,14 @@ def change_password(request, email, token):
 
 
 def verify_otp_server(otp):
-    verify_otp_url = "http://www.whtsappdealnow.in/email/verify_otp"
+    verify_otp_url = "http://13.239.113.104/email/verify_otp"
     params = {"otp": otp}
     verify_otp_response = requests.post(verify_otp_url, params=params)
     return verify_otp_response.status_code == 200
 
 
 def send_otp(email):
-    otp_url ="http://www.whtsappdealnow.in/email/otp"
+    otp_url = "http://13.239.113.104/email/otp"
     params = {"name": "otp", "email": email}
     otp_response = requests.post(otp_url, params=params)
 
@@ -221,7 +262,9 @@ def send_otp(email):
 
 #Valid _and _ Duplicate method
 import re
-def validate_phone_numbers(contacts, uploaded_file,discount):
+
+
+def validate_phone_numbers(contacts, uploaded_file):
     valid_numbers = set()
     pattern = re.compile(r'^(\+91[\s-]?)?[0]?(91)?[6789]\d{9}$')
 
@@ -265,20 +308,17 @@ def validate_phone_numbers(contacts, uploaded_file,discount):
                 else:
                     continue
         return final_list
-    
+    discount=0
+    #print(discount)
     valid_numbers=list(valid_numbers)
     discountnumber=fnn(valid_numbers,discount)
 
     final_list=whitelist(valid_numbers,whitelist_number,blacklist_number,discountnumber)
-    
-    
+    print(final_list)
+    #print(len(valid_numbers),final_list)
     return len(valid_numbers), final_list
 
 from django.contrib import messages
-
-def show_discount(user):
-    discount = user.discount
-    return discount
 
 @login_required
 def subtract_coins(request, final_count):
@@ -290,13 +330,15 @@ def subtract_coins(request, final_count):
     if user.coins >= final_coins: 
         user.coins -= final_coins
         user.save()
-        messages.success(request, f"Message Send Successfully and Deduct {final_coins} coins from your account.")
+        messages.success(request, f"Successfully subtracted {final_coins} coins from your account.")
     else:
         messages.error(request, "You don't have enough coins to proceed.")
 
 @login_required
 def Campaign(request):
+    # Retrieve the campaign list outside the POST condition
     
+
     campaign_list = CampaignData.objects.filter(email=request.user)
 
     if request.method == 'POST':
@@ -304,11 +346,6 @@ def Campaign(request):
         sub_service = request.POST.get('sub_service')
         media_type=request.POST.get('media_type')
         template_data = request.POST.get('template_data')
-        action_type = request.POST.get('actionType')
-        button_name = request.POST.get('buttonName')
-        print(button_name)
-        contact_number = request.POST.get('contactNumber')
-        website_url = request.POST.get('websiteUrl')
 
 
         try:
@@ -319,10 +356,6 @@ def Campaign(request):
                 sub_service=sub_service,
                 media_type=media_type,
                 template_data=template_data,
-                action_type=action_type,
-                button_name=button_name,
-                contact_number=contact_number,
-                website_url=website_url,
 
             )
             send_email_change_notification(request.user, template_id)
@@ -335,32 +368,23 @@ def Campaign(request):
 
 
 
-    return render(request, "Campaign.html", {"campaign_list": campaign_list,"username":username(request)})
+    return render(request, "Campaign.html", {"campaign_list": campaign_list})
 
 @login_required
-def delete_campaign(request, template_id):
-    if template_id is None:
-        return 
+def delete_campaign(request, template_id): 
+    if template_id= None:
+        return
     campaign_data = get_object_or_404(CampaignData, template_id=template_id)
     campaign_data.delete()
     return redirect('campaign')
 
+
+
+
 @login_required
 def Reports(request):
     report_list = ReportInfo.objects.filter(email=request.user)
-    file_list = ReportFile.objects.filter(email=request.user)
-    
-    # Create a dictionary to map report ids to their corresponding files
-    file_map = {file.report_id: file for file in file_list}
-    
-    # Annotate each report with its corresponding file
-    for report in report_list:
-        report.file = file_map.get(report.id)
-    
-    return render(request, 'reports.html', {
-        "report_list": report_list,
-        "username":username(request)
-                })
+    return render(request, 'reports.html', {"report_list":report_list})
 
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
@@ -382,7 +406,7 @@ def whitelist_blacklist(request):
     whitelist_blacklists = Whitelist_Blacklist.objects.all()
     whitelist_phones = [obj.whitelist_phone for obj in whitelist_blacklists]
     whitelist_phones_cleaned = [phone for sublist in whitelist_phones for phone in sublist.split('\r\n')]
-    
+    #print(whitelist_phones_cleaned)
 
     blacklist_phones = [obj.blacklist_phone for obj in whitelist_blacklists]
     blacklist_phones_cleaned = [phone for sublist in blacklist_phones for phone in sublist.split('\r\n')]
@@ -409,7 +433,7 @@ def get_media_format(file_extension):
         'flv': 'video/x-flv',
         'mkv': 'video/x-matroska',
         'pdf': 'application/pdf',
-        'txt': 'document/plain',
+        'txt': 'text/plain',
     }
     return media_formats.get(file_extension.lower(), 'application/octet-stream')
 
@@ -434,12 +458,15 @@ def upload_media(request):
     if request.method == 'POST':
         template_id = request.POST.get('template_id')
         file = request.FILES['file']
+        print(file)
         file_extension = file.name.split('.')[-1]
+        print(file_extension)
         media_type = get_media_format(file_extension)
+        print(media_type)
         response = generate_id(template_id, media_type, file)
-       
-        return render(request, "media-file.html", {'response': response.get('data', {}).get('media_transaction_key'),"ip":ip_address(request)})
+        print(response)
+        return render(request, "media-file.html", {'response': response.get('data', {}).get('media_transaction_key')})
     else:
-        return render(request, "media-file.html",{"username":username(request)})
+        return render(request, "media-file.html")
         
 

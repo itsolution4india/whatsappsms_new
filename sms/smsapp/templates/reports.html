@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ ip }}</span>
+                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ username }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -259,40 +259,39 @@
                         <div class="row">
                             <div class="w-100 p-3 text-white rounded-top bg-dark">
                                 Message Report</div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Send Messages</th>
-                                        <th scope="col">Delivered Messages</th>
-                                        <th scope="col">Failed Messages</th>
-                                        <th scope="col">Download</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {% for report in report_list %}
-                                    <tr>
-                                        <td>{{ report.message_date }}</td>
-                                        <td>{{ report.message_send }}</td>
-                                        <td>{{ report.message_delivery }}</td>
-                                        <td>{{ report.message_failed }}</td>
-                                        <td>
-                                            {% if report.report_file %}
-                                            <a href="{% url 'download_pdf' report_id=report.id %}"
-                                                download="{{ report.report_file.name }}">
-                                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
-                                                    <i class='bx bxs-file-pdf' style='color:#ba0505'></i>
-                                                    Download
-                                                </button>
-                                            </a>
-                                            {% else %}
-                                            No file available
-                                            {% endif %}
-                                        </td>
-                                    </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Send Messages</th>
+                                            <th scope="col">Delivered Messages</th>
+                                            <th scope="col">Failed Messages</th>
+                                            <th scope="col">Download</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for report in report_list %}
+                                        <tr>
+                                            <td>{{ report.message_date }}</td>
+                                            <td>{{ report.message_send }}</td>
+                                            <td>{{ report.message_delivery }}</td>
+                                            <td>{{ report.message_failed }}</td>
+                                            <td>
+                                                {% if report.file %}
+                                                <a href="{% url 'download_pdf' test_id=report.file.id %}" download="{{ report.file.report_file.name }}">
+                                                    <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4">
+                                                        <i class='bx bxs-file-pdf' style='color:#ba0505'></i>
+                                                        Download
+                                                    </button>
+                                                </a>
+                                                {% else %}
+                                                No file available
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>       
                         </div>
                     </div>
                     <!-- / Content -->

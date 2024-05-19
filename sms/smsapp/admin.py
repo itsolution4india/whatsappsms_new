@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser,Whitelist_Blacklist,ReportInfo,CampaignData
+from .models import CustomUser,Whitelist_Blacklist,ReportInfo,CampaignData,ReportFile
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
@@ -72,8 +72,7 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_delivery',
         'message_send',
         'message_failed',
-        'report_file',
-        'download_report',
+
     )
     list_filter = (
         'email',
@@ -91,6 +90,27 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_delivery',
         'message_send',
         'message_failed',
+ 
+    )
+
+
+
+admin.site.register(ReportInfo, ReportInfoAdmin)
+ 
+class ReportFileAdmin(admin.ModelAdmin):
+    list_display = (
+        'email',
+        'report_file',
+        'download_report',
+    )
+    list_filter = (
+        'email',
+    )
+    search_fields = (
+        'email__email',
+    )
+    fields = (
+        'email',
         'report_file',
         'original_filename',  
     )
@@ -101,8 +121,8 @@ class ReportInfoAdmin(admin.ModelAdmin):
         return '<a href="{}" download>Download</a>'.format(obj.report_file.url)
     download_report.allow_tags = True
     download_report.short_description = 'Download Report'
+admin.site.register(ReportFile, ReportFileAdmin)
 
-admin.site.register(ReportInfo, ReportInfoAdmin)
 
 
 class CampaignDataAdmin(admin.ModelAdmin):
@@ -112,6 +132,10 @@ class CampaignDataAdmin(admin.ModelAdmin):
         "sub_service",
         "media_type",
         "template_data",
+        "action_type",
+        "button_name",
+        "contact_number",
+        "website_url",
         "status",
         "uploaded_at",
 
@@ -122,10 +146,13 @@ class CampaignDataAdmin(admin.ModelAdmin):
         "template_id",
         "sub_service",
         "media_type",
-        "template_data",
+        "template_data",        
+        "action_type",
+        "button_name",
+        "contact_number",
+        "website_url",
         "status",
         "uploaded_at",
-
     )
     
 admin.site.register(CampaignData, CampaignDataAdmin)
