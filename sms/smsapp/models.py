@@ -52,7 +52,9 @@ class Whitelist_Blacklist(models.Model):
 
 
 class ReportInfo(models.Model):
+    
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    campaign_title=models.CharField(max_length=50)
     message_date = models.DateField()
     message_send = models.IntegerField()
     message_delivery = models.IntegerField()
@@ -87,8 +89,9 @@ class CampaignData(models.Model):
         ('pending', 'Pending'),
         ('approved', 'Approved'),
     )
-
+    
     template_id = models.CharField(max_length=100, primary_key=True)
+    
     sub_service = models.CharField(max_length=100)
     media_type=models.CharField(max_length=100)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')

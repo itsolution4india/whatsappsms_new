@@ -428,7 +428,7 @@
         type: 'donut'
       },
       labels: ['Send', 'Failed', 'Delivered'],
-      series: [5500, 200, 4800],
+      series: [{{total_send}},{{total_delivered}}],
       colors: [config.colors.primary, config.colors.secondary, config.colors.info, config.colors.success],
       stroke: {
         width: 5,
@@ -475,7 +475,7 @@
                 color: axisColor,
                 label: 'Send',
                 formatter: function (w) {
-                  return '5500';
+                  return 'total_send';
                 }
               }
             }

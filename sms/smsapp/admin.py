@@ -68,6 +68,7 @@ admin.site.register(Whitelist_Blacklist, Whitelist_BlacklistAdmin)
 class ReportInfoAdmin(admin.ModelAdmin):
     list_display = (
         'email',
+        "campaign_title",
         'message_date',
         'message_delivery',
         'message_send',
@@ -86,6 +87,7 @@ class ReportInfoAdmin(admin.ModelAdmin):
 
     fields = (
         'email',
+        "campaign_title",
         'message_date',
         'message_delivery',
         'message_send',

@@ -8,7 +8,6 @@ from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm
-from decimal import Decimal
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .campaignmail import send_email_change_notification
@@ -16,11 +15,9 @@ import logging
 from .models import ReportInfo,CampaignData,ReportFile
 from django.contrib.auth import logout
 import requests
-
-# Logger setup for logging information, warnings, or errors.
 logger = logging.getLogger(__name__)
 from datetime import datetime
-
+from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
 
 @csrf_exempt
@@ -62,163 +59,83 @@ def logout_view(request):
 
 @login_required
 def user_dashboard(request):
-    return render(request, "dashboard.html",{"username":username(request)})
-
+    coins= request.user.coins
+    return render(request, "dashboard.html",{"username":username(request),"coins":coins})
+##################
 @login_required
 def Send_Sms(request):
-    
-    if request.user.is_authenticated:
-        ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
-        if request.method == "POST":
-            
-            coins = request.user.coins
-            report_list = ReportInfo.objects.filter(email=request.user)
-            campaign_list = CampaignData.objects.filter(email=request.user)
-            new_message_info = None
-
-            template_id = request.POST.get("params")
-            media_id=request.POST.get("media_id")
-            uploaded_file = request.FILES.get("files")
-            contacts=request.POST.get("contact_number")
-            user = request.user  
-            discount = show_discount(user)
-            print(discount)
-            final_count, contact_list = validate_phone_numbers(contacts, uploaded_file,discount)
-           
-    
-            try:
-                url = "http://www.whtsappdealnow.in/whatsapp/send_messages/"
-                params = {"template_id": template_id,"media_id":media_id}
-                headers = {"Content-Type": "application/json", "Accept": "application/json"}
-                data = contact_list
-                
-                
-                requests.post(url, params=params, headers=headers, json=data)
-                subtract_coins(request, final_count)
-                new_message_info = ReportInfo(
-                    email=request.user,
-                    message_date=datetime.now(),
-                    message_delivery=final_count,
-                    message_send=final_count,
-                    message_failed=2,
-
-                    )
-                new_message_info.save()
-                return redirect('send-sms')
-               
-            except requests.RequestException as e:
-                
-                return render(
-                    request,
-                    "send-sms.html",
-                    {
-                        "ip_address":ip_address,
-                        "username":username(request),
-                        "coins": coins,
-                        "report_list": report_list,
-                        "campaign_list":campaign_list,
-                    },
-                )
-
-        else:
-            
-            coins = request.user.coins
-            report_list = ReportInfo.objects.filter(email=request.user)
-            campaign_list = CampaignData.objects.filter(email=request.user)
-            return render(
-                request,
-                "send-sms.html",
-                {   "ip_address":ip_address,
-                    "username":username(request),
-                    "coins": coins,
-                    "report_list": report_list,
-                    "campaign_list":campaign_list,
-                },
-            )
-    else:
+    if not request.user.is_authenticated:
         return redirect("login")
 
+    ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
+    user = request.user
+    coins = user.coins
+    report_list = ReportInfo.objects.filter(email=user)
+    campaign_list = CampaignData.objects.filter(email=user)
 
-# Password Reset Method
-def initiate_password_reset(request):
+    def get_totals():
+        totals = ReportInfo.objects.aggregate(
+            total_send=Sum('message_send'),
+            total_delivered=Sum('message_delivery'),
+            total_failed=Sum('message_failed')
+        )
+        return {
+            'total_send': totals['total_send'] or 0,
+            'total_delivered': totals['total_delivered'] or 0,
+            'total_failed': totals['total_failed'] or 0
+        }
+
+    def get_context(extra_context=None):
+        context = {
+            "ip_address": ip_address,
+            "username": username(request),
+            "coins": coins,
+            "report_list": report_list,
+            "campaign_list": campaign_list,
+            **get_totals()
+        }
+        if extra_context:
+            context.update(extra_context)
+        return context
+
     if request.method == "POST":
-        email = request.POST.get("email")
+        campaign_title = request.POST.get("campaign_title", "").strip()
+        template_id = request.POST.get("params", "").strip()
+        media_id = request.POST.get("media_id", "").strip()
+        uploaded_file = request.FILES.get("files")
+        contacts = request.POST.get("contact_number", "").strip()
+
+        if not campaign_title or not template_id :
+            logger.error("Missing required POST parameters.")
+            return render(request, "send-sms.html", get_context())
+
+        discount = show_discount(user)
+        final_count, contact_list = validate_phone_numbers(contacts, uploaded_file, discount)
+    
         try:
-            user = CustomUser.objects.get(email=email)
-            token = default_token_generator.make_token(user)
-            send_otp(email)
-            return redirect("otp_verification", email=email, token=token)
-        except ObjectDoesNotExist:
-            return render(
-                request,
-                "password_reset.html",
-                {"error_message": "Email does not exist"},
+            url = "http://www.whtsappdealnow.in/whatsapp/send_messages/"
+            params = {"template_id": template_id, "media_id": media_id}
+            headers = {"Content-Type": "application/json", "Accept": "application/json"}
+            requests.post(url, params=params, headers=headers, json=contact_list)
+            
+
+            subtract_coins(request, final_count)
+            new_message_info = ReportInfo(
+                email=user,
+                campaign_title=campaign_title,
+                message_date=timezone.now(),
+                message_delivery=final_count,
+                message_send=final_count,
+                message_failed=2,  # This should ideally be dynamically set based on actual failures
             )
-    return render(request, "password_reset.html")
+            new_message_info.save()
+            return redirect('send-sms')
 
+        except requests.RequestException as e:
+            logger.error(f"Error sending SMS: {e}")
+            return render(request, "send-sms.html", get_context())
 
-def verify_otp(request, email, token):
-    if request.method == "POST":
-        otp = request.POST.get("otp")
-        if verify_otp_server(otp):
-            return redirect("change_password", email=email, token=token)
-        else:
-            return render(
-                request, "otp_verification.html", {"error_message": "Invalid OTP"}
-            )
-    return render(request, "otp_verification.html")
-
-
-def change_password(request, email, token):
-    if request.method == "POST":
-        new_password = request.POST.get("new_password")
-        confirm_new_password = request.POST.get("confirm_new_password")
-        if new_password == confirm_new_password:
-            try:
-                user = CustomUser.objects.get(email=email)
-                if default_token_generator.check_token(user, token):
-                    user.set_password(new_password)
-                    user.save()
-                    return redirect("login")
-                else:
-                    return render(
-                        request,
-                        "change_password.html",
-                        {"error_message": "Invalid or expired token"},
-                    )
-            except ObjectDoesNotExist:
-                return render(
-                    request,
-                    "change_password.html",
-                    {"error_message": "Email does not exist"},
-                )
-        else:
-            return render(
-                request,
-                "change_password.html",
-                {"error_message": "Passwords do not match"},
-            )
-    return render(request, "change_password.html")
-
-
-def verify_otp_server(otp):
-    verify_otp_url = "http://www.whtsappdealnow.in/email/verify_otp"
-    params = {"otp": otp}
-    verify_otp_response = requests.post(verify_otp_url, params=params)
-    return verify_otp_response.status_code == 200
-
-
-def send_otp(email):
-    otp_url ="http://www.whtsappdealnow.in/email/otp"
-    params = {"name": "otp", "email": email}
-    otp_response = requests.post(otp_url, params=params)
-
-    if otp_response.status_code == 200:
-        print("OTP sent successfully.")
-    else:
-        return redirect("password_reset.html")
-
-
+    return render(request, "send-sms.html", get_context())
 #Valid _and _ Duplicate method
 import re
 def validate_phone_numbers(contacts, uploaded_file,discount):
@@ -230,13 +147,21 @@ def validate_phone_numbers(contacts, uploaded_file,discount):
         numbers_list = set(contacts.split("\r\n"))
     else:
         numbers_list = set()
-
+    '''
     # Parse contacts from uploaded file
     if uploaded_file:
         file_content = uploaded_file.read()
         for line in file_content.splitlines():
             phone_number = line.strip().decode('utf-8')
-            numbers_list.add(phone_number)
+            numbers_list.add(phone_number) '''
+    import openpyxl        
+    if uploaded_file:
+        workbook = openpyxl.load_workbook(uploaded_file)
+        sheet = workbook.active
+        for row in sheet.iter_rows(min_col=1, max_col=1, min_row=1):
+            for cell in row:
+                if cell.value is not None:
+                    numbers_list.add(str(cell.value).strip())
 
     # Validate phone numbers
     for phone_number in numbers_list:
@@ -253,9 +178,6 @@ def validate_phone_numbers(contacts, uploaded_file,discount):
         for i in valid_numbers:
             if i in whitelist_number and i not in blacklist_numbers:
                 final_list.append(i)
-        
-                
-        
         count = 0
         for j in valid_numbers:
             if j not in whitelist_number and j not in blacklist_numbers:
@@ -396,20 +318,15 @@ import requests
 
 def get_media_format(file_extension):
     media_formats = {
-        'jpg': 'image/jpeg',
-        'jpeg': 'image/jpeg',
-        'png': 'image/png',
-        'gif': 'image/gif',
-        'bmp': 'image/bmp',
-        'svg': 'image/svg+xml',
-        'mp4': 'video/mp4',
-        'avi': 'video/avi',
-        'mov': 'video/quicktime',
-        'wmv': 'video/x-ms-wmv',
-        'flv': 'video/x-flv',
-        'mkv': 'video/x-matroska',
-        'pdf': 'application/pdf',
-        'txt': 'document/plain',
+        'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'png': 'image/png',
+        'gif': 'image/gif', 'bmp': 'image/bmp', 'svg': 'image/svg+xml',
+        'mp4': 'video/mp4', 'avi': 'video/x-msvideo', 'mov': 'video/quicktime',
+        'flv': 'video/x-flv', 'mkv': 'video/x-matroska', 'mp3': 'audio/mpeg',
+        'aac': 'audio/aac', 'ogg': 'audio/ogg', 'wav': 'audio/wav',
+        'pdf': 'application/pdf', 'doc': 'application/msword', 'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'ppt': 'application/vnd.ms-powerpoint', 'pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+        'xls': 'application/vnd.ms-excel', 'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'txt': 'text/plain', 'csv': 'text/csv'
     }
     return media_formats.get(file_extension.lower(), 'application/octet-stream')
 
@@ -442,4 +359,84 @@ def upload_media(request):
     else:
         return render(request, "media-file.html",{"username":username(request)})
         
+
+
+# Password Reset Method
+def initiate_password_reset(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        try:
+            user = CustomUser.objects.get(email=email)
+            token = default_token_generator.make_token(user)
+            send_otp(email)
+            return redirect("otp_verification", email=email, token=token)
+        except ObjectDoesNotExist:
+            return render(
+                request,
+                "password_reset.html",
+                {"error_message": "Email does not exist"},
+            )
+    return render(request, "password_reset.html")
+
+
+def verify_otp(request, email, token):
+    if request.method == "POST":
+        otp = request.POST.get("otp")
+        if verify_otp_server(otp):
+            return redirect("change_password", email=email, token=token)
+        else:
+            return render(
+                request, "otp_verification.html", {"error_message": "Invalid OTP"}
+            )
+    return render(request, "otp_verification.html")
+
+
+def change_password(request, email, token):
+    if request.method == "POST":
+        new_password = request.POST.get("new_password")
+        confirm_new_password = request.POST.get("confirm_new_password")
+        if new_password == confirm_new_password:
+            try:
+                user = CustomUser.objects.get(email=email)
+                if default_token_generator.check_token(user, token):
+                    user.set_password(new_password)
+                    user.save()
+                    return redirect("login")
+                else:
+                    return render(
+                        request,
+                        "change_password.html",
+                        {"error_message": "Invalid or expired token"},
+                    )
+            except ObjectDoesNotExist:
+                return render(
+                    request,
+                    "change_password.html",
+                    {"error_message": "Email does not exist"},
+                )
+        else:
+            return render(
+                request,
+                "change_password.html",
+                {"error_message": "Passwords do not match"},
+            )
+    return render(request, "change_password.html")
+
+
+def verify_otp_server(otp):
+    verify_otp_url = "http://www.whtsappdealnow.in/email/verify_otp"
+    params = {"otp": otp}
+    verify_otp_response = requests.post(verify_otp_url, params=params)
+    return verify_otp_response.status_code == 200
+
+
+def send_otp(email):
+    otp_url ="http://www.whtsappdealnow.in/email/otp"
+    params = {"name": "otp", "email": email}
+    otp_response = requests.post(otp_url, params=params)
+
+    if otp_response.status_code == 200:
+        print("OTP sent successfully.")
+    else:
+        return redirect("password_reset.html")
 

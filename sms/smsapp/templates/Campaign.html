@@ -380,6 +380,7 @@
                                 <div class="card w-50" style="box-shadow: none;">
                                     <form action="" style="width: 100%;">
                                         <div class="mb-3 w-50">
+                 
                                             <label class="form-label">Template ID</label>
                                             <input type="text" name="template_id" class="form-control">
 
@@ -402,7 +403,7 @@
                                             </select>
                                         </div>
                                         <div class="mb-3">
-                                            <label class="form-label mt-5 fs-6">Template Data</label>
+                                            <label class="form-label mt-5 fs-6">Template</label>
                                             <textarea id="userInput" name="template_data" class="one form-control"
                                                 style="height: 250px;"></textarea>
 
@@ -616,6 +617,7 @@
                                     </div>
                                     <thead>
                                         <tr>
+                                            
                                             <th scope="col">Template ID</th>
                                             <th scope="col">Category</th>
                                             <th scope="col">Media Type</th>
@@ -628,6 +630,7 @@
                                     <tbody>
                                         {% for campaign in campaign_list %}
                                         <tr>
+                                            
                                             <td>{{ campaign.template_id }}</td>
                                             <td>{{ campaign.sub_service }}</td>
                                             <td>{{ campaign.media_type }}</td>

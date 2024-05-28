@@ -298,8 +298,8 @@
                             </div>
                           </div>
                         </div>
-                        <span class="fw-semibold d-block mb-1">Coins</span>
-                        <h3 class="card-title text-nowrap mb-1">&#8377;{{ coins }}</h3>
+                        <span class="fw-semibold d-block mb-1">Total Sms</span>
+                        <h3 class="card-title text-nowrap mb-1">{{ coins }}</h3>
                       </div>
                     </div>
                   </div>
@@ -319,6 +319,11 @@
                     <form method="POST" id="mediaForm" action="" enctype="multipart/form-data" >
                       {% csrf_token %}
                       <div class="mb-3">
+                        <label class="form-label">Campaign Name</label>
+                        <input type="text" name="campaign_title" class="form-control">
+                      </div>
+                      <div class="mb-3">
+
                         <label class="form-label">Template ID</label>
                         <input type="text" id="params" name="params" class="form-control">
                       </div>
@@ -327,8 +332,8 @@
                         <input type="text" id="mediaIdInput" name="media_id" class="form-control">
                     </div>
                       <div class="mb-3">
-                        <label class="form-label">Upload Text File</label>
-                        <input type="file" id="id_files" name="files" class="form-control">
+                        <label class="form-label">Upload Excel File</label>
+                        <input type="file" id="id_files" name="files" class="form-control" accept=".xls,.xlsx">
                       </div>
                       <p style="text-align: center;"></p>
                       <div class="mb-3">
@@ -424,7 +429,7 @@
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <div class="d-flex flex-column align-items-center gap-1">
-                        <h2 class="mb-2">8,258</h2>
+                        <h2 class="mb-2">{{total_send}}</h2>
                         <span>Send Messages</span>
                       </div>
                       <div id="orderStatisticsChart"></div>
@@ -439,7 +444,7 @@
                             <h6 class="mb-0">Send</h6>
                           </div>
                           <div class="user-progress">
-                            <small class="fw-semibold">5,500</small>
+                            <small class="fw-semibold">{{total_send}}</small>
                           </div>
                         </div>
                       </li>
@@ -453,7 +458,7 @@
                             <h6 class="mb-0">Delivered</h6>
                           </div>
                           <div class="user-progress">
-                            <small class="fw-semibold">4,800</small>
+                            <small class="fw-semibold">{{ total_delivered }}</small>
                           </div>
                         </div>
                       </li>
@@ -466,7 +471,7 @@
                             <h6 class="mb-0">Failed</h6>
                           </div>
                           <div class="user-progress">
-                            <small class="fw-semibold">200</small>
+                            <small class="fw-semibold">{{ total_failed }}</small>
                           </div>
                         </div>
                       </li>
@@ -487,7 +492,9 @@
                     <table class="table" style="text-align: center; font-size: 12px;">
                       <thead>
                         <tr>
+                          
                           <th scope="col">Date</th>
+                          <th scope="col">Campaign Title</th>
                           <th scope="col">Send Messages</th>
                           <th scope="col">Delivered Messages</th>
                         
@@ -496,7 +503,9 @@
                       <tbody>
                         {% for report in report_list %}
                         <tr>
+                          
                           <td>{{report.message_date}}</td>
+                          <td>{{report.campaign_title}}</td>
                           <td>{{report.message_send}}</td>
                           <td>{{report.message_delivery}}</td>
                           

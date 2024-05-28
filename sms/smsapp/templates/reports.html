@@ -263,9 +263,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Date</th>
+                                            <th scope="col">Campaign Title</th>
                                             <th scope="col">Send Messages</th>
                                             <th scope="col">Delivered Messages</th>
-                                            <th scope="col">Failed Messages</th>
+                                            
                                             <th scope="col">Download</th>
                                         </tr>
                                     </thead>
@@ -273,9 +274,9 @@
                                         {% for report in report_list %}
                                         <tr>
                                             <td>{{ report.message_date }}</td>
+                                            <td>{{ report.campaign_title }}</td>
                                             <td>{{ report.message_send }}</td>
                                             <td>{{ report.message_delivery }}</td>
-                                            <td>{{ report.message_failed }}</td>
                                             <td>
                                                 {% if report.file %}
                                                 <a href="{% url 'download_pdf' test_id=report.file.id %}" download="{{ report.file.report_file.name }}">
