@@ -73,17 +73,7 @@ def Send_Sms(request):
     report_list = ReportInfo.objects.filter(email=user)
     campaign_list = CampaignData.objects.filter(email=user)
 
-    def get_totals():
-        totals = ReportInfo.objects.aggregate(
-            total_send=Sum('message_send'),
-            total_delivered=Sum('message_delivery'),
-            total_failed=Sum('message_failed')
-        )
-        return {
-            'total_send': totals['total_send'] or 0,
-            'total_delivered': totals['total_delivered'] or 0,
-            'total_failed': totals['total_failed'] or 0
-        }
+  
 
     def get_context(extra_context=None):
         context = {
@@ -91,8 +81,7 @@ def Send_Sms(request):
             "username": username(request),
             "coins": coins,
             "report_list": report_list,
-            "campaign_list": campaign_list,
-            **get_totals()
+            "campaign_list": campaign_list
         }
         if extra_context:
             context.update(extra_context)
@@ -355,7 +344,7 @@ def upload_media(request):
         media_type = get_media_format(file_extension)
         response = generate_id(template_id, media_type, file)
        
-        return render(request, "media-file.html", {'response': response.get('data', {}).get('media_transaction_key'),"ip":ip_address(request)})
+        return render(request, "media-file.html", {'response': response.get('data', {}).get('media_transaction_key'),"username":username(request)})
     else:
         return render(request, "media-file.html",{"username":username(request)})
         

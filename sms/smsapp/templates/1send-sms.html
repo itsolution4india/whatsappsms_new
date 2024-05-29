@@ -77,10 +77,10 @@
 
           <li class="menu-item">
             <a href="/media_upload/" class="menu-link">
-              <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-              <div data-i18n="Tables">Media ID</div>
+                <i class="menu-icon tf-icons bx bxs-file-plus"></i>
+                <div data-i18n="Tables">Media ID</div>
             </a>
-          </li>
+        </li>
 
           <li class="menu-item active">
             <a href="/send-sms/" class="menu-link">
@@ -257,11 +257,21 @@
                 <div class="row">
                   <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
-                      <div class="card-body" style="height: 190px;">
+                      <div class="card-body">
                         <div class="card-title d-flex align-items-start justify-content-between">
                           <div class="avatar flex-shrink-0">
-                            <img src="/static/assets/img/icons/unicons/cc-primary.png"
+                            <img src="/static/assets/img/icons/unicons/cc-primary.png" alt="chart success"
                               class="rounded" />
+                          </div>
+                          <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                              <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                              <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                            </div>
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">I.P. Address</span>
@@ -271,11 +281,21 @@
                   </div>
                   <div class="col-lg-6 col-md-12 col-6 mb-4">
                     <div class="card">
-                      <div class="card-body" style="height: 190px;">
+                      <div class="card-body">
                         <div class="card-title d-flex align-items-start justify-content-between">
                           <div class="avatar flex-shrink-0">
-                            <img src="/static/assets/img/icons/unicons/wallet-info.png"
+                            <img src="/static/assets/img/icons/unicons/wallet-info.png" alt="Credit Card"
                               class="rounded" />
+                          </div>
+                          <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt6" data-bs-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                              <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                              <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                            </div>
                           </div>
                         </div>
                         <span class="fw-semibold d-block mb-1">Total Sms</span>
@@ -288,29 +308,29 @@
             </div>
 
             <div class="row">
-
-              <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+              <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-100">
                 <div class="card z-index-2 w-100">
                   <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
                     <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
                       <h5 style="color: white; text-align: center;">Send SMS</h5>
                     </div>
                   </div>
-                  <div class="card-body mt-4">
-                    <form method="POST" id="mediaForm" action="" enctype="multipart/form-data">
+                  <div class="card-body mt-4 w-75">
+                    <form method="POST" id="mediaForm" action="" enctype="multipart/form-data" >
                       {% csrf_token %}
                       <div class="mb-3">
                         <label class="form-label">Campaign Name</label>
                         <input type="text" name="campaign_title" class="form-control">
                       </div>
                       <div class="mb-3">
+
                         <label class="form-label">Template ID</label>
                         <input type="text" id="params" name="params" class="form-control">
                       </div>
                       <div class="mb-3">
                         <label class="form-label" for="mediaIdInput">Media ID</label>
                         <input type="text" id="mediaIdInput" name="media_id" class="form-control">
-                      </div>
+                    </div>
                       <div class="mb-3">
                         <label class="form-label">Upload Excel File</label>
                         <input type="file" id="id_files" name="files" class="form-control" accept=".xls,.xlsx">
@@ -322,13 +342,13 @@
                           name="contact_number"></textarea>
                       </div>
                       <button type="submit" class="btn btn-primary">Submit</button>
-                      {% if messages %}
-                      {% for message in messages %}
-                      {% if message.tags == 'success' %}
-                      <div class="alert alert-success">{{ message }}</div>
-                      {% endif %}
-                      {% endfor %}
-                      {% endif %}
+                         {% if messages %}
+                         {% for message in messages %}
+                          {% if message.tags == 'success' %}
+                              <div class="alert alert-success">{{ message }}</div>
+                          {% endif %}
+                        {% endfor %}
+                     {% endif %}
 
                     </form>
                     <!-- Feedback messages -->
@@ -345,173 +365,89 @@
                 </div>
               </div>
 
-              <!-- template report -->
-              <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
-                <div>
-                  <div class="card z-index-2">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                      <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
-                        <h5 style="color: white; text-align: center;">Template Report</h5>
-                      </div>
-                    </div>
-                    <div class="card-body" id="table-container" style="overflow-y: auto; height:150px;">
-                      <table class="table" style="text-align: center; font-size: 12px;">
-                        <thead>
-                          <tr>
-                            <th style="font-size: 9px;" scope="col">Template ID</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Template Data</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Date</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for campaign in campaign_list %}
-                          <tr>
-                            <td>{{ campaign.template_id }}</td>
-                            <td>{{ campaign.sub_service }}</td>
-                            <td>{{ campaign.template_data }}</td>
-                            <td>{{ campaign.status }}</td>
-                            <td>{{ campaign.uploaded_at }}</td>
-                          </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-                    <button class="btn btn-primary w-25 m-3" id="show-more">
-                      <a href="/campaign/" style="text-decoration: none; color: white;">Full Report</a>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- message report -->
-                <div class="mt-5">
-                  <div class="card z-index-2">
-                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                      <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
-                        <h5 style="color: white; text-align: center;">Message Report</h5>
-                      </div>
-                    </div>
-                    <div class="card-body" id="table-container" style="overflow-y: auto; height:150px;">
-                      <table class="table" style="text-align: center; font-size: 12px;">
-                        <thead>
-                          <tr>
-
-                            <th scope="col">Date</th>
-                            <th scope="col">Campaign Title</th>
-                            <th scope="col">Send Messages</th>
-                            <th scope="col">Delivered Messages</th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {% for report in report_list %}
-                          <tr>
-
-                            <td>{{report.message_date}}</td>
-                            <td>{{report.campaign_title}}</td>
-                            <td>{{report.message_send}}</td>
-                            <td>{{report.message_delivery}}</td>
-
-                          </tr>
-                          {% endfor %}
-                        </tbody>
-                      </table>
-                    </div>
-                    <button class="btn btn-primary w-25 m-3" id="show-more">
-                      <a href="/reports/" style="text-decoration: none; color: white;">Full Report</a>
-                    </button>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
 
             <div class="row">
 
               <!-- Order Statistics -->
-              <!-- <div class="col-md-6 col-lg-4 col-xl-4 order-0 mb-4 w-50">
-                <div class="card">
-                  <div class="card-header d-flex align-items-center justify-content-between pb-0">
-                    <div class="card-title mb-0">
-                      <h5 class="m-0 me-2">Message Statistics</h5>
-
-                    </div>
-                    <div class="dropdown">
-                      <button class="btn p-0" type="button" id="orederStatistics" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="orederStatistics">
-                        <a class="dropdown-item" href="javascript:void(0);">Select All</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                      </div>
+              <div class="col-12 col-lg-6 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+                <div class="card z-index-2">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                    <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
+                      <h5 style="color: white; text-align: center;">Template Report</h5>
                     </div>
                   </div>
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <div class="d-flex flex-column align-items-center gap-1">
-                        <h2 class="mb-2">8,258</h2>
-                        <span>Send Messages</span>
-                      </div>
-                      <div id="orderStatisticsChart"></div>
-                    </div>
-                    <ul class="p-0 m-0">
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded bg-label-primary"><i class="bx bxs-send"></i></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">Send</h6>
-                          </div>
-                          <div class="user-progress">
-                            <small class="fw-semibold">5,500</small>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded bg-label-success"><i
-                              class="bx bxs-message-check"></i></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">Delivered</h6>
-                          </div>
-                          <div class="user-progress">
-                            <small class="fw-semibold">4,800</small>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="d-flex mb-4 pb-1">
-                        <div class="avatar flex-shrink-0 me-3">
-                          <span class="avatar-initial rounded bg-label-info"><i class="bx bxs-x-circle"></i></span>
-                        </div>
-                        <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                          <div class="me-2">
-                            <h6 class="mb-0">Failed</h6>
-                          </div>
-                          <div class="user-progress">
-                            <small class="fw-semibold">200</small>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
+                  <div class="card-body" id="table-container" style="overflow-y: auto; height:190px;">
+                    <table class="table" style="text-align: center; font-size: 12px;">
+                      <thead>
+                        <tr>
+                          <th style="font-size: 9px;" scope="col">Template ID</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Template Data</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for campaign in campaign_list %}
+                        <tr>
+                          <td>{{ campaign.template_id }}</td>
+                          <td>{{ campaign.sub_service }}</td>
+                          <td>{{ campaign.template_data }}</td>
+                          <td>{{ campaign.status }}</td>
+                          <td>{{ campaign.uploaded_at }}</td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
                   </div>
+                  <button class="btn btn-primary w-25 m-3" id="show-more">
+                    <a href="/campaign/" style="text-decoration: none; color: white;">Full Report</a>
+                  </button>
                 </div>
-              </div> -->
+              </div>
 
 
-
-
-
-
-              <!-- rep -->
-
-
-
+              <div class="col-12 col-lg-6 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+                <div class="card z-index-2">
+                  <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                    <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
+                      <h5 style="color: white; text-align: center;">Message Report</h5>
+                    </div>
+                  </div>
+                  <div class="card-body" id="table-container" style="overflow-y: auto; height:190px;">
+                    <table class="table" style="text-align: center; font-size: 12px;">
+                      <thead>
+                        <tr>
+                          
+                          <th scope="col">Date</th>
+                          <th scope="col">Campaign Title</th>
+                          <th scope="col">Send Messages</th>
+                          <th scope="col">Delivered Messages</th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for report in report_list %}
+                        <tr>
+                          
+                          <td>{{report.message_date}}</td>
+                          <td>{{report.campaign_title}}</td>
+                          <td>{{report.message_send}}</td>
+                          <td>{{report.message_delivery}}</td>
+                          
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <button class="btn btn-primary w-25 m-3" id="show-more">
+                    <a href="/reports/" style="text-decoration: none; color: white;">Full Report</a>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           <!-- / Content -->
@@ -521,13 +457,13 @@
   </div>
   <!-- / Layout wrapper -->
   <script>
-    document.getElementById("mediaForm").addEventListener("submit", function (event) {
-      var mediaIdInput = document.getElementById("mediaIdInput");
-      if (mediaIdInput.value.trim() === "") {
-        mediaIdInput.value = "None";
-      }
+    document.getElementById("mediaForm").addEventListener("submit", function(event) {
+        var mediaIdInput = document.getElementById("mediaIdInput");
+        if (mediaIdInput.value.trim() === "") {
+            mediaIdInput.value = "None";
+        }
     });
-  </script>
+</script>
 
   <!-- All Important Javascript files -->
   <!-- build:js assets/vendor/js/core.js -->

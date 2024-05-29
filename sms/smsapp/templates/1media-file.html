@@ -218,7 +218,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{username}}</span>
+                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{ username }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -251,8 +251,10 @@
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
-
+            
                 <div class="content-wrapper" style="height: 1500px;">
+
+
 
                     <!-- Content -->
 
@@ -263,8 +265,8 @@
                                 Media File
                             </div>
                             <div class="card w-50" style="box-shadow: none;">
-                                <form action="{% url 'upload_media' %}" method="post" enctype="multipart/form-data"
-                                    class="w-75">
+                                <form action="{% url 'upload_media' %}" method="post"
+                                    enctype="multipart/form-data" class="w-75">
                                     {% csrf_token %}
                                     <label class="form-label mt-5 fs-6">Template ID</label>
                                     <input class="form-control mt-2" type="text" name="template_id">
@@ -272,29 +274,19 @@
                                         <h6>Upload File (max. 5 mb)</h6>
                                     </label>
                                     <input class="form-control" type="file" name="file" id="fileInput">
-                                    <button type="submit" class="btn btn-primary mt-3" id="button">Submit</button>
+                                    <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                 </form>
-                                <p id="responseMessage" class="form-control ">
-                                    <font color="blue">Media Id: </font>{{response}}
-                                </p>
+                                <p id="responseMessage"> <font color="blue">Media Id: </font>{{response}} </p>
                             </div>
 
                             <div class="card w-50" style="box-shadow: none;">
+
                                 <div id="fileIcon" style="width: 250px; height: 250px;"></div>
                             </div>
                         </div>
                     </div>
                     <!-- / Content -->
                 </div>
-
-                <!-- <script>
-                    var responseMessage = document.getElementById('responseMessage');
-                    var button = document.getElementById('button');
-
-                    button.addEventListener('click', function toggleSubmit() {
-                        responseMessage.style.display = 'block'
-                    })
-                </script> -->
 
 
             </div>
