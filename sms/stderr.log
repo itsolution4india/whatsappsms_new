@@ -1,0 +1,524 @@
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', None, None, ['9', '1', '6', '3', '6', '1', '1', '6', '1', '8', '3', '6'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', None, None, ['9', '1', '6', '3', '6', '1', '1', '6', '1', '8', '3', '6'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, None, <class 'list'>)
+INFO:root:Next reply message send successfully newcptesting, 916361161836
+INFO:root:Next reply message send successfully newcptesting, 916361161836
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testwithothers
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2862
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['8396820007'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testwithothers, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', None, None, 918396820007)
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, None, <class 'int'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', None, None, 918396820007)
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, None, <class 'int'>)
+INFO:root:Next reply message send successfully demo, 918396820007
+INFO:root:Next reply message send successfully demo, 918396820007
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testingksjgd
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2861
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['916361161836'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingksjgd, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['916361161836'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 916361161836
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['916361161836'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 916361161836
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['916361161836'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['916361161836'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully newcptesting, 916361161836
+INFO:root:Next reply message send successfully newcptesting, 916361161836
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: itwyuwe
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2860
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', 'None', ['8285055176'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: itwyuwe, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: wgfwgfo
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2859
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['8285055176'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: wgfwgfo, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['918285055176'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['918285055176'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 918285055176
+INFO:root:Next reply message send successfully demo, 918285055176
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['918285055176'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['918285055176'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully newcptesting, 918285055176
+INFO:root:Next reply message send successfully newcptesting, 918285055176
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: primetest
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 2857
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', 'None', ['7287000010', '9643682384'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: primetest, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testprimeone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2856
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testingquickreplaybtns', 'en', 'TEXT', 'None', ['9643682384'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testprimeone, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testnew
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 2854
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['9711340505', '9643682384'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testnew, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919711340505'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919711340505'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 919711340505
+INFO:root:Next reply message send successfully demo, 919711340505
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919643682384'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919643682384'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 919643682384
+INFO:root:Next reply message send successfully demo, 919643682384
+INFO:smsapp.views:2024-10-04: User divesh@gmail.com logged in successfully.
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+WARNING:smsapp.views:Failed login attempt for email: divesh1@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: divesh1@gmail.com
+INFO:smsapp.views:2024-10-04: User varun1@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-04: User krishna@itsolution4india.com logged in successfully.
+INFO:smsapp.views:2024-10-04: User divesh@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-04: User nraiproduction@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-04: User varun1@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-04: User divesh@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: testfornuhnjp
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 6254
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'nuhcapbjp', 'hi', 'VIDEO', '897780435568993', ['9677361808', '9711430505'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testfornuhnjp, user: varun1@gmail.com
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+4::dmlkZW8vbXA0:ARZii_25moRcEmL7J-zBZSD1_DqcSWzf3YEgMIpcBEv_H4uk4ZidS2fmagj8BfQxgfmYt87yDmaiz2yoCK3oP-vTZv-8asGCBe5c-JROPmpwlw:e:1728375369:465471839698794:61565150340230:ARZsz4vBOrhmXL3IbAI
+4::dmlkZW8vbXA0:ARYPo30HVTcsLF-fG4WlVu_Akr63LKD5zYROuYIprZXETKDDyubCSo4sUhhDOJvzNOi76htZP4So3ZKME28u6pLjoKvVjc3csJ6Zzs8rSRprqA:e:1728375369:465471839698794:61565150340230:ARY_kiRNfNhKqqb6XuE
+4::dmlkZW8vbXA0:ARY5idnQHpFa447CAaQetdKpFr37RmWEy3_knAsWYwEb2zUXpaQQIoeq25klcYAQqeWYyNBfv79d6_0HzPv-YwmEUw_a4RP7ocib-SemPEwnkA:e:1728375369:465471839698794:61565150340230:ARYVtdNwfYrhzuoI22A
+4::dmlkZW8vbXA0:ARaHHdCig_ihXPAHOJn0lWGKfR6bvP5X5bNpPcXnkn8UBQPROOHVOBTiswB-M-TfSnK-Cq2uyFGTBfpaET9SI-wKLk82uXzYjvOI5h79NYBopg:e:1728375369:465471839698794:61565150340230:ARalHbjTs4n2Yv85Hn0
+4::dmlkZW8vbXA0:ARZVA1ncER0AY8C8T9eyqzu8YSqb-zDUmft-97su1fL46JGnInDjOYPk55KkN3zsfk1blJ6yxj_9brPA0OzFc3mGl0dIq_pStf4m8nTj6cX7dQ:e:1728375369:465471839698794:61565150340230:ARZgW3fXyyT9JM_GuNU
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+INFO:smsapp.views:2024-10-04: User varun1@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: finalnuh
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 6253
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'nuhcapbjp', 'hi', 'VIDEO', '3988627471462749', ['918285055176'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: finalnuh, user: varun1@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: nuh606
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 610
+INFO:smsapp.functions.send_messages:Coins deducted: 610. Remaining balance: 5643
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'nuhcapbjp', 'hi', 'VIDEO', '3988627471462749', ['919711340505', '918285055176', '916361161836', '918930608043', '919671647074', '919896982260', '919813676567', '919569275291', '919671988771', '919671451993', '919050407357', '919671050694', '917988147450', '919050132684', '919467880007', '919996318865', '919050969664', '918930026143', '919813314615', '919991314677', '918053611611', '919050205405', '919654178048', '919813987378', '919416448281', '919466383890', '918053396794', '918797970162', '918398859072', '918053212120', '919050998444', '919311828282', '919728628702', '917027104927', '919255022268', '919991607703', '919034924939', '918930707003', '919991635165', '919992794135', '919354728708', '919467905160', '917988323752', '919991375977', '919813224665', '918685892527', '919813134764', '919728471445', '918398050688', '919992200235', '918059803345', '919050566000', '919813616641', '919013606562', '917027087996', '918930309157', '919050979615', '919254253530', '917287000010', '919813760452', '919813199355', '919518004937', '919416791036', '919813125241', '918708073955', '917015234453', '919991649431', '919896651681', '919813660067', '919729491700', '918168953430', '918168128358', '919466386562', '919896266748', '919416790926', '919991461787', '919729372737', '919871165069', '919541632315', '919861917915', '918799724800', '919416340050', '919991826217', '919991909996', '919991314464', '919541216005', '919671371016', '917027129951', '919306574330', '918810682068', '919671582766', '919991223590', '919682628987', '919053129757', '919416374011', '919991386028', '919991321317', '918930070491', '918168031554', '919050112321', '919650061681', '919671054719', '919813021210', '919992306022', '919729192271', '919991207009', '919813454616', '919812243708', '919817110063', '919013163932', '919992547679', '918222880446', '919306257886', '919813021453', '919541198637', '918930813030', '919050085738', '919555593007', '918168484146', '919671754090', '919466753317', '917027178926', '918059906848', '919215151507', '919541080727', '918396813369', '919991408813', '918816060686', '919671272851', '919813174847', '919991435433', '919802930069', '919466492256', '919813264335', '918198975324', '919255416065', '917027930651', '919416294591', '919677361808', '919813770595', '917027454472', '918930405129', '919729149955', '918683805200', '919050412681', '919728486771', '919255949726', '919468470450', '919813801658', '919312457885', '918053872348', '919813834672', '919255572323', '919050111999', '919354780444', '919671274846', '917840010204', '919813383956', '918397970162', '919466366435', '918168614425', '919991314510', '918816826263', '919468441092', '918053307152', '919255316361', '919991303928', '919812504435', '919671168492', '919813685601', '919991646428', '918930140319', '919991222073', '918929851444', '919416830981', '918814967318', '919671602890', '918930695698', '919813515467', '919050385851', '919813424015', '919896115138', '918607975311', '919896415110', '919416066052', '919813150616', '919971253425', '919991569116', '919010333995', '918059153789', '919416215213', '919671066097', '919671858535', '919518237639', '919992663404', '917015144953', '919812043030', '919813736765', '919991268332', '919991513241', '919315151562', '919050020347', '919050224915', '919671859733', '919813535529', '919813340699', '918059428589', '919671363783', '917404258914', '918053043088', '919728932102', '919897000129', '919050015647', '919050587967', '918708736830', '919050972720', '918930407407', '919671066191', '919050147716', '917015651612', '918199921625', '919416066856', '919416632846', '919813767498', '918059999003', '917988164530', '919254288975', '919354561321', '919728655113', '918053935080', '919991515980', '917015930793', '919671859686', '919992656535', '919254107331', '919728662986', '919350284571', '919671498508', '919992715775', '919910493241', '919991401587', '919315293949', '918683906070', '919254286717', '919416066565', '919050666262', '919813935446', '919599100006', '919991929998', '919468443303', '919518104854', '919728457745', '919991925556', '919050704388', '919255171654', '919050471200', '919355679962', '919813082881', '918168806527', '919416635824', '918930366767', '918930320364', '919466779288', '919813108568', '919813767378', '919050689954', '919991714733', '919813263730', '919813126476', '919050053191', '919991925954', '918467050607', '919813670302', '918708767275', '919711347474', '919991915371', '919027029622', '918901410225', '919728375535', '919868387760', '918168882512', '917027235613', '917404404196', '919813094700', '919996083330', '919215902019', '919416897708', '918813053901', '919466511654', '919034264378', '919050236537', '919466646426', '919812497537', '919813703681', '919991207014', '918930426592', '918816958834', '918168270106', '919671387031', '918168711326', '919813135691', '918685834054', '919416511525', '919255291766', '919215152021', '919255595597', '918930920511', '919416780590', '919671988010', '919671433243', '917988009191', '919215561269', '919354277550', '919050704949', '919813167782', '918586859898', '919813328378', '919050201481', '918130990950', '918930292121', '919416326295', '919996849190', '919813357226', '917015267812', '919813488667', '918750009180', '918272090999', '919050602459', '919671062803', '917404307466', '918930407576', '919813867877', '918053859271', '919466777385', '919466386880', '919671094820', '919212638390', '919671142395', '918053233076', '919416735096', '917404360429', '918295378989', '919355169149', '919315303030', '919896411988', '919813905864', '919991717201', '919910381007', '919468468600', '919813185126', '918818061768', '919991388800', '919813530966', '919991618430', '918053545433', '919050653965', '919813069849', '918683882992', '919355641423', '918053635959', '919729653068', '918813941227', '919050543732', '919813688092', '919416512432', '917988875709', '919050402728', '919050968300', '919813765901', '919050220678', '918708877596', '919416411543', '919050071884', '919671691951', '919991300317', '918053435412', '918708179903', '919050466329', '919871628981', '917015963136', '919466898069', '919466243455', '919991939957', '919050410934', '918222077907', '919812498151', '919812854709', '919813875925', '919671784425', '919992245408', '918053485433', '919050467116', '918607930200', '917988600298', '919466111040', '919671513995', '918950561310', '919992245025', '919968258917', '919996077300', '919013000067', '919813521646', '919306341136', '919466286230', '918860199998', '917015261224', '919813379711', '919518052725', '919992101611', '918053702042', '919253082040', '919050139875', '919992119589', '919729356938', '918813095171', '919818071979', '918708463451', '918396900634', '918930405060', '919812981507', '919354214746', '919416309096', '919813935317', '917027711212', '919050085908', '918395954352', '919992598739', '919991373929', '919212121217', '918395974439', '918307212993', '919050079949', '919466047079', '919812186694', '919354848487', '919255891776', '919991778000', '918816096751', '919416636267', '919728593966', '919813955812', '919812350321', '919050509472', '919671667503', '919671454343', '919671828049', '919813486516', '919813299032', '919255122522', '919991344554', '917015937820', '919255939927', '919812802030', '919588366387', '919050106100', '918059142249', '918926008100', '919255044045', '917876511555', '919050630421', '918053233405', '919812145359', '919992621527', '918816941406', '919416066111', '919050432025', '919466970365', '917404280836', '919466887751', '917988387792', '919991933952', '918950070960', '919812009057', '919050979765', '919050465446', '918395906627', '918930977515', '919991904848', '919467942851', '919050511368', '919813853125', '919812355955', '919813847779', '919813047046', '918053405051', '919991128278', '919991461226', '919467197642', '919812383550', '919817245847', '919812138203', '919728454639', '919991223937', '918683090959', '919992457190', '919050149329', '919716624407', '919671735639', '919215161727', '919813290396', '919896553941', '919255108087', '917303431991', '919991802222', '919729200519', '919416634909', '919255104142', '919813509600', '919813840686', '919813197098', '919416512968', '919813644074', '919212101888', '919266244865', '919813146489', '919813135415', '918053984848', '919416511442', '919350656463', '919991252545', '919813296494', '919050020013', '918930810267', '919050584246', '919050672757', '918053636395', '919813810766', '919813068841', '919813893946', '919813314962', '919255457000', '919813076324', '919416632287', '919991646427', '919991591132', '918816046551', '918930313737', '918950313549', '919992621930', '919050695967', '919466777087', '919050240264', '919671990506', '919466600908', '919991026618', '918168794411', '919813243300', '919991007568', '919812046410', '919050611699', '919215700768', '919991538238', '919991350394', '919050868490', '919813136525', '919671552291', '919813530722', '917876353366', '919255527838', '919466512351', '919813535522', '919812361226', '918930183188', '919050144950', '919812323726', '919416132680', '919671782284', '919050523860', '919991222463', '919817497684', '919813202384', '919812961087', '919813635215', '919466037886', '919050507272', '919354891884', '919540280280', '918295769500', '919416066043', '919416254711', '919992229092', '919215611455', '918901154950', '919671465711', '918059425889', '919050666114', '919812139980', '918813817101', '918059959993', '919971321720', '917056015676', '919013932446', '919813643556', '918396041757', '919991445468', '919813905026', '919671553193', '919253475641', '918221004997', '919813822840', '919050020070', '919991006486', '918168618252', '919991117506', '919910772584', '918053267926', '918295461813', '919999903581', '917988852128', '918708326132'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: nuh606, user: varun1@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: krishna@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: krishna@gmail.com
+INFO:smsapp.views:2024-10-04: User krishna@gmail.com logged in successfully.
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+INFO:smsapp.views:2024-10-04: User varun1@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 5642
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'mantejtesting', 'en', 'TEXT', 'None', ['9624019966'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: varun1@gmail.com
+INFO:smsapp.views:2024-10-04: User harleen.realmotorman@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: harleen.realmotorman@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 78
+INFO:root:Sent message details: ('EAAG7h56zff8BO2Mj4gnfMYlU1bZBu02hUKI23MPLoHT2cuFklqz6BtHqXfZANM4yyTaGlVArfs2MZBheZAkPTj4iCK3OZCuA6VELVAWQbuxt64xZBSJdgmGRJGHHnN9j2wqYmcu9O7Lo4ZA0RKAuTqVaRzitCZBkIQcNVoldOUMoJ9qqJaZBuqLxltV9ZAwu6EXF4e0gZDZD', '433361303190769', 'testinggsss', 'en', 'TEXT', 'None', ['919811044137'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: harleen.realmotorman@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: harleen.realmotorman@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 13
+INFO:smsapp.functions.send_messages:Coins deducted: 13. Remaining balance: 65
+INFO:root:Sent message details: ('EAAG7h56zff8BO2Mj4gnfMYlU1bZBu02hUKI23MPLoHT2cuFklqz6BtHqXfZANM4yyTaGlVArfs2MZBheZAkPTj4iCK3OZCuA6VELVAWQbuxt64xZBSJdgmGRJGHHnN9j2wqYmcu9O7Lo4ZA0RKAuTqVaRzitCZBkIQcNVoldOUMoJ9qqJaZBuqLxltV9ZAwu6EXF4e0gZDZD', '433361303190769', 'testinggsss', 'en', 'TEXT', 'None', ['919899912255', '919811044137', '919682234509', '919871780050', '917838070226', '919873246446', '919910177020', '919818686050', '917591048244', '918952099595', '919811342720', '919971001955', '919811110338'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: harleen.realmotorman@gmail.com
+[UID:1024][3810863] Child process with pid: 3842910 was killed by signal: 15, core dumped: no
+INFO:smsapp.views:2024-10-04: User krishna@itsolution4india.com logged in successfully.
+WARNING:smsapp.views:Failed login attempt for email: krishna@gmail.com
+INFO:smsapp.views:2024-10-04: User krishna@gmail.com logged in successfully.
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+INFO:smsapp.views:2024-10-04: User harleen.realmotorman@gmail.com logged in successfully.
+[UID:1024][3985372] Child process with pid: 4016636 was killed by signal: 15, core dumped: no
+[UID:1024][3985372] Child process with pid: 4016639 was killed by signal: 15, core dumped: no
+[UID:1024][3985372] Child process with pid: 4016646 was killed by signal: 15, core dumped: no
+INFO:smsapp.views:2024-10-05: User harleen.realmotorman@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: harleen.realmotorman@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 8
+INFO:smsapp.functions.send_messages:Coins deducted: 8. Remaining balance: 57
+INFO:root:Sent message details: ('EAAG7h56zff8BO2Mj4gnfMYlU1bZBu02hUKI23MPLoHT2cuFklqz6BtHqXfZANM4yyTaGlVArfs2MZBheZAkPTj4iCK3OZCuA6VELVAWQbuxt64xZBSJdgmGRJGHHnN9j2wqYmcu9O7Lo4ZA0RKAuTqVaRzitCZBkIQcNVoldOUMoJ9qqJaZBuqLxltV9ZAwu6EXF4e0gZDZD', '433361303190769', 'testinggsss', 'en', 'TEXT', 'None', ['917838070226', '918952099595', '919811342720', '919873246446', '919811110338', '919682234509', '919971001955', '919899912255'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: harleen.realmotorman@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: harleen.realmotorman@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 8
+INFO:smsapp.functions.send_messages:Coins deducted: 8. Remaining balance: 49
+INFO:root:Sent message details: ('EAAG7h56zff8BO2Mj4gnfMYlU1bZBu02hUKI23MPLoHT2cuFklqz6BtHqXfZANM4yyTaGlVArfs2MZBheZAkPTj4iCK3OZCuA6VELVAWQbuxt64xZBSJdgmGRJGHHnN9j2wqYmcu9O7Lo4ZA0RKAuTqVaRzitCZBkIQcNVoldOUMoJ9qqJaZBuqLxltV9ZAwu6EXF4e0gZDZD', '433361303190769', 'twrcontentnewqwer', 'en', 'N/A', 'None', ['917838070226', '918952099595', '919811342720', '919873246446', '919811110338', '919682234509', '919971001955', '919899912255'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: harleen.realmotorman@gmail.com
+[UID:1024][1251306] Child process with pid: 1251358 was killed by signal: 15, core dumped: no
+WARNING:smsapp.views:Failed login attempt for email: nraiproduction@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: nraiproduction@gmail.com
+INFO:smsapp.views:2024-10-05: User varun1@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 8
+INFO:smsapp.functions.send_messages:Coins deducted: 8. Remaining balance: 5634
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'mantejtesting', 'en', 'TEXT', 'None', ['919899912255', '919811342720', '918952099595', '917838070226', '919811110338', '919971001955', '919873246446', '919682234509'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: varun1@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 8
+INFO:smsapp.functions.send_messages:Coins deducted: 8. Remaining balance: 5626
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'ldgskssd', 'en_US', 'IMAGE', 'None', ['919899912255', '919811342720', '918952099595', '917838070226', '919811110338', '919971001955', '919873246446', '919682234509'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: varun1@gmail.com
+INFO:smsapp.views:2024-10-05: User nraiproduction@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 7
+INFO:smsapp.functions.send_messages:Coins deducted: 7. Remaining balance: 2847
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'admossionopen', 'en', 'N/A', 'None', ['919899912255', '919811342720', '918952099595', '919811110338', '919971001955', '919873246446', '919682234509'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: nraiproduction@gmail.com
+INFO:smsapp.views:2024-10-05: User ecosquare@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-05: User opinder@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-05: User varun1@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 5624
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '344709618736355', 'testinggggggw', 'en', 'N/A', 'None', ['9711618080', '9427086095'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: varun1@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+INFO:smsapp.views:2024-10-05: User nraiproduction@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: skdfysdh
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2846
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['9711618080'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: skdfysdh, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919711618080'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'demo', 'en', 'TEXT', None, ['919711618080'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully demo, 919711618080
+INFO:root:Next reply message send successfully demo, 919711618080
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['919711618080'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'newcptesting', 'en', 'TEXT', None, ['919711618080'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully newcptesting, 919711618080
+INFO:root:Next reply message send successfully newcptesting, 919711618080
+INFO:smsapp.views:2024-10-05: User nraiproduction@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-05: User varun1@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-05: User test_demo@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: testingnewpsone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 9970
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testconflict', 'en', 'TEXT', 'None', ['6361161836'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingnewpsone, user: test_demo@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: testingpstwo
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 9969
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testconflict', 'en', 'TEXT', 'None', ['9315494292'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingpstwo, user: test_demo@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'substemp', 'en', 'TEXT', None, ['919315494292'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'substemp', 'en', 'TEXT', None, ['919315494292'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully substemp, 919315494292
+INFO:root:Next reply message send successfully substemp, 919315494292
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'unsubstemp', 'en', 'TEXT', None, ['919315494292'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'unsubstemp', 'en', 'TEXT', None, ['919315494292'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully unsubstemp, 919315494292
+INFO:root:Next reply message send successfully unsubstemp, 919315494292
+INFO:smsapp.views:2024-10-05: User nraiproduction@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testingnewps
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2845
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['9315494292'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingnewps, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testingss
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2844
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['6361161836'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingss, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testing
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2843
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['8285055176'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testing, user: nraiproduction@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testingsdds
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2842
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testpsquicklinksone', 'en', 'TEXT', 'None', ['9773870533'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testingsdds, user: nraiproduction@gmail.com
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'substemp', 'en', 'TEXT', None, ['919773870533'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'substemp', 'en', 'TEXT', None, ['919773870533'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully substemp, 919773870533
+INFO:root:Next reply message send successfully substemp, 919773870533
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'unsubstemp', 'en', 'TEXT', None, ['919773870533'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'unsubstemp', 'en', 'TEXT', None, ['919773870533'])
+INFO:root:Next message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, None, <class 'list'>)
+INFO:root:Next reply message send successfully unsubstemp, 919773870533
+INFO:root:Next reply message send successfully unsubstemp, 919773870533
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+INFO:smsapp.views:2024-10-05: User shahzadalam769@gmail.com logged in successfully.
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+INFO:smsapp.views:2024-10-05: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-05: User shahzadalam769@gmail.com logged in successfully.
+[UID:1024][1531031] Child process with pid: 1614708 was killed by signal: 15, core dumped: no
+[UID:1024][1531031] Child process with pid: 1614709 was killed by signal: 15, core dumped: no
+[UID:1024][1531031] Child process with pid: 1615235 was killed by signal: 15, core dumped: no
+[UID:1024][1531031] Child process with pid: 1616804 was killed by signal: 15, core dumped: no
+[UID:1024][1531031] Child process with pid: 1617099 was killed by signal: 15, core dumped: no
+Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-10-05 18:18:36 IST)" was missed by 0:10:55.602483
+INFO:smsapp.views:2024-10-05: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 49999
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'testnewhh', 'en', 'TEXT', 'None', ['9711340505'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: smss
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 49998
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'smss', 'en', 'N/A', 'None', ['9690251869'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: smss, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 49996
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'twrcontentneweertyu', 'en', 'N/A', 'None', ['9690251869', '9540508990'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 49995
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'twrcontentneweertyu', 'en', 'N/A', 'None', ['9711618080'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: smss
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 7
+INFO:smsapp.functions.send_messages:Coins deducted: 7. Remaining balance: 49988
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'testnewhh', 'en', 'TEXT', 'None', ['9540508990', '7579329070', '6388233750', '9045658729', '9810803334', '9548805453', '7037507070'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: smss, user: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+WARNING:smsapp.views:Failed login attempt for email: shahzadalam769@gmail.com
+INFO:smsapp.views:2024-10-05: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-06: User shahzadalam769@gmail.com logged in successfully.
+[UID:1024][3328211] Child process with pid: 3331728 was killed by signal: 15, core dumped: no
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: sunday
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 49986
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['9540508990', '9690251869'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: sunday, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: navratri
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 4358
+INFO:smsapp.functions.send_messages:Coins deducted: 4358. Remaining balance: 45628
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['7037507070', '9810803334', '9540508990', '6388233750', '9045658729', '9810175867', '7579075589', '9584389624', '9068646310', '9205872590', '8587865227', '8791845883', '7452872424', '8512079786', '7668821011', '8698366462', '9899800475', '8810615160', '9520285597', '9720903442', '8077168409', '9917070734', '7017981937', '7652803063', '8279441679', '8273032910', '7900907888', '9719124421', '9873699075', '9760796443', '9027649767', '9997439563', '8279573077', '8171222780', '9808307272', '9997070461', '9310515186', '9634061440', '7658883622', '7088962597', '9870854558', '7210104278', '9837811049', '9412037763', '9927287050', '8882379814', '8218590205', '8938898756', '7017888159', '7455995451', '8393014646', '9810015587', '8384807367', '9997100009', '8077156886', '9675480022', '7982798976', '9759996414', '8954300003', '9259999993', '8006926060', '9997420628', '9027352511', '9557097327', '8126933871', '8630018591', '9057717777', '7838592949', '6397931391', '9897205622', '8126536040', '8449262894', '7017955119', '9319822494', '9149329191', '9454593036', '7302774068', '6239437784', '9785309867', '9997511184', '9997123126', '9670191999', '7409938302', '7017875028', '9997311079', '7982465608', '9758035933', '9877355655', '7017135738', '9760987929', '8006691111', '8057604051', '9412054228', '8979874555', '9012275909', '8171097646', '9528879339', '9434757357', '9627527515', '9837715010', '9999957908', '9818624108', '9811854036', '9811980556', '9818665747', '7895461006', '7895622407', '8755114099', '7895834867', '9719243883', '9690608853', '9520378966', '7457096819', '9100948730', '9411182953', '9997713083', '8077573051', '8169856463', '8307149076', '8218116299', '9557162914', '9870795659', '9412052355', '9837544655', '8884692356', '9084019874', '9701930842', '7351362345', '9675743473', '8937964995', '8958149692', '9456590393', '7087438088', '8630012785', '7387234811', '9412056055', '6397897673', '9172987762', '8218741770', '9084600350', '9868145671', '7455893841', '9760533321', '9112266499', '8791269800', '9897214701', '9997711146', '7017863266', '8755885838', '9027364354', '9927014427', '9389139596', '8630064926', '8126260008', '9717707807', '8077835403', '9217808323', '9896062732', '9818095216', '9205370136', '8600335895', '7055220576', '9969368733', '8077066793', '9897179567', '7505023145', '7906704733', '9634830644', '9719490011', '7252058111', '7895191293', '8178488350', '9897390946', '9927976108', '9410554362', '8755555169', '8840556069', '7310579505', '7678446945', '8909165017', '7702203345', '9997700848', '9548683897', '9837803075', '7454097550', '9528153955', '9831784225', '9760274755', '9690238344', '8193838849', '9456513498', '8755663387', '9368885929', '8917685649', '9717006606', '9634367760', '9837719999', '8755455544', '8218309583', '9412053742', '8755538934', '8791952064', '9897618655', '8826496859', '9594365550', '8279845502', '9818110205', '8848454311', '9456506196', '7088874990', '9773942270', '9008903646', '9368292556', '7535948850', '7523846400', '9435716094', '8218554005', '9897390304', '8909540373', '8126200886', '9897033801', '9149302369', '9389958708', '9557177000', '8279931289', '8279501117', '9971504851', '8954047001', '8800312255', '9820107907', '9162423451', '8954781055', '9412931889', '8800269661', '9560401999', '8585954688', '8445599938', '8447268623', '9045334335', '8077059859', '9068314651', '9917755768', '9597091181', '8193920512', '9997868591', '9897402101', '8126381750', '9873325011', '8989684677', '8449988559', '7409111141', '9761222909', '7300740013', '9927007987', '9805788807', '7302675823', '8770660279', '9012200043', '7876844751', '8318740764', '8433072336', '8077798431', '7248012999', '8657475848', '9990261016', '9911061578', '9927093250', '8077878234', '7505803059', '8534960844', '9582187950', '9910061125', '9997046110', '8958302033', '8881355556', '9759920202', '9999997659', '8532012871', '7060181142', '8218833919', '7302711700', '7205308421', '9622989119', '7827156924', '9897227050', '9810277971', '8929080999', '8010526900', '8859502870', '9368693423', '8077843850', '9891349330', '8085429661', '8920665674', '9997019093', '9711902222', '9837313126', '9084797775', '8447954593', '7248281127', '6397053537', '8218664836', '9358108420', '9873449522', '9027192606', '8800476062', '8272846512', '9639311306', '7302832239', '7505877585', '7500836411', '8860870013', '7017956065', '9411623035', '8630002128', '9760613616', '8410074800', '9900052269', '9897579765', '8077773528', '9997936899', '7088676846', '8335040472', '9639988380', '7892256956', '8171453052', '9997677722', '9411587224', '7982843863', '7500542222', '8171896670', '8130897544', '9012240266', '8218290262', '7017055572', '7017892852', '8384824892', '9899403760', '8010911595', '9891804107', '7000183345', '9039050099', '7088644345', '9911000857', '8630497106', '9999086897', '8881091360', '9643188505', '8630041652', '9622391303', '7302959739', '7895487436', '7906711253', '8384839596', '8954211014', '9359265850', '7830012764', '9953232192', '9910667102', '8384893098', '7300784254', '8077775278', '9499941240', '9837668811', '9027945682', '7669049518', '8630201188', '9711703231', '7351600442', '7701863997', '7455918817', '7500755215', '7017443779', '9690770088', '6397433363', '9997649263', '9999394458', '7088080193', '7060462030', '7037808266', '9639398191', '7895612347', '6395847351', '7017193407', '7037751379', '9818545030', '9389674900', '8273777080', '8279528158', '6397374654', '9599392141', '9760127841', '7464823600', '9870964182', '9897002419', '8448023330', '8218088949', '7055568587', '8595754856', '9892688264', '9411565459', '7017940993', '7217447590', '7078727106', '8979951001', '7253010435', '7500301618', '6398049901', '9871377040', '8126220929', '7506598091', '8279976857', '8266833056', '8307420223', '8218012172', '9701542472', '8171166805', '7906191548', '8802512799', '7602956511', '7252992192', '7993160505', '9760411759', '9450521521', '9555553443', '9760217364', '8077737897', '7838537041', '9892270852', '9368394288', '7983188977', '9410609949', '7052335599', '9997047486', '9084707535', '9980076105'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: navratri, user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.views:2024-10-07: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: navratri 2
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1688
+INFO:smsapp.functions.send_messages:Coins deducted: 1688. Remaining balance: 43940
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['9540508990', '9899950474', '8218617072', '8859478165', '9650516184', '7905908343', '9997807303', '9958078777', '9758035933', '9810863365', '9068898197', '9811454366', '9012434077', '7060401773', '7017490072', '8954822877', '8626997116', '8877555510', '7505877585', '6393182170', '7409989696', '9876626369', '9389118433', '8077543360', '7454900579', '9910805723', '8755664123', '9415224038', '8076991817', '9368296066', '8411951327', '6395923534', '9528489279', '8171817841', '8881188836', '7817902276', '9412059580', '9431272885', '8851512896', '8755718260', '7409009404', '8218608814', '9811888397', '7417803294', '8979106472', '8126947414', '9412054228', '9837001135', '7060812100', '9015434615', '9520165994', '7004271837', '9917310384', '8126265566', '8077173528', '7042612028', '9897590717', '9149049958', '9105223380', '9897869625', '7428974358', '9259691000', '8447734421', '9654060737', '7017875622', '9634875686', '7455933231', '9811500176', '8448323393', '9780524990', '9634823013', '9837803075', '7017209489', '7579083548', '9810488665', '9719490011', '8097460771', '9891744090', '8630614643', '9837813199', '8171273606', '7302301907', '9368900815', '8376992426', '9004615944', '9711080169', '9910055192', '7310657868', '7455037116', '7505184263', '9654444735', '8923803156', '8923560470', '9997194703', '7017453686', '8318184751', '9760137351', '6396552995', '9068720000', '9058419144', '9149570399', '8868011011', '9428960681', '9870964182', '7617557754', '9876022423', '9312992919', '8839377892', '8266816464', '8433121920', '8057558824', '7830097709', '9084103908', '7574805922', '8077813572', '9411727321', '7037751812', '8427439552', '7015532001', '7895451603', '8178194407', '9819993429', '8630407287', '9045956953', '9997334520', '9997138478', '8534995959', '8094532289', '9773691412', '6396004351', '9039077726', '9457474466', '9818344351', '7037713458', '7051386631', '7895758607', '8310548477', '9318335724', '9870659363', '8954781055', '9058048081', '7073484726', '7738238168', '9953711653', '7011482515', '9999997659', '8077878234', '9538188892', '9997171372', '8077573051', '7000898641', '8171569032', '9675308306', '9870845732', '7011025303', '9720102140', '9111004188', '8171678951', '9953120917', '8871750963', '9456744031', '7579587486', '9761110331', '8909801315', '8106916932', '8077337271', '9521003408', '7275656737', '7838592949'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: navratri 2, user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+4::aW1hZ2UvanBlZw==:ARapSKkCzH25WGurCwZPCPtJjQekegQhQACT5eAf30dXk5aEEdjjwXis670sygYUUkGsLe4Wl_ATRntELqCmZt1d_um3f0FSzUeZrHev_mi_ug:e:1728643526:465471839698794:61565150340230:ARaVaKtJRgYJgRrGLBU
+4::aW1hZ2UvanBlZw==:ARaHWHJ2JFjF-y7EQXD4TsW4_HboNHJ3KBKESp8FJcXKhXxpMNU5VFGqtGVDUqxaBbd5CyuIP4CeFHwWFZ39d3KK1YDkNNCg66neJrG70cCcXQ:e:1728643532:465471839698794:61565150340230:ARbnWAts4rCz4UcB2Tk
+4::aW1hZ2UvanBlZw==:ARbvZI5Zs2--oXFxgYlwE8UYooF75zFmuJNuoFEOaSp_9gZTRolAsD41eQwrRFDHgi6cnx3x6Twjej5G4BBN7S4kqw7aJfAnL57E5sFo8vMcGQ:e:1728643539:465471839698794:61565150340230:ARac0HDtkRg6UsOcF4o
+4::aW1hZ2UvanBlZw==:ARbU7Auo1Y8nMJCSpwvGEJQ14Cir6qgQuHsZw1UZ8XzB9yZOl3lZ6o7znZ1oIDCUH1vM2cPj0an1UW3ZuHnabGnhOSXCe5RKopPvD9xj90OWQQ:e:1728643638:465471839698794:61565150340230:ARYIN-a4B20uZprdcPM
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: navratri 3
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 13
+INFO:smsapp.functions.send_messages:Coins deducted: 13. Remaining balance: 43927
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['8801103244', '9820745234', '9373097701', '7300777702', '9760054834', '9368521562', '7617557754', '9873868621', '6350325966', '9177977657', '8859534423', '9072544466', '8273689633'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: navratri 3, user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.views:2024-10-07: User opinder@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: opinder@gmail.com, campaign title: a
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 1986
+INFO:root:Sent message details: ('EAAFE1lR2v1ABOwa9YTBeT0uJqY0qtRd7XgUXefnxYHqWkW4i0vTcHKnS6SnRS57xThqtBmEuP6ccWfoCkJyrqDuKMaEXN3dRZA2BN4F8G3Tf2FzZAJ7P1hVluCRokrvZCpVKNZCM4xUo86vKkLaeZCTiL2i9cbsTU6jZA8xp6X3XBi4TCMsMe8GKyOLBZCqb6rvFwZDZD', '419225907947838', 'singlecoingodrejj', 'en', 'N/A', 'None', ['9999169991'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: opinder@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: opinder@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 1985
+INFO:root:Sent message details: ('EAAFE1lR2v1ABOwa9YTBeT0uJqY0qtRd7XgUXefnxYHqWkW4i0vTcHKnS6SnRS57xThqtBmEuP6ccWfoCkJyrqDuKMaEXN3dRZA2BN4F8G3Tf2FzZAJ7P1hVluCRokrvZCpVKNZCM4xUo86vKkLaeZCTiL2i9cbsTU6jZA8xp6X3XBi4TCMsMe8GKyOLBZCqb6rvFwZDZD', '419225907947838', 'singlegodrejnewone', 'en', 'N/A', 'None', ['9711618080'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: opinder@gmail.com
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/397930006742161/message_templates?access_token=EAAX4JBLg3MgBOZCXmE6QQncXD0ZBeq4FhpZBkODTfVcBxNdMUDkrT0ZC2jzde323MQAkZBB2ikgkZBbJkZBuWajKmDObk5buKyDeOelq76tf6pCDL7EsfsOp5Vaw2T4cBxOsExvqmKtm8P5h6KmC1sd8iY5sY1J1Ojgsjuv8gAZAETsYThuVhvCQHCCJ7SzuH2bzJ50Uv0wVc0AyCLPExmYGFpVXK60zrjtym7znWWIb
+INFO:smsapp.functions.send_messages:Sending messages for user: opinder@gmail.com, campaign title: ARAN
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 6
+INFO:smsapp.functions.send_messages:Coins deducted: 6. Remaining balance: 1979
+INFO:root:Sent message details: ('EAAFE1lR2v1ABOwa9YTBeT0uJqY0qtRd7XgUXefnxYHqWkW4i0vTcHKnS6SnRS57xThqtBmEuP6ccWfoCkJyrqDuKMaEXN3dRZA2BN4F8G3Tf2FzZAJ7P1hVluCRokrvZCpVKNZCM4xUo86vKkLaeZCTiL2i9cbsTU6jZA8xp6X3XBi4TCMsMe8GKyOLBZCqb6rvFwZDZD', '419225907947838', 'singlecoinnnnnnnnnn', 'en', 'N/A', 'None', ['9999606084', '9810264487', '9810265194', '9810022060', '9818882786', '9818444466'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: ARAN, user: opinder@gmail.com
+INFO:smsapp.views:2024-10-07: User opinder@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-08: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: magic 
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1765
+INFO:smsapp.functions.send_messages:Coins deducted: 1765. Remaining balance: 42162
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['7617557754', '9540508990', '9690251869', '9873868621', '9072544466', '9711386757', '7300581517', '8742928264', '8630516841', '9761616109', '9368159964', '9818337858', '9897044381', '9023442221', '8192000025', '8972778875', '8279560978', '9118796389', '8171749543', '8859577154', '6201339123', '9310037611', '9899265930', '7310839698', '9412054228', '9991050420', '9581121066', '7500085644', '8800327094', '8015766806', '9997885393', '9870735222', '9992077725', '9810361556', '9311242161', '7525018678', '8178973804', '9927285687', '9831027445', '8267075245', '9760152722', '7037023775', '9675335513', '9319822949', '8218237728', '7251985323', '8360128823', '8368956889', '8630425446', '9990500040', '9999445734', '7351112777', '7046239088', '9453406021', '9899533161', '7060242997', '8439311860', '9811854346', '9379036514', '9997044662', '9870833360', '6005420366', '8791182654', '7066548600', '9920202718', '8191076776', '9557627764', '7404997925', '8708076162', '7310960650', '7465977317', '6283495460', '9760540877', '8191060385', '9891192233', '7500924000', '7217690793', '8307724040', '8279436596', '8802093895', '9676885544', '8755064582', '8393875972', '7253955574', '8909305751', '9897662979', '9256440000', '9412018457', '9453188982', '9459890545', '8126638927', '9639001010', '7017944495', '9084493603', '9045555540', '8239198515', '9759777776', '9891015907', '7827096625', '9819827578', '8076632131', '9548514343', '9028266490', '7248097586', '9717002660', '9808028247', '9837011101', '7080190422', '9810270994', '8058739065', '9548236254', '9997107356', '7060862777', '8006131000', '9837689166', '8445327047', '8193813886', '7248268481', '9845907428', '9669050003', '9897437055', '8218752529', '9634071291', '7017780928', '9953413518', '8527363644', '9512277783', '6397582944', '7217618235', '9149444571', '9911333793', '8410047930', '8699762616', '9999368786', '9520610105', '9711504888', '7042395098', '7409535146', '9012222293', '8950956355', '7830984787', '6239991749', '8126629075', '8941059602', '7060172690', '8006354326', '9358028456', '7500569212', '9618950239', '9650684408', '9259249841', '9599764343', '9816027544', '9536275900', '9810403387', '9538640913', '9810939988', '8285928970', '9634566500', '9760468080', '8609186477', '8976604065', '9653848108', '9769669524', '8171702858', '8077485917', '9719099999', '8979630316', '9810626977', '7838882498', '9999365651', '9368230157', '7906653913', '9557448578', '9871127418', '7541896223', '9849001498'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: magic , user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 112
+INFO:smsapp.functions.send_messages:Coins deducted: 112. Remaining balance: 42050
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['9690251869', '7617557754', '7060268133', '8979079339', '7839131224', '9820456103', '9897988286', '9559809999', '7022191511', '9849001498', '9897588881', '8979891948'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 112
+INFO:smsapp.functions.send_messages:Coins deducted: 112. Remaining balance: 41938
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['9690251869', '7617557754', '7060268133', '8979079339', '7839131224', '9820456103', '9897988286', '9559809999', '7022191511', '9849001498', '9897588881', '8979891948'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: shahzadalam769@gmail.com
+INFO:smsapp.views:2024-10-08: User shahzadalam769@gmail.com logged in successfully.
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 41937
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['917310960650'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 99
+INFO:smsapp.functions.send_messages:Coins deducted: 99. Remaining balance: 41838
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['917310960650', '918979891948', '919634072797', '917533881902', '919897039761', '918433094879', '918057507040', '919897988286', '919455162345', '919719714109', '919669307619', '919412004865', '919341125036', '919999158822', '919045555540', '919627464663', '919897981313', '918449797979', '919643351397', '918273265274', '919627071377', '919716073382', '918335985038', '919759650225', '918449618241', '919058414406', '919899054972', '919951332701', '919310168964', '917465854538', '918077155035', '919917945132', '917505175578', '919811175132', '918247059609', '917983463188', '919805016952', '919868049878', '917617557754', '917506436906', '917500213362', '919810169013', '918178341437', '919897039369', '919599525791', '918089048808', '919927352358', '917906872300', '919997117700', '918650717820', '917505139178', '917905556281', '919716968922', '919760152722', '917409535146', '917895667017', '918861104688', '919897588881', '919412032362', '919372479093', '918979079339', '918923931141', '918954545452', '919690251869', '919868107595', '918007341213', '918506085633', '918795596976', '917425901745', '918800577940', '919625879325', '918979771009', '918882531844', '919760043444', '918979030577', '919058547598', '918126197783', '919758039938', '918588840609', '919849001498', '918395889144', '917839131224', '918920143487', '919559809999', '919559502566', '919690902244', '918791183438', '919811069442', '917559024453', '919870963126', '919673831235', '919258201104', '918549903341', '919837771244', '917906569387', '919820456103', '919412050190', '919911689860', '919004561055'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 11
+INFO:smsapp.functions.send_messages:Coins deducted: 11. Remaining balance: 41827
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['917046239088', '917048904687', '917022191511', '917217594755', '917017374348', '917300693955', '917017133914', '917060268133', '916396234650', '917055786688', '916001566297'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-10-08 13:03:38 IST)" was missed by 0:05:03.108618
+INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 41826
+INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', 'None', ['8849159585'])
+INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
+[UID:1024][2467873] Child process with pid: 2481700 was killed by signal: 15, core dumped: no
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.views:2024-10-08: User opinder@gmail.com logged in successfully.
+INFO:smsapp.views:2024-10-08: User shahzadalam769@gmail.com logged in successfully.
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.views:2024-10-08: User krishna@itsolution4india.com logged in successfully.
+INFO:smsapp.views:2024-10-08: User shahzadalam769@gmail.com logged in successfully.
+[UID:1024][2691547] Child process with pid: 2691559 was killed by signal: 15, core dumped: no
+OSError: LSAPI: File error
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
+ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
+ERROR:django.request:Internal Server Error: /save_phone_number/
