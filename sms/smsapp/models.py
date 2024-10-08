@@ -1,15 +1,12 @@
 from typing import Any
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
-from django.db.models.signals import post_save
-from django.utils.html import format_html
-from django.core.validators import FileExtensionValidator, MaxValueValidator
-from django.utils import timezone
-import os
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, email, username, password=None, **extra_fields):
+    def create_user(self, email: str, username: str, password: str = None, **extra_fields: Any) -> 'CustomUser':
         if not email:
             raise ValueError('The Email field must be set')
         email = self.normalize_email(email)
@@ -18,19 +15,77 @@ class CustomUserManager(BaseUserManager):
         user.save(using=self._db)
         return user 
 
-    def create_superuser(self, email, username, password=None, **extra_fields):
+    def create_superuser(self, email: str, username: str, password: str = None, **extra_fields: Any) -> 'CustomUser':
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
         return self.create_user(email, username, password, **extra_fields)
+
+def validate_digits(value: int, min_digits: int, max_digits: int):
+    num_digits = len(str(value))
+    if num_digits < min_digits:
+        raise ValidationError(f'{value} has fewer than {min_digits} digits.')
+    if num_digits > max_digits:
+        raise ValidationError(f'{value} has more than {max_digits} digits.')
+
+def validate_phone_number_id(value: str):
+    if not value.isdigit() or len(value) != 15:
+        raise ValidationError(f'{value} must be exactly 15 digits long.')
+
+def validate_whatsapp_business_account_id(value: str):
+    if not value.isdigit() or len(value) != 15:
+        raise ValidationError(f'{value} must be exactly 15 digits long.')
+
+class RegisterApp(models.Model):
+    app_name = models.CharField(max_length=20)
+    token = models.TextField()
+    app_id = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.app_name
+
+    def get_token(self):
+        return self.token
+    
+    def get_app_id(self):
+        return self.app_id
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
-    coins=models.IntegerField(default=0)
-    discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
+    phone_number_id = models.CharField(max_length=15, default=0, validators=[validate_phone_number_id])
+    whatsapp_business_account_id = models.CharField(max_length=15,default=0, validators=[validate_whatsapp_business_account_id])
+    coins = models.IntegerField(default=0)
+    discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    register_app = models.ForeignKey(RegisterApp, on_delete=models.SET_NULL, null=True)
+    def save(self, *args, **kwargs):
+        if self.register_app:
+            # Set token and app_id from RegisterApp
+            self.token = self.register_app.token
+            self.app_id = self.register_app.app_id
+        super(CustomUser, self).save(*args, **kwargs)
+    @classmethod
+    def get_app_info_by_email(cls, email):
+        try:
+            user = cls.objects.get(email=email)
+            if user.register_app:
+                return {
+                    'token': user.register_app.token,
+                    'app_id': user.register_app.app_id
+                }
+            else:
+                return None
+        except cls.DoesNotExist:
+            return None
+        
     objects = CustomUserManager()
 
     USERNAME_FIELD = 'email'
@@ -38,13 +93,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-       
-   
 
 
 
 class Whitelist_Blacklist(models.Model):
-    
+    email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     whitelist_phone = models.TextField()
     blacklist_phone = models.TextField()
     objects = CustomUserManager()
@@ -53,62 +106,42 @@ class Whitelist_Blacklist(models.Model):
 
 class ReportInfo(models.Model):
     
-    email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    email = models.CharField(max_length=100)
     campaign_title=models.CharField(max_length=50)
+    contact_list= models.TextField()
     message_date = models.DateField()
-    message_send = models.IntegerField()
+    template_name=models.CharField(max_length=100)
     message_delivery = models.IntegerField()
-    message_failed = models.IntegerField()
-class ReportFile(models.Model):
+    
+
+
+class Templates(models.Model):
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    report_file = models.FileField(upload_to='reports/',null=True)
-    original_filename = models.CharField(max_length=255, default=timezone.now().strftime('%Y-%m-%d-%H-%M-%S'))
+    templates=models.CharField(unique=True,max_length=100)
+    
+class ScheduledMessage(models.Model):
+    current_user = models.CharField(max_length=50)
+    template_name = models.CharField(max_length=255)
+    media_id = models.CharField(max_length=255, blank=True, null=True)
+    all_contact = models.TextField()
+    contact_list = models.TextField()
+    campaign_title = models.CharField(max_length=255)
+    schedule_date = models.CharField(max_length=50)
+    schedule_time = models.CharField(max_length=50)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:  # Check if it's a new instance
-        # Extract filename and extension
-            filename = self.report_file.name.split('/')[-1]
-            filename, extension = os.path.splitext(filename)
-
-        # Append "Failed" to filename if message_failed > 0
-            if self.message_failed > 0:
-                filename += "_Failed"
-
-        # Reconstruct the filename with timestamp and extension
-            timestamp = timezone.now().strftime('%Y-%m-%d-%H-%M-%S')
-            self.original_filename = f"{timestamp}_{filename}{extension}"
-
-        super().save(*args, **kwargs)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_sent = models.BooleanField(default=False)
+    
     def __str__(self):
-        return f"{self.email}"
-
-
-class CampaignData(models.Model):
-    email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    STATUS_CHOICES = (
-        ('pending', 'Pending'),
-        ('approved', 'Approved'),
-    )
+        return f"{self.campaign_title} - {self.schedule_date} {self.schedule_time}"
     
-    template_id = models.CharField(max_length=100, primary_key=True)
-    
-    sub_service = models.CharField(max_length=100)
-    media_type=models.CharField(max_length=100)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
-    template_data = models.TextField()
-    ACTION_TYPES = (
-        ('callToAction', 'Call to Action'),
-        ('visitWebsite', 'Visit Website'),
-    )
-
-    action_type = models.CharField(max_length=20, choices=ACTION_TYPES,default="hello")
-    button_name = models.CharField(max_length=255)
-    contact_number = models.CharField(max_length=20, blank=True, null=True)
-    website_url = models.URLField(blank=True, null=True)
-   
-    uploaded_at = models.DateTimeField(default=timezone.now)
+class TemplateLinkage(models.Model):
+    updated_at = models.DateTimeField(auto_now=True)
+    template_name = models.CharField(max_length=255)
+    button_name = models.CharField(max_length=100)
+    useremail = models.CharField(max_length=100)
+    linked_template_name = models.CharField(max_length=100)
 
     def __str__(self):
-        return f'{self.email,self.template_id}'
-
-    
+        return self.template_name

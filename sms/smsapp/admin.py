@@ -2,31 +2,33 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser,Whitelist_Blacklist,ReportInfo,CampaignData,ReportFile
+from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'username', 'coins','discount', 'is_staff')
+    list_display = ('email', 'username','phone_number_id','whatsapp_business_account_id','coins','discount', 'is_staff', 'register_app')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email', 'username')
     ordering = ('email',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'coins','discount', 'password')}),
+        (None, {'fields': ('email','phone_number_id','whatsapp_business_account_id','coins','discount', 'password', 'register_app')}),
         (_('Personal info'), {'fields': ('username',)}),
-        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
+        (_('Permissions'), {'fields': ('is_active', 'is_staff','is_superuser', 'groups', 'user_permissions')}),
         
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser'),
+            'fields': ('email', 'username','phone_number_id','whatsapp_business_account_id','coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser', 'register_app'),
         }),
     )
-    
+ 
+
+   
    
     def save_model(self, request, obj, form, change):
         # Get the original object from the database (if it exists)
@@ -41,6 +43,7 @@ class CustomUserAdmin(UserAdmin):
         super().save_model(request, obj, form, change)
 
 admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(RegisterApp)
 class WhitelistBlacklistAdminForm(forms.ModelForm):
     class Meta:
         model = Whitelist_Blacklist
@@ -69,10 +72,12 @@ class ReportInfoAdmin(admin.ModelAdmin):
     list_display = (
         'email',
         "campaign_title",
+        'template_name',
         'message_date',
         'message_delivery',
-        'message_send',
-        'message_failed',
+        "contact_list",
+        
+        
 
     )
     list_filter = (
@@ -88,22 +93,23 @@ class ReportInfoAdmin(admin.ModelAdmin):
     fields = (
         'email',
         "campaign_title",
+        "contact_list",
         'message_date',
         'message_delivery',
-        'message_send',
-        'message_failed',
+        'template_name',
+      
  
     )
 
 
 
 admin.site.register(ReportInfo, ReportInfoAdmin)
- 
-class ReportFileAdmin(admin.ModelAdmin):
+
+
+class TemplatesAdmin(admin.ModelAdmin):
     list_display = (
         'email',
-        'report_file',
-        'download_report',
+        'templates',
     )
     list_filter = (
         'email',
@@ -111,50 +117,16 @@ class ReportFileAdmin(admin.ModelAdmin):
     search_fields = (
         'email__email',
     )
-    fields = (
-        'email',
-        'report_file',
-        'original_filename',  
+    fieldsets = (
+        (None, {
+            'fields': (
+                'email',
+                'templates',
+            ),
+        }),
     )
 
-    readonly_fields = ('original_filename',)  # Make original_filename read-only
-
-    def download_report(self, obj):
-        return '<a href="{}" download>Download</a>'.format(obj.report_file.url)
-    download_report.allow_tags = True
-    download_report.short_description = 'Download Report'
-admin.site.register(ReportFile, ReportFileAdmin)
-
-
-
-class CampaignDataAdmin(admin.ModelAdmin):
-    list_display = [
-        "email",
-        "template_id",
-        "sub_service",
-        "media_type",
-        "template_data",
-        "action_type",
-        "button_name",
-        "contact_number",
-        "website_url",
-        "status",
-        "uploaded_at",
-
-    ]
-    
-    fields = (
-        "email",
-        "template_id",
-        "sub_service",
-        "media_type",
-        "template_data",        
-        "action_type",
-        "button_name",
-        "contact_number",
-        "website_url",
-        "status",
-        "uploaded_at",
-    )
-    
-admin.site.register(CampaignData, CampaignDataAdmin)
+# Register your admin class with the model
+admin.site.register(Templates, TemplatesAdmin)
+admin.site.register(ScheduledMessage)
+admin.site.register(TemplateLinkage)

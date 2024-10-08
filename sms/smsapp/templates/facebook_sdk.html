@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Embedded Signup with Facebook Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .login-btn {
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #365899;
+    }
+  </style>
+</head>
+<body>
+
+<!-- JavaScript Section -->
+<script>
+  // Facebook SDK initialization
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '1002275394751227', // Replace with your Facebook App ID
+      cookie: true,
+      xfbml: true,
+      version: 'v20.0'
+    });
+  };
+
+  // Load the Facebook SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+  // Function to launch WhatsApp Signup and handle session info
+  function launchWhatsAppSignup() {
+    // Track WhatsApp embedded signup start event with Facebook Pixel
+    fbq('track', 'WhatsAppOnboardingStart', { 
+      app_id: '1002275394751227', // Replace with your Facebook App ID
+      feature: 'whatsapp_embedded_signup' 
+    });
+
+    // Launch Facebook login with configured parameters
+    FB.login(function(response) {
+      if (response.authResponse) {
+        const code = response.authResponse.code;
+        // Send 'code' to your backend for access token retrieval
+        sendCodeToBackend(code);
+      } else {
+        console.log('User cancelled login or did not fully authorize.');
+      }
+    }, {
+      scope: 'business_management, whatsapp_business_management, whatsapp_business_messaging',
+      auth_type: 'rerequest',
+      return_scopes: true,
+      config_id: '1010681143888663', // Replace with your Facebook configuration ID
+      response_type: 'code',
+      override_default_response_type: true,
+      extras: {
+        feature: 'whatsapp_embedded_signup',
+        sessionInfoVersion: 2
+      }
+    });
+  }
+
+  // Function to handle session information from Facebook
+  const sessionInfoListener = (event) => {
+    if (event.origin !== "https://www.facebook.com" && event.origin !== "https://web.facebook.com") {
+      return;
+    }
+
+    try {
+      const data = JSON.parse(event.data);
+      if (data.type === 'WA_EMBEDDED_SIGNUP') {
+        if (data.event === 'FINISH') {
+          const { phone_number_id, waba_id } = data.data;
+          // Handle completion of signup flow
+          console.log('WhatsApp Embedded Signup Completed:', phone_number_id, waba_id);
+          
+          // Print waba_id
+          console.log('WABA ID:', waba_id);
+
+          // Optionally, you can post this information to your backend
+          postSignupDataToBackend(phone_number_id, waba_id);
+        } else {
+          const { current_step } = data.data;
+          // Handle cancellation or other steps
+          console.log('WhatsApp Embedded Signup Step:', current_step);
+        }
+      }
+    } catch (error) {
+      console.error('Error parsing session info:', error);
+    }
+  };
+
+  // Add event listener for receiving session info
+  window.addEventListener('message', sessionInfoListener);
+
+
+  // Function to send authorization code to backend
+  function sendCodeToBackend(code) {
+    fetch('/your-backend-endpoint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ code: code })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to exchange code for access token');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle response from backend
+      console.log('Received access token:', data.access_token);
+    })
+    .catch(error => {
+      console.error('Error exchanging code for access token:', error);
+    });
+  }
+
+  // Function to post signup data to backend
+  function postSignupDataToBackend(phone_number_id, waba_id) {
+    fetch('/your-signup-data-endpoint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ phone_number_id, waba_id })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Failed to post signup data');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Signup data posted successfully:', data);
+      // Optionally handle success response from backend
+    })
+    .catch(error => {
+      console.error('Error posting signup data:', error);
+    });
+  }
+</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1021060919576885');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1021060919576885&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- Your HTML content, e.g., a button to trigger WhatsApp signup -->
+
+<div class="container">
+  <h1>WhatsApp Embedded Signup</h1>
+  <button class="login-btn" onclick="launchWhatsAppSignup()">Login with Facebook</button>
+</div>
+
+</body>
+</html>

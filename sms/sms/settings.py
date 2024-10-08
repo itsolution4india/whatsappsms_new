@@ -1,22 +1,32 @@
-from pathlib import Path
+try:
+    from pathlib import Path
+except ImportError:
+    from pathlib2 import Path
+
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY ='django-insecure-ux$&02l*ri@g!fp$@@8g7kxd4#ix6$_=xo!r+bzmz3@f2&=i@6'
-DEBUG = True  # Set to False in production
+DEBUG = False # Set to False in production
 
-ALLOWED_HOSTS = ['127.0.0.1', '13.239.113.104','whtsappdealnow.in', 'www.whtsappdealnow.in']
-
+ALLOWED_HOSTS = [
+    'www.wtsdealnow.com',
+    '.wtsdealnow.com',  # Allow subdomains
+    'localhost',
+    '127.0.0.1',
+    '[::1]'
+]
 # CORS Configuration
+'''
 CORS_ALLOWED_ORIGINS = [
     "http://13.239.113.104",
     "https://13.239.113.104",
-    # Add more origins as needed
+    
 ]
 
 CSRF_TRUSTED_ORIGINS = ["http://13.239.113.104", 'https://13.239.113.104']
-
+'''
 SECURE_HSTS_SECONDS=15780000
 SECURE_SSL_REDIRECT=False
 SECURE_HSTS_INCLUDE_SUBDOMAINS=False
@@ -73,7 +83,7 @@ WSGI_APPLICATION = 'sms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -105,14 +115,76 @@ USE_I18N = True
 
 USE_TZ = True
 
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#log
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    },
+}
+
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'file': {
+#             'level': 'DEBUG',  # Capture all log levels including DEBUG, INFO, etc.
+#             'class': 'logging.FileHandler',
+#             'filename': os.path.join(BASE_DIR, 'logs/error.log'),
+#             'formatter': 'verbose',
+#         },
+#         'console': {
+#             'level': 'DEBUG',
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'simple',
+#         },
+#     },
+#     'formatters': {
+#         'verbose': {
+#             'format': '{levelname} {asctime} {module} {message}',
+#             'style': '{',
+#         },
+#         'simple': {
+#             'format': '{levelname} {message}',
+#             'style': '{',
+#         },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['file', 'console'],  # Log to both the file and console
+#             'level': 'DEBUG',  # Set to DEBUG for more verbosity
+#             'propagate': True,
+#         },
+#         'smsapp': {  # Assuming 'smsapp' is your app where you're logging
+#             'handlers': ['file', 'console'],
+#             'level': 'DEBUG',
+#             'propagate': True,
+#         },
+#     },
+# }
 

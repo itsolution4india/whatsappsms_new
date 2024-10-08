@@ -28,6 +28,7 @@
     <!-- Page CSS -->
     <!-- Helpers -->
     <script src="/static/assets/vendor/js/helpers.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -117,6 +118,13 @@
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
+
+                    <li class="menu-item">
+                        <a href="/schedules/" class="menu-link">
+                            <i class="menu-icon bx bxs-calendar-event"></i>
+                          <div data-i18n="Tables">Schedules</div>
+                        </a>
+                      </li>
 
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
                     <li class="menu-item">
@@ -226,19 +234,36 @@
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <i class="bx bx-user me-2"></i>
-                                            <span class="align-middle">My Profile</span>
-                                        </a>
-                                    </li>
+                                    
+                    <li>
+                    <div class="accordion" id="accordionExample">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-weight: bold">
+                            My Profile
+                          </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show"
+                          data-bs-parent="#accordionExample">
+                          <div class="accordion-body">
+                            <p style="font-weight: bold">WABA ID : {{ WABA_ID }}</p>
+                            <p style="font-weight: bold">PHONE ID : {{ PHONE_ID }} </p>
+                            <p style="font-weight: bold">COINS : {{ coins }} </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+
+   
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{% url 'logout' %}">
                                             <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle">Log Out</span>
+                                            <span class="align-middle" style="font-weight: bold">Log Out</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -249,6 +274,22 @@
                 </nav>
 
                 <!-- / Navbar -->
+                <script>
+          $(document).ready(function () {
+            // Disable click behavior
+            $('.accordion-item .accordion-button').attr('data-bs-toggle', '');
+            $('.accordion-item .accordion-button').attr('aria-expanded', 'false');
+
+            // Enable hover behavior
+            $('.accordion-item').hover(function () {
+              $(this).find('.collapse').collapse('show');
+            }, function () {
+              $(this).find('.collapse').collapse('hide');
+            });
+          });
+
+        </script>
+
 
                 <!-- Content wrapper -->
 
@@ -266,8 +307,6 @@
                                 <form action="{% url 'upload_media' %}" method="post" enctype="multipart/form-data"
                                     class="w-75">
                                     {% csrf_token %}
-                                    <label class="form-label mt-5 fs-6">Template ID</label>
-                                    <input class="form-control mt-2" type="text" name="template_id">
                                     <label class="form-label mt-5">
                                         <h6>Upload File (max. 5 mb)</h6>
                                     </label>
