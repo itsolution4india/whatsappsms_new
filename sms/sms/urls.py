@@ -24,6 +24,8 @@ urlpatterns = [
     path("change-password/<str:email>/<str:token>/",views.change_password, name="change_password"),
     path('facebook-sdk/',views.facebook_sdk_view, name='facebook_sdk'),
     path('save_phone_number/', views.save_phone_number, name='save_phone_number'),
+    path('create_flow_message/', views.create_flow_message, name='create_flow_message'),
+    path('send_flow_message/', views.send_flow_message, name='send_flow_message'), 
     
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

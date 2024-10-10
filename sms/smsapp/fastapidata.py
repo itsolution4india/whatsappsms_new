@@ -25,14 +25,23 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
     #print("Response JSON:", response.json())
     return 
 # Example usage
-'''
-send_messages_api(
-    phone_number_id="281807641692911",
-    template_name="itsolutiontemp",
-    language="en_US",
-    media_type="TEXT",
-    media_id="",
-    contact_list=["7905968734"]
-)
-'''
 
+def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: str):
+    url = "https://dataapi-chi.vercel.app/send_flow_message/"
+    
+    headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+    
+    data = {
+        "token": token,
+        "phone_number_id": phone_number_id,
+        "template_name": template_name,
+        "flow_id": str(flow_id),
+        "language": language,
+        "recipient_phone_number": recipient_phone_number
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    return response.status_code, response.json()
