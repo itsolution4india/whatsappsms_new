@@ -43,11 +43,11 @@ import ast
 import random
 from .campaign_media_id import header_handle
 #from .smsapi import send_api
-from .fastapidata import send_api
+from .fastapidata import send_api, send_flow_message_api
 from django.utils.timezone import now
-
+from .functions.flows import create_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
-from .utils import check_schedule_timings
+from .utils import check_schedule_timings, CustomJSONDecoder
 @csrf_exempt
 
 def user_login(request):
@@ -169,12 +169,14 @@ def Send_Sms(request):
 
             campaign_title = request.POST.get("campaign_title")
             template_name = request.POST.get("params")
-            media_file = request.FILES['file']
-            file_extension = media_file.name.split('.')[-1]
-            media_type = get_media_format(file_extension)
-            media_id = generate_id(display_phonenumber_id(request), media_type, media_file, token) 
-            media_id = media_id['id']
-            media_id = request.POST.get("media_id")
+            media_file = request.FILES.get('file', None)
+            if media_file:
+                file_extension = media_file.name.split('.')[-1]
+                media_type = get_media_format(file_extension)
+                media_id = generate_id(display_phonenumber_id(request), media_type, media_file, token) 
+                media_id = media_id['id']
+            else:
+                media_id = None
             uploaded_file = request.FILES.get("files", None)
             contacts = request.POST.get("contact_number", "").strip()
 
@@ -773,7 +775,7 @@ def delete_schedule(request, schedule_id):
     return redirect('schedules')
     
 @csrf_exempt
-def save_phone_number(request):    
+def save_phone_number(request):
     if request.method == "POST":
         try:
             data = json.loads(request.body)
@@ -800,9 +802,15 @@ def save_phone_number(request):
                 linked_template_name = latest_template.linked_template_name
 
                 try:
-                    logging.info(f"Next message details: {token, phone_number_id, linked_template_name, "en", "TEXT", None, [phone_number]}")
-                    logging.info(f"Next message details: {type(token), type(phone_number_id), type(linked_template_name), type("en"), type("TEXT"), None, type([phone_number])}")
-                    send_api(token, phone_number_id, linked_template_name, "en", 'TEXT', None, [phone_number])
+                    campaign_list = fetch_templates(waba_id, token)
+                    if campaign_list is None :
+                        campaign_list=[]
+                    template_type = get_template_type(campaign_list, linked_template_name)
+                    if template_type == "FLOW":
+                        flow_id = get_flow_id(campaign_list, linked_template_name)
+                        status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", phone_number)
+                    else:
+                        send_api(token, phone_number_id, linked_template_name, "en", 'TEXT', None, [phone_number])
                     logging.info(f"Next reply message send successfully {linked_template_name}, {phone_number}")
                 except Exception as e:
                     logging.error(f"Failed to send next reply message {e}")
@@ -814,3 +822,116 @@ def save_phone_number(request):
             logging.error(f"Error processing phone number: {e}")
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
     return JsonResponse({'status': 'error', 'message': 'Invalid method'}, status=405)
+
+@login_required
+def create_flow_message(request):
+    token, _ = get_token_and_app_id(request)
+    waba_id = display_whatsapp_id(request)
+    campaign_list = fetch_templates(display_whatsapp_id(request), token)
+    if campaign_list is None :
+        campaign_list=[]
+
+    template_database = Templates.objects.filter(email=request.user)
+    template_value = list(template_database.values_list('templates', flat=True))
+    templates = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+    if request.method == 'POST':
+        # Retrieve form data from POST request
+        flow_name = request.POST.get('name')
+        language = request.POST.get('language')
+        category = request.POST.get('category')
+        json_flow = request.POST.get('json_flow')
+        body_text = request.POST.get('body_text')
+
+        first_screen_id = json.loads(json_flow)['screens'][0]['id']
+        flow_data = json.loads(json_flow, cls=CustomJSONDecoder)
+        
+        print(waba_id, token, body_text, flow_name, category, language, first_screen_id)
+        try:
+            status, response = create_template_with_flow(flow_data, waba_id, token, body_text, flow_name, category, language, first_screen_id)
+            if status == 200:
+                messages.success(request, "Flow Created Successfully")
+                Templates.objects.create(email=request.user, templates=flow_name)
+            else:
+                messages.error(request, "Failed to create flow template")
+                logging.error(f"Failed to create Flow template, {response}")
+        except Exception as e:
+            logging.error("Couldn't create flow template {e}")
+
+    context = {
+        "coins": request.user.coins,
+        "username": username(request),
+        "WABA_ID": display_whatsapp_id(request),
+        "PHONE_ID": display_phonenumber_id(request),
+        "campaign_list": templates,
+    }
+
+    return render(request, "create_flow_template.html", context)
+
+@login_required
+def send_flow_message(request):
+    phone_id = display_phonenumber_id(request)
+    token, _ = get_token_and_app_id(request)
+    current_user = request.user
+    
+    scheduled_messages = ScheduledMessage.objects.filter(schedule_date=now().date())
+    scheduled_times = scheduled_messages.values_list('schedule_time', flat=True)
+    
+    try:
+        coins = request.user.coins
+        report_list = ReportInfo.objects.filter(email=request.user)
+        template_database = Templates.objects.filter(email=request.user)
+        template_value = list(template_database.values_list('templates', flat=True))
+        # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
+        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        if campaign_list is None :
+            campaign_list=[]
+        templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
+
+        context = {
+            "template_name": [template['template_name'] for template in templates],
+            "template_data": json.dumps([template['template_data'] for template in templates]),
+            "template_status": json.dumps([template['status'] for template in templates]),
+            "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
+            "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
+            "scheduled_times": scheduled_times
+        }
+    except Exception as e:
+        logger.error(f"Error fetching templates: {e}")
+        context = {
+            "template_name": [],
+            "template_data": json.dumps([]),
+            "template_status": json.dumps([]),
+            "template_button": json.dumps([]),
+            "template_media": json.dumps([]),
+            "scheduled_times": scheduled_times
+        }
+
+    context.update({
+        "coins": coins if 'coins' in locals() else None,
+        "report_list": report_list,
+        "campaign_list": campaign_list,
+        "username": request.user.email if request.user.is_authenticated else None,
+        "WABA_ID": display_whatsapp_id(request),
+        "PHONE_ID": display_phonenumber_id(request)
+    })
+
+    if request.method == 'POST':
+        campaign_title = request.POST.get("campaign_title")
+        flow_name = request.POST.get("params")
+        uploaded_file = request.FILES.get("files", None)
+        contacts = request.POST.get("contact_number", "").strip()
+        if not campaign_title or not flow_name:
+            messages.error(request, "Flow name is required.")
+            return render(request, "send-flow.html", context)
+
+        discount = show_discount(request.user)
+        all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+
+        try:
+            send_flow_messages_with_report(current_user, token, phone_id, campaign_list, flow_name, all_contact, contact_list,campaign_title, request)
+        except Exception as e:
+            logger.error(f"Error processing Flow form: {e}")
+            messages.error(request, "There was an error processing your request.")
+        return redirect('send_flow_message')
+        
+    return render(request, "send-flow.html", context)

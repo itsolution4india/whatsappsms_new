@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 from .models import ScheduledMessage
 from django.utils.timezone import now
+import json
 
 def expand_times(time_list):
     expanded_times = []
@@ -32,3 +33,15 @@ def check_schedule_timings(schedule_time, delta_seconds=5):
         return result if result else False
     else:
         return False
+
+class CustomJSONDecoder(json.JSONDecoder):
+    def __init__(self, *args, **kwargs):
+        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
+
+    def object_hook(self, dct):
+        for key, value in dct.items():
+            if value == "true":
+                dct[key] = True
+            elif value == "false":
+                dct[key] = False
+        return dct
