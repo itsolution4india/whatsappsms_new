@@ -1,6 +1,8 @@
 import requests
+import json
+from typing import List, Dict
 
-def template_create(token, waba_id, template_name, language, category, header_type, header_content, body_text, footer_text, call_button_text, phone_number, url_button_text, website_url, quick_reply_one, quick_reply_two, quick_reply_three):
+def template_create(token, waba_id, template_name, language, category, header_type, header_content, body_text, footer_text, call_button_text, phone_number, url_button_text, website_url, quick_reply_one, quick_reply_two, quick_reply_three, body_example_values=None):
     
     url = f'https://graph.facebook.com/v20.0/{waba_id}/message_templates'
     components = []
@@ -8,11 +10,18 @@ def template_create(token, waba_id, template_name, language, category, header_ty
     # Create header component if provided
     if header_type and header_content:
         if header_type == "headerText":
-            components.append({
+            header_comp = {
                 "type": "HEADER",
                 "format": "TEXT",
                 "text": header_content
-            })
+            }
+            # Add example if header contains variables
+            if "{{" in header_content:
+                header_comp["example"] = {
+                    "header_text": [header_content.replace("{{1}}", "John")]
+                }
+            components.append(header_comp)
+
         elif header_type in ["headerImage", "headerDocument", "headerVideo","headerAudio"]:
             components.append({
                 "type": "HEADER",
@@ -28,10 +37,26 @@ def template_create(token, waba_id, template_name, language, category, header_ty
             return
 
     # Add body component
-    components.append({
-        "type": "BODY",
-        "text": body_text
-    })
+    if body_example_values:
+        body_comp = {
+            "type": "BODY",
+            "text": body_text,
+            "example": {
+                "body_text": [
+                    ["Sample"]  # Default example
+                ]
+            }
+        }
+
+        if body_example_values:
+            body_comp["example"]["body_text"] = [body_example_values]
+        
+        components.append(body_comp)
+    else:
+        components.append({
+            "type": "BODY",
+            "text": body_text
+        })
 
     # Add footer component if provided
     if footer_text:
@@ -93,22 +118,65 @@ def template_create(token, waba_id, template_name, language, category, header_ty
    
     return response.status_code,response_dict
 
-    
-    
-'''
-template_create(
-    waba_id="318794741325676",
-    template_name="example_template1",
-    language="en_US",
-    category="Marketing",
-    header_type="headerImage",
-    header_content="4::YXBwbGljYXRpb24vb2N0ZXQtc3RyZWFt:ARbp3NxfKCTnotO_6ZojyIsDak1YDrcmaku_jJl4cJvKk-nrt6lKBgNDKTf-G9kElPUR-74ab9bwgGOqSunXE_6HkQz1ltZL3_23pnKYcg0Zxg:e:1720928506:1002275394751227:61560603673003:ARbQbHWnFfKRtUWd7_g",
-    body_text="This is the body of the template.",
-    footer_text="This is the footer.",
-    call_button_text="Call Us",
-    phone_number="+917905968734",
-    url_button_text="Visit Website",
-    website_url="https://example.com"
-)
+def create_auth_template(
+    waba_id: str,
+    access_token: str,
+    template_name: str,
+    languages: List[str],
+    add_security_recommendation: bool = True,
+    code_expiration_minutes: int = 10,
+    otp_type: str = "COPY_CODE",
+    app_configs: List[Dict[str, str]] = None
+) -> Dict:
 
-'''
+    url = f"https://graph.facebook.com/v17.0/{waba_id}/upsert_message_templates"
+    
+    button = {
+        "type": "OTP",
+        "otp_type": otp_type
+    }
+    
+    if otp_type in ["ONE_TAP", "ZERO_TAP"] and app_configs:
+        button["supported_apps"] = app_configs
+    
+    payload = {
+        "name": template_name,
+        "languages": languages,
+        "category": "AUTHENTICATION",
+        "components": [
+            {
+                "type": "BODY",
+                "add_security_recommendation": add_security_recommendation
+            },
+            {
+                "type": "FOOTER",
+                "code_expiration_minutes": code_expiration_minutes
+            },
+            {
+                "type": "BUTTONS",
+                "buttons": [button]
+            }
+        ]
+    }
+    
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {access_token}"
+    }
+    
+    try:
+        response = requests.post(
+            url,
+            headers=headers,
+            data=json.dumps(payload)
+        )
+        
+        response.raise_for_status()
+        
+        return response.status_code, response.json()
+    
+    except requests.exceptions.RequestException as e:
+        print(f"Error creating template: {str(e)}")
+        if hasattr(e.response, 'text'):
+            print(f"Response content: {e.response.text}")
+        raise

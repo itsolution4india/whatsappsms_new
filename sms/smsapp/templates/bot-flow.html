@@ -1,0 +1,844 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    .form-group {
+        margin-bottom: 10px;
+    }
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        margin: 0;
+    }
+    input, select {
+        margin: 0;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: white !important;
+    }
+
+    select {
+        padding: 10px;
+    }
+    .light-blue {
+        background: #def0ff !important;
+    }
+    .light-yellow {
+        background: #ffffe4 !important;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+    .list-section {
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        background: lavender;
+    }
+    .section-title {
+        margin-bottom: 10px;
+    }
+    .row-item {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+    .hidden {
+        display: none;
+    }
+    .add-button {
+        background-color: #008CBA;
+        margin: 5px;
+    }
+    .remove-button {
+        background-color: #f44336;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+    }
+
+    .user-msg {
+      background-color: #007bff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .bot-msg {
+      background-color: #28a7a3;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .chat-container {
+            position: relative;
+            height: 500px;
+            overflow-y: scroll;
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            position: relative;
+        }
+
+        .user-message {
+            background: #ffffff;
+            margin-right: auto;
+            margin-left: 0;
+            width: fit-content;
+            padding: 10px;
+            color: black;
+            border-radius: 0px 10px 10px 10px;
+            /* box-shadow: rgb(199 199 199) -8px -7px 22px 0px inset, rgb(255 255 255 / 15%) -8px -7px 30px 0px inset, rgb(255 255 255 / 10%) -7px -7px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 1px 0px, rgba(0, 0, 0, 0.09) 0px 5px 1px, rgba(0, 0, 0, 0.09) 0px 3px 2px 0px;
+             */
+             box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+
+        .bot-message {
+            background: #ffe9e9;
+            margin-left: auto;
+            margin-right: 0;
+            border-radius: 10px 0px 10px 10px;
+            /* box-shadow: rgb(103 103 103 / 17%) 20px -20px 20px 0px inset, rgb(55 60 61 / 15%) 8px -7px 20px 0px inset, rgba(0, 0, 0, 0.1) 9px -9px 40px 0px inset, rgb(0 0 0 / 6%) 0px 1px 0px, rgb(0 0 0 / 9%) 0px 5px 1px, rgba(0, 0, 0, 0.09) 0px 3px 2px, rgba(0, 0, 0, 0.09) 0px 3px 5px, rgba(0, 0, 0, 0.09) 0px 9px 10px; */
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+
+        .message-time {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .message-type {
+            font-size: 0.8em;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .media-container {
+            margin: 10px 0;
+        }
+
+        .media-container img, 
+        .media-container video {
+            max-width: 100%;
+            border-radius: 5px;
+            height: 80px !important;
+            width: 130px !important;
+            border-radius: 5px !important;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .reply-button {
+            background: #0084ff;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            color: #666;
+        }
+
+        .product-section {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .product-image {
+            max-width: 200px;
+            border-radius: 5px;
+        }
+        .chat-view {
+            background: #a5a6ff;
+            padding: 10px;
+            color: white;
+            margin: 0;
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <center><h3 class="m-3">Bot Automation</h3></center>
+    <div id="alertContainer"></div>
+
+    <div class="d-flex">
+        <div class="card p-3 m-3 w-50 mt-0 shadow">
+            <form id="messageForm">
+                {% csrf_token %}
+                <div class="form-group user-msg">
+                    <h5 class="text-white"><i
+                            class='bx bxs-user-circle h1 text-white m-0'></i>
+                        User Response</h5>
+                    <label for="userResponse" style="color: #fff;">Enter user
+                        text:</label>
+                    <input type="text" id="userResponse" name="userResponse"
+                        required>
+                </div>
+
+                <div class="bot-msg">
+                    <h5 class="text-white"><i
+                            class='bx bx-bot h1 text-white m-0'></i> Bot
+                        Response</h5>
+                    <div class="form-group">
+                        <label for="messageType" style="color: #fff;">Message
+                            Type:</label>
+                        <select id="messageType" name="messageType" required>
+                            <option value>Select a message type</option>
+                            <option value="list_message">List Message</option>
+                            <option value="reply_button_message">Reply Button
+                                Message</option>
+                            <option value="single_product_message">Single
+                                Product Message</option>
+                            <option value="multi_product_message">Multi Product
+                                Message</option>
+                            <option value="send_my_location">Send My Location
+                                Message</option>
+                            <option value="request_user_location">Request User
+                                Location Message</option>
+                            <option value="link_template">Link Template</option>
+                            <option value="send_text_message">Send Text
+                                Message</option>
+                        </select>
+                    </div>
+
+                    <div id="bodyDiv" class="hidden mb-2"
+                        style="background: lavender;padding: 5px;border-radius: 5px;">
+                        <label for="bodyMessage">Enter Body Text:</label>
+                        <input type="text" id="bodyMessage" name="bodyMessage"
+                            required>
+                    </div>
+
+                    <div id="listMessageSection" class="hidden">
+                        <h5 class="m-2 text-white">List Message
+                            Configuration</h5>
+                        <div id="sections">
+                            <!-- Sections will be added here -->
+                        </div>
+                        <button type="button" class="add-button p-1 shadow"
+                            onclick="addSection()"><i
+                                class='bx bx-layer-plus'></i> Add
+                            Section</button>
+                    </div>
+
+                    <div id="replyButtonSection" class="hidden">
+                        <h5 class="m-2 text-white">Reply Button
+                            Configuration</h5>
+                        <div id="buttons">
+                            <!-- Buttons will be added here -->
+                        </div>
+                        <button type="button" class="add-button p-1 shadow"
+                            onclick="addButton()"><i class='bx bx-plus'></i> Add
+                            Button</button>
+                    </div>
+
+                    <!-- Single Product Message Section -->
+                    <div id="singleProductSection"
+                        class="hidden product-section p-2 light-blue card mb-2">
+                        <h5 class="m-2">Single Product Configuration</h5>
+                        <div class="form-group">
+                            <label for="productRetailerId">Product Retailer
+                                ID:</label>
+                            <input type="text" id="productRetailerId"
+                                name="productRetailerId">
+                        </div>
+                        <div class="form-group">
+                            <label for="catalogId">Catalog ID:</label>
+                            <input type="text" id="catalogId" name="catalogId">
+                        </div>
+                    </div>
+
+                    <div id="sendMyLocation"
+                        class="hidden product-section p-2 light-blue card mb-2">
+                        <h5 class="m-2">Send My Location Form</h5>
+                        <div class="form-group">
+                            <label for="mylatitude">Enter Latitude:</label>
+                            <input type="text" id="mylatitude"
+                                name="mylatitude">
+                        </div>
+                        <div class="form-group">
+                            <label for="mylongitude">Enter Longitude:</label>
+                            <input type="text" id="mylongitude"
+                                name="mylongitude">
+                        </div>
+                    </div>
+
+                    <div id="linkTemplate"
+                        class="hidden product-section p-2 light-blue card mb-2">
+                        <p class="alert alert-warning">Please select the template which don't have docs, images, or variables.</p>
+                        <label for="selectedTempale">Select Template</label>
+                        <select name="selectedTempale" id="selectedTempale">
+                            <option value>Select a message type</option>
+                            {% for template in template_names %}
+                            <option value="{{ template }}">{{ template }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div id="requestUserLocation"
+                        class="hidden product-section">
+                        <p
+                            class="alert alert-success card p-2 shadow d-flex flex-row"><i
+                                class='bx bx-check h5 mb-0 pe-2'></i>All good!,
+                            Go ahead and click submit</p>
+                        <p
+                            class="alert alert-success card p-2 shadow d-flex flex-row"><i
+                                class='bx bx-check h5 mb-0 pe-2'></i>Body text
+                            is enough</p>
+                    </div>
+
+                    <div id="multiProductMessage" class="hidden">
+                        <h5 class="m-2 text-white">Multi Product
+                            Configuration</h5>
+                        <div id="productSection">
+                            <!-- Buttons will be added here -->
+                        </div>
+                    </div>
+
+                    <div id="mediaMessage" class="hidden mb-2">
+                        <div id="mediaDiv">
+                            <label for="mediaFile">Enter Media ID:</label>
+                            <input type="text" id="mediaFile" name="mediaFile">
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <button type="submit" class="shadow"><i class='bx bx-send'></i>
+                    Submit</button>
+            </form>
+        </div>
+
+        <div class="w-50">
+            <center><h4 class="chat-view">Chat View</h1></center>
+            <div class="chat-container">
+                
+                {% for message in bot_automation %}
+                <div class="user-message">
+                    <p class="m-0">{{ message.user_response }}</p>
+                </div>
+                <div class="message {% if message.user == current_user %}user-message{% else %}bot-message{% endif %}">
+                    <div class="message-type">{{ message.get_message_type_display }}</div>
+
+                    <div class="message-content">
+                        {% if message.body_message %}
+                        <p class="mb-1">{{ message.body_message }}</p>
+                        {% endif %}
+
+                        {% if message.sections %}
+                            <div class="sections-container">
+                                {% for section in message.sections %}
+                                    <div class="section">
+                                        <h5 class="section-title">{{ forloop.counter }}. {{ section.title }}</h5>
+                                        
+                                        {% if section.rows %}
+                                            <div class="rows-container">
+                                                {% for row in section.rows %}
+                                                    <div class="row" id="{{ row.id }}">
+                                                        <h6 class="row-title mb-1">{{ row.title }}</h6>
+                                                        <p class="row-description">{{ row.description }}</p>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if message.media_file %}
+                        <div class="media-container">
+                            {% if message.media_type == 'image' %}
+                            <img src="/static/assets/img/backgrounds/default_image.png" alt
+                                class="w-px-40 h-auto rounded-circle" />
+                            {% elif message.media_type == 'video' %}
+                            <video controls>
+                                <source src="{{ message.media_file.url }}"
+                                    type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            {% elif message.media_type == 'document' %}
+                            <a href="{{ message.media_file.url }}"
+                                target="_blank" class="reply-button">
+                                Download Document
+                            </a>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        {% if message.latitude and message.longitude %}
+                        <div class="location-info">
+                            <span>📍</span>
+                            <span>Location: {{ message.latitude }}, {{ message.longitude }}</span>
+                        </div>
+                        {% endif %}
+
+                        {% if message.product_section %}
+                            <div class="product-section">
+                                {% for section in message.product_section %}
+                                    <h6 class="mb-1">Category Title: {{ section.title }}</h6>
+                                    <p class="mb-1">Catalogue ID: {{ section.catelogue_id }}</p>
+                                    <ul>
+                                        {% for product in section.product_items %}
+                                            <li>Product Retailer ID: {{ product.product_retailer_id }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        {% if message.catalog_id %}
+                        <p class="mb-1">Catalog ID: {{ message.catalog_id }}</p>
+                        <p class="mb-1">Product Retailer ID: {{ message.product_retailer_id }}</p>
+                        {% endif %}
+
+                        {% if message.buttons %}
+                        <div class="button-container">
+                            {% for button in message.buttons %}
+                            <button class="reply-button">{{ button.reply.title }}</button>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- <div class="message-time">
+                        {{ message.created_at|date:"M d, Y H:i" }}
+                    </div> -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let sectionCount = 0;
+        let multiProductCount = 0
+        let newProductCount = 0;
+        let rowCount = 0;
+
+        // Get CSRF token
+        function getCSRFToken() {
+            const csrfInput = document.querySelector('[name=csrfmiddlewaretoken]');
+            return csrfInput ? csrfInput.value : null;
+        }
+
+        // Show alert message
+        function showAlert(message, type) {
+            const alertContainer = document.getElementById('alertContainer');
+            const alertDiv = document.createElement('div');
+            if (type === 'danger') {
+                type = 'danger'
+            }
+            alertDiv.className = `alert alert-${type}`;
+            alertDiv.textContent = message;
+            alertContainer.innerHTML = '';
+            alertContainer.appendChild(alertDiv);
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.remove();
+            }, 50000);
+        }
+
+        let buttonCount = 0;
+
+        document.getElementById('messageType').addEventListener('change', function() {
+            const listSection = document.getElementById('listMessageSection');
+            const replyButtonSection = document.getElementById('replyButtonSection');
+            const singleProductSection = document.getElementById('singleProductSection');
+            const sendMyLocation = document.getElementById('sendMyLocation');
+            const linkTemplate = document.getElementById('linkTemplate');
+            const requestUserLocation = document.getElementById('requestUserLocation');
+            const mediaMessage = document.getElementById('mediaMessage');
+            const multiProductMessage = document.getElementById('multiProductMessage');
+            
+            // Hide all sections first
+            listSection.classList.add('hidden');
+            bodyDiv.classList.remove('hidden')
+            replyButtonSection.classList.add('hidden');
+            singleProductSection.classList.add('hidden');
+            sendMyLocation.classList.add('hidden');
+            linkTemplate.classList.add('hidden');
+            requestUserLocation.classList.add('hidden');
+            mediaMessage.classList.add('hidden');
+            multiProductMessage.classList.add('hidden');
+            
+
+            document.getElementById('productRetailerId').removeAttribute('required');
+            document.getElementById('catalogId').removeAttribute('required');
+
+            // Show the appropriate section
+            switch(this.value) {
+                case 'list_message':
+                    listSection.classList.remove('hidden');
+                    if (sectionCount === 0) {
+                        addSection();
+                    }
+                    break;
+                case 'reply_button_message':
+                    replyButtonSection.classList.remove('hidden');
+                    if (buttonCount === 0) {
+                        addButton('Yes');
+                    }
+                    break;
+                case 'single_product_message':
+                    singleProductSection.classList.remove('hidden');
+                    document.getElementById('productRetailerId').setAttribute('required', '');
+                    document.getElementById('catalogId').setAttribute('required', '');
+                    break;
+                case 'multi_product_message':
+                    multiProductMessage.classList.remove('hidden');
+                    if (multiProductCount === 0) {
+                        addproduct();
+                    }
+                    break;
+                case 'send_my_location':
+                    sendMyLocation.classList.remove('hidden');
+                    break;
+                case 'request_user_location':
+                    requestUserLocation.classList.remove('hidden');
+                    break;
+                case 'send_text_message':
+                    requestUserLocation.classList.remove('hidden');
+                    break;
+                case 'send_image_message':
+                    mediaMessage.classList.remove('hidden');
+                    break;
+                case 'send_document_message':
+                    mediaMessage.classList.remove('hidden');
+                    break;
+                case 'send_video_message':
+                    mediaMessage.classList.remove('hidden');
+                    break;
+                case 'link_template':
+                    linkTemplate.classList.remove('hidden');
+                    break;
+            }
+        });
+
+        function addSection() {
+            sectionCount++;
+            const sectionDiv = document.createElement('div');
+            sectionDiv.className = 'list-section position-relative';
+            sectionDiv.id = `section_${sectionCount}`;
+            
+            sectionDiv.innerHTML = `
+                <div class="section-title">
+                    <label>Section Title:</label>
+                    <input type="text" class="section-title-input">
+                </div>
+                <div class="rows"></div>
+                <button type="button" class="add-button p-1 shadow" onclick="addRow(${sectionCount})"><i class='bx bx-plus'></i> Add Option</button>
+                <button type="button" class="remove-button p-1 shadow" onclick="removeSection(${sectionCount})"><i class='bx bx-layer-minus'></i></button>
+            `;
+            
+            document.getElementById('sections').appendChild(sectionDiv);
+            addRow(sectionCount);
+        }
+
+        function addRow(sectionId) {
+            rowCount++;
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'row-item position-relative light-yellow';
+            rowDiv.id = `row_${rowCount}`;
+            
+            rowDiv.innerHTML = `
+                <label>Option ID:</label>
+                <input type="text" class="row-id" value="row_${rowCount}">
+                <label>Enter option name:</label>
+                <input type="text" class="row-title">
+                <label>Description:</label>
+                <input type="text" class="row-description">
+                <button type="button" class="remove-button p-1 shadow" onclick="removeRow(${rowCount})"><i class='bx bx-x' ></i></button>
+            `;
+            
+            document.querySelector(`#section_${sectionId} .rows`).appendChild(rowDiv);
+        }
+
+        function removeSection(sectionId) {
+            document.getElementById(`section_${sectionId}`).remove();
+        }
+
+        function removeRow(rowId) {
+            document.getElementById(`row_${rowId}`).remove();
+        }
+
+        function addButton(defaultTitle = '') {
+            buttonCount++;
+            const buttonDiv = document.createElement('div');
+            buttonDiv.className = 'button-item p-2 card light-blue m-2';
+            buttonDiv.id = `button_${buttonCount}`;
+            
+            buttonDiv.innerHTML = `
+                <label>Button ID:</label>
+                <input type="text" class="button-id" value="btn_${buttonCount}">
+                <label>Button Title:</label>
+                <input type="text" class="button-title" value="${defaultTitle}">
+                <button type="button" class="remove-button p-0 shadow" onclick="removeButton(${buttonCount})"><i class='bx bx-x h3 text-white m-0'></i></button>
+            `;
+            
+            document.getElementById('buttons').appendChild(buttonDiv);
+        }
+
+        function removeButton(buttonId) {
+            document.getElementById(`button_${buttonId}`).remove();
+        }
+
+        function addproduct() {
+            multiProductCount++;
+            const multisectionDiv = document.createElement('div');
+            multisectionDiv.className = 'list-section position-relative';
+            multisectionDiv.id = `product_section_${multiProductCount}`;
+            
+            multisectionDiv.innerHTML = `
+                <div class="section-title">
+                    <label>Category Title:</label>
+                    <input type="text" id="producttitle" class="section-title-input">
+
+                    <label>Catelogue ID:</label>
+                    <input type="text" id="catelogueId" class="catelogue_id">
+                </div>
+                <div class="rows"></div>
+                <button type="button" class="add-button p-1 shadow" onclick="addNewProduct(${multiProductCount})"><i class='bx bx-plus'></i> Add Product</button>
+            `;
+            
+            document.getElementById('productSection').appendChild(multisectionDiv);
+            addNewProduct(multiProductCount);
+        }
+
+        function addNewProduct(productId) {
+            newProductCount++;
+            const rowDiv = document.createElement('div');
+            rowDiv.className = 'row-item position-relative light-yellow';
+            rowDiv.id = `row_${newProductCount}`;
+            
+            rowDiv.innerHTML = `
+                <label>Product ID:</label>
+                <div class="d-flex">
+                <input type="text" class="row-id" value="">
+                <button type="button" class="p-2 bg-white center pt-0" onclick="removeNewProduct(${newProductCount})"><i class='bx bx-x rounded-circle p-1 bg-danger h4 text-white m-0'></i></button>
+                </div>
+            `;
+            
+            document.querySelector(`#product_section_${productId} .rows`).appendChild(rowDiv);
+        }
+
+        function removeNewProduct(productId) {
+            document.getElementById(`row_${productId}`).remove();
+        }
+        
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!this.checkValidity()) {
+                e.stopPropagation();
+                showAlert('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            const messageType = document.getElementById('messageType').value;
+            const userResponse = document.getElementById('userResponse').value;
+            const bodyMessage = document.getElementById('bodyMessage').value;
+            let sections = [];
+            let productSection = [];
+            let messageData = {};
+            switch(messageType) {
+                case 'single_product_message':
+                    messageData = {
+                        product_data: {
+                            product_retailer_id: document.getElementById('productRetailerId').value
+                        },
+                        catalog_id: document.getElementById('catalogId').value
+                    };
+                    break;
+                
+                case 'send_my_location':
+                    messageData = {
+                        product_data: {
+                            mylatitude: document.getElementById('mylatitude').value
+                        },
+                        mylongitude: document.getElementById('mylongitude').value
+                    };
+                    break;
+
+                case 'link_template':
+                    messageData = {
+                        product_data: {
+                            selectedTempale: document.getElementById('selectedTempale').value
+                        }
+                    };
+                    break;
+                case 'send_image_message':
+                    messageData = {
+                        product_data: {
+                            mediaFile: document.getElementById('mediaFile').value
+                        }
+                    };
+                    break;
+                case 'send_document_message':
+                    messageData = {
+                        product_data: {
+                            mediaFile: document.getElementById('mediaFile').value
+                        }
+                    };
+                    break;
+                case 'send_video_message':
+                    messageData = {
+                        product_data: {
+                            mediaFile: document.getElementById('mediaFile').value
+                        }
+                    };
+                    break;
+
+                case 'reply_button_message':
+                    const buttons = [];
+                    document.querySelectorAll('.button-item').forEach(buttonElem => {
+                        buttons.push({
+                            type: "reply",
+                            reply: {
+                                id: buttonElem.querySelector('.button-id').value,
+                                title: buttonElem.querySelector('.button-title').value
+                            }
+                        });
+                    });
+                    messageData.buttons = buttons;
+                    break;
+                    
+                case 'list_message':
+                    const sections = [];
+                    document.querySelectorAll('.list-section').forEach(sectionElem => {
+                        const rows = [];
+                        sectionElem.querySelectorAll('.row-item').forEach(rowElem => {
+                            rows.push({
+                                id: rowElem.querySelector('.row-id').value,
+                                title: rowElem.querySelector('.row-title').value,
+                                description: rowElem.querySelector('.row-description').value
+                            });
+                        });
+                        
+                        sections.push({
+                            title: sectionElem.querySelector('.section-title-input').value,
+                            rows: rows
+                        });
+                    });
+                    messageData.sections = sections;
+                    break;
+                    
+                case 'multi_product_message':
+                    const productSection = [];
+                    document.querySelectorAll('.list-section').forEach(sectionElem => {
+                        const productData = {
+                            title: sectionElem.querySelector('.section-title-input').value,
+                            catelogue_id: sectionElem.querySelector('.catelogue_id').value,
+                            product_items: []
+                        };
+                        
+                        // Get all row items within this section
+                        sectionElem.querySelectorAll('.row-item').forEach(rowItem => {
+                            productData.product_items.push({
+                                product_retailer_id: rowItem.querySelector('.row-id').value
+                            });
+                        });
+                        
+                        productSection.push(productData);
+                    });
+                    messageData.productSection = productSection;
+                    break;
+            }
+
+            // Prepare data for submission
+            const formData = {
+                user_response: userResponse,
+                body_message: bodyMessage,
+                message_type: messageType,
+                sections: sections,
+                productSection: productSection,
+                ...messageData
+            };
+
+            // Send data to Django view
+            fetch('/bot-flow/', {  // Update this URL to match your Django URL pattern
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCSRFToken(),
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    showAlert('Message configuration saved successfully!', 'success');
+                    // Optionally reset form
+                    document.getElementById('messageForm').reset();
+                    document.getElementById('singleProductSection').classList.add('hidden');
+                    document.getElementById('replyButtonSection').classList.add('hidden');
+                    document.getElementById('listMessageSection').classList.add('hidden');
+                    document.getElementById('multiProductMessage').classList.add('hidden');
+                    document.getElementById('sendMyLocation').classList.add('hidden');
+                    document.getElementById('linkTemplate').classList.add('hidden');
+                    document.getElementById('requestUserLocation').classList.add('hidden');
+                    document.getElementById('mediaMessage').classList.add('hidden');
+                    document.getElementById('buttons').innerHTML = '';
+                    document.getElementById('sections').innerHTML = '';
+                    document.getElementById('productSection').innerHTML = '';
+                    sectionCount = 0;
+                    multiProductCount = 0;
+                    buttonCount = 0;
+                    rowCount = 0;
+                    newProductCount = 0;
+                } else {
+                    showAlert(data.message || 'An error occurred', 'error');
+                }
+            })
+            .catch(error => {
+                showAlert('An error occurred while saving the configuration', 'error');
+                console.error('Error:', error);
+            });
+        });
+    </script>
+        <script>
+        $(document).ready(function(){
+            $('#BotAutoation').addClass('active');
+        });
+      </script>
+    {% endblock %}

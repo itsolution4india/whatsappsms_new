@@ -1,474 +1,741 @@
-INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testpslocal
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2815
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testingpsnewflow', 'en', 'IMAGE', '412421598318830', ['7065354391'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testpslocal, user: nraiproduction@gmail.com
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.views:2024-10-09: User shahzadalam769@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: jfgyh
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2814
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testingpsnewflow', 'en', 'IMAGE', '870553151886202', ['7065354391'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: jfgyh, user: nraiproduction@gmail.com
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.views:2024-10-09: User nraiproduction@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: nraiproduction@gmail.com, campaign title: testpsnew
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 2813
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'testflowtempps_one', 'en', 'IMAGE', '1077485070442376', ['7065354391'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testpsnew, user: nraiproduction@gmail.com
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-INFO:root:Next reply message send successfully newtestlive, 917065354391
-INFO:root:Next reply message send successfully demo, 917065354391
-INFO:root:Next reply message send successfully demo, 917065354391
-4::aW1hZ2UvcG5n:ARYburOogGmKm5Mgm9lWwWnUshwUw5r0kcL-YnWWOx1tpQDYJGegMAArPNW7pbFp03YXgQZgGju8BKEccz72SgN1p5MxJBxfZQXha6RSneU_xg:e:1728827358:465471839698794:61565150340230:ARbgHFZGQiY2tPLmSwM
-INFO:smsapp.views:2024-10-10: User test_demo@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: test
+INFO:smsapp.views:2024-11-15: User varun1@gmail.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 5
+INFO:smsapp.functions.send_messages:Coins deducted: 5. Remaining balance: 9967
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:smsapp.views:2024-11-15: User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 5
+INFO:smsapp.functions.send_messages:Coins deducted: 5. Remaining balance: 9962
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:smsapp.views:2024-11-15: User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: report_one
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 0
+INFO:smsapp.functions.send_messages:Coins deducted: 0. Remaining balance: 9962
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: report_one, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: report_one
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 5
+INFO:smsapp.functions.send_messages:Coins deducted: 5. Remaining balance: 9957
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: report_one, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:smsapp.views:2024-11-15: User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: abcd
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 4
+INFO:smsapp.functions.send_messages:Coins deducted: 4. Remaining balance: 9953
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: abcd, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
 INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
-INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 9967
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'mugs', 'en', 'IMAGE', '856494282922925', ['9711340505', '8285055176'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: test_demo@gmail.com
-4::aW1hZ2UvcG5n:ARZYYDEJf5ehtLfEuIw2IolMyVAu1ngZ5uoGYahIC8xoUu_eyUjhTRQit9PN3KsGcsfVX-3KQAEubLgFrmbQrtG3YNagT7QED99lTh9kzIiuRQ:e:1728883119:465471839698794:61565150340230:ARbRQevzJzvD9E60vy8
-4::aW1hZ2UvcG5n:ARY-SAoY4GTkJSmadSOdAlepxUO2XXsdpQ7SLS3fVoqu2NMBrFDCpINB5-pdBWMvqjEv9KJGQpiy-0InjF0CEWFA8WtNooFfKsEUa7ynum6S3Q:e:1728883132:465471839698794:61565150340230:ARYK2UmkoeByH_MpCIk
-[UID:1024][1603039] Child process with pid: 1634610 was killed by signal: 15, core dumped: no
-4::aW1hZ2UvcG5n:ARatKLdFdkfWlKOxwMiZdqAYwZfpxeHac4BT3pfnlkA25shXeYHjzQQh7tPWtFmMIwqC5CqvnGVLXNWPemwuGjlJhFT14Xdw97DR8XkNKfEUOQ:e:1728885183:465471839698794:61565150340230:ARYj4Bd0IG4tNTGikgg
-4::aW1hZ2UvcG5n:ARYNmSmPBL_W3fPgCh19zVtjtKF_GJ3-BhvrUR9tgmaAl2Z7NiFClJpmH3Ese-RjVIaeclXmcjWyfCl-8bMyHNXPeaW3DFttuDKPMAi7LYsy5w:e:1728885199:465471839698794:61565150340230:ARbFS2zHtvKLqECXnXg
-4::aW1hZ2UvanBlZw==:ARZSorfmUGouwEQPwH79BolW1oUfe2BY_IEIxsk0LiqzR14WqmbB6gI-JD4zVAPDLk8K-uTrj29HPgBw5bC1U_glXnjpnLSjcxWIBq83O-NLiA:e:1728885385:465471839698794:61565150340230:ARYzHwQphus4fECRrw8
-INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 9951
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:smsapp.views:2024-11-15: User opinder@gmail.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 9950
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:smsapp.views:2024-11-15: User opinder@gmail.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: opinder@gmail.com, campaign title: 1st
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 1639
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: 1st, user: opinder@gmail.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
 INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
-INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 9965
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'merakrt', 'en', 'IMAGE', '470309972704908', ['9711340505', '8285055176'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: test_demo@gmail.com
-INFO:root:Next reply message send successfully blackmug, 919711340505
-INFO:root:Next reply message send successfully blackmug, 919711340505
-INFO:root:Next reply message send successfully blueglam, 919711340505
-INFO:root:Next reply message send successfully blueglam, 919711340505
-INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: test1
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 9
-INFO:smsapp.functions.send_messages:Coins deducted: 9. Remaining balance: 9956
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'merakrt', 'en', 'IMAGE', '518367491125542', ['8396820007', '9773870533', '9711340505', '8285055176', '9711347474', '9315494292', '6361161836', '9711320202', '9311429863'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test1, user: test_demo@gmail.com
-INFO:root:Next reply message send successfully blackmug, 918396820007
-INFO:root:Next reply message send successfully blackmug, 918396820007
-INFO:root:Next reply message send successfully blueglam, 919711340505
-INFO:root:Next reply message send successfully blueglam, 918396820007
-INFO:root:Next reply message send successfully blueglam, 918396820007
-INFO:root:Next reply message send successfully blueglam, 919711340505
-INFO:root:Next reply message send successfully blackmug, 919773870533
-INFO:root:Next reply message send successfully blackmug, 919773870533
-INFO:root:Next reply message send successfully blueglam, 919773870533
-INFO:root:Next reply message send successfully blueglam, 919773870533
-INFO:root:Next reply message send successfully blackmug, 919311429863
-INFO:root:Next reply message send successfully blackmug, 919311429863
-INFO:smsapp.functions.send_messages:Sending messages for user: test_demo@gmail.com, campaign title: dyfldjss
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 9948
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 6
+INFO:smsapp.functions.send_messages:Coins deducted: 6. Remaining balance: 9942
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 51
+INFO:smsapp.functions.send_messages:Coins deducted: 51. Remaining balance: 9891
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 9889
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:root:Sending flow messages for user: opinder@gmail.com, flow_name: single
+INFO:root:Calculated money data for sending flow messages: 1
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 1638
+INFO:root:Messages sent successfully for campaign: single, user: opinder@gmail.com
+INFO:smsapp.views:2024-11-15: User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:root:user_response Hi
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:user_response Can you send details ?
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 4
+INFO:smsapp.functions.send_messages:Coins deducted: 4. Remaining balance: 9885
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:discount 98
+INFO:root:discountnumber 124
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: dayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 127
+INFO:smsapp.functions.send_messages:Coins deducted: 127. Remaining balance: 9758
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+[UID:1024][3741233] Child process with pid: 3836370 was killed by signal: 15, core dumped: no
+[UID:1024][3741233] Child process with pid: 3838289 was killed by signal: 15, core dumped: no
+IDs None None None
+4::dmlkZW8vbXA0:ARa7avInUuPbAKqZP68qrhDmlwhc9P7zdvRET2xZAdGq462AsePzAon9RfbazZb4MaTScwpOnfW2WV6RvrWtX-B4i-re86wJx36y5ild7813VQ:e:1731995120:465471839698794:61565150340230:ARbipUhjGAznkKsGX3w
+4::dmlkZW8vbXA0:ARZGO2Dcvzqbgo0cJo0fOBhGzmU_objIZLQNhkNoHeNon_aW4mHaVs3OrBOko66ILikLr47JtWzDh-UK5kVNh2vjInp9RARZiH-xxMHIDYfE_w:e:1731995120:465471839698794:61565150340230:ARZaKZL_gMrmiSSfrbQ
+IDs None None None
+4::dmlkZW8vbXA0:ARYOM9y0i0u5VBlwjfqlqPyPJO6OiHVTfQXkwJywExPi6ilRwS2TJ77Kk6-EE4LmZc-a1DKYqY2tk3irBay_eWo6Bn2bw1hA4E-X28dgA0ES5g:e:1731995667:465471839698794:61565150340230:ARYwCvjt21Lcafozc6E
+4::dmlkZW8vbXA0:ARZ_AVrTSELkNwbavqS3MZeUz8462GJx-_lLTUvQb2EC09Nx_9Fq_VfABD511OJkyIcyksfAygnvE1TLMhbuuaFl4gtI04TsGNd6WkuC76_8rA:e:1731995667:465471839698794:61565150340230:ARa-UBlBboSUav2aM-o
+IDs None None None
+4::dmlkZW8vbXA0:ARabp_Zg61nkXigzHvlhu2JIxKuxT3dChmc5m0gzMCZAQdtoJoc42-s5ZnRhgZi0rxgtoyymhDTghHiPwuOzIVcY4gQTG7tEOxZo4EWbgEJwAQ:e:1731996063:465471839698794:61565150340230:ARZw2fePHBTxjm6UZ6A
+4::dmlkZW8vbXA0:ARaiW4rD8m8t3Mim1cZknyc7Jlz35BXcQ2aQzBgmnvTL0PlgCQqI4rtrYfC8WzLqTAhkvo-FiVI9uXi-Ph-5W2vUHGeEZv-Fr6UO6ZjWclEAew:e:1731996063:465471839698794:61565150340230:ARb9kiCxnK78jcK1DK8
+IDs None None None
+Template 'utility' deleted successfully.
+Template 'utility' deleted successfully.
+Template 'bharathwelth' deleted successfully.
+Template 'bharathwelth' deleted successfully.
+IDs None None None
+4::dmlkZW8vbXA0:ARay9UpXmTHBA16HK--QpxeJzZwMkp4VMjGD981Hxp858bgqL_jwU50aT6fvBjMFePnTQziiTxskaeT_jigyZtp8_tt0JSSdhoQODp3ohU8rew:e:1731996201:465471839698794:61565150340230:ARYy-joMw0oJLONftW4
+4::dmlkZW8vbXA0:ARbWSnvUbCiUHtpTncpDrhU1Ep1hVnv1p7cwO8-BhzNPSO8gKvCQg2L7dol246dZzBxcxbTlAraQfTqx0LmcNUyol3IqtzgODuMqc_NYXwYPUg:e:1731996201:465471839698794:61565150340230:ARbh4W5nje1tB2RKyHo
+Template 'abcdee' deleted successfully.
+Template 'abcdee' deleted successfully.
+Template 'dayn' deleted successfully.
+Template 'dayn' deleted successfully.
+Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-11-15 11:48:28 IST)" was missed by 0:20:20.760347
+INFO:smsapp.views:2024-11-15: User varun1@gmail.com logged in successfully.
+INFO:smsapp.views:2024-11-15: User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:smsapp.views:2024-11-15: User varun1@gmail.com logged in successfully.
+INFO:root:discount 98
+INFO:root:discountnumber 316
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 323
+INFO:smsapp.functions.send_messages:Coins deducted: 323. Remaining balance: 9435
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: bwgdayone
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 5
+INFO:smsapp.functions.send_messages:Coins deducted: 5. Remaining balance: 9430
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: bwgdayone, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:user_response Imported me humse jada variety kabhi sochna bhi mat puri market me kahi milegi.
+One stop destination for denim lovers\u2764\ufe0f
+Killing machine
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:smsapp.views:User varun1@gmail.com logged in successfully.
+INFO:smsapp.views:User varun1235 logged in successfully.
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70523
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70523
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70523
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70523
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70523
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:user_response mantej
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:user_response mantej
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:user_response mantej
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:message_type: single_product_message
+INFO:root:filter_message_response single_product_message - mantej
+INFO:root:fastapi https://sendsms-fastapi.onrender.com/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919711618080'], 'message_type': 'single_product_message', 'body': 'Please select product', 'product_data': {'product_retailer_id': '92823252965'}, 'catalog_id': '74765363'}
+INFO:root:<class 'list'>
+INFO:root:user_response service2
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:user_response servic2
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:message_type: send_text_message
+INFO:root:filter_message_response send_text_message - servic2
+INFO:root:fastapi https://sendsms-fastapi.onrender.com/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919711618080'], 'message_type': 'text', 'body': 'service '}
+INFO:root:<class 'list'>
+INFO:smsapp.views:User Opendir logged in successfully.
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70531
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70531
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70531
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70531
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70531
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: opinder@gmail.com, campaign title: test_mantej_sir
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 2
+INFO:smsapp.functions.send_messages:Coins deducted: 2. Remaining balance: 1636
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test_mantej_sir, user: opinder@gmail.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:image_id 
+INFO:root:Error image_id format is incorrect. Expected format: 'id|type'
+INFO:root:Next reply message sent successfully. Template: opender001, Phone Number: 919711618080, Media Type: <class 'str'>, Image ID Type: <class 'NoneType'>
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:image_id 
+INFO:root:Error image_id format is incorrect. Expected format: 'id|type'
+INFO:root:Next reply message sent successfully. Template: realesatecontentyh, Phone Number: 919711618080, Media Type: <class 'str'>, Image ID Type: <class 'NoneType'>
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70541
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+Request successful!
+389460670923677 view flow en MARKETING EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk flow_testing02 1499708400746445
+{'id': '526359070302517', 'status': 'REJECTED', 'category': 'MARKETING'}
+Response Content: {"id":"526359070302517","status":"REJECTED","category":"MARKETING"}
+Response Status Code: 200
+389460670923677 view flow en UTILITY EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk flow_testing02 1499708400746445
+400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/389460670923677/message_templates
+response <Response [400]>
+IDs None None None
+Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-11-15 15:43:25 IST)" was missed by 0:17:30.259246
+INFO:smsapp.views:User opinder@gmail.com logged in successfully.
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70542
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+/home/fedqrbtb/wtsdealnow.com/whatsappsms/sms/smsapp/views.py:1391: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+  counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70542
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70542
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:root:Final query: SELECT * FROM webhook_responses
+INFO:root:Final parameters: []
+INFO:root:Number of rows fetched: 70542
+INFO:root:Sample messages in the data:
+INFO:root:Sample messages: ['', '', '', '', None]
+INFO:root:Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+INFO:smsapp.views:User varun1@gmail.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: test
 INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 9955
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'blueglam', 'en', 'IMAGE', '1278354376811117', ['8396820007'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: dyfldjss, user: test_demo@gmail.com
-4::aW1hZ2UvanBlZw==:ARZoOR5_hjnZeHiNgiSdiXCd1znPDngWe4-E6Kszi3BVsbF9WyYIE8AjF6xUFrKXx3rjqlL5jCCEwed4H8G5zAU51hP0CEVWB_NOhoIhgkCtGQ:e:1728885864:465471839698794:61565150340230:ARY_oLOkK31LMiDIh20
-Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-10-10 11:52:22 IST)" was missed by 0:00:41.740530
-INFO:smsapp.views:2024-10-10: User test_demo@gmail.com logged in successfully.
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-INFO:smsapp.views:2024-10-10: User harleen.realmotorman@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: saptami
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 76
-INFO:smsapp.functions.send_messages:Coins deducted: 76. Remaining balance: 41707
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9540508990', '9810803334', '6388233750', '7579329070', '9690251869', '9568821673', '9798517123', '9520606244', '8532019330', '7417631962', '7088612191', '9084600350', '7579254200', '7409222262', '9760773362', '9871471340', '9568143894', '9717083449', '8192991191', '9997911195', '9310927485', '8726812345', '9997222632', '9996665999', '9389995379', '9911000857', '9997700848', '8859277086', '7906856599', '6395740805', '6399476770', '8755365935', '9950058872', '9557363800', '9997642004', '7982485370', '9808766391', '9837906583', '9368813286', '8884565109', '7017609379', '8476928162', '9610269110', '9259439459', '9410686406', '7800220217', '8384814418', '8859502870', '7983606396', '9997406941', '9520577894', '8006071459', '9411727321', '9959270451', '7505115010', '8630497106', '8657877198', '8126485480', '7088874990', '8923676701', '9084737705', '9193329598', '9149193036', '9084707535', '9997766633', '9306337850', '9082707148', '7895618167', '9899800475', '7889075338', '9368693423', '7409808458', '9634889747', '8192888815', '7060200953', '8265985901'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: saptami, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 76
-INFO:smsapp.functions.send_messages:Coins deducted: 76. Remaining balance: 41631
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9568143894', '8726812345', '8859277086', '6395740805', '9650360093', '8700803564', '9837906583', '7800220217', '8657877198', '9084737705', '9193329598', '9084707535', '7456021086', '7396882039', '7227056334', '7409438652', '9868107595', '9414185116', '8449358737', '6397433363', '7011798982', '9012244323', '8267851669', '9058500677', '9219858695', '7838181330', '8979666728', '9411190018', '8755538934', '9870860212', '8869023784', '7204468962', '8755041400', '9690276592', '8433227642', '7060449969', '9193766987', '7017390168', '9654162051', '9760211066', '9559502566', '8979700574', '8077998875', '9997504163', '9897949047', '7023351113', '9518900089', '9520666695', '8860410000', '7618210568', '8800476062', '7303301879', '9743987620', '8958573772', '8077967697', '9410553422', '9411575293', '9997875665', '7020903044', '8057212828', '7300616354', '9084348695', '8859988078', '7302388993', '8077194216', '9798099495', '9520005098', '8979951001', '9756188181', '8273774480', '8979025609', '7827156924', '8534059074', '9897239566', '7455027535', '8791756669'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 84
-INFO:smsapp.functions.send_messages:Coins deducted: 84. Remaining balance: 41547
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['7227056334', '9012244323', '9520666695', '9411727321', '9540508990', '8958573772', '9193329598', '9520005098', '8657877198', '9084737705', '9084348695', '7455027535', '8923802911', '9818895828', '8826511617', '9412054228', '9219100000', '9690661650', '9990105000', '8077229100', '8958149692', '8421048606', '9458175313', '6398175245', '8192987895', '9557097327', '8433041900', '9917861073', '7065217938', '8171896670', '8447839744', '7906983528', '9990525263', '8077587593', '7506598091', '9760371000', '9832176790', '9315218410', '7895759420', '9411245251', '9897867918', '7017304766', '7452922772', '6397053537', '9599571899', '9411593136', '9997580347', '8439606941', '9837090534', '9939595900', '7906865576', '7302675823', '7088354392', '9502791232', '7217447279', '7488959970', '8279583108', '8126777711', '9456590023', '8742912201', '8863851168', '9354199261', '8923257783', '8898896996', '7300655759', '9634499583', '7906844214', '9897296057', '8126460067', '8445599929', '7818045200', '7838343060', '7425814708', '9997605003', '8384839596', '7037751379', '8059966396', '8218312564', '9039157727', '8077046004', '9720841193', '7310602308', '9873208029', '8655820826'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 70
-INFO:smsapp.functions.send_messages:Coins deducted: 70. Remaining balance: 41477
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9012244323', '9690661650', '9310927485', '8077229100', '8421048606', '8869023784', '9897296057', '8445599929', '7017304766', '7895618167', '9520005098', '9368693423', '7452872424', '9760405280', '9259389300', '8882379814', '8468039600', '9897402101', '7455893841', '9760191919', '9013414161', '8077139568', '9927278551', '8859580067', '7409535819', '9899560619', '9756366301', '7300605608', '9897318660', '7668175663', '7457851912', '9896688212', '7454970177', '8005138347', '7073484726', '9528144754', '8570850206', '7668686470', '9999937137', '9675422563', '7906067467', '7017888159', '8218172060', '9872480052', '9939295111', '7001973801', '9831569669', '6397065970', '9720351133', '8423453677', '8077350190', '9548446020', '9389958708', '8447268623', '9557404565', '7319521448', '7409377025', '9997572004', '8445770135', '6395855473', '8266977322', '8394918868', '9557184787', '9675300585', '9870857104', '8218534940', '7060187309', '8449232594', '8126430097', '9870795803'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 70
-INFO:smsapp.functions.send_messages:Coins deducted: 70. Remaining balance: 41407
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8449358737', '9012244323', '9219858695', '7457851912', '6399476770', '9999937137', '7017733648', '9193329598', '7455027535', '9870795803', '9084708087', '9997029959', '9411575718', '9258043762', '9873915363', '6398228102', '8477006869', '9779360467', '9719257075', '9719576284', '9958199591', '7895561037', '9811030001', '9568183491', '9675480022', '7895114422', '9871190200', '8864883805', '9259370624', '7201877472', '8265870077', '7017309372', '8077909545', '7017547395', '8755665523', '8791768702', '9920628370', '8874949414', '7906068123', '9897710664', '8006102228', '7042782678', '9971934959', '8929080999', '9389674900', '7817803535', '9897985501', '9999505562', '8626965677', '8376905868', '7017443745', '8085429661', '8126666067', '7500904624', '9891711787', '9810918054', '9891969346', '8454880550', '7017457422', '8057397406', '7466819697', '9650425054', '9891316791', '7617070710', '8279440346', '8958430992', '7895824912', '9823009980', '7376567555', '8126395807'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 81
-INFO:smsapp.functions.send_messages:Coins deducted: 81. Remaining balance: 41326
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9012244323', '9999937137', '7906068123', '9917861073', '6395740805', '7800220217', '7205308421', '8532019330', '7579254200', '8958573772', '8126485480', '9193329598', '8126395807', '7037507070', '8923257783', '9897296057', '7037751379', '8394918868', '7455027535', '9717055233', '9326097498', '9914955255', '7417206701', '9634132222', '7579700000', '8800748328', '9389182824', '7505807321', '9597091181', '9653256643', '9410001234', '9719776897', '8218776783', '9058042902', '7906607294', '9720215555', '9045267102', '9557322272', '7017908680', '9997881588', '9255386638', '9969459315', '7668626703', '9675826985', '7080331199', '8218789998', '7002991616', '8534030761', '8630640799', '7078968892', '8865845078', '9997355317', '9639311306', '9667807242', '7983362341', '9643991648', '8755893523', '9410541949', '8126371838', '9621666287', '7078210481', '8979191129', '7500370037', '9671797184', '6397337958', '9759774792', '7817887705', '7409938302', '9084797775', '7579255106', '7015811869', '9528733972', '7060305653', '9997549414', '7668374970', '8077634747', '8585954688', '8851235147', '7668867336', '9758020000', '8439730564'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 78
-INFO:smsapp.functions.send_messages:Coins deducted: 78. Remaining balance: 41248
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9012244323', '9634132222', '9897985501', '9959270451', '9870857104', '7506598091', '7017908680', '9871190200', '6395740805', '7205308421', '7078968892', '9997875665', '7500370037', '6397337958', '7060449969', '9837906583', '9872480052', '8923257783', '8859277086', '8218312564', '9084707535', '9897132204', '7017115066', '9634917902', '7900905601', '9103347981', '7351607152', '7505363202', '9997068275', '9286936284', '7895649384', '9900041234', '7015914076', '9411113753', '8477991314', '9528583336', '8433036175', '7536822154', '9634120012', '6396863808', '9773667449', '7055963773', '7409084426', '8848454311', '8193842011', '8059300025', '8006382067', '9548201964', '9837201058', '7819938484', '9126400220', '9341658501', '9873497141', '7906824583', '8868066939', '9870975954', '8279643659', '8439724404', '9639444888', '8938086576', '9897007792', '8826900226', '8433083548', '8130897544', '9600115150', '9149348822', '9410441556', '8791101339', '7895926983', '9608316933', '6399540884', '8869895557', '6396372381', '9719970605', '8755700700', '8290227795', '9027282845', '8430892318'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 78
-INFO:smsapp.functions.send_messages:Coins deducted: 78. Remaining balance: 41170
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8077229100', '8979666728', '8433227642', '9897985501', '8447839744', '7505363202', '9870857104', '9997881588', '9997911195', '9528144754', '7579254200', '8006382067', '8868066939', '8958573772', '8126485480', '6395855473', '9193329598', '9891316791', '9868107595', '6399540884', '7001973801', '9548683897', '9599165607', '8218492366', '9555067986', '7009108744', '7011801764', '9627121441', '8191902062', '9474270932', '7895780370', '9999861295', '9770680901', '7618620878', '7030937095', '8285193370', '7505023145', '9999926234', '7078830800', '9368496776', '8057604051', '7818808482', '8077337687', '9491823949', '7895555255', '9997210713', '6395961066', '9045299510', '7983463620', '8218012172', '9990000293', '7417028075', '9837021344', '8979032650', '7000889302', '9058842222', '9997803008', '8077004478', '9717801181', '7905318196', '8755906054', '9779499762', '6006151523', '9456320105', '9084805112', '9557365555', '8527547100', '7506433473', '9012014551', '6398312294', '9627527515', '9410525411', '9717193003', '9870701753', '8218769776', '8630237224', '7818088101', '9084737899'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 72
-INFO:smsapp.functions.send_messages:Coins deducted: 72. Remaining balance: 41098
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9720215555', '8532019330', '7579254200', '9557322272', '8192991191', '9969459315', '8279583108', '7060449969', '9999937137', '9654162051', '7017888159', '8755906054', '8126395807', '7895780370', '8630237224', '8958573772', '9084737705', '9675300585', '8218012172', '8077841133', '8433114496', '9717176066', '9680649857', '8126666354', '9258186077', '9027352511', '9899450473', '9250902770', '7500166223', '7669695298', '9457575751', '9411342468', '8319110527', '9988011895', '8393050006', '9997560554', '8791990390', '9557848689', '9999086897', '8527373921', '8851798836', '9988099362', '9760127841', '8410113598', '7604066178', '9868145671', '8718832960', '9535744588', '8126980360', '9872254059', '8006138038', '8077723414', '7253817104', '9820975552', '9410400402', '7017596598', '8077375232', '8447737330', '7060189179', '7302822955', '8439518787', '7060008549', '8077006602', '9354986003', '9650844850', '7505768649', '8477010057', '6398045616', '9368637464', '9627001400', '9721911771', '8279922147'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 80
-INFO:smsapp.functions.send_messages:Coins deducted: 80. Remaining balance: 41018
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8755041400', '7017390168', '7895780370', '9870857104', '8126430097', '9899450473', '9997881588', '9310927485', '8218012172', '6397337958', '8439724404', '7617070710', '8126395807', '8393050006', '7300655759', '7838343060', '7001973801', '7817803535', '9719970605', '9528395332', '8171295265', '9536989409', '9599580598', '7428390489', '8445867779', '9758158895', '7599102130', '9310142434', '8755945084', '8449092728', '9837378180', '8059242377', '7505112162', '7302774068', '9837592650', '9639591633', '9027412280', '9412052355', '8218659229', '8218188588', '8475805117', '9149224079', '9410511567', '8988122883', '9837356038', '9568939280', '9105817142', '8755894166', '7037825115', '8869022169', '8979327706', '7906772911', '9456506196', '9359437680', '8988271808', '9643952161', '9310004263', '9675824015', '8588943012', '9060217327', '9557635367', '7088644345', '7464866965', '7017863266', '9608085007', '8447153544', '8737011962', '9027323980', '8390909104', '6399554400', '7881148625', '9639933221', '9068646310', '9643134805', '7520143080', '7060217772', '9068085187', '9650977799', '7017429312', '9760055044'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 52
-INFO:smsapp.functions.send_messages:Coins deducted: 52. Remaining balance: 40966
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9354199261', '6395740805', '7668374970', '6398175245', '9559502566', '8384814418', '9060217327', '7017457422', '8439518787', '7017429312', '7579201006', '8171058620', '8779294039', '6398238513', '9557898025', '7900888879', '7668183377', '7668209224', '8218793053', '9258888630', '8193095759', '8318175704', '9720903442', '9891374701', '7830519958', '7505772721', '7451904272', '9897800721', '9990125060', '9917563847', '8273777080', '7251981052', '9650497363', '9956514930', '9582128087', '9140298897', '9536645111', '8630842794', '9870964182', '7017993627', '7906251159', '9761055476', '6375968687', '9719407998', '8171117230', '7017588286', '7906379595', '6397798390', '8218062170', '9410377128', '7830640469', '8433448030'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 87
-INFO:smsapp.functions.send_messages:Coins deducted: 87. Remaining balance: 40879
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9870860212', '9899450473', '8449262894', '9997803008', '7060053955', '9354199261', '8273117117', '7055569081', '9627886708', '7983416051', '9805016952', '7310728081', '9634875686', '9389417095', '8193007239', '9265873360', '9758521402', '8273545219', '9411111547', '9045550086', '6006894549', '9897482024', '7417956907', '7217280288', '9997439563', '9528156092', '7983001064', '7500755215', '9837803075', '8303983423', '8126800617', '8218389958', '8077282547', '9897629833', '8618422513', '9678463799', '7060388387', '7500547944', '9411833582', '9650516184', '8368105973', '9808330325', '8279950835', '7895222401', '7982373313', '7500077502', '7300740013', '9899219506', '8279650872', '7018804070', '7983098979', '7017429381', '8077149382', '9837988669', '7838777077', '9027557987', '7906510713', '8318740764', '6397724743', '8979084074', '7906431577', '7017875028', '9634126644', '7600206356', '9568832535', '9681933468', '7060842392', '9560138098', '7300641338', '8171620062', '7417749715', '9882182582', '9389607148', '9105842572', '7500813333', '8077798431', '9568684011', '8077696760', '8905089021', '9305567173', '9627927945', '8077366684', '8700723307', '7817024426', '8512079786', '7015949408', '7387234811'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 89
-INFO:smsapp.functions.send_messages:Coins deducted: 89. Remaining balance: 40790
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8958149692', '7351607152', '9870964182', '9650516184', '8077967697', '9837988669', '9837021344', '7060449969', '9868107595', '8859277086', '8006508318', '9717193003', '7387234811', '9639988380', '8126036097', '9634881571', '8307149076', '8979173128', '9149183828', '9643807115', '9760274755', '7310639124', '8218441109', '6399899489', '8445517410', '8218197235', '7454810008', '8979551668', '8909540373', '9897743170', '9458118054', '8791845883', '9634820807', '8272852755', '9808576537', '7982588692', '9997680502', '9927519701', '7895376916', '7579135786', '9018994343', '9758426400', '7676182945', '8491066765', '7060132546', '8077707594', '9896512137', '9720088856', '8979389064', '7598306389', '9815067265', '7535910222', '9837274055', '7060625806', '7017726231', '7814438706', '7021833154', '8449988559', '9425793232', '7617624238', '7505803059', '9720175757', '9937577575', '7983128967', '8126313333', '6203198918', '7500760051', '7895153511', '9760373764', '7055340471', '9997047486', '8532021811', '9927259368', '8077203808', '9582727907', '9716900195', '9457009197', '8899888799', '7307099279', '8126795308', '9368885929', '9758316912', '9088908601', '9639398191', '8800166988', '8979782044', '8273416149', '9759000688', '9625188706'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 90
-INFO:smsapp.functions.send_messages:Coins deducted: 90. Remaining balance: 40700
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9639988380', '8126036097', '9634881571', '8307149076', '8979173128', '9149183828', '9643807115', '9760274755', '7310639124', '8218441109', '8958149692', '6399899489', '8445517410', '8218197235', '7454810008', '8979551668', '8909540373', '7351607152', '9897743170', '9458118054', '8791845883', '9634820807', '8272852755', '9808576537', '7982588692', '9997680502', '9927519701', '7895376916', '7579135786', '9018994343', '9758426400', '7676182945', '8491066765', '9870964182', '7060132546', '8077707594', '9896512137', '9650516184', '9720088856', '8979389064', '7598306389', '9815067265', '8077967697', '7535910222', '9837274055', '7060625806', '7017726231', '7814438706', '7021833154', '8449988559', '9837988669', '9425793232', '9837021344', '7617624238', '7505803059', '9720175757', '9937577575', '7983128967', '7060449969', '8126313333', '6203198918', '7500760051', '7895153511', '9760373764', '7055340471', '9997047486', '8532021811', '9927259368', '8077203808', '9582727907', '9716900195', '9868107595', '9457009197', '8859277086', '8899888799', '8006508318', '7307099279', '8126795308', '9717193003', '9368885929', '9758316912', '9088908601', '9639398191', '8800166988', '8512079786', '8979782044', '8273416149', '9759000688', '9625188706', '7387234811'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 94
-INFO:smsapp.functions.send_messages:Coins deducted: 94. Remaining balance: 40606
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8979173128', '7351607152', '8085429661', '8273774480', '9996665999', '9997210713', '9720088856', '7505803059', '9310004263', '9997047486', '7668374970', '9717193003', '7817803535', '9758316912', '8954603216', '9456513498', '8126326665', '8650025360', '7900444473', '9760399669', '6395669097', '7384252486', '8755024662', '8010628655', '8449440493', '9953607626', '8077376328', '8755634569', '9084474402', '8968706257', '9193540320', '8077966959', '7209034461', '8882133770', '9058294227', '9258469033', '9411436765', '8923092530', '8859590877', '9773314150', '8909646566', '9368282432', '9557981842', '7417966964', '7009821434', '7579420752', '7455995451', '8755799347', '9045222264', '6396490919', '9410989999', '9149037042', '8788575431', '9808976829', '6397897673', '7500700102', '9520358161', '9619163628', '9634104201', '8393859805', '9897985799', '9457862788', '7417155333', '8872573064', '9258629924', '7895423706', '6009127242', '9557177000', '7060522824', '9368027447', '8414951556', '9258202915', '6398581600', '9528702319', '6396854181', '8279484980', '7451893418', '7060988933', '7042375949', '7505921776', '9310801747', '7017466646', '9935789551', '8899104342', '9520378966', '8392933327', '7060101002', '8899778080', '8909451679', '9058154085', '9927633393', '9411126716', '8954550107', '7895338719'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 79
-INFO:smsapp.functions.send_messages:Coins deducted: 79. Remaining balance: 40527
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9149183828', '7409438652', '7384252486', '8445517410', '8077966959', '9368282432', '8433448030', '7500030003', '7060449969', '7060522824', '9917563847', '8006508318', '7042375949', '9935789551', '7817803535', '8954781055', '8019404818', '9897883332', '9927659951', '9119010039', '9410145848', '8447954593', '9027095531', '7065838339', '7417747001', '9045617800', '9411535877', '8650607058', '8928499680', '9456126356', '7078000457', '7463890713', '6005950314', '9871377040', '9760413300', '9084089912', '7009000392', '9837544655', '8279647041', '9711900858', '9368499918', '7202005929', '9759996414', '7452031514', '8860870013', '9805501447', '7042196259', '9972955755', '7906237899', '7982798976', '7607527900', '7701894203', '9690581103', '9520282898', '9837522482', '8171405584', '7602956511', '7248380155', '8954291977', '7017166695', '6397555532', '7500524659', '7579146921', '7017530933', '8475807010', '7668328147', '8810823515', '9759412413', '9955999305', '9837897774', '7302711700', '8219537900', '9425294175', '9193099170', '7983476740', '7409776777', '8899182366', '7819895125', '8279573077'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 84
-INFO:smsapp.functions.send_messages:Coins deducted: 84. Remaining balance: 40443
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9627278105', '7454959152', '8130389960', '8171182100', '8126202585', '8193007239', '9411111547', '9760337123', '7895429295', '9359743568', '9193400844', '8433028037', '8755799347', '9870845732', '8755147783', '9411113753', '9899403760', '7500030003', '9027956018', '9760537382', '9582303538', '7205308421', '9808310636', '8394949454', '8449262894', '8630403614', '8077543812', '8077149382', '9837021344', '7906510713', '8394869867', '8700803564', '9193400022', '8445623300', '8218088949', '7060053955', '9927687807', '8650925404', '9711703231', '6395065223', '8006508318', '9650360093', '6399554400', '9643428985', '8881355556', '7817024426', '9808715127', '7668459808', '8178707028', '8218805767', '9997223224', '7417525527', '7300912687', '7669184533', '9892270852', '8130961517', '9897323902', '8449007357', '9884012669', '9389924299', '8528175625', '7870018933', '9717099940', '9368592064', '9412524118', '7037445804', '8218687446', '7505654501', '8650305000', '9728103496', '9458601238', '7505184263', '8368653377', '7409612221', '9528821106', '7652803063', '8006551263', '9876332001', '7830806006', '8010911595', '9045631722', '7017002972', '9837278256', '9286186590'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 87
-INFO:smsapp.functions.send_messages:Coins deducted: 87. Remaining balance: 40356
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9870860212', '8085429661', '9359743568', '9899403760', '7870018933', '9717099940', '9711900858', '8449262894', '9425793232', '7982798976', '7060449969', '7906431577', '8279643659', '9681933468', '7652803063', '9654162051', '8700723307', '9072544466', '9410601237', '7409501578', '9528855211', '8650159996', '7017944246', '6280216125', '8954010786', '7017892852', '7060146663', '9897080900', '8954822125', '7905799681', '8755094644', '8192000025', '7302955090', '8077860097', '9756372706', '8439282346', '9412037763', '8630911034', '8884692356', '9870932497', '8266022337', '8826274206', '7500334855', '9456756482', '8755555169', '8010526900', '9358729118', '8433458730', '7830306724', '8126535439', '9149234744', '9278796952', '6398393830', '8126999990', '8057832502', '8958519694', '9756862072', '7500519692', '9760139009', '7017337836', '7060310080', '7906704416', '7017955629', '9358405889', '7895851111', '9451239186', '7060595944', '7351221015', '9162423451', '8791809237', '8881520601', '9793210000', '9837404850', '9528879339', '8899699555', '8171474444', '9897901238', '8171620866', '9528153955', '8950413858', '9794697727', '7055900022', '7988729752', '9389116485', '8923285469', '9717771633', '8126371888'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 88
-INFO:smsapp.functions.send_messages:Coins deducted: 88. Remaining balance: 40268
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8273117117', '7055569081', '9627886708', '9870860212', '7310728081', '9634875686', '8193007239', '9265873360', '9758521402', '9411111547', '9045550086', '6006894549', '9897482024', '7417956907', '9997439563', '9528156092', '9997680502', '9837803075', '8303983423', '8126800617', '8077282547', '9897629833', '8618422513', '9678463799', '7060388387', '7500547944', '9411833582', '7500030003', '9650516184', '9808330325', '8279950835', '7895222401', '7300740013', '9899219506', '8279650872', '7018804070', '8449262894', '7983098979', '8077149382', '7838777077', '7906510713', '9997803008', '6397724743', '7906431577', '7017875028', '7906704416', '7060053955', '9681933468', '7060842392', '9560138098', '7300641338', '8171620062', '7417749715', '9389607148', '9105842572', '7500813333', '8077798431', '9568684011', '9305567173', '8394918868', '8077366684', '8700723307', '7817024426', '7387234811', '9675354481', '9027128421', '7055533279', '8178488350', '9412988786', '8126983455', '8954393904', '9568811256', '8273265274', '7017139297', '8077724221', '8902974290', '8077201723', '9760796443', '6398162327', '8102909263', '7017709125', '8864866666', '9933156402', '7895346197', '9555357362', '7417990091', '6367727027', '7454024135'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 32
-INFO:smsapp.functions.send_messages:Coins deducted: 32. Remaining balance: 40236
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9837988669', '7983001064', '7500755215', '9899450473', '7983416051', '9354199261', '9027557987', '8218389958', '9805016952', '8318740764', '9882182582', '9389417095', '8445517410', '8979084074', '7454810008', '8273545219', '8077696760', '8905089021', '8368105973', '7500077502', '9634126644', '7982373313', '9627927945', '9639398191', '8512079786', '7217280288', '8449262894', '7015949408', '9759000688', '7600206356', '7017429381', '9568832535'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 85
-INFO:smsapp.functions.send_messages:Coins deducted: 85. Remaining balance: 40151
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9870860212', '9027412280', '8218534940', '8755799347', '9870845732', '9870932497', '9899403760', '9870964182', '9358729118', '9425793232', '7906510713', '7505184263', '8445623300', '8958430992', '9681933468', '9711703231', '8881520601', '8923676701', '9072544466', '7906711253', '8474938123', '7351553096', '7037049548', '9997012181', '8178194407', '9548073183', '9717707807', '8126023882', '9410581193', '9773942270', '7505365084', '9368641537', '9811392384', '8191934787', '6397913088', '8218290262', '9536623213', '9997412664', '8057830076', '9958319758', '9897696169', '6395040975', '8077543360', '6396724549', '7895622407', '8954892988', '9759450686', '7060201093', '9389118433', '9027364751', '7017438842', '8588813217', '8954158013', '9410158013', '8630894577', '9568460000', '8006604752', '9198452655', '8171222780', '9675308306', '9833737532', '8077457744', '8077256172', '9123147958', '7453826069', '7060457079', '7500622052', '6396552995', '9997072651', '9084981998', '7015096466', '9997999410', '8650995463', '7895387822', '9910948645', '9897236937', '9368004601', '9625962264', '9520271669', '8126245037', '9368296066', '8445960286', '9997649263', '9969368733', '8937920480'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 84
-INFO:smsapp.functions.send_messages:Coins deducted: 84. Remaining balance: 40067
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9627278105', '7454959152', '8130389960', '7668459808', '8171182100', '8126202585', '9193540320', '9411111547', '9760337123', '7669184533', '7895429295', '9368282432', '8192888815', '9359743568', '9193400844', '8433028037', '8755799347', '9897323902', '8449007357', '9870845732', '8755147783', '9899403760', '8528175625', '7500030003', '9027956018', '9760537382', '9582303538', '9717099940', '9368592064', '7205308421', '9808310636', '8394949454', '8449262894', '8218687446', '8630403614', '8077543812', '9837988669', '8650305000', '9837021344', '9458601238', '7505184263', '8394869867', '8700803564', '9193400022', '8445623300', '8218088949', '7060053955', '9927687807', '8650925404', '9711703231', '6395065223', '9650360093', '8006508318', '7830806006', '9643428985', '8010911595', '8881355556', '9368900815', '7534044398', '7409213525', '8077778031', '8006926060', '9690238344', '8126947414', '7906028346', '7830343191', '9548244697', '8630037242', '9528719873', '7500757701', '7417803294', '7017193095', '9532038745', '9044355535', '8445313755', '8077635138', '9650053350', '7895998207', '7417835635', '9760776011', '7307434356', '8954432585', '6005645762', '7668584969'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 86
-INFO:smsapp.functions.send_messages:Coins deducted: 86. Remaining balance: 39981
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9808715127', '9410601237', '7409501578', '8178707028', '9528855211', '8218805767', '6280216125', '8954010786', '9997223224', '7017892852', '8193007239', '7417525527', '8085429661', '7300912687', '8192000025', '9892270852', '8077860097', '8130961517', '9756372706', '8439282346', '9359743568', '9412037763', '8630911034', '9870932497', '9884012669', '9411113753', '9899403760', '9389924299', '8266022337', '8826274206', '7870018933', '9717099940', '9711900858', '9808310636', '9412524118', '8449262894', '7037445804', '8755555169', '9456756482', '8010526900', '9358729118', '8077149382', '7505654501', '7830306724', '9425793232', '9728103496', '9837021344', '9149234744', '7982798976', '7906510713', '8126999990', '8368653377', '8958519694', '7409612221', '7500519692', '9760139009', '7017337836', '9528821106', '7906704416', '9358405889', '7895851111', '9681933468', '7060595944', '8791809237', '8881520601', '9837404850', '9528879339', '7652803063', '8899699555', '8171474444', '8006551263', '8171620866', '9654162051', '8950413858', '6399554400', '9876332001', '7055900022', '8923285469', '9717771633', '7017002972', '9045631722', '7817024426', '8700723307', '9072544466', '9837278256', '9286186590'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 93
-INFO:smsapp.functions.send_messages:Coins deducted: 93. Remaining balance: 39888
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8954822125', '9411575293', '9760337123', '7017457422', '9368282432', '7455995451', '9520358161', '7500334855', '7300740013', '9837988669', '9837021344', '7895423706', '8279643659', '7351221015', '8979700574', '8126371888', '9897493280', '8700371769', '7409141314', '9810286057', '8437038456', '9105917657', '8755537628', '9719258128', '7087605453', '8077038085', '9719030567', '7895320204', '9411182953', '8126170997', '8954729697', '9654444735', '9837371432', '9997138478', '8192957193', '8273105144', '9027502779', '8923535143', '9625876896', '6397286292', '8628088535', '9880971306', '8979797986', '9667093346', '9997279793', '8384824892', '7453964148', '7017536929', '7571007500', '8410007684', '9980076105', '8954822877', '9760810498', '9761110331', '9719999677', '9639203008', '8077176585', '9368230157', '9997984838', '8851512892', '7051386631', '7500542222', '8529969383', '7017008145', '8900908322', '9818095216', '7017775466', '8755045562', '7830502007', '7351860781', '7895841495', '8800117959', '8433244281', '9773691421', '9760245502', '9411794788', '9428960681', '9997677722', '8384845829', '9654060737', '8476858113', '8630251072', '8909181643', '7088856396', '9997773949', '7906505154', '9058301613', '9560022319', '8077337271', '7895606011', '7060171419', '7668172900', '7903656275'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 107
-INFO:smsapp.functions.send_messages:Coins deducted: 107. Remaining balance: 39781
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8954781055', '9870860212', '9634875686', '8178194407', '7895429295', '9870932497', '9808976829', '9720088856', '9719999677', '8394949454', '9837988669', '8445313755', '7505184263', '8394869867', '8988271808', '9634889747', '8954432585', '9717193003', '8909451679'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 91
-INFO:smsapp.functions.send_messages:Coins deducted: 91. Remaining balance: 39690
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8433227642', '7428390489', '7454810008', '9411727321', '7505363202', '7500547944', '9808976829', '7571007500', '7078968892', '9997984838', '9798517123', '7505772721', '9535744588', '7042782678', '7895841495', '9760139009', '7617070710', '8630251072', '7073484726', '8979700574', '9997766633', '8126381750', '9027649767', '9759099944', '7906121226', '7088401692', '9997715339', '8126757477', '7015973749', '9312992919', '9412369243', '9560730690', '9412050875', '9997807303', '7060462030', '8335040472', '9456350971', '9456595373', '9896062732', '9897971222', '8218664836', '9997420628', '7078727106', '9548087442', '8447795311', '7054177868', '7055668885', '9720102140', '9756585768', '6396324018', '8755264633', '7906000547', '7830000609', '8077664099', '8171941571', '7906277261', '9873894237', '9015434615', '9837765582', '9810093221', '9456757520', '8126838530', '8630034644', '8192818649', '9634069633', '8800557626', '8909217140', '8433457411', '8218741770', '9760837216', '9045956953', '7819067024', '7351582734', '9873699075', '9837813199', '7906364902', '9870854558', '9719955733', '8532898552', '7533800222', '9811880688', '7999250274', '9917083511', '8218247412', '7906205905', '7905908343', '7017380059', '9284164860', '7500981254', '9971200165', '7017457248'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 96
-INFO:smsapp.functions.send_messages:Coins deducted: 96. Remaining balance: 39594
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9627278105', '8700371769', '8126757477', '9560730690', '8193007239', '9997807303', '7895780370', '8335040472', '9897402101', '9720102140', '9536623213', '6396324018', '9837021344', '8077139568', '8433457411', '8988271808', '7042782678', '7906364902', '8077457744', '8532898552', '9711703231', '9997072651', '6396854181', '7017380059', '9520378966', '7302576266', '8218833919', '8979106472', '6232667351', '9140893293', '8171472942', '7703899400', '9456141838', '7088913268', '9557305254', '8954211014', '7895049282', '6395923534', '7983098220', '9997077525', '8979828853', '7248084752', '8755603947', '9897239010', '6398501587', '8077991178', '9068499079', '9760638382', '9358034688', '9501391968', '9997334520', '9548571953', '9457269684', '8126090110', '8218254771', '8879051355', '9560221123', '7017869893', '8979067036', '7310939591', '9907009940', '6398673072', '9634966783', '9919911994', '7389272372', '7993160505', '9997911039', '7906452665', '8445272829', '7455918817', '7017101968', '9027053266', '7302301907', '9058739322', '8266992553', '9456539927', '7302721732', '9520165994', '8630984034', '9758035933', '8192909735', '7668694377', '8630012785', '8791687906', '6239437784', '7409009404', '7906076783', '9670191999', '8954202000', '9557774540', '9897078072', '9897997289', '9411587224', '9675252523', '9862013158', '9818457772'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 110
-INFO:smsapp.functions.send_messages:Coins deducted: 110. Remaining balance: 39484
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['7088401692', '9719258128', '8077038085', '9760211066', '8126170997', '9654444735', '9625876896', '9368282432', '8628088535', '9536623213', '7536822154', '9997279793', '9068499079', '9897949047', '7571007500', '9837765582', '8851512892', '7051386631', '8879051355', '7505184263', '8433457411', '7017775466', '8800117959', '9760245502', '7617070710', '9654060737', '9897296057', '9897236937', '8077337271', '9717771633', '7060171419', '8954550107', '7903656275'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 50
-INFO:smsapp.functions.send_messages:Coins deducted: 50. Remaining balance: 39434
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9837988669', '9997677722', '9428960681', '8384845829', '7455995451', '9654060737', '7500542222', '9837021344', '8476858113', '8700371769', '8630251072', '7409141314', '7088856396', '8529969383', '8755537628', '7017008145', '7087605453', '8979797986', '8755045562', '9719030567', '9411182953', '8979700574', '9997773949', '8126170997', '8954729697', '7017536929', '7351860781', '9837371432', '9997138478', '8192957193', '9980076105', '9560022319', '8954822877', '9058301613', '7895841495', '7300740013', '9411575293', '8273105144', '9639203008', '7017457422', '7060171419', '8433244281', '9773691421', '8077176585', '9368230157', '9411794788', '9997984838', '8126371888', '6397286292', '8851512892'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 161
-INFO:smsapp.functions.send_messages:Coins deducted: 161. Remaining balance: 39273
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9627278105', '8126381750', '9027649767', '9759099944', '7906121226', '8700371769', '7088401692', '9997715339', '7302576266', '8126757477', '7015973749', '8433227642', '9312992919', '9412369243', '9560730690', '8218833919', '7428390489', '8193007239', '9412050875', '9140893293', '7454810008', '9997807303', '7703899400', '7060462030', '7895780370', '8335040472', '9456350971', '9456141838', '9411727321', '7088913268', '9456595373', '9896062732', '9897971222', '8218664836', '9557305254', '8954211014', '7505363202', '7895049282', '9997420628', '6395923534', '7078727106', '9548087442', '7983098220', '8447795311', '7054177868', '9997077525', '7248084752', '7055668885', '9720102140', '9897402101', '8755603947', '9897239010', '9756585768', '6398501587', '8077991178', '7500547944', '9808976829', '6396324018', '9068499079', '8755264633', '7906000547', '9760638382', '9358034688', '7571007500', '7830000609', '9501391968', '8077664099', '8171941571', '7078968892', '7906277261', '9997334520', '9548571953', '9873894237', '9015434615', '9997984838', '9837765582', '8126090110', '9810093221', '9456757520', '9798517123', '8126838530', '8630034644', '8218254771', '8192818649', '8879051355', '9560221123', '9837021344', '8077139568', '9634069633', '8800557626', '8979067036', '8909217140', '7505772721', '7310939591', '9907009940', '8433457411', '6398673072', '9634966783', '8218741770', '9535744588', '9760837216', '7042782678', '9919911994', '7389272372', '9045956953', '7819067024', '7993160505', '7351582734', '7895841495', '9873699075', '9760139009', '9837813199', '7906364902', '9997911039', '7906452665', '8077457744', '8445272829', '9870854558', '9719955733', '7617070710', '8532898552', '7455918817', '7017101968', '9027053266', '7533800222', '7302301907', '9811880688', '7999250274', '9917083511', '9711703231', '8266992553', '9058739322', '8218247412', '8630251072', '9997072651', '7906205905', '7302721732', '9520165994', '7905908343', '6396854181', '9758035933', '8192909735', '7073484726', '7017380059', '7668694377', '9284164860', '8791687906', '8979700574', '6239437784', '9670191999', '9520378966', '7500981254', '8954202000', '9557774540', '9897078072', '9997766633', '9971200165', '9897997289', '9411587224', '9862013158', '9818457772'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 173
-INFO:smsapp.functions.send_messages:Coins deducted: 173. Remaining balance: 39100
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8700371769', '7088401692', '7409141314', '8126757477', '8755537628', '9719258128', '7087605453', '9560730690', '8077038085', '8979106472', '9760211066', '9719030567', '9411182953', '6232667351', '8171472942', '8126170997', '8954729697', '9654444735', '9837371432', '9997138478', '8192957193', '9411575293', '8273105144', '7017457422', '9625876896', '9368282432', '6397286292', '8979828853', '7455995451', '9720102140', '8628088535', '9536623213', '8979797986', '7536822154', '9997279793', '6396324018', '9068499079', '9897949047', '7017536929', '7571007500', '9980076105', '8954822877', '7300740013', '9639203008', '8077176585', '9368230157', '9457269684', '9997984838', '9837765582', '8851512892', '7051386631', '9837988669', '8879051355', '7500542222', '7017869893', '9837021344', '8529969383', '7017008145', '7505184263', '8433457411', '7017775466', '8988271808', '8755045562', '7351860781', '7895841495', '8800117959', '8433244281', '9773691421', '9760245502', '7617070710', '9411794788', '9428960681', '9997677722', '8384845829', '9654060737', '9456539927', '8476858113', '8630251072', '7088856396', '8630984034', '9897296057', '9897236937', '8630012785', '8979700574', '7409009404', '7906076783', '9997773949', '9058301613', '9560022319', '8077337271', '9717771633', '7060171419', '9675252523', '8954550107', '8126371888', '7903656275'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 81
-INFO:smsapp.functions.send_messages:Coins deducted: 81. Remaining balance: 39019
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9013414161', '9389182824', '9756372706', '7455995451', '9870932497', '7536822154', '8954822877', '8077375232', '9760810498', '7051386631', '7505772721', '7042782678', '9456539927', '7906076783', '9560022319', '7818088101', '8604111524', '8698366462', '9319126322', '9887204546', '9594365550', '8979457825', '9997704177', '8218126958', '8708516538', '7617788998', '9334108172', '9917893292', '7906212599', '8368207238', '8630560455', '8532955950', '7897866677', '8285289484', '9410574777', '7060666379', '9897547488', '7060600945', '9013556177', '8657858150', '9413442828', '9599577705', '8789207817', '8373905285', '9416000910', '8527849248', '7060608655', '7983973166', '9837878915', '9412050460', '9611436123', '9997332244', '9759249648', '9336840220', '7455067110', '9752593438', '9412923592', '9870976469', '9358006499', '6397946349', '7017286599', '9548282778', '9720730233', '8414969809', '9634043807', '7705078580', '7249910407', '8868043212', '8630383217', '7900410777', '6396695287', '6261218456', '7060181142', '7983499365', '9066661006', '7409235119', '8630104797', '8864949388', '9971007864', '9991528029', '9756238082'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 83
-INFO:smsapp.functions.send_messages:Coins deducted: 83. Remaining balance: 38936
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9997704177', '8368207238', '9899450473', '7300605608', '9411833582', '9650516184', '8077375232', '8218687446', '7505772721', '9410553422', '6261218456', '9868107595', '9897918025', '7500510504', '7696573634', '9599349145', '7999786786', '7983808183', '7742164427', '8630772515', '9411712454', '6397051264', '8218237728', '7017100163', '7830888203', '8533858801', '9410201000', '7018757519', '8755892347', '7895158320', '7088987196', '8960349545', '8126221800', '7011070690', '7253889005', '7457898910', '9548497248', '9411293233', '8650698755', '9997039672', '9761988008', '7570966666', '9891578408', '7982678693', '9719130418', '9758798764', '8218309583', '7310998554', '9950323496', '9625160919', '8126778788', '9027246206', '8958777028', '9701990427', '9773683679', '8979065004', '9407983224', '7310657868', '9599061146', '8979362935', '9639337676', '7417571166', '7409064636', '7017387871', '9557293262', '9897720006', '7599400124', '7037030359', '9119001007', '8447053300', '8826899941', '7895924638', '7252058111', '9988880806', '9410709993', '8630513633', '7895887928', '7417008920', '9871554684', '9513298215', '7983136720', '9899116608', '9540675704'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 107
-INFO:smsapp.functions.send_messages:Coins deducted: 107. Remaining balance: 38829
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9599349145', '8218126958', '9312992919', '7017892852', '9027095531', '7906212599', '8755892347', '7455995451', '9897547488', '8077282547', '9411293233', '9891578408', '9336840220', '6398673072', '7310657868', '8445272829', '9997677722', '6261218456', '9456539927', '9557293262', '9997549414', '9971200165'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 79
-INFO:smsapp.functions.send_messages:Coins deducted: 79. Remaining balance: 38750
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9690661650', '9582128087', '8630772515', '8077139568', '7505772721', '9634126644', '9997677722', '9286186590', '9027949172', '7453999998', '9756189018', '7895564604', '9412056876', '8587865227', '8630684631', '8881481313', '6396277408', '7906354146', '7085129351', '7302034913', '9068116159', '9876626369', '9219111100', '9831055449', '9634665002', '8449156286', '7251957501', '9997060946', '9902614159', '8126502862', '9837715010', '8279960724', '7017861071', '8826197299', '9045333110', '9012312302', '7976771005', '7409370777', '7817902276', '8859478165', '9876022423', '9897285220', '9045681463', '8077252974', '9109603642', '9027223671', '7017955119', '9717310977', '9997113635', '7055568587', '9149049958', '8445599938', '9410778400', '9897140455', '9690925555', '7505696620', '9855000764', '8979948744', '9818344351', '7069565981', '9410592407', '8650847880', '8171273606', '7417002323', '9410663737', '7060638070', '8755660669', '7838592949', '9068456218', '9458345031', '7017874898', '7456927272', '9997192929', '9627574335', '8273322923', '9897375500', '7679929812', '8445551313', '7900501167'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-[UID:1024][1909183] Child process with pid: 1963777 was killed by signal: 15, core dumped: no
-[UID:1024][1909183] Child process with pid: 1963778 was killed by signal: 15, core dumped: no
-[UID:1024][1909183] Child process with pid: 1964939 was killed by signal: 15, core dumped: no
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 107
-INFO:smsapp.functions.send_messages:Coins deducted: 107. Remaining balance: 38643
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8604111524', '9582128087', '7617788998', '8630772515', '7983098220', '8191934787', '8979797986', '7536822154', '9012312302', '7310998554', '9870976469', '8077139568', '8979191129', '7505772721', '7830519958', '7999250274', '9456539927', '9868107595', '6396854181'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 72
-INFO:smsapp.functions.send_messages:Coins deducted: 72. Remaining balance: 38571
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['7302301907', '8318175704', '9528144754', '9560730690', '9412050875', '7009000392', '6395040975', '8178194407', '9997649263', '7088676846', '9719719710', '7060190080', '7536011835', '7409402213', '8285840566', '7037036777', '8077411132', '7060808955', '9808480569', '8273490707', '8279970604', '7070707781', '9997587441', '8861561000', '7618305866', '7451010008', '8630018591', '9911346222', '8057578161', '8791269800', '7017466580', '8439728840', '8219484717', '8171166805', '7979807527', '8755664123', '7303911267', '7351006424', '8126459417', '9012848252', '8810346607', '9368206917', '9837074463', '9761422245', '8073391194', '9927976108', '9068886755', '8218148637', '7668307562', '9045087121', '7060009329', '9917220011', '9410397981', '9719113428', '7500021865', '9557595557', '8429995243', '7906238086', '8171701774', '7895338419', '7350588803', '9058099339', '9634328740', '9868715843', '7417836600', '9084015333', '8397900209', '9760190020', '8218590205', '9690770088', '8171569032', '9837719999'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 121
-INFO:smsapp.functions.send_messages:Coins deducted: 121. Remaining balance: 38450
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9870860212', '9997807303', '8968706257', '9528156092', '8077587593', '9899450473', '8218290262', '7536822154', '7409084426', '8588813217', '9759249648', '8979065004', '9027053266', '7017387871', '9868107595', '9897375500', '7895338419', '9675252523'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 121
-INFO:smsapp.functions.send_messages:Coins deducted: 121. Remaining balance: 38329
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8126036097', '8192991191', '9870860212', '9456595373', '6397286292', '9411833582', '7536822154', '6396324018', '9760810498', '8126999990', '9720730233', '8445272829', '8868043212', '6261218456', '7906076783', '9520378966', '8909451679', '8630513633', '7895887928', '9758020000'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 114
-INFO:smsapp.functions.send_messages:Coins deducted: 114. Remaining balance: 38215
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9548683897', '9319126322', '8218126958', '8708516538', '9634875686', '7617788998', '8630560455', '8532955950', '7897866677', '9756372706', '7895158320', '8126947414', '9899450473', '9870932497', '7060600945', '9413442828', '7536822154', '8789207817', '9416000910', '7982373313', '8527849248', '7983098979', '7051386631', '9752593438', '9412923592', '7505772721', '7017286599', '9701990427', '7042782678', '8979065004', '9634043807', '8868043212', '8630383217', '7900410777', '6261218456', '9456539927', '9868107595', '7060181142', '9560022319', '9971007864', '7895338419', '7895887928', '7818088101'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 123
-INFO:smsapp.functions.send_messages:Coins deducted: 123. Remaining balance: 38092
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8604111524', '8698366462', '9013414161', '9897918025', '9887204546', '7500510504', '9594365550', '8979457825', '9997704177', '9599349145', '7999786786', '9334108172', '7742164427', '9411712454', '9917893292', '7906212599', '9389182824', '8218237728', '8368207238', '7830888203', '8533858801', '8630560455', '9410201000', '7018757519', '7897866677', '8285289484', '8755892347', '7895158320', '7088987196', '7455995451', '9410574777', '8960349545', '7060666379', '9897547488', '7011070690', '9870932497', '7300605608', '9013556177', '8657858150', '7253889005', '9411833582', '7457898910', '9548497248', '7536822154', '9411293233', '9599577705', '8650698755', '8373905285', '9997039672', '9650516184', '9761988008', '7570966666', '9891578408', '8954822877', '7982678693', '8077375232', '9760810498', '7060608655', '9719130418', '7983973166', '9837878915', '8218687446', '7310998554', '8218309583', '9412050460', '9611436123', '9997332244', '9759249648', '9336840220', '7455067110', '9950323496', '9870976469', '9625160919', '9358006499', '6397946349', '7505772721', '8126778788', '9027246206', '9773683679', '9701990427', '9548282778', '7042782678', '9720730233', '8979065004', '9407983224', '7310657868', '8414969809', '9599061146', '7705078580', '8979362935', '9639337676', '7249910407', '7409064636', '6396695287', '6261218456', '7017387871', '9868107595', '9557293262', '9897720006', '7599400124', '7037030359', '7983499365', '9119001007', '8447053300', '8826899941', '9066661006', '7409235119', '7906076783', '8630104797', '8864949388', '7252058111', '9988880806', '9410709993', '8630513633', '7895887928', '7417008920', '9991528029', '9871554684', '9756238082', '9513298215', '7983136720', '9899116608', '9540675704'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 112
-INFO:smsapp.functions.send_messages:Coins deducted: 112. Remaining balance: 37980
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9756189018', '7696573634', '9599349145', '8218126958', '9312992919', '7983808183', '8630772515', '9027095531', '6397051264', '7906212599', '7017100163', '8368207238', '8755892347', '7455995451', '9899450473', '8126221800', '9897547488', '8077282547', '9411293233', '9891578408', '9758798764', '8397900209', '9336840220', '6398673072', '8958777028', '8979065004', '7310657868', '9410553422', '8445272829', '7417571166', '6261218456', '9456539927', '9557293262', '7895924638', '9897375500'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 58
-INFO:smsapp.functions.send_messages:Coins deducted: 58. Remaining balance: 37922
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8859478165', '9997677722', '7417002323', '9897285220', '9045681463', '9410663737', '7060638070', '8077139568', '7453999998', '8077252974', '9109603642', '9027223671', '9410592407', '7895564604', '9068456218', '9717310977', '7505772721', '9412056876', '9997113635', '9219111100', '8881481313', '9831055449', '9997549414', '9582128087', '7017892852', '9149049958', '9634665002', '9458345031', '8449156286', '9410778400', '9997060946', '6396277408', '7906354146', '8126502862', '7085129351', '7302034913', '8273322923', '9897375500', '7505696620', '8279960724', '9855000764', '8445551313', '7017861071', '9045333110', '8979948744', '9068116159', '9818344351', '9876626369', '9971200165', '7900501167', '7069565981', '7409370777', '8650847880', '8171273606', '7060573458', '9760764003', '9058876577', '9897355535'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: single
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 15
-INFO:smsapp.functions.send_messages:Coins deducted: 15. Remaining balance: 37907
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9896182487', '9711059364', '7065352672', '9711288014', '7065350435', '9650746924', '9711618080', '9891548123', '9643682384', '8285055176', '6293000050', '9899003229', '8802128738', '9315034700', '9711027179'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: single, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 116
-INFO:smsapp.functions.send_messages:Coins deducted: 116. Remaining balance: 37791
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['7055569081', '6399899489', '8433227642', '7253817104', '9411727321', '9870932497', '9536623213', '9368592064', '7409084426', '9891969346', '8979327706', '8006382067', '8445313755', '6397337958', '8630894577', '9535744588', '9559502566', '9634126644', '7505921776'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 101
-INFO:smsapp.functions.send_messages:Coins deducted: 101. Remaining balance: 37690
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8192991191', '7428390489', '7599102130', '9897985501', '7351607152', '8085429661', '7452872424', '9999926234', '9870932497', '6395740805', '9808976829', '7017304766', '9368592064', '9045333110', '9719130418', '8979327706', '8077139568', '9671797184', '8958573772', '7895153511', '7895998207', '8938086576', '8650847880', '9868107595', '6399554400'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 111
-INFO:smsapp.functions.send_messages:Coins deducted: 111. Remaining balance: 37579
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['9719257075', '9927659951', '8755634569', '9897985501', '9474270932', '9411111547', '9411727321', '8085429661', '6397798390', '7248084752', '9548244697', '7895376916', '8126800617', '9997911195', '9520358161', '9368592064', '7505115010', '8449262894', '9997029959', '8979327706', '8630034644', '7982798976', '8273490707', '7505772721', '9671797184', '9535744588', '9870975954', '7895153511', '9411575718', '7988729752', '8429995243', '7417008920', '8881355556'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: a
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 145
-INFO:smsapp.functions.send_messages:Coins deducted: 145. Remaining balance: 37434
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['8126757477', '9758158895', '9411111547', '7417525527', '9917861073', '7065217938', '9837378180', '9411727321', '9634328740', '7618620878', '9027412280', '7248084752', '9548244697', '9389924299', '9808976829', '8826274206', '9012312302', '9425793232', '8077139568', '7982798976', '7505184263', '9897318660', '9911000857', '7017875028', '7895841495', '7617070710', '8938086576', '9917083511', '9058739322', '9456539927', '9990125060', '7017466646', '6399554400', '8077723414', '8864949388', '7988729752', '9286186590'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: a, user: shahzadalam769@gmail.com
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-Run time of job "schedule_messages (trigger: interval[0:45:00], next run at: 2024-10-10 13:05:06 IST)" was missed by 0:20:31.744746
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: testing
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 3957
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: test
 INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 37433
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'abhi', 'en', 'N/A', None, ['6361161836'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testing, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: testing_one
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 37432
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'abhi', 'en', 'N/A', None, ['7065354391'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: testing_one, user: shahzadalam769@gmail.com
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: test_two
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 37431
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '346085425263787', 'abhi', 'en', 'N/A', None, ['9711340505'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test_two, user: shahzadalam769@gmail.com
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-INFO:smsapp.functions.send_messages:Sending messages for user: shahzadalam769@gmail.com, campaign title: test_new
-INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 1
-INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 37430
-INFO:root:Sent message details: ('EAAGnWBuof2oBO8EUKs94mmrIeQjrneD9A4lAhZCLQXxZB8HyitAxbyGucbYLm8VoSoxeAsyTsBKioFDSktX3tBe8ytWaWHlS7up2m1BDjy5Y0pZAv4JyPMD4Ujfs7hJZAKE5CIzseNHQyImZAzpNol6AUCuYZAfAUzj1ik4TRXj9OuYfwKVOHPznVb5yZCBOpiP2UWZCYIrIGcUan0TKA9axCc1lrkPl9itO7Van2c7j', '438839149312885', 'abhi', 'en', 'N/A', None, ['6361161836'])
-INFO:root:Sent message details: (<class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'str'>, <class 'NoneType'>, <class 'list'>)
-INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test_new, user: shahzadalam769@gmail.com
-INFO:smsapp.views:2024-10-10: User shahzadalam769@gmail.com logged in successfully.
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
-ERROR:root:Error processing phone number: 'NoneType' object has no attribute 'linked_template_name'
-ERROR:django.request:Internal Server Error: /save_phone_number/
+INFO:smsapp.functions.send_messages:Coins deducted: 1. Remaining balance: 3956
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: varun1@gmail.com
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: varun1@gmail.com
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:image_id 
+INFO:root:Error image_id format is incorrect. Expected format: 'id|type'
+INFO:root:Next reply message sent successfully. Template: singlecointesst, Phone Number: 919711340505, Media Type: <class 'str'>, Image ID Type: <class 'NoneType'>
+INFO:root:Error: cannot access local variable 'user_response' where it is not associated with a value
+INFO:root:filter_message_response None
+INFO:root:image_id 
+INFO:root:Error image_id format is incorrect. Expected format: 'id|type'
+INFO:root:Next reply message sent successfully. Template: singlecoineretrt, Phone Number: 919711340505, Media Type: <class 'str'>, Image ID Type: <class 'NoneType'>
+IDs None None None
+IDs None None None
+IDs None None None
+IDs None None None
+IDs None None None
+IDs None None None
+INFO:smsapp.views:User shahzadalam769@gmail.com logged in successfully.
+INFO:root:user_response Hi
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+INFO:root:user_response Greetings from IT SOLUTION 4 INDIA \U0001f91d
+
+IT SOLUTION 4 INDIA is a one of the best IT Advertising Company in pan india , 
+
+we provide various type of services in all-over pan India such as \U0001f447\U0001f3af
+
+1. \U0001f4acBulk SMS
+2. \U0001f4ddLead Generation 
+3. \U0001f469\u200d\U0001f4bbDigital Marketing 
+4. \U0001f4deVoice calls
+5. \u260e\ufe0fIVR Service
+6. \U0001f4ddWebsite Development
+7. \U0001f516E-commerce Management 
+8. \U0001f52dGraphic Designing 
+9. \U0001f4f1Election Campaign Management
+
+For More Information\U0001f447
+Itsolution4india.com
+
+\U0001f4de 91-9711347474
+INFO:root:Error: cannot access local variable 'reply_text' where it is not associated with a value
+INFO:root:Error: 'NoneType' object has no attribute 'message_type'
+INFO:root:filter_message_response None
+[UID:1024][71262] Child process with pid: 97345 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97367 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97383 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97406 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97424 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97444 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97462 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97483 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97504 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97530 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97583 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97612 was killed by signal: 15, core dumped: no
+[UID:1024][71262] Child process with pid: 97632 was killed by signal: 15, core dumped: no
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: night
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 0
+INFO:smsapp.functions.send_messages:Coins deducted: 0. Remaining balance: 9430
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: night, user: rahul.yadav@bhaaratwealthgroup.com
+INFO:root:discount 98
+INFO:root:discountnumber 337
+INFO:smsapp.functions.send_messages:Sending messages for user: rahul.yadav@bhaaratwealthgroup.com, campaign title: night
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 344
+INFO:smsapp.functions.send_messages:Coins deducted: 344. Remaining balance: 9086
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: night, user: rahul.yadav@bhaaratwealthgroup.com
+IDs None None None
+4::dmlkZW8vbXA0:ARabOFexwtElRrBbtzfyp4jrYzKqoBIlD1-O8yc5iCMP5Qcr7t5cxEHljfttNNSD-6EmwMD46BbpryaOaoeSEncMHDXQClJju_8RvCIECMAgrw:e:1732036674:465471839698794:61565150340230:ARbIFUAOMFlS-A-DstU
+4::dmlkZW8vbXA0:ARaknC5tA_64uQ9cKF6R8l3T9gd7z9bXLjK0FsAKWpjrkZdm2yeAhbD6iRtzFjajOXRBPhVF9eAr9nztUUYswr9h98ueMDjTngUiVODlruhXUg:e:1732036674:465471839698794:61565150340230:ARZ5LlaXENSQWh8484s
+[UID:1024][1394484] Child process with pid: 1394500 was killed by signal: 15, core dumped: no
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+INFO:smsapp.views:User varun1@gmail.com logged in successfully.
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 0
+INFO:smsapp.functions.send_messages:Coins deducted: 0. Remaining balance: 3956
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: varun1@gmail.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 0
+INFO:smsapp.functions.send_messages:Coins deducted: 0. Remaining balance: 3956
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: varun1@gmail.com
+INFO:root:discount 0
+INFO:root:discountnumber 0
+INFO:smsapp.functions.send_messages:Sending messages for user: varun1@gmail.com, campaign title: test
+INFO:smsapp.functions.send_messages:Calculated money data for sending messages: 0
+INFO:smsapp.functions.send_messages:Coins deducted: 0. Remaining balance: 3956
+INFO:smsapp.functions.send_messages:Messages sent successfully for campaign: test, user: varun1@gmail.com
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+ERROR:django.security.DisallowedHost:Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+INFO:smsapp.views:User rahul.yadav@bhaaratwealthgroup.com logged in successfully.
+INFO:smsapp.views:User opinder@gmail.com logged in successfully.

@@ -92,18 +92,7 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
                 except Exception as e:
                     logging.error(f"Failed to get flow_id: {e}")
                     return
-
-                for recipient in contact_list:
-                    logging.info(f"Sending flow message to {recipient}")
-                    logging.info(
-                            "This is Flow Direct: %s, %s, %s, %s, %s",
-                            type(token), type(phone_id), type(flow_name), type(flow_id), type(recipient)
-                        )
-                    status_code, response = send_flow_message_api(token, phone_id, flow_name, flow_id, language, recipient)
-                    logging.info(f"Status code: {status_code}, Response: {response}")
-
-                    if status_code != 200:
-                        logging.error(f"Failed to send message to {recipient}. Status: {status_code}, Response: {response}")
+                _, _ = send_flow_message_api(token, phone_id, flow_name, flow_id, language, contact_list)
 
         formatted_numbers = []
         for number in all_contact:
@@ -127,3 +116,69 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
         logging.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
         logging.error(f"Error in sending messages: {str(e)}")
+        
+def get_flows(ACCESS_TOKEN, WABA_ID):
+    BASE_URL = 'https://graph.facebook.com/v20.0'
+    
+    url = f"{BASE_URL}/{WABA_ID}/flows"
+    headers = {
+        'Authorization': f'Bearer {ACCESS_TOKEN}'
+    }
+    
+    try:
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            flows = response.json().get('data', [])
+            return flows
+        else:
+            error_message = f"Failed to retrieve flows. Status code: {response.status_code}"
+            return error_message
+    except Exception as e:
+        return str(e)
+        
+
+def create_message_template_with_flow(waba_id, body_text, lang, category, access_token, template_name, flow_id):
+    print(waba_id, body_text, lang, category, access_token, template_name, flow_id)
+    base_url = 'https://graph.facebook.com/v20.0'
+    url = f"{base_url}/{waba_id}/message_templates"
+    
+    headers = {
+        'Authorization': f'Bearer {access_token}',
+        'Content-Type': 'application/json'
+    }
+    
+    payload = {
+        "name": template_name,
+        "language": lang,
+        "category": category,
+        "components": [
+            {
+                "type": "body",
+                "text": body_text
+            },
+            {
+                "type": "BUTTONS",
+                "buttons": [
+                    {
+                        "type": "FLOW",
+                        "text": "Open flow!",
+                        "navigate_screen": "ITSOLUTION",
+                        "flow_action": "navigate",
+                        "flow_id": int(flow_id)
+                    }
+                ]
+            }
+        ]
+    }
+    
+    try:
+        response = requests.post(url, headers=headers, json=payload)
+        response.raise_for_status()
+        print(response.json())
+        print("Response Content:", response.text)
+        print("Response Status Code:", response.status_code)
+        return response.json()
+        
+    except requests.exceptions.RequestException as e:
+        print(str(e))
+        return response
