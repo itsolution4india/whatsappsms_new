@@ -1915,3 +1915,29 @@ def api_manual(request):
         "PHONE_ID": display_phonenumber_id(request)
         }
     return render(request, "api_manual.html", context)
+
+def fetch_webhook_responses(request):
+    try:
+        # Establish the connection
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report"
+        )
+
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM webhook_responses")
+        data = cursor.fetchall()
+
+        # Close the connection
+        cursor.close()
+        connection.close()
+
+        # Return the data as JSON
+        return JsonResponse({"status": "success", "data": data})
+
+    except mysql.connector.Error as err:
+        # If there is an error, display it
+        return JsonResponse({"status": "error", "message": str(err)})
