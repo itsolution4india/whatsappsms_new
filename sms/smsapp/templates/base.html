@@ -29,7 +29,7 @@
     <!-- Helpers -->
     <script src="/static/assets/vendor/js/helpers.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    
+
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
@@ -38,6 +38,62 @@
     <!-- custom css -->
 
     <style>
+        video {
+            width: 250px;
+            height: 150px;
+            border-radius: 5px;
+        }
+
+
+        audio {
+
+            width: 250px;
+            height: 50px;
+            margin-left: 15px;
+        }
+
+        .action-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 4px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 80px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .action-btn {
+            background-color: #3e8e41;
+        }
+
         table {
             border-collapse: collapse;
             width: 100%;
@@ -53,6 +109,115 @@
         th {
             background-color: #f2f2f2;
         }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .footer {
+            background-color: #f2f2f2;
+            /* Light gray background */
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__option {
+            margin-right: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .show {
+            display: block;
+        }
+
+
+        #fileTypeText {
+            /* margin-top: 10px; */
+            font-weight: bold;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+
+        .bxsize {
+            margin-top: 0;
+            font-size: 4.5rem;
+        }
+
+        /* user profile status */
+
+
+
+        .accordion-item:hover .collapse {
+            display: block;
+
+        }
+        /* Loading overlay styling */
+        #loadingOverlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        /* Loader animation */
+        .loader {
+          width: 50px;
+          padding: 8px;
+          aspect-ratio: 1;
+          border-radius: 50%;
+          background: #696cff;
+          --_m: 
+            conic-gradient(#0000 10%,#000),
+            linear-gradient(#000 0 0) content-box;
+          -webkit-mask: var(--_m);
+                  mask: var(--_m);
+          -webkit-mask-composite: source-out;
+                  mask-composite: subtract;
+          animation: l3 1s infinite linear;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            z-index: 1000;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+        
+        @keyframes l3 {
+          to {
+            transform: rotate(1turn);
+          }
+        }
     </style>
     {% block head %}
     {% endblock %}
@@ -60,6 +225,9 @@
 
 <body>
     <!-- Layout wrapper -->
+    <div id="loadingOverlay">
+        <div class="loader"></div>
+    </div>
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
             <!-- Menu -->
@@ -81,7 +249,7 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
-                    <li class="menu-item">
+                    <li class="menu-item" id="Dashboard">
                         <a href="/dashboard/" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                             <div data-i18n="Analytics">Dashboard</div>
@@ -92,35 +260,49 @@
                         <span class="menu-header-text">Pages</span>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="Campaign">
                         <a href="/campaign/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-unite"></i>
                             <div>Campaign</div>
                         </a>
                     </li>
 
-                    <li class="menu-item active">
+                    <li class="menu-item" id="linkTemplates">
+                        <a href="/link_templates/" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-layout'></i>
+                            <div>Link Templates</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item" id="BotAutoation">
+                        <a href="/bot-flow/" class="menu-link">
+                            <i class='menu-icon tf-icons bx bxs-bot'></i>
+                            <div>Bot Automation</div>
+                        </a>
+                    </li>
+                    
+                    <li class="menu-item" id="createFlow">
                         <a href="/create_flow_message/" class="menu-link">
                             <i class='menu-icon tf-icons bx bx-layer bx-layer'></i>
                             <div>Create Flows</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="sendFlow">
                         <a href="/send_flow_message/" class="menu-link">
                             <i class='menu-icon bx bxs-send'></i>
                             <div>Send Flows</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="/media_upload/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-                            <div data-i18n="Tables">Media ID</div>
-                        </a>
-                    </li>
+                    <!--<li class="menu-item">-->
+                    <!--    <a href="/media_upload/" class="menu-link">-->
+                    <!--        <i class="menu-icon tf-icons bx bxs-file-plus"></i>-->
+                    <!--        <div data-i18n="Tables">Media ID</div>-->
+                    <!--    </a>-->
+                    <!--</li>-->
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="sendSms">
                         <a href="/send-sms/" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Analytics">Send SMS</div>
@@ -129,19 +311,19 @@
 
 
                     <!-- Tables -->
-                    <li class="menu-item">
+                    <li class="menu-item" id="Reports">
                         <a href="/reports" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-report"></i>
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
+                    <li class="menu-item" id="Schedules">
                         <a href="/schedules/" class="menu-link">
                             <i class="menu-icon bx bxs-calendar-event"></i>
-                          <div data-i18n="Tables">Schedules</div>
+                            <div data-i18n="Tables">Schedules</div>
                         </a>
-                      </li>
+                    </li>
 
                     <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
                     <li class="menu-item">
@@ -225,11 +407,9 @@
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
+                                <a class="nav-link dropdown-toggle hide-arrow" href="#" id="userDropdown" onclick="toggleUserDropdown(event)">
                                     <div class="avatar avatar-online">
-                                        <img src="/static/assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                                        <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
@@ -251,32 +431,32 @@
                                     <li>
                                         <div class="dropdown-divider"></div>
                                     </li>
-                                    
-                    <li>
-                    <div class="accordion" id="accordionExample">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-weight: bold">
-                            My Profile
-                          </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
-                          data-bs-parent="#accordionExample">
-                          <div class="accordion-body">
-                            <p style="font-weight: bold">WABA ID : {{ WABA_ID }}</p>
-                            <p style="font-weight: bold">PHONE ID : {{ PHONE_ID }} </p>
-                            <p style="font-weight: bold">COINS : {{ coins }} </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
 
-   
                                     <li>
-                                        <div class="dropdown-divider"></div>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne"
+                                                        style="font-weight: bold">
+                                                        My Profile
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p style="font-weight: bold">WABA ID : {{ WABA_ID }}</p>
+                                                        <p style="font-weight: bold">PHONE ID : {{ PHONE_ID }} </p>
+                                                        <p style="font-weight: bold">COINS : {{ coins }} </p>
+                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/coins-history/" class="menu-link">Coin History</a></p>
+                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link">API Manual</a></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </li>
+
                                     <li>
                                         <a class="dropdown-item" href="{% url 'logout' %}">
                                             <i class="bx bx-power-off me-2"></i>
@@ -289,25 +469,75 @@
                         </ul>
                     </div>
                 </nav>
+                <script>
+                    $(document).ready(function () {
+                        // Disable click behavior
+                        $('.accordion-item .accordion-button').attr('data-bs-toggle', '');
+                        $('.accordion-item .accordion-button').attr('aria-expanded', 'false');
 
+                        // Enable hover behavior
+                        $('.accordion-item').hover(function () {
+                            $(this).find('.collapse').collapse('show');
+                        }, function () {
+                            $(this).find('.collapse').collapse('hide');
+                        });
+                    });
+
+                </script>
                 <!-- / Navbar -->
                 <script>
-          $(document).ready(function () {
-            // Disable click behavior
-            $('.accordion-item .accordion-button').attr('data-bs-toggle', '');
-            $('.accordion-item .accordion-button').attr('aria-expanded', 'false');
+                    $(document).ready(function () {
+                        // Disable click behavior
+                        $('.accordion-item .accordion-button').attr('data-bs-toggle', '');
+                        $('.accordion-item .accordion-button').attr('aria-expanded', 'false');
 
-            // Enable hover behavior
-            $('.accordion-item').hover(function () {
-              $(this).find('.collapse').collapse('show');
-            }, function () {
-              $(this).find('.collapse').collapse('hide');
-            });
-          });
+                        // Enable hover behavior
+                        $('.accordion-item').hover(function () {
+                            $(this).find('.collapse').collapse('show');
+                        }, function () {
+                            $(this).find('.collapse').collapse('hide');
+                        });
+                    });
 
-        </script>
+                </script>
 
+<script>
+    function toggleUserDropdown(event) {
+    event.preventDefault(); // Prevent default link behavior
+    
+    // Get the dropdown menu element
+    const dropdownToggle = event.currentTarget;
+    const dropdownMenu = dropdownToggle.nextElementSibling;
+    
+    // Toggle the show class on the dropdown menu
+    if (dropdownMenu.classList.contains('show')) {
+        dropdownMenu.classList.remove('show');
+        // Also remove show class from any open accordions
+        const openAccordions = dropdownMenu.querySelectorAll('.accordion-collapse.show');
+        openAccordions.forEach(accordion => accordion.classList.remove('show'));
+    } else {
+        dropdownMenu.classList.add('show');
+    }
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function closeDropdown(e) {
+        if (!dropdownToggle.contains(e.target) && !dropdownMenu.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+            document.removeEventListener('click', closeDropdown);
+        }
+    });
+}
 
+// Optional: Close dropdown when pressing escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const dropdownMenu = document.querySelector('.dropdown-menu.dropdown-menu-end');
+        if (dropdownMenu.classList.contains('show')) {
+            dropdownMenu.classList.remove('show');
+        }
+    }
+});
+</script>
                 <!-- Content wrapper -->
 
                 <div class="content-wrapper">
@@ -361,6 +591,16 @@
             //specialButtons: green
         });
 
+    </script>
+    
+    <script>
+        window.addEventListener('load', function() {
+            var loadingOverlay = document.getElementById('loadingOverlay');
+            var content = document.getElementById('content');
+            
+            loadingOverlay.style.display = 'none';
+            content.style.display = 'block';
+        });
     </script>
 
 

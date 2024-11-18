@@ -2,19 +2,19 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage
+from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'username','phone_number_id','whatsapp_business_account_id','coins','discount', 'is_staff', 'register_app')
+    list_display = ('email', 'user_id','username','phone_number_id','whatsapp_business_account_id','coins','discount', 'is_staff', 'register_app')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email', 'username')
     ordering = ('email',)
 
     fieldsets = (
-        (None, {'fields': ('email','phone_number_id','whatsapp_business_account_id','coins','discount', 'password', 'register_app')}),
+        (None, {'fields': ('email','user_id','phone_number_id','whatsapp_business_account_id','coins','discount', 'password', 'register_app', 'api_token')}),
         (_('Personal info'), {'fields': ('username',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff','is_superuser', 'groups', 'user_permissions')}),
         
@@ -23,7 +23,7 @@ class CustomUserAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username','phone_number_id','whatsapp_business_account_id','coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser', 'register_app'),
+            'fields': ('email', 'user_id','username','phone_number_id','whatsapp_business_account_id','coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser', 'register_app'),
         }),
     )
  
@@ -126,7 +126,14 @@ class TemplatesAdmin(admin.ModelAdmin):
         }),
     )
 
+class UserAccessAdmin(admin.ModelAdmin):
+    list_display = ('user', 'can_send_sms', 'can_view_reports', 'can_manage_campaign', 'can_schedule_tasks', 'can_create_flow_message', 'can_send_flow_message', 'can_link_templates', 'can_manage_bot_flow')
+
 # Register your admin class with the model
 admin.site.register(Templates, TemplatesAdmin)
 admin.site.register(ScheduledMessage)
 admin.site.register(TemplateLinkage)
+admin.site.register(MessageResponse)
+admin.site.register(UserAccess, UserAccessAdmin)
+admin.site.register(CoinsHistory)
+admin.site.register(Flows)

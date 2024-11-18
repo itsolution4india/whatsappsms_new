@@ -1,7 +1,12 @@
 from datetime import datetime, timedelta
-from .models import ScheduledMessage
+from .models import ScheduledMessage, ReportInfo
 from django.utils.timezone import now
 import json
+import random
+import string
+from django.utils import timezone
+import requests
+import logging
 
 def expand_times(time_list):
     expanded_times = []
@@ -35,13 +40,63 @@ def check_schedule_timings(schedule_time, delta_seconds=5):
         return False
 
 class CustomJSONDecoder(json.JSONDecoder):
-    def __init__(self, *args, **kwargs):
-        json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
+    def decode(self, s):
+        obj = super().decode(s)
+        
+        if 'screens' in obj and len(obj['screens']) > 0:
+            obj['screens'][0]['id'] = 'ITSOLUTION'
+            
+        def convert_booleans(item):
+            if isinstance(item, dict):
+                return {k: convert_booleans(v) for k, v in item.items()}
+            elif isinstance(item, list):
+                return [convert_booleans(i) for i in item]
+            elif item == "true":
+                return True
+            elif item == "false":
+                return False
+            return item
+            
+        return convert_booleans(obj)
+        
+def generate_code():
+    digits = random.choices(string.digits, k=6)
+    letters = random.choices(string.ascii_uppercase, k=6)
+    combined = digits + letters
+    random.shuffle(combined)
+    return ''.join(combined)
 
-    def object_hook(self, dct):
-        for key, value in dct.items():
-            if value == "true":
-                dct[key] = True
-            elif value == "false":
-                dct[key] = False
-        return dct
+def create_report(current_user, phone_numbers_string, all_contact, template_name):
+    report_id = generate_code()
+    try:
+        ReportInfo.objects.create(
+            email=str(current_user),
+            campaign_title=report_id,
+            contact_list=phone_numbers_string,
+            message_date=timezone.now(),
+            message_delivery=len(all_contact),
+            template_name=template_name
+        )
+        return report_id
+    except Exception as e:
+        return str(e)
+    
+def get_template_details_by_name(token, waba_id, template_name):
+    url = f"https://graph.facebook.com/v14.0/{waba_id}/message_templates"
+    
+    headers = {
+        'Authorization': f'Bearer {token}'
+    }
+    response = requests.get(url, headers=headers, params={"name": template_name})
+    
+    if response.status_code == 200:
+        templates = response.json()
+        for template in templates.get('data', []):
+            if template['name'] == template_name:
+                return template
+        logging.error(f"Template with name {template_name} not found.")
+        return None
+    else:
+        logging.error(f"Failed to get template details. Status code: {response.status_code}")
+        logging.error(f"Response: {response.text}")
+        return None

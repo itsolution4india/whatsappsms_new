@@ -49,7 +49,8 @@ def run_scheduled_message(message_id):
                     ast.literal_eval(message.all_contact),
                     ast.literal_eval(message.contact_list),
                     message.campaign_title,
-                    request=None
+                    request=None,
+                    variable_list=message.submitted_variables
                 )
                 message.is_sent = True
                 message.save()

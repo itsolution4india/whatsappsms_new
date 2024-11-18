@@ -11,6 +11,16 @@
         background-color: #f4f4f4;
         opacity:0.7;
     }
+    p {
+        display: flex;
+        flex-direction: column;
+    }
+    input {
+        width: 91%;
+        padding: 7px;
+        border-radius: 2px;
+        border: 1px solid #b4b4b4;
+    }
     .container {
         max-width: 30%;
         margin: 0 auto;
@@ -71,7 +81,7 @@
      {% csrf_token %}
      {{ form.as_p }}
 
-        <input type="checkbox" id="agree" name="agree" required style="margin-left: 30px;">
+        <input type="checkbox" id="agree" name="agree" required style="margin-left: 30px; width: auto !important;">
         <label for="agree" class="terms" style="color: green; font-size: 13px;">Agree &<a href="#" style="color: green; text-decoration: none; font-size: 13px;">terms conditions</a></label>
 
         <button type="submit" value="Login" style="margin-left: 95px;background-color: #04AA6D; width: 70px;height: 35px;border-radius: 5px;">Login</button>

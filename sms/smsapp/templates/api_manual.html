@@ -1,0 +1,820 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<style>
+    .api-method {
+        color: #28a745;
+        font-weight: 600;
+        background-color: #e7f4e4;
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+    .api-static {
+        color: #2863a7;
+        font-weight: 600;
+        background-color: #e4e7f4;
+        padding: 2px 8px;
+        border-radius: 4px;
+    }
+    .api-param {
+        color: #856404;
+        background-color: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+    }
+    .api-url {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        margin: 10px 0;
+    }
+    .endpoint-section {
+        padding: 10px;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .endpoint-section:last-child {
+        border-bottom: none;
+    }
+    a {
+        text-decoration: none !important;
+    }
+
+    .api-url {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-wrap: break-word;
+            position: relative;
+        }
+        
+        .api-method {
+            background-color: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        
+        .api-param {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+        
+        .api-static {
+            color: #0d6efd;
+            font-weight: bold;
+        }
+        
+        .curl-btn {
+            position: absolute;
+            right: 0px;
+            top: 15%;
+            transform: translateY(-50%);
+        }
+        
+        .code-block {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-15px) !important;
+        }
+        .api-url {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            word-wrap: break-word;
+            position: relative;
+        }
+        
+        .api-method {
+            background-color: #28a745;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-right: 10px;
+        }
+        
+        .api-param {
+            color: #e83e8c;
+            font-weight: bold;
+        }
+        
+        .api-static {
+            color: #0d6efd;
+            font-weight: bold;
+        }
+        
+        .code-block {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+        .code-container {
+            margin: 10px;
+            position: relative;
+            font-family: 'Monaco', 'Consolas', monospace;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .code-header {
+            background-color: #2d2d2d;
+            padding: 12px 20px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-title {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .copy-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+            transform: translateY(-1px);
+        }
+
+        .copy-button:active {
+            transform: translateY(0px);
+        }
+
+        .code-block {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            white-space: pre;
+            overflow-x: auto;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Syntax highlighting */
+        .command { color: #569cd6; }
+        .param { color: #9cdcfe; }
+        .string { color: #ce9178; }
+        .url { color: #4ec9b0; }
+        .bracket { color: #d4d4d4; }
+        .number { color: #b5cea8; }
+
+        /* Success message */
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        pre {
+            margin: 0;
+            padding: 1rem;
+        }
+        code {
+            font-family: 'Consolas', monospace;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: #4a4a4a;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: background-color 0.2s;
+        }
+        .copy-btn:hover {
+            background: #666;
+        }
+        .copy-btn.copied {
+            background: #4CAF50;
+        }
+        h1 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .language-python {
+            background: #1e1e1e !important;
+            font-size: 13px !important;
+        }
+        .text-hilight {
+            background: #e0dfff;
+            padding: 1px 7px 4px;
+            border-radius: 7px;
+        }
+        li {
+            line-height: 30px !important;
+        }
+        .text-content {
+            margin: 10px 20px;
+        }
+        .api-table {
+        width: 98%;
+        border-collapse: collapse;
+        margin: 20px 10px;
+    }
+    
+    .api-table th {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+    
+    .api-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+    }
+    
+    .api-table tr:hover {
+        background-color: #f9f9f9;
+    }
+    th, td {
+        text-align: left;
+    }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+</style>
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <center><h4 class="card-title mb-2">API Documentation</h4></center>
+                
+                <div class="endpoint-section">
+                    <h5>Send Text Template Message</h5>
+                    <div class="api-url">
+                        <span class="api-method">POST</span>
+                        https://sendsms-fastapi.onrender.com/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">TEXT</span>&media_id=<span class="api-static">null</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('text')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Send Image Template Message</h5>
+                    <div class="api-url">
+                        <span class="api-method">POST</span>
+                        https://sendsms-fastapi.onrender.com/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">IMAGE</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('image')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Send Document Template Message</h5>
+                    <div class="api-url">
+                        <span class="api-method">POST</span>
+                        https://sendsms-fastapi.onrender.com/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">DOCUMENT</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('document')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Send Video Template Message</h5>
+                    <div class="api-url">
+                        <span class="api-method">POST</span>
+                        https://sendsms-fastapi.onrender.com/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">VIDEO</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('video')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Send Authentication Template Message</h5>
+                    <div class="api-url">
+                        <span class="api-method">OTP</span>
+                        https://sendsms-fastapi.onrender.com/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">OTP</span>&media_id=<span class="api-static">null</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-param">OTP</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('otp')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Get Reports</h5>
+                    <div class="api-url">
+                        <span class="api-method">GET</span>
+                        https://wtsdealnow.com/get-report?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&report_id=<span class="api-param">REPORT_ID</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('report')">Generate cURL</button>
+                    </div>
+                </div>
+
+                <div class="endpoint-section">
+                    <h5>Check balance</h5>
+                    <div class="api-url">
+                        <span class="api-method">GET</span>
+                        https://sendsms-fastapi.onrender.com/balance_check_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>
+                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('balance')">Generate cURL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="curlModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Generate cURL Request</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="curlForm">
+                        <div class="mb-3">
+                            <label class="form-label">User ID</label>
+                            <input type="text" class="form-control" name="user_id" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">API Token</label>
+                            <input type="text" class="form-control" name="api_token" required>
+                        </div>
+                        <div id="additionalFields"></div>
+                    </form>
+                    <div id="curlResult" style="display: none;">
+                        <h6 class="mt-4">Generated cURL Request:</h6>
+                        <div class="code-block position-relative">
+                            <pre id="curlCode"></pre>
+                            <button class="btn btn-sm btn-light copy-btn" onclick="copyToClipboard()">Copy</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="generateCurl()">Generate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="api-table">
+        <thead>
+            <tr>
+                <th>Parameter Name</th>
+                <th>Value</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>user_id</td>
+                <td>USER_ID</td>
+                <td>Unique identifier for the user making the request</td>
+            </tr>
+            <tr>
+                <td>api_token</td>
+                <td>API_TOKEN/TOKEN</td>
+                <td>Authentication token for API access</td>
+            </tr>
+            <tr>
+                <td>template_name</td>
+                <td>TEMPLATE_NAME</td>
+                <td>Name of the message template to be used</td>
+            </tr>
+            <tr>
+                <td>language</td>
+                <td>LANGUAGE</td>
+                <td>Language code for the message content</td>
+            </tr>
+            <tr>
+                <td>media_type</td>
+                <td>TEXT/IMAGE/DOCUMENT/VIDEO</td>
+                <td>Type of media being sent in the message</td>
+            </tr>
+            <tr>
+                <td>media_id</td>
+                <td>null/IMAGE_ID/DOCUMENT_ID/VIDEO_ID</td>
+                <td>Identifier for the media content (null for text messages)</td>
+            </tr>
+            <tr>
+                <td>contact_list</td>
+                <td>["PHONE_NUMBERS"]</td>
+                <td>Array of phone numbers to send the message to</td>
+            </tr>
+            <tr>
+                <td>variable_list</td>
+                <td>OTP</td>
+                <td>Optional variables for template customization</td>
+            </tr>
+            <tr>
+                <td>report_id</td>
+                <td>REPORT_ID</td>
+                <td>Unique identifier for retrieving a specific report</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-content">
+        <h3>Examples cURL Requests</h3>
+
+        <li>To send a POST <span class="text-hilight">request</span> using the <span class="text-hilight">curl</span> command in the terminal, you need to specify the API endpoint, headers, and the data payload. In this example, the command sends a POST request to the URL <span class="text-hilight">'https://sendsms-fastapi.onrender.com/send_sms_api'</span>. The header <span class="text-hilight">'Content-Type: application/json'</span> is used to indicate that the request body will be in JSON format.</li><br>
+        <li>The <span class="text-hilight">--data</span> option includes the data payload in JSON format, which contains fields like <span class="text-hilight">user_id</span>, <span class="text-hilight">api_token</span>, <span class="text-hilight">template_name</span>, <span class="text-hilight">language</span>, and a list of phone numbers under <span class="text-hilight">contact_list</span>. The request is sent using the <span class="text-hilight">POST</span> method.</li><br>
+        <li>Replace the placeholders <span class="text-hilight">YOUR_USER_ID</span>, <span class="text-hilight">YOUR_API_TOKEN</span>, <span class="text-hilight">YOUR_TEMPLATE_NAME</span>, <span class="text-hilight">LANGUAGE</span>, and <span class="text-hilight">YOUR_PHONE_NUMBERS</span> with actual values before running the command. This will successfully send the SMS request to the API.</li><br>
+    </div>
+
+    <div class="d-flex flex-wrap">
+        
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">Text Message</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">API_TOKEN</span>,
+        <span class="param">"template_name"</span>: <span class="string">TEMPLATE_NAME</span>,
+        <span class="param">"language"</span>: <span class="string">LANGUAGE</span>,
+        <span class="param">"media_type"</span>: <span class="string">"TEXT"</span>,
+        <span class="param">"media_id"</span>: <span class="string">null</span>,
+        <span class="param">"contact_list"</span>: <span class="bracket">[</span>
+            <span class="string">"PHONE_NUMBERS"</span>
+        <span class="bracket">]</span>,
+        <span class="param">"variable_list"</span>: <span class="number">null</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">Image Message</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">API_TOKEN</span>,
+        <span class="param">"template_name"</span>: <span class="string">TEMPLATE_NAME</span>,
+        <span class="param">"language"</span>: <span class="string">LANGUAGE</span>,
+        <span class="param">"media_type"</span>: <span class="string">"IMAGE"</span>,
+        <span class="param">"media_id"</span>: <span class="string">IMAGE_ID</span>,
+        <span class="param">"contact_list"</span>: <span class="bracket">[</span>
+            <span class="string">"PHONE_NUMBERS"</span>
+        <span class="bracket">]</span>,
+        <span class="param">"variable_list"</span>: <span class="number">null</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">DOCUMENT Message</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">API_TOKEN</span>,
+        <span class="param">"template_name"</span>: <span class="string">TEMPLATE_NAME</span>,
+        <span class="param">"language"</span>: <span class="string">LANGUAGE</span>,
+        <span class="param">"media_type"</span>: <span class="string">"DOCUMENT"</span>,
+        <span class="param">"media_id"</span>: <span class="string">DOCUMENT_ID</span>,
+        <span class="param">"contact_list"</span>: <span class="bracket">[</span>
+            <span class="string">"PHONE_NUMBERS"</span>
+        <span class="bracket">]</span>,
+        <span class="param">"variable_list"</span>: <span class="number">null</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">VIDEO Message</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">API_TOKEN</span>,
+        <span class="param">"template_name"</span>: <span class="string">TEMPLATE_NAME</span>,
+        <span class="param">"language"</span>: <span class="string">LANGUAGE</span>,
+        <span class="param">"media_type"</span>: <span class="string">"VIDEO"</span>,
+        <span class="param">"media_id"</span>: <span class="string">VIDEO_ID</span>,
+        <span class="param">"contact_list"</span>: <span class="bracket">[</span>
+            <span class="string">"PHONE_NUMBERS"</span>
+        <span class="bracket">]</span>,
+        <span class="param">"variable_list"</span>: <span class="number">null</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">OTP Message</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">API_TOKEN</span>,
+        <span class="param">"template_name"</span>: <span class="string">TEMPLATE_NAME</span>,
+        <span class="param">"language"</span>: <span class="string">LANGUAGE</span>,
+        <span class="param">"media_type"</span>: <span class="string">"OTP"</span>,
+        <span class="param">"media_id"</span>: <span class="string">null</span>,
+        <span class="param">"contact_list"</span>: <span class="bracket">[</span>
+            <span class="string">"PHONE_NUMBERS"</span>
+        <span class="bracket">]</span>,
+        <span class="param">"variable_list"</span>: <span class="number">OTP</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">Get Report</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://wtsdealnow.com/get-report'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">TOKEN</span>,
+        <span class="param">"report_id"</span>: <span class="string">REPORT_ID</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="code-title">Check balance</span>
+        </div>
+        <pre class="code-block"><span class="command">curl</span> --location <span class="url">'https://sendsms-fastapi.onrender.com/balance_check_api'</span> \
+        --header <span class="string">'Content-Type: application/json'</span> \
+        --data <span class="bracket">'</span><span class="bracket">{</span>
+        <span class="param">"user_id"</span>: <span class="string">USER_ID</span>,
+        <span class="param">"api_token"</span>: <span class="string">TOKEN</span>
+        <span class="bracket">}</span><span class="bracket">'</span></pre>
+    </div>
+
+    </div>
+
+    <div class="success-message" id="successMessage">
+        Code copied to clipboard! 📋
+    </div>
+
+    <div class="text-content">
+        <h4>Example Python Function to Send Text Messages</h4>
+        <li>To send a POST <span class="text-hilight">request</span> to an API using the requests library in Python, you'll need to define the API endpoint, specify the necessary headers, and create the data payload. In the provided code, the URL <span class="text-hilight">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> is the API endpoint where the request will be sent. The headers are set to <span class="text-hilight">'Content-Type': 'application/json',</span> indicating that the body of the request will be in JSON format.</li><br>
+        <li>The <span class="text-hilight">data</span> dictionary contains the parameters required by the API, such as <span class="text-hilight">user_id</span>, <span class="text-hilight">api_token</span>, <span class="text-hilight">template_name</span>, <span class="text-hilight">language</span>, and a list of phone numbers in <span class="text-hilight">contact_list</span>. If applicable, variables for the template can also be included in <span class="text-hilight">variable_list</span>.</li><br>
+        <li>The request is then sent using <span class="text-hilight">requests.post(),</span> passing the URL, headers, and the JSON-encoded data. The response from the server is captured, and the status code and JSON content (if available) are printed to help you debug or verify the request's success.</li><br>
+        <li>Remember to replace placeholder values like <span class="text-hilight">USER_ID</span>, <span class="text-hilight">API_TOKEN</span>, <span class="text-hilight">TEMPLATE_NAME</span>, and <span class="text-hilight">PHONE_NUMBERS</span> with actual data before making the request.</li><br>
+    </div>
+
+    <div class="code-container" style="background-color: #1e1e1e; color: #c1c1c1;">
+        <pre><code class="language-python">
+import requests
+import json
+# Define the API endpoint
+url = 'https://sendsms-fastapi.onrender.com/send_sms_api'
+# Set the headers
+headers = {
+    'Content-Type': 'application/json',
+}
+# Define the data payload
+data = {
+    "user_id": "USER_ID",            # Replace with actual USER_ID
+    "api_token": "API_TOKEN",        # Replace with actual API_TOKEN
+    "template_name": "TEMPLATE_NAME", # Replace with actual TEMPLATE_NAME
+    "language": "LANGUAGE",          # Replace with actual LANGUAGE
+    "media_type": "TEXT",
+    "media_id": None,
+    "contact_list": [
+        "PHONE_NUMBERS"              # Replace with actual phone numbers
+    ],
+    "variable_list": None
+}
+# Send the POST request
+response = requests.post(url, headers=headers, data=json.dumps(data))
+# Print the response (for debugging or checking the result)
+print(response.status_code)
+print(response.json())  # If the response is JSON formatted</code></pre>
+    </div>
+
+    <div class="text-content">
+        <h4>Example php Function to Send Text Messages</h4>
+
+        <li>To send a POST <span class="text-hilight">request</span> to an API using cURL in PHP, you'll first define the API endpoint and construct the data payload. In the provided code, the URL <span class="text-hilight">'https://sendsms-fastapi.onrender.com/send_sms_api'</span> serves as the endpoint for the request. The data payload is structured as an associative array, including key details such as <span class="text-hilight">'user_id'</span>, <span class="text-hilight">'api_token'</span>, and the <span class="text-hilight">'contact_list'</span> containing phone numbers.</li><br>
+        <li>A cURL session is initiated with <span class="text-hilight">curl_init()</span>, and options like <span class="text-hilight">CURLOPT_RETURNTRANSFER</span> to capture the response and <span class="text-hilight">CURLOPT_POSTFIELDS</span> to send the data in JSON format are set using <span class="text-hilight">curl_setopt()</span>. The POST request is executed via <span class="text-hilight">curl_exec()</span>, and if no errors are encountered, the response is displayed. Lastly, the session is closed with <span class="text-hilight">curl_close()</span>.</li><br> 
+    </div>
+
+    <div class="code-container" style="background-color: #1e1e1e; color: #c1c1c1;">
+        <pre><code class="language-python">
+<span>&lt;?php</span>
+// Define the API endpoint
+$url = 'https://sendsms-fastapi.onrender.com/send_sms_api';
+// Create the data payload
+$data = array(
+    "user_id" => "USER_ID",             // Replace with actual USER_ID
+    "api_token" => "API_TOKEN",         // Replace with actual API_TOKEN
+    "template_name" => "TEMPLATE_NAME", // Replace with actual TEMPLATE_NAME
+    "language" => "LANGUAGE",           // Replace with actual LANGUAGE
+    "media_type" => "TEXT",
+    "media_id" => null,
+    "contact_list" => array("PHONE_NUMBERS"),  // Replace with actual phone numbers
+    "variable_list" => null
+);
+// Initialize cURL session
+$ch = curl_init($url);
+// Set cURL options
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json'
+));
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+// Execute cURL request
+$response = curl_exec($ch);
+// Check for cURL errors
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    // Print the response
+    echo 'Response: ' . $response;
+}
+// Close cURL session
+curl_close($ch);</code></pre>
+    </div>
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentEndpoint = '';
+        const modal = new bootstrap.Modal(document.getElementById('curlModal'));
+        
+        const endpointFields = {
+            'text': [
+                { name: 'template_name', label: 'Template Name' },
+                { name: 'language', label: 'Language' },
+                { name: 'contact_list', label: 'Contact List (comma-separated)' }
+            ],
+            'otp': [
+                { name: 'template_name', label: 'Template Name' },
+                { name: 'language', label: 'Language' },
+                { name: 'contact_list', label: 'Contact List (comma-separated)' },
+                { name: 'variable_list', label: 'Variable List (comma-separated)' }
+            ],
+            'image': [
+                { name: 'template_name', label: 'Template Name' },
+                { name: 'language', label: 'Language' },
+                { name: 'media_id', label: 'Media ID' },
+                { name: 'contact_list', label: 'Contact List (comma-separated)' }
+            ],
+            'document': [
+                { name: 'template_name', label: 'Template Name' },
+                { name: 'language', label: 'Language' },
+                { name: 'media_id', label: 'Media ID' },
+                { name: 'contact_list', label: 'Contact List (comma-separated)' }
+            ],
+            'video': [
+                { name: 'template_name', label: 'Template Name' },
+                { name: 'language', label: 'Language' },
+                { name: 'media_id', label: 'Media ID' },
+                { name: 'contact_list', label: 'Contact List (comma-separated)' }
+            ],
+            'report': [
+                { name: 'report_id', label: 'Report ID' }
+            ],
+            'balance': []
+        };
+
+        function showCurlForm(endpoint) {
+            currentEndpoint = endpoint;
+            const additionalFields = document.getElementById('additionalFields');
+            additionalFields.innerHTML = '';
+            
+            endpointFields[endpoint].forEach(field => {
+                additionalFields.innerHTML += `
+                    <div class="mb-3">
+                        <label class="form-label">${field.label}</label>
+                        <input type="text" class="form-control" name="${field.name}" required>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('curlResult').style.display = 'none';
+            modal.show();
+        }
+
+        function generateCurl() {
+            const form = document.getElementById('curlForm');
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            let url, requestData;
+            
+            if (currentEndpoint === 'report') {
+                url = 'https://wtsdealnow.com/get-report/';
+                requestData = {
+                    user_id: data.user_id,
+                    api_token: data.api_token,
+                    report_id: data.report_id
+                };
+            } else if (currentEndpoint === 'balance') {
+                url = 'https://sendsms-fastapi.onrender.com/balance_check_api';
+                requestData = {
+                    user_id: data.user_id,
+                    api_token: data.api_token
+                };
+            } else if (currentEndpoint === 'otp') {
+                url = 'https://sendsms-fastapi.onrender.com/send_sms_api';
+                requestData = {
+                    user_id: data.user_id,
+                    api_token: data.api_token,
+                    template_name: data.template_name,
+                    language: data.language,
+                    media_type: "OTP",
+                    media_id: currentEndpoint === 'text' ? null : data.media_id,
+                    contact_list: data.contact_list ? data.contact_list.split(',').map(num => num.trim()) : [],
+                    variable_list: data.variable_list ? data.variable_list.split(',').map(num => num.trim()) : [],
+                };
+            } else {
+                url = 'https://sendsms-fastapi.onrender.com/send_sms_api';
+                requestData = {
+                    user_id: data.user_id,
+                    api_token: data.api_token,
+                    template_name: data.template_name,
+                    language: data.language,
+                    media_type: currentEndpoint.toUpperCase(),
+                    media_id: currentEndpoint === 'text' ? null : data.media_id,
+                    contact_list: data.contact_list ? data.contact_list.split(',').map(num => num.trim()) : [],
+                    variable_list: null
+                };
+            }
+            
+            const curlCommand = `curl --location '${url}' \\
+--header 'Content-Type: application/json' \\
+--data '${JSON.stringify(requestData, null, 2)}'`;
+
+            document.getElementById('curlCode').textContent = curlCommand;
+            document.getElementById('curlResult').style.display = 'block';
+        }
+
+        function copyToClipboard() {
+            const curlCode = document.getElementById('curlCode').textContent;
+            navigator.clipboard.writeText(curlCode).then(() => {
+                const copyBtn = document.querySelector('.copy-btn');
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+{% endblock %}

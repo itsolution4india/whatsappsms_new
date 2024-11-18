@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+    h3 {
+        text-align: center;
+        margin: 10px;
+        color: #333;
+    }
+
+    table {
+        margin: 0px 20px 20px 20px;
+        width: 95%;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #a5a6ff;
+        color: white;
+        letter-spacing: 1px;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    tbody tr td {
+        color: #333;
+    }
+
+    td:last-child {
+        font-weight: bold;
+        text-transform: capitalize;
+        color: #4CAF50;
+    }
+
+    .credit {
+        color: #28a745;
+    }
+
+    .debit {
+        color: #dc3545;
+    }
+</style>
+
+{% endblock %}
+
+{% block content %}
+<h3>Coins History</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Transaction ID</th>
+            <th>Number of Coins</th>
+            <th>Date</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in coins_history %}
+        <tr>
+            <td>{{ entry.transaction_id }}</td>
+            <td>{{ entry.number_of_coins }}</td>
+            <td>{{ entry.created_at }}</td>
+            <td class="{{ entry.type }}">{{ entry.get_type_display }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No coins history available.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
