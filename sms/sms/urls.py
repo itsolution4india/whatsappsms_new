@@ -39,6 +39,7 @@ urlpatterns = [
     path('get-preview-url/<int:flow_id>/', views.get_preview_url_view, name='get_preview_url'),
     path('create_template_from_flow/', views.create_template_from_flow, name='create_template_from_flow'),
     path('access_denide/', views.access_denide, name='access_denide'), 
+    path('fetch-webhook-responses/', views.fetch_webhook_responses, name='fetch_webhook_responses')
     
     
     path('api/users/', views.customuser_list_view, name='customuser-list'),
