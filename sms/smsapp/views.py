@@ -1924,7 +1924,8 @@ def fetch_webhook_responses(request):
             port=3306,
             user="fedqrbtb_wtsdealnow",
             password="Solution@97",
-            database="fedqrbtb_report"
+            database="fedqrbtb_report",
+	    auth_plugin='mysql_native_password'
         )
 
         cursor = connection.cursor(dictionary=True)
