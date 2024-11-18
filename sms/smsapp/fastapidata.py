@@ -13,7 +13,7 @@ class DecimalEncoder(json.JSONEncoder):
 
 def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str]):
     #url = 'http://127.0.0.1:8000/send_sms/'
-    url="https://sendsms-fastapi.onrender.com/send_sms/"
+    url="https://wtsdealnow.in/send_sms/"
     
     headers = {
         'accept': 'application/json',
@@ -38,7 +38,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
 # Example usage
 
 def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: List[str]):
-    url = "https://sendsms-fastapi.onrender.com/send_flow_message/"
+    url = "https://wtsdealnow.in/send_flow_message/"
     
     headers = {
         'accept': 'application/json',
@@ -74,7 +74,7 @@ def send_bot_api(
     longitude: Optional[float | Decimal] = None,
     media_id: Optional[str] = None
 ) -> Dict:
-    url = "https://sendsms-fastapi.onrender.com/bot_api/"
+    url = "https://wtsdealnow.in/bot_api/"
     
     headers = {
         'accept': 'application/json',
