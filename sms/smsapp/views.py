@@ -587,7 +587,8 @@ def download_campaign_report(request, report_id, insight=False):
             port=3306,
             user="fedqrbtb_wtsdealnow",
             password="Solution@97",
-            database="fedqrbtb_report"
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
         query = "SELECT * FROM webhook_responses"
@@ -1496,7 +1497,8 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             port=3306,
             user="fedqrbtb_wtsdealnow",
             password="Solution@97",
-            database="fedqrbtb_report"
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
         
@@ -1855,7 +1857,8 @@ class GetReportAPI(APIView):
                     port=3306,
                     user="fedqrbtb_wtsdealnow",
                     password="Solution@97",
-                    database="fedqrbtb_report"
+                    database="fedqrbtb_report",
+                    auth_plugin='mysql_native_password'
                 )
                 cursor = connection.cursor()
                 query = "SELECT * FROM webhook_responses"
@@ -1925,7 +1928,7 @@ def fetch_webhook_responses(request):
             user="fedqrbtb_wtsdealnow",
             password="Solution@97",
             database="fedqrbtb_report",
-	    auth_plugin='mysql_native_password'
+	        auth_plugin='mysql_native_password'
         )
 
         cursor = connection.cursor(dictionary=True)
