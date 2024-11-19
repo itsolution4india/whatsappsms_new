@@ -199,7 +199,7 @@
                             <label for="linked_temp_${i}" class="form-label mt-1">Link Template</label>
                             <select id="linked_temp_${i}" name="linked_temp_${i}" class="form-control">
                                 <option value="">Select Template</option>
-                                {% for template in template_value %}
+                                {% for template in template_name %}
                                     <option value="{{ template }}">{{ template }}</option>
                                 {% endfor %}
                             </select>
