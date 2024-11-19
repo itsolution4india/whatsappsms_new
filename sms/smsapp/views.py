@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth import authenticate, login
 from django.core.exceptions import ObjectDoesNotExist
-from .models import CustomUser, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, CoinsHistory, Flows
+from .models import CustomUser, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, CoinsHistory, Flows, CountryPermission
 from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
@@ -223,7 +223,10 @@ def Send_Sms(request):
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
+            print("contacts",contacts)
             all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+            print("all_contact", all_contact)
+            print("contact_list", contact_list)
             
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
@@ -248,23 +251,37 @@ def Send_Sms(request):
 ##################
 #Valid _and _ Duplicate method
 import re
-def validate_phone_numbers(request,contacts, uploaded_file,discount):
+def validate_phone_numbers(request, contacts, uploaded_file, discount):
     valid_numbers = set()
-    pattern = re.compile(r'^(\+91[\s-]?)?[0]?(91)?[6789]\d{9}$')
+    
+    # Get user's country permissions
+    try:
+        permissions = CountryPermission.objects.get(user=request.user)
+    except CountryPermission.DoesNotExist:
+        permissions = None
+
+    # Define country-specific patterns
+    patterns = {}
+    if permissions:
+        if permissions.can_send_msg_to_india:
+            patterns['india'] = re.compile(r"^\+?91\d{10}$")
+        if permissions.can_send_msg_to_nepal:
+            patterns['nepal'] = re.compile(r"^\+?977\d{9}$")
+        if permissions.can_send_msg_to_us:
+            patterns['us'] = re.compile(r"^\+?1\d{10}$")
+        if permissions.can_send_msg_to_australia:
+            patterns['australia'] = re.compile(r"^\+?61\d{9}$")
+
+    # If no permissions are set, return empty lists
+    if not patterns:
+        return [], []
 
     # Parse contacts from POST request
+    numbers_list = set()
     if contacts:
-        numbers_list = set(contacts.split("\r\n"))
-    else:
-        numbers_list = set()
-    '''
+        numbers_list.update(contacts.split("\r\n"))
+
     # Parse contacts from uploaded file
-    if uploaded_file:
-        file_content = uploaded_file.read()
-        for line in file_content.splitlines():
-            phone_number = line.strip().decode('utf-8')
-            numbers_list.add(phone_number) '''
-           
     if uploaded_file:
         workbook = openpyxl.load_workbook(uploaded_file)
         sheet = workbook.active
@@ -273,49 +290,57 @@ def validate_phone_numbers(request,contacts, uploaded_file,discount):
                 if cell.value is not None:
                     numbers_list.add(str(cell.value).strip())
 
-    # Validate phone numbers
+    # Validate phone numbers against permitted country patterns
     for phone_number in numbers_list:
-        if pattern.match(phone_number):
-            valid_numbers.add(phone_number)
-            
-   
-    whitelist_number,blacklist_number=whitelist_blacklist(request)
-    def fnn(valid_numbers,discount):
-        discount1=(len(valid_numbers)*discount)//100
-        return discount1
+        phone_number = phone_number.strip()
+        for country, pattern in patterns.items():
+            if pattern.match(phone_number):
+                valid_numbers.add(phone_number)
+                break
+
+    # Get whitelist and blacklist numbers
+    whitelist_number, blacklist_number = whitelist_blacklist(request)
+
+    def fnn(valid_numbers, discount):
+        return (len(valid_numbers) * discount) // 100
+
     def whitelist(valid_numbers, whitelist_number, blacklist_numbers, discount):
         final_list = []
         
-        for i in valid_numbers:
-            if i in whitelist_number and i not in blacklist_numbers:
-                final_list.append(i)
+        # Add whitelisted numbers that aren't blacklisted
+        for num in valid_numbers:
+            if num in whitelist_number and num not in blacklist_numbers:
+                final_list.append(num)
+        
+        # Add non-whitelisted, non-blacklisted numbers after discount
         count = 0
-        for j in valid_numbers:
-            if j not in whitelist_number and j not in blacklist_numbers:
-                count+=1
+        for num in valid_numbers:
+            if num not in whitelist_number and num not in blacklist_numbers:
+                count += 1
                 if count > discount:
-                    final_list.append(j)
-                else:
-                    continue
+                    final_list.append(num)
+        
         return final_list
+
+    valid_numbers = list(valid_numbers)
     
-    valid_numbers=list(valid_numbers)
-    if len(valid_numbers)>100:
-        discount=discount
+    # Apply discount logic
+    if len(valid_numbers) > 100:
+        discount = discount
     else:
-        discount=0
+        discount = 0
         phone_numbers_string = ",".join(valid_numbers)
         Whitelist_Blacklist.objects.create(
-        email=request.user,
-        whitelist_phone=phone_numbers_string
+            email=request.user,
+            whitelist_phone=phone_numbers_string
         )
 
-    discountnumber=fnn(valid_numbers,discount)
+    discountnumber = fnn(valid_numbers, discount)
     logging.info(f"discount {discount}")
     logging.info(f"discountnumber {discountnumber}")
-    final_list=whitelist(valid_numbers,whitelist_number,blacklist_number,discountnumber)
     
-
+    final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
+    
     return valid_numbers, final_list
 
 ####################
