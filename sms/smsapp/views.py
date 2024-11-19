@@ -97,7 +97,7 @@ def user_login(request):
                 logger.warning(f"Failed login attempt for {username_or_email}")
                 form.add_error(None, "Invalid email/username or password.")
         else:
-            logging.warning(f"Invalid form submission: {form.errors}")
+            logger.warning(f"Invalid form submission: {form.errors}")
 
     else:
         form = UserLoginForm()
@@ -335,8 +335,8 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
         )
 
     discountnumber = fnn(valid_numbers, discount)
-    logging.info(f"discount {discount}")
-    logging.info(f"discountnumber {discountnumber}")
+    logger.info(f"discount {discount}")
+    logger.info(f"discountnumber {discountnumber}")
     
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
     
@@ -935,7 +935,7 @@ def delete_schedule(request, schedule_id):
 
 #                 linked_template_name = latest_template.linked_template_name
 #                 image_id = latest_template.image_id
-#                 logging.info(f"image_id {image_id}")
+#                 logger.info(f"image_id {image_id}")
                 
 #                 try:
 #                     # Split the image_id and check the resulting list length
@@ -948,7 +948,7 @@ def delete_schedule(request, schedule_id):
 #                         raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
                 
 #                 except Exception as e:
-#                     logging.info(f"Error {e}")
+#                     logger.info(f"Error {e}")
 #                     image_id = None
 #                     media_type = "TEXT"
                 
@@ -964,15 +964,15 @@ def delete_schedule(request, schedule_id):
 #                         status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", phone_number)
 #                     else:
 #                         send_api(str(token), str(phone_number_id), str(linked_template_name), "en", str(media_type), str(image_id), [phone_number], None)
-#                     logging.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
+#                     logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
 #                 except Exception as e:
-#                     logging.error(f"Failed to send next reply message {e}")
+#                     logger.error(f"Failed to send next reply message {e}")
 #                 # You can also save it in your model if needed
 #                 return JsonResponse({'status': 'success'}, status=200)
 #             else:
 #                 return JsonResponse({'status': 'error', 'message': 'Phone number missing'}, status=400)
 #         except Exception as e:
-#             logging.error(f"Error processing phone number: {e}")
+#             logger.error(f"Error processing phone number: {e}")
 #             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
 #     return JsonResponse({'status': 'error', 'message': 'Invalid method'}, status=405)
 
@@ -991,7 +991,7 @@ def save_phone_number(request):
                     pass
                 try:
                     user_response = response['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-                    logging.info(f"user_response {user_response}")
+                    logger.info(f"user_response {user_response}")
                 except (KeyError, IndexError):
                     pass
                 phone_number_id = response['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']
@@ -1007,7 +1007,7 @@ def save_phone_number(request):
                         button_name=reply_text
                     ).order_by('-updated_at').first()
                 except Exception as e:
-                    logging.info(f"Error: {e}")
+                    logger.info(f"Error: {e}")
                     latest_template = None
 
                 try:
@@ -1015,12 +1015,12 @@ def save_phone_number(request):
                         user_response=user_response,
                         user__in=emails
                     ).first()
-                    logging.info(f"message_type: {filter_message_response.message_type}")
+                    logger.info(f"message_type: {filter_message_response.message_type}")
                 except Exception as e:
-                    logging.info(f"Error: {e}")
+                    logger.info(f"Error: {e}")
                     filter_message_response =None
 
-                logging.info(f"filter_message_response {filter_message_response}")
+                logger.info(f"filter_message_response {filter_message_response}")
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
                     ).first()
@@ -1030,7 +1030,7 @@ def save_phone_number(request):
                 if latest_template:
                     linked_template_name = latest_template.linked_template_name
                     image_id = latest_template.image_id
-                    logging.info(f"image_id {image_id}")
+                    logger.info(f"image_id {image_id}")
                     
                     try:
                         # Split the image_id and check the resulting list length
@@ -1043,7 +1043,7 @@ def save_phone_number(request):
                             raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
                     
                     except Exception as e:
-                        logging.info(f"Error {e}")
+                        logger.info(f"Error {e}")
                         image_id = None
                         media_type = "TEXT"
                     
@@ -1059,9 +1059,9 @@ def save_phone_number(request):
                             status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", [phone_number])
                         else:
                             send_api(str(token), str(phone_number_id), str(linked_template_name), "en", str(media_type), str(image_id), [phone_number], None)
-                        logging.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
+                        logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
                     except Exception as e:
-                        logging.error(f"Failed to send next reply message {e}")
+                        logger.error(f"Failed to send next reply message {e}")
                 elif filter_message_response:
                     message_type = filter_message_response.message_type
                     if message_type == "list_message":
@@ -1089,7 +1089,7 @@ def save_phone_number(request):
             else:
                 return JsonResponse({'status': 'error', 'message': 'Phone number missing'}, status=400)
         except Exception as e:
-            logging.error(f"Error processing phone number: {e}")
+            logger.error(f"Error processing phone number: {e}")
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
     return JsonResponse({'status': 'error', 'message': 'Invalid method'}, status=405)
     
@@ -1128,7 +1128,7 @@ def create_flow_message(request):
                 messages.error(request, "Failed to create flow template")
         except Exception as e:
             messages.error(request, "Failed to create flow template")
-            logging.error(f"Couldn't create flow template {e}")
+            logger.error(f"Couldn't create flow template {e}")
 
     context = {
         "flows": filtered_flows,
@@ -1509,7 +1509,7 @@ def delete_template_linkage(request, id):
             messages.success(request, "Successfully Deleted")
         except Exception as e:
             messages.error(request, "Something went wrong, Try again later")
-            logging.error(f"Error in deleting linked template  {e}")
+            logger.error(f"Error in deleting linked template  {e}")
         return redirect('link_templates')
         
 @login_required
@@ -1538,8 +1538,8 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             
             query += " WHERE CAST(message_timestamp AS SIGNED) BETWEEN %s AND %s"
             query_params.extend([start_timestamp, end_timestamp])
-            logging.info(f"Date range query part: {query}")
-            logging.info(f"Date parameters (timestamps): {query_params}")
+            logger.info(f"Date range query part: {query}")
+            logger.info(f"Date parameters (timestamps): {query_params}")
         
         # Add button_name filter if provided
         if button_name:
@@ -1552,13 +1552,13 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                 query += " WHERE LOWER(message_body) LIKE LOWER(%s)"
             query_params.append(f"%{button_name}%")
             
-        logging.info(f"Final query: {query}")
-        logging.info(f"Final parameters: {query_params}")
+        logger.info(f"Final query: {query}")
+        logger.info(f"Final parameters: {query_params}")
         
         # Execute query and log the results
         cursor.execute(query, tuple(query_params))
         rows = cursor.fetchall()
-        logging.info(f"Number of rows fetched: {len(rows)}")
+        logger.info(f"Number of rows fetched: {len(rows)}")
         
         # Define headers
         headers = ['Date', 'display_phone_number', 'phone_number_id', 'waba_id',
@@ -1570,11 +1570,11 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         
         # Log some sample messages for debugging
         if not df.empty:
-            logging.info("Sample messages in the data:")
+            logger.info("Sample messages in the data:")
             sample_messages = df['message_body'].head().tolist()
-            logging.info(f"Sample messages: {sample_messages}")
+            logger.info(f"Sample messages: {sample_messages}")
             sample_timestamps = df['message_timestamp'].head().tolist()
-            logging.info(f"Sample timestamps: {sample_timestamps}")
+            logger.info(f"Sample timestamps: {sample_timestamps}")
         
         # Create the HttpResponse object with CSV header
         response = HttpResponse(content_type='text/csv')
@@ -1593,14 +1593,14 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             writer.writerow(headers)  # Write headers
             writer.writerows(rows)    # Write all rows
             
-            logging.info(f"CSV file created with {len(rows)} rows")
+            logger.info(f"CSV file created with {len(rows)} rows")
             return response
         else:
             return df
             
     except Exception as e:
         logger.error(f"Error in download_linked_report: {str(e)}")
-        logging.error(f"Full error details: {str(e)}")
+        logger.error(f"Full error details: {str(e)}")
         messages.error(request, "An error occurred while generating the report.")
         return redirect('reports')
     finally:
@@ -1758,7 +1758,7 @@ def create_template_from_flow(request):
             try:
                 Templates.objects.create(email=request.user, templates=template_name)
             except Exception as e:
-                logging.error(f"Error, {e}")
+                logger.error(f"Error, {e}")
             return JsonResponse({'success': True})
         
         else:
@@ -1812,32 +1812,32 @@ class UpdateBalanceReportView(APIView):
                 
                 if filtered_user:
                     user_email = filtered_user['email']
-                    logging.info(f"User email: {user_email}")
+                    logger.info(f"User email: {user_email}")
 
                     try:
                         schedule_subtract_coins(user_email, coins)
                     except Exception as e:
-                        logging.error(f"Error subtracting coins: {str(e)}")
+                        logger.error(f"Error subtracting coins: {str(e)}")
                         return Response({"error": "Failed to subtract coins", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
                     try:
                         report_id = create_report(user_email, phone_numbers, all_contact, template_name)
                         return Response({"report_id": report_id}, status=status.HTTP_200_OK)
                     except Exception as e:
-                        logging.error(f"Error creating report: {str(e)}")
+                        logger.error(f"Error creating report: {str(e)}")
                         return Response({"error": "Failed to create report", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
                 else:
-                    logging.warning("User not found or invalid API token")
+                    logger.warning("User not found or invalid API token")
                     return Response({"error": "Invalid user or API token"}, status=status.HTTP_404_NOT_FOUND)
             else:
-                logging.error("Unexpected response format from customuser_list_view")
+                logger.error("Unexpected response format from customuser_list_view")
                 return Response({"error": "Invalid response format"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         except KeyError as e:
-            logging.error(f"Missing required field: {str(e)}")
+            logger.error(f"Missing required field: {str(e)}")
             return Response({"error": f"Missing required field: {str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            logging.error(f"Unexpected error: {str(e)}")
+            logger.error(f"Unexpected error: {str(e)}")
             return Response({"error": "An unexpected error occurred", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
             
@@ -1871,7 +1871,7 @@ class GetReportAPI(APIView):
             except ReportInfo.DoesNotExist:
                 return Response({"error": "560, Report not found"}, status=status.HTTP_404_NOT_FOUND)
             except Exception as e:
-                logging.error(f"Error fetching report: {str(e)}")
+                logger.error(f"Error fetching report: {str(e)}")
                 return Response({"error": "570, Failed to get report data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
             # Database connection setup
@@ -1889,7 +1889,7 @@ class GetReportAPI(APIView):
                 cursor.execute(query)
                 rows = cursor.fetchall()
             except mysql.connector.Error as err:
-                logging.error(f"MySQL Error: {str(err)}")
+                logger.error(f"MySQL Error: {str(err)}")
                 return Response({"error": "600, Database connection error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
             # Processing rows into a dictionary for easy lookup
@@ -1930,7 +1930,7 @@ class GetReportAPI(APIView):
             return Response({"report_data": report_data}, status=status.HTTP_200_OK)
 
         except Exception as e:
-            logging.error(f"Unexpected error: {str(e)}")
+            logger.error(f"Unexpected error: {str(e)}")
             return Response({"error": "999, An unexpected error occurred", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def api_manual(request):
