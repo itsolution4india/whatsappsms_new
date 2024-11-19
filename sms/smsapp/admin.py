@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows
+from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows, CountryPermission
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
@@ -129,11 +129,15 @@ class TemplatesAdmin(admin.ModelAdmin):
 class UserAccessAdmin(admin.ModelAdmin):
     list_display = ('user', 'can_send_sms', 'can_view_reports', 'can_manage_campaign', 'can_schedule_tasks', 'can_create_flow_message', 'can_send_flow_message', 'can_link_templates', 'can_manage_bot_flow')
 
+class CountryPermissionAdmin(admin.ModelAdmin):
+    list_display = ('user', 'can_send_msg_to_india', 'can_send_msg_to_nepal', 'can_send_msg_to_us', 'can_send_msg_to_australia')
+
 # Register your admin class with the model
 admin.site.register(Templates, TemplatesAdmin)
 admin.site.register(ScheduledMessage)
 admin.site.register(TemplateLinkage)
 admin.site.register(MessageResponse)
 admin.site.register(UserAccess, UserAccessAdmin)
+admin.site.register(CountryPermission, CountryPermissionAdmin)
 admin.site.register(CoinsHistory)
 admin.site.register(Flows)
