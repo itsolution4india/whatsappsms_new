@@ -250,6 +250,7 @@ class CountryPermission(models.Model):
     can_send_msg_to_nepal = models.BooleanField(default=False)
     can_send_msg_to_us = models.BooleanField(default=False)
     can_send_msg_to_australia = models.BooleanField(default=False)
+    can_send_msg_to_uae = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.email} - Access Rights"

@@ -78,8 +78,12 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
         for number in all_contact:
             if number.startswith("+91"):
                 formatted_numbers.append("91" + number[3:])
-            elif not number.startswith("91"):
-                formatted_numbers.append("91" + number)
+            elif number.startswith("+977"):
+                formatted_numbers.append("977" + number)
+            elif number.startswith("+1"):
+                formatted_numbers.append("1" + number)
+            elif number.startswith("+61"):
+                formatted_numbers.append("61" + number)
             else:
                 formatted_numbers.append(number)
 
