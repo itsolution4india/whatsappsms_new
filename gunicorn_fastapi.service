@@ -1,0 +1,27 @@
+[Unit]
+Description=gunicorn daemon for FastAPI app
+Requires=gunicorn_fastapi.socket
+After=network.target
+
+[Service]
+User=root
+Group=root
+WorkingDirectory=/var/www/fastapi_develop
+RuntimeDirectory=gunicorn
+Environment="PATH=/var/www/fastapi_env/bin"
+ExecStart=/var/www/fastapi_env/bin/gunicorn \
+          --access-logfile /var/log/fastapi_access.log \
+          --error-logfile /var/log/fastapi_error.log \
+          --workers 3 \
+          --worker-class uvicorn.workers.UvicornWorker \
+          --bind unix:/run/gunicorn_fastapi.sock \
+          --log-level debug \
+          main:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+

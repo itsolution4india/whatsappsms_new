@@ -1,0 +1,11 @@
+[Unit]
+Description=gunicorn fastapi socket
+
+[Socket]
+ListenStream=/run/gunicorn_fastapi.sock
+SocketUser=root
+SocketGroup=www-data
+SocketMode=0660
+
+[Install]
+WantedBy=sockets.target
