@@ -1,0 +1,23 @@
+[Unit]
+Description=gunicorn daemon for Flask app
+Requires=gunicorn_flask.socket
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/webhook_develop
+# Add runtime directory
+RuntimeDirectory=gunicorn
+ExecStart=/root/wtsdashboard/wtsenv/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn_flask.sock \
+          webhook_api:app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
