@@ -4166,3 +4166,187 @@ Traceback (most recent call last):
   File "/home/fedqrbtb/virtualenv/wtsdealnow.com/whatsappsms/sms/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
     raise DisallowedHost(msg)
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'wtsdealnow.in'. You may need to add 'wtsdealnow.in' to ALLOWED_HOSTS.
+Internal Server Error: /report_insight/998/
+Internal Server Error: /report_insight/998/
+Invalid HTTP_HOST header: 'autodiscover.whtsappdealnow.in'. You may need to add 'autodiscover.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodiscover.whtsappdealnow.in'. You may need to add 'autodiscover.whtsappdealnow.in' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'vzlom.biz'. You may need to add 'vzlom.biz' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'vzlom.biz'. You may need to add 'vzlom.biz' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143:443'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143:443'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143'. You may need to add '46.202.130.143' to ALLOWED_HOSTS.
