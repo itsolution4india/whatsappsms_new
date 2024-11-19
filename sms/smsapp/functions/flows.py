@@ -1,11 +1,8 @@
 import requests
 import json
-import time
 import logging
 from django.utils import timezone
-from django.contrib import messages
 from ..models import ReportInfo
-from ..display_templates import fetch_templates
 from ..fastapidata import send_flow_message_api
 from .send_messages import schedule_subtract_coins, subtract_coins
 

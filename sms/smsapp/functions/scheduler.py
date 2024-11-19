@@ -12,7 +12,7 @@ from filelock import FileLock
 from django.conf import settings
 from ..models import ScheduledMessage, CustomUser
 from .send_messages import send_messages
-from ..display_templates import fetch_templates
+from .template_msg import fetch_templates
 import logging
 
 logger = logging.getLogger(__name__)
