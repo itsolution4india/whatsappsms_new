@@ -1,50 +1,24 @@
-# Python bytecode files
+# Python
 __pycache__/
 *.py[cod]
-*$py.class
+*.sqlite3
 
-# Django specific files
+# Django
 *.log
-local_settings.py
-db.sqlite3-journal
 *.pot
 *.pyc
-
-# Media and static files
-/media
-/staticfiles
+*.pyo
+*.pyd
+*.env
+*.db
 
 # Virtual environment
 venv/
 env/
-ENV/
 
-# VSCode settings
-.vscode/
-
-# IDE related files
-.idea/
-
-# Migrations
-**/migrations/*
-
-# Pytest cache
-.pytest_cache/
-
-# Coverage reports
-htmlcov/
-.tox/
-.coverage
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-
-# MySQL dump files
-*.sql
-
-# Ignore all node_modules (for React or frontend components)
+# Node
 node_modules/
 
-# Environment variables
-.env
+# Git
+.DS_Store
+.idea/
