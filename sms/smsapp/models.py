@@ -244,3 +244,12 @@ class Flows(models.Model):
     email = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     flows=models.CharField(unique=True,max_length=100)
     
+class CountryPermission(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+    can_send_msg_to_india = models.BooleanField(default=False)
+    can_send_msg_to_nepal = models.BooleanField(default=False)
+    can_send_msg_to_us = models.BooleanField(default=False)
+    can_send_msg_to_australia = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.user.email} - Access Rights"
