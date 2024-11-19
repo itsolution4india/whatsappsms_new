@@ -130,7 +130,7 @@ class UserAccessAdmin(admin.ModelAdmin):
     list_display = ('user', 'can_send_sms', 'can_view_reports', 'can_manage_campaign', 'can_schedule_tasks', 'can_create_flow_message', 'can_send_flow_message', 'can_link_templates', 'can_manage_bot_flow')
 
 class CountryPermissionAdmin(admin.ModelAdmin):
-    list_display = ('user', 'can_send_msg_to_india', 'can_send_msg_to_nepal', 'can_send_msg_to_us', 'can_send_msg_to_australia')
+    list_display = ('user', 'can_send_msg_to_india', 'can_send_msg_to_nepal', 'can_send_msg_to_us', 'can_send_msg_to_australia', 'can_send_msg_to_uae')
 
 # Register your admin class with the model
 admin.site.register(Templates, TemplatesAdmin)

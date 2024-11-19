@@ -223,10 +223,7 @@ def Send_Sms(request):
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
-            print("contacts",contacts)
             all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
-            print("all_contact", all_contact)
-            print("contact_list", contact_list)
             
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
@@ -271,6 +268,8 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
             patterns['us'] = re.compile(r"^\+?1\d{10}$")
         if permissions.can_send_msg_to_australia:
             patterns['australia'] = re.compile(r"^\+?61\d{9}$")
+        if permissions.can_send_msg_to_uae:
+            patterns['uae'] = re.compile(r"^\+?971\d{9}$")
 
     # If no permissions are set, return empty lists
     if not patterns:
