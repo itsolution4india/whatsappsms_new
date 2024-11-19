@@ -2,56 +2,39 @@
 from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponse
 from django.contrib.auth.tokens import default_token_generator
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.core.exceptions import ObjectDoesNotExist
 from .models import CustomUser, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, CoinsHistory, Flows, CountryPermission
-from django.conf import settings
 from django.db import IntegrityError
 from django.contrib.auth.decorators import login_required
 from .forms import UserLoginForm
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from .campaignmail import send_email_change_notification
 import logging
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpRequest, HttpResponse
-from django.http import HttpResponseForbidden
+from django.http import HttpResponse
 from .models import ReportInfo,Templates, UserAccess
 from django.contrib.auth import logout
-from django.utils import timezone
 import requests
 logger = logging.getLogger('django')
-from datetime import datetime, timedelta
-from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
-from .display_templates import fetch_templates
 from .media_id import get_media_format,generate_id, process_media_file
-from .send_message import send_messages_api
 from .create_template import template_create, create_auth_template
-# from .message_id import generate_pattern
 import openpyxl 
 from .models import Whitelist_Blacklist
 from django.contrib import messages
-from django.http import request
-from django.http import FileResponse, Http404
-import os
-from django.conf import settings 
 from .forms import UserLoginForm  
-import threading
 import json
-import ast
 import random
 import time
-from .campaign_media_id import header_handle
-#from .smsapi import send_api
+from .functions.template_msg import header_handle, fetch_templates, delete_whatsapp_template
 from .fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
 from .utils import check_schedule_timings, CustomJSONDecoder, create_report
-from .functions.template_msg import delete_whatsapp_template
 import pandas as pd
 
 from rest_framework.views import APIView
