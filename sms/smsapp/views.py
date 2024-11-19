@@ -22,7 +22,7 @@ from .models import ReportInfo,Templates, UserAccess
 from django.contrib.auth import logout
 from django.utils import timezone
 import requests
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('django')
 from datetime import datetime, timedelta
 from django.db.models import Sum
 from django.views.decorators.csrf import csrf_exempt
@@ -97,7 +97,7 @@ def user_login(request):
                 logger.warning(f"Failed login attempt for {username_or_email}")
                 form.add_error(None, "Invalid email/username or password.")
         else:
-            logger.warning(f"Invalid form submission: {form.errors}")
+            logging.warning(f"Invalid form submission: {form.errors}")
 
     else:
         form = UserLoginForm()
