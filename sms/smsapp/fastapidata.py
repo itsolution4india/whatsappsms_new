@@ -1,10 +1,10 @@
 import requests
-import logging
 from typing import List, Dict, Optional
 from requests.exceptions import RequestException
 import json
 from decimal import Decimal
 from .views import logger
+from .utils import insert_bot_sent_message
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -107,9 +107,16 @@ def send_bot_api(
     
     # Remove None values from the data
     t = {k: v for k, v in data.items() if v is not None}
-    logging.info(f"fastapi {url} {headers} {t}")
-    logging.info(f"{type(contacts)}")
+    logger.info(f"fastapi {url} {headers} {t}")
+    logger.info(f"{type(contacts)}")
     
+    try:
+        insert_bot_sent_message(token=token,phone_number_id=phone_number_id,contacts=contacts,message_type=message_type,header=header,body=body,footer=footer,button_data=button_data,product_data=product_data,catalog_id=catalog_id,sections=sections,lat=lat,lon=lon,media_id=media_id)
+        logger.info("BotSentMessages successfully saved in the database")
+        
+    except Exception as e:
+        logger.error(f"Error saving BotSentMessages: {e}")
+
     try:
         # Convert the data to JSON string using the custom encoder
         json_data = json.dumps(t, cls=DecimalEncoder)
@@ -132,5 +139,5 @@ def send_bot_api(
         logger.error(f"HTTP error occurred: {http_err}, Response: {response.text}")
         raise RequestException(f"HTTP error occurred: {http_err}")
     except Exception as e:
-        logging.error(f"Error: {e}")
+        logger.error(f"Error: {e}")
         raise

@@ -194,7 +194,44 @@ class MessageResponse(models.Model):
     def __str__(self):
         return f"{self.message_type} - {self.user_response[:30]}"
         
-    
+class BotSentMessages(models.Model):
+    MESSAGE_TYPES = [
+        ('list_message', 'List Message'),
+        ('reply_button_message', 'Reply Button Message'),
+        ('single_product_message', 'Single Product Message'),
+        ('multi_product_message', 'Multi Product Message'),
+        ('send_my_location', 'Send My Location'),
+        ('request_user_location', 'Request User Location'),
+        ('link_template', 'Link Template'),
+        ('send_text_message', 'Send Text Message')
+    ]
+
+    token = models.CharField(max_length=255)
+    phone_number_id = models.CharField(max_length=255)
+    contact_list = models.JSONField(default=list, blank=True)
+    message_type = models.CharField(max_length=50, choices=MESSAGE_TYPES)
+    header = models.TextField(blank=True, null=True)
+    body = models.TextField()
+    footer = models.TextField(blank=True, null=True)
+    button_data = models.JSONField(default=dict, blank=True)
+    product_data = models.JSONField(default=dict, blank=True)
+    catalog_id = models.CharField(max_length=255, blank=True, null=True)
+    sections = models.JSONField(default=list, blank=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    media_id = models.CharField(max_length=255, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['phone_number_id', 'message_type']),
+            models.Index(fields=['created_at']),
+        ]
+
+    def __str__(self):
+        return f"Message to {self.phone_number_id} - {self.message_type}"
+
 class UserAccess(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
     can_send_sms = models.BooleanField(default=False)

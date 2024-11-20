@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from .models import ScheduledMessage, ReportInfo
+from .models import ScheduledMessage, ReportInfo, BotSentMessages
 from django.utils.timezone import now
 import json
 import random
@@ -80,7 +80,33 @@ def create_report(current_user, phone_numbers_string, all_contact, template_name
         return report_id
     except Exception as e:
         return str(e)
+
+def insert_bot_sent_message(
+    token, phone_number_id, contacts, message_type, header, body, footer, 
+    button_data, product_data, catalog_id, sections, lat, lon, media_id
+):
+    # Create a new instance of BotSentMessages
+    new_message = BotSentMessages(
+        token=token,
+        phone_number_id=phone_number_id,
+        contact_list=contacts,
+        message_type=message_type,
+        header=header,
+        body=body,
+        footer=footer,
+        button_data=button_data,
+        product_data=product_data,
+        catalog_id=catalog_id,
+        sections=sections,
+        latitude=lat,
+        longitude=lon,
+        media_id=media_id,
+    )
     
+    new_message.save()
+
+    return new_message
+
 def get_template_details_by_name(token, waba_id, template_name):
     url = f"https://graph.facebook.com/v14.0/{waba_id}/message_templates"
     
