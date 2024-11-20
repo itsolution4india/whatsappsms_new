@@ -15,6 +15,7 @@ ALLOWED_HOSTS = [
     '.wtsdealnow.com',  # Allow subdomains
     'localhost',
     '127.0.0.1',
+    '46.202.130.143',
     '[::1]'
 ]
 # CORS Configuration
