@@ -1926,6 +1926,7 @@ def api_manual(request):
         }
     return render(request, "api_manual.html", context)
 
+@login_required
 def fetch_webhook_responses(request):
     try:
         # Establish the connection
