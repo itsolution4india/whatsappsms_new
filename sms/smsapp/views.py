@@ -15,7 +15,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from .models import ReportInfo,Templates, UserAccess
+from .models import ReportInfo,Templates, UserAccess, BotSentMessages
 from django.contrib.auth import logout
 import requests
 logger = logging.getLogger('django')
@@ -1963,3 +1963,101 @@ def fetch_webhook_responses(request):
     except mysql.connector.Error as err:
         # If there is an error, display it
         return JsonResponse({"status": "error", "message": str(err)})
+
+@login_required
+def bot_interactions(request):
+    try:
+        logger.info(f"Bot interactions view accessed by user: {request.user.username}")
+
+        df = download_linked_report(request)
+        logger.info(f"Linked report downloaded. Total rows: {len(df)}")
+
+        df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+        df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+        
+        filtered_df = df[
+            (df['contact_wa_id'] == '916361161836') & 
+            (df['status'] == 'reply')
+        ].copy()
+        logger.info(f"Filtered DataFrame rows: {len(filtered_df)}")
+
+        filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
+        
+        messages_data = list(BotSentMessages.objects.all().values())
+        messages_df = pd.DataFrame(messages_data)
+        logger.info(f"Total bot sent messages: {len(messages_df)}")
+
+        messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
+        
+        combined_data = []
+        
+        try:
+            for _, row in filtered_df.iterrows():
+                record = {
+                    'source': 'df',
+                    'Date': row['Date'],
+                    'display_phone_number': row['display_phone_number'],
+                    'phone_number_id': row['phone_number_id'],
+                    'waba_id': row['waba_id'],
+                    'contact_wa_id': row['contact_wa_id'],
+                    'status': row['status'],
+                    'message_timestamp': row['message_timestamp'],
+                    'error_code': row['error_code'],
+                    'error_message': row['error_message'],
+                    'contact_name': row['contact_name'],
+                    'message_from': row['message_from'],
+                    'message_type': row['message_type'],
+                    'message_body': row['message_body'],
+                }
+                combined_data.append(record)
+            
+            for _, row in messages_df.iterrows():
+                record = {
+                    'source': 'messages',
+                    'id': row['id'],
+                    'token': row['token'],
+                    'phone_number_id': row['phone_number_id'],
+                    'contact_list': row['contact_list'],
+                    'message_type': row['message_type'],
+                    'header': row['header'],
+                    'body': row['body'],
+                    'footer': row['footer'],
+                    'button_data': row['button_data'],
+                    'product_data': row['product_data'],
+                    'catalog_id': row['catalog_id'],
+                    'latitude': row['latitude'],
+                    'longitude': row['longitude'],
+                    'media_id': row['media_id'],
+                    'created_at': row['created_at'],
+                    'sections': row['sections'],
+                }
+                combined_data.append(record)
+
+            for item in combined_data:
+                if 'Date' in item and item['Date'] is not None:
+                    item['Date'] = item['Date'].replace(tzinfo=None)
+                if 'created_at' in item and item['created_at'] is not None:
+                    item['created_at'] = item['created_at'].replace(tzinfo=None)
+
+            combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
+            
+            phone_numbers = set(record['phone_number_id'] for record in combined_data)
+            logger.info(f"Unique phone numbers found: {len(phone_numbers)}")
+
+            context = {
+                "coins": request.user.coins,
+                "username": username(request),
+                "WABA_ID": display_whatsapp_id(request),
+                "PHONE_ID": display_phonenumber_id(request),
+                "phone_numbers": phone_numbers,
+                "combined_data": combined_data
+            }
+            return render(request, "bot_interactions.html", context)
+
+        except Exception as data_processing_error:
+            logger.error(f"Error processing bot interactions data: {data_processing_error}", exc_info=True)
+            return render(request, "error.html", {"error": "Data processing failed"})
+
+    except Exception as view_error:
+        logger.error(f"Critical error in bot_interactions view: {view_error}", exc_info=True)
+        return render(request, "error.html", {"error": "An unexpected error occurred"})
