@@ -126,3 +126,9 @@ def get_template_details_by_name(token, waba_id, template_name):
         logging.error(f"Failed to get template details. Status code: {response.status_code}")
         logging.error(f"Response: {response.text}")
         return None
+
+def validate_balance(balance, total_numbers):
+    if balance > total_numbers:
+        return True
+    else:
+        return False
