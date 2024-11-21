@@ -34,7 +34,7 @@ from .fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
-from .utils import check_schedule_timings, CustomJSONDecoder, create_report
+from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance
 import pandas as pd
 
 from rest_framework.views import APIView
@@ -207,6 +207,11 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+
+            coin_validation = validate_balance(request.user.coins, len(contact_list))
+            if not coin_validation:
+                messages.error(request, "Insufficient balance. Please update.")
+                return render(request, "send-sms.html", context)
             
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
@@ -1357,6 +1362,11 @@ def send_flow_message(request):
 
         discount = show_discount(request.user)
         all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+
+        coin_validation = validate_balance(request.user.coins, len(contact_list))
+        if not coin_validation:
+            messages.error(request, "Insufficient balance. Please update.")
+            return render(request, "send-flow.html", context)
 
         try:
             send_flow_messages_with_report(current_user, token, phone_id, campaign_list, flow_name, all_contact, contact_list,campaign_title, request)
