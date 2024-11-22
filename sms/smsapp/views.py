@@ -468,14 +468,6 @@ def Campaign(request):
         
     return render(request, "Campaign.html", context)
 
-####################
-# @login_required
-# def delete_campaign(request, template_id):
-#     if template_id is None:
-#         return 
-#     campaign_data = get_object_or_404(CampaignData, template_id=template_id)
-#     campaign_data.delete()
-#     return redirect('campaign')
 import csv
 @login_required
 def Reports(request):
@@ -504,86 +496,7 @@ def Reports(request):
 ############
 import mysql.connector
 import csv
-import os
 import copy
-'''
-@login_required
-def download_campaign_report(request, report_id):
-    try:
-        # Fetch the specific report based on the report_id
-        report = get_object_or_404(ReportInfo, id=report_id)
-        Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
-        contacts = report.contact_list.split('\r\n')
-        contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-
-        # Connect to the database
-        connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="fedqrbtb_wtsdealnow",
-            password="Solution@97",
-            database="fedqrbtb_report"
-        )
-        cursor = connection.cursor()
-        query = "SELECT * FROM webhook_responses"
-        cursor.execute(query)
-        rows = cursor.fetchall()
-
-        # Create a dictionary for quick lookup
-        rows_dict = {(row[2], row[4]): row for row in rows}
-        matched_rows = []
-        
-        non_reply_rows=[]
-        
-        if len(contact_all) >99:
-            non_reply_rows = [row for row in rows if row[5] != "reply"]
-        else:
-            non_reply_rows=[]
-
-        for phone in contact_all:
-            matched = False
-            row = rows_dict.get((Phone_ID, phone), None)
-            print(row)
-            if row:
-                matched_rows.append(row)
-                matched = True
-
-            if not matched and non_reply_rows:
-                new_row = copy.deepcopy(random.choice(non_reply_rows))
-                new_row_list = list(new_row)
-                new_row_list[4] = phone  
-                new_row_tuple = tuple(new_row_list)
-                matched_rows.append(new_row_tuple)
-
-        cursor.close()
-        connection.close()
-
-        # Define your header
-        header = "Date,display_phone_number,phone_number_id,waba_id,contact_wa_id,status,message_timestamp,error_code,error_message,contact_name,message_from,message_type,message_body".split(',')
-
-        # Remove duplicates if any
-        #matched_rows = list(set(matched_rows))
-
-        # Generate CSV as HttpResponse (stream the file)
-        response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
-        
-        writer = csv.writer(response)
-        writer.writerow(header)  # Write header
-        writer.writerows(matched_rows)  # Write rows
-        
-        return response
-    
-    except mysql.connector.Error as err:
-        print(f"Database error: {err}")
-        messages.error(request, "Database error occurred.")
-        return redirect('reports')
-
-    except Exception as e:
-        print(f"An unexpected error occurred: {str(e)}")
-        messages.error(request, f"Error: {str(e)}")
-        return redirect('reports')
-        '''
 
 @login_required
 def download_campaign_report(request, report_id, insight=False):
@@ -896,74 +809,6 @@ def delete_schedule(request, schedule_id):
     scheduled_message.delete()
     messages.success(request, "Schedule deleted successfully.")
     return redirect('schedules')
-    
-# @csrf_exempt
-# def save_phone_number(request):
-#     if request.method == "POST":
-#         try:
-#             data = json.loads(request.body)
-#             response = data.get('response')
-#             if response:
-#                 phone_number = response['entry'][0]['changes'][0]['value']['contacts'][0]['wa_id']
-#                 reply_text = response['entry'][0]['changes'][0]['value']['messages'][0]['button']['text']
-#                 phone_number_id = response['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']
-#                 waba_id = response['entry'][0]['id']
-#                 emails = CustomUser.objects.filter(
-#                     phone_number_id=phone_number_id,
-#                     whatsapp_business_account_id=waba_id
-#                 ).values_list('email', flat=True)
-#                 latest_template = TemplateLinkage.objects.filter(
-#                     useremail__in=emails,
-#                     button_name=reply_text
-#                 ).order_by('-updated_at').first()
-#                 latest_user = CustomUser.objects.filter(
-#                     phone_number_id=phone_number_id
-#                 ).first()
-#                 if latest_user and latest_user.register_app:
-#                     token = latest_user.register_app.token
-
-#                 linked_template_name = latest_template.linked_template_name
-#                 image_id = latest_template.image_id
-#                 logger.info(f"image_id {image_id}")
-                
-#                 try:
-#                     # Split the image_id and check the resulting list length
-#                     parts = image_id.split("|")
-                    
-#                     if len(parts) >= 2:
-#                         image_id = parts[0]
-#                         media_type = parts[1]
-#                     else:
-#                         raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
-                
-#                 except Exception as e:
-#                     logger.info(f"Error {e}")
-#                     image_id = None
-#                     media_type = "TEXT"
-                
-#                 if media_type in ["image/jpeg", "image/png"]:
-#                     media_type = "IMAGE"
-#                 try:
-#                     campaign_list = fetch_templates(waba_id, token)
-#                     if campaign_list is None :
-#                         campaign_list=[]
-#                     template_type = get_template_type(campaign_list, linked_template_name)
-#                     if template_type == "FLOW":
-#                         flow_id = get_flow_id(campaign_list, linked_template_name)
-#                         status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", phone_number)
-#                     else:
-#                         send_api(str(token), str(phone_number_id), str(linked_template_name), "en", str(media_type), str(image_id), [phone_number], None)
-#                     logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
-#                 except Exception as e:
-#                     logger.error(f"Failed to send next reply message {e}")
-#                 # You can also save it in your model if needed
-#                 return JsonResponse({'status': 'success'}, status=200)
-#             else:
-#                 return JsonResponse({'status': 'error', 'message': 'Phone number missing'}, status=400)
-#         except Exception as e:
-#             logger.error(f"Error processing phone number: {e}")
-#             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
-#     return JsonResponse({'status': 'error', 'message': 'Invalid method'}, status=405)
 
 
 @csrf_exempt
@@ -2061,6 +1906,26 @@ def bot_interactions(request):
         "PHONE_ID": display_phonenumber_id(request),
         "phone_numbers_list": phone_numbers_list,
         "selected_phone": selected_phone,
-        "combined_data": combined_data
+        "combined_data": combined_data,
+        "selected_phone": selected_phone
     }
     return render(request, "bot_interactions.html", context)
+
+@login_required
+@csrf_exempt
+def user_interaction(request):
+    if request.method == 'POST':
+        chat_text = request.POST.get('chat_text', '')
+        phone_number = request.POST.get('phone_number', '')
+        print("chat_text", chat_text)
+        print("phone_number", phone_number)
+        if chat_text and phone_number:
+            token, _ = get_token_and_app_id(request)
+            phone_number_id = display_phonenumber_id(request)
+            
+            response = send_bot_api(token, phone_number_id, phone_number, "text", body=chat_text)
+            return JsonResponse({'status': 'success', 'message': 'Message sent successfully'})
+        
+        return JsonResponse({'status': 'error', 'message': 'Missing required fields'})
+    
+    return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)

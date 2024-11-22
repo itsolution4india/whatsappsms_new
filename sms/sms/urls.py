@@ -41,6 +41,7 @@ urlpatterns = [
     path('access_denide/', views.access_denide, name='access_denide'), 
     path('fetch-webhook-responses/', views.fetch_webhook_responses, name='fetch_webhook_responses'),
     path('bot-interactions/', views.bot_interactions, name='bot_interactions'),
+    path('user-interactions/', views.user_interaction, name='user_interaction'),
     
     
     path('api/users/', views.customuser_list_view, name='customuser-list'),
