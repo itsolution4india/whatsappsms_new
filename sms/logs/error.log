@@ -1,0 +1,356 @@
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+user_response Whatsapp ka koi solution ho
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+User Itsolution4india logged in successfully.
+User varun1@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72478
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User Itsolution4india logged in successfully.
+Not Found: /accounts/login/
+discount 0
+discountnumber 0
+user_response ?
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Error, UNIQUE constraint failed: smsapp_templates.templates
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+user_response Thank you for contacting FLEX APPEAL FITNESS... Please let us know how we can help you.🏋️‍♂️🏋️‍♂️
+https://www.instagram.com/flexappealfitnessdwarka?igsh=MTNkY3B3cWg3M3FwdA==
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+User opinder@gmail.com logged in successfully.
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+User opinder@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72562
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User Itsolution4india logged in successfully.
+discount 0
+discountnumber 0
+User opinder@gmail.com logged in successfully.
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+discount 0
+discountnumber 0
+User Itsolution4india logged in successfully.
+user_response Hii
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['918126888910'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+user_response Hello
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response Hii
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['919997028428'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['918285055176'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+user_response How r u
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+Not Found: /bot-interactions
+Not Found: /manager/html
+user_response Hi this is Ashwini from unified voice communication.
+I have reached you regarding VoIP calling services for international calling to US canada and other countries.
+ We are providing unlimited plans for international calling with features like 
+1. US number
+2. Voicemail 
+3. Voicemail to email 
+4. Ivr
+5. Web portal access to CDR report
+ If you have any requirements or clarifications you can reach me.
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Bot interactions view accessed by user: Itsolution4india
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72640
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Linked report downloaded. Total rows: 72640
+Filtered DataFrame rows: 280
+Total bot sent messages: 9
+Unique phone numbers found: 8
+Bot interactions view accessed by user: Itsolution4india
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72642
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Linked report downloaded. Total rows: 72642
+Filtered DataFrame rows: 280
+Total bot sent messages: 9
+Unique phone numbers found: 8
+Bot interactions view accessed by user: Itsolution4india
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72643
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Linked report downloaded. Total rows: 72643
+Filtered DataFrame rows: 280
+Total bot sent messages: 9
+Unique phone numbers found: 8
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+user_response Interested call me
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /.env
+Error: cannot access local variable 'user_response' where it is not associated with a value
+filter_message_response None
+user_response *Elections Management*
+आपका स्वागत करता है। 
+हमसे जुड़ने के लिए धन्यवाद।
+www.electionsmanagement.com
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /.env
+Not Found: //wp-includes/wlwmanifest.xml
+Not Found: //xmlrpc.php
+Not Found: //blog/wp-includes/wlwmanifest.xml
+Not Found: //web/wp-includes/wlwmanifest.xml
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+Not Found: //website/wp-includes/wlwmanifest.xml
+Not Found: //wp/wp-includes/wlwmanifest.xml
+Not Found: //news/wp-includes/wlwmanifest.xml
+Not Found: //2018/wp-includes/wlwmanifest.xml
+Not Found: //2019/wp-includes/wlwmanifest.xml
+Not Found: //shop/wp-includes/wlwmanifest.xml
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+Not Found: //test/wp-includes/wlwmanifest.xml
+Not Found: //media/wp-includes/wlwmanifest.xml
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+Not Found: //site/wp-includes/wlwmanifest.xml
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Not Found: //sito/wp-includes/wlwmanifest.xml
+Invalid HTTP_HOST header: 'whm.wtsdealnow.in'. You may need to add 'whm.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'whm.wtsdealnow.in'. You may need to add 'whm.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'cpanel.wtsdealnow.in'. You may need to add 'cpanel.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'cpanel.wtsdealnow.in'. You may need to add 'cpanel.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Not Found: /.env
+Not Found: /accounts/login/
+User demo2@gmail.com logged in successfully.
+User demo2@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Not Found: /robots.txt
+Not Found: /hello.world
+Not Found: /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/phpunit/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/Util/PHP/eval-stdin.php
+Not Found: /vendor/phpunit/phpunit/LICENSE/eval-stdin.php
+Not Found: /vendor/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /phpunit/phpunit/Util/PHP/eval-stdin.php
+Not Found: /phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /phpunit/Util/PHP/eval-stdin.php
+Not Found: /lib/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /lib/phpunit/phpunit/Util/PHP/eval-stdin.php
+Not Found: /lib/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /lib/phpunit/Util/PHP/eval-stdin.php
+Not Found: /lib/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /laravel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /www/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /ws/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /yii/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /zend/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /ws/ec/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /V2/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /tests/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /test/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /testing/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /api/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /demo/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+Not Found: /cms/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php
+User Itsolution4india logged in successfully.
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72695
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72695
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72695
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72695
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72695
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72696
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72696
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72696
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Failed login attempt for demo2@gmail.com
+User demo2@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+User test_demo@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
