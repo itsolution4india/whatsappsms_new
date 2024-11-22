@@ -135,7 +135,7 @@
                             {{ item.created_at|date:"M d, Y H:i" }}
                         {% endif %}
                     </div>
-                    {% if item.message_type == 'send_text_message' %}
+                    {% if item.message_type == 'text' %}
                     <div>
                         <p>{{ item.body }}</p>
                     </div>
@@ -157,19 +157,19 @@
     
                     {% if item.message_type == 'reply_button_message' %}
                         <div>
-                            <strong>{{ item.header }}</strong>
+                            <strong>{{ item.body }}</strong>
                             <div id="button-container-{{ forloop.counter }}"></div>
                         </div>
                     {% endif %}
     
-                    {% if item.message_type == 'send_my_location' %}
+                    {% if item.message_type == 'location_message' %}
                         <div style="width: 160px;">
                             <strong>{{ item.body }}</strong><br>
                             <img src="https://i.sstatic.net/HILmr.png" alt />
                         </div>
                     {% endif %}
     
-                    {% if item.message_type == 'request_user_location' %}
+                    {% if item.message_type == 'location_request_message' %}
                         <div style="width: 160px;">
                             <strong>{{ item.body }}</strong><br>
                             <img src="https://i.sstatic.net/HILmr.png" alt />
@@ -182,7 +182,7 @@
     
             <!-- Move the JavaScript inside the loop to handle each message separately -->
             <script type="text/javascript">
-                var buttonData = {{ item.body|safe }};
+                var buttonData = {{ item.button_data|safe }};
                 console.log("buttonData for message {{ forloop.counter }}", buttonData);
                 
                 // Iterate through the button data and display titles
