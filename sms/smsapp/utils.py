@@ -8,6 +8,8 @@ from django.utils import timezone
 import requests
 import logging
 
+logger = logging.getLogger('django')
+
 def expand_times(time_list):
     expanded_times = []
     for time_str in time_list:

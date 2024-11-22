@@ -3,8 +3,7 @@ from typing import List, Dict, Optional
 from requests.exceptions import RequestException
 import json
 from decimal import Decimal
-from .views import logger
-from .utils import insert_bot_sent_message
+from .utils import insert_bot_sent_message, logger
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):

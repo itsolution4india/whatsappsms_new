@@ -33,6 +33,61 @@
         text-align: right;
         margin-top: 5px;
     }
+    
+    .text-message { border-left: 4px solid #3498db; }
+    .list-message { border-left: 4px solid #2ecc71; }
+    .reply-button-message { border-left: 4px solid #e74c3c; }
+    h2 { color: #333; }
+    .message-type { 
+        font-weight: bold;
+        color: #666;
+        margin-bottom: 10px;
+    }
+    .message-details { 
+        background-color: #f9f9f9;
+        padding: 10px;
+        border-radius: 4px;
+    }
+    img {
+        width: 160px;
+        height: 100px;
+    }
+    .phone-selector {
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .phone-number-btn {
+        margin: 5px;
+        padding: 8px 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 20px;
+        background-color: white;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    
+    .phone-number-btn.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+    
+    .phone-number-btn:hover {
+        background-color: #f8f9fa;
+    }
+    
+    .phone-number-btn.active:hover {
+        background-color: #0056b3;
+    }
+    .chat-container {
+        width: 100%;
+        margin-top: 20px;
+        background: lightsteelblue;
+    }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 {% endblock %}
@@ -40,50 +95,114 @@
 
 <center><h3 class="mt-2">Bot Interactions</h3></center>
 
-<div class="chat-container">
-    {% for item in combined_data %}
-        <div class="message {% if item.source == 'df' %}message-df{% else %}message-messages{% endif %}">
-            {% if item.message_body %}
-                <div>{{ item.message_body }}</div>
-                <div class="message-timestamp">
-                    {% if item.source == 'df' and item.Date %}
-                        {{ item.Date|date:"M d, Y H:i" }}
-                    {% elif item.source == 'messages' and item.created_at %}
-                        {{ item.created_at|date:"M d, Y H:i" }}
-                    {% endif %}
-                </div>
-            {% endif %}
-
-            {% if item.created_at %}
-                <div class="message-timestamp">
-                    {% if item.source == 'messages' and item.created_at %}
-                        {{ item.created_at|date:"M d, Y H:i" }}
-                    {% endif %}
-                </div>
-                {% if item.message_type == 'send_text_message' %}
-                <div>
-                    <p>{{ item.body }}</p>
-                </div>
-                {% endif %}
-                {% if item.message_type == 'list_message' %}
-                    <div>
-                        <strong>{{ item.body }}</strong>
-                        {% for section in item.sections %}
-                            <div>{{ section.title }}</div>
-                            {% for row in section.rows %}
-                                <div>
-                                    {{ row.title }} - {{ row.description }}
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
+<div class="d-flex">
+    <div class="phone-selector">
+        <h5>Select Phone Number:</h5>
+        <div class="d-flex flex-wrap flex-column">
+            {% for phone in phone_numbers_list %}
+                <button 
+                    class="phone-number-btn {% if phone == selected_phone %}active{% endif %}"
+                    onclick="window.location.href='?phone_number={{ phone }}'">
+                    {{ phone }}
+                </button>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="chat-container">
+        {% for item in combined_data %}
+            <div class="message {% if item.source == 'df' %}message-df{% else %}message-messages{% endif %}">
+                {% if item.message_body %}
+                    <div>{{ item.message_body }}</div>
+                    <div class="message-timestamp">
+                        {% if item.source == 'df' and item.Date %}
+                            {{ item.Date|date:"M d, Y H:i" }}
+                        {% elif item.source == 'messages' and item.created_at %}
+                            {{ item.created_at|date:"M d, Y H:i" }}
+                        {% endif %}
                     </div>
                 {% endif %}
-            {% endif %}
-        </div>
-    {% endfor %}
+    
+                {% if item.created_at %}
+                    <div class="message-timestamp">
+                        {% if item.source == 'messages' and item.created_at %}
+                            {{ item.created_at|date:"M d, Y H:i" }}
+                        {% endif %}
+                    </div>
+                    {% if item.message_type == 'send_text_message' %}
+                    <div>
+                        <p>{{ item.body }}</p>
+                    </div>
+                    {% endif %}
+                    
+                    {% if item.message_type == 'list_message' %}
+                        <div>
+                            <strong>{{ item.body }}</strong>
+                            {% for section in item.sections %}
+                                <div>{{ section.title }}</div>
+                                {% for row in section.rows %}
+                                    <div>
+                                        {{ row.title }} - {{ row.description }}
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+    
+                    {% if item.message_type == 'reply_button_message' %}
+                        <div>
+                            <strong>{{ item.header }}</strong>
+                            <div id="button-container-{{ forloop.counter }}"></div>
+                        </div>
+                    {% endif %}
+    
+                    {% if item.message_type == 'send_my_location' %}
+                        <div style="width: 160px;">
+                            <strong>{{ item.body }}</strong><br>
+                            <img src="https://i.sstatic.net/HILmr.png" alt />
+                        </div>
+                    {% endif %}
+    
+                    {% if item.message_type == 'request_user_location' %}
+                        <div style="width: 160px;">
+                            <strong>{{ item.body }}</strong><br>
+                            <img src="https://i.sstatic.net/HILmr.png" alt />
+                        </div>
+                    {% endif %}
+    
+    
+                {% endif %}
+            </div>
+    
+            <!-- Move the JavaScript inside the loop to handle each message separately -->
+            <script type="text/javascript">
+                var buttonData = {{ item.body|safe }};
+                console.log("buttonData for message {{ forloop.counter }}", buttonData);
+                
+                // Iterate through the button data and display titles
+                window.onload = function() {
+                    var container = document.getElementById('button-container-{{ forloop.counter }}');
+                    if (Array.isArray(buttonData)) {
+                        // Iterate over buttonData directly since it's an array of objects
+                        buttonData.forEach(function(button) {
+                            var title = button.reply.title;
+                            var titleElement = document.createElement('div');
+                            titleElement.innerText = title;
+                            container.appendChild(titleElement);
+                        });
+                    } else {
+                        console.error("buttonData is not an array for message {{ forloop.counter }}");
+                    }
+                };
+            </script>
+            
+    
+        {% endfor %}
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 {% endblock %}
