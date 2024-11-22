@@ -218,6 +218,45 @@
             transform: rotate(1turn);
           }
         }
+        .refresh-btn {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .refresh-btn:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        .refresh-btn:active {
+            transform: scale(0.95);
+        }
+
+        .refresh-btn i {
+            color: white;
+            font-size: 24px;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .refresh-btn.spinning i {
+            animation: spin 1s linear infinite;
+        }
     </style>
     {% block head %}
     {% endblock %}
@@ -553,6 +592,9 @@ document.addEventListener('keydown', function(e) {
                     {% block content %}
 
                     {% endblock %}
+                    <button class="refresh-btn" onclick="handleRefresh()">
+                        <i class='bx bx-refresh'></i>
+                    </button>
                     <!-- / Content -->
                 </div>
 
@@ -579,7 +621,17 @@ document.addEventListener('keydown', function(e) {
     <script src="/static/assets/vendor/js/bootstrap.js"></script>
     <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/static/assets/vendor/js/vanillaEmojiPicker.js"></script>
-
+    <script>
+        function handleRefresh() {
+            const btn = document.querySelector('.refresh-btn');
+            btn.classList.add('spinning');
+            
+            // Simulate refresh action
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        }
+    </script>
 
     <script>
 
