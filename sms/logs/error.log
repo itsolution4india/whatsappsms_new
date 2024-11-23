@@ -354,3 +354,797 @@ Number of rows fetched: 72697
 Sample messages in the data:
 Sample messages: ['', '', '', '', None]
 Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72699
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72699
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72699
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72699
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User deepikaopw@gmail.com logged in successfully.
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919311429863'], 'message_type': 'text', 'body': 'Hello! How can I help you today'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+User test_demo@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72702
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User Itsolution4india logged in successfully.
+user_response List message
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response List Message
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: list_message
+filter_message_response list_message - List Message
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919311429863'], 'message_type': 'list_message', 'body': 'Choose an option:', 'sections': [{'title': 'Section one', 'rows': [{'id': 'row_1', 'title': 'Option one ', 'description': 'sample description one'}, {'id': 'row_2', 'title': 'Option two', 'description': 'sample description two'}]}, {'title': 'Section two', 'rows': [{'id': 'row_3', 'title': 'Option three', 'description': 'sample description three'}]}]}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /+CSCOE+/logon.html
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72707
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Premium lnj mill fabric denims
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response *Learning Computer Courses can indeed create a bright future for you!*
+*With the right skills and knowledge, you can unlock a world of possibilities and increase your chances of success in today's technology-driven world.*
+
+*Unbeatable Discounts:*
+- Flat 50% OFF on all Computer Courses
+- Additional Discount for Group Admission
+- 10-DAY MONEY-BACK GUARANTEE
+
+*Don't Miss Out!*
+Enroll Now and Upgrade Your Skills!
+Limited Time Offer!
+Hurry! Last Date of Admission 23rd November 2024
+
+*Short Term Courses*
+MS-Office
+Course on Computer Concept (CCC)
+Advanced Excel
+Book Keeping & Accountancy
+Tally ERP9 & GST
+Tally Prime & GST
+Taxation
+Auditing
+Banking
+Photoshop
+CorelDraw
+Illustrator
+InDesign
+C Programming
+C++
+Data Structure
+HTML
+
+*Advanced & Diploma Courses*
+*Software Testing*
+*Microsoft Dynamics 365*
+*Data Science*
+*Data Analytics*
+*Cloud Computing*
+*Project Management*
+SQL & Oracle
+Full Stack Java
+Full Stack Python
+Full Stack PHP
+Full Stack .NET
+Full Stack Web Development
+Sketchup
+V-Ray
+Blander
+Certificate Course in Digital Marketing
+Certificate Course in Graphic Designing
+Certificate Course in Business Accounting
+Certificate Course in Web Designing
+Certificate Course in UI/UX
+Certificate Course in Office 365
+Certificate Course in Power Bi
+Certificate Course in Azure
+Certificate Course in Artificial Intelligence (AI)
+Certificate Course in AWS
+Certificate Course in Machine Learning (ML) 
+Diploma Course in Computer Application (DCA)
+Diploma Course in Advanced Accounting (DAA)
+Diploma Course in Computer Programming (DCP)
+Diploma Course in Interior Designing (DID)
+Diploma Course in 2D Animation
+Diploma Course in 3D Animation
+Advanced Diploma in Digital Graphic & Animation (ADDGA)
+Professional Diploma Course in Graphic & Office Automation (PDGA)
+Advanced Diploma in Computer Application (ADCA)
+Post Graduate Diploma in Computer Application (PGDCA)
+Advanced Diploma Course in Computer Programming (ADCP)
+
+*Offers Key Features: -*
+↪️100% Job Assistance
+↪️Paid Internship with Certificate
+↪️Learn and Earn @10% Cash Back
+↪️Easy EMI & Education Loan Available
+↪️Additional Discounts on Group Admission
+
+*AiMS COMPUTER INSTITUTE*
+*WANOWIRE BRANCH*
+Office Address: -
+Office No.: Office No. 105, 1st Floor, Girme Hights, ABC Farms Chowk, Salunke Vihar Rd, Oxford Village, Kedari Nagar, Wanowrie, Pune, Maharashtra 411040
+Website: - www.aimscomputerinstitute.com
+E-mail ID: - aims.wanowrie@gmail.com
+Location: - https://maps.app.goo.gl/jKtoMb17FcFbLTDk7
+Contact Number: - +91 95618 48684 | 70307 98722
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: /global-protect/login.esp
+Not Found: /RDWeb/Pages/
+Not Found: /.env
+user_response test live chat
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Not Found: //wp-includes/ID3/license.txt
+Not Found: //feed/
+Not Found: //xmlrpc.php
+Not Found: //blog/wp-includes/wlwmanifest.xml
+Not Found: //web/wp-includes/wlwmanifest.xml
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+Not Found: //wp/wp-includes/wlwmanifest.xml
+Not Found: //2020/wp-includes/wlwmanifest.xml
+Not Found: //2019/wp-includes/wlwmanifest.xml
+Not Found: //2021/wp-includes/wlwmanifest.xml
+Not Found: //shop/wp-includes/wlwmanifest.xml
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+Not Found: //test/wp-includes/wlwmanifest.xml
+Not Found: //site/wp-includes/wlwmanifest.xml
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Not Found: /robots.txt
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72740
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72740
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'hey, this is live message from live chat'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72741
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72742
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72742
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72742
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 72742
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['918285055176'], 'message_type': 'text', 'body': 'hi'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+user_response uH
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['919711340505'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72744
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72747
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['918285055176'], 'message_type': 'text', 'body': 'hello'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72748
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['918285055176'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72751
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Ky hl
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72752
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['919711618080'], 'message_type': 'text', 'body': 'Hello, how can i help you'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72754
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72754
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD', 'phone_number_id': '498352686693631', 'contact_list': ['919711618080'], 'message_type': 'text', 'body': 'gnd tod duga'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72755
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Ok
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72757
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72757
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72757
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /wp-includes/css/buttons.css
+Not Found: /media/system/js/core.js
+Not Found: /.env
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Not Found: /owa/auth/logon.aspx
+Not Found: /.env
+Not Found: /5jshCV
+Not Found: /5jshCV
+Not Found: /cabinet
+Not Found: /cabinet
+Not Found: /fpyB8SZ3
+Not Found: /fpyB8SZ3
+Not Found: /n4TWwtZ4
+Not Found: /n4TWwtZ4
+Not Found: /SP6YZWTP
+Not Found: /SP6YZWTP
+Not Found: /tinkoff-v10-quiz/
+Not Found: /tinkoff-v10-quiz/
+Not Found: /lander/gazinvest-forma9maymadrid-thanksqz9may/thank-QZ/
+Not Found: /lander/gazinvest-forma9maymadrid-thanksqz9may/thank-QZ/
+Not Found: /t85TjsNn
+Not Found: /t85TjsNn
+Not Found: /YRWnWHy7
+Not Found: /YRWnWHy7
+Not Found: /lander/sber-fix/
+Not Found: /lander/sber-fix/
+Not Found: /2MTXvx
+Not Found: /2MTXvx
+Not Found: /JCcSfPqr
+Not Found: /JCcSfPqr
+Not Found: /gpLFR5sr
+Not Found: /gpLFR5sr
+Not Found: /lander/sberchat5v4_tds_newcrm_028-vnutr/index.php
+Not Found: /lander/sberchat5v4_tds_newcrm_028-vnutr/index.php
+Not Found: /262LBNFp
+Not Found: /262LBNFp
+Not Found: /T8LMdb3N
+Not Found: /T8LMdb3N
+Not Found: /H6W7VRDj
+Not Found: /H6W7VRDj
+Not Found: /sberbank-quiz-4
+Not Found: /sberbank-quiz-4
+Not Found: /wpR2pHDz
+Not Found: /wpR2pHDz
+Not Found: /Kj5xBrWf
+Not Found: /Kj5xBrWf
+Not Found: /sberbank-quiz-v2/
+Not Found: /sberbank-quiz-v2/
+Not Found: /n5cw4Z3Y
+Not Found: /n5cw4Z3Y
+Not Found: /lander/test
+Not Found: /lander/test
+Not Found: /KLFzmbdm
+Not Found: /KLFzmbdm
+Not Found: /lander/gpb_rus_short_obfs_nonetext/
+Not Found: /lander/gpb_rus_short_obfs_nonetext/
+Not Found: /bpffH5jB
+Not Found: /bpffH5jB
+Not Found: /lander/sberquiz-2223-3
+Not Found: /lander/sberquiz-2223-3
+Not Found: /3vt4yTCT
+Not Found: /3vt4yTCT
+Not Found: /kPKzkZzY
+Not Found: /kPKzkZzY
+Not Found: /MTCkQ746
+Not Found: /MTCkQ746
+Not Found: /NWJs6k27
+Not Found: /NWJs6k27
+Not Found: /lander/1_offer_sber_chat_input_green_v3_nm
+Not Found: /6tJmP253
+Not Found: /6tJmP253
+Not Found: /n6PdMqLz
+Not Found: /n6PdMqLz
+Not Found: /C9KrpPhC
+Not Found: /C9KrpPhC
+Not Found: /qqWydpQ7
+Not Found: /qqWydpQ7
+Not Found: /sb
+Not Found: /sb
+Not Found: /sberchat008-prilca/
+Not Found: /sberchat008-prilca/
+Not Found: /index_sber.php
+Not Found: /index_sber.php
+Not Found: /sbor_offerov/kripta/landing/lp_1/
+Not Found: /sbor_offerov/kripta/landing/lp_1/
+Not Found: /lander/sberchat5v4_tds_newcrm_038-vnutr_1721815245/index.php
+Not Found: /lander/sberchat5v4_tds_newcrm_038-vnutr_1721815245/index.php
+Not Found: /Q8RBNw4z
+Not Found: /Q8RBNw4z
+Not Found: /6bXX29bt
+Not Found: /6bXX29bt
+Not Found: /lander/sber/
+Not Found: /lander/sber/
+Not Found: /lander/testsberv4-copy--1/
+Not Found: /lander/testsberv4-copy--1/
+Not Found: /refresher
+Not Found: /Kd67Fq1x
+Not Found: /Kd67Fq1x
+Not Found: /KQRDmgB
+Not Found: /KQRDmgB
+Not Found: /lander/-w--sber-chat_1720439685
+Not Found: /lander/-w--sber-chat_1720439685
+Not Found: /tcn/
+Not Found: /tcn/
+Not Found: /zMmL28CN
+Not Found: /zMmL28CN
+Not Found: /q1gpDhK4
+Not Found: /q1gpDhK4
+Not Found: /N3qLdCWJ
+Not Found: /N3qLdCWJ
+Not Found: /fns-886-75.html
+Not Found: /fns-886-75.html
+Not Found: /28kxhS
+Not Found: /28kxhS
+Not Found: /lander/05_042_offer_sber_chat_input_green_v3_nm
+Not Found: /lander/05_042_offer_sber_chat_input_green_v3_nm
+Not Found: /lander/gazprom-prelandergnidanewkomment-thanksstory2-objv2/land/thank-you/
+Not Found: /lander/gazprom-prelandergnidanewkomment-thanksstory2-objv2/land/thank-you/
+Not Found: /lander/gp_newmain_calc_ru_land_obj_js_v2/index.php
+Not Found: /lander/gp_newmain_calc_ru_land_obj_js_v2/index.php
+Not Found: /refresher
+Not Found: /refresher
+Not Found: /refresher
+Not Found: /refresher
+Not Found: /lander/testsberv4_1703110539/
+Not Found: /lander/testsberv4_1703110539/
+Not Found: /G5LZ2X3k
+Not Found: /G5LZ2X3k
+Not Found: /tink_chat/
+Not Found: /tink_chat/
+Not Found: /LcMMvHcm
+Not Found: /LcMMvHcm
+Not Found: /mhn8PLGw
+Not Found: /mhn8PLGw
+Not Found: /vpn/index.html
+Not Found: /vpn/index.html
+Not Found: //wp-includes/ID3/license.txt
+Not Found: //feed/
+Not Found: //xmlrpc.php
+Not Found: //blog/wp-includes/wlwmanifest.xml
+Not Found: //web/wp-includes/wlwmanifest.xml
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+Not Found: //wp/wp-includes/wlwmanifest.xml
+Not Found: //2020/wp-includes/wlwmanifest.xml
+Not Found: //2019/wp-includes/wlwmanifest.xml
+Not Found: //2021/wp-includes/wlwmanifest.xml
+Not Found: //shop/wp-includes/wlwmanifest.xml
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+Not Found: //test/wp-includes/wlwmanifest.xml
+Not Found: //site/wp-includes/wlwmanifest.xml
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Not Found: /robots.txt
+Not Found: /.env
+Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Not Found: /products
+Not Found: /cart
+Not Found: /shop
+Not Found: /catalog
+Failed login attempt for lykaibucka@gmail.com
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Forbidden (Referer checking failed - no Referer.): /reset-password/
+Forbidden (Referer checking failed - no Referer.): /reset-password/
+Not Found: /robots.txt
+Not Found: /merchant/code
+Not Found: /merchant/code
+Not Found: /merchant/z/payment/
+Not Found: /merchant/z/payment/
+Not Found: /3ds1633693954432212
+Not Found: /3ds1633693954432212
+Not Found: /3ds.php
+Not Found: /3ds.php
+User demo2@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+User varun1@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Not Found: /robots.txt
+Not Found: /wp-login.php
+User varun1@gmail.com logged in successfully.
+Not Found: /.env
+Not Found: /.git/config
+user_response Hello
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+Invalid HTTP_HOST header: 'ftp.whtsappdealnow.in'. You may need to add 'ftp.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'ftp.whtsappdealnow.in'. You may need to add 'ftp.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72766
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User demo2@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72768
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+Error: 'NoneType' object has no attribute 'message_type'
+filter_message_response None
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: link_template
+filter_message_response link_template - Hi
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72771
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /.git/config
+Bad Request: /bot-flow/
+Bad Request: /bot-flow/
+Bad Request: /bot-flow/
+Bad Request: /bot-flow/
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: link_template
+filter_message_response link_template - Hi
