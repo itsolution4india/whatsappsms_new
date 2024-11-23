@@ -931,10 +931,12 @@ def save_phone_number(request):
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
                         image_id = filter_message_response.catalog_id
+                        logger.info(f"Info, {filter_message_response.template_name}, {image_id}")
                         if image_id and image_id != 'nan' and image_id != None:
-                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
-                        else:
+                            logger.info("called successfully")
                             send_api(token, phone_number_id, filter_message_response.template_name, "en", "IMAGE", str(image_id), [phone_number], None)
+                        else:
+                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
                     
                 # You can also save it in your model if needed
                 return JsonResponse({'status': 'success'}, status=200)
@@ -1531,12 +1533,14 @@ def bot_flow(request):
                     'data': response_data
                 })
             except IntegrityError:
+                logger.warning(f"This response has already been used. Please use a different response.")
                 return JsonResponse({
                     'status': 'error',
                     'message': 'This response has already been used. Please use a different response.'
                 }, status=400)
 
         except Exception as e:
+            logger.error(f"Error, {e}")
             return JsonResponse({
                 'status': 'error',
                 'message': str(e)
