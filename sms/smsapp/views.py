@@ -930,7 +930,11 @@ def save_phone_number(request):
                     elif message_type == "send_text_message":
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
-                        send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
+                        image_id = filter_message_response.longitude
+                        if image_id:
+                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
+                        else:
+                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "IMAGE", image_id, [phone_number], None)
                     
                 # You can also save it in your model if needed
                 return JsonResponse({'status': 'success'}, status=200)
@@ -1517,6 +1521,7 @@ def bot_flow(request):
                 message_response.catalog_id = data.get('catalog_id')
             elif message_type == 'link_template':
                 message_response.template_name = data.get('product_data', {}).get('selectedTempale')
+                message_response.longitude = data['mediaID']
 
             try:
                 message_response.save()

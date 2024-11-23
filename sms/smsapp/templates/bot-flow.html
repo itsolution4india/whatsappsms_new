@@ -343,6 +343,8 @@
                             <option value="{{ template }}">{{ template }}</option>
                             {% endfor %}
                         </select>
+                        <label for="selectedTempale">Enter Media ID</label>
+                        <input type="text" id="mediaID" name="mediaID">
                     </div>
 
                     <div id="requestUserLocation"
@@ -768,7 +770,8 @@
                     messageData = {
                         product_data: {
                             selectedTempale: document.getElementById('selectedTempale').value
-                        }
+                        },
+                        mediaID: document.getElementById('mediaID').value
                     };
                     break;
                 case 'send_image_message':
