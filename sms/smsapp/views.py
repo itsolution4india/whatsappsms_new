@@ -931,9 +931,8 @@ def save_phone_number(request):
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
                         image_id = filter_message_response.catalog_id
-                        logger.info(f"Info, {filter_message_response.template_name}, {image_id}")
+                        logger.info(f"Info, {filter_message_response.template_name}, {image_id}, {token}, {phone_number_id}, {phone_number}")
                         if image_id and image_id != 'nan' and image_id != None:
-                            logger.info("called successfully")
                             send_api(token, phone_number_id, filter_message_response.template_name, "en", "IMAGE", str(image_id), [phone_number], None)
                         else:
                             send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
