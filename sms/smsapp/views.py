@@ -1547,6 +1547,36 @@ def bot_flow(request):
         "PHONE_ID": display_phonenumber_id(request)
     }
     return render(request, "bot-flow.html", context)
+
+@login_required
+@csrf_exempt  # This is necessary for DELETE requests in some setups
+def delete_message(request, message_id):
+    if request.method == 'DELETE':
+        try:
+            # Fetch the message to be deleted
+            message = MessageResponse.objects.get(id=message_id, user=request.user)
+            
+            # Delete the message
+            message.delete()
+
+            return JsonResponse({
+                'status': 'success',
+                'message': 'Message deleted successfully.'
+            })
+        except MessageResponse.DoesNotExist:
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Message not found.'
+            }, status=404)
+        except Exception as e:
+            return JsonResponse({
+                'status': 'error',
+                'message': str(e)
+            }, status=500)
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Invalid request method.'
+    }, status=405)
     
 def coins_history_list(request):
     template_database = Templates.objects.filter(email=request.user)
