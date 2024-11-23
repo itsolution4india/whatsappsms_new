@@ -1521,7 +1521,7 @@ def bot_flow(request):
                 message_response.catalog_id = data.get('catalog_id')
             elif message_type == 'link_template':
                 message_response.template_name = data.get('product_data', {}).get('selectedTempale')
-                message_response.catalog_id = data.get('mediaID')
+                message_response.catalog_id = data.get('catalog_id')
 
             try:
                 message_response.save()
