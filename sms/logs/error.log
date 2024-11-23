@@ -1148,3 +1148,7 @@ user_response Hi
 Error: cannot access local variable 'reply_text' where it is not associated with a value
 message_type: link_template
 filter_message_response link_template - Hi
+user_response Hi
+Error: cannot access local variable 'reply_text' where it is not associated with a value
+message_type: link_template
+filter_message_response link_template - Hi
