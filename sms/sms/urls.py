@@ -43,6 +43,7 @@ urlpatterns = [
     path('bot-interactions/', views.bot_interactions, name='bot_interactions'),
     path('user-interactions/', views.user_interaction, name='user_interaction'),
     path('delete_report/<int:report_id>/', views.delete_report, name='delete_report'),
+    path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
     
     
     path('api/users/', views.customuser_list_view, name='customuser-list'),

@@ -192,6 +192,37 @@
             color: white;
             margin: 0;
         }
+        .message-container {
+        background-color: #f7f7f7;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        position: relative;
+        transition: background-color 0.3s ease;
+    }
+
+    .message-container:hover {
+        background-color: #fafae6;
+    }
+
+    .delete-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: none;
+    }
+
+    .message-container:hover .delete-button {
+        display: inline-block;
+    }
+
+    .user-message {
+        color: #333;
+    }
+
+    .bot-message {
+        color: #777;
+    }
 </style>
 {% endblock %}
 
@@ -353,102 +384,135 @@
             <div class="chat-container">
                 
                 {% for message in bot_automation %}
-                <div class="user-message">
-                    <p class="m-0">{{ message.user_response }}</p>
-                </div>
-                <div class="message {% if message.user == current_user %}user-message{% else %}bot-message{% endif %}">
-                    <div class="message-type">{{ message.get_message_type_display }}</div>
-
-                    <div class="message-content">
-                        {% if message.body_message %}
-                        <p class="mb-1">{{ message.body_message }}</p>
-                        {% endif %}
-
-                        {% if message.sections %}
-                            <div class="sections-container">
-                                {% for section in message.sections %}
-                                    <div class="section">
-                                        <h5 class="section-title">{{ forloop.counter }}. {{ section.title }}</h5>
-                                        
-                                        {% if section.rows %}
-                                            <div class="rows-container">
-                                                {% for row in section.rows %}
-                                                    <div class="row" id="{{ row.id }}">
-                                                        <h6 class="row-title mb-1">{{ row.title }}</h6>
-                                                        <p class="row-description">{{ row.description }}</p>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        {% endif %}
-                                    </div>
+                <div class="message-container">
+                    <button class="delete-button p-2 rounded-circle btn btn-danger" onclick="deleteMessage({{ message.id }})">
+                        <i class="bx bx-trash"></i>
+                    </button>
+                    <div class="user-message">
+                        <p class="m-0">{{ message.user_response }}</p>
+                    </div>
+                    <div class="message {% if message.user == current_user %}user-message{% else %}bot-message{% endif %}">
+                        <div class="message-type">{{ message.get_message_type_display }}</div>
+    
+                        <div class="message-content">
+                            {% if message.body_message %}
+                            <p class="mb-1">{{ message.body_message }}</p>
+                            {% endif %}
+    
+                            {% if message.sections %}
+                                <div class="sections-container">
+                                    {% for section in message.sections %}
+                                        <div class="section">
+                                            <h5 class="section-title">{{ forloop.counter }}. {{ section.title }}</h5>
+                                            
+                                            {% if section.rows %}
+                                                <div class="rows-container">
+                                                    {% for row in section.rows %}
+                                                        <div class="row" id="{{ row.id }}">
+                                                            <h6 class="row-title mb-1">{{ row.title }}</h6>
+                                                            <p class="row-description">{{ row.description }}</p>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+    
+                            {% if message.media_file %}
+                            <div class="media-container">
+                                {% if message.media_type == 'image' %}
+                                <img src="/static/assets/img/backgrounds/default_image.png" alt
+                                    class="w-px-40 h-auto rounded-circle" />
+                                {% elif message.media_type == 'video' %}
+                                <video controls>
+                                    <source src="{{ message.media_file.url }}"
+                                        type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                                {% elif message.media_type == 'document' %}
+                                <a href="{{ message.media_file.url }}"
+                                    target="_blank" class="reply-button">
+                                    Download Document
+                                </a>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+    
+                            {% if message.latitude and message.longitude %}
+                            <div class="location-info">
+                                <span>📍</span>
+                                <span>Location: {{ message.latitude }}, {{ message.longitude }}</span>
+                            </div>
+                            {% endif %}
+    
+                            {% if message.product_section %}
+                                <div class="product-section">
+                                    {% for section in message.product_section %}
+                                        <h6 class="mb-1">Category Title: {{ section.title }}</h6>
+                                        <p class="mb-1">Catalogue ID: {{ section.catelogue_id }}</p>
+                                        <ul>
+                                            {% for product in section.product_items %}
+                                                <li>Product Retailer ID: {{ product.product_retailer_id }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+    
+                            {% if message.catalog_id %}
+                            <p class="mb-1">Catalog ID: {{ message.catalog_id }}</p>
+                            <p class="mb-1">Product Retailer ID: {{ message.product_retailer_id }}</p>
+                            {% endif %}
+    
+                            {% if message.buttons %}
+                            <div class="button-container">
+                                {% for button in message.buttons %}
+                                <button class="reply-button">{{ button.reply.title }}</button>
                                 {% endfor %}
                             </div>
-                        {% endif %}
-
-                        {% if message.media_file %}
-                        <div class="media-container">
-                            {% if message.media_type == 'image' %}
-                            <img src="/static/assets/img/backgrounds/default_image.png" alt
-                                class="w-px-40 h-auto rounded-circle" />
-                            {% elif message.media_type == 'video' %}
-                            <video controls>
-                                <source src="{{ message.media_file.url }}"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            {% elif message.media_type == 'document' %}
-                            <a href="{{ message.media_file.url }}"
-                                target="_blank" class="reply-button">
-                                Download Document
-                            </a>
                             {% endif %}
                         </div>
-                        {% endif %}
-
-                        {% if message.latitude and message.longitude %}
-                        <div class="location-info">
-                            <span>📍</span>
-                            <span>Location: {{ message.latitude }}, {{ message.longitude }}</span>
-                        </div>
-                        {% endif %}
-
-                        {% if message.product_section %}
-                            <div class="product-section">
-                                {% for section in message.product_section %}
-                                    <h6 class="mb-1">Category Title: {{ section.title }}</h6>
-                                    <p class="mb-1">Catalogue ID: {{ section.catelogue_id }}</p>
-                                    <ul>
-                                        {% for product in section.product_items %}
-                                            <li>Product Retailer ID: {{ product.product_retailer_id }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-
-                        {% if message.catalog_id %}
-                        <p class="mb-1">Catalog ID: {{ message.catalog_id }}</p>
-                        <p class="mb-1">Product Retailer ID: {{ message.product_retailer_id }}</p>
-                        {% endif %}
-
-                        {% if message.buttons %}
-                        <div class="button-container">
-                            {% for button in message.buttons %}
-                            <button class="reply-button">{{ button.reply.title }}</button>
-                            {% endfor %}
-                        </div>
-                        {% endif %}
+    
+                        <!-- <div class="message-time">
+                            {{ message.created_at|date:"M d, Y H:i" }}
+                        </div> -->
                     </div>
-
-                    <!-- <div class="message-time">
-                        {{ message.created_at|date:"M d, Y H:i" }}
-                    </div> -->
                 </div>
                 {% endfor %}
             </div>
         </div>
     </div>
 
+
+    <script>
+        function deleteMessage(messageId) {
+            if (confirm("Are you sure you want to delete this message?")) {
+                fetch(`/delete_message/${messageId}/`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}'
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        // If successfully deleted, reload the page or remove the message element
+                        alert("Message deleted successfully.");
+                        location.reload();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("An error occurred while deleting the message.");
+                });
+            }
+        }
+    </script>
+    
     <script>
         let sectionCount = 0;
         let multiProductCount = 0
