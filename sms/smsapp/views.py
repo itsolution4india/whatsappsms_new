@@ -37,6 +37,7 @@ from .functions.flows import create_message_template_with_flow, send_flow_messag
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
 from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance
 import pandas as pd
+from django.views.decorators.http import require_http_methods
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -493,6 +494,19 @@ def Reports(request):
     except Exception as e:
         
         return render(request, "reports.html", context)
+    
+@login_required
+@require_http_methods(["DELETE"])
+def delete_report(request, report_id):
+    try:
+        report = ReportInfo.objects.get(id=report_id, email=request.user)
+        report.delete()
+        return JsonResponse({'message': 'Report deleted successfully!'}, status=200)
+    except ReportInfo.DoesNotExist:
+        return JsonResponse({'error': 'Report not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+    
 ############
 import mysql.connector
 import csv
