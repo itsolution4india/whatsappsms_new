@@ -87,7 +87,7 @@ def handle_uploaded_file(file):
             tmp_file.write(chunk)
         return tmp_file.name
     
-def fetch_templates(waba_id, token):
+def fetch_templates(waba_id, token, req_template_name=None):
     
     url = f"https://graph.facebook.com/v20.0/{waba_id}/message_templates"
     
@@ -96,45 +96,53 @@ def fetch_templates(waba_id, token):
     }
     
     try:
-
+        # Sending the request to the API
         response = requests.get(url, params=params)
-        response.raise_for_status() 
-        
+        response.raise_for_status()  # Raise an error for bad responses
 
         data = response.json()
-        
-        
 
         templates = []
+        
+        # Iterating through the templates in the response
         for entry in data.get("data", []):
             template_id = entry.get("id", "N/A")
             template_language = entry.get("language", "N/A")
-            media_type=entry.get("format", "N/A")
             template_name = entry.get("name", "N/A")
             status = entry.get("status", "N/A")
             category = entry.get("category", "N/A")
+
             body_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "BODY"), None)
             header_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "HEADER"), None)
             button_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "BUTTONS"), None)
              
+            # Extract media link from header component, if available
             media_link = None
             if header_component and 'example' in header_component:
                 media_link = header_component['example'].get('header_handle', [None])[0]
             
-            templates.append({
+            # Prepare the template details
+            template_data = {
                 "template_id": template_id,
-                "template_language":template_language,
+                "template_language": template_language,
                 "template_name": template_name,
-                "media_type":header_component.get("format", "N/A") if header_component else "N/A",
-                "media_link":media_link,
+                "media_type": header_component.get("format", "N/A") if header_component else "N/A",
+                "media_link": media_link,
                 "status": status,
                 "category": category,
                 "template_data": body_component["text"] if body_component else 'No BODY component found',
-                "button":button_component["buttons"] if button_component else None
-            })
+                "button": button_component["buttons"] if button_component else None
+            }
+
+            # If req_template_name is provided, filter based on the template name
+            if req_template_name:
+                if req_template_name.lower() == template_name.lower():
+                    templates.append(template_data)
+            else:
+                templates.append(template_data)
         
         return templates
-    
+
     except requests.exceptions.RequestException as e:
         print(f"Error fetching templates: {e}")
         return None

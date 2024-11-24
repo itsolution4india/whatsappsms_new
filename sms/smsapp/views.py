@@ -855,7 +855,6 @@ def save_phone_number(request):
                         button_name=reply_text
                     ).order_by('-updated_at').first()
                 except Exception as e:
-                    logger.info(f"Error: {e}")
                     latest_template = None
 
                 try:
@@ -865,7 +864,6 @@ def save_phone_number(request):
                     ).first()
                     logger.info(f"message_type: {filter_message_response.message_type}")
                 except Exception as e:
-                    logger.info(f"Error: {e}")
                     filter_message_response =None
 
                 logger.info(f"filter_message_response {filter_message_response}")
@@ -931,11 +929,17 @@ def save_phone_number(request):
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
                         image_id = filter_message_response.catalog_id
-                        logger.info(f"Info, {filter_message_response.template_name}, {image_id}, {token}, {phone_number_id}, {phone_number}")
+                        campaign_list = fetch_templates(waba_id, token, filter_message_response.template_name)
+                        filter_campaign_list = [
+                            {'template_language': item['template_language'], 'media_type': item['media_type']}
+                            for item in campaign_list
+                        ]
+                        lang = filter_campaign_list[0]['template_language']
+                        temp_media_type = filter_campaign_list[0]['media_type']
                         if image_id and image_id != 'nan' and image_id != None:
-                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "IMAGE", str(image_id), [phone_number], None)
+                            send_api(token, phone_number_id, filter_message_response.template_name, lang, temp_media_type, str(image_id), [phone_number], None)
                         else:
-                            send_api(token, phone_number_id, filter_message_response.template_name, "en", "TEXT", None, [phone_number], None)
+                            send_api(token, phone_number_id, filter_message_response.template_name, lang, temp_media_type, None, [phone_number], None)
                     
                 # You can also save it in your model if needed
                 return JsonResponse({'status': 'success'}, status=200)
