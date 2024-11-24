@@ -875,6 +875,13 @@ def save_phone_number(request):
 
                 if latest_template:
                     linked_template_name = latest_template.linked_template_name
+                    campaign_list = fetch_templates(waba_id, token, linked_template_name)
+                    filter_campaign_list = [
+                        {'template_language': item['template_language'], 'media_type': item['media_type']}
+                        for item in campaign_list
+                    ]
+                    lang = filter_campaign_list[0]['template_language']
+                    temp_media_type = filter_campaign_list[0]['media_type']
                     image_id = latest_template.image_id
                     logger.info(f"image_id {image_id}")
                     
@@ -902,9 +909,9 @@ def save_phone_number(request):
                         template_type = get_template_type(campaign_list, linked_template_name)
                         if template_type == "FLOW":
                             flow_id = get_flow_id(campaign_list, linked_template_name)
-                            status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", [phone_number])
+                            status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, lang, [phone_number])
                         else:
-                            send_api(str(token), str(phone_number_id), str(linked_template_name), "en", str(media_type), str(image_id), [phone_number], None)
+                            send_api(str(token), str(phone_number_id), str(linked_template_name), lang, str(media_type), str(image_id), [phone_number], None)
                         logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(str(media_type))} {str(media_type)}, Image ID Type: {type(str(image_id))} {str(image_id)}")
                     except Exception as e:
                         logger.error(f"Failed to send next reply message {e}")
