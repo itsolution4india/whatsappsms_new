@@ -905,7 +905,7 @@ def save_phone_number(request):
                             status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, "en_US", [phone_number])
                         else:
                             send_api(str(token), str(phone_number_id), str(linked_template_name), "en", str(media_type), str(image_id), [phone_number], None)
-                        logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(media_type)}, Image ID Type: {type(image_id)}")
+                        logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(str(media_type))} {str(media_type)}, Image ID Type: {type(str(image_id))} {str(image_id)}")
                     except Exception as e:
                         logger.error(f"Failed to send next reply message {e}")
                 elif filter_message_response:
@@ -937,8 +937,10 @@ def save_phone_number(request):
                         lang = filter_campaign_list[0]['template_language']
                         temp_media_type = filter_campaign_list[0]['media_type']
                         if image_id and image_id != 'nan' and image_id != None:
+                            logger.info(f"sent bot message, {filter_message_response.template_name} {lang}, {temp_media_type} {str(image_id)}")
                             send_api(token, phone_number_id, filter_message_response.template_name, lang, temp_media_type, str(image_id), [phone_number], None)
                         else:
+                            logger.info(f"sent bot message, {filter_message_response.template_name} {lang}, {temp_media_type}")
                             send_api(token, phone_number_id, filter_message_response.template_name, lang, temp_media_type, None, [phone_number], None)
                     
                 # You can also save it in your model if needed
