@@ -1535,3 +1535,18 @@ filter_message_response link_template - Hi
 filter_message_response None
 image_id 575464011646881|image/jpeg
 Next reply message sent successfully. Template: help_for_cc_pay, Phone Number: 916361161836, Media Type: <class 'str'>, Image ID Type: <class 'str'>
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72803
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /.env
+user_response Hi
+message_type: link_template
+filter_message_response link_template - Hi
+sent bot message, hi_template en_GB, IMAGE 1236533660777716
+filter_message_response None
+image_id 575464011646881|image/jpeg
+Next reply message sent successfully. Template: help_for_cc_pay, Phone Number: 916361161836, Media Type: <class 'str'> IMAGE, Image ID Type: <class 'str'> 575464011646881
