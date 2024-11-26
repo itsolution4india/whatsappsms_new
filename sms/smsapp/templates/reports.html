@@ -9,73 +9,6 @@
         padding: 10px !important;
         border-radius: 50% !important;
     }
-    .dashboard {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 5px;
-    gap: 20px;
-}
-
-/* Card Styles */
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 140px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card-header h3 {
-    margin: 0;
-    color: #333;
-    font-size: 17px;
-    font-weight: bold;
-}
-
-.card-header {
-    padding: 5px !important;
-}
-
-.card-body {
-    padding: 5px !important;
-}
-
-.card-body p {
-    color: #555;
-    font-size: 13px;
-    font-weight: normal;
-}
-
-/* Styling for different status types */
-.card.read {
-    border-left: 5px solid #4CAF50;
-}
-
-.card.failed {
-    border-left: 5px solid #f44336;
-}
-
-.card.reply {
-    border-left: 5px solid #2196F3;
-}
-
-.card.delivered {
-    border-left: 5px solid #FFC107;
-}
-
-.card.sent {
-    border-left: 5px solid #9E9E9E;
-}
-
-.card.Total_contacts {
-    border-left: 5px solid #673AB7;
-}
 </style>
 {% endblock %}
 
@@ -113,18 +46,7 @@
     </div>
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="dashboard">
-            {% for row in status_list %}
-            <div class="card {{ row.Status|lower }}">
-                <div class="card-header">
-                    <h3>{{ row.Status }}</h3>
-                </div>
-                <div class="card-body">
-                    <p>{{ row.Counts }} Contacts</p>
-                </div>
-            </div>
-        {% endfor %}
-        </div>
+
         <div class="row">
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
 
