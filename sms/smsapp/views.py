@@ -478,28 +478,27 @@ def Reports(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         report_list = ReportInfo.objects.filter(email=request.user)
-        all_phone_numbers = []
-        for report in report_list:
-            phone_numbers = report.contact_list.split(',')
-            all_phone_numbers.extend(phone_numbers)
-        all_phone_numbers = list(set(all_phone_numbers))
-        df = download_campaign_report(request, None, False, all_phone_numbers)
-        logging.info(f"report {df.columns} {df.shape}")
+        # all_phone_numbers = []
+        # for report in report_list:
+        #     phone_numbers = report.contact_list.split(',')
+        #     all_phone_numbers.extend(phone_numbers)
+        # all_phone_numbers = list(set(all_phone_numbers))
+        # df = download_campaign_report(request, None, False, all_phone_numbers)
         # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
-        df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-        df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+        # df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+        # df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
 
-        filtered_df = df[df['contact_wa_id'].isin(all_phone_numbers)]
-        filtered_df = filtered_df.sort_values(by='Date', ascending=False)
-        filtered_df = filtered_df.drop_duplicates(subset='waba_id', keep='first')
-        unique_count = filtered_df['contact_wa_id'].nunique()
-        status_counts = filtered_df['status'].value_counts()
-        status_df = status_counts.reset_index()
-        status_df.columns = ['Status', 'Counts']
-        unique_count_df = pd.DataFrame({'Status': ['Total_contacts'], 'Counts': [unique_count]})
-        status_df = pd.concat([status_df, unique_count_df], ignore_index=True)
-        # print(filtered_df.describe)
-        status_list = status_df.to_dict(orient='records')
+        # filtered_df = df[df['contact_wa_id'].isin(all_phone_numbers)]
+        # filtered_df = filtered_df.sort_values(by='Date', ascending=False)
+        # filtered_df = filtered_df.drop_duplicates(subset='waba_id', keep='first')
+        # unique_count = filtered_df['contact_wa_id'].nunique()
+        # status_counts = filtered_df['status'].value_counts()
+        # status_df = status_counts.reset_index()
+        # status_df.columns = ['Status', 'Counts']
+        # unique_count_df = pd.DataFrame({'Status': ['Total_contacts'], 'Counts': [unique_count]})
+        # status_df = pd.concat([status_df, unique_count_df], ignore_index=True)
+        # # print(filtered_df.describe)
+        # status_list = status_df.to_dict(orient='records')
         context = {
             "template_names": template_value,
             "coins": request.user.coins,
@@ -507,7 +506,7 @@ def Reports(request):
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
             "report_list":report_list,
-            "status_list": status_list
+            # "status_list": status_list
             }
         
 
