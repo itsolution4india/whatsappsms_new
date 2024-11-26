@@ -494,7 +494,7 @@ def Reports(request):
             phone_numbers = report.contact_list.split(',')
             all_phone_numbers.extend(phone_numbers)
         all_phone_numbers = list(set(all_phone_numbers))
-        logger.info(f"total number of contacts in report: {all_phone_numbers}")
+        logger.info(f"total number of contacts in report: {len(all_phone_numbers)}")
 
         filtered_df = filterd_df[filterd_df['contact_wa_id'].isin(all_phone_numbers)]
         filtered_df = filtered_df.sort_values(by='Date', ascending=False)
