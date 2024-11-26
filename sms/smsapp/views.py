@@ -475,18 +475,38 @@ def Reports(request):
     if not check_user_permission(request.user, 'can_view_reports'):
         return redirect("access_denide")
     try:
-        # Fetch data and prepare context
-        #campaign_list = fetch_templates(display_whatsapp_id(request))
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         report_list = ReportInfo.objects.filter(email=request.user)
+        all_phone_numbers = []
+        for report in report_list:
+            phone_numbers = report.contact_list.split(',')
+            all_phone_numbers.extend(phone_numbers)
+        all_phone_numbers = list(set(all_phone_numbers))
+        df = download_campaign_report(request, None, False, all_phone_numbers)
+        # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
+        df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+        df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+
+        filtered_df = df[df['contact_wa_id'].isin(all_phone_numbers)]
+        filtered_df = filtered_df.sort_values(by='Date', ascending=False)
+        filtered_df = filtered_df.drop_duplicates(subset='waba_id', keep='first')
+        unique_count = filtered_df['contact_wa_id'].nunique()
+        status_counts = filtered_df['status'].value_counts()
+        status_df = status_counts.reset_index()
+        status_df.columns = ['Status', 'Counts']
+        unique_count_df = pd.DataFrame({'Status': ['Total_contacts'], 'Counts': [unique_count]})
+        status_df = pd.concat([status_df, unique_count_df], ignore_index=True)
+        # print(filtered_df.describe)
+        status_list = status_df.to_dict(orient='records')
         context = {
             "template_names": template_value,
             "coins": request.user.coins,
             "username": username(request),
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
-            "report_list":report_list
+            "report_list":report_list,
+            "status_list": status_list
             }
         
 
@@ -513,13 +533,16 @@ import csv
 import copy
 
 @login_required
-def download_campaign_report(request, report_id, insight=False):
+def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
     try:
         # Fetch the specific report based on the report_id
-        report = get_object_or_404(ReportInfo, id=report_id)
-        Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
-        contacts = report.contact_list.split('\r\n')
-        contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+        if report_id:
+            report = get_object_or_404(ReportInfo, id=report_id)
+            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
+            contacts = report.contact_list.split('\r\n')
+            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+        else:
+            contact_all = contact_list
 
         # Connect to the database
         connection = mysql.connector.connect(
@@ -579,6 +602,8 @@ def download_campaign_report(request, report_id, insight=False):
         # Generate CSV as HttpResponse (stream the file)
         if insight:
             return status_counts_df
+        elif contact_list:
+            return df
         else:
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
