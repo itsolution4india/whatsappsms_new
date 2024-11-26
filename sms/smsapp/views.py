@@ -484,6 +484,7 @@ def Reports(request):
             all_phone_numbers.extend(phone_numbers)
         all_phone_numbers = list(set(all_phone_numbers))
         df = download_campaign_report(request, None, False, all_phone_numbers)
+        logging.info(f"report {df.columns} {df.shape}")
         # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
         df['contact_wa_id'] = df['contact_wa_id'].astype(str)
         df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
