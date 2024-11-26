@@ -25,6 +25,8 @@
     width: 140px;
     text-align: center;
     transition: transform 0.3s;
+    margin: auto;
+    height: 80px;
 }
 
 .card:hover {
@@ -73,10 +75,18 @@
     border-left: 5px solid #9E9E9E;
 }
 
-.card.Total_contacts {
+.card.conversations {
     border-left: 5px solid #673AB7;
 }
+#pie-chart {
+    height: 400px;  /* Set a defined height */
+}
+
+.dashboard {
+    margin-right: 20px;  /* Add space between the dashboard and the pie chart */
+}
 </style>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -113,18 +123,22 @@
     </div>
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="dashboard">
-            {% for row in status_list %}
-            <div class="card {{ row.Status|lower }}">
-                <div class="card-header">
-                    <h3>{{ row.Status }}</h3>
+        <div class="d-flex">
+            <div class="dashboard col-4">
+                {% for row in status_list %}
+                <div class="card {{ row.Status|lower }}">
+                    <div class="card-header">
+                        <h3>{{ row.Status }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ row.Counts }} Contacts</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p>{{ row.Counts }} Contacts</p>
-                </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-        </div>
+            
+            <div id="pie-chart" class="col-6"></div>
+        </div>        
         <div class="row">
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
 
@@ -231,4 +245,8 @@
         $('#Reports').addClass('active');
     });
   </script>
+<script>
+    var pieChart = {{ pie_chart | safe }};  // Use the pie chart JSON from Django
+    Plotly.newPlot('pie-chart', pieChart.data, pieChart.layout);  // Render the pie chart
+</script>
 {% endblock %}
