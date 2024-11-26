@@ -38,6 +38,10 @@ from .functions.send_messages import send_messages, display_phonenumber_id, save
 from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance
 import pandas as pd
 from django.views.decorators.http import require_http_methods
+import mysql.connector
+import copy
+import csv
+import plotly.express as px
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -469,7 +473,6 @@ def Campaign(request):
         
     return render(request, "Campaign.html", context)
 
-import csv
 @login_required
 def Reports(request):
     if not check_user_permission(request.user, 'can_view_reports'):
@@ -478,38 +481,42 @@ def Reports(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         report_list = ReportInfo.objects.filter(email=request.user)
-        df = download_linked_report(request)
         # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
+        df = download_linked_report(request)
         df['contact_wa_id'] = df['contact_wa_id'].astype(str)
         df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
         df['phone_number_id'] = df['phone_number_id'].astype('Int64')
 
         filterd_df = df[df['phone_number_id'] == int(display_phonenumber_id(request))]
-        print(display_phonenumber_id(request))
-        print(df['phone_number_id'].head(5))
 
         all_phone_numbers = []
         for report in report_list:
             phone_numbers = report.contact_list.split(',')
             all_phone_numbers.extend(phone_numbers)
         all_phone_numbers = list(set(all_phone_numbers))
-
-        # df = download_campaign_report(request, None, False, all_phone_numbers)
-        # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
-        # df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-        # df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+        logger.info(f"total number of contacts in report: {all_phone_numbers}")
 
         filtered_df = filterd_df[filterd_df['contact_wa_id'].isin(all_phone_numbers)]
         filtered_df = filtered_df.sort_values(by='Date', ascending=False)
         filtered_df = filtered_df.drop_duplicates(subset='waba_id', keep='first')
         unique_count = filtered_df['contact_wa_id'].nunique()
+        total_count = filtered_df['contact_wa_id'].count()
         status_counts = filtered_df['status'].value_counts()
         status_df = status_counts.reset_index()
         status_df.columns = ['Status', 'Counts']
-        unique_count_df = pd.DataFrame({'Status': ['Total_contacts'], 'Counts': [unique_count]})
-        status_df = pd.concat([status_df, unique_count_df], ignore_index=True)
-        # print(filtered_df.describe)
+        total_conversations_df = pd.DataFrame({'Status': ['Total Conversations'], 'Counts': [total_count]})
+        total_contacts_df = pd.DataFrame({'Status': ['Total_Contacts'], 'Counts': [unique_count]})
+        status_df = pd.concat([status_df, total_conversations_df, total_contacts_df], ignore_index=True)
+
+        logger.info(f"total number of contacts in db: {unique_count}")
+        status_df = status_df[status_df['Status'] != 'Total_Contacts']
         status_list = status_df.to_dict(orient='records')
+        status_df = status_df[status_df['Status'] != 'Total Conversations']
+        labels = status_df['Status'].tolist()
+        values = status_df['Counts'].tolist()
+        fig = px.pie(status_df, names=labels, values=values)
+        fig.update_layout(width=600, height=400)
+        pie_chart = fig.to_json()
         context = {
             "template_names": template_value,
             "coins": request.user.coins,
@@ -517,7 +524,8 @@ def Reports(request):
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
             "report_list":report_list,
-            "status_list": status_list
+            "status_list": status_list,
+            "pie_chart": pie_chart
             }
         
 
@@ -538,10 +546,6 @@ def delete_report(request, report_id):
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
     
-############
-import mysql.connector
-import csv
-import copy
 
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
