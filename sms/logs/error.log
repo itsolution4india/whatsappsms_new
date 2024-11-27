@@ -266,3 +266,37 @@ User puri.tushar@gmail.com logged in successfully.
 User demo2@gmail.com logged in successfully.
 User opinder@gmail.com logged in successfully.
 User opinder@gmail.com logged in successfully.
+Failed login attempt for Dhruv@gmail.com
+User Dhruv@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+User Rudralogistic logged in successfully.
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72919
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 7075
+total number of contacts in db: 1063
+User opinder@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72920
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72920
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 338
+total number of contacts in db: 324
+discount 0
+discountnumber 0
