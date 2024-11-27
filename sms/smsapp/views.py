@@ -218,7 +218,8 @@ def Send_Sms(request):
             discount = show_discount(request.user)
             all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
 
-            coin_validation = validate_balance(request.user.marketing_coins, len(contact_list))
+            total_coins = request.user.marketing_coins + request.user.authentication_coins
+            coin_validation = validate_balance(total_coins, len(contact_list))
             if not coin_validation:
                 messages.error(request, "Insufficient balance. Please update.")
                 return render(request, "send-sms.html", context)
@@ -1296,8 +1297,9 @@ def send_flow_message(request):
 
         discount = show_discount(request.user)
         all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
-
-        coin_validation = validate_balance(request.user.marketing_coins, len(contact_list))
+        
+        total_coins = request.user.marketing_coins + request.user.authentication_coins
+        coin_validation = validate_balance(total_coins, len(contact_list))
         if not coin_validation:
             messages.error(request, "Insufficient balance. Please update.")
             return render(request, "send-flow.html", context)
@@ -1906,7 +1908,9 @@ class GetReportAPI(APIView):
 def api_manual(request):
 
     context = {
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request)
@@ -2031,7 +2035,9 @@ def bot_interactions(request):
         )
     
     context = {
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
