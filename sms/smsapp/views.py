@@ -174,7 +174,9 @@ def Send_Sms(request):
 
     context.update({
         "ip_address": ip_address,
-        "coins": coins if 'coins' in locals() else None,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "report_list": report_list,
         "campaign_list": campaign_list,
         "username": request.user.email if request.user.is_authenticated else None,
@@ -353,7 +355,9 @@ def Campaign(request):
 
     context = {
         "template_value": template_value,
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
@@ -521,7 +525,9 @@ def Reports(request):
         pie_chart = fig.to_json()
         context = {
             "template_names": template_value,
-            "coins": request.user.coins,
+            "coins":request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins":request.user.marketing_coins,
+            "authentication_coins":request.user.authentication_coins,
             "username": username(request),
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
@@ -677,7 +683,9 @@ def whitelist_blacklist(request):
 def upload_media(request):
     token, _ = get_token_and_app_id(request)
     context={
-    "coins":request.user.coins,
+    "coins":request.user.marketing_coins + request.user.authentication_coins,
+    "marketing_coins":request.user.marketing_coins,
+    "authentication_coins":request.user.authentication_coins,
     "username":username(request),
     "WABA_ID":display_whatsapp_id(request),
     "PHONE_ID":display_phonenumber_id(request)
@@ -851,7 +859,9 @@ def schedules(request):
         return redirect("access_denide")
     scheduledmessages = ScheduledMessage.objects.filter(current_user=request.user.email)
     context = {
-        "coins":request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username":username(request),
         "WABA_ID":display_whatsapp_id(request),
         "PHONE_ID":display_phonenumber_id(request),
@@ -1040,7 +1050,9 @@ def create_flow_message(request):
 
     context = {
         "flows": filtered_flows,
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
@@ -1263,7 +1275,9 @@ def send_flow_message(request):
         }
 
     context.update({
-        "coins": coins if 'coins' in locals() else None,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "report_list": report_list,
         "campaign_list": campaign_list,
         "username": request.user.email if request.user.is_authenticated else None,
@@ -1348,7 +1362,9 @@ def link_templates(request):
     templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
 
     context = {
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
@@ -1604,7 +1620,9 @@ def bot_flow(request):
         "current_user": request.user,
         "bot_automation": bot_automation,
         "template_names": [template['template_name'] for template in templates],
-        "coins": request.user.coins,
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request)
@@ -1647,7 +1665,9 @@ def coins_history_list(request):
     coins_history = CoinsHistory.objects.filter(user=request.user)
     context = {
             "template_names": template_value,
-            "coins": request.user.coins,
+            "coins":request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins":request.user.marketing_coins,
+            "authentication_coins":request.user.authentication_coins,
             "username": username(request),
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
