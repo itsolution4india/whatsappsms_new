@@ -300,3 +300,294 @@ total number of contacts in report: 338
 total number of contacts in db: 324
 discount 0
 discountnumber 0
+User Rudralogistic logged in successfully.
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72922
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 1
+total number of contacts in db: 0
+Not Found: /robots.txt
+discount 0
+discountnumber 0
+User Rudralogistic logged in successfully.
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72923
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 1
+total number of contacts in db: 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72923
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 0
+total number of contacts in db: 0
+User Rudralogistic logged in successfully.
+discount 0
+discountnumber 0
+user_response okay
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72926
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 1
+total number of contacts in db: 1
+User Rudralogistic logged in successfully.
+User Dhruv@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 917
+total number of contacts in db: 168
+User Rudralogistic logged in successfully.
+Not Found: /ads.txt
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 1
+total number of contacts in db: 1
+User Itsolution4india logged in successfully.
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72927
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72929
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 3
+total number of contacts in db: 2
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72929
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 3
+total number of contacts in db: 2
+discount 0
+discountnumber 0
+user_response This is wrong
+filter_message_response None
+user_response Pls compare my edited version
+filter_message_response None
+Method Not Allowed: /user-interactions/
+User Rudralogistic logged in successfully.
+Not Found: /.git/config
+discount 0
+discountnumber 0
+user_response Thank you for contacting chaynika! Please let us know how we can help you.
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72943
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 6
+total number of contacts in db: 5
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72944
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 5
+total number of contacts in db: 4
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72944
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 5
+total number of contacts in db: 4
+Number of rows fetched: 72944
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 5
+total number of contacts in db: 4
+discount 0
+discountnumber 0
+user_response Hello
+filter_message_response None
+user_response Sir Humpe thano ki trf new ploting ayi hai
+filter_message_response None
+user_response MDDA APPROVED
+filter_message_response None
+Not Found: /robots.txt
+Not Found: /.env
+Not Found: /robots.txt
+Not Found: /sitemap.xml
+User test_demo@gmail.com logged in successfully.
+Not Found: /sitemap.xml
+User Dhruv@gmail.com logged in successfully.
+Failed login attempt for Dhruv@gmail.com
+Failed login attempt for Dhruv@gmail.com
+User Dhruv@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 72957
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+discount 87
+discountnumber 6134
+user_response Thank you for contacting Dr Gaurav Agrawal, Interventional Pediatric & Fetal Cardiologist.
+
+Please let me know how can we help you?
+
+
+www.childrenheartcare.com
+www.fetalechoindelhi.com
+filter_message_response None
+user_response Thank you for contacting khetarpal Nursing Home! Please let us know how we can help you. 
+For appointment pls call 01145600000 or 9311408717. 
+Address GN-5, Shivaji Enclave, New Delhi, 110027
+www.drishachildcare.com
+
+https://www.google.com/maps/place/Khetarpal+Nursing+Home/@28.654634,77.1194464,15z/data=!4m5!3m4!1s0x0:0xa0d00314fa943edc!8m2!3d28.654634!4d77.1194464
+filter_message_response None
+user_response Thank you for your message. We're unavailable right now, but will respond as soon as possible.ucconnectservices.com
+filter_message_response None
+user_response Thank you for contacting U.C Connect Services Pvt Ltd!ucconnectservices.com
+filter_message_response None
+user_response Interested
+filter_message_response None
+Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74363
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 7075
+total number of contacts in db: 1829
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74380
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 7075
+total number of contacts in db: 1829
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74383
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 7075
+total number of contacts in db: 1829
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74392
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 7075
+total number of contacts in db: 1829
+Failed login attempt for Dhruv@gmail.com
+User Dhruv@gmail.com logged in successfully.
+user_response Is it sun facing???
+Which tower??
+filter_message_response None
+User test_demo@gmail.com logged in successfully.
+Not Found: /accounts/login/
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74503
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 917
+total number of contacts in db: 168
