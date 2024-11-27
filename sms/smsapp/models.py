@@ -61,7 +61,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=150, unique=True)
     phone_number_id = models.CharField(max_length=15, default=0, validators=[validate_phone_number_id])
     whatsapp_business_account_id = models.CharField(max_length=15,default=0, validators=[validate_whatsapp_business_account_id])
-    coins = models.IntegerField(default=0)
+    coins = models.IntegerField(default=0, editable=False)
+    marketing_coins = models.IntegerField(default=0)
+    authentication_coins = models.IntegerField(default=0)
     discount = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -70,6 +72,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     register_app = models.ForeignKey(RegisterApp, on_delete=models.SET_NULL, null=True)
     def save(self, *args, **kwargs):
+        self.total_coins = self.marketing_coins + self.authentication_coins
         if self.register_app:
             # Set token and app_id from RegisterApp
             self.token = self.register_app.token

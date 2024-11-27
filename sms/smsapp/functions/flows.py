@@ -76,13 +76,14 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
         for campaign in campaign_list:
             if campaign['template_name'] == flow_name:
                 language = campaign['template_language']
+                category = campaign['category']
                 money_data = len(all_contact)
                 logging.info(f"Calculated money data for sending flow messages: {money_data}")
 
                 if request:
-                    subtract_coins(request, money_data)
+                    subtract_coins(request, money_data, category)
                 else:
-                    schedule_subtract_coins(current_user, money_data)
+                    schedule_subtract_coins(current_user, money_data, category)
                 
                 try:
                     flow_id = get_flow_id(campaign_list, flow_name)
