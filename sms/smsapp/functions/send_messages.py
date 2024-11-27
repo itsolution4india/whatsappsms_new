@@ -13,7 +13,7 @@ def schedule_subtract_coins(user, final_count, category):
             logger.error("User or user coins not found.")
             return
         final_coins = final_count
-        if data.coins >= final_coins:
+        if data.marketing_coins >= final_coins:
             if category == "MARKETING":
                 data.marketing_coins -= final_coins
                 data.save()
@@ -37,7 +37,7 @@ def subtract_coins(request, final_count, category):
         logger.error("User or user coins not found.")
         return
     final_coins = final_count
-    if user.coins >= final_coins:
+    if user.marketing_coins >= final_coins:
         if category == "MARKETING":
             user.marketing_coins -= final_coins
             user.save()
