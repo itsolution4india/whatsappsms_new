@@ -6,29 +6,24 @@ from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, Registe
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
+
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
-    list_display = ('email', 'user_id','username','phone_number_id','whatsapp_business_account_id','coins','discount', 'is_staff', 'register_app')
+    list_display = ('email', 'user_id', 'username', 'phone_number_id', 'whatsapp_business_account_id', 'coins','marketing_coins','authentication_coins', 'discount', 'is_staff', 'register_app')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email', 'username')
     ordering = ('email',)
-
     fieldsets = (
-        (None, {'fields': ('email','user_id','phone_number_id','whatsapp_business_account_id','coins','discount', 'password', 'register_app', 'api_token')}),
+        (None, {'fields': ('email', 'user_id', 'phone_number_id', 'whatsapp_business_account_id','marketing_coins','authentication_coins', 'discount', 'password', 'register_app', 'api_token')}),
         (_('Personal info'), {'fields': ('username',)}),
-        (_('Permissions'), {'fields': ('is_active', 'is_staff','is_superuser', 'groups', 'user_permissions')}),
-        
+        (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )
-
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'user_id','username','phone_number_id','whatsapp_business_account_id','coins','discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser', 'register_app'),
+            'fields': ('email', 'user_id', 'username', 'phone_number_id', 'whatsapp_business_account_id','marketing_coins','authentication_coins', 'discount', 'password1', 'password2', 'is_active', 'is_staff', 'is_superuser', 'register_app'),  # Removed 'coins' here
         }),
     )
- 
-
-   
    
     def save_model(self, request, obj, form, change):
         # Get the original object from the database (if it exists)

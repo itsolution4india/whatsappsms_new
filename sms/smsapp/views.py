@@ -35,7 +35,7 @@ from .fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
-from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance
+from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance, get_template_details_by_name
 import pandas as pd
 from django.views.decorators.http import require_http_methods
 import mysql.connector
@@ -117,7 +117,9 @@ def logout_view(request):
 @login_required
 def user_dashboard(request):
     context={
-    "coins":request.user.coins,
+    "coins":request.user.marketing_coins + request.user.authentication_coins,
+    "marketing_coins":request.user.marketing_coins,
+    "authentication_coins":request.user.authentication_coins,
     "username":username(request),
     "WABA_ID":display_whatsapp_id(request),
      "PHONE_ID":display_phonenumber_id(request)
@@ -1749,6 +1751,10 @@ class UpdateBalanceReportView(APIView):
             template_name = request.data.get('template_name')
 
             user_data = customuser_list_view(request)
+            token, _ = get_token_and_app_id(request)
+            waba_id = display_whatsapp_id(request)
+            response = get_template_details_by_name(token, waba_id, template_name)
+            category = response.get('category', 'Category not found')
 
             if isinstance(user_data, JsonResponse):
                 data = json.loads(user_data.content.decode('utf-8'))
@@ -1759,7 +1765,7 @@ class UpdateBalanceReportView(APIView):
                     logger.info(f"User email: {user_email}")
 
                     try:
-                        schedule_subtract_coins(user_email, coins)
+                        schedule_subtract_coins(user_email, coins, category)
                     except Exception as e:
                         logger.error(f"Error subtracting coins: {str(e)}")
                         return Response({"error": "Failed to subtract coins", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
