@@ -55,11 +55,17 @@
         height: 100px;
     }
     .phone-selector {
+        background: #d3e3ff;
         margin: 10px;
         padding: 15px;
-        background-color: #f8f9fa;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .phone-selector div {
+        height: 55.50vh;
+        overflow-y: scroll;
+        scrollbar-width: thin;
     }
     
     .phone-number-btn {
@@ -87,7 +93,7 @@
     }
     .chat-container {
         width: 100%;
-        margin-top: 20px;
+        margin-top: 10px;
         background: #eafae6;
         height: 75vh;
         padding-bottom: 60px;
@@ -195,17 +201,30 @@
 .form-feedback.show {
     transform: translateY(0);
 }
+#phoneSearchInput {
+    margin: 10px 5px;
+    border-radius: 5px;
+    border: 1px solid gainsboro;
+    height: 35px;
+    padding: 10px;
+}
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 {% endblock %}
 {% block content %}
 
-<center><h3 class="mt-2">User Interactions</h3></center>
+<center><h3 class="mt-2">User Interactions {% if contact_name %}for <span style="background: #a5a6ff;color: white;padding: 0px 10px;">{{ contact_name }}</span> {% endif %}</h3></center>
 
 <div class="d-flex">
     <div class="phone-selector">
         <h5>Select Phone Number:</h5>
-        <div class="d-flex flex-wrap flex-column">
+        <input 
+            type="text" 
+            id="phoneSearchInput" 
+            class="search-input" 
+            placeholder="Search phone numbers..."
+        >
+        <div id="phoneNumberContainer" class="d-flex flex-column">
             {% for phone in phone_numbers_list %}
                 <button 
                     class="phone-number-btn {% if phone == selected_phone %}active{% endif %}"
@@ -340,6 +359,22 @@
 <script>
     $(document).ready(function(){
         $('#BotInteractions').addClass('active');
+    });
+</script>
+<script>
+    document.getElementById('phoneSearchInput').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const phoneButtons = document.querySelectorAll('.phone-number-btn');
+        
+        phoneButtons.forEach(button => {
+            const phoneNumber = button.textContent.toLowerCase();
+            
+            if (phoneNumber.includes(searchTerm)) {
+                button.classList.remove('hidden');
+            } else {
+                button.classList.add('hidden');
+            }
+        });
     });
 </script>
 <script>

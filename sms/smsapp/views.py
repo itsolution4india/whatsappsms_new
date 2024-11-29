@@ -1927,30 +1927,37 @@ def fetch_webhook_responses(request):
 @login_required
 def bot_interactions(request):
     selected_phone = request.GET.get('phone_number', None)
-    start_date = datetime.now() - timedelta(days=7)
+    # start_date = datetime.now() - timedelta(days=7)
     combined_data = []
     phone_numbers_list = set()
     
+    report_list = ReportInfo.objects.filter(email=request.user)
+    all_phone_numbers = []
+    for report in report_list:
+        phone_numbers = report.contact_list.split(',')
+        all_phone_numbers.extend(phone_numbers)
+    all_phone_numbers = list(set(all_phone_numbers))
+    
+    df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+    df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    filter_main_data = df[df['status'] == 'reply']
+    unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
+    
+    matching_phone_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
+    unique_contact_names = None
     if selected_phone:
-        df = download_linked_report(request)
-        df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-        df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
-        
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
-            (df['status'] == 'reply') &
-            (df['Date'] > start_date.strftime('%Y-%m-%d %H:%M:%S'))
+            (df['status'] == 'reply')
         ].copy()
         
         filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
+        unique_contact_names = filtered_df['contact_name'].unique()
         
         messages_data = list(BotSentMessages.objects.all().values())
         messages_df = pd.DataFrame(messages_data)
-        phone_numbers_list = set(
-            phone_number 
-            for contact_list in messages_df['contact_list']
-            for phone_number in contact_list
-        )
         messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
         
         messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
@@ -2007,12 +2014,8 @@ def bot_interactions(request):
     else:
         messages_data = list(BotSentMessages.objects.all().values())
         messages_df = pd.DataFrame(messages_data)
-        phone_numbers_list = set(
-            phone_number 
-            for contact_list in messages_df['contact_list']
-            for phone_number in contact_list
-        )
-    
+        
+    phone_numbers_list = matching_phone_numbers
     context = {
         "coins":request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins":request.user.marketing_coins,
@@ -2023,7 +2026,8 @@ def bot_interactions(request):
         "phone_numbers_list": phone_numbers_list,
         "selected_phone": selected_phone,
         "combined_data": combined_data,
-        "selected_phone": selected_phone
+        "selected_phone": selected_phone,
+        "contact_name": unique_contact_names[0] if unique_contact_names else None
     }
     return render(request, "bot_interactions.html", context)
 
