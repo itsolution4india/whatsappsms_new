@@ -1946,7 +1946,7 @@ def bot_interactions(request):
     unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
     
     matching_phone_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
-    unique_contact_names = None
+    unique_contact_names = []
     if selected_phone:
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
@@ -2027,7 +2027,7 @@ def bot_interactions(request):
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "selected_phone": selected_phone,
-        "contact_name": unique_contact_names[0] if unique_contact_names else None
+        "contact_name": unique_contact_names[0] if len(unique_contact_names) > 0 else None
     }
     return render(request, "bot_interactions.html", context)
 
