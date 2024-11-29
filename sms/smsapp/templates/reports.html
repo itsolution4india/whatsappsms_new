@@ -85,6 +85,32 @@
 .dashboard {
     margin-right: 20px;  /* Add space between the dashboard and the pie chart */
 }
+    .blur-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.8); /* Slightly transparent white background */
+        backdrop-filter: blur(1px); /* Apply blur effect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10; /* Make sure it's on top */
+    }
+
+    /* Style for the "Next upcoming Update" message */
+    .update-message {
+        background-color: rgb(166 166 166 / 70%); /* Semi-transparent background for text */
+        padding: 10px 20px 0px 20px;
+        border-radius: 50px;
+        color: white;
+        font-size: 2rem;
+        text-align: center;
+    }
+    .update-message h1 {
+        font-size: 30px;
+    }
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
@@ -123,7 +149,7 @@
     </div>
 
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="d-flex">
+        <div class="d-flex position-relative">
             <div class="dashboard col-4">
                 {% for row in status_list %}
                 <div class="card {{ row.Status|lower }}">
@@ -138,6 +164,12 @@
             </div>
             
             <div id="pie-chart" class="col-6"></div>
+
+            <div class="blur-overlay">
+                <div class="update-message">
+                    <h1>Next Upcoming Update</h1>
+                </div>
+            </div>
         </div>        
         <div class="row">
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
