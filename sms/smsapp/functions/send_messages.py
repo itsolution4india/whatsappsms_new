@@ -95,14 +95,18 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
 
         phone_numbers_string = ",".join(formatted_numbers)
 
-        ReportInfo.objects.create(
-            email=str(current_user),
-            campaign_title=campaign_title,
-            contact_list=phone_numbers_string,
-            message_date=timezone.now(),
-            message_delivery=len(all_contact),
-            template_name=template_name
-        )
+        try:
+            ReportInfo.objects.create(
+                email=str(current_user),
+                campaign_title=campaign_title,
+                contact_list=phone_numbers_string,
+                message_date=timezone.now(),
+                message_delivery=len(all_contact),
+                template_name=template_name
+            )
+        except Exception as e:
+            logger.error(f"Error: {str(e)}")
+            logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {template_name}")
         logger.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
         logger.error(f"Error in sending messages: {str(e)}")

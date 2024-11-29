@@ -5,6 +5,7 @@ from django.utils import timezone
 from ..models import ReportInfo
 from ..fastapidata import send_flow_message_api
 from .send_messages import schedule_subtract_coins, subtract_coins
+from ..utils import logger
 
 
 
@@ -103,14 +104,18 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
 
         phone_numbers_string = ",".join(formatted_numbers)
 
-        ReportInfo.objects.create(
-            email=str(current_user),
-            campaign_title=campaign_title,
-            contact_list=phone_numbers_string,
-            message_date=timezone.now(),
-            message_delivery=len(all_contact),
-            template_name=flow_name
-        )
+        try:
+            ReportInfo.objects.create(
+                email=str(current_user),
+                campaign_title=campaign_title,
+                contact_list=phone_numbers_string,
+                message_date=timezone.now(),
+                message_delivery=len(all_contact),
+                template_name=flow_name
+            )
+        except Exception as e:
+            logger.error(f"Error: {str(e)}")
+            logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {flow_name}")
         logging.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
         logging.error(f"Error in sending messages: {str(e)}")

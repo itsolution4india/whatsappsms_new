@@ -81,6 +81,8 @@ def create_report(current_user, phone_numbers_string, all_contact, template_name
         )
         return report_id
     except Exception as e:
+        logger.error(str(e))
+        logger.error(f"{str(current_user)}, {report_id}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {template_name}")
         return str(e)
 
 def insert_bot_sent_message(

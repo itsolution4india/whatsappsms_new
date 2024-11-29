@@ -223,7 +223,7 @@ def Send_Sms(request):
             if not coin_validation:
                 messages.error(request, "Insufficient balance. Please update.")
                 return render(request, "send-sms.html", context)
-            
+            logger.info(f"Send_Sms: {current_user}, {display_phonenumber_id(request)}, {template_name}, {media_id}, {all_contact}, {contact_list}, {campaign_title}, {submitted_variables}")
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
             else:
@@ -334,8 +334,6 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
         )
 
     discountnumber = fnn(valid_numbers, discount)
-    logger.info(f"discount {discount}")
-    logger.info(f"discountnumber {discountnumber}")
     
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
     
@@ -501,7 +499,6 @@ def Reports(request):
             phone_numbers = report.contact_list.split(',')
             all_phone_numbers.extend(phone_numbers)
         all_phone_numbers = list(set(all_phone_numbers))
-        logger.info(f"total number of contacts in report: {len(all_phone_numbers)}")
 
         filtered_df = filterd_df[filterd_df['contact_wa_id'].isin(all_phone_numbers)]
         filtered_df = filtered_df.sort_values(by='Date', ascending=False)
@@ -515,7 +512,6 @@ def Reports(request):
         total_contacts_df = pd.DataFrame({'Status': ['Total_Contacts'], 'Counts': [unique_count]})
         status_df = pd.concat([status_df, total_conversations_df, total_contacts_df], ignore_index=True)
 
-        logger.info(f"total number of contacts in db: {unique_count}")
         status_df = status_df[status_df['Status'] != 'Total_Contacts']
         status_list = status_df.to_dict(orient='records')
         status_df = status_df[status_df['Status'] != 'Total Conversations']
@@ -892,7 +888,6 @@ def save_phone_number(request):
                     pass
                 try:
                     user_response = response['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
-                    logger.info(f"user_response {user_response}")
                 except (KeyError, IndexError):
                     pass
                 phone_number_id = response['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']
@@ -915,11 +910,9 @@ def save_phone_number(request):
                         user_response=user_response,
                         user__in=emails
                     ).first()
-                    logger.info(f"message_type: {filter_message_response.message_type}")
                 except Exception as e:
                     filter_message_response =None
 
-                logger.info(f"filter_message_response {filter_message_response}")
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
                     ).first()
@@ -936,7 +929,6 @@ def save_phone_number(request):
                     lang = filter_campaign_list[0]['template_language']
                     temp_media_type = filter_campaign_list[0]['media_type']
                     image_id = latest_template.image_id
-                    logger.info(f"image_id {image_id}")
                     
                     try:
                         # Split the image_id and check the resulting list length
@@ -949,7 +941,7 @@ def save_phone_number(request):
                             raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
                     
                     except Exception as e:
-                        logger.info(f"Error {e}")
+                        logger.error(f"Error {e}")
                         image_id = None
                         media_type = "TEXT"
                     
@@ -1303,7 +1295,7 @@ def send_flow_message(request):
         if not coin_validation:
             messages.error(request, "Insufficient balance. Please update.")
             return render(request, "send-flow.html", context)
-
+        logger.info(f"Send_Flow: {current_user}, {phone_id}, {campaign_list}, {flow_name}, {all_contact}, {contact_list}, {campaign_title}")
         try:
             send_flow_messages_with_report(current_user, token, phone_id, campaign_list, flow_name, all_contact, contact_list,campaign_title, request)
         except Exception as e:
@@ -1315,7 +1307,7 @@ def send_flow_message(request):
     
 @login_required
 def delete_template(request):
-    token, app_id = get_token_and_app_id(request)
+    token, _ = get_token_and_app_id(request)
     template_name = request.POST.get('template_name')
     template_id = request.POST.get('template_id')
 
@@ -1469,8 +1461,6 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             
             query += " WHERE CAST(message_timestamp AS SIGNED) BETWEEN %s AND %s"
             query_params.extend([start_timestamp, end_timestamp])
-            logger.info(f"Date range query part: {query}")
-            logger.info(f"Date parameters (timestamps): {query_params}")
         
         # Add button_name filter if provided
         if button_name:
@@ -1483,13 +1473,10 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                 query += " WHERE LOWER(message_body) LIKE LOWER(%s)"
             query_params.append(f"%{button_name}%")
             
-        logger.info(f"Final query: {query}")
-        logger.info(f"Final parameters: {query_params}")
         
         # Execute query and log the results
         cursor.execute(query, tuple(query_params))
         rows = cursor.fetchall()
-        logger.info(f"Number of rows fetched: {len(rows)}")
         
         # Define headers
         headers = ['Date', 'display_phone_number', 'phone_number_id', 'waba_id',
@@ -1498,14 +1485,6 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                    'message_body']
         
         df = pd.DataFrame(rows, columns=headers)
-        
-        # Log some sample messages for debugging
-        if not df.empty:
-            logger.info("Sample messages in the data:")
-            sample_messages = df['message_body'].head().tolist()
-            logger.info(f"Sample messages: {sample_messages}")
-            sample_timestamps = df['message_timestamp'].head().tolist()
-            logger.info(f"Sample timestamps: {sample_timestamps}")
         
         # Create the HttpResponse object with CSV header
         response = HttpResponse(content_type='text/csv')
@@ -1523,8 +1502,6 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             writer = csv.writer(response)
             writer.writerow(headers)  # Write headers
             writer.writerows(rows)    # Write all rows
-            
-            logger.info(f"CSV file created with {len(rows)} rows")
             return response
         else:
             return df
@@ -1784,7 +1761,6 @@ class UpdateBalanceReportView(APIView):
                 
                 if filtered_user:
                     user_email = filtered_user['email']
-                    logger.info(f"User email: {user_email}")
 
                     try:
                         schedule_subtract_coins(user_email, coins, category)
