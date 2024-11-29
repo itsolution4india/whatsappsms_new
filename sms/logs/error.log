@@ -591,3 +591,1594 @@ Sample messages: ['', '', '', '', None]
 Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
 total number of contacts in report: 917
 total number of contacts in db: 168
+Failed login attempt for Dhruv@gmail.com
+User Dhruv@gmail.com logged in successfully.
+User test_demo@gmail.com logged in successfully.
+Not Found: /webapi/v1/system/accountmanage/account
+Not Found: /cgi-bin/log.cgi
+Not Found: /lan.html
+Not Found: /test.txt
+Not Found: /settings
+Not Found: /web_caps/webCapsConfig
+Not Found: /services/getFile.cmd
+Not Found: /cgi-bin/GetSrvInfo.exe
+Not Found: /cgi/get_param.cgi
+Not Found: /loadtextfile.htm
+Not Found: /password.jsn
+Not Found: /.git/config
+Not Found: /ab2g
+Not Found: /ab2h
+Not Found: /alive.php
+Not Found: /t4
+Not Found: /teorema505
+Not Found: /wp-config.php-backup
+Not Found: /%C0
+Not Found: /user_secrets.yml
+Not Found: /google-services.json
+Not Found: /credentials.json
+Not Found: /google-api-private-key.json
+Not Found: /.tugboat
+Not Found: /credentials.db
+Not Found: /.axiom/accounts/do.json
+Not Found: /appspec.yml
+Not Found: /.aws/config
+Not Found: /Dockerrun.aws.json
+Not Found: /applications.pinpoint
+Not Found: /.aws/credentials
+Not Found: /.azure-pipelines.yml
+Not Found: /token.json
+Not Found: /access_tokens.db
+Not Found: /user_secrets.yml.old
+Not Found: /assets/credentials.json
+Not Found: /app/config/pimcore/google-api-private-key.json
+Not Found: /app/google-services.json
+Not Found: /.config/gcloud/credentials.db
+Not Found: /azure-pipelines.yml
+Not Found: /search/token.json
+Not Found: /appspec.yaml
+Not Found: /.config/gcloud/access_tokens.db
+Not Found: /pimcore/app/config/pimcore/google-api-private-key.json
+Not Found: /android/app/google-services.json
+Not Found: /.env
+Not Found: /.env
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /sitemaps.xml
+Not Found: /atom.xml
+Not Found: /sitemap.txt
+Not Found: /sitemap.xml
+Not Found: /sitemap.xml.gz
+Not Found: /sitemap_index.xml
+Not Found: /Foobar-debug.aspx
+Not Found: /v2/auth/roles
+Not Found: /assets/other/service-account-credentials.json
+Not Found: /.htaccess
+Not Found: /schema
+Not Found: /robots.txt
+Not Found: /oauth-credentials.json
+Not Found: /_vti_pvt/service.pwd
+Not Found: /example.htaccess
+Not Found: /service-account-credentials.json
+Not Found: /_.htaccess
+Not Found: /sample.htaccess
+Not Found: /a.htaccess
+Not Found: /htaccess_for_page_not_found_redirects.htaccess
+Not Found: /robots.txt
+Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+User test_demo@gmail.com logged in successfully.
+Not Found: /index.php
+Not Found: /templates/config/profmanage.php
+Not Found: /install
+Not Found: /index.php/install
+Not Found: /password-page/ovf/account-credentials-ovf
+Not Found: /installer/installerUI.php
+Not Found: /lab/api/settings/
+Not Found: /install/
+Not Found: /install/index.php
+Not Found: /nagiosxi/install.php
+Not Found: /backend/admin/users
+Not Found: /install.php
+Not Found: /install
+Not Found: /install/
+Not Found: /guestLogin.html
+Not Found: /installer
+Not Found: /home
+Not Found: /install.php
+Not Found: /install/app.php
+Not Found: /registerUser.html
+Not Found: /install/froxlor.sql
+Not Found: /debug/
+Not Found: /index.php
+Not Found: /__clockwork/app
+Not Found: /log/
+Not Found: /setup
+Not Found: /umbraco/management/api/v1/server/status
+Not Found: /stats/index.html
+Not Found: /owncloud/
+Not Found: /.env
+User Rudralogistic logged in successfully.
+User test_demo@gmail.com logged in successfully.
+discount 0
+discountnumber 0
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74616
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+total number of contacts in report: 918
+total number of contacts in db: 168
+User Dhruv@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74684
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Not Found: /r
+User Dhruv@gmail.com logged in successfully.
+User Dhruv@gmail.com logged in successfully.
+User Dhruv@gmail.com logged in successfully.
+Not Found: /ajax/docs/nav/
+Not Found: /api/graphql/
+Not Found: /telescope/requests
+Not Found: /.env.stage
+Not Found: /.env.old
+Not Found: /.env.prod.local
+Not Found: /.env_1
+Not Found: /.env.prod
+Not Found: /.env.production
+Not Found: /.env.dev
+Not Found: /api/.env
+Not Found: /.env.www
+Not Found: /.env_sample
+Not Found: /.env.example
+Not Found: /.env.46.202
+Not Found: /storage/logs/laravel.log
+Not Found: /.env.save
+Not Found: /.env
+Not Found: /.env.production.local
+Not Found: /.env.backup
+Not Found: /.env.local
+Not Found: /.env.dev.local
+Not Found: /api/stats
+Not Found: /.env.live
+Not Found: /.env.130
+Not Found: /.env.development.local
+Not Found: /.env.bak
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Not Found: /horizon/api/stats
+Not Found: /sitemap.xml.gz
+User Dhruv@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+User Dhruv@gmail.com logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74685
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+message_type: send_text_message
+filter_message_response send_text_message - Hi
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919315494292'], 'message_type': 'text', 'body': 'Hello! How can I help you today'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hello
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /wp-json/ssa/v1/users
+Not Found: /wp/debug.log
+Not Found: /wp-content/uploads/wpdm-cache/
+Not Found: /wp-config.php
+Not Found: /wp-admin/admin.php
+Not Found: /wp-admin/admin.php
+Not Found: /wp-json/download-monitor/v1/user_data
+Not Found: /wp-content/plugins/wp-easycart/inc/admin/phpinfo.php
+Not Found: /wp-content/plugins/insert-php/readme.txt
+Not Found: /wp-config.php~
+Not Found: /wp-json/wp/v2/lesson/1
+Not Found: /wp-json/guppy/v2/load-guppy-users
+Not Found: /wp-admin/maint/repair.php
+Not Found: /wp-content/uploads/affwp-debug.log
+Not Found: /wp-content/uploads/wp-security-audit-log/failed-logins/
+Not Found: /wp-content/plugins/boldgrid-backup/cron/restore-info.json
+Not Found: /wordpress/debug.log
+Not Found: /wp-content/bps-backup/logs/db_backup_log.txt
+Not Found: /wp-admin/admin-ajax.php
+Not Found: /wp-includes/rss-functions.php
+Not Found: /wp-content/uploads/data.txt
+Not Found: /blog/debug.log
+Not Found: /license.txt
+Not Found: /wp-admin/install.php
+Not Found: /wp-content/plugins/wp-statistics/readme.txt
+Not Found: /wp-content/debug.log
+Not Found: /.wp-config.php.swp
+Not Found: /wp-admin/admin-ajax.php
+Not Found: /wp-content/uploads/mc4wp-debug.log
+Not Found: /wp-content/uploads/wp-file-manager-pro/fm_backup/
+Not Found: /wp-content/plugins/wpmudev-updates/keys/
+Not Found: /wp-json/wp/v2/posts
+Not Found: /wp-config.php.save
+Not Found: /wp-json/rps_result/v1/route/student_fields
+Not Found: /wp-admin/admin-ajax.php
+Not Found: /wp-json/acf/v3/options/a
+Not Found: /wp-content/uploads/pdf-invoices/
+Not Found: /wp-admin/admin.php
+Not Found: /wp-includes/sym404/root/etc/passwd
+Not Found: /wp-content/uploads/database-backups/
+Not Found: /wp-admin/setup-config.php
+Not Found: /wp-admin/admin-ajax.php
+Not Found: /installer-log.txt
+Not Found: /wp-content/uploads/ao_ccss/queuelog.html
+Not Found: /wp-content/plugins/constant-contact-forms/vendor/constantcontact/constantcontact/test/Json/Auth/get_access_token.json
+Not Found: /wp-json/metform/v1/forms/templates/0
+Not Found: /wp-content/plugins/easy-wp-smtp/
+Not Found: /wp-content/plugins/simple-ajax-chat/sac-export.csv
+Not Found: /wp-json/wp/v2/users/
+Not Found: /wp-config.php.bak
+Not Found: /wp-content/plugins/bulletproof-security/admin/htaccess/db_backup_log.txt
+Not Found: /wp-json/rps_result/v1/route/search_student
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Not Found: /wp-json/wp/v2/asked-question
+Not Found: /wp-content/plugins/jh-404-logger/readme.txt
+Not Found: /wp-admin/admin-ajax.php
+Not Found: /wp-admin/admin.php
+Not Found: /blog/wp-content/uploads/ao_ccss/queuelog.html
+Not Found: /wp-content/plugins/constant-contact-api-old/vendor/constantcontact/constantcontact/test/Json/Auth/get_access_token.json
+Not Found: /wp-content/plugins/wp-mail-smtp-pro/
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74687
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74688
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74688
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAGnWBuof2oBO0hd9BFZBBEUKLoMZAH1m1JtbUOEd3ZC8GIGjZAyeZB0yFy7SkaByNMKxLQHp6lnstogZAFbJs3b391VCh8uhoxixehHt3vbBYfFuuxvDkjLJEmll48gqw7k33ZCjQxCxgOLK6NpPrtVyTDqSitaPQZBD4dui8EGXajlS1VO35sBOfltsZBvZCMt0mK0u2aQzocFupoPohaIAsz3ZB5fAHoJh6Tm9R9DxKk', 'phone_number_id': '344709618736355', 'contact_list': ['919315494292'], 'message_type': 'text', 'body': 'hi'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74690
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Testing
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74690
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /sitemap.xml.gz
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74690
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+message_type: link_template
+filter_message_response link_template - Hi
+sent bot message, hi_template en_GB, IMAGE 1236533660777716
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74690
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74692
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hello
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74692
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74692
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Testing
+filter_message_response None
+user_response Rich
+filter_message_response None
+user_response Helooooooo
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74694
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+user_response Hi
+message_type: link_template
+filter_message_response link_template - Hi
+sent bot message, hi_template en_GB, IMAGE 1236533660777716
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+user_response Hff
+filter_message_response None
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74697
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74698
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Number of rows fetched: 74698
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /.env
+User Rudralogistic logged in successfully.
+User Rudralogistic logged in successfully.
+User Rudralogistic logged in successfully.
+User Rudralogistic logged in successfully.
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 431, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 431, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+discount 0
+discountnumber 0
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74706
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74706
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74706
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74706
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74706
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Internal Server Error: /reports/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 495, in Reports
+    df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/generic.py", line 6643, in astype
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 430, in astype
+    return self.apply(
+           ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/managers.py", line 363, in apply
+    applied = getattr(b, f)(**kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/internals/blocks.py", line 758, in astype
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 237, in astype_array_safe
+    new_values = astype_array(values, dtype, copy=copy)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 182, in astype_array
+    values = _astype_nansafe(values, dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/dtypes/astype.py", line 80, in _astype_nansafe
+    return dtype.construct_array_type()._from_sequence(arr, dtype=dtype, copy=copy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/masked.py", line 152, in _from_sequence
+    values, mask = cls._coerce_to_array(scalars, dtype=dtype, copy=copy)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 272, in _coerce_to_array
+    values, mask, _, _ = _coerce_to_data_and_mask(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/core/arrays/numeric.py", line 227, in _coerce_to_data_and_mask
+    values = values.astype(dtype, copy=copy)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: '344709618736355.0'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 544, in Reports
+    return render(request, "reports.html", context)
+                                           ^^^^^^^
+UnboundLocalError: cannot access local variable 'context' where it is not associated with a value
+Not Found: /ads.txt
+User Itsolution4india logged in successfully.
+Final query: SELECT * FROM webhook_responses
+Final parameters: []
+Number of rows fetched: 74708
+Sample messages in the data:
+Sample messages: ['', '', '', '', None]
+Sample timestamps: ['1723086598', '1723090671', '1723090893', '1723092429', '1723093143']
+Not Found: /src/login.php
+Not Found: /webmail/src/login.php
+Not Found: /squirrelmail/src/login.php
+Not Found: /.esmtprc
+Not Found: /my-account/
+Not Found: /.mailmap
+Not Found: /wp-content/uploads/mc4wp-debug.log
+Not Found: /cgi-bin/sqwebmail
+Not Found: /webmail/
+Not Found: /owa/auth/logon.aspx
+Not Found: /cgi-bin/webmail
+Not Found: /qmailadmin/qmailadmin.cgi
+Not Found: /cgi-bin/qmailadmin/qmailadmin
+Not Found: /cgi-bin/qmailadmin
+Not Found: /cgi-ssl/qmailadmin/qmailadmin
+Not Found: /_debugbar/open
+Not Found: /php.ini
+Not Found: /php-fpm.conf
+Not Found: /status
+Not Found: /.env
+Not Found: //wp-includes/ID3/license.txt
+Not Found: //feed/
+Not Found: //xmlrpc.php
+Not Found: //blog/wp-includes/wlwmanifest.xml
+Not Found: //web/wp-includes/wlwmanifest.xml
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+Not Found: //wp/wp-includes/wlwmanifest.xml
+Not Found: //2020/wp-includes/wlwmanifest.xml
+Not Found: //2019/wp-includes/wlwmanifest.xml
+Not Found: //2021/wp-includes/wlwmanifest.xml
+Not Found: //shop/wp-includes/wlwmanifest.xml
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+Not Found: //test/wp-includes/wlwmanifest.xml
+Not Found: //site/wp-includes/wlwmanifest.xml
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /sitemap.xml
+Not Found: /sitemaps.xml
+Not Found: /atom.xml
+Not Found: /robots.txt
+Not Found: /robots.txt
+Not Found: /sitemap.xml
+Not Found: /sitemaps.xml
+Not Found: /sitemap.txt
+Not Found: /sitemap.txt
+Not Found: /sitemap_index.xml
+Not Found: /_profiler/empty/search/results
+Not Found: /app_dev.php/_profiler/empty/search/results
+Not Found: /index.php/_profiler/empty/search/results
+Not Found: /index_dev.php/_profiler/empty/search/results
+Not Found: /dev.php/_profiler/empty/search/results
+Not Found: /debug.php/_profiler/empty/search/results
+Not Found: /_debug/_profiler/empty/search/results
+Not Found: /web/_profiler/empty/search/results
+Not Found: /public/_profiler/empty/search/results
+Not Found: /frontend_dev.php/_profiler/empty/search/results
+Not Found: /backend_dev.php/_profiler/empty/search/results
+Not Found: /api_dev.php/_profiler/empty/search/results
+Not Found: /app.php/_profiler/empty/search/results
+Not Found: /app_test.php/_profiler/empty/search/results
+Not Found: /test.php/_profiler/empty/search/results
+Not Found: /symfony/_profiler/empty/search/results
+Not Found: /debug/_profiler/empty/search/results
+Not Found: /dev/_profiler/empty/search/results
+Not Found: /profiler/empty/search/results
+Not Found: /sitemap.xml
+Not Found: /config/databases.yml
+Not Found: /typo3/
+Not Found: /js/routing
+Not Found: /yyoa/ext/https/getSessionList.jsp
+Not Found: /index.php
+Not Found: /_fragment
+Not Found: /debug/default/view.html
+Not Found: /admin_dev.php
+Not Found: /debug/default/view
+Not Found: /index_dev.php
+Not Found: /frontend/web/debug/default/view
+Not Found: /app_dev.php
+Not Found: /web/debug/default/view
+Not Found: /sapi/debug/default/view
+Not Found: /debug/default
+Not Found: /atom.xml
+Not Found: /sitemap.xml.gz
+Not Found: /sitemap_index.xml
+Not Found: /.env
+Not Found: /api/.env
+Not Found: /storage/logs/laravel.log
+Not Found: /api/jsonws
+Not Found: /Setup/index.php/
+Not Found: /telescope/requests
+Not Found: /module/
+Not Found: /module/
+Not Found: /node_modules/mqtt/test/helpers/
+Not Found: /install.php
+Not Found: /module/
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Not Found: /wp-login.php
+Not Found: //wp-includes/wlwmanifest.xml
+Not Found: //xmlrpc.php
+Not Found: //blog/wp-includes/wlwmanifest.xml
+Not Found: //web/wp-includes/wlwmanifest.xml
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+Not Found: //website/wp-includes/wlwmanifest.xml
+Not Found: //wp/wp-includes/wlwmanifest.xml
+Not Found: //news/wp-includes/wlwmanifest.xml
+Not Found: //2018/wp-includes/wlwmanifest.xml
+Not Found: //2019/wp-includes/wlwmanifest.xml
+Not Found: //shop/wp-includes/wlwmanifest.xml
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+Not Found: //test/wp-includes/wlwmanifest.xml
+Not Found: //media/wp-includes/wlwmanifest.xml
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+Not Found: //site/wp-includes/wlwmanifest.xml
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Not Found: //sito/wp-includes/wlwmanifest.xml
+Not Found: /parameters.yml
+Not Found: /app/config/parameters.yml
+Not Found: /parameters.yml.dist
+Not Found: /app/config/parameters.yml.dist
+Not Found: /storage.yml
+Not Found: /secrets.yml
+Not Found: /php-fpm.conf
+Not Found: /environment.rb
+Not Found: /_profiler/phpinfo.php
+Not Found: /2pUdaa03QZQ19WXhbo9Zh15mTvx
+Not Found: /secret_token.rb
+Not Found: /config/storage.yml
+Not Found: /config/secrets.yml
+Not Found: /config/environment.rb
+Not Found: /config/database.yml
+Not Found: /_profiler/phpinfo
+Not Found: /config/initializers/secret_token.rb
+Not Found: /ruby/config/storage.yml
+Not Found: /test/config/secrets.yml
+Not Found: /redmine/config/environment.rb
+Not Found: /redmine/config/initializers/secret_token.rb
+Not Found: /railsapp/config/storage.yml
+Not Found: /redmine/config/secrets.yml
+Not Found: /.env
+Not Found: /settings.php.bak
+Not Found: /settings.php.dist
+Not Found: /settings.php.old
+Not Found: /settings.php.save
+Not Found: /settings.php.swp
+Not Found: /settings.php.txt
+Not Found: /config/settings.old.php
+Not Found: /vendor/phpfastcache/phpfastcache/docs/examples/phpinfo.php
+Not Found: /user.ini
+Not Found: /vendor/phpfastcache/phpfastcache/examples/phpinfo.php
+Not Found: /.user.ini
+Not Found: /php.php
+Not Found: /phpinfo.php
+Not Found: /info.php
+Not Found: /opcache-status/
+Not Found: /status
+Not Found: /php.ini
+Not Found: /_debugbar/open
+Not Found: /settings.php.bak
+Not Found: /vendor/phpfastcache/phpfastcache/docs/examples/phpinfo.php
+Not Found: /php-opcache-status/
+Not Found: /user.ini
+Not Found: /settings.php.dist
+Not Found: /vendor/phpfastcache/phpfastcache/examples/phpinfo.php
+Not Found: /opcache-status/opcache.php
+Not Found: /settings.php.old
+Not Found: /.user.ini
+Not Found: /settings.php.save
+Not Found: /settings.php.swp
+Not Found: /settings.php.txt
+Not Found: /config/settings.old.php
+Not Found: /.env
+Not Found: /api/stats
+Not Found: /horizon/api/stats
+Not Found: /CMSInstall/install.aspx
+Not Found: /NON_EXISTING_PATH/
+Not Found: /index.php/install
+Not Found: /manage.py
+Not Found: /index.php/install/
+Not Found: /json-rpc/
+Not Found: /include/downmix.inc.php
+Forbidden (Referer checking failed - no Referer.): /admin/login/
+Not Found: /concrete5/index.php/install
+Not Found: /settings.py
+Not Found: /app/settings.py
+Not Found: /django/settings.py
+Not Found: /settings/settings.py
+Not Found: /web/settings/settings.py
+Not Found: /admin.php
+Not Found: /config.php
+Not Found: /about/function.php
+Not Found: /lock.php
+Not Found: /simple.php
+Not Found: /radio.php
+Not Found: /wp-mail.php
+Not Found: /wp-content/index.php
+Not Found: /alfa.php
+Not Found: /.well-known/acme-challenge/index.php
+Not Found: /wp-content/plugins/index.php
+Not Found: /text.php
+Not Found: /autoload_classmap.php
+Not Found: /wp-includes/autoload_classmap.php
+Not Found: /item.php
+Not Found: /file.php
+Not Found: /wp-includes/blocks/about.php
+Not Found: /mah.php
+Not Found: /themes/zMousse/otuz1.php
+Not Found: /lv.php
+Not Found: /inputs.php
+Not Found: /wp-content/languages/index.php
+Not Found: /wp-admin/includes/index.php
+Not Found: /css/index.php
+Not Found: /makeasmtp.php
+Not Found: /wp-content/radio.php
+Not Found: /wp-includes/IXR/index.php
+Not Found: /wp-links.php
+Not Found: /wp-content/cong.php
+Not Found: /1.php
+Not Found: /.well-known/index.php
+Not Found: /alfanew.php
+Not Found: /wp-content/themes/twenty/twenty.php
+Not Found: /cong.php
+Not Found: /as.php
+Not Found: /wp-content/themes/index.php
+Not Found: /wp-includes/Requests/about.php
+Not Found: /wp-includes/images/about.php
+Not Found: /bak.php
+Not Found: /wp-info.php
+Not Found: /wp-includes/style-engine/about.php
+Not Found: /wp-admin/images/index.php
+Not Found: /about.php
+Not Found: /wp-admin/maint/index.php
+Not Found: /index.html
+Not Found: /wp-admin/maint/about.php
+Not Found: /doc.php
+Not Found: /wp-admin/js/index.php
+Not Found: /wp-content/autoload_classmap.php
+Not Found: /wp-trackback.php
+Not Found: /wp-admin/css/colors/blue/index.php
+Not Found: /cgi-bin/about.php
+Not Found: /wp-includes/makeasmtp.php
+Not Found: /13.php
+Not Found: /wp-includes/IXR/about.php
+Not Found: /wp-includes/ID3/admin.php
+Not Found: /function.php
+Not Found: /jp.php
+Not Found: /wp-admin/includes/about.php
+Not Found: /shell20211028.php
+Not Found: /index/function.php
+Not Found: /wp-signup.php
+Not Found: /atomlib.php
+Not Found: /cgi-bin/wp-login.php
+Not Found: /css.php
+Not Found: /wp-admin/images/xmrlpc.php
+Not Found: /default.php
+Not Found: /info.php
+Not Found: /wp-content/plugins/pwnd/as.php
+Not Found: /wp-includes/SimplePie/about.php
+Not Found: /chosen
+Not Found: /wp-includes/SimplePie/index.php
+Not Found: /link.php
+Not Found: /.well-known/content.php
+Not Found: /.well-known/pki-validation/mariju.php
+Not Found: /wp-content/languages/about.php
+Not Found: /wp-content/plugins/about.php
+Not Found: /wp-content/themes/astra/inc/ki1k.php
+Not Found: /moon.php
+Not Found: /wp-admin/css/about.php
+Not Found: /wp-content/themes/about.php
+Not Found: /wp-includes/about.php
+Not Found: /404.php
+Not Found: /wp-content/themes/wp-pridmag/init.php
+Not Found: /x.php
+Not Found: /widgets.php
+Not Found: /wp-content/plugins/revslider/includes/external/page/index.php
+Not Found: /classwithtostring.php
+Not Found: /aks.php
+Not Found: /wp-content/admin.php
+Not Found: /.well-known/acme-challenge/file
+Not Found: /buy.php
+Not Found: /wp-admin/css/index.php
+Not Found: /install.php
+Not Found: /cgi-bin/xmrlpc.php
+Not Found: /filemanager.php
+Not Found: /wp-includes/wp-load.php
+Not Found: /cgi-bin/index.php
+Not Found: /log.php
+Not Found: /index.php
+Not Found: /mail.php
+Not Found: /content.php
+Not Found: /upfile.php
+Not Found: /wp.php
+Not Found: /wp-conflg.php
+Not Found: /bypass.php
+Not Found: /updates.php
+Not Found: /xmrlpc.php
+Not Found: /ae.php
+Not Found: /blog.php
+Not Found: /themes.php
+Not Found: /ini.php
+Not Found: /shell.php
+Not Found: /ws.php
+Not Found: /dropdown.php
+Not Found: /wp-sigunq.php
+Not Found: /wso112233.php
+Not Found: /fw.php
+Not Found: /wp-login.php
+Not Found: /wp-content/plugins/google-seo-rank/module.php
+Not Found: /chosen.php
+Not Found: /classsmtps.php
+Not Found: /wp-blog-header.php
+Not Found: /wp-comments-post.php
+Not Found: /wp-cron.php
+Not Found: /wp-load.php
+Not Found: /edit.php
+Not Found: /wp-activate.php
+Not Found: /plugins.php
+Not Found: /post.php
+Not Found: /wp-2019.php
+Not Found: /2index.php
+Not Found: /C.php
+Not Found: /c.php
+Not Found: /01.php
+Not Found: /02.php
+Not Found: /mini.php
+Not Found: /403.php
+Not Found: /wso.php
+Not Found: /wp-22.php
+Not Found: /1index.php
+Not Found: /marijuana.php
+Not Found: /good.php
+Not Found: /up.php
+Not Found: /crack_self_restore.php
+Not Found: /wp-admin/user/network.php
+Not Found: /menu.php
+Not Found: /.well-known/pki-validation/dropdown.php
+Not Found: /wp-includes/ID3/rk2.php
+Not Found: /wp-content/plugins/core-plugin/include.php
+Not Found: /wp-content/plugins/wpsml-sys.php
+Not Found: /.well-known/about.php
+Not Found: /wp-includes/ID3/themes.php
+Not Found: /wp-includes/customize/themes.php
+Not Found: /wp-admin/images/xmrlpc.php
+Not Found: /wp-includes/SimplePie/network.php
+Not Found: /images/options.php
+Not Found: /session.php
+Not Found: /wp-includes/index.php
+Not Found: /wp-apxupx.php
+Not Found: /.well-known/pki-validation/bb.php
+Not Found: /wp-content/plugins/dummyyummy/wp-signup.php
+Not Found: /wp-includes/Text/Diff/Engine.php
+Not Found: /.well-known/class.api.php
+Not Found: /wp-content/themes/twentytwentytwo/index.php
+Not Found: /ova-tools.php
+Not Found: /wp-includes/IXR/admin.php
+Not Found: /wp-includes/Requests/Text/admin.php
+Not Found: /class.api.php
+Not Found: /abe.php
+Not Found: /htaccess.php
+Not Found: /gallery
+Not Found: /byp.php
+Not Found: /.well-known/pki-validation/link.php
+Not Found: /wp-admin/css/colors/a.php
+Not Found: /yanz.php
+Not Found: /click.php
+Not Found: /goat1.php
+Not Found: /ALFA_DATA/autoload_classmap.php
+Not Found: /wp-admin/css/colors/blue/atomlib.php
+Not Found: /wp-admin/images/as.php
+Not Found: /sidwsi.php
+Not Found: /upgrade.php
+Not Found: /.well-known/991176.php
+Not Found: /wp-includes/certificates/about.php
+Not Found: /wp-admin/css/colors/blue/about.php
+Not Found: /minik.php
+Not Found: /options.php
+Not Found: /wp-admin/images/about.php
+Not Found: /style.php
+Not Found: /wp-admin/maint/sidebara.php
+Not Found: /wp-admin/user/cloud.php
+Not Found: /wp-includes/theme-compat/embed-core.php
+Not Found: /wp-includes/options.php
+Not Found: /wp-includes/Text/wp-login.php
+Not Found: /cc.php
+Not Found: /wp-admin/wp-admin.php
+Not Found: /wp-includes/Text/Diff/Engine/wp-login.php
+Not Found: /wp-mail.php/wp-includes/ID3/getid3s.php
+Not Found: /wp-content/batm.php
+Not Found: /wp-content/403.php
+Not Found: /wp-admin/product.php
+Not Found: /wp-content/uploads/autoload_classmap.php
+Not Found: /moon.php
+Not Found: /wp-admin/user/about.php
+Not Found: /wp-includes/theme-compat/about.php
+Not Found: /worksec.php
+Not Found: /wp-includes/SimplePie/plugins.php
+Not Found: /wp-includes/SimplePie/admin.php
+Not Found: /wp-admin/index.php
+Not Found: /siteheads.php
+Not Found: /2.php
+Not Found: /wp-includes/rest-api/alfa-rex.php7
+Not Found: /.well-known/acme-challenge/license.php
+Not Found: /wp-includes/css/dist/preferences/wp-login.php
+Not Found: /wp-includes/assets/index.php
+Not Found: /wp-content/plugins/wp-help/index.php
+Not Found: /wp-content/plugins/hellopress/wp_filemanager.php
+Not Found: /wp-config-sample.php
+Not Found: /wp-includes/1index.php
+Not Found: /wp_wrong_datlib.php
+Not Found: /wikindex.php
+Not Found: /wp-admin/setup-config.php
+Not Found: /wp-admin/xleet.php
+Not Found: /wp-content/fw.php
+Not Found: /wp-admin/fx.php
+Not Found: /4price.php
+Not Found: /utchiha.php
+Not Found: /wp-admin/priv8.php
+Not Found: /wp-admin/rss.php
+Not Found: /uploads/xleet.php
+Not Found: /.well-known/acme-challenge/mariju.php
+Not Found: /plugin.php
+Not Found: /wp-admin/includes/mar.php
+Not Found: /wp-content/plugins/pwnd-1/as.php
+Not Found: /cgi-bin/cgi-bin/about.php7
+Not Found: /wp-content/themes/travelscape/json.php
+Not Found: /wp-includes/css/core.php
+Not Found: /db.php
+Not Found: /wp-includes/ID3/install.php
+Not Found: /wp-content/file.php
+Not Found: /.well-known/cong.php
+Not Found: /.wp-cli/as.php
+Not Found: /xl2023.php
+Not Found: /wp-admin/css/colors/coffee/index.php
+Not Found: /vendor/composer/index.php
+Not Found: /wp-content/product.php
+Not Found: /.well-known/acme-challenge/atomlib.php
+Not Found: /wp-atom.php
+Not Found: /wp-includes/rest-api/fields/radio.php
+Not Found: /wp-includes/images/media/rk2.php
+Not Found: /wp-includes/ID3/options.php
+Not Found: /wp-head.php
+Not Found: /.well-known/pki-validation/cifcxgxm.php
+Not Found: /wp-content/uploads/index.php
+Not Found: /wp-admin/users.php
+Not Found: /.well-known/elp.php
+Not Found: /wp-includes/fonts/index.php
+Not Found: /wp-includes/certificates/wp-login.php
+Not Found: /wp-admin/radio.php
+Not Found: /cgi-bin/wp-2019.php
+Not Found: /wp-includes/item.php
+Not Found: /wp-content/upgrade/about.php
+Not Found: /0x.php
+Not Found: /uploads/autoload_classmap.php
+Not Found: /wp-content/plugins/pwnd/pwnd.php
+Not Found: /class.php
+Not Found: /wp-content/themes/hello-element/footer.php
+Not Found: /wp-content/plugins/install.php
+Not Found: /wp-content/plugins/aioseoextensions/file.php
+Not Found: /wp-content/mah.php
+Not Found: /wp-files.php
+Not Found: /wp-admin/cong.php
+Not Found: /alfanew.php7
+Not Found: /wp-admin/images/wp-login.php
+Not Found: /wp-content/themes/sketch/404.php
+Not Found: /wp-content/plugins/wp-help/admin/wp-fclass.php
+Not Found: /.well-known/admin.php
+Not Found: /upload.php
+Not Found: /.well-known/pki-validation/classwithtostring.php
+Not Found: /bless.php
+Not Found: /about.php
+Not Found: /wp-content/uploads/cache.php
+Not Found: /options-discussion.php
+Not Found: /tiny.php
+Not Found: /wp-includes/class-wp-pages.php
+Not Found: /wp-includes/theme-compat/wp-login.php
+Not Found: /wp-admin/user/wp-login.php
+Not Found: /wp-content/uploads/wp-login.php
+Not Found: /wp-includes/admin.php
+Not Found: /wp-includes/product.php
+Not Found: /wp-content/languages/ru_RU_lite.mo.php
+Not Found: /gif.php
+Not Found: /wp-content/uploads/wp.php
+Not Found: /license.php
+Not Found: /test.php
+Not Found: /wp-content/plugins/item.php
+Not Found: /ethan.php
+Not Found: /wp-content/plugins/pwnd/a.php
+Not Found: /defaults.php
+Not Found: /network.php
+Not Found: /wp-includes/SimplePie/Decode/lv.php
+Not Found: /.well-known/acme-challenge/install.php
+Not Found: /mycommand.php
+Not Found: /.well-known/wp-2019.php
+Not Found: /wp-includes/theme-compat/chosen.php
+Not Found: /web.php
+Not Found: /wp-admin.php
+Not Found: /update-core.php
+Not Found: /wp-admin/user/plugins.php
+Not Found: /wp/abe.php
+Not Found: /bs1.php
+Not Found: /wp-content/themes/aahana/json.php
+Not Found: /berlin.php
+Not Found: /wp-admin/network/index.php/.well-known/acme-challenge/admin.php
+Not Found: /.well-known/acme-challenge/autoload_classmap.php
+Not Found: /.well-known/acme-challenge/cloud.php
+Not Found: /.well-known/acme-challenge/makeasmtp.php
+Not Found: /.well-known/acme-challenge/plugins.php
+Not Found: /.well-known/acme-challenge/radio.php
+Not Found: /.well-known/acme-challenge/xmrlpc.php
+Not Found: /.well-known/cloud.php
+Not Found: /.well-known/dropdown.php
+Not Found: /.well-known/file.php
+Not Found: /.well-known/makeasmtp.php
+Not Found: /.well-known/pki-validation/about.php
+Not Found: /.well-known/pki-validation/afnew.php
+Not Found: /.well-known/pki-validation/cloud.php
+Not Found: /.well-known/pki-validation/index.php
+Not Found: /.well-known/pki-validation/wp-config.php
+Not Found: /.well-known/pki-validation/xmrlpc.php
+Not Found: /.well-known/radio.php
+Not Found: /.well-known/wp-load.php
+Not Found: /.well-known/wp-login.php
+Not Found: /about.php7
+Not Found: /admin-post.php
+Not Found: /adminfuns.php7
+Not Found: /ajax-actions.php
+Not Found: /alfa-rex.php7
+Not Found: /alfa-rex2.php7
+Not Found: /alfanew2.php7
+Not Found: /avaa.php
+Not Found: /cache-compat.php
+Not Found: /cgi-bin/404.php
+Not Found: /cgi-bin/cloud.php
+Not Found: /cgi-bin/file.php
+Not Found: /cgi-bin/radio.php
+Not Found: /cgi-bin/themes.php
+Not Found: /cgi-bin/xmrlpc.php
+Not Found: /cloud.php
+Not Found: /contact.php
+Not Found: /css/cloud.php
+Not Found: /css/xmrlpc.php
+Not Found: /ebs.php7
+Not Found: /filemanager/dialog.php
+Not Found: /files/index.php
+Not Found: /images/about.php
+Not Found: /images/cloud.php
+Not Found: /images/xmrlpc.php
+Not Found: /img/about.php
+Not Found: /img/cloud.php
+Not Found: /img/xmrlpc.php
+Not Found: /libraries/legacy/updates.php
+Not Found: /libraries/phpmailer/updates.php
+Not Found: /libraries/vendor/updates.php
+Not Found: /lufix.php
+Not Found: /media.php
+Not Found: /readme.php
+Not Found: /repeater.php
+Not Found: /wp-admin/404.php
+Not Found: /wp-admin/about.php
+Not Found: /wp-admin/ajax-actions.php
+Not Found: /wp-admin/autoload_classmap.php
+Not Found: /wp-admin/cloud.php
+Not Found: /wp-admin/css/colors/blue/cloud.php
+Not Found: /wp-admin/css/colors/blue/xmrlpc.php
+Not Found: /wp-admin/css/colors/cloud.php
+Not Found: /wp-admin/css/colors/coffee/cloud.php
+Not Found: /wp-admin/css/colors/coffee/xmrlpc.php
+Not Found: /wp-admin/css/colors/index.php
+Not Found: /wp-admin/css/colors/xmrlpc.php
+Not Found: /wp-admin/css/license.php
+Not Found: /wp-admin/css/wp-login.php
+Not Found: /wp-admin/dropdown.php
+Not Found: /wp-admin/file.php
+Not Found: /wp-admin/images/cloud.php
+Not Found: /wp-admin/images/file.php
+Not Found: /wp-admin/includes/cloud.php
+Not Found: /wp-admin/includes/xmrlpc.php
+Not Found: /wp-admin/js/about.php
+Not Found: /wp-admin/js/widgets/about.php7
+Not Found: /wp-admin/js/widgets/cloud.php
+Not Found: /wp-admin/js/widgets/xmrlpc.php
+Not Found: /wp-admin/license.php
+Not Found: /wp-admin/maint/maint/ajax-actions.php
+Not Found: /wp-admin/network/cloud.php
+Not Found: /wp-admin/network/xmrlpc.php
+Not Found: /wp-admin/repeater.php
+Not Found: /wp-admin/themes.php
+Not Found: /wp-admin/user/index.php
+Not Found: /wp-admin/user/themes.php
+Not Found: /wp-admin/user/xmrlpc.php
+Not Found: /wp-admin/wp-login.php
+Not Found: /wp-admin/wp-signup.php
+Not Found: /wp-admin/xmrlpc.php
+Not Found: /wp-configs.php
+Not Found: /wp-consar.php
+Not Found: /wp-content/about.php
+Not Found: /wp-content/banners/about.php
+Not Found: /wp-content/blogs.dir/about.php
+Not Found: /wp-content/cloud.php
+Not Found: /wp-content/dropdown.php
+Not Found: /wp-content/gallery/about.php
+Not Found: /wp-content/plugins/Cache/Cache.php
+Not Found: /wp-content/plugins/awesome-coming-soon/come.php
+Not Found: /wp-content/plugins/dropdown.php
+Not Found: /wp-content/plugins/linkpreview/db.php
+Not Found: /wp-content/plugins/not/includes/about.php
+Not Found: /wp-content/plugins/seoo/wsoyanz.php
+Not Found: /wp-content/plugins/seoo/wsoyanz1.php
+Not Found: /wp-content/plugins/seoplugins/db.php
+Not Found: /wp-content/plugins/seoplugins/mar.php
+Not Found: /wp-content/plugins/simple/simple.php
+Not Found: /wp-content/plugins/wp-conflg.php
+Not Found: /wp-content/plugins/wp-theme-editor/include.php
+Not Found: /wp-content/repeater.php
+Not Found: /wp-content/themes.php
+Not Found: /wp-content/themes/404.php
+Not Found: /wp-content/themes/admin.php
+Not Found: /wp-content/themes/pridmag/db.php
+Not Found: /wp-content/themes/seotheme/db.php
+Not Found: /wp-content/themes/seotheme/mar.php
+Not Found: /wp-content/themes/themes.php
+Not Found: /wp-content/updates.php
+Not Found: /wp-content/updraft/about.php
+Not Found: /wp-content/upgrade-temp-backup/about.php
+Not Found: /wp-content/upgrade/function.php
+Not Found: /wp-content/upgrade/index.php
+Not Found: /wp-includes.bak/html-api/about.php
+Not Found: /wp-includes/404.php
+Not Found: /wp-includes/ID3/about.php
+Not Found: /wp-includes/SimplePie/wp-login.php
+Not Found: /wp-includes/Text/about.php
+Not Found: /wp-includes/bak.php
+Not Found: /wp-includes/block-patterns/about.php
+Not Found: /wp-includes/cloud.php
+Not Found: /wp-includes/customize/about.php
+Not Found: /wp-includes/function.php
+Not Found: /wp-includes/images/css.php
+Not Found: /wp-includes/pomo/about.php
+Not Found: /wp-includes/repeater.php
+Not Found: /wp-includes/rest-api/about.php
+Not Found: /wp-includes/system_log.php
+Not Found: /wp-includes/themes.php
+Not Found: /wp-includes/widgets/about.php
+Not Found: /wp-includes/wp-activate.php
+Not Found: /wp-includes/wp-login.php
+Not Found: /wp-links-opml.php
+Not Found: /wp-p.php7
+Not Found: /ws.php7
+Not Found: /wsoyanz.php
+Not Found: /xmrlpc.php
+Not Found: /.env
