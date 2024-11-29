@@ -486,11 +486,14 @@ def Reports(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         report_list = ReportInfo.objects.filter(email=request.user)
-        # df = pd.read_csv(r"C:\Prashanth_works\Backups\webhook_responses.csv")
+        # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
         df = download_linked_report(request)
         df['contact_wa_id'] = df['contact_wa_id'].astype(str)
         df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
-        df['phone_number_id'] = df['phone_number_id'].astype('Int64')
+        
+        df['phone_number_id'] = df['phone_number_id'].astype(str)
+        df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
+        df['phone_number_id'] = pd.to_numeric(df['phone_number_id'], errors='coerce', downcast='integer').astype('Int64')
 
         filterd_df = df[df['phone_number_id'] == int(display_phonenumber_id(request))]
 
