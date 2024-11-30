@@ -6,7 +6,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def schedule_subtract_coins(user, final_count, category):
+def schedule_subtract_coins(user, final_count, category, template_name=None, campaign=None):
     try:
         data = CustomUser.objects.get(email=user)
         if user is None or data.coins is None:
@@ -21,7 +21,10 @@ def schedule_subtract_coins(user, final_count, category):
             elif category == 'AUTHENTICATION' or category == 'UTILITY':
                 data.authentication_coins -= final_coins
                 data.save()
-            coins_history = CoinsHistory(user=user, type='credit', number_of_coins=final_coins, reason=f"coins deducted towards {category}")
+            if template_name and campaign:
+                coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
+            else:
+                coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
             coins_history.save()
             logger.info(f"Message sent successfully. Deducted {final_coins} coins from your account. Remaining balance: {data.coins}")
         else:
@@ -31,7 +34,7 @@ def schedule_subtract_coins(user, final_count, category):
     except Exception as e:
         logger.error(f"Error while subtracting coins for user {user}: {str(e)}")
 
-def subtract_coins(request, final_count, category):
+def subtract_coins(request, final_count, category, template_name=None, campaign=None):
     user = request.user
     if user is None or user.coins is None:
         messages.error(request, "User or user coins not found.")
@@ -46,7 +49,10 @@ def subtract_coins(request, final_count, category):
         elif category == 'AUTHENTICATION' or category == 'UTILITY':
             user.authentication_coins -= final_coins
             user.save()
-        coins_history = CoinsHistory(user=user, type='credit', number_of_coins=final_coins, reason=f"coins deducted towards {category}")
+        if template_name and campaign:
+            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
+        else:
+            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
         coins_history.save()
         messages.success(request, f"Message sent successfully. Deducted {final_coins} coins from your account.")
     else:

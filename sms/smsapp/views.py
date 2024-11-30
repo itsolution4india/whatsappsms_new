@@ -1644,7 +1644,7 @@ def delete_message(request, message_id):
 def coins_history_list(request):
     template_database = Templates.objects.filter(email=request.user)
     template_value = list(template_database.values_list('templates', flat=True))
-    coins_history = CoinsHistory.objects.filter(user=request.user)
+    coins_history = CoinsHistory.objects.filter(user=request.user).order_by('-created_at')
     context = {
             "template_names": template_value,
             "coins":request.user.marketing_coins + request.user.authentication_coins,
