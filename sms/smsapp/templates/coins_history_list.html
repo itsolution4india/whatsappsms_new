@@ -59,7 +59,7 @@
     }
 
     .debit {
-        color: #dc3545;
+        color: #e28f53;
     }
 </style>
 
@@ -80,8 +80,8 @@
         {% for entry in coins_history %}
         <tr>
             <td>{{ entry.transaction_id }}</td>
-            <td>{{ entry.number_of_coins }}</td>
             <td>{{ entry.created_at }}</td>
+            <td>{{ entry.reason }}</td>
             <td class="{{ entry.type }}">{{ entry.get_type_display }}</td>
         </tr>
         {% empty %}
