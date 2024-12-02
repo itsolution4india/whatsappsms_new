@@ -223,6 +223,11 @@
     .bot-message {
         color: #777;
     }
+    .mediaDiv {
+        border: 1px solid lightgray;
+        padding: 10px;
+        border-radius: 7px;
+    }
 </style>
 {% endblock %}
 
@@ -233,152 +238,170 @@
     <div id="alertContainer"></div>
 
     <div class="d-flex">
-        <div class="card p-3 m-3 w-50 mt-0 shadow">
-            <form id="messageForm">
-                {% csrf_token %}
-                <div class="form-group user-msg">
-                    <h5 class="text-white"><i
-                            class='bx bxs-user-circle h1 text-white m-0'></i>
-                        User Response</h5>
-                    <label for="userResponse" style="color: #fff;">Enter user
-                        text:</label>
-                    <input type="text" id="userResponse" name="userResponse"
-                        required>
-                </div>
-
-                <div class="bot-msg">
-                    <h5 class="text-white"><i
-                            class='bx bx-bot h1 text-white m-0'></i> Bot
-                        Response</h5>
-                    <div class="form-group">
-                        <label for="messageType" style="color: #fff;">Message
-                            Type:</label>
-                        <select id="messageType" name="messageType" required>
-                            <option value>Select a message type</option>
-                            <option value="list_message">List Message</option>
-                            <option value="reply_button_message">Reply Button
-                                Message</option>
-                            <option value="single_product_message">Single
-                                Product Message</option>
-                            <option value="multi_product_message">Multi Product
-                                Message</option>
-                            <option value="send_my_location">Send My Location
-                                Message</option>
-                            <option value="request_user_location">Request User
-                                Location Message</option>
-                            <option value="link_template">Link Template</option>
-                            <option value="send_text_message">Send Text
-                                Message</option>
-                        </select>
-                    </div>
-
-                    <div id="bodyDiv" class="hidden mb-2"
-                        style="background: lavender;padding: 5px;border-radius: 5px;">
-                        <label for="bodyMessage">Enter Body Text:</label>
-                        <input type="text" id="bodyMessage" name="bodyMessage"
+        <div class="card p-3 m-3 w-50 mt-0 shadow position-relative">
+            <div>
+                <form id="messageForm">
+                    {% csrf_token %}
+                    <div class="form-group user-msg">
+                        <h5 class="text-white"><i
+                                class='bx bxs-user-circle h1 text-white m-0'></i>
+                            User Response</h5>
+                        <label for="userResponse" style="color: #fff;">Enter user
+                            text:</label>
+                        <input type="text" id="userResponse" name="userResponse"
                             required>
                     </div>
-
-                    <div id="listMessageSection" class="hidden">
-                        <h5 class="m-2 text-white">List Message
-                            Configuration</h5>
-                        <div id="sections">
-                            <!-- Sections will be added here -->
-                        </div>
-                        <button type="button" class="add-button p-1 shadow"
-                            onclick="addSection()"><i
-                                class='bx bx-layer-plus'></i> Add
-                            Section</button>
-                    </div>
-
-                    <div id="replyButtonSection" class="hidden">
-                        <h5 class="m-2 text-white">Reply Button
-                            Configuration</h5>
-                        <div id="buttons">
-                            <!-- Buttons will be added here -->
-                        </div>
-                        <button type="button" class="add-button p-1 shadow"
-                            onclick="addButton()"><i class='bx bx-plus'></i> Add
-                            Button</button>
-                    </div>
-
-                    <!-- Single Product Message Section -->
-                    <div id="singleProductSection"
-                        class="hidden product-section p-2 light-blue card mb-2">
-                        <h5 class="m-2">Single Product Configuration</h5>
+    
+                    <div class="bot-msg">
+                        <h5 class="text-white"><i
+                                class='bx bx-bot h1 text-white m-0'></i> Bot
+                            Response</h5>
                         <div class="form-group">
-                            <label for="productRetailerId">Product Retailer
-                                ID:</label>
-                            <input type="text" id="productRetailerId"
-                                name="productRetailerId">
+                            <label for="messageType" style="color: #fff;">Message
+                                Type:</label>
+                            <select id="messageType" name="messageType" required>
+                                <option value>Select a message type</option>
+                                <option value="list_message">List Message</option>
+                                <option value="reply_button_message">Reply Button
+                                    Message</option>
+                                <option value="single_product_message">Single
+                                    Product Message</option>
+                                <option value="multi_product_message">Multi Product
+                                    Message</option>
+                                <option value="send_my_location">Send My Location
+                                    Message</option>
+                                <option value="request_user_location">Request User
+                                    Location Message</option>
+                                <option value="link_template">Link Template</option>
+                                <option value="send_text_message">Send Text
+                                    Message</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label for="catalogId">Catalog ID:</label>
-                            <input type="text" id="catalogId" name="catalogId">
+    
+                        <div id="bodyDiv" class="hidden mb-2"
+                            style="background: lavender;padding: 5px;border-radius: 5px;">
+                            <label for="bodyMessage">Enter Body Text:</label>
+                            <input type="text" id="bodyMessage" name="bodyMessage"
+                                required>
+                        </div>
+    
+                        <div id="listMessageSection" class="hidden">
+                            <h5 class="m-2 text-white">List Message
+                                Configuration</h5>
+                            <div id="sections">
+                                <!-- Sections will be added here -->
+                            </div>
+                            <button type="button" class="add-button p-1 shadow"
+                                onclick="addSection()"><i
+                                    class='bx bx-layer-plus'></i> Add
+                                Section</button>
+                        </div>
+    
+                        <div id="replyButtonSection" class="hidden">
+                            <h5 class="m-2 text-white">Reply Button
+                                Configuration</h5>
+                            <div id="buttons">
+                                <!-- Buttons will be added here -->
+                            </div>
+                            <button type="button" class="add-button p-1 shadow"
+                                onclick="addButton()"><i class='bx bx-plus'></i> Add
+                                Button</button>
+                        </div>
+    
+                        <!-- Single Product Message Section -->
+                        <div id="singleProductSection"
+                            class="hidden product-section p-2 light-blue card mb-2">
+                            <h5 class="m-2">Single Product Configuration</h5>
+                            <div class="form-group">
+                                <label for="productRetailerId">Product Retailer
+                                    ID:</label>
+                                <input type="text" id="productRetailerId"
+                                    name="productRetailerId">
+                            </div>
+                            <div class="form-group">
+                                <label for="catalogId">Catalog ID:</label>
+                                <input type="text" id="catalogId" name="catalogId">
+                            </div>
+                        </div>
+    
+                        <div id="sendMyLocation"
+                            class="hidden product-section p-2 light-blue card mb-2">
+                            <h5 class="m-2">Send My Location Form</h5>
+                            <div class="form-group">
+                                <label for="mylatitude">Enter Latitude:</label>
+                                <input type="text" id="mylatitude"
+                                    name="mylatitude">
+                            </div>
+                            <div class="form-group">
+                                <label for="mylongitude">Enter Longitude:</label>
+                                <input type="text" id="mylongitude"
+                                    name="mylongitude">
+                            </div>
+                        </div>
+    
+                        <div id="linkTemplate"
+                            class="hidden product-section p-2 light-blue card mb-2">
+                            <p class="alert alert-warning">Please select the template which don't have docs, images, or variables.</p>
+                            <label for="selectedTempale">Select Template</label>
+                            <!-- <select name="selectedTempale" id="selectedTempale">
+                                <option value>Select a template name</option>
+                                {% for template in template_names %}
+                                <option value="{{ template }}">{{ template }}</option>
+                                {% endfor %}
+                            </select> -->
+                            <select id="selectedTempale" onchange="updateTemplate()" class="form-select" name="selectedTempale">
+                                <option value="">Select template</option>
+                                {% for name in template_name %}
+                                <option value="{{ name }}">{{ name }}</option>
+                                {% endfor %}
+                              </select>
+                            <label for="selectedTempale" class="d-none">Enter Media ID</label>
+                            <input type="text" id="mediaID" class="d-none" name="mediaID">
+                        </div>
+    
+                        <div id="requestUserLocation"
+                            class="hidden product-section">
+                            <p
+                                class="alert alert-success card p-2 shadow d-flex flex-row"><i
+                                    class='bx bx-check h5 mb-0 pe-2'></i>All good!,
+                                Go ahead and click submit</p>
+                            <p
+                                class="alert alert-success card p-2 shadow d-flex flex-row"><i
+                                    class='bx bx-check h5 mb-0 pe-2'></i>Body text
+                                is enough</p>
+                        </div>
+    
+                        <div id="multiProductMessage" class="hidden">
+                            <h5 class="m-2 text-white">Multi Product
+                                Configuration</h5>
+                            <div id="productSection">
+                                <!-- Buttons will be added here -->
+                            </div>
+                        </div>
+    
+                        <div id="mediaMessage" class="hidden mb-2">
+                            <div id="mediaDiv">
+                                <label for="mediaFile">Enter Media ID:</label>
+                                <input type="text" id="mediaFile" name="mediaFile">
+                            </div>
+                            
                         </div>
                     </div>
-
-                    <div id="sendMyLocation"
-                        class="hidden product-section p-2 light-blue card mb-2">
-                        <h5 class="m-2">Send My Location Form</h5>
-                        <div class="form-group">
-                            <label for="mylatitude">Enter Latitude:</label>
-                            <input type="text" id="mylatitude"
-                                name="mylatitude">
-                        </div>
-                        <div class="form-group">
-                            <label for="mylongitude">Enter Longitude:</label>
-                            <input type="text" id="mylongitude"
-                                name="mylongitude">
-                        </div>
-                    </div>
-
-                    <div id="linkTemplate"
-                        class="hidden product-section p-2 light-blue card mb-2">
-                        <p class="alert alert-warning">Please select the template which don't have docs, images, or variables.</p>
-                        <label for="selectedTempale">Select Template</label>
-                        <select name="selectedTempale" id="selectedTempale">
-                            <option value>Select a message type</option>
-                            {% for template in template_names %}
-                            <option value="{{ template }}">{{ template }}</option>
-                            {% endfor %}
-                        </select>
-                        <label for="selectedTempale">Enter Media ID</label>
-                        <input type="text" id="mediaID" name="mediaID">
-                    </div>
-
-                    <div id="requestUserLocation"
-                        class="hidden product-section">
-                        <p
-                            class="alert alert-success card p-2 shadow d-flex flex-row"><i
-                                class='bx bx-check h5 mb-0 pe-2'></i>All good!,
-                            Go ahead and click submit</p>
-                        <p
-                            class="alert alert-success card p-2 shadow d-flex flex-row"><i
-                                class='bx bx-check h5 mb-0 pe-2'></i>Body text
-                            is enough</p>
-                    </div>
-
-                    <div id="multiProductMessage" class="hidden">
-                        <h5 class="m-2 text-white">Multi Product
-                            Configuration</h5>
-                        <div id="productSection">
-                            <!-- Buttons will be added here -->
-                        </div>
-                    </div>
-
-                    <div id="mediaMessage" class="hidden mb-2">
-                        <div id="mediaDiv">
-                            <label for="mediaFile">Enter Media ID:</label>
-                            <input type="text" id="mediaFile" name="mediaFile">
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <button type="submit" class="shadow"><i class='bx bx-send'></i>
-                    Submit</button>
-            </form>
+    
+                    <button type="submit" class="shadow"><i class='bx bx-send'></i>Submit</button>
+                </form>
+            </div>
+    
+            <div class="mediaDiv">
+                <form id="mediaUploadForm" enctype="multipart/form-data" class="w-75" style="display: none;">
+                    {% csrf_token %}
+                    <label class="form-label mt-2 d-flex">
+                        <h6>Upload File (max. 5 mb)</h6><span class="text-danger">* Required</span>
+                    </label>
+                    <input class="form-control" type="file" name="file" id="fileInput">
+                    <div id="response" class="mt-3"></div>
+                </form>
+            </div>
         </div>
 
         <div class="w-50">
@@ -464,8 +487,12 @@
                             {% endif %}
     
                             {% if message.catalog_id %}
+                            {% if message.get_message_type_display == "Link Template"%}
+                            <p class="mb-1">Media ID: {{ message.catalog_id }}</p>
+                            {% else %}
                             <p class="mb-1">Catalog ID: {{ message.catalog_id }}</p>
                             <p class="mb-1">Product Retailer ID: {{ message.product_retailer_id }}</p>
+                            {% endif %}
                             {% endif %}
     
                             {% if message.buttons %}
@@ -487,6 +514,64 @@
         </div>
     </div>
 
+<script>
+    var templateData = JSON.parse('{{ template_data|escapejs }}');
+    var templateStatus = JSON.parse('{{ template_status|escapejs }}');
+    var templateButton = JSON.parse('{{ template_button|escapejs }}');
+    var templateMedia = JSON.parse('{{ template_media|escapejs }}');
+
+    function updateTemplate() {
+    const select = document.getElementById('selectedTempale');
+    const selectedIndex = select.selectedIndex;
+    console.log("Selected Index:", selectedIndex);
+    let selectedMedia = templateMedia[selectedIndex];
+    console.log("selectedMedia", selectedMedia)
+    let mediaUploadForm = document.getElementById('mediaUploadForm');
+    if (selectedMedia === 'IMAGE') {
+        mediaUploadForm.style.display = 'block';
+    } else {
+        mediaUploadForm.style.display = 'none';
+    }
+    let selectedButton = templateButton[selectedIndex];
+    if (selectedButton !== 'null') {
+        selectedButton = JSON.parse(selectedButton);
+        
+        if (selectedButton.length > 0 && selectedButton[0].type) {
+            console.log("Button Type:", selectedButton[0].type);
+        } else {
+            console.log("No valid button type available.");
+        }
+    } else {
+        console.log("No button data available for the selected template.");
+    }
+}
+</script>
+
+    <script>
+        $(document).ready(function() {
+            $('#fileInput').change(function(e) {
+                let file = e.target.files[0];
+                let formData = new FormData();
+                formData.append('file', file);
+        
+                $.ajax({
+                    url: "{% url 'upload_media' %}",
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        $('#response').html('<h6>Media ID: ' + response.media_id + '</h6>');
+                        $('#mediaID').val(response.media_id);  // Optionally set the media ID in the input
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Upload error:", xhr.responseText);
+                        $('#response').html('<h6>Error: ' + xhr.responseText + '</h6>');
+                    }
+                });
+            });
+        });
+        </script>
 
     <script>
         function deleteMessage(messageId) {
@@ -576,12 +661,14 @@
             switch(this.value) {
                 case 'list_message':
                     listSection.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     if (sectionCount === 0) {
                         addSection();
                     }
                     break;
                 case 'reply_button_message':
                     replyButtonSection.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     if (buttonCount === 0) {
                         addButton('Yes');
                     }
@@ -590,33 +677,45 @@
                     singleProductSection.classList.remove('hidden');
                     document.getElementById('productRetailerId').setAttribute('required', '');
                     document.getElementById('catalogId').setAttribute('required', '');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'multi_product_message':
                     multiProductMessage.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     if (multiProductCount === 0) {
                         addproduct();
                     }
                     break;
                 case 'send_my_location':
                     sendMyLocation.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'request_user_location':
                     requestUserLocation.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_text_message':
                     requestUserLocation.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_image_message':
                     mediaMessage.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_document_message':
                     mediaMessage.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_video_message':
                     mediaMessage.classList.remove('hidden');
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'link_template':
                     linkTemplate.classList.remove('hidden');
+                    document.getElementById('mediaID').setAttribute('required', 'required');
+                    break;
+                default:
+                    document.getElementById('mediaID').removeAttribute('required');
                     break;
             }
         });
