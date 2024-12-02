@@ -523,26 +523,14 @@
     function updateTemplate() {
     const select = document.getElementById('selectedTempale');
     const selectedIndex = select.selectedIndex;
-    console.log("Selected Index:", selectedIndex);
     let selectedMedia = templateMedia[selectedIndex];
-    console.log("selectedMedia", selectedMedia)
     let mediaUploadForm = document.getElementById('mediaUploadForm');
     if (selectedMedia === 'IMAGE') {
         mediaUploadForm.style.display = 'block';
+        document.getElementById('mediaID').setAttribute('required', 'required');
     } else {
         mediaUploadForm.style.display = 'none';
-    }
-    let selectedButton = templateButton[selectedIndex];
-    if (selectedButton !== 'null') {
-        selectedButton = JSON.parse(selectedButton);
-        
-        if (selectedButton.length > 0 && selectedButton[0].type) {
-            console.log("Button Type:", selectedButton[0].type);
-        } else {
-            console.log("No valid button type available.");
-        }
-    } else {
-        console.log("No button data available for the selected template.");
+        document.getElementById('mediaID').removeAttribute('required');
     }
 }
 </script>
@@ -661,14 +649,12 @@
             switch(this.value) {
                 case 'list_message':
                     listSection.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     if (sectionCount === 0) {
                         addSection();
                     }
                     break;
                 case 'reply_button_message':
                     replyButtonSection.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     if (buttonCount === 0) {
                         addButton('Yes');
                     }
@@ -677,45 +663,35 @@
                     singleProductSection.classList.remove('hidden');
                     document.getElementById('productRetailerId').setAttribute('required', '');
                     document.getElementById('catalogId').setAttribute('required', '');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'multi_product_message':
                     multiProductMessage.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     if (multiProductCount === 0) {
                         addproduct();
                     }
                     break;
                 case 'send_my_location':
                     sendMyLocation.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'request_user_location':
                     requestUserLocation.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_text_message':
                     requestUserLocation.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_image_message':
                     mediaMessage.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_document_message':
                     mediaMessage.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'send_video_message':
                     mediaMessage.classList.remove('hidden');
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
                 case 'link_template':
                     linkTemplate.classList.remove('hidden');
-                    document.getElementById('mediaID').setAttribute('required', 'required');
                     break;
                 default:
-                    document.getElementById('mediaID').removeAttribute('required');
                     break;
             }
         });
