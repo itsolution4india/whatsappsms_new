@@ -182,6 +182,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Campaign Title</th>
                             <th scope="col">Template Name</th>
+                            <th scope="col">No. of Contacts</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -192,6 +193,7 @@
                             <td>{{ report.message_date }}</td>
                             <td>{{ report.campaign_title }}</td>
                             <td>{{ report.template_name }}</td>
+                            <td>{{ report.message_delivery }}</td>
                             <td>
                                 {% if report.template_name in template_names %}
                                 <div class="btn-group" role="group">
