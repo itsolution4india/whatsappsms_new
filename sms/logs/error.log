@@ -3034,3 +3034,10 @@ Traceback (most recent call last):
     raise DisallowedHost(msg)
 django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autodiscover.whtsappdealnow.in'. You may need to add 'autodiscover.whtsappdealnow.in' to ALLOWED_HOSTS.
 Bad Request: /ads.txt
+Not Found: /.git/config
+Not Found: /.env
+User Itsolution4india logged in successfully.
+Not Found: /ads.txt
+User Rudralogistic logged in successfully.
+User Itsolution4india logged in successfully.
+Send_Sms: itsolution4india2@gmail.com, 498352686693631, test_auth, None, ['916361161836'], ['916361161836'], testing_schedule, ['984583']
