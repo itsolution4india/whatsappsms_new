@@ -156,7 +156,7 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col">
-                                        <label class="form-label mt-5 fs-6" id="bodyLabel">Body</label>
+                                        <label class="form-label mt-3 fs-6" id="bodyLabel">Body</label>
 
                                         <textarea class="form-control" id="editor" rows="6" cols="50"
                                             name="template_data"></textarea>
@@ -259,80 +259,29 @@
                                         <div id="quickReplayFields" class="hidden buttons_bg">
                                             <div class="form-group">
 
-                                                <div class="d-flex">
+                                                <div>
                                                     <div class="m-1">
                                                         <label for="quick_reply_one"
                                                             class="form-label mt-1">Text</label>
                                                         <input type="text" id="quick_reply_one" name="quick_reply_one"
                                                             placeholder="Enter Quick Replay" class="form-control">
                                                     </div>
-                                                    <div class="m-1">
-                                                        <label for="linked_temp_one" class="form-label mt-1">Link
-                                                            Template</label>
-                                                        <select id="linked_temp_one" name="linked_temp_one"
-                                                            class="form-control">
-                                                            <option value="">Select Template</option>
-                                                            {% for template in template_value %}
-                                                            <option value="{{ template }}">{{ template }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                    <div class="m-1" style="width:40%">
-                                                        <label class="form-label mt-1" for="mediaIdInput">Upload
-                                                            Media</label>
-                                                        <input class="form-control" type="file" name="file_one"
-                                                            id="fileInputOne">
-                                                    </div>
                                                 </div>
-                                                <div class="d-flex">
+                                                <div>
                                                     <div class="m-1">
                                                         <label for="quick_reply_two"
                                                             class="form-label mt-1">Text</label>
                                                         <input type="text" id="quick_reply_two" name="quick_reply_two"
                                                             placeholder="Enter Quick Replay" class="form-control">
                                                     </div>
-                                                    <div class="m-1">
-                                                        <label for="linked_temp_two" class="form-label mt-1">Link
-                                                            Template</label>
-                                                        <select id="linked_temp_two" name="linked_temp_two"
-                                                            class="form-control">
-                                                            <option value="">Select Template</option>
-                                                            {% for template in template_value %}
-                                                            <option value="{{ template }}">{{ template }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                    <div class="m-1" style="width:40%">
-                                                        <label class="form-label mt-1" for="mediaIdInput">Upload
-                                                            Media</label>
-                                                        <input class="form-control" type="file" name="file_two"
-                                                            id="fileInputTwo">
-                                                    </div>
                                                 </div>
-                                                <div class="d-flex">
+                                                <div>
                                                     <div class="m-1">
                                                         <label for="quick_reply_three"
                                                             class="form-label mt-1">Text</label>
                                                         <input type="text" id="quick_reply_three"
                                                             name="quick_reply_three" placeholder="Enter Quick Replay"
                                                             class="form-control">
-                                                    </div>
-                                                    <div class="m-1">
-                                                        <label for="linked_temp_three" class="form-label mt-1">Link
-                                                            Template</label>
-                                                        <select id="linked_temp_three" name="linked_temp_three"
-                                                            class="form-control">
-                                                            <option value="">Select Template</option>
-                                                            {% for template in template_value %}
-                                                            <option value="{{ template }}">{{ template }}</option>
-                                                            {% endfor %}
-                                                        </select>
-                                                    </div>
-                                                    <div class="m-1" style="width:40%">
-                                                        <label class="form-label mt-1" for="mediaIdInput">Upload
-                                                            Media</label>
-                                                        <input class="form-control" type="file" name="file_three"
-                                                            id="fileInputThree">
                                                     </div>
                                                 </div>
 
