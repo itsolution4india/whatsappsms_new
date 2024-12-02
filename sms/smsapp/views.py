@@ -1607,7 +1607,12 @@ def bot_flow(request):
         "authentication_coins":request.user.authentication_coins,
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
-        "PHONE_ID": display_phonenumber_id(request)
+        "PHONE_ID": display_phonenumber_id(request),
+        "template_name": [template['template_name'] for template in templates],
+        "template_data": json.dumps([template['template_data'] for template in templates]),
+        "template_status": json.dumps([template['status'] for template in templates]),
+        "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
+        "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
     }
     return render(request, "bot-flow.html", context)
 
