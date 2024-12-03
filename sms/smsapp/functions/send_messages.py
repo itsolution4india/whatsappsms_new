@@ -3,8 +3,7 @@ from ..models import ReportInfo, ScheduledMessage, CustomUser, CoinsHistory
 from django.utils import timezone
 from django.contrib import messages
 import logging
-
-logger = logging.getLogger(__name__)
+from ..utils import logger
 
 def schedule_subtract_coins(user, final_count, category, template_name=None, campaign=None):
     try:
@@ -26,7 +25,7 @@ def schedule_subtract_coins(user, final_count, category, template_name=None, cam
             else:
                 coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
             coins_history.save()
-            logger.info(f"Message sent successfully. Deducted {final_coins} coins from your account. Remaining balance: {data.coins}")
+            logger.info(f"Message sent successfully. Deducted {final_coins} coins from your account. Remaining balance: {data.marketing_coins}")
         else:
             logger.error("Insufficient coins to proceed.")
     except CustomUser.DoesNotExist:
@@ -84,6 +83,7 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                 else:
                     schedule_subtract_coins(current_user, money_data, category)
                 media_type = "OTP" if category == "AUTHENTICATION" else media_type
+                logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
                 send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
 
         formatted_numbers = []

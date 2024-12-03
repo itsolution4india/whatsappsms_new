@@ -14,8 +14,9 @@ from ..models import ScheduledMessage, CustomUser
 from .send_messages import send_messages
 from .template_msg import fetch_templates
 import logging
-
-logger = logging.getLogger(__name__)
+from ..utils import logger
+import ast
+import json
 
 scheduler = None
 lock_file = os.path.join(settings.BASE_DIR, "scheduler.lock")
@@ -37,7 +38,15 @@ def run_scheduled_message(message_id):
                 
                 # Fetch campaign list and ensure it's not None
                 campaign_list = fetch_templates(user_data.whatsapp_business_account_id, app_info['token']) or []
-                
+                if isinstance(message.submitted_variables, str):
+                    try:
+                        # Attempt to parse as JSON or Python list
+                        submitted_variables = json.loads(message.submitted_variables)
+                    except json.JSONDecodeError:
+                        submitted_variables = ast.literal_eval(message.submitted_variables)
+                else:
+                    submitted_variables = message.submitted_variables
+                    
                 logger.info(f"send_messages function called for message {message_id}")
                 send_messages(
                     message.current_user,
@@ -50,7 +59,7 @@ def run_scheduled_message(message_id):
                     ast.literal_eval(message.contact_list),
                     message.campaign_title,
                     request=None,
-                    variable_list=message.submitted_variables
+                    submitted_variables=submitted_variables
                 )
                 message.is_sent = True
                 message.save()
