@@ -19,13 +19,13 @@
               {% csrf_token %}
               <div class="mb-3">
                 <label class="form-label">Campaign Name</label>
-                <input type="text" name="campaign_title" class="form-control">
+                <input type="text" name="campaign_title" class="form-control" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Template Name</label>
                 <!-- <input type="text" id="params" name="params" class="form-control"> -->
     
-                <select id="template-select" onchange="updateTemplate()" class="form-select" name="params">
+                <select id="template-select" onchange="updateTemplate()" class="form-select" name="params" required>
                   {% for name in template_name %}
                   <option value="{{ name }}">{{ name }}</option>
                   {% endfor %}
@@ -43,7 +43,7 @@
               <div class="mb-3">
                 <label class="form-label">Write Contact Numbers</label>
                 <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
-                  name="contact_number"></textarea>
+                  name="contact_number" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
     
