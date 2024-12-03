@@ -1944,8 +1944,8 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    # df = download_linked_report(request)
-    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     df['phone_number_id'] = df['phone_number_id'].astype(str)
