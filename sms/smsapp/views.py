@@ -1932,6 +1932,7 @@ def fetch_webhook_responses(request):
 @login_required
 def bot_interactions(request):
     selected_phone = request.GET.get('phone_number', None)
+    phone_id = display_phonenumber_id(request)
     # start_date = datetime.now() - timedelta(days=7)
     combined_data = []
     phone_numbers_list = set()
@@ -1943,10 +1944,13 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    df['phone_number_id'] = df['phone_number_id'].astype(str)
+    df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
+    df = df[df['phone_number_id'] == phone_id]
     filter_main_data = df[df['status'] == 'reply']
     unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
     
