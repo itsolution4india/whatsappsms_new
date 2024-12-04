@@ -136,3 +136,23 @@ def validate_balance(balance, total_numbers):
         return True
     else:
         return False
+    
+def parse_fb_error(data):
+    """
+    Parse Facebook API error response into a more readable format
+    """
+    if isinstance(data, dict) and 'error' in data:
+        error = data['error']
+        error_details = {
+            "type": error.get('type', 'Unknown Error'),
+            "code": error.get('code', 'N/A'),
+            "message": error.get('message', 'No specific message'),
+            "user_title": error.get('error_user_title', ''),
+            "user_message": error.get('error_user_msg', ''),
+            "trace_id": error.get('fbtrace_id', '')
+        }
+        return error_details
+    return {
+        "type": "Unknown Error",
+        "message": "Unable to parse error details"
+    }

@@ -35,7 +35,7 @@ from .fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
-from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance, get_template_details_by_name
+from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance, get_template_details_by_name, parse_fb_error
 import pandas as pd
 from django.views.decorators.http import require_http_methods
 import mysql.connector
@@ -445,7 +445,6 @@ def Campaign(request):
                     template_name=template_name,
                     languages=language
                 )
-                print(response)
             else:
                 status,data=template_create(
                     token=token,
@@ -467,14 +466,22 @@ def Campaign(request):
                     body_example_values = submitted_variables if submitted_variables else None
                 )
             if status !=200:
-                data_str=str(data)
-                return HttpResponse(data_str)
+                error_details = parse_fb_error(data)
+                context.update({
+                    "error": error_details,
+                    "has_error": True
+                })
 
             Templates.objects.create(email=request.user, templates=template_name)
-            return redirect('campaign')
-        except IntegrityError:
-            
-            return render(request, "Campaign.html", context)
+        except Exception as e:
+            context.update({
+                "error": {
+                    "type": "Unexpected Error",
+                    "message": str(e),
+                    "details": str(e)
+                },
+                "has_error": True
+            })
         
     return render(request, "Campaign.html", context)
 
@@ -1325,9 +1332,14 @@ def delete_template(request):
     
 @login_required
 def link_templates(request):
+    phone_id = display_phonenumber_id(request)
     if not check_user_permission(request.user, 'can_link_templates'):
         return redirect("access_denide")
     df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df['phone_number_id'] = df['phone_number_id'].astype(str)
+    df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
+    df = df[df['phone_number_id'] == phone_id]
     token, app_id = get_token_and_app_id(request)
     campaign_list = fetch_templates(display_whatsapp_id(request), token)
     if campaign_list is None:
@@ -1968,8 +1980,8 @@ def bot_interactions(request):
         messages_data = list(BotSentMessages.objects.all().values())
         messages_df = pd.DataFrame(messages_data)
         messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
-        
         messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
+        messages_df = messages_df[messages_df['phone_number_id'] == phone_id]
         
         for _, row in filtered_df.iterrows():
             record = {
@@ -2046,8 +2058,6 @@ def user_interaction(request):
     if request.method == 'POST':
         chat_text = request.POST.get('chat_text', '')
         phone_number = request.POST.get('phone_number', '')
-        print("chat_text", chat_text)
-        print("phone_number", phone_number)
         if chat_text and phone_number:
             token, _ = get_token_and_app_id(request)
             phone_number_id = display_phonenumber_id(request)

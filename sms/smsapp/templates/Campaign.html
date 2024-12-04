@@ -1,13 +1,117 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<style>
+    .error-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(5px) saturate(200%);
+    -webkit-backdrop-filter: blur(14px) saturate(200%);
+    background-color: rgb(0 0 0 / 17%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-content {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.error-title {
+    color: #721c24;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.error-icon {
+    background-color: #dc3545;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.error-details {
+    color: #721c24;
+}
+
+.error-details p {
+    margin: 10px 0;
+}
+
+.trace-id {
+    font-size: 0.8em;
+    color: #6c757d;
+    word-break: break-all;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #721c24;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+}
+</style>
 {% endblock %}
 
 {% block content %}
 <!-- Content wrapper -->
 <div class="content-wrapper">
     <!-- Content -->
-
+    {% if has_error %}
+    <div id="error-container" class="error-modal">
+        <div class="error-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="error-title">
+                <i class="error-icon">!</i> 
+                {{ error.type|default:"Error" }}
+            </h2>
+            
+            <div class="error-details">
+                <p><strong>Error Code:</strong> {{ error.code }}</p>
+                <p><strong>Message:</strong> {{ error.message }}</p>
+                
+                {% if error.user_title %}
+                <p><strong>User Title:</strong> {{ error.user_title }}</p>
+                {% endif %}
+                
+                {% if error.user_message %}
+                <p><strong>User Message:</strong> {{ error.user_message }}</p>
+                {% endif %}
+                
+                {% if error.trace_id %}
+                <p class="trace-id"><strong>Trace ID:</strong> {{ error.trace_id }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
     <div class="container-xxl flex-grow-1 container-p-y" style="height: 1200px;">
 
         <div class="row" style="min-height: 800px; box-shadow: none;">
@@ -546,45 +650,7 @@
                             }
                         });
 
-
-
-                        // document.getElementById('headerInputDocument').addEventListener('change', function (event) {
-                        //     const file = event.target.files[0];
-                        //     if (file) {
-                        //         const iconContainer = document.getElementById('iconContainer');
-                        //         const fileTypeText = document.getElementById('fileTypeText');
-                        //         iconContainer.innerHTML = ''; // Clear any existing content
-                        //         fileTypeText.innerHTML = ''; // Clear any existing content
-
-                        //         let fileType;
-                        //         const fileTypeClass = 'bx bx-file bxsize'; // Default icon class
-
-                        //         if (file.type === 'application/pdf') {
-                        //             fileType = 'PDF';
-                        //         } else if (file.type === 'application/vnd.ms-excel' || file.type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
-                        //             fileType = 'Excel';
-                        //         } else if (file.type === 'text/plain') {
-                        //             fileType = 'Text';
-                        //         } else {
-                        //             alert('Unsupported file type.');
-                        //             return;
-                        //         }
-
-                        //         const iconElement = document.createElement('i');
-                        //         iconElement.className = fileTypeClass;
-
-                        //         iconContainer.appendChild(iconElement);
-                        //         fileTypeText.textContent = fileType;
-                        //     } else {
-                        //         alert('Please upload a valid document.');
-                        //     }
-                        // });
-
                     </script>
-
-
-
-
                     <script>
 
 
@@ -608,12 +674,7 @@
 
                     </script>
 
-
-
-
                     <script>
-                        // var textarea = document.getElementById("userInput");
-                        // var output = document.getElementById("output");
 
                         var fontSizeSelect = document.getElementById("fontSize");
                         var callExtension = document.getElementById('buttonName');
@@ -641,71 +702,6 @@
                             WebFoot.style.marginLeft = "40px"
                             WebFoot.style.display = 'inline'
                         }
-
-
-
-
-
-
-                        // const editor = document.getElementById('editor');
-                        // const liveText = document.getElementById('liveText');
-                        // const boldBtn = document.getElementById('boldBtn');
-
-                        // // Function to update live text display
-                        // const updateLiveText = () => {
-                        //     liveText.innerHTML = editor.innerHTML;
-                        // };
-
-                        // // Add event listener to update live text on input
-                        // editor.addEventListener('input', updateLiveText);
-
-                        // // Add event listener to apply bold formatting
-                        // boldBtn.addEventListener('click', function () {
-                        //     document.execCommand('bold');
-                        //     updateLiveText(); // Update live text after applying bold
-                        // });
-
-                        // // Optional: Handle keyboard shortcuts (Ctrl + B)
-                        // document.addEventListener('keydown', function (event) {
-                        //     if (event.ctrlKey && event.key === 'b') {
-                        //         event.preventDefault();
-                        //         document.execCommand('bold');
-                        //         updateLiveText(); // Update live text after applying bold
-                        //     }
-                        // });
-
-                        // // Initial update of live text
-                        // updateLiveText();
-
-                        // function updateFormattedText() {
-                        //     var editorContent = document.getElementById('editor').value;
-                        //     var formattedText = editorContent.replace(/<b>(.*?)<\/b>/g, '<strong>$1</strong>'); // Convert <b> to <strong>
-                        //     document.getElementById('formatted-text').innerHTML = formattedText;
-                        // }
-
-                        // function boldSelection() {
-                        //     var editor = document.getElementById('editor');
-                        //     var start = editor.selectionStart;
-                        //     var end = editor.selectionEnd;
-                        //     var selectedText = editor.value.substring(start, end);
-                        //     var boldText = '<b>' + selectedText + '</b>';
-
-                        //     var newText = editor.value.substring(0, start) + boldText + editor.value.substring(end);
-                        //     editor.value = newText;
-
-                        //     updateFormattedText(); // Update formatted text area
-                        // }
-
-                        // document.getElementById('bold-button').addEventListener('click', function () {
-                        //     boldSelection();
-                        // });
-
-                        // document.getElementById('editor').addEventListener('input', function () {
-                        //     updateFormattedText(); // Update formatted text area on any input change
-                        // });
-
-                        // // Initialize formatted text area on page load
-                        // updateFormattedText();
 
                         function updateFormattedText() {
                             var editorContent = document.getElementById('editor').value;
@@ -904,20 +900,6 @@
                             }
                         });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </script>
 
 
@@ -978,6 +960,33 @@
     </div>
 
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const errorContainer = document.getElementById('error-container');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (errorContainer && closeBtn) {
+        // Close modal when close button is clicked
+        closeBtn.addEventListener('click', function() {
+            errorContainer.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the modal
+        errorContainer.addEventListener('click', function(event) {
+            if (event.target === errorContainer) {
+                errorContainer.style.display = 'none';
+            }
+        });
+
+        // Optional: Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && errorContainer.style.display !== 'none') {
+                errorContainer.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
 <script>
     // Get the category select element
 const categorySelect = document.querySelector('select[name="category"]');
