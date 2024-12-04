@@ -35,7 +35,7 @@ from .fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
-from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance, get_template_details_by_name, parse_fb_error
+from .utils import check_schedule_timings, CustomJSONDecoder, create_report, validate_balance, get_template_details_by_name, parse_fb_error, insert_bot_sent_message
 import pandas as pd
 from django.views.decorators.http import require_http_methods
 import mysql.connector
@@ -990,6 +990,12 @@ def save_phone_number(request):
                     elif message_type == "send_text_message":
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
+                        try:
+                            insert_bot_sent_message(token=token,phone_number_id=phone_number_id,contacts=phone_number,message_type=message_type,header=header,body=body,footer=footer,button_data=button_data,product_data=product_data,catalog_id=catalog_id,sections=sections,lat=lat,lon=lon,media_id=media_id)
+                            logger.info("BotSentMessages successfully saved in the database")
+                            
+                        except Exception as e:
+                            logger.error(f"Error saving BotSentMessages: {e}")
                         image_id = filter_message_response.catalog_id
                         campaign_list = fetch_templates(waba_id, token, filter_message_response.template_name)
                         filter_campaign_list = [
@@ -1956,8 +1962,8 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     df['phone_number_id'] = df['phone_number_id'].astype(str)
@@ -1966,8 +1972,19 @@ def bot_interactions(request):
     filter_main_data = df[df['status'] == 'reply']
     unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
     
-    matching_phone_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
+    # matching_phone_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
     unique_contact_names = []
+    
+    messages_data = list(BotSentMessages.objects.all().values())
+    messages_df = pd.DataFrame(messages_data)
+    # messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
+    messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
+    messages_df = messages_df[messages_df['phone_number_id'] == phone_id]
+    contact_list = messages_df['contact_list'].tolist()
+    
+    combined_list = [str(num) for sublist in contact_list for num in sublist] + all_phone_numbers + unique_contact_wa_id
+    matching_phone_numbers = list(set(filter(None, combined_list)))
+    
     if selected_phone:
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
@@ -1975,13 +1992,7 @@ def bot_interactions(request):
         ].copy()
         
         filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
-        unique_contact_names = filtered_df['contact_name'].unique()
-        
-        messages_data = list(BotSentMessages.objects.all().values())
-        messages_df = pd.DataFrame(messages_data)
-        messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
-        messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
-        messages_df = messages_df[messages_df['phone_number_id'] == phone_id]
+        unique_contact_names = filtered_df['contact_name'].unique()  
         
         for _, row in filtered_df.iterrows():
             record = {
@@ -2031,10 +2042,6 @@ def bot_interactions(request):
                 item['created_at'] = item['created_at'].replace(tzinfo=None)
 
         combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
-    
-    else:
-        messages_data = list(BotSentMessages.objects.all().values())
-        messages_df = pd.DataFrame(messages_data)
         
     phone_numbers_list = matching_phone_numbers
     context = {
