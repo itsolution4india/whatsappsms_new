@@ -1977,7 +1977,6 @@ def bot_interactions(request):
     
     messages_data = list(BotSentMessages.objects.all().values())
     messages_df = pd.DataFrame(messages_data)
-    # messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
     messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
     messages_df = messages_df[messages_df['phone_number_id'] == phone_id]
     contact_list = messages_df['contact_list'].tolist()
@@ -2012,7 +2011,8 @@ def bot_interactions(request):
                 'message_body': row['message_body'],
             }
             combined_data.append(record)
-        
+            
+        messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
         for _, row in messages_df.iterrows():
             record = {
                 'source': 'messages',
