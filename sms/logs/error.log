@@ -1,0 +1,1053 @@
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.whtsappdealnow.in'. You may need to add 'www.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Invalid HTTP_HOST header: '0.0.0.0'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Bad Request: /
+User demo2@gmail.com logged in successfully.
+Failed login attempt for Mukesh-demo@gmail.com
+User Mukesh-demo@gmail.com logged in successfully.
+Invalid HTTP_HOST header: 'ftp.wtsdealnow.in'. You may need to add 'ftp.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'ftp.wtsdealnow.in'. You may need to add 'ftp.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'ftp.wtsdealnow.in'. You may need to add 'ftp.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'ftp.wtsdealnow.in'. You may need to add 'ftp.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+User puri.tushar@gmail.com logged in successfully.
+Send_Sms: puri.tushar@gmail.com, 346085425263787, twrcontentnewqwqwwer, None, ['919888521547', '919815776292', '919876549079', '919711027179', '919711618080'], ['919888521547', '919815776292', '919876549079', '919711027179', '919711618080'], single, []
+User Mukesh-demo@gmail.com logged in successfully.
+User Mukesh-demo@gmail.com logged in successfully.
+User Rudralogistic logged in successfully.
+404 Not Found: /ads.txt - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Not Found: /ads.txt
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, None, [], [], whatsapp4, []
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 2617000835356804, ['918800007786', '919717670835', '919811601246', '919934109339', '919810645154', '919810312543', '919821042699', '919310974323', '918802268066', '919316835335', '918447507813', '919711155719', '918130682688', '919810608500', '919990962991', '919810644490', '919899100818', '919873395386', '918048970741', '918447030197', '919873355008', '919810910153', '918802050398', '918802223272', '919312707775', '919999979932', '919811118536', '919811485154', '919811276245', '918700476003', '919811912926', '918048361367', '919716534275', '919999561776', '919811118280', '917290073677', '919810288410', '918447370770', '919811276571', '919311339577', '919810499618', '918046030872', '919910459960', '918069013894', '919313584365', '919871449580', '919810044792', '919810481602', '919810730307', '919350205788', '919810053311', '919811156991', '919132391391', '919810112487', '919555254555', '918130729257', '918048372605', '919910930441', '918285400618', '919560321253', '919871136682', '919811568255', '919810033221', '919810007475', '919811411476', '919322670170', '919811081855', '918467002133', '918800525919', '919891410854', '918802452190', '919810473357', '919717522118', '919015620305', '919350897641', '919871708646', '919958162233', '919873348270', '919999707676', '919711198834', '919873424248', '919910652671', '919599968833', '919810392666', '919873673059', '919815555517', '918046051174', '919971375357', '919818619712', '919810301369', '918700197872', '919958360888', '919810622671', '919818133321', '918586900400', '919871005292', '919910123750', '918826995080', '919781682222', '919891645274', '919996123092', '919810483123', '919811661009', '918802227010', '919968025393', '917290002527', '919971902980', '919873533834', '919311197995', '919015067889', '919915000216', '919555163131', '919810055990', '919811009596', '919811625768', '919818356526', '919815435128', '919953888007', '919313075754', '919997024844', '919811046182', '918505877177', '917942538652', '919810426484', '919250074443', '918800599403', '919592095221', '919999340303', '919418253636', '919311442187', '919911787788', '918048609720', '919999372600', '919810006280', '919811079468', '919818184483', '918826377947', '919810093798', '919899822235', '919810924572', '919717966325', '919810075678', '919811035779', '919899176060', '919810861525', '919910018144', '919910494355', '919971992838', '919811047536', '919899977280', '919313872958', '919810884615', '919717590416', '919582200214', '919312704313', '919891078734', '919540671464', '919355363157', '919871019746', '919810888900', '919811017801', '919814055450', '919350861467', '919818421015', '919999951501', '919540627981', '918047525118', '919250090027', '919971390660', '919811116260', '919837534470', '919810294334', '919910690934', '919891972661', '919811988882', '919560011347', '919717112223', '919810977020', '919899345786', '918045802704', '918047633320', '919891117646', '919717799854', '919871999529', '919910800779', '919810007543', '919811101677', '919971190005', '917303819331', '919953176406', '919871922110', '918800708604', '919911089852', '918048966856', '919319362408', '919361800001', '919811558369', '919868012115', '918046054311', '919911010072', '919811617600', '919999098691', '919810020422', '918048958763', '919584306332', '917079122222', '919999679700', '919846011976', '919910895561', '918048960185', '919871028441', '919810103292', '919810332203', '919711000212', '919811031424', '919810888143', '919818816364', '919882498824', '919999008338', '919811690000', '919899720064', '919555914916', '919654670633', '919718716952', '919891159211', '919810158805', '919250308076', '919312453387', '919971001378', '917009767703', '919045024844', '919958237991', '919810135034', '919810416030', '916362939382', '919368334651', '919643010607', '919999005870', '919654136001', '919811261017', '919958297077', '919810180332', '919891100390', '919810286180', '919810543703', '919811320299', '919100288819', '919216622270', '919811205550', '917827339653', '918043835091', '919971937575', '919312932209', '919599015640', '919810398498', '917397406320', '919878000643', '919759366111', '919810978355', '919540838345', '919211253015', '919810170655', '917290068345', '919999425925', '919357133002', '919313526197', '919899079760', '919899556687', '918377861269', '918527537416', '918885023070', '919811967017', '919871298916', '919811486080', '919999091544', '919312287115', '918048985618', '919711469429', '919310000000', '918851217949', '919015897722', '919810135435', '919999674947', '919555390390', '919650705577', '919910512008', '919871789997', '919971663000', '918178787402', '918700367647', '919811049200', '919810047697', '919810026870', '919311797248', '919899811614', '919654911192', '919818406045', '918285000150', '919810163415', '919811437275', '919810656060', '917417582876', '919810605062', '917942557077', '919313441967', '919811140420', '919867168797', '919718363163', '919711971649', '917827107212', '919041090000', '919899888976', '919899445569', '919810099721', '919717074874', '918048616985', '919910310315', '919810292648', '919899136060', '918802833883', '918037549280', '919717944466', '919313060441', '918047681154', '919350044993', '919971607200', '919717188993', '919311661161', '919910269999', '919711114352', '919990188746', '919821142069', '919884142866', '919818362758', '919810501801', '917290068362', '919711996648', '919958597910', '919811201281', '919810120506', '919910958452', '919810284330', '919810508258', '919313909508', '919871801724', '919818376505', '919810334948', '919811275376', '919910027476', '919873880718', '919711352970', '919810070846', '919818706443', '919810089225', '918700630087', '919811050628', '919891665149', '919911270191', '917217885728', '919971077433', '919953203372', '919711434255', '919717411463', '919716357937', '918045476442', '919315124803', '918802784371', '918750777333', '919718307994', '919811151886', '919811075462', '919350515559', '919999846094', '919999099292', '919811078592', '919811336337', '919958891055', '919718597977', '919310041925', '919873937232', '919818840003', '919899388000', '919311846794', '918800660982', '919999919376', '919958199882', '919810552446', '918585903544', '919999909007', '919899099026', '919892357964', '919810164435', '919354559335', '919312633825', '919810046129', '919999142233', '919811112525', '919810314293', '917838383443', '919891292922', '918046048071', '919992906767', '919899109200', '919810475157', '919999618253', '919871911722', '919811283165', '919311162266', '919958670080', '919717120098', '919899382324', '917011927321', '918750514824', '919811133032', '919899588602', '919818465265', '919971231420', '919711430099', '917303318960', '919810602409', '918043888949', '919560284300', '919971004760', '918950586606', '919990731731', '917942560220', '919350337181', '919990256755', '919971288786', '919810446658', '919891187663', '919811868809', '918048600657', '919350530685', '919811194422', '919971722779', '919215247600', '919818337429', '919810222331', '919818728752', '918130377767', '917291981203', '919311154781', '919810796111', '919953138955', '917906610124', '919911111377', '919831491231', '919599829200', '919868313432', '919811335556', '918826359963', '919814020304', '919892982065', '919818500463', '919711105597', '919811032709', '917505310937', '919891985404', '917942787387', '919971997969', '919871536374', '918222918888', '919810130908', '919871845617', '918630439195', '919313049744', '918860003026', '918285050011', '919871998775', '919711553553', '919871914529', '919811609247', '919810014820', '919910113761', '919999674644', '919811115077', '918048962060', '919811041000', '918586061869', '919810002401', '919899037121', '918062245013', '919811080878', '919811201695', '919552511051', '918048986643', '919868036136', '919999922748', '919810102556', '919810969766', '919810710425', '919810410044', '919811038766', '919873649581', '918800049122', '917942534638', '919911067866', '919810904400', '919811425835', '919818504207', '919876299994', '919811017936', '919811005706', '919891094355', '917942634780', '919810113350', '918743000344', '919811021630', '919811138261', '919582436369', '919818908872', '919911387995', '918178082795', '919810066827', '919871137474', '919811089852', '919971762525', '918882666363', '919990861111', '919873307736', '919810948975', '918392991234', '919811330049', '919911243999', '918003198431', '919810426151', '919810281953', '919313283699', '918586865492', '919811790757', '919310019910', '919811105714', '918826697989', '919810881363', '919810512856', '919810148477', '919717341555', '919999270548', '918042753289', '919999991000', '919873414834', '919811416965', '919811100446', '919811207262', '918130410711', '919958991633', '919873041442', '918130516663', '918048025287', '919811016472', '919717921414', '918677986578', '919910477247', '919818432425', '919999873884', '919560091018', '919899077712', '919818352073', '917838042468', '919814044577', '919810802424', '919899987773', '919871137080', '919811131369', '919810811212', '918048989579', '919810066535', '919818009053', '919810315067', '919313183473', '918048963117', '918800134496', '919650506210', '918377912556', '919811304833', '919716388688', '919711583006', '919871142812', '919811709123', '919310342720', '919716851105', '919868155120', '919501108229', '919810023281', '919811022629', '919810060264', '919607193003', '918875654352', '919818373757', '919599987786', '919871706695', '917280009009', '919650161885', '918048608511', '919717047137', '919810303263', '919811100025', '919818875105', '919811193227', '919717289337', '919810014179', '918046068392', '919810116910', '917053991063', '919013012377', '919971178899', '917503111201', '919967338822', '919999065010', '919810305323', '919711009739', '919810800002', '919999265974', '919873300755', '918048372740', '918047631502', '919599346004', '917065383936', '919891053298', '919999985547', '919958169922', '918043811041', '918868800591', '919891624602', '919810026545', '919818052007', '919871195934', '919953033451', '919999017773', '919953593544', '918048601126', '919810887566', '919899010440', '919711212212', '919810700375', '919313904673', '919810986387', '919810040429', '919560488810', '919873909016', '919810087388', '919999474535', '919717386366', '919711398543', '917942822810', '919899444125', '919811669698', '919810037767', '919811760775', '919810084795', '919810102646', '919958079310', '919810282066', '919810087774', '919650267752', '919899888815', '919312433122', '919811369496', '919210339919', '919818286582', '919810291282', '919339853886', '918068091608', '919650215800', '918875016161', '919215021007', '919811071135', '919810159418', '919311260372', '919891188149', '919899000010', '918725006660', '917838845221', '919654273013', '919311112637', '918447441377', '918920179265', '919971657989', '918048960932', '919871002541'], ['918700197872', '919899987773', '919311260372', '919891188149', '919899000010', '918725006660', '917838845221', '919654273013', '919311112637', '918447441377', '918920179265', '919971657989', '918048960932', '919871002541'], whatsapp4, []
+User demo2@gmail.com logged in successfully.
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 866003468945534, ['919899987773'], ['919899987773'], vf, []
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 1945807925948387, ['919899987773'], ['919899987773'], chhjjh, []
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EACHkZAGbr5ocBO9XuhguxDPmHYuNZC0xvH2lArWxWeIFEDPINzPgVZAZAg4G7CsHZAZBDddp9cVP0TErmC7nEknJZAaZCdMVlWBLpD37x1tIaH9poIrMKG98NYe7gZAUcezlsEjt8egFW7A60TZAHGVWW12RShw1OnFOpu9M6RqM6JZCdgIt8ZBc4ctUmpmf5toIRyxmEOotvufh8aobdtiNhlADo6UzGg2O1WCfKPRVwXWG', 'phone_number_id': '492630533932274', 'contact_list': ['918700197872'], 'message_type': 'text', 'body': 'hi'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+User Rudralogistic logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Invalid HTTP_HOST header: 'cpanel.whtsappdealnow.in'. You may need to add 'cpanel.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'cpanel.whtsappdealnow.in'. You may need to add 'cpanel.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'cpanel.whtsappdealnow.in'. You may need to add 'cpanel.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'cpanel.whtsappdealnow.in'. You may need to add 'cpanel.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Invalid HTTP_HOST header: 'webdisk.wtsdealnow.in'. You may need to add 'webdisk.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'webdisk.wtsdealnow.in'. You may need to add 'webdisk.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36
+Not Found: /robots.txt
+404 Not Found: /media/system/js/core.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /media/system/js/core.js
+404 Not Found: /wp-includes/js/jquery/jquery.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /wp-includes/js/jquery/jquery.js
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User Itsolution4india logged in successfully.
+Send_Sms: itsolution4india2@gmail.com, 498352686693631, test_auth, None, ['916361161836'], ['916361161836'], test_schedule_msg, ['565555']
+handle_schedule_update function called
+Schedule list: <QuerySet [<ScheduledMessage: test_schedule_msg - 2024-12-03 14:53:54>]>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 14:52:02.580282+05:30
+Processing schedule: test_schedule_msg - 2024-12-03 14:53:54
+Adding job: message_46 with scheduled time: 2024-12-03 14:53:54+05:30
+Scheduled message saved for campaign: test_schedule_msg, user: itsolution4india2@gmail.com
+Send_Sms: itsolution4india2@gmail.com, 498352686693631, itsolutio4indiatm, None, ['916361161836'], ['916361161836'], test_schedule_msg2, []
+handle_schedule_update function called
+Schedule list: <QuerySet [<ScheduledMessage: test_schedule_msg - 2024-12-03 14:53:54>, <ScheduledMessage: test_schedule_msg2 - 2024-12-03 14:54:38>]>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 14:52:42.810170+05:30
+Processing schedule: test_schedule_msg - 2024-12-03 14:53:54
+Adding job: message_46 with scheduled time: 2024-12-03 14:53:54+05:30
+Processing schedule: test_schedule_msg2 - 2024-12-03 14:54:38
+Adding job: message_47 with scheduled time: 2024-12-03 14:54:38+05:30
+Scheduled message saved for campaign: test_schedule_msg2, user: itsolution4india2@gmail.com
+Running scheduled message with id 46
+Running scheduled message with id 46
+Executing message send for ID: 46 at 2024-12-03 09:23:54.000647+00:00
+Executing message send for ID: 46 at 2024-12-03 09:23:54.000657+00:00
+send_messages function called for message 46
+Sending messages for user: itsolution4india2@gmail.com, campaign title: test_schedule_msg
+Calculated money data for sending messages: 1
+Message sent successfully. Deducted 1 coins from your account. Remaining balance: 1419
+Messages sent successfully for campaign: test_schedule_msg, user: itsolution4india2@gmail.com
+handle_schedule_update function called
+Message 46 sent successfully.
+Message 46 has already been sent. Skipping.
+Running scheduled message with id 47
+Executing message send for ID: 47 at 2024-12-03 09:24:38.000576+00:00
+send_messages function called for message 47
+Sending messages for user: itsolution4india2@gmail.com, campaign title: test_schedule_msg2
+Calculated money data for sending messages: 1
+Message sent successfully. Deducted 1 coins from your account. Remaining balance: 1418
+Messages sent successfully for campaign: test_schedule_msg2, user: itsolution4india2@gmail.com
+handle_schedule_update function called
+Message 47 sent successfully.
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36
+Not Found: /.env
+User Rudralogistic logged in successfully.
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, None, [], [], second half, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: second half
+Calculated money data for sending messages: 0
+Messages sent successfully for campaign: second half, user: rudralogistic@gmail.com
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 1208366070255543, ['+919899987773'], ['+919899987773'], second half, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: second half
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: second half, user: rudralogistic@gmail.com
+User Rudralogistic logged in successfully.
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 889764319598562, ['919811651976', '919540245359', '919717896693', '919810099033', '919810405177', '919811012071', '919811502539', '919810282385', '919311353501', '919873907915', '919717895851', '919810703907', '919811012210', '918130523856', '918800653244', '919899949940', '919968254721', '919810367777', '919818295543', '919810246227', '919910317778', '919810154993', '919871160404', '919811303366', '919810029592', '919868869490', '919810899584', '919891105161', '919416200030', '919810121409', '918586927581', '919136899704', '919899400800', '919871120156', '919810518665', '919899133702', '919810188272', '919811622228', '919810673093', '919868817447', '919811014120', '919891424046', '918744001834', '919811779905', '919810025944', '917895521217', '919811040888', '919810023656', '919711573080', '919811500560', '919810633844', '919811085151', '919911990790', '919810072921', '919810619093', '918588841672', '919810472502', '919899752616', '919811274734', '919818527846', '919811213679', '919560434496', '919810416996', '919811006896', '919811147550', '919818310652', '919212305655', '919810060361', '919811011058', '919871929686', '919891438383', '919999696054', '919810465571', '919891056368', '919810070827', '919810006864', '919310139863', '919811208857', '919917814900', '919717579824', '919810065619', '919810421431', '919818423004', '918755818559', '919310856182', '919811111571', '919940343442', '919312428067', '919808125113', '919811206499', '919999359301', '919911244228', '919873686839', '919711910007', '919555280059', '919810213614', '919810350318', '918802229922', '919811221474', '919810107887', '919643965697', '919810219989', '919999031523', '917869082287', '919811053113', '918130290012', '919718681204', '919717885578', '919891074745', '919599313131', '919990032660', '919810460894', '919910423488', '919871379661', '919810054009', '919711448332', '919810062439', '919810028374', '919810856701', '919718831550', '919811040569', '919837022455', '919811382100', '919811018503', '919810023242', '919034907690', '919717066661', '919871177551', '919810029580', '919718256484', '917290090565', '919811164900', '919810033175', '917042692818', '919312664403', '919810125298', '919810926201', '919627382856', '919811148869', '919873987685', '919810212666', '918130116434', '919958508780', '919871645474', '919810126055', '919810075844', '919811108480', '919810092473', '919810034582', '919811218040', '919811664839', '918447824919', '919599234338', '919871551776', '919810442251', '919818436261', '919810406140', '919810047088', '919810265737', '919891077277', '917028000544', '918130294060', '919811167790', '917042121111', '919811131166', '919810980550', '919810095486', '919811161859', '919810352640', '919015607139', '919313811601', '919810462097', '919910061150', '919899666466', '919811155330', '919810413686', '919899907806', '919811085699', '919711006775', '919810158062', '919899010069', '919810007701', '919350418080', '919810008303', '919811096227', '919810116856', '919810084988', '919810207460', '919910056573', '919211000007', '919717307053', '919310302428', '919818716062', '919811027337', '919628555599', '918447756799', '919565055156', '919958894406', '919811085199', '919910088986', '919811038783', '919811047181', '919811056968', '919810668490', '919350847497', '919818143300', '919910111488', '919911142012', '919818550762', '919871644751', '919350257173', '919999314422', '919958614297', '919873344636', '918800579219', '919899773388', '917827033331', '919891544020', '919350832156', '919811092193', '919810720272', '918447955367', '919871124949', '919811393831', '919810281155', '919825522284', '919839484364', '919718184848', '919350628321', '918130245303', '919810616758', '919810086566', '919818779595', '919871596099', '919818388077', '919810876619', '919999165629', '919811154959', '919899195805', '918700226679', '919811013144', '919899943932', '919958067960', '919811220717', '919810055624', '919810572977', '919810008262', '919871560000', '918700520969', '919911477442', '919999412343', '919871007333', '919312279844', '919596000444', '918826117077', '919718831539', '917835880155', '919811050000', '919811412860', '919810964599', '919603748640', '919212005225', '919811278570', '919810250084', '918285870005', '919810208320', '919711197770', '919810229254', '919811442020', '919899805804', '919311167890', '919711010173', '919818775717', '919999217942', '919891070990', '919650355579', '919810522153', '919310168129', '919910031467', '919811032573', '919311073666', '918743918857', '919311049835', '918860198860', '919311116463', '919319017847', '919810115649', '919312224726', '919599543322', '919350040907', '919810176969', '919899997871', '919650068308', '919643178707', '919319902102', '919871145074', '919891203920'], ['919899997871', '919650068308', '919643178707', '919319902102', '919871145074', '919891203920'], sec, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: sec
+Calculated money data for sending messages: 297
+Messages sent successfully for campaign: sec, user: rudralogistic@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=88e969da9cbc43c49fff2e7db08c777e name=schedule_messages)>]
+Current time (localized): 2024-12-03 15:35:31.858220+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 15:35:31.868026+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 15:35:31.980592+05:30
+User Mukesh-demo@gmail.com logged in successfully.
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:123.0) Gecko/20100101 Firefox/123
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=88e969da9cbc43c49fff2e7db08c777e name=schedule_messages)>]
+Current time (localized): 2024-12-03 16:20:31.853483+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 16:20:31.886836+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 16:20:31.993941+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, testing01, None, [], [], testing_a, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_a
+Calculated money data for sending messages: 0
+Messages sent successfully for campaign: testing_a, user: Mukesh-demo@gmail.com
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, testing01, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, testing01, None, ['919871729350', '919711618080'], ['919871729350', '919711618080'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 442, in Campaign
+    status, response = create_auth_template(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/create_template.py", line 174, in create_auth_template
+    response.raise_for_status()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://graph.facebook.com/v17.0/495043993692474/upsert_message_templates
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, test_auth_temp, None, ['919711618080', '919871729350'], ['919711618080', '919871729350'], test_auth, ['857788']
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: test_auth
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: test_auth, user: Mukesh-demo@gmail.com
+User Mukesh-demo@gmail.com logged in successfully.
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAASXK7q05EsBO8nnZAKnCrHY01npMJuaAHDT5qErJcmKsZANmkuHrvr5cZAHDMkSWA4mJNHcxyZAXstFXZAzQCCEecewMvC9V8CbiSx5nvgVt3svQYE1dk9HyFGldZBAqrG06JlPsIQVSZAseD3Xnrb0bboDeN9cDP1LDG3I59rfrJj3nzlrHlKZCvGdlnmma7CLTJqZBW4mABc51LhUMWcz8DSZB8ysYZD', 'phone_number_id': '473984259138177', 'contact_list': ['919871729350'], 'message_type': 'text', 'body': 'hello'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=88e969da9cbc43c49fff2e7db08c777e name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:05:31.856069+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:05:31.880455+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:05:31.990717+05:30
+User nraiproduction@gmail.com logged in successfully.
+Send_Sms: nraiproduction@gmail.com, 346085425263787, testing989, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: nraiproduction@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: nraiproduction@gmail.com
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 429, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 429, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 429, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+User demo2@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User Mukesh-demo@gmail.com logged in successfully.
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+User Mukesh-demo@gmail.com logged in successfully.
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+404 Not Found: /c - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /c
+User opinder@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+User Mukesh-demo@gmail.com logged in successfully.
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1020, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=88e969da9cbc43c49fff2e7db08c777e name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:50:31.863186+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:50:31.878269+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 17:50:31.993564+05:30
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, job_question_temp, None, ['916361161836'], ['916361161836'], test_template, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: test_template
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: test_template, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yes_flow, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: no_template, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, job_question_temp, None, ['918285055176', '919711618080'], ['918285055176', '919711618080'], test_main, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: test_main
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: test_main, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yes_flow, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yes_flow, Phone Number: 918285055176, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: no_template, Phone Number: 918285055176, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+404 Not Found: /atomlib.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /atomlib.php
+404 Not Found: /css.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /css.php
+404 Not Found: /simple.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /simple.php
+404 Not Found: /wp-config.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /wp-config.php
+404 Not Found: /bypass.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /bypass.php
+404 Not Found: /admin.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /admin.php
+404 Not Found: /about.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /about.php
+404 Not Found: /theme.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /theme.php
+404 Not Found: /shell.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /shell.php
+404 Not Found: /ws.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /ws.php
+404 Not Found: /wso112233.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /wso112233.php
+404 Not Found: /alfanew.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /alfanew.php
+404 Not Found: /fw.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /fw.php
+404 Not Found: /style.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /style.php
+404 Not Found: /radio.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /radio.php
+404 Not Found: /corn.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /corn.php
+404 Not Found: /login.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /login.php
+404 Not Found: /wp-login.php - IP:  - User-Agent: Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/60.0.3112.107 Moblie Safari/537.36
+Not Found: /wp-login.php
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User Dhruv@gmail.com logged in successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, start_template, None, ['916361161836'], ['916361161836'], testing_main, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_main
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_main, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yes_flow01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+404 Not Found: /accounts/login/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Not Found: /accounts/login/
+Send_Sms: Dhruv@gmail.com, 346085425263787, twobhkoneseven, 28053500374264244, ['919818088414', '919821487434'], ['919818088414', '919821487434'], testonme, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testonme
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: testonme, user: Dhruv@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=88e969da9cbc43c49fff2e7db08c777e name=schedule_messages)>]
+Current time (localized): 2024-12-03 18:35:31.866009+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8e2effb4573846f0bbda149f1eaa6ea6 name=schedule_messages)>]
+Current time (localized): 2024-12-03 18:35:31.881621+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=e06bdb2520574bd4a922951b8ee73573 name=schedule_messages)>]
+Current time (localized): 2024-12-03 18:35:31.998640+05:30
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Internal Server Error: /bot-interactions/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1948, in bot_interactions
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Downloads\\webhook_responses.csv'
+Internal Server Error: /bot-interactions/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1948, in bot_interactions
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Downloads\\webhook_responses.csv'
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Internal Server Error: /bot-interactions/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1948, in bot_interactions
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Downloads\\webhook_responses.csv'
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+404 Not Found: //wp-includes/ID3/license.txt - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp-includes/ID3/license.txt
+404 Not Found: //feed/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //feed/
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //2020/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2020/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //2021/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2021/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwobhk, 935162908544892, ['919821487434'], ['919821487434'], testkyone, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testkyone
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testkyone, user: Dhruv@gmail.com
+Internal Server Error: /campaign/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 429, in Campaign
+    header_content = header_handle(header_content, token, app_id)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/functions/template_msg.py", line 36, in header_handle
+    file_length = file_path.size
+                  ^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'size'
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwocaps, 559183936861891, ['919821487434'], ['919821487434'], kytesttwo, []
+Sending messages for user: Dhruv@gmail.com, campaign title: kytesttwo
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: kytesttwo, user: Dhruv@gmail.com
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwocaps, 27665824963065524, ['919818088414', '919821487434'], ['919818088414', '919821487434'], testkytwo, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testkytwo
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: testkytwo, user: Dhruv@gmail.com
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwobhk, 504160152779992, ['919818088414'], ['919818088414'], testonme, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testonme
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testonme, user: Dhruv@gmail.com
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 19:28:05.914534+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 19:28:05.940310+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 19:28:05.978597+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:13:05.923240+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:13:06.013965+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:13:06.127628+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:58:05.944764+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:58:06.030804+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 20:58:06.111445+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 21:43:05.949445+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 21:43:06.064723+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 21:43:06.181007+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 22:28:05.946965+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 22:28:06.069679+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 22:28:06.184315+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:13:05.921121+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:13:06.012632+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:13:06.128109+05:30
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:58:05.926523+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:58:06.013280+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-03 23:58:06.130499+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 00:43:05.937286+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 00:43:06.010682+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 00:43:06.126256+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 01:28:05.996543+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 01:28:06.278233+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 01:28:06.449848+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GeedoProductSearch; +http://www.geedo.com/product-search.html) Chrome/79.0.3945.88 Safari/537.36
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:13:05.945740+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:13:06.056436+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:13:06.125491+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:58:05.939581+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:58:06.034448+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 02:58:06.121815+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 03:43:05.940786+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 03:43:06.058324+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 03:43:06.172945+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 04:28:05.942622+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 04:28:06.027859+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 04:28:06.104898+05:30
+Invalid HTTP_HOST header: 'dev.grafana.wtsdealnow.in'. You may need to add 'dev.grafana.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'dev.grafana.wtsdealnow.in'. You may need to add 'dev.grafana.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:13:05.920018+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:13:05.993953+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:13:06.053632+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:58:05.946621+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:58:06.060481+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 05:58:06.177366+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 06:43:05.911010+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 06:43:05.942267+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 06:43:05.965484+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 07:28:05.937303+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 07:28:06.018599+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 07:28:06.102055+05:30
+404 Not Found: /ab2g - IP:  - User-Agent: Mozilla/5.0 zgrab/0.x
+Not Found: /ab2g
+404 Not Found: /ab2h - IP:  - User-Agent: Mozilla/5.0 zgrab/0.x
+Not Found: /ab2h
+404 Not Found: /alive.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+Not Found: /alive.php
+404 Not Found: /t4 - IP:  - User-Agent: Mozilla/5.0
+Not Found: /t4
+404 Not Found: /teorema505 - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36
+Not Found: /teorema505
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:13:05.924005+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:13:05.974037+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:13:06.001133+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:58:05.946632+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:58:06.059278+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 08:58:06.175482+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=21029ae7a9734dc4a39ce2ce657d5957 name=schedule_messages)>]
+Current time (localized): 2024-12-04 09:43:05.944727+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=716cd098d60e4aa6994d6086227a218a name=schedule_messages)>]
+Current time (localized): 2024-12-04 09:43:06.064018+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=9d66587963844703927fe275dd00417e name=schedule_messages)>]
+Current time (localized): 2024-12-04 09:43:06.171136+05:30
+404 Not Found: /ads.txt - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Not Found: /ads.txt
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+404 Not Found: /ReportServer - IP:  - User-Agent: Mozilla/5.0 zgrab/0.x
+Not Found: /ReportServer
