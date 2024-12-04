@@ -1051,3 +1051,228 @@ Scheduler started successfully.
 Scheduler started successfully.
 404 Not Found: /ReportServer - IP:  - User-Agent: Mozilla/5.0 zgrab/0.x
 Not Found: /ReportServer
+User Mukesh-demo@gmail.com logged in successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c495f86c634e43e1a41bf62d27e720ae name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:12:12.272914+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4ea4be72da8645cd8348aa4c89368241 name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:12:12.375010+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7e51a3d47e034af2aa43d5a8435a94fa name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:12:12.535692+05:30
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /accounts/login/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36
+Not Found: /accounts/login/
+Send_Flow: Mukesh-demo@gmail.com, 473984259138177, [{'template_id': '9570670412948105', 'template_language': 'en', 'template_name': 'yes_flow01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Proceed', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 1347655183327674, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '602964122259288', 'template_language': 'en', 'template_name': 'start_template', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you looking for job change', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '519219424437702', 'template_language': 'en', 'template_name': 'no_template01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'May I know that why are you not interested', 'button': None}, {'template_id': '1125258478959316', 'template_language': 'en', 'template_name': 'no_template', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for letting me know! If anything changes in the future, feel free to reach out.', 'button': None}, {'template_id': '463188756415367', 'template_language': 'en', 'template_name': 'yes_flow', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'view form', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 559146063411494, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1126584418803442', 'template_language': 'en', 'template_name': 'job_question_temp', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you are Looking for a Job ?', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '1259726291841434', 'template_language': 'en', 'template_name': 'job', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/468563412_1259726295174767_3494221642255458490_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=CQVRZjKCLE8Q7kNvgGM6bri&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AmMOfDqzpeuUhaptdOAYs38&oh=01_Q5AaIFd893sjmn_kXjBgj-XjYED1IGla56NSNZhC7xFiGSQY&oe=67775B06', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for applying to Aditya Solutions.\r\nCongratulations your profile has been shortlisted for an Interview.\r\nCome for interview \r\nWith your Resume , adhar card copy , pan card copy , education certificate, 2 photos. \r\n\r\nAddress\r\n\r\nOffice No . 409 , 4th floor ,Cloud 9 vaishali sector-1 Ghaziabad\r\n\r\nYour Interview has been scheduled  at 10:00AM TO 4:00PM                                                                                                                                                                                                                                           OFFICE TIME :- 9:30AM TO 6:00PM                                                                                                              if you have any query then call me', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Us', 'phone_number': '+919166007007'}, {'type': 'URL', 'text': 'Visit us', 'url': 'https://bit.ly/3LwQWAa'}]}, {'template_id': '861873852512774', 'template_language': 'en', 'template_name': 'test_auth_temp', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is your verification code. For your security, do not share this code.', 'button': [{'type': 'URL', 'text': 'Copy code', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1317603979256400', 'template_language': 'af', 'template_name': 'test_auth', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is jou verifikasiekode. Moenie hierdie kode deel nie, vir jou eie sekuriteit.', 'button': [{'type': 'URL', 'text': 'Kopieer kode', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1536305187053892', 'template_language': 'en', 'template_name': 'testing01', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '1970453006786243', 'template_language': 'en', 'template_name': 'testing_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '556588637336380', 'template_language': 'en', 'template_name': 'test_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '547567648240657', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}], yes_flow01, [], [], single
+Send_Flow: Mukesh-demo@gmail.com, 473984259138177, [{'template_id': '9570670412948105', 'template_language': 'en', 'template_name': 'yes_flow01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Proceed', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 1347655183327674, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '602964122259288', 'template_language': 'en', 'template_name': 'start_template', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you looking for job change', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '519219424437702', 'template_language': 'en', 'template_name': 'no_template01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'May I know that why are you not interested', 'button': None}, {'template_id': '1125258478959316', 'template_language': 'en', 'template_name': 'no_template', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for letting me know! If anything changes in the future, feel free to reach out.', 'button': None}, {'template_id': '463188756415367', 'template_language': 'en', 'template_name': 'yes_flow', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'view form', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 559146063411494, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1126584418803442', 'template_language': 'en', 'template_name': 'job_question_temp', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you are Looking for a Job ?', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '1259726291841434', 'template_language': 'en', 'template_name': 'job', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/468563412_1259726295174767_3494221642255458490_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=CQVRZjKCLE8Q7kNvgGM6bri&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AJ1wbc5CdBavk6zKyq0kAP4&oh=01_Q5AaIBsaL_S7r8bPWNOGJPz-drBOwUKRYECj1zk38nFf4Jqt&oe=67775B06', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for applying to Aditya Solutions.\r\nCongratulations your profile has been shortlisted for an Interview.\r\nCome for interview \r\nWith your Resume , adhar card copy , pan card copy , education certificate, 2 photos. \r\n\r\nAddress\r\n\r\nOffice No . 409 , 4th floor ,Cloud 9 vaishali sector-1 Ghaziabad\r\n\r\nYour Interview has been scheduled  at 10:00AM TO 4:00PM                                                                                                                                                                                                                                           OFFICE TIME :- 9:30AM TO 6:00PM                                                                                                              if you have any query then call me', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Us', 'phone_number': '+919166007007'}, {'type': 'URL', 'text': 'Visit us', 'url': 'https://bit.ly/3LwQWAa'}]}, {'template_id': '861873852512774', 'template_language': 'en', 'template_name': 'test_auth_temp', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is your verification code. For your security, do not share this code.', 'button': [{'type': 'URL', 'text': 'Copy code', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1317603979256400', 'template_language': 'af', 'template_name': 'test_auth', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is jou verifikasiekode. Moenie hierdie kode deel nie, vir jou eie sekuriteit.', 'button': [{'type': 'URL', 'text': 'Kopieer kode', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1536305187053892', 'template_language': 'en', 'template_name': 'testing01', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '1970453006786243', 'template_language': 'en', 'template_name': 'testing_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '556588637336380', 'template_language': 'en', 'template_name': 'test_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '547567648240657', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}], yes_flow01, ['919711618080'], ['919711618080'], single
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, start_template, None, ['919711618080', '916361161836'], ['919711618080', '916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yes_flow01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: no_template01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4ea4be72da8645cd8348aa4c89368241 name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:57:11.468634+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7e51a3d47e034af2aa43d5a8435a94fa name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:57:11.519194+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c495f86c634e43e1a41bf62d27e720ae name=schedule_messages)>]
+Current time (localized): 2024-12-04 11:57:11.570379+05:30
+User Rudralogistic logged in successfully.
+Send_Sms: rudralogistic@gmail.com, 492630533932274, marketing_one, 1244169783535554, ['917011117305', '919818729645', '918178146338', '919873909088', '919811042480', '918800558656', '919871039341', '919818077577', '919810288207', '918448506925', '919810005771', '919810279091', '919596118035', '919910765870', '919654066960', '919810705940', '919810081405', '919811095342', '919999774465', '919811112371', '919999116146', '919650329719', '919818665240', '919711100804', '919718038990', '919810952494', '919650144433', '919999991686', '919212228918', '919310918000', '919958980335', '919968208892', '919820999572', '919582173676', '919582343616', '919999435943', '917042538811', '919810119998', '919810396988', '919971800244', '919810387755', '919811026969', '919811818000', '919811426333', '919810006386', '919811078916', '919911739929', '919810058639', '919810200660', '918860890570', '919899648705', '919910398434', '919810477877', '919310081761', '919811490922', '919811808756', '919811347334', '919811224789', '919313000933', '919871591662', '919810800839', '919266668863', '919811084832', '919213120741', '919810107877', '919811054573', '919810907558', '919650090374', '919212759041', '917357045678', '919711341895', '919818661390', '919871296016', '919811628229', '919810227333', '919811424256', '919811896999', '919811054748', '919953055164', '919910483238', '919999878047', '919811219035', '919911387939', '917838907679', '919819350885', '919846240458', '918587870431', '919871891135', '919810301160', '919810133387', '919810038557', '919466131298', '919910176339', '917310853277', '919810292198', '919868376598', '919711228995', '919811160552', '919430470407', '919810881314', '918447095490', '919873094518', '919971822711', '919711185608', '918010202299', '919818307020', '919899540548', '919810336560', '919811086954', '919810241000', '919582298057', '918588805568', '919811033033', '917703838368', '919899983275', '919810287446', '919650102300', '919811221174', '919810335150', '919911299781', '919999009133', '918744080018', '919811390300', '917017121974', '918800097653', '919810770101', '919811226360', '919575800245', '919810849422', '919810004502', '919311141901', '919953078251', '919899652559', '919811222017', '919999986568', '919711115822', '918130656442', '919810107012', '919968009967', '918882340334', '919910500868', '919599577425', '919810052911', '919250909774', '919868835329', '919560850033', '919871454755', '919212721700', '919811633305', '919899758003', '919891521210', '919810505583', '919717500688', '919871727345', '919313284494', '919999852281', '919811772204', '918447505156', '919810735039', '919899249997', '918130797777', '919810027091', '919811948119', '919810072634', '919811250789', '919871853740', '919810223435', '918860037528', '919560933700', '918130201500', '919717090254', '919871538466', '919810261926', '919818582561', '919871122626', '919953330270', '919871137777', '919818428298', '919811260119', '919716533696', '919871877066', '919711935343', '919540461212', '919716171172', '918742904980', '919910160402', '919818439535', '919212000428', '919953846141', '919999229424', '919811344411', '919718838111', '919899176113', '919312212872', '919810102536', '918826054809', '919971140354', '919313592757', '919350043501', '919910158062', '918847262969', '919560872311', '919716113633', '919818078404', '919910495279', '919643305781', '919810401812', '919832363755', '919818120952', '919811276641', '919811603362', '919971622893', '919810521080', '919999957728', '919810012924', '919810089141', '919868456116', '919560931123', '919873004873', '919810161442', '919811010637', '919810260776', '919873730701', '919711831703', '919212475884', '919891039451', '919654999602', '919336501216', '917065729993', '919910926336', '919555172803', '919560895571', '919810027214', '919810001641', '919818726786', '919810127021', '917982195122', '919910207459', '919811405795', '919811794599', '919650034924', '919871164572', '919818080785', '919891049735', '919810230104', '919911267769', '919810005618', '919212128911', '919818028222', '918527577112', '919811334660', '918860029069', '919350126164', '919818405875', '919873198908', '918586925774', '919699465618', '919873168357', '919899958097', '919810171966', '919718197756', '919953141016', '917838484997', '919953241054', '919810056509', '919316030904', '919810081704', '919888452447', '919810381606', '919811242587', '919958696262', '919350098642', '919818243735', '919811626977', '919312237576', '919871026701', '919255582770', '919818568825', '919999968882', '919810553020', '919312069153', '919910461444', '919313154500', '919811561897', '919871393393', '918376071658', '919958189129', '919312666315', '919810015770', '919810877581', '918860289024', '919015192476', '917087326525', '919625545451', '919910045892', '919811211167', '919990696434', '917042316831', '919999733534', '919873511567', '919312286548', '919810262326', '919810007000', '919643305673', '919711117749', '919810211545', '919810133303', '919811821086', '919654483101', '919811139416', '919818318494', '918800794631', '919599185843', '919873567076', '919810037166', '918585901128', '919811060056', '919810874186', '919999635244', '919958449201', '919555743365', '919350208972', '919958492349', '919999901297', '919810331572', '919599282513', '919818922271', '919810467149', '919810437274', '919868844224', '919873707045', '919899092193', '917042832604', '919811286223', '919811036207', '918580538597', '919810101530', '919311130560', '919811077061', '918527590286', '919213771756', '919990885888', '919810007096', '919312241507', '919873563118', '919205354542', '919811431199', '918240235889', '919953506597', '919810580600', '919953083039', '919811072255', '919868368517', '919810483836', '919811078928', '919534650611', '919818460202', '919810455581', '919810136968', '919643364007', '919205246124', '919717467976', '919311224232', '919971104440', '919910334130', '918373901303', '919716027614', '919990857031', '919582221382', '918800963166', '919310557359', '919873308489', '919711711189', '919899051886', '919811136320', '918802141417', '918010913801', '919810422668', '919310629429', '919643405022', '919871212637', '919811006373', '919810025581', '919650488248', '919350831520', '919999125709', '919811809191', '919717123456', '917503010306', '919818321415', '919810089548', '919811151728', '919868047816', '919212065761', '919810128965', '918130282427', '919811168834', '918586893742', '919868886606', '919811199998', '919810112633', '919810208931', '919871650612', '918826981234', '919810157887', '919873033676', '918882373160', '919810157421', '919718810508', '919958625101', '919810091550', '918348512446', '919899529955', '918447968175', '919717122335', '919971889678', '919811313549', '919968618828', '919953250720', '919312242669', '919810188579', '919717425556', '919582151361', '919810137749', '919213137575', '919899430509', '919810443993', '919810141816', '919811111350', '919811114516', '919810258156', '919968725407', '919818061084', '919810127731', '918527298891', '919868010905', '918285659655', '919873249463', '919811882089', '919911550599', '919999103590', '919810036668', '919810087718', '919911558813', '919999630392', '919818613136', '917065214141', '919650594448', '919999277637', '919871195479', '919811081125', '919811168288', '919968111921', '919540728868', '919810163847', '918527577110', '919953661878', '919717891212', '919990119682', '919810765351', '919873724879', '919810047929', '919811178882', '919811266776', '919811322533', '918728976409', '919811312002', '917210856623', '919811916753', '919811004038', '919312278779', '919810189381', '919818891891', '919313124735', '919810183889', '918860786585', '918512071171', '919811078454', '919810440144', '919312433421', '919811090739', '919811623325', '918287772109', '918800557171', '918527428834', '918860081278', '918130690060', '919811219757', '919873088568', '919717100562', '919717896897', '918700197872', '919953497858', '919650122123', '919818148551', '919899475650', '918800925700', '919971430989', '919953368672', '919810072933', '919818400060', '917042512777', '919871065066', '919873666422', '919818627555', '919891943301', '919654227759', '919717311119', '919811035075', '919818503332', '919871098111', '919818322230', '919971666023', '919810889827', '919810118347', '919953050451', '919837765195', '919212045993', '919899880113', '919810331781', '919810111405', '919953306197', '919811046248', '919350665716', '918800526123', '919810392792', '919873374801', '919313995295', '919718377272', '919810060513', '919810881884', '919811709683', '919999678635', '919310044400', '919717964064', '919810108931', '919810133907', '919891054121', '919810676010', '918077464341', '919811388859', '918447570969', '919868170111', '919899008790', '919582392688', '919811713664', '919891119766', '919910229801', '919540167810', '919810412570', '919582812761', '919818029555', '919999190642', '919419054900', '919903004577', '917065668851', '919717725599', '919810528298', '919810428160', '919811339188', '919810145205', '919810277756', '919311881722', '919015295504', '918076611307', '919871728913', '919810223455', '917827073209', '919953017197', '919811270028', '919999176075', '919034107789', '919810975101', '919829059150', '919871952207', '919810676868', '919810790384', '919910900435', '919711561022', '919810345210', '919811012024', '919999285566', '919958899088', '919910172062', '919953257277', '919871052200', '919643804951', '917827822225', '918939920252', '919811267775', '919811193366', '919821541445', '919810105360', '919911100055', '918588881247', '919811228552', '919810373143', '919312202672', '919953011973', '919810120285'], ['917982195122', '918700197872', '919811193366', '919821541445', '919810105360', '919911100055', '918588881247', '919811228552', '919810373143', '919312202672', '919953011973', '919810120285'], www, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: www
+Calculated money data for sending messages: 600
+Messages sent successfully for campaign: www, user: rudralogistic@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4ea4be72da8645cd8348aa4c89368241 name=schedule_messages)>]
+Current time (localized): 2024-12-04 12:42:11.443407+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c495f86c634e43e1a41bf62d27e720ae name=schedule_messages)>]
+Current time (localized): 2024-12-04 12:42:11.461510+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7e51a3d47e034af2aa43d5a8435a94fa name=schedule_messages)>]
+Current time (localized): 2024-12-04 12:42:11.494274+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7e51a3d47e034af2aa43d5a8435a94fa name=schedule_messages)>]
+Current time (localized): 2024-12-04 13:27:11.477060+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c495f86c634e43e1a41bf62d27e720ae name=schedule_messages)>]
+Current time (localized): 2024-12-04 13:27:11.490270+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4ea4be72da8645cd8348aa4c89368241 name=schedule_messages)>]
+Current time (localized): 2024-12-04 13:27:11.593425+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7e51a3d47e034af2aa43d5a8435a94fa name=schedule_messages)>]
+Current time (localized): 2024-12-04 14:12:11.492810+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4ea4be72da8645cd8348aa4c89368241 name=schedule_messages)>]
+Current time (localized): 2024-12-04 14:12:11.593170+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c495f86c634e43e1a41bf62d27e720ae name=schedule_messages)>]
+Current time (localized): 2024-12-04 14:12:11.646473+05:30
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+User Rudralogistic logged in successfully.
+User Dhruv@gmail.com logged in successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=3b0dcc5b9022432f9534dd246bfd4d23 name=schedule_messages)>]
+Current time (localized): 2024-12-04 15:29:46.307629+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0f0b5605a0674ef3b6b53ac59f047928 name=schedule_messages)>]
+Current time (localized): 2024-12-04 15:29:46.456081+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=918a89b999e14d8bbb67882330920a28 name=schedule_messages)>]
+Current time (localized): 2024-12-04 15:29:47.309994+05:30
+User Rudralogistic logged in successfully.
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+Invalid HTTP_HOST header: 'mail.whtsappdealnow.in'. You may need to add 'mail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.whtsappdealnow.in'. You may need to add 'mail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'mail.whtsappdealnow.in'. You may need to add 'mail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.whtsappdealnow.in'. You may need to add 'mail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8fcfca696ea84e81be07fc4a0ccffe62 name=schedule_messages)>]
+Current time (localized): 2024-12-04 16:45:00.540859+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=167110f90438444bac2f92901b3d9f19 name=schedule_messages)>]
+Current time (localized): 2024-12-04 16:45:00.744007+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=53e0f3ec6db148d8afda5075b791646e name=schedule_messages)>]
+Current time (localized): 2024-12-04 16:45:01.004569+05:30
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Send_Flow: Mukesh-demo@gmail.com, 473984259138177, [{'template_id': '547567648240657', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '519219424437702', 'template_language': 'en', 'template_name': 'no_template01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'May I know that why are you not interested', 'button': None}, {'template_id': '602964122259288', 'template_language': 'en', 'template_name': 'start_template', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you looking for job change', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '9570670412948105', 'template_language': 'en', 'template_name': 'yes_flow01', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Proceed', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 1347655183327674, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1125258478959316', 'template_language': 'en', 'template_name': 'no_template', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for letting me know! If anything changes in the future, feel free to reach out.', 'button': None}, {'template_id': '463188756415367', 'template_language': 'en', 'template_name': 'yes_flow', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'view form', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 559146063411494, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1126584418803442', 'template_language': 'en', 'template_name': 'job_question_temp', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Are you are Looking for a Job ?', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}]}, {'template_id': '1259726291841434', 'template_language': 'en', 'template_name': 'job', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/468563412_1259726295174767_3494221642255458490_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=CQVRZjKCLE8Q7kNvgGM6bri&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AvB_6qjv4lyYlTiXoM8p2cC&oh=01_Q5AaIO7elZE7hYCfX45J3S6Kh3rCNYayMM_YGcWcavSN3SH0&oe=67779346', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Thanks for applying to Aditya Solutions.\r\nCongratulations your profile has been shortlisted for an Interview.\r\nCome for interview \r\nWith your Resume , adhar card copy , pan card copy , education certificate, 2 photos. \r\n\r\nAddress\r\n\r\nOffice No . 409 , 4th floor ,Cloud 9 vaishali sector-1 Ghaziabad\r\n\r\nYour Interview has been scheduled  at 10:00AM TO 4:00PM                                                                                                                                                                                                                                           OFFICE TIME :- 9:30AM TO 6:00PM                                                                                                              if you have any query then call me', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Us', 'phone_number': '+919166007007'}, {'type': 'URL', 'text': 'Visit us', 'url': 'https://bit.ly/3LwQWAa'}]}, {'template_id': '861873852512774', 'template_language': 'en', 'template_name': 'test_auth_temp', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is your verification code. For your security, do not share this code.', 'button': [{'type': 'URL', 'text': 'Copy code', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1317603979256400', 'template_language': 'af', 'template_name': 'test_auth', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is jou verifikasiekode. Moenie hierdie kode deel nie, vir jou eie sekuriteit.', 'button': [{'type': 'URL', 'text': 'Kopieer kode', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1536305187053892', 'template_language': 'en', 'template_name': 'testing01', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '1970453006786243', 'template_language': 'en', 'template_name': 'testing_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '556588637336380', 'template_language': 'en', 'template_name': 'test_admin', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}], yes_flow01, ['919871729238'], ['919871729238'], testt
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User Mukesh-demo@gmail.com logged in successfully.
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAASXK7q05EsBO2vTMh16kcLx4ohwzCQZBZATTMMdnWNli54ZBcpL4Xd2lY0kXh4d9L7Ny5VMJjksYhpwaLq8XVEFRL30lSlsKGVqkrrOYYHA8ZCfEv6KX3cxmQaHRIeofnlRKJLdoFNd0AEQJofZByPZAReb7tEqjFqTESDOP6UwWQYDfLFWhlIHo7lbEXYoHgaQZDZD', 'phone_number_id': '473984259138177', 'contact_list': ['919711618080'], 'message_type': 'text', 'body': 'hi'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+Error processing phone number: list index out of range
+Internal Server Error: /user_responses/
+User Dhruv@gmail.com logged in successfully.
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwobhk, 1096313451802505, ['919818088414'], ['919818088414'], testmorning, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testmorning
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testmorning, user: Dhruv@gmail.com
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwocaps, 1764285147734763, ['919818088414'], ['919818088414'], testonmeagain, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testonmeagain
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testonmeagain, user: Dhruv@gmail.com
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Send_Sms: Dhruv@gmail.com, 346085425263787, twobhkoneseven, None, ['919818088414'], ['919818088414'], testthrice, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testthrice
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testthrice, user: Dhruv@gmail.com
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, starttemplate, None, ['916361161836'], ['916361161836'], test_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: test_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: test_admin, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: appointmentflow, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Next reply message sent successfully. Template: askanything, Phone Number: 916361161836, Media Type: <class 'str'> IMAGE, Image ID Type: <class 'str'> 597478436073852
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: knowmore01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=53e0f3ec6db148d8afda5075b791646e name=schedule_messages)>]
+Current time (localized): 2024-12-04 17:29:59.651961+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=167110f90438444bac2f92901b3d9f19 name=schedule_messages)>]
+Current time (localized): 2024-12-04 17:29:59.689005+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8fcfca696ea84e81be07fc4a0ccffe62 name=schedule_messages)>]
+Current time (localized): 2024-12-04 17:29:59.703375+05:30
+sent bot message, starttemplate en, N/A
+sent bot message, starttemplate en, N/A
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: appointmentflow, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Next reply message sent successfully. Template: askanything, Phone Number: 919711618080, Media Type: <class 'str'> IMAGE, Image ID Type: <class 'str'> 597478436073852
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: knowmore01, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+sent bot message, starttemplate en, N/A
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: appointmentflow, Phone Number: 919311429863, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Next reply message sent successfully. Template: askanything, Phone Number: 919311429863, Media Type: <class 'str'> IMAGE, Image ID Type: <class 'str'> 597478436073852
