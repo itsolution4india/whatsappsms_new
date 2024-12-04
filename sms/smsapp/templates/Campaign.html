@@ -133,7 +133,7 @@
                                     <div class="col">
                                         <label class="form-label mt-3">Template Name</label>
                                         <input type="text" placeholder="Enter template name" class="form-control w-100"
-                                            name="template_name" required>
+                                            name="template_name" id="templateName" required>
                                     </div>
                                     <div class="col">
                                         <label class="form-label mt-3">Language</label>
@@ -484,6 +484,13 @@
 
 
                     </div>
+                    <script>
+                        const templateNameInput = document.getElementById('templateName');
+                
+                        templateNameInput.addEventListener('input', function() {
+                            this.value = this.value.replace(/[^a-z0-9]/g, '');
+                        });
+                    </script>
                     {% verbatim %}
                     <script>
                         let counter = 1;

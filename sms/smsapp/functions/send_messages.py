@@ -14,10 +14,10 @@ def schedule_subtract_coins(user, final_count, category, template_name=None, cam
         final_coins = final_count
         total_coins = data.marketing_coins + data.authentication_coins
         if total_coins >= final_coins:
-            if category == "MARKETING":
+            if category == "MARKETING" and user.marketing_coins >= final_coins:
                 data.marketing_coins -= final_coins
                 data.save()
-            elif category == 'AUTHENTICATION' or category == 'UTILITY':
+            elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
                 data.authentication_coins -= final_coins
                 data.save()
             if template_name and campaign:
@@ -42,10 +42,10 @@ def subtract_coins(request, final_count, category, template_name=None, campaign=
     final_coins = final_count
     total_coins = user.marketing_coins + user.authentication_coins
     if total_coins >= final_coins:
-        if category == "MARKETING":
+        if category == "MARKETING" and user.marketing_coins >= final_coins:
             user.marketing_coins -= final_coins
             user.save()
-        elif category == 'AUTHENTICATION' or category == 'UTILITY':
+        elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
             user.authentication_coins -= final_coins
             user.save()
         if template_name and campaign:
