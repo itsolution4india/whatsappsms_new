@@ -930,46 +930,49 @@ def save_phone_number(request):
                     token = latest_user.register_app.token
 
                 if latest_template:
-                    linked_template_name = latest_template.linked_template_name
-                    campaign_list = fetch_templates(waba_id, token, linked_template_name)
-                    filter_campaign_list = [
-                        {'template_language': item['template_language'], 'media_type': item['media_type']}
-                        for item in campaign_list
-                    ]
-                    lang = filter_campaign_list[0]['template_language']
-                    temp_media_type = filter_campaign_list[0]['media_type']
-                    image_id = latest_template.image_id
-                    
-                    try:
-                        # Split the image_id and check the resulting list length
-                        parts = image_id.split("|")
+                    linked_template_names = [template.linked_template_name for template in latest_template]
+                    for linked_template_name in linked_template_names:
+                        linked_template_name = latest_template.linked_template_name
+                        campaign_list = fetch_templates(waba_id, token, linked_template_name)
+                        filter_campaign_list = [
+                            {'template_language': item['template_language'], 'media_type': item['media_type']}
+                            for item in campaign_list
+                        ]
+                        lang = filter_campaign_list[0]['template_language']
+                        temp_media_type = filter_campaign_list[0]['media_type']
+                        image_id = latest_template.image_id
                         
-                        if len(parts) >= 2:
-                            image_id = parts[0]
-                            media_type = parts[1]
-                        else:
-                            raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
-                    
-                    except Exception as e:
-                        logger.error(f"Error {e}")
-                        image_id = None
-                        media_type = "TEXT"
-                    
-                    if media_type in ["image/jpeg", "image/png"]:
-                        media_type = "IMAGE"
-                    try:
-                        campaign_list = fetch_templates(waba_id, token)
-                        if campaign_list is None :
-                            campaign_list=[]
-                        template_type = get_template_type(campaign_list, linked_template_name)
-                        if template_type == "FLOW":
-                            flow_id = get_flow_id(campaign_list, linked_template_name)
-                            status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, lang, [phone_number])
-                        else:
-                            send_api(str(token), str(phone_number_id), str(linked_template_name), lang, str(media_type), str(image_id), [phone_number], None)
-                        logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(str(media_type))} {str(media_type)}, Image ID Type: {type(str(image_id))} {str(image_id)}")
-                    except Exception as e:
-                        logger.error(f"Failed to send next reply message {e}")
+                        try:
+                            parts = image_id.split("|")
+                            if len(parts) >= 2:
+                                image_id = parts[0]
+                                media_type = parts[1]
+                            else:
+                                raise ValueError("image_id format is incorrect. Expected format: 'id|type'")
+                        
+                        except Exception as e:
+                            logger.error(f"Error {e}")
+                            image_id = None
+                            media_type = "TEXT"
+                        
+                        if media_type in ["image/jpeg", "image/png"]:
+                            media_type = "IMAGE"
+                        try:
+                            campaign_list = fetch_templates(waba_id, token)
+                            if campaign_list is None :
+                                campaign_list=[]
+                            template_type = get_template_type(campaign_list, linked_template_name)
+                            if template_type == "FLOW":
+                                flow_id = get_flow_id(campaign_list, linked_template_name)
+                                status_code, _ = send_flow_message_api(token, phone_number_id, linked_template_name, flow_id, lang, [phone_number])
+                            else:
+                                send_api(str(token), str(phone_number_id), str(linked_template_name), lang, str(media_type), str(image_id), [phone_number], None)
+                            logger.info(f"Next reply message sent successfully. Template: {linked_template_name}, Phone Number: {phone_number}, Media Type: {type(str(media_type))} {str(media_type)}, Image ID Type: {type(str(image_id))} {str(image_id)}")
+                        except Exception as e:
+                            logger.error(f"Failed to send next reply message {e}")
+                        
+                        time.sleep(0.5)
+                            
                 elif filter_message_response:
                     message_type = filter_message_response.message_type
                     if message_type == "list_message":
@@ -991,7 +994,7 @@ def save_phone_number(request):
                         response = send_bot_api(token, phone_number_id, phone_number, "text", body=filter_message_response.body_message)
                     elif message_type == 'link_template':
                         try:
-                            insert_bot_sent_message(token=token,phone_number_id=phone_number_id,contacts=phone_number,message_type=message_type,header=header,body=body,footer=footer,button_data=button_data,product_data=product_data,catalog_id=catalog_id,sections=sections,lat=lat,lon=lon,media_id=media_id)
+                            insert_bot_sent_message(token=token,phone_number_id=phone_number_id,contacts=phone_number,message_type=message_type,header=None,body=None,footer=None,button_data=None,product_data=product_data,catalog_id=None,sections=None,lat=None,lon=None,media_id=None)
                             logger.info("BotSentMessages successfully saved in the database")
                             
                         except Exception as e:
