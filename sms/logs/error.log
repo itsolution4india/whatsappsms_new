@@ -1276,3 +1276,540 @@ sent bot message, starttemplate en, N/A
 Error image_id format is incorrect. Expected format: 'id|type'
 Next reply message sent successfully. Template: appointmentflow, Phone Number: 919311429863, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
 Next reply message sent successfully. Template: askanything, Phone Number: 919311429863, Media Type: <class 'str'> IMAGE, Image ID Type: <class 'str'> 597478436073852
+User Rudralogistic logged in successfully.
+Invalid HTTP_HOST header: 'webmail.whtsappdealnow.in'. You may need to add 'webmail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'webmail.whtsappdealnow.in'. You may need to add 'webmail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'webmail.whtsappdealnow.in'. You may need to add 'webmail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'webmail.whtsappdealnow.in'. You may need to add 'webmail.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+sent bot message, starttemplate en, N/A
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0a8190cc33e54a30b3928ba68b870390 name=schedule_messages)>]
+Current time (localized): 2024-12-04 18:20:10.971280+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=afd5aa42150644b1a763ad1fe8674adc name=schedule_messages)>]
+Current time (localized): 2024-12-04 18:20:11.083377+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=b8d94e4d06404a94a2bf2d737530b7be name=schedule_messages)>]
+Current time (localized): 2024-12-04 18:20:11.238535+05:30
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Internal Server Error: /bot-interactions/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 1966, in bot_interactions
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\user\\Downloads\\webhook_responses.csv'
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAASXK7q05EsBO2vTMh16kcLx4ohwzCQZBZATTMMdnWNli54ZBcpL4Xd2lY0kXh4d9L7Ny5VMJjksYhpwaLq8XVEFRL30lSlsKGVqkrrOYYHA8ZCfEv6KX3cxmQaHRIeofnlRKJLdoFNd0AEQJofZByPZAReb7tEqjFqTESDOP6UwWQYDfLFWhlIHo7lbEXYoHgaQZDZD', 'phone_number_id': '473984259138177', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'testing msg'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: Dhruv@gmail.com, 346085425263787, twobhkoneseven, 575192621826547, ['919818088414'], ['919818088414'], testrecharged, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testrecharged
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testrecharged, user: Dhruv@gmail.com
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwobhk, 884179603863620, ['919818088414'], ['919818088414'], testthree, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testthree
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testthree, user: Dhruv@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:14:14.967337+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:14:15.033396+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:14:15.142062+05:30
+User Dhruv@gmail.com logged in successfully.
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwosmall, 1202232177539160, ['919818088414'], ['919818088414'], testfour, []
+Sending messages for user: Dhruv@gmail.com, campaign title: testfour
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testfour, user: Dhruv@gmail.com
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:59:15.038979+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:59:15.144428+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 19:59:15.266894+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 20:44:15.022038+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 20:44:15.133006+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 20:44:15.241711+05:30
+Send_Sms: Dhruv@gmail.com, 346085425263787, sastatwosmall, 1574909917242585, ['919818088414'], ['919818088414'], WERTY, []
+Sending messages for user: Dhruv@gmail.com, campaign title: WERTY
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: WERTY, user: Dhruv@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 21:29:15.074256+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 21:29:15.206054+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 21:29:15.429934+05:30
+Invalid HTTP_HOST header: 'intranet.wtsdealnow.in'. You may need to add 'intranet.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'intranet.wtsdealnow.in'. You may need to add 'intranet.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:14:15.031216+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:14:15.140658+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:14:15.244341+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:59:15.031625+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:59:15.142421+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 22:59:15.287382+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-04 23:44:15.006551+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-04 23:44:15.123236+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-04 23:44:15.244278+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 00:29:15.027634+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 00:29:15.136757+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 00:29:15.248553+05:30
+404 Not Found: //wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp-includes/wlwmanifest.xml
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //website/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //website/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //news/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //news/wp-includes/wlwmanifest.xml
+404 Not Found: //2018/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //2018/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //media/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //media/wp-includes/wlwmanifest.xml
+404 Not Found: //wp2/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+404 Not Found: //sito/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //sito/wp-includes/wlwmanifest.xml
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:14:14.980489+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:14:15.053385+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:14:15.119317+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:59:15.078224+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:59:15.222303+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 01:59:15.332882+05:30
+404 Not Found: //wp-includes/ID3/license.txt - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp-includes/ID3/license.txt
+404 Not Found: //feed/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //feed/
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //2020/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2020/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //2021/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2021/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 02:44:15.022198+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 02:44:15.184757+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 02:44:15.298019+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 03:29:15.036762+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 03:29:15.188788+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 03:29:15.294095+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:14:15.031021+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:14:15.144230+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:14:15.235256+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:59:14.981548+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:59:15.037524+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 04:59:15.091711+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 05:44:15.021597+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 05:44:15.137493+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 05:44:15.238161+05:30
+Invalid HTTP_HOST header: '0.0.0.0'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '0.0.0.0'. You may need to add '0.0.0.0' to ALLOWED_HOSTS.
+Bad Request: /config.php
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 06:29:15.011858+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 06:29:15.083270+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 06:29:15.137287+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:14:15.008285+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:14:15.110635+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:14:15.234418+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:59:15.008432+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:59:15.081007+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 07:59:15.123649+05:30
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 08:44:15.027205+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 08:44:15.135970+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 08:44:15.239197+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 09:29:14.983227+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 09:29:15.038991+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 09:29:15.103811+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:14:15.018967+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:14:15.132749+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:14:15.241784+05:30
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:59:14.968026+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:59:14.974985+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 10:59:15.103565+05:30
+User Mukesh-demo@gmail.com logged in successfully.
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, intersted05, None, ['919711618080'], ['919711618080'], single, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: single
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: single, user: Mukesh-demo@gmail.com
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User Rudralogistic logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User demo2@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User demo2@gmail.com logged in successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a3083158789f4acfb5a9864e2d41fa0d name=schedule_messages)>]
+Current time (localized): 2024-12-05 11:44:14.947963+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4a52f9feecf3493eb604b591fa12e691 name=schedule_messages)>]
+Current time (localized): 2024-12-05 11:44:14.974393+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=333a221a0dc34621862182ef4f55b2be name=schedule_messages)>]
+Current time (localized): 2024-12-05 11:44:15.077992+05:30
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Send_Sms: rudralogistic@gmail.com, 492630533932274, rudraxrrre, 8797804756980250, ['919999119033', '919971208866', '919711707630', '919810925118', '919050503020', '919810045879', '919871212637', '919873424405', '919999015327', '919810059622', '919990500976', '919818123375', '918447226007', '919891993337', '919311214477', '918860329219', '919212272530', '917982440383', '919810002919', '917838182230', '917065214141', '919811561897', '919811165069', '918527346933', '919810377393', '919810873104', '919999635244', '919811358027', '919711096999', '919266333000', '919810072634', '917428169655', '919871176444', '918587929790', '918860006874', '919717467976', '919132365000', '919015997585', '919873426699', '919999421475', '919953929798', '919540750600', '919911955562', '919810523006', '919717090254', '919810443895', '919999099290', '919205246124', '919999244914', '919212512914', '919711882050', '919873564814', '919810035019', '919810035661', '919811476243', '919212759041', '919910576085', '919540288848', '919818280044', '919811627670', '919355208872', '919810140082', '919873571358', '918750678601', '919811617593', '919212529629', '919876731942', '919811084139', '919873559445', '919999846603', '919873008338', '919311497593', '919312478062', '919810156961', '919212494887', '919810400426', '919717536787', '919810027135', '919818460202', '919312235988', '919999838774', '919811431199', '919251498500', '919899257316', '919412206473', '919711160946', '919711561022', '919310045383', '919811054748', '919812168035', '916386998171', '919210429664', '919212010408', '919910849420', '918285217194', '919938897898', '919811307239', '919810135553', '918826301977', '919810388001', '919810992117', '919818990909', '919899677780', '919818424563', '919910196415', '919810455581', '919811240660', '919213463629', '918375919293', '919716027614', '919811654466', '919582422815', '918826015016', '919818800146', '918826620391', '919871546777', '919810279433', '919811194073', '919811192760', '919599230089', '919069739560', '919899900423', '919354754440', '919310415002', '917289923323', '919810893426', '919811025113', '919953062517', '919868259381', '919810446999', '919311334600', '919810205729', '919810130072', '919873494071', '919953310000', '919911007870', '919811069788', '919971464620', '919811628229', '919811295509', '919899932101', '919818428298', '918130282427', '919873344890', '918076124621', '919891825344', '919212029247', '917042832604', '919716171172', '919911100902', '919599185843', '918527428834', '919716436933', '919810173940', '919999965211', '919953368672', '919319773502', '919810669760', '919811623325', '919999940542', '919811260043', '919899065756', '919811036207', '918376865337', '919811804381', '919810862660', '919873510742', '919810422668', '919212051888', '919810081345', '919215040903', '919899199787', '919312208012', '919811139416', '919871425403', '919899091997', '919999768361', '919910625148', '919810712344', '919811114333', '919999215471', '919871065066', '918800153244', '919811095765', '919873622204', '919971430989', '918860610813', '919953108438', '919899377171', '919312210122', '919818335824', '919968296749', '919711290010', '919899500672', '919821497846', '919968618828', '919716339071', '919810081534', '919999158157', '919911400580', '919311032852', '919810586322', '919990098123', '919811228713', '919910679124', '919811016875', '919810091550', '919873804876', '919810374402', '919873070123', '918800814523', '919810069672', '919810534799', '917838062224', '918447848065', '919311237236', '919311113363', '919911739929', '919871062040', '919818061084', '919810032521', '919999991686', '919999966276', '919999325571', '917011890304', '919810255221', '919310922290', '918447505156', '919871538466', '918826986671', '919821989492', '917982760496', '919212214940', '919711787880', '918447440438', '918826326520', '919311326592', '919958986802', '919810409193', '919212580953', '919871187817', '919811112371', '919315447150', '919971222722', '919818465880', '919310160653', '919810498140', '919811098471', '918800998030', '919999475571', '919811078916', '919891834343', '919810006386', '919990297508', '919811106515', '919999277637', '918447488878', '919910146756', '919213450500', '919999878047', '919555541444', '919810146288', '919278094780', '919810168882', '919810071969', '919818093005', '919311207503', '919999444471', '919212012463', '919212343511', '919555097567', '919953005454', '919811032791', '919873666422', '919968069637', '919871727345', '917292037042', '919899594060', '918059683711', '919999199251', '919999678876', '919818410850', '919212792709', '918010913801', '919896136958', '919999198158', '919999514267', '919811098866', '918115609757', '919811098270', '919650450232', '917042744452', '919811087738', '919582222758', '918076454374', '919999100379', '919810762743', '919810296526', '919871450011', '919971173388', '918802478108', '917217895015', '919999662405', '919999957728', '919891521210', '919718337668', '919811067418', '917011677285', '919953497858', '918860612547', '919899720341', '919350291928', '919999999629', '919891299955', '919958802939', '919811085693', '918375003860', '918178452293', '917982638039', '919810036654', '919891356665', '919818400060', '919810881314', '919210214885', '918287211149', '919810130555', '919811884310', '919810541296', '918860029069', '919818245383', '919355564647', '919312120501', '919910500868', '919650986997', '919810048050', '918800670022', '917011249150', '919580645270', '919210502050', '919911550599', '919818494763', '919811209069', '919212065761', '919812266676', '919310003319', '919810574100', '919968111921', '918800804076', '919871122626', '919873736018', '919811049930', '919811163956', '919811242129', '919212279846', '919999932618', '919313788948', '919811288418', '919811211167', '919810204579', '919871353521', '919818028222', '919211721028', '919953150229', '919910055535', '919818621844', '919716561600', '919560577400', '919891514870', '919911936524', '919810580600', '919811193886', '919312212872', '919310402761', '918010592321', '919810081704', '919910061503', '919810394149', '919312433553', '919873737616', '918130656442', '919891148310', '918800417301', '918375096575', '919811675258', '919811103330', '919971889678', '917861999988', '918130150502', '919810345210', '919810123068', '919899983088', '919212426656', '919650720219', '918076764450', '917011117305', '919643109896', '919810395958', '919350571525', '919871650612', '919212128878', '918826981234', '919891081211', '919971140354', '919716880949', '919958933902', '919953853505', '919871292875', '919313995295', '919873904111', '919312273380', '919350169840', '919213697958', '919810080123', '919899008790', '919810975101', '919810743042', '919953459774', '919891899467', '919868015020', '919650533336', '919811102733', '919310345046', '919953030444', '919910150922', '918700197872', '919818087768', '919810005509', '919811572451', '919868158909', '919250000225', '919810008162', '919711014631', '919811060286', '917053700305', '919212544522', '919999630392', '919990077739', '919999005408', '919911470177', '919711378377', '919818989609', '919310553030', '919650396864', '919555568386', '919810089548', '919953250720', '919888452447', '919971863909', '919999489828', '919810529914', '919643305781', '919911690597', '917859994331', '919891143404', '919971565758', '919810676010', '919811238332', '919810056105', '919899119350', '919891500362', '919811199998', '919811168834', '919811161556', '919811377411', '919599839596', '919811252550', '919871106090', '919999899224', '919990621000', '918587997812', '919810134129', '919312322111', '919717123456', '919891995721', '919311339543', '919899208609', '919911212590', '919419011228', '918588878276', '919212912467', '919811048343', '919810524943', '919999176075', '919891222154', '919812066781', '919990990615', '919717008613', '919717676224', '919896448732', '919810009623', '919968231601', '917065668851', '919812022632', '919868368517', '919716113633', '919899233661', '919810849422', '919811121636', '919818729645', '919711719002', '919899955173', '919868265827', '919910207459', '919575800245', '918373901303', '919811490922', '919971891991', '919811196332', '919212715994', '919873457749', '919810445557', '919873891725', '919034766000', '919810340410', '919560181006', '919212226151', '919811123329', '919811090445', '919810749497', '919212071445', '919350300011', '919910838282', '919891421174', '919871553254', '919811426333', '919671008354', '918368655820', '918240235889', '919811105243', '919999161637', '919810078409', '917503958876', '919891069274', '919811804240', '919810088939', '919999246090', '919212793512', '919310702368', '919999065265', '919971104440', '919810413288', '918287443477', '919999051670', '919871060745', '919891989363', '918587870431', '918285550008', '918010750575', '919899744818', '919810414162', '919811078454', '919953008170', '919671531265', '917982195122', '919810248624', '918527458960', '919310695440', '919999914487', '918588881247', '919408827997', '919910061315', '919810047747', '919810159640', '919810128130', '919213696403', '919810225924', '919811739024', '919810118032', '919891810014', '919818358226', '919910160402', '919313369077', '919899594096', '919717435593', '918171711505', '919610188721', '919136774981', '919873431386', '917838484997', '919811404658', '918076038605', '919810428160', '919958098164', '919311771006', '919954712132', '919818898964', '917503008989', '919311141901', '919910394313', '919873555361', '919310058403', '919810045253', '919266668863', '919990482999', '919911449134', '919810635677', '919999983191', '919811243563', '919818078180', '919971402317', '919312265231', '919911201112', '917217733519'], ['918700197872', '917982195122', '919266668863', '919990482999', '919911449134', '919810635677', '919999983191', '919811243563', '919818078180', '919971402317', '919312265231', '919911201112', '917217733519'], zzzz, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: zzzz
+Calculated money data for sending messages: 603
+Messages sent successfully for campaign: zzzz, user: rudralogistic@gmail.com
+Send_Sms: demo2@gmail.com, 244226048784189, demoxyz, None, ['919915688909', '919711059364', '919711027179'], ['919711059364', '919711027179', '919915688909'], testing, []
+Sending messages for user: demo2@gmail.com, campaign title: testing
+Calculated money data for sending messages: 3
+Messages sent successfully for campaign: testing, user: demo2@gmail.com
+User demo2@gmail.com logged in successfully.
+User demo2@gmail.com logged in successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: intersted05, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yesflow01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: noflow03, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+User Rudralogistic logged in successfully.
+404 Not Found: /a - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /a
+User Rudralogistic logged in successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
