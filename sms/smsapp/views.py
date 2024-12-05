@@ -912,7 +912,10 @@ def save_phone_number(request):
                         useremail__in=emails,
                         button_name=reply_text
                     ).order_by('-updated_at')
+                    linked_template_names = [template.linked_template_name for template in latest_template]
                 except Exception as e:
+                    logger.info(f"{emails} {reply_text}, {str(e)}")
+                    linked_template_names = []
                     latest_template = None
 
                 try:
@@ -930,9 +933,7 @@ def save_phone_number(request):
                     token = latest_user.register_app.token
 
                 if latest_template:
-                    linked_template_names = [template.linked_template_name for template in latest_template]
                     for linked_template_name in linked_template_names:
-                        linked_template_name = latest_template.linked_template_name
                         campaign_list = fetch_templates(waba_id, token, linked_template_name)
                         filter_campaign_list = [
                             {'template_language': item['template_language'], 'media_type': item['media_type']}
