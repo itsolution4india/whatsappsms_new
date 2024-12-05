@@ -1976,8 +1976,6 @@ def bot_interactions(request):
     df = df[df['phone_number_id'] == phone_id]
     filter_main_data = df[df['status'] == 'reply']
     unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
-    
-    # matching_phone_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
     unique_contact_names = []
     
     messages_data = list(BotSentMessages.objects.all().values())
@@ -1986,7 +1984,8 @@ def bot_interactions(request):
     messages_df = messages_df[messages_df['phone_number_id'] == phone_id]
     contact_list = messages_df['contact_list'].tolist()
     
-    combined_list = [str(num) for sublist in contact_list for num in sublist] + all_phone_numbers + unique_contact_wa_id
+    matched_numbers = list(set(all_phone_numbers) & set(unique_contact_wa_id))
+    combined_list = [str(num) for sublist in contact_list for num in sublist] + matched_numbers
     matching_phone_numbers = list(set(filter(None, combined_list)))
     
     if selected_phone:
