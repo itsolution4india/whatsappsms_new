@@ -13,21 +13,23 @@ def schedule_subtract_coins(user, final_count, category, template_name=None, cam
             return
         final_coins = final_count
         total_coins = data.marketing_coins + data.authentication_coins
-        if total_coins >= final_coins:
-            if category == "MARKETING" and user.marketing_coins >= final_coins:
-                data.marketing_coins -= final_coins
-                data.save()
-            elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
-                data.authentication_coins -= final_coins
-                data.save()
-            if template_name and campaign:
-                coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
-            else:
-                coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
-            coins_history.save()
-            logger.info(f"Message sent successfully. Deducted {final_coins} coins from your account. Remaining balance: {data.marketing_coins}")
+
+        if category == "MARKETING" and user.marketing_coins >= final_coins:
+            data.marketing_coins -= final_coins
+            data.save()
+        elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
+            data.authentication_coins -= final_coins
+            data.save()
         else:
             logger.error("Insufficient coins to proceed.")
+            
+        if template_name and campaign:
+            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
+        else:
+            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
+        coins_history.save()
+        logger.info(f"Message sent successfully. Deducted {final_coins} coins from your account. Remaining balance: {data.marketing_coins}")
+        
     except CustomUser.DoesNotExist:
         logger.error(f"User with email {user} does not exist.")
     except Exception as e:
@@ -41,22 +43,22 @@ def subtract_coins(request, final_count, category, template_name=None, campaign=
         return
     final_coins = final_count
     total_coins = user.marketing_coins + user.authentication_coins
-    if total_coins >= final_coins:
-        if category == "MARKETING" and user.marketing_coins >= final_coins:
-            user.marketing_coins -= final_coins
-            user.save()
-        elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
-            user.authentication_coins -= final_coins
-            user.save()
-        if template_name and campaign:
-            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
-        else:
-            coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
-        coins_history.save()
-        messages.success(request, f"Message sent successfully. Deducted {final_coins} coins from your account.")
+
+    if category == "MARKETING" and user.marketing_coins >= final_coins:
+        user.marketing_coins -= final_coins
+        user.save()
+    elif category == 'AUTHENTICATION' or category == 'UTILITY' and user.authentication_coins >= final_coins:
+        user.authentication_coins -= final_coins
+        user.save()
     else:
         logger.error("Insufficient coins to proceed.")
         messages.error(request, "You don't have enough coins to proceed.")
+    if template_name and campaign:
+        coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category, using the {template_name} template for the {campaign} campaign.")
+    else:
+        coins_history = CoinsHistory(user=user, type='debit', number_of_coins=final_coins, reason=f"{final_coins} coins have been deducted from your account for the {category} category.")
+    coins_history.save()
+    messages.success(request, f"Message sent successfully. Deducted {final_coins} coins from your account.")
 
 def display_phonenumber_id(request):
     phonenumber_id = request.user.phone_number_id
