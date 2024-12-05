@@ -933,7 +933,8 @@ def save_phone_number(request):
                     token = latest_user.register_app.token
 
                 if latest_template:
-                    for linked_template_name in linked_template_names:
+                    for template in latest_template:
+                        linked_template_name = template.linked_template_name
                         campaign_list = fetch_templates(waba_id, token, linked_template_name)
                         filter_campaign_list = [
                             {'template_language': item['template_language'], 'media_type': item['media_type']}
@@ -941,7 +942,7 @@ def save_phone_number(request):
                         ]
                         lang = filter_campaign_list[0]['template_language']
                         temp_media_type = filter_campaign_list[0]['media_type']
-                        image_id = latest_template.image_id
+                        image_id = template.image_id
                         
                         try:
                             parts = image_id.split("|")
