@@ -1813,3 +1813,118 @@ Scheduler started successfully.
 Scheduler started successfully.
 start_scheduler called
 Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error processing phone number: 'TemplateLinkage' object is not iterable
+Internal Server Error: /user_responses/
+Invalid HTTP_HOST header: 'mail.wtsdealnow.in'. You may need to add 'mail.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.wtsdealnow.in'. You may need to add 'mail.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'mail.wtsdealnow.in'. You may need to add 'mail.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'mail.wtsdealnow.in'. You may need to add 'mail.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error processing phone number: 'QuerySet' object has no attribute 'linked_template_name'
+Internal Server Error: /user_responses/
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error processing phone number: 'QuerySet' object has no attribute 'image_id'
+Internal Server Error: /user_responses/
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['916361161836'], ['916361161836'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: intersted05, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: interviewtemp01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yesflow01, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: noflow03, Phone Number: 916361161836, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['919711618080'], ['919711618080'], testing_admin, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: testing_admin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing_admin, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: intersted05, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: noflow03, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: interviewtemp01, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yesflow01, Phone Number: 919711618080, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+User Mukesh-demo@gmail.com logged in successfully.
+Send_Sms: Mukesh-demo@gmail.com, 473984259138177, gowhithflow, None, ['919871729350', '919896182487', '919711618080'], ['919871729350', '919896182487', '919711618080'], single, []
+Sending messages for user: Mukesh-demo@gmail.com, campaign title: single
+Calculated money data for sending messages: 3
+Messages sent successfully for campaign: single, user: Mukesh-demo@gmail.com
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: intersted05, Phone Number: 919871729350, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: noflow03, Phone Number: 919871729350, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: interviewtemp01, Phone Number: 919871729350, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Error image_id format is incorrect. Expected format: 'id|type'
+Next reply message sent successfully. Template: yesflow01, Phone Number: 919871729350, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
