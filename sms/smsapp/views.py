@@ -911,7 +911,7 @@ def save_phone_number(request):
                     latest_template = TemplateLinkage.objects.filter(
                         useremail__in=emails,
                         button_name=reply_text
-                    ).order_by('-updated_at').first()
+                    ).order_by('-updated_at')
                 except Exception as e:
                     latest_template = None
 
