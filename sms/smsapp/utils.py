@@ -1,12 +1,10 @@
 from datetime import datetime, timedelta
-from .models import ScheduledMessage, ReportInfo, BotSentMessages
+from .models import ScheduledMessage, ReportInfo, BotSentMessages, RegisterApp
 from django.utils.timezone import now
-import json
-import random
-import string
 from django.utils import timezone
-import requests
-import logging
+import requests, logging, string, random, json
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 logger = logging.getLogger('django')
 
@@ -156,3 +154,21 @@ def parse_fb_error(data):
         "type": "Unknown Error",
         "message": "Unable to parse error details"
     }
+    
+def get_token_and_app_id(request):
+    token = get_object_or_404(RegisterApp, app_name=request.user.register_app).token
+    app_id = get_object_or_404(RegisterApp, app_name=request.user.register_app).app_id
+    return token, app_id
+
+@login_required
+def display_whatsapp_id(request):
+    whatsapp_id = request.user.whatsapp_business_account_id
+    return whatsapp_id
+
+def display_phonenumber_id(request):
+    phonenumber_id = request.user.phone_number_id
+    return phonenumber_id
+    
+def show_discount(user):
+    discount=user.discount
+    return discount
