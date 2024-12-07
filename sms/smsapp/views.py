@@ -593,10 +593,11 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         
         matched_rows = []
         non_reply_rows = []
-
+        
+        excluded_error_codes = {131048, 131000, 131042, 131031, 131053}
     
         if len(contact_all) > 100:
-            non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID]
+            non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
         
         for phone in contact_all:
             matched = False
