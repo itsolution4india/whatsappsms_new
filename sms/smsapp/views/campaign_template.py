@@ -64,9 +64,6 @@ def Campaign(request):
         quick_reply_three = request.POST.get('quick_reply_three', None)
         url_button_text = request.POST.get('websitebutton', None)
         website_url = request.POST.get('websiteUrl')
-        linked_temp_one = request.POST.get('linked_temp_one', None)
-        linked_temp_two = request.POST.get('linked_temp_two', None)
-        linked_temp_three = request.POST.get('linked_temp_three', None)
 
         if header_type in ['headerImage','headerVideo','headerDocument','headerAudio']:
             header_content = header_handle(header_content, token, app_id)
@@ -118,3 +115,18 @@ def Campaign(request):
             })
         
     return render(request, "Campaign.html", context)
+
+@login_required
+def delete_template(request):
+    token, _ = get_token_and_app_id(request)
+    template_name = request.POST.get('template_name')
+    template_id = request.POST.get('template_id')
+
+    delete_result = delete_whatsapp_template(waba_id=display_whatsapp_id(request), token=token, template_name=template_name, template_id=template_id)
+    
+    if delete_result:
+        print(f"Template '{template_name}' deleted successfully.")
+    else:
+        print(f"Failed to delete template '{template_name}'.")
+    
+    return redirect('campaign')
