@@ -140,8 +140,7 @@ def get_flows(ACCESS_TOKEN, WABA_ID):
         return str(e)
         
 
-def create_message_template_with_flow(waba_id, body_text, lang, category, access_token, template_name, flow_id):
-    print(waba_id, body_text, lang, category, access_token, template_name, flow_id)
+def create_message_template_with_flow(waba_id, body_text, lang, category, access_token, template_name, flow_id, flow_button):
     base_url = 'https://graph.facebook.com/v20.0'
     url = f"{base_url}/{waba_id}/message_templates"
     
@@ -149,6 +148,7 @@ def create_message_template_with_flow(waba_id, body_text, lang, category, access
         'Authorization': f'Bearer {access_token}',
         'Content-Type': 'application/json'
     }
+    flow_button_name = flow_button if flow_button else "Open flow!"
     
     payload = {
         "name": template_name,
@@ -164,7 +164,7 @@ def create_message_template_with_flow(waba_id, body_text, lang, category, access
                 "buttons": [
                     {
                         "type": "FLOW",
-                        "text": "Open flow!",
+                        "text": flow_button_name,
                         "navigate_screen": "ITSOLUTION",
                         "flow_action": "navigate",
                         "flow_id": int(flow_id)

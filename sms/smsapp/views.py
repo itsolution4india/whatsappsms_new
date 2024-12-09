@@ -1715,6 +1715,35 @@ def get_preview_url_view(request, flow_id):
     else:
         return JsonResponse({'error': 'Failed to fetch preview URL'}, status=400)
         
+# @csrf_exempt
+# def create_template_from_flow(request):
+#     token, _ = get_token_and_app_id(request)
+#     waba_id = display_whatsapp_id(request)
+#     if request.method == 'POST':
+#         flow_id = request.POST.get('flow_id')
+#         template_name = request.POST.get('template_name')
+#         category = request.POST.get('category')
+#         body_text = request.POST.get('body_text')
+#         lang = request.POST.get('lang')
+
+#         response = create_message_template_with_flow(
+#             waba_id, body_text, lang, category, token, template_name, flow_id
+#         )
+        
+#         if response:
+#             messages.success(request, "Flow Template created successfully")
+#             try:
+#                 Templates.objects.create(email=request.user, templates=template_name)
+#             except Exception as e:
+#                 logger.error(f"Error, {e}")
+#             return JsonResponse({'success': True})
+        
+#         else:
+#             print("response", response)
+#             messages.error(request, "Failed to crate Flow Template")
+#             return JsonResponse({'success': False, 'error': 'Failed to create template'})
+
+
 @csrf_exempt
 def create_template_from_flow(request):
     token, _ = get_token_and_app_id(request)
@@ -1725,9 +1754,10 @@ def create_template_from_flow(request):
         category = request.POST.get('category')
         body_text = request.POST.get('body_text')
         lang = request.POST.get('lang')
+        flow_button = request.POST.get('flow_button')
 
         response = create_message_template_with_flow(
-            waba_id, body_text, lang, category, token, template_name, flow_id
+            waba_id, body_text, lang, category, token, template_name, flow_id, str(flow_button)
         )
         
         if response:
