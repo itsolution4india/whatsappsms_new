@@ -915,7 +915,7 @@ def save_phone_number(request):
                     ).order_by('-updated_at')
                     linked_template_names = [template.linked_template_name for template in latest_template]
                 except Exception as e:
-                    logger.info(f"{emails} {reply_text}, {str(e)}")
+                    logger.info(f"{emails}, {str(e)}")
                     linked_template_names = []
                     latest_template = None
 
@@ -924,6 +924,7 @@ def save_phone_number(request):
                         user_response=user_response,
                         user__in=emails
                     ).first()
+                    logger.info("bot automation message")
                 except Exception as e:
                     filter_message_response =None
 
@@ -934,6 +935,7 @@ def save_phone_number(request):
                     token = latest_user.register_app.token
 
                 if latest_template:
+                    logger.info("detected linktemplate message")
                     for template in latest_template:
                         linked_template_name = template.linked_template_name
                         campaign_list = fetch_templates(waba_id, token, linked_template_name)
@@ -977,6 +979,7 @@ def save_phone_number(request):
                         time.sleep(0.5)
                             
                 elif filter_message_response:
+                    logger.info("detected bot message")
                     message_type = filter_message_response.message_type
                     if message_type == "list_message":
                         response = send_bot_api(token, phone_number_id, phone_number, "list_message", body=filter_message_response.body_message, sections=filter_message_response.sections)
