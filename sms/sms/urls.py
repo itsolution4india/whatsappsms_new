@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib import admin
 from smsapp import views
+from smsapp.witai_bot.bot_view import chat_with_bot, train_bot, chat, train, delete_utterance_view, create_intent_view, delete_intent_view, get_intents_view
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -49,6 +50,16 @@ urlpatterns = [
     path('api/users/<str:email>/', views.customuser_detail_view, name='customuser-detail'),
     path('update-balance-report/', views.UpdateBalanceReportView.as_view(), name='update_balance_report'),
     path('get-report/', views.GetReportAPI.as_view(), name='get_report_api'),
-    path('api_manual/', views.api_manual, name="api_manual")
+    path('api_manual/', views.api_manual, name="api_manual"),
+    
+    path('chat_bot/', chat_with_bot, name='chat_with_bot'),
+    path('train/', train_bot, name='train_bot'),
+    path('chat/', chat, name='chat_api'),
+    path('train_api/', train, name='train_api'),
+    path('delete_utterance/', delete_utterance_view, name='delete_utterance'),
+    path('create_intent/', create_intent_view, name='create_intent'),
+    path('delete_intent/', delete_intent_view, name='delete_intent'),
+    path('get_intents/', get_intents_view, name='get_intents'),
+    
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
