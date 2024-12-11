@@ -525,6 +525,15 @@
                         </ul>
                     </div>
                 </nav>
+                <script src="/static/assets/js/it-solution-chat-sdk.js"></script>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        window.ITSolutionChatSDK.init({
+                            serverUrl: 'http://127.0.0.1:8000/chat/'
+                        });
+                    });
+                    </script>
                 <script>
                     $(document).ready(function () {
                         // Disable click behavior
@@ -602,9 +611,9 @@ document.addEventListener('keydown', function(e) {
                     {% block content %}
 
                     {% endblock %}
-                    <button class="refresh-btn" onclick="handleRefresh()">
+                    <!-- <button class="refresh-btn" onclick="handleRefresh()">
                         <i class='bx bx-refresh'></i>
-                    </button>
+                    </button> -->
                     <!-- / Content -->
                 </div>
 
@@ -668,7 +677,7 @@ document.addEventListener('keydown', function(e) {
             var content = document.getElementById('content');
             
             loadingOverlay.style.display = 'none';
-            content.style.display = 'block';
+            // content.style.display = 'block';
         });
     </script>
 

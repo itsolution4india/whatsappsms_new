@@ -1467,6 +1467,7 @@ def delete_template_linkage(request, id):
         
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None):
+    logger.info("got request ------------ - -- --- - -- - - -- - - -- ")
     try:
         # Connect to the database
         connection = mysql.connector.connect(
@@ -1546,7 +1547,98 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             cursor.close()
             connection.close()
             
+def download_report(request, report_id=None, insight=False, contact_list=None):
+    try:
+        # Fetch the specific report based on the report_id
+        if report_id:
+            report = get_object_or_404(ReportInfo, id=report_id)
+            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
+            contacts = report.contact_list.split('\r\n')
+            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+        else:
+            contact_all = contact_list
+
+        # Connect to the database
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
+        )
+        cursor = connection.cursor()
+        query = "SELECT * FROM webhook_responses"
+        cursor.execute(query)
+        rows = cursor.fetchall()
+
+        # Create a dictionary for quick lookup
+        rows_dict = {(row[2], row[4]): row for row in rows}
+        
+        matched_rows = []
+        non_reply_rows = []
+        
+        excluded_error_codes = {131048, 131000, 131042, 131031, 131053}
     
+        if len(contact_all) > 100:
+            non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
+        
+        for phone in contact_all:
+            matched = False
+            row = rows_dict.get((Phone_ID, phone), None)
+            if row:
+                matched_rows.append(row)
+                matched = True
+
+            if not matched and non_reply_rows:
+                new_row = copy.deepcopy(random.choice(non_reply_rows))
+                new_row_list = list(new_row)
+                new_row_list[4] = phone  # Update the phone number
+                new_row_tuple = tuple(new_row_list)
+                matched_rows.append(new_row_tuple)
+        
+        cursor.close()
+        connection.close()
+
+        # Define your header
+        header = [
+            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+            "status", "message_timestamp", "error_code", "error_message", "contact_name",
+            "message_from", "message_type", "message_body"
+        ]
+
+        df = pd.DataFrame(matched_rows, columns=header)
+        status_counts_df = df['status'].value_counts().reset_index()
+        status_counts_df.columns = ['status', 'count']
+        total_unique_contacts = len(df['contact_wa_id'].unique())
+        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
+        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+
+        # Generate CSV as HttpResponse (stream the file)
+        if insight:
+            return status_counts_df
+        elif contact_list:
+            return df
+        else:
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+            
+            writer = csv.writer(response)
+            writer.writerow(header)  # Write header
+            writer.writerows(matched_rows)  # Write rows
+            
+            return response
+    
+    except mysql.connector.Error as err:
+        logger.error(f"Database error: {err}")
+        messages.error(request, "Database error occurred.")
+        return redirect('reports')
+
+    except Exception as e:
+        logger.error(f"An unexpected error occurred: {str(e)}")
+        messages.error(request, f"Error: {str(e)}")
+        return redirect('reports')
+            
 @login_required
 def bot_flow(request):
     if not check_user_permission(request.user, 'can_manage_bot_flow'):
@@ -2113,3 +2205,17 @@ def user_interaction(request):
         return JsonResponse({'status': 'error', 'message': 'Missing required fields'})
     
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
+@login_required
+def train_bot(request):
+    
+    return render(request, "train.html")
+
+def chat():
+    user_message = request.json.get('message', '')
+    
+    bot_response = process_wit_response(user_message)
+    
+    return jsonify({
+        'response': bot_response
+    })
