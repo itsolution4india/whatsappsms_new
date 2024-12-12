@@ -99,21 +99,16 @@ def process_wit_response(request, message):
         
         elif intent == 'download_report':
             try:
-                latest_report = ReportInfo.objects.order_by('-id').first()
-                download_campaign_report(request, latest_report.id)
+                latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
                 if latest_report:
-                    return "Report ready for download."
+                    return download_campaign_report(request, report_id=latest_report.id)
                 else:
                     return "No reports found to download."
             
             except Exception as e:
                 logger.error(f"Error in download_report intent: {str(e)}")
-                return {
-                    'status': 'error',
-                    'message': 'Error occurred while trying to download the report.'
-                }
+                return "Error occurred while trying to download the report."
         else:
-            # Generic fallback response
             return f"{intent}"
     
     except Exception as e:
