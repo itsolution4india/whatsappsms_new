@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from ..models import ReportInfo
 from django.urls import reverse
 from django.shortcuts import redirect
+from ..views import download_campaign_report
 
 # Replace with your Wit.ai access token
 WIT_AI_ACCESS_TOKEN = 'LIXVFYQNY4WISP5QLS2X6NJPEB57SHT2'
@@ -99,11 +100,34 @@ def process_wit_response(request, message):
         elif intent == 'download_report':
             try:
                 latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
-                return redirect('report_download', report_id=latest_report.id)
+                download_url = f"/download_report/{latest_report.id}"
+                return download_url
             
             except Exception as e:
                 logger.error(f"Error in download_report intent: {str(e)}")
                 return "Error occurred while trying to download the report."
+        elif intent == 'summary':
+            try:
+                latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
+                insight_data = download_campaign_report(request, latest_report.id, insight=True)
+                
+                # Convert to dictionary and format the summary
+                summary_dict = insight_data.groupby('status')['count'].sum().to_dict()
+                
+                # Create a human-readable summary string
+                summary_parts = []
+                total = sum(summary_dict.values())
+                for status, count in summary_dict.items():
+                    percentage = (count / total) * 100
+                    summary_parts.append(f"{status}: {count} ({percentage:.1f}%)")
+                
+                full_summary = f"Total records: {total}\n" + "\n".join(summary_parts)
+                
+                return full_summary
+            
+            except Exception as e:
+                logger.error(f"Error generating summary: {str(e)}")
+                return "Unable to generate summary at this time."
         else:
             # Generic fallback response
             return f"{intent}"

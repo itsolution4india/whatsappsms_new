@@ -89,7 +89,7 @@
             const messagesContainer = document.querySelector('.it-solution-chat-messages');
             const messageElement = document.createElement('div');
             messageElement.classList.add('it-solution-message', `it-solution-${sender}-message`);
-            messageElement.textContent = message;
+            messageElement.innerHTML = message;
             messagesContainer.appendChild(messageElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         },
@@ -105,8 +105,16 @@
             .then(response => response.json())
             .then(data => {
                 console.log("data", data)
-                this.addMessage(data, 'bot');
-                this.speakMessage(data);
+                
+                // Check if the response is a download URL
+                if (data.startsWith('/download_report/')) {
+                    const downloadLink = `<a href="${data}" target="_blank">Click here to download report</a>`;
+                    this.addMessage(downloadLink, 'bot');
+                } else {
+                    // Regular bot response
+                    this.addMessage(data, 'bot');   
+                    this.speakMessage(data);
+                }
             })
             .catch(error => {
                 this.addMessage('Sorry, there was an error processing your message.', 'bot');
