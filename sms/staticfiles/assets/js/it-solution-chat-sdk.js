@@ -104,6 +104,7 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log("data", data)
                 this.addMessage(data, 'bot');
                 this.speakMessage(data);
             })

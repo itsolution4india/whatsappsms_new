@@ -6,7 +6,6 @@ import json
 import requests
 from ..utils import logger
 from django.views.decorators.csrf import csrf_exempt
-from ..views import download_latest_campaign_report
 from ..models import ReportInfo
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -100,17 +99,11 @@ def process_wit_response(request, message):
         elif intent == 'download_report':
             try:
                 latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
-                if latest_report:
-                    return download_latest_campaign_report(request)
-                else:
-                    return "No reports found to download."
+                return redirect('report_download', report_id=latest_report.id)
             
             except Exception as e:
                 logger.error(f"Error in download_report intent: {str(e)}")
-                return {
-                    'status': 'error',
-                    'message': 'Error occurred while trying to download the report.'
-                }
+                return "Error occurred while trying to download the report."
         else:
             # Generic fallback response
             return f"{intent}"
