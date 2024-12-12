@@ -184,6 +184,14 @@
                     </h5>
                   </div>
                 </div>
+                <div class="" style="width: 120px; margin-left: auto; margin-right: auto;">
+                  <div class="" style="width: 170px; height: 50px; text-align: center;">
+                    <!-- <i class='bx bx-globe float-start'></i> -->
+                    <h5 class="bg-primary" style="color: white; border-radius: 2px;">
+                      <pre id="template-button3" class=""></pre>
+                    </h5>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -286,6 +294,7 @@
         document.getElementById('template-data').innerText = '';
         document.getElementById('template-button1').innerText = '';
         document.getElementById('template-button2').innerText = '';
+        document.getElementById('template-button3').innerText = '';
 
         const variableInputsDiv = document.getElementById('variable_inputs');
         variableInputsDiv.innerHTML = '';  // Clear inputs but not the label
@@ -343,6 +352,7 @@
         document.getElementById('template-data').innerText = typeof selectedData === 'object' ? JSON.stringify(selectedData, null, 2) : selectedData;
         document.getElementById('template-button1').innerText = typeof selectedButton === 'object' ? JSON.stringify(selectedButton[0]['text'], null, 2) : selectedButton;
         document.getElementById('template-button2').innerText = typeof selectedButton === 'object' ? JSON.stringify(selectedButton[1]['text'], null, 2) : selectedButton;
+        document.getElementById('template-button3').innerText = typeof selectedButton === 'object' ? JSON.stringify(selectedButton[2]['text'], null, 2) : selectedButton;
 
         document.getElementById('media_type_input').value = selectedMedia;
 
