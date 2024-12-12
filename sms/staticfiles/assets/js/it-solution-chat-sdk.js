@@ -148,95 +148,96 @@
             const style = document.createElement('style');
             style.textContent = `
                 .it-solution-chat-container {
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    width: 350px;
-                    border: 1px solid #ccc;
-                    background: white;
-                    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                    border-radius: 8px;
-                    z-index: 2005;
+                    position: fixed !important;
+                    bottom: 20px !important;
+                    right: 20px !important;
+                    width: 350px !important;
+                    border: 1px solid #ccc !important;
+                    background: white !important;
+                    box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+                    border-radius: 8px !important;
+                    z-index: 2005 !important;
                 }
                 .it-solution-chat-container.hidden {
-                    display: none;
+                    display: none !important;
                 }
                 #it-solution-chat-send {
-                    border: 0;
-                    background: lightgreen;
-                    padding: 0px 10px;
-                    border-radius: 5px;
+                    border: 0 !important;
+                    background: lightgreen !important;
+                    padding: 0px 10px !important;
+                    border-radius: 5px !important;
                 }
                 #it-solution-voice-input {
-                    margin-left: 5px;
-                    border: 0;
-                    background: lightblue;
-                    padding: 0px 10px;
-                    border-radius: 5px;
+                    margin-left: 5px !important;
+                    border: 0 !important;
+                    background: lightblue !important;
+                    padding: 0px 10px !important;
+                    border-radius: 5px !important;
                 }
                 .it-solution-chat-header {
-                    background: #a5a6ff;
-                    padding: 10px;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    color: #fff;
-                    margin: 0;
+                    background: #a5a6ff !important;
+                    padding: 10px !important;
+                    display: flex !important;
+                    justify-content: space-between !important;
+                    align-items: center !important;
+                    color: #fff !important;
+                    margin: 0 !important;
                 }
                 .it-solution-chat-header h3 {
-                    color: #fff;
-                    margin: 0;
-                    font-size: 20px;
+                    color: #fff !important;
+                    margin: 0 !important;
+                    font-size: 20px !important;
                 }
                 #it-solution-chat-close {
-                    background: #ff0000;
-                    padding: 0px 9px;
-                    border-radius: 50%;
-                    border: none;
-                    color: wheat;
-                    font-size: 20px;
+                    background: #ff0000 !important;
+                    padding: 0px 9px !important;
+                    border-radius: 50% !important;
+                    border: none !important;
+                    color: wheat !important;
+                    font-size: 20px !important;
                 }
                 .it-solution-chat-messages {
-                    height: 400px;
-                    overflow-y: auto;
-                    padding: 10px;
+                    height: 400px !important;
+                    overflow-y: auto !important;
+                    padding: 10px !important;
                 }
                 .it-solution-message {
-                    margin-bottom: 10px;
-                    padding: 10px;
-                    border-radius: 5px;
+                    margin-bottom: 10px !important;
+                    padding: 10px !important;
+                    border-radius: 5px !important;
                 }
                 .it-solution-user-message {
-                    background: #e6f2ff;
-                    text-align: right;
+                    background: #e6f2ff !important;
+                    text-align: right !important;
                 }
                 .it-solution-bot-message {
-                    background: #f0f0f0;
+                    background: #f0f0f0 !important;
                 }
                 .it-solution-chat-input-area {
-                    display: flex;
-                    padding: 10px;
-                    border-top: 1px solid #ccc;
+                    display: flex !important;
+                    padding: 10px !important;
+                    border-top: 1px solid #ccc !important;
                 }
                 .it-solution-chat-input-area input {
-                    flex-grow: 1;
-                    margin-right: 10px;
-                    padding: 5px;
+                    flex-grow: 1 !important;
+                    margin-right: 10px !important;
+                    padding: 5px !important;
                 }
                 .it-solution-chat-toggle {
-                    position: fixed;
-                    bottom: 20px;
-                    right: 20px;
-                    background: #007bff;
-                    color: white;
-                    border: none;
-                    padding: 10px 15px;
-                    border-radius: 50px;
-                    cursor: pointer;
-                    z-index: 1001;
+                    position: fixed !important;
+                    bottom: 20px !important;
+                    right: 20px !important;
+                    background: #007bff !important;
+                    color: white !important;
+                    border: none !important;
+                    padding: 10px 15px !important;
+                    border-radius: 50px !important;
+                    cursor: pointer !important;
+                    z-index: 1001 !important;
                 }
             `;
-            document.head.appendChild(style);
+    document.head.appendChild(style);
+
         }
     };
 
