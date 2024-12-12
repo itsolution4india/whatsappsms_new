@@ -110,19 +110,12 @@ def process_wit_response(request, message):
             try:
                 latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
                 insight_data = download_campaign_report(request, latest_report.id, insight=True)
-                
-                # Convert to dictionary and format the summary
-                summary_dict = insight_data.groupby('status')['count'].sum().to_dict()
-                
-                # Create a human-readable summary string
-                summary_parts = []
-                total = sum(summary_dict.values())
-                for status, count in summary_dict.items():
-                    percentage = (count / total) * 100
-                    summary_parts.append(f"{status}: {count} ({percentage:.1f}%)")
-                
-                full_summary = f"Total records: {total}\n" + "\n".join(summary_parts)
-                
+                summary_lines = []
+                for _, row in insight_data.iterrows():
+                    summary_lines.append(f"{row['status']}\t{row['count']}")
+                total = insight_data['count'].sum()
+                summary_lines.append(f"Total Contacts\t{total}")
+                full_summary = "\n".join(summary_lines)
                 return full_summary
             
             except Exception as e:
