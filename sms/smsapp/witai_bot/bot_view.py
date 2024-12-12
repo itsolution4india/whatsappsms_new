@@ -1,12 +1,12 @@
 import os
 from wit import Wit
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 import json
 import requests
 from ..utils import logger
 from django.views.decorators.csrf import csrf_exempt
-from ..views import download_campaign_report
+from ..views import download_latest_campaign_report
 from ..models import ReportInfo
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -100,21 +100,19 @@ def process_wit_response(request, message):
         elif intent == 'download_report':
             try:
                 latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
-                
                 if latest_report:
-                    download_response = download_campaign_report(request, report_id=latest_report.id)
-                    
-                    if isinstance(download_response, HttpResponse):
-                        return JsonResponse({"message": "Report is ready for download."}, status=200)
-                    else:
-                        return JsonResponse({"message": "An error occurred while generating the report."}, status=500)
+                    return download_latest_campaign_report(request)
                 else:
-                    return JsonResponse({"message": "No reports found to download."}, status=404)
+                    return "No reports found to download."
             
             except Exception as e:
                 logger.error(f"Error in download_report intent: {str(e)}")
-                return JsonResponse({"error": "Error occurred while trying to download the report.", "details": str(e)}, status=500)
+                return {
+                    'status': 'error',
+                    'message': 'Error occurred while trying to download the report.'
+                }
         else:
+            # Generic fallback response
             return f"{intent}"
     
     except Exception as e:
