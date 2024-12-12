@@ -98,8 +98,6 @@ def process_wit_response(request, message):
             return "We’re open to partnerships. Contact us to explore collaboration opportunities."
         
         elif intent == 'download_report':
-            latest_report = ReportInfo.objects.order_by('-id').first()
-            download_campaign_report(request, latest_report.id)
             try:
                 latest_report = ReportInfo.objects.order_by('-id').first()
                 download_campaign_report(request, latest_report.id)

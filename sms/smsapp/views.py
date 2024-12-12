@@ -564,6 +564,7 @@ def delete_report(request, report_id):
 
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
+    logger.info(f"got download request {report_id, insight, contact_list}")
     try:
         # Fetch the specific report based on the report_id
         if report_id:
