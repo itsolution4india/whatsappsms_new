@@ -127,7 +127,7 @@ def process_wit_response(request, message):
     
     except Exception as e:
         logger.error(str(e))
-        return f"Error processing message: {str(e)}"
+        return f"We don't have the information for your query. Please contact support."
 
 @csrf_exempt
 def chat_with_bot(request):
