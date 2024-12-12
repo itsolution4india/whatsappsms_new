@@ -1548,93 +1548,115 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             cursor.close()
             connection.close()
             
-def download_report(request, report_id=None, insight=False, contact_list=None):
+def download_latest_campaign_report(request, insight=False):
     try:
-        # Fetch the specific report based on the report_id
-        if report_id:
-            report = get_object_or_404(ReportInfo, id=report_id)
-            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
-            contacts = report.contact_list.split('\r\n')
-            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-        else:
-            contact_all = contact_list
-
-        # Connect to the database
-        connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="fedqrbtb_wtsdealnow",
-            password="Solution@97",
-            database="fedqrbtb_report",
-            auth_plugin='mysql_native_password'
-        )
+        # Fetch the latest report for the current user
+        latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
+        
+        if not latest_report:
+            messages.warning(request, "No reports found for this user.")
+            return redirect('reports')
+        
+        # Extract contact list and Phone_ID
+        contacts = latest_report.contact_list.split('\r\n')
+        contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+        Phone_ID = display_phonenumber_id(request)  # Ensure this function is defined
+        
+        # Connect to the database with deep copied connection parameters for security
+        db_config = {
+            'host': "localhost",
+            'port': 3306,
+            'user': "fedqrbtb_wtsdealnow",
+            'password': "Solution@97",
+            'database': "fedqrbtb_report",
+            'auth_plugin': 'mysql_native_password'
+        }
+        
+        # Deep copy the database configuration to prevent any potential modifications
+        db_config_copy = copy.deepcopy(db_config)
+        
+        # Establish database connection
+        connection = mysql.connector.connect(**db_config_copy)
         cursor = connection.cursor()
+        
+        # Fetch all webhook responses
         query = "SELECT * FROM webhook_responses"
         cursor.execute(query)
         rows = cursor.fetchall()
-
+        
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows}
         
         matched_rows = []
         non_reply_rows = []
         
+        # Excluded error codes
         excluded_error_codes = {131048, 131000, 131042, 131031, 131053}
     
+        # If contact list is large, prepare non-reply rows
         if len(contact_all) > 100:
             non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
         
+        # Match contacts with webhook responses or generate placeholder rows
         for phone in contact_all:
             matched = False
             row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
-
+            
             if not matched and non_reply_rows:
+                # Deep copy a random non-reply row and modify phone number
                 new_row = copy.deepcopy(random.choice(non_reply_rows))
                 new_row_list = list(new_row)
                 new_row_list[4] = phone  # Update the phone number
                 new_row_tuple = tuple(new_row_list)
                 matched_rows.append(new_row_tuple)
         
+        # Close database connection
         cursor.close()
         connection.close()
-
-        # Define your header
+        
+        # Define headers for the report
         header = [
             "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
             "status", "message_timestamp", "error_code", "error_message", "contact_name",
             "message_from", "message_type", "message_body"
         ]
-
+        
+        # Create DataFrame
         df = pd.DataFrame(matched_rows, columns=header)
+        
+        # Generate status counts
         status_counts_df = df['status'].value_counts().reset_index()
         status_counts_df.columns = ['status', 'count']
         total_unique_contacts = len(df['contact_wa_id'].unique())
         total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
         status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
-
-        # Generate CSV as HttpResponse (stream the file)
+        
+        # Return based on insight flag
         if insight:
             return status_counts_df
-        elif contact_list:
-            return df
-        else:
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
-            
-            writer = csv.writer(response)
-            writer.writerow(header)  # Write header
-            writer.writerows(matched_rows)  # Write rows
-            
-            return response
+        
+        # Generate CSV response
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="{latest_report.campaign_title}_latest.csv"'
+        
+        # Write DataFrame to CSV
+        df.to_csv(response, index=False)
+        
+        return response
     
     except mysql.connector.Error as err:
         logger.error(f"Database error: {err}")
         messages.error(request, "Database error occurred.")
         return redirect('reports')
-
+    
+    except ObjectDoesNotExist:
+        logger.warning(f"No report found for user {request.user.email}")
+        messages.warning(request, "No reports found for this user.")
+        return redirect('reports')
+    
     except Exception as e:
         logger.error(f"An unexpected error occurred: {str(e)}")
         messages.error(request, f"Error: {str(e)}")
