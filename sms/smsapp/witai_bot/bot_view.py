@@ -1,7 +1,7 @@
 import os
 from wit import Wit
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 import requests
 from ..utils import logger
@@ -100,14 +100,20 @@ def process_wit_response(request, message):
         elif intent == 'download_report':
             try:
                 latest_report = ReportInfo.objects.filter(email=request.user.email).order_by('-id').first()
+                
                 if latest_report:
-                    return download_campaign_report(request, report_id=latest_report.id)
+                    download_response = download_campaign_report(request, report_id=latest_report.id)
+                    
+                    if isinstance(download_response, HttpResponse):
+                        return JsonResponse({"message": "Report is ready for download."}, status=200)
+                    else:
+                        return JsonResponse({"message": "An error occurred while generating the report."}, status=500)
                 else:
-                    return "No reports found to download."
+                    return JsonResponse({"message": "No reports found to download."}, status=404)
             
             except Exception as e:
                 logger.error(f"Error in download_report intent: {str(e)}")
-                return "Error occurred while trying to download the report."
+                return JsonResponse({"error": "Error occurred while trying to download the report.", "details": str(e)}, status=500)
         else:
             return f"{intent}"
     
