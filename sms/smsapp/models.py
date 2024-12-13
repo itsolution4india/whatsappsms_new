@@ -296,7 +296,7 @@ class CountryPermission(models.Model):
         return f"{self.user.email} - Access Rights"
     
 class Train_wit_Bot(models.Model):
-    model_name = models.CharField(unique=True,max_length=100)
+    model_name = models.CharField(max_length=100)
     intent = models.CharField(unique=True,max_length=100)
     content = models.TextField(default='nan')
     
