@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
-from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows, CountryPermission, BotSentMessages
+from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows, CountryPermission, BotSentMessages, Train_wit_Bot
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
@@ -137,3 +137,4 @@ admin.site.register(UserAccess, UserAccessAdmin)
 admin.site.register(CountryPermission, CountryPermissionAdmin)
 admin.site.register(CoinsHistory)
 admin.site.register(Flows)
+admin.site.register(Train_wit_Bot)
