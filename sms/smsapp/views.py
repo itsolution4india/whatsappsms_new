@@ -242,8 +242,8 @@ def Send_Sms(request):
                     
                     logger.info(f"db output {final_invalid_numbers} {final_valid_numbers}")
                     context.update({
-                        "final_invalid_numbers":final_invalid_numbers,
-                        "final_valid_numbers": final_valid_numbers
+                        "final_invalid_numbers": ', '.join(str(num) for num in final_invalid_numbers),
+                        "final_valid_numbers": ', '.join(str(num) for num in final_valid_numbers)
                         })
                     logger.info(f"Context being passed to template: {context}")
                 else:
