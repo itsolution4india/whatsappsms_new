@@ -144,20 +144,15 @@
 
       <div>
         <div>
-          {% if final_valid_numbers %}
-          {% for num in final_valid_numbers %}
-          <span>{{ num }}</span>
-          {% endfor %}
-          {% endif %}
+            Final Valid Numbers:
+            {{ final_valid_numbers }}
+            <input type="text" name="" id="" value="{{ final_valid_numbers }}">
         </div>
         <div>
-          {% if final_invalid_numbers %}
-          {% for num in final_invalid_numbers %}
-          <span>{{ num }}</span>
-          {% endfor %}
-          {% endif %}
+            Final Invalid Numbers:
+            {{ final_invalid_numbers }}
         </div>
-      </div>
+    </div>
       <!-- template report -->
       <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
 
