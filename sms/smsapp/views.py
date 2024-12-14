@@ -230,7 +230,7 @@ def Send_Sms(request):
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
             elif action_type == 'validateRequest':
                 results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
-                logger.info(results.json())
+                logger.info(f"results {results.json()}")
             else:
                 schedule_date = request.POST.get("schedule_date")
                 schedule_time = request.POST.get("schedule_time")
