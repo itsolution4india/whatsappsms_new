@@ -3083,3 +3083,590 @@ Scheduler started successfully.
 Scheduler started successfully.
 start_scheduler called
 Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User test_demo@gmail.com logged in successfully.
+916361161836
+919315494292
+918285055176
+918396820007
+919773870533
+917065354391
+919711340505
+919311429863
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919315494292', '917065354391', '918396820007', '919773870533', '919711340505', '916361161836', '918285055176', '919311429863'], ['919315494292', '918396820007', '919711340505', '916361161836', '918285055176', '919311429863', '917065354391', '919773870533'], testing, []
+<Response [200]>
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+916361161836
+919315494292
+918285055176
+918396820007
+919773870533
+917065354391
+919711340505
+919311429863
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919311429863', '919773870533', '918285055176', '919711340505', '919315494292', '917065354391', '916361161836', '918396820007'], ['919311429863', '919773870533', '918285055176', '919711340505', '919315494292', '917065354391', '916361161836', '918396820007'], testing, []
+[]
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919315494292', '919311429863', '918285055176', '917065354391', '918396820007', '919711340505', '919773870533', '916361161836'], ['919315494292', '919311429863', '918285055176', '917065354391', '918396820007', '919711340505', '919773870533', '916361161836'], testing, []
+No any invalid numbers
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['917065354395', '918285055176', '919311429868', '918396820002', '919711340504', '919315494291', '919773870534', '916361161836'], ['918285055176', '916361161836', '917065354395', '919311429868', '918396820002', '919711340504', '919315494291', '919773870534'], , []
+invalid_numbers ['919711340504', '917065354395', '919315494291', '919773870534', '918396820002']
+results [None, None, None, None, None]
+User Mukesh-demo@gmail.com logged in successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], ['919582414033', '916361161836', '919582563868', '919582624663', '919582518435', '919582712780'], itsolutiontemp, []
+invalid_numbers ['919582518435', '919582712780', '919582563868', '919582624663']
+results [None, None, None, None]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], itsolutiontemp, []
+invalid_numbers ['919582518435', '919582712780', '919582563868', '919582624663']
+results [None, None, None, None]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], itsolutiontemp, []
+invalid_numbers ['919582518435', '919582712780', '919582563868', '919582624663']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582518435","wa_id":"919582518435"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTE4NDM1FQIAERgSQ0VBQUREMzlGODNDQUZFNDQ1AA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582712780","wa_id":"919582712780"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNzEyNzgwFQIAERgSQjA3QUMxMkIwMTVBNUREMUQyAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSQkI1NzcwQzgxMkQzNkM4NURBAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582624663","wa_id":"919582624663"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNjI0NjYzFQIAERgSNEI5ODU0RENBRkYxMzkxOTlFAA=="}]}'}]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582563868'], ['919582563868'], testing, []
+Sending messages for user: test_demo@gmail.com, campaign title: testing
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing, user: test_demo@gmail.com
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], ['919582563868', '919582624663', '919582518435', '919582712780', '919582414033', '916361161836'], itsolutiontemp, []
+Sending messages for user: test_demo@gmail.com, campaign title: itsolutiontemp
+Calculated money data for sending messages: 6
+Messages sent successfully for campaign: itsolutiontemp, user: test_demo@gmail.com
+detected linktemplate message
+Error processing phone number: list index out of range
+Internal Server Error: /user_responses/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=5d5a30dd82024495a3e8f533a085cf7f name=schedule_messages)>]
+Current time (localized): 2024-12-14 12:57:17.666327+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=29044bea712042a9a290f6e4558d5421 name=schedule_messages)>]
+Current time (localized): 2024-12-14 12:57:17.721085+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=5afd6687f3234da78ff499b9ce56b938 name=schedule_messages)>]
+Current time (localized): 2024-12-14 12:57:17.850607+05:30
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582624663', '919582712780', '919582518435', '919582563868', '919582414033'], ['919582624663', '919582712780', '919582518435', '919582563868', '919582414033'], itsolutiontemp, []
+invalid_numbers ['919582563868', '919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSODk2N0NEQjY0OEEzMEE0QzBBAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSQkI3NEQzNkYxMDM4MEM4MzFFAA=="}]}'}]
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c75089e1373042208a9c120ffb0b67f4 name=schedule_messages)>]
+Current time (localized): 2024-12-14 13:59:40.990159+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a09672535f064fb693caeb65b73374e9 name=schedule_messages)>]
+Current time (localized): 2024-12-14 13:59:41.066592+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=843ccfecd2354e0cbd2baa2eda5fa700 name=schedule_messages)>]
+Current time (localized): 2024-12-14 13:59:41.117306+05:30
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582712780', '919582518435', '919582624663', '919582414033', '919582563868'], ['919582712780', '919582518435', '919582624663', '919582414033', '919582563868'], itsolutiontemp, []
+invalid_numbers ['919582563868', '919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSNUM1MjIzQkM5QUFGRDA1OTlDAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSMkQzMTcxMzMzOTZGMDhBMUI0AA=="}]}'}]
+An unexpected error occurred: cannot access local variable 'Phone_ID' where it is not associated with a value
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 Keydrop
+Not Found: /.env
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582624663', '919582414033', '919582518435', '919582712780', '919582563868'], ['919582624663', '919582414033', '919582518435', '919582712780', '919582563868'], itsolutiontemp, []
+invalid_numbers ['919582414033', '919582563868']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSRkRFOUJCODFFNDZFMUNGNjU3AA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSQzJBOTM5RUU3QTg2QzBGM0VDAA=="}]}'}]
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], itsolutiontemp, []
+invalid_numbers ['919582563868', '919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSREE2NTM5NEQxRUMxOTRBREVCAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSQjRGRjc3QUU5NkIxMTMzMkU5AA=="}]}'}]
+db output                   Date display_phone_number  ... message_type message_body
+0  2024-12-14 09:44:02         919319014998  ...         None         None
+1  2024-12-14 09:37:16         919319014998  ...         None         None
+2  2024-12-14 09:37:15         919319014998  ...         None         None
+3  2024-12-14 09:22:48         919319014998  ...         None         None
+4  2024-12-14 09:22:46         919319014998  ...         None         None
+5  2024-12-14 07:45:29         919319014998  ...         None         None
+6  2024-12-14 07:45:27         919319014998  ...         None         None
+7  2024-12-14 07:12:36         919319014998  ...         None         None
+8  2024-12-14 07:12:36         919319014998  ...         None         None
+9  2024-12-14 07:11:18         919319014998  ...         None         None
+10 2024-12-14 07:09:17         919319014998  ...         None         None
+11 2024-12-13 08:13:55         919319014998  ...         None         None
+12 2024-12-13 08:13:13         919319014998  ...         None         None
+13 2024-12-13 08:04:17         919319014998  ...         None         None
+14 2024-12-13 07:48:28         919319014998  ...         None         None
+
+[15 rows x 13 columns]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], itsolutiontemp, []
+invalid_numbers ['919582563868', '919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSNEIyMDlBMjVFNDk4MThBODVEAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSQkNFMUVDQzhBQUFBNEYxNzBGAA=="}]}'}]
+db output                   Date display_phone_number  ... message_type message_body
+0  2024-12-14 09:57:42         919319014998  ...         None         None
+1  2024-12-14 09:44:03         919319014998  ...         None         None
+2  2024-12-14 09:44:02         919319014998  ...         None         None
+3  2024-12-14 09:37:16         919319014998  ...         None         None
+4  2024-12-14 09:37:15         919319014998  ...         None         None
+5  2024-12-14 09:22:48         919319014998  ...         None         None
+6  2024-12-14 09:22:46         919319014998  ...         None         None
+7  2024-12-14 07:45:29         919319014998  ...         None         None
+8  2024-12-14 07:45:27         919319014998  ...         None         None
+9  2024-12-14 07:12:36         919319014998  ...         None         None
+10 2024-12-14 07:12:36         919319014998  ...         None         None
+11 2024-12-14 07:11:18         919319014998  ...         None         None
+12 2024-12-14 07:09:17         919319014998  ...         None         None
+13 2024-12-13 08:13:55         919319014998  ...         None         None
+14 2024-12-13 08:13:13         919319014998  ...         None         None
+15 2024-12-13 08:04:17         919319014998  ...         None         None
+16 2024-12-13 07:48:28         919319014998  ...         None         None
+
+[17 rows x 13 columns]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], ['919582712780', '919582624663', '919582414033', '919582518435', '919582563868'], , []
+invalid_numbers ['919582563868', '919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSREU2RTlCQzE4QUM4NDQ2RDJDAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSQjI4MEQzODI0QTM5MTRCNTMyAA=="}]}'}]
+db output                  Date display_phone_number  ... message_type message_body
+0 2024-12-14 10:05:20         919319014998  ...         None         None
+1 2024-12-14 09:57:43         919319014998  ...         None         None
+
+[2 rows x 13 columns]
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=83d4cd6277214780b508601dd01d1c6e name=schedule_messages)>]
+Current time (localized): 2024-12-14 15:58:32.493172+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0f17f733e5ed45668cff5f87be7569ec name=schedule_messages)>]
+Current time (localized): 2024-12-14 15:58:32.563657+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=69659923816240a3bcf686fb5e1c3dae name=schedule_messages)>]
+Current time (localized): 2024-12-14 15:58:32.637280+05:30
+User demo2@gmail.com logged in successfully.
+got request ------------ - -- --- - -- - - -- - - -- 
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+User demo2@gmail.com logged in successfully.
+Send_Sms: demo2@gmail.com, 244226048784189, dlfnewtesting, 1119162136608463, ['919355593135', '917300790043', '910711618080'], ['919355593135', '917300790043', '910711618080'], single, []
+Sending messages for user: demo2@gmail.com, campaign title: single
+Calculated money data for sending messages: 3
+Messages sent successfully for campaign: single, user: demo2@gmail.com
+got request ------------ - -- --- - -- - - -- - - -- 
+404 Not Found: /ads.txt - IP:  - User-Agent: Mozilla/5.0 (compatible)
+Not Found: /ads.txt
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582624663', '919582518435', '919582712780', '919582414033', '919582563868'], ['919582624663', '919582518435', '919582712780', '919582414033', '919582563868'], , []
+invalid_numbers ['919582414033', '919582563868']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSM0E4QzdCNkMyRDlGRjJFNUREAA=="}]}'}, {'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582563868","wa_id":"919582563868"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNTYzODY4FQIAERgSRjZEMTI2OTk3MzYwMjJCQTNDAA=="}]}'}]
+db output                  Date display_phone_number  ... message_type message_body
+0 2024-12-14 10:05:20         919319014998  ...         None         None
+
+[1 rows x 13 columns]
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033'], ['919582414033'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSNkE2NEUwRUU5MjlGRUIxOEVFAA=="}]}'}]
+db output                  Date display_phone_number  ... message_type message_body
+0 2024-12-14 10:56:41         919319014998  ...         None         None
+
+[1 rows x 13 columns]
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033'], ['919582414033'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSODcyMUJFQTZCQzExOTVGNjU1AA=="}]}'}]
+db output ['919582414033'] ['9', '1', '9', '5', '8', '2', '4', '1', '4', '0', '3', '3']
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['916361161836', '919582414033'], ['916361161836', '919582414033'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSQkZFOEIyMjA1NDcxRTQ3NDJDAA=="}]}'}]
+db output ['919582414033'] ['9', '1', '9', '5', '8', '2', '4', '1', '4', '0', '3', '3', '\r', '\n', '9', '1', '6', '3', '6', '1', '1', '6', '1', '8', '3', '6']
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Internal Server Error: /send-sms/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 265, in Send_Sms
+    return render(request, "send-sms.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 481, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: join requires 2 arguments, 1 provided
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+numbers_list {'919582414033', '916361161836'}
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033', '916361161836'], ['919582414033', '916361161836'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSMUJEMTcxMDk3RUUyNkNGMUU0AA=="}]}'}]
+db output ['919582414033'] ['916361161836']
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Internal Server Error: /send-sms/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 266, in Send_Sms
+    return render(request, "send-sms.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 481, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: join requires 2 arguments, 1 provided
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Internal Server Error: /send-sms/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views.py", line 266, in Send_Sms
+    return render(request, "send-sms.html", context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/defaulttags.py", line 961, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 481, in parse
+    raise self.error(token, e)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 479, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 694, in __init__
+    self.args_check(filter_name, filter_func, args)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/template/base.py", line 756, in args_check
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: join requires 2 arguments, 1 provided
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+numbers_list {'919582414033', '916361161836'}
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033', '916361161836'], ['919582414033', '916361161836'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSODY4NkVGN0RDQzk2MkM0MzlGAA=="}]}'}]
+db output ['919582414033'] ['916361161836']
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+numbers_list {'916361161836', '919582414033'}
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['916361161836', '919582414033'], ['916361161836', '919582414033'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSNTA1NDYyRTcwMDkxOEZFM0ZGAA=="}]}'}]
+db output ['919582414033'] ['916361161836']
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+numbers_list {'919582414033', '916361161836'}
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033', '916361161836'], ['919582414033', '916361161836'], itsolutiontemp, []
+Sending messages for user: test_demo@gmail.com, campaign title: itsolutiontemp
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: itsolutiontemp, user: test_demo@gmail.com
+numbers_list {'919582414033', '916361161836'}
+Send_Sms: test_demo@gmail.com, 344709618736355, testingnew09, None, ['919582414033', '916361161836'], ['919582414033', '916361161836'], itsolutiontemp, []
+invalid_numbers ['919582414033']
+results [{'status': 'success', 'response_text': '{"messaging_product":"whatsapp","contacts":[{"input":"919582414033","wa_id":"919582414033"}],"messages":[{"id":"wamid.HBgMOTE5NTgyNDE0MDMzFQIAERgSRkREREJBNkQzQkVDNEMxMzM4AA=="}]}'}]
+db output ['919582414033'] ['916361161836']
+Context being passed to template: {'template_name': ['testingnew09', 'authtemp001', 'feedback_flow_msg01', 'test_vps_temp', 'feedback_flow_msg012'], 'template_data': '["To prevent service interruptions,\\r\\n\\r\\n TM ID 1202172932380486133 (It Solution 4 India) update  in your DLT account.\\r\\n\\r\\nPlease contact our sales representative if you need any help.\\r\\n\\r\\nIt Solution 4 India\\r\\nI appreciate you taking the time to consider this.\\r\\n\\r\\nServices:-\\r\\n\\r\\n\\ud83d\\udcf1 Bulk SMS \\r\\n\\ud83d\\udd0a Voce Call\\r\\n\\ud83d\\udcf2 Transitional SMS\\r\\n\\ud83d\\udcf1 Promotional SMS\\r\\n\\ud83d\\udcdf Transitional WhatsApp\\r\\n\\ud83e\\udea7 Promotional WhatsApp\\r\\n\\ud83c\\udf10 Website Development\\r\\n\\ud83c\\udf9e Social Media", "*{{1}}* is your verification code. For your security, do not share this code.", "view flow", "This is the testing template, testing in VPS, if you receive this message then send a message that is working,\\r\\n*FastAPI working correctly*", "view flow"]', 'template_status': '["APPROVED", "APPROVED", "REJECTED", "APPROVED", "REJECTED"]', 'template_button': '["[{\\"type\\": \\"QUICK_REPLY\\", \\"text\\": \\"Yes\\"}, {\\"type\\": \\"QUICK_REPLY\\", \\"text\\": \\"No\\"}, {\\"type\\": \\"QUICK_REPLY\\", \\"text\\": \\"Stop\\"}]", "[{\\"type\\": \\"URL\\", \\"text\\": \\"Copy code\\", \\"url\\": \\"https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}\\", \\"example\\": [\\"https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456\\"]}]", "[{\\"type\\": \\"FLOW\\", \\"text\\": \\"Open flow!\\", \\"flow_id\\": 529836456632932, \\"flow_action\\": \\"NAVIGATE\\", \\"navigate_screen\\": \\"ITSOLUTION\\"}]", "null", "[{\\"type\\": \\"FLOW\\", \\"text\\": \\"Open flow!\\", \\"flow_id\\": 529836456632932, \\"flow_action\\": \\"NAVIGATE\\", \\"navigate_screen\\": \\"ITSOLUTION\\"}]"]', 'template_media': '["TEXT", "N/A", "N/A", "TEXT", "N/A"]', 'scheduled_times': <QuerySet []>, 'ip_address': '', 'coins': 984, 'marketing_coins': 989, 'authentication_coins': -5, 'report_list': <QuerySet [<ReportInfo: ReportInfo object (520)>, <ReportInfo: ReportInfo object (521)>, <ReportInfo: ReportInfo object (522)>, <ReportInfo: ReportInfo object (523)>, <ReportInfo: ReportInfo object (524)>, <ReportInfo: ReportInfo object (525)>, <ReportInfo: ReportInfo object (618)>, <ReportInfo: ReportInfo object (619)>, <ReportInfo: ReportInfo object (678)>, <ReportInfo: ReportInfo object (679)>, <ReportInfo: ReportInfo object (680)>, <ReportInfo: ReportInfo object (681)>, <ReportInfo: ReportInfo object (734)>, <ReportInfo: ReportInfo object (735)>, <ReportInfo: ReportInfo object (736)>, <ReportInfo: ReportInfo object (737)>, <ReportInfo: ReportInfo object (738)>, <ReportInfo: ReportInfo object (739)>, <ReportInfo: ReportInfo object (740)>, <ReportInfo: ReportInfo object (741)>, '...(remaining elements truncated)...']>, 'campaign_list': [{'template_id': '603400115479721', 'template_language': 'en', 'template_name': 'testingnew09', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'To prevent service interruptions,\r\n\r\n TM ID 1202172932380486133 (It Solution 4 India) update  in your DLT account.\r\n\r\nPlease contact our sales representative if you need any help.\r\n\r\nIt Solution 4 India\r\nI appreciate you taking the time to consider this.\r\n\r\nServices:-\r\n\r\n📱 Bulk SMS \r\n🔊 Voce Call\r\n📲 Transitional SMS\r\n📱 Promotional SMS\r\n📟 Transitional WhatsApp\r\n🪧 Promotional WhatsApp\r\n🌐 Website Development\r\n🎞 Social Media', 'button': [{'type': 'QUICK_REPLY', 'text': 'Yes'}, {'type': 'QUICK_REPLY', 'text': 'No'}, {'type': 'QUICK_REPLY', 'text': 'Stop'}]}, {'template_id': '1101669471656797', 'template_language': 'en', 'template_name': 'authtemp001', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is your verification code. For your security, do not share this code.', 'button': [{'type': 'URL', 'text': 'Copy code', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '1334095174670048', 'template_language': 'en', 'template_name': 'authtemp6565', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'AUTHENTICATION', 'template_data': '*{{1}}* is your verification code. For your security, do not share this code.', 'button': [{'type': 'URL', 'text': 'Copy code', 'url': 'https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp{{1}}', 'example': ['https://www.whatsapp.com/otp/code/?otp_type=COPY_CODE&code_expiration_minutes=10&code=otp123456']}]}, {'template_id': '474056875696175', 'template_language': 'en', 'template_name': 'testsfs', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '1698079247693298', 'template_language': 'en', 'template_name': 'singlecointesst', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Greetings from IT SOLUTION 4 INDIA 🤝\r\n\r\nIT SOLUTION 4 INDIA is a one of the best IT Advertising Company in pan india , \r\n\r\nwe provide various type of services in all-over pan India such as 👇🎯\r\n\r\n1. 💬Bulk SMS\r\n2. 📝Lead Generation \r\n3. 👩\u200d💻Digital Marketing \r\n4. 📞Voice calls\r\n5. ☎️IVR Service\r\n6. 📝Website Development\r\n7. 🔖E-commerce Management \r\n8. 🔭Graphic Designing \r\n9. 📱Election Campaign Management\r\n\r\nFor More Information👇\r\nItsolution4india.com\r\n\r\n📞 91-9711618080', 'button': None}, {'template_id': '1354060482706647', 'template_language': 'en', 'template_name': 'feedback_flow_msg01', 'media_type': 'N/A', 'media_link': None, 'status': 'REJECTED', 'category': 'UTILITY', 'template_data': 'view flow', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 529836456632932, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1068533688357638', 'template_language': 'en', 'template_name': 'twobhklastmarket', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/467283645_1068533691690971_2372565242443929333_n.png?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=8K7hrCuZzOgQ7kNvgGolp8G&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaILPFmHtesSbTtO5INyQtR08IH1lW0o_Jw78TQ_4A0ESV&oe=6784DFBB', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': '*CHEAPEST 2BHK IN DLF CAPITAL GREENS*\r\n\r\n🌲Garden Facing - *₹2.17Cr*💥\r\n(with two car parkings)\r\n\r\n*"Watch Youtube Video"* 🎥👇🏻\r\nhttps://youtube.com/shorts/I6BgTLpjiNA?feature=share\r\n\r\n🚨 *Call*  9818088414 📞', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+919818088414'}, {'type': 'URL', 'text': 'Watch Youtube Video', 'url': 'https://youtube.com/shorts/I6BgTLpjiNA?feature=share'}]}, {'template_id': '2096805310749052', 'template_language': 'en', 'template_name': 'twobhkcr', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/461411584_2096805314082385_3105733813892781487_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=4sFs-nFD9G8Q7kNvgFEnf0X&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaICMoovyeMA1YYzr_ZcimN548zm81HDFZww9xYf14dtZh&oe=6784F326', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': '*CHEAPEST 2BHK IN DLF CAPITAL GREENS*\r\n\r\n🌲Garden Facing - *₹2.15Cr*💥\r\n(with two car parkings)\r\n\r\n*"Watch Youtube Video"* 🎥👇🏻\r\nhttps://youtube.com/shorts/I6BgTLpjiNA?feature=share\r\n\r\n🚨 *Call*  9818088414 📞', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+919818088414'}, {'type': 'URL', 'text': 'watch Full Video', 'url': 'https://youtube.com/shorts/I6BgTLpjiNA'}]}, {'template_id': '581766297584038', 'template_language': 'en', 'template_name': 'dlt_green1', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/445958209_581766307584037_5004244178564423703_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=8FV4d8ucm0AQ7kNvgEGwLcH&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaIKw5YF0h5KBI7nC5IdySGCfWNJUAyx96bKrIEhNcSgq1&oe=6784EEC8', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': '*CHEAPEST 2BHK IN DLF CAPITAL GREENS*\r\n🌲Garden Facing - *₹2.15Cr*💥\r\n(with two car parkings)\r\n\r\n*"Watch Youtube Video"* 🎥👇🏻\r\nhttps://youtube.com/shorts/I6BgTLpjiNA?feature=share\r\n\r\n🚨 *Call*  9818088414 📞', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+919818088414'}]}, {'template_id': '1108319741003009', 'template_language': 'en', 'template_name': 'dhruv_te', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Testing content', 'button': None}, {'template_id': '1517368488922306', 'template_language': 'en', 'template_name': 'twrcontentnew', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/464396059_1517368492255639_2030614733044751746_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=g6R9krNfE4cQ7kNvgFbRXpa&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaIKzZPtqHeD04Ce7rOUwYt_3jEC1VFA1tZpJQMXqVjC4T&oe=6784D62F', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': '*🎉 11th Anniversary Special Offer! 🎉*\r\n\r\nCelebrate with us and grab an exclusive deal:\r\n\r\n*🏋\u200d♂ Get 10 Months for Just ₹10,000*\r\n💥*Hurry, 20 slots ONLY!*💥\r\n\r\n📍 Location: Sec 17A, Huda Market, Gurugram \r\n🕔 Open: All days, 5:30 AM - 10 PM  \r\n\r\n*Services Offered:*\r\n* CrossFit  \r\n* Aerobics  \r\n* Bhangra  \r\n* Yoga  \r\n* Zumba  \r\n* Steam and Shower  \r\n* Diet Consultancy  \r\n\r\nDon’t miss out on this limited-time offer. Get fit, stay strong, and save big!', 'button': [{'type': 'PHONE_NUMBER', 'text': 'CALL Now', 'phone_number': '+919711111194'}, {'type': 'URL', 'text': 'LOCATION', 'url': 'https://maps.app.goo.gl/xCRWYtZuD4yw7g5V6'}]}, {'template_id': '521564564363804', 'template_language': 'en', 'template_name': 'img_temp_tset01', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/322467806_521564567697137_5417807191056330456_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=AtEhki0HX7cQ7kNvgHAIedE&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaICkbQ4bEFLHkR0XfJh3wvuP3piDcURcKVBK5h8fSSdYu&oe=6784FB46', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Hello Existing User,\r\n\r\nLoan request for Rs.200000 at Olvy (Smartcoin) has been Approved. \r\n\r\nClick below link to complete journey', 'button': None}, {'template_id': '445016465298331', 'template_language': 'en', 'template_name': 'test_vps_temp', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'This is the testing template, testing in VPS, if you receive this message then send a message that is working,\r\n*FastAPI working correctly*', 'button': None}, {'template_id': '1747612316049979', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}, {'template_id': '415028204999055', 'template_language': 'en', 'template_name': 'websitelink', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'website link testing content', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+918285055176'}, {'type': 'URL', 'text': 'Visit Website', 'url': 'https://www.itsolution4india.com/'}]}, {'template_id': '1186375309291656', 'template_language': 'en', 'template_name': 'singlecoineretrt', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Greetings from IT SOLUTION 4 INDIA 🤝\r\n\r\nIT SOLUTION 4 INDIA is a one of the best IT Advertising Company in pan india , \r\n\r\nwe provide various type of services in all-over pan India such as 👇🎯\r\n\r\n1. 💬Bulk SMS\r\n2. 📝Lead Generation \r\n3. 👩\u200d💻Digital Marketing \r\n4. 📞Voice calls\r\n5. ☎️IVR Service\r\n6. 📝Website Development\r\n7. 🔖E-commerce Management \r\n8. 🔭Graphic Designing \r\n9. 📱Election Campaign Management\r\n\r\nFor More Information👇\r\nItsolution4india.com\r\n\r\n📞 91-9711618080', 'button': None}, {'template_id': '1064371118714373', 'template_language': 'en', 'template_name': 'testmantejbutton', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Test content for button', 'button': [{'type': 'PHONE_NUMBER', 'text': 'Call Now', 'phone_number': '+918285055176'}, {'type': 'QUICK_REPLY', 'text': 'Interested'}, {'type': 'QUICK_REPLY', 'text': 'Not Interested'}, {'type': 'QUICK_REPLY', 'text': 'Stop'}]}, {'template_id': '526359070302517', 'template_language': 'en', 'template_name': 'flow_testing02', 'media_type': 'N/A', 'media_link': None, 'status': 'REJECTED', 'category': 'MARKETING', 'template_data': 'view flow', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 1499708400746445, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '1220481305699460', 'template_language': 'en', 'template_name': 'img_temp_tset', 'media_type': 'IMAGE', 'media_link': 'https://scontent.whatsapp.net/v/t61.29466-34/454975619_1220481309032793_4833257699174679729_n.jpg?ccb=1-7&_nc_sid=8b1bef&_nc_ohc=VDV98fbWHsQQ7kNvgGb_rmQ&_nc_zt=3&_nc_ht=scontent.whatsapp.net&edm=AH51TzQEAAAA&_nc_gid=AiBAqCvi1VqXfGDwtz4JNt5&oh=01_Q5AaILFw6vLMfsYFx_B5n-LhfLLQyLC0wZ3NhbPIe_Ts8bpB&oe=6784F224', 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Testing Image message, customize your Image body text here.', 'button': None}, {'template_id': '1527479361234438', 'template_language': 'en', 'template_name': 'test_main_flows', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'view flow', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 548015007851699, 'flow_action': 'NAVIGATE', 'navigate_screen': 'RECOMMEND'}]}, {'template_id': '1083617823509778', 'template_language': 'en_GB', 'template_name': 'feedback_flow_msg012', 'media_type': 'N/A', 'media_link': None, 'status': 'REJECTED', 'category': 'MARKETING', 'template_data': 'view flow', 'button': [{'type': 'FLOW', 'text': 'Open flow!', 'flow_id': 529836456632932, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '535329105961250', 'template_language': 'en', 'template_name': 'test_template', 'media_type': 'N/A', 'media_link': None, 'status': 'REJECTED', 'category': 'MARKETING', 'template_data': 'Hello world!', 'button': [{'type': 'FLOW', 'text': 'View Flow', 'flow_id': 8806528636035312, 'flow_action': 'NAVIGATE', 'navigate_screen': 'QUESTION_ONE'}]}, {'template_id': '421545777688449', 'template_language': 'en', 'template_name': 'sign_flow_templates0890', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Hello world!', 'button': [{'type': 'FLOW', 'text': 'View Flow', 'flow_id': 1196229561479038, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '8633393103395396', 'template_language': 'en', 'template_name': 'sign_flow_template98', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Hello world!', 'button': [{'type': 'FLOW', 'text': 'View Flow', 'flow_id': 1196229561479038, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '9102030833164090', 'template_language': 'en', 'template_name': 'sign_flow_template_clone', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Hello world!', 'button': [{'type': 'FLOW', 'text': 'View Flow', 'flow_id': 1196229561479038, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}], 'username': 'test_demo@gmail.com', 'WABA_ID': '389460670923677', 'PHONE_ID': '344709618736355', 'final_invalid_numbers': ['919582414033'], 'final_valid_numbers': ['916361161836']}
