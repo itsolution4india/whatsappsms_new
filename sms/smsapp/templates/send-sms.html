@@ -6,23 +6,36 @@
     display: none;
   }
   .popup {
-        display: inline-block;
-        background-color: #f8f9fa;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+    display: inline-block;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .alert {
-        margin-bottom: 20px;
-        padding: 10px;
-    }
+.popup-main {
+    position: fixed;
+    z-index: 3999;
+    background: #fff;
+    width: 700px;
+    max-height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+}
 
-    .btn {
-        margin-left: 10px;
-        padding: 5px 10px;
-        cursor: pointer;
-    }
+.alert {
+    padding: 10px;
+}
+
+.btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 </style>
 {% endblock %}
 
@@ -160,7 +173,8 @@
         </div>
       </div>
 
-      <div>
+      {% if final_valid_numbers %}
+    <div class="popup-main" id="popup-main">
         <!-- Final Valid Numbers Section -->
         <div class="alert alert-success">
             <strong>Final Valid Numbers:</strong>
@@ -178,7 +192,11 @@
                 <button class="btn btn-primary" onclick="copyToClipboard('invalid-numbers-popup')">Copy</button>
             </div>
         </div>
+
+        <!-- Close Button -->
+        <button class="btn btn-danger" onclick="closePopup()">Close</button>
     </div>
+{% endif %}
       <!-- template report -->
       <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
 
@@ -271,20 +289,25 @@
 <!-- / Layout wrapper -->
 <script>
   function copyToClipboard(elementId) {
-      const element = document.getElementById(elementId);
-      const textToCopy = element.innerText;
+    const element = document.getElementById(elementId);
+    const textToCopy = element.innerText;
 
-      // Create a temporary textarea to copy text to the clipboard
-      const textArea = document.createElement('textarea');
-      textArea.value = textToCopy;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
+    // Create a temporary textarea to copy text to the clipboard
+    const textArea = document.createElement('textarea');
+    textArea.value = textToCopy;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
 
-      // Optional: Provide feedback to user
-      alert('Numbers copied to clipboard!');
-  }
+    // Optional: Provide feedback to user
+    alert('Numbers copied to clipboard!');
+}
+
+function closePopup() {
+    const popup = document.getElementById("popup-main");
+    popup.style.display = "none";  // Hide the popup by setting display to none
+}
 </script>
 <script>
 
