@@ -156,7 +156,7 @@
                       {% if final_valid_numbers %}
                       <div class="alert alert-success">
                           <h6>Valid Numbers:</h6>
-                          <textarea id="validNumbers" class="form-control" readonly rows="5">{{ final_valid_numbers | join(', ') }}</textarea>
+                          <textarea id="validNumbers" class="form-control" readonly rows="5">{{ final_valid_numbers|join(", ") }}</textarea>
                           <button class="btn btn-success mt-2" onclick="copyToClipboard('validNumbers')">Copy Valid Numbers</button>
                       </div>
                       {% endif %}
@@ -164,7 +164,7 @@
                       {% if final_invalid_numbers %}
                       <div class="alert alert-danger mt-3">
                           <h6>Invalid Numbers:</h6>
-                          <textarea id="invalidNumbers" class="form-control" readonly rows="5">{{ final_invalid_numbers | join(', ') }}</textarea>
+                          <textarea id="invalidNumbers" class="form-control" readonly rows="5">{{ final_invalid_numbers|join(", ") }}</textarea>
                           <button class="btn btn-danger mt-2" onclick="copyToClipboard('invalidNumbers')">Copy Invalid Numbers</button>
                       </div>
                       {% endif %}
