@@ -703,7 +703,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
 
 def get_latest_rows_by_contacts(contact_numbers):
     try:
-        # Connect to the database
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -715,33 +714,30 @@ def get_latest_rows_by_contacts(contact_numbers):
         
         cursor = connection.cursor()
         
-        # Prepare the query
         query = """
-            SELECT Date, display_phone_number, phone_number_id, waba_id, contact_wa_id, 
-                   status, message_timestamp, error_code, error_message, contact_name, 
-                   message_from, message_type, message_body
-            FROM webhook_responses
-            WHERE contact_wa_id IN (%s)
-            ORDER BY message_timestamp DESC
-        """ % ', '.join(['%s'] * len(contact_numbers))  # Dynamically inject number of contact numbers
-        
-        # Execute the query
+            SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
+                   r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
+                   r.message_from, r.message_type, r.message_body
+            FROM webhook_responses r
+            INNER JOIN (
+                SELECT contact_wa_id, MAX(message_timestamp) AS latest_message
+                FROM webhook_responses
+                WHERE contact_wa_id IN (%s)
+                GROUP BY contact_wa_id
+            ) latest 
+            ON r.contact_wa_id = latest.contact_wa_id AND r.message_timestamp = latest.latest_message
+            ORDER BY r.message_timestamp DESC
+        """ % ', '.join(['%s'] * len(contact_numbers))
+
         cursor.execute(query, contact_numbers)
-        
-        # Fetch the result
         rows = cursor.fetchall()
-        
-        # Define the columns
         columns = [
             "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
             "status", "message_timestamp", "error_code", "error_message", "contact_name",
             "message_from", "message_type", "message_body"
         ]
         
-        # Create a DataFrame
         df = pd.DataFrame(rows, columns=columns)
-        
-        # Close the cursor and connection
         cursor.close()
         connection.close()
         
