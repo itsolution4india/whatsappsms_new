@@ -230,7 +230,7 @@ def Send_Sms(request):
                     logger.info(f"invalid_numbers {invalid_numbers}")
                     results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
                     logger.info(f"results {results.json()}")
-                    validation_data = download_campaign_report(request, None, False, invalid_numbers)
+                    validation_data = get_latest_rows_by_contacts(invalid_numbers)
                     context.update({"validation_data":validation_data})
                 else:
                     logger.info("No any invalid numbers")
@@ -699,6 +699,60 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         logger.error(f"An unexpected error occurred: {str(e)}")
         messages.error(request, f"Error: {str(e)}")
         return redirect('reports')
+
+def get_latest_rows_by_contacts(contact_numbers):
+    try:
+        # Connect to the database
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
+        )
+        
+        cursor = connection.cursor()
+        
+        # Prepare the query
+        query = """
+            SELECT Date, display_phone_number, phone_number_id, waba_id, contact_wa_id, 
+                   status, message_timestamp, error_code, error_message, contact_name, 
+                   message_from, message_type, message_body
+            FROM webhook_responses
+            WHERE contact_wa_id IN (%s)
+            ORDER BY message_timestamp DESC
+        """ % ', '.join(['%s'] * len(contact_numbers))  # Dynamically inject number of contact numbers
+        
+        # Execute the query
+        cursor.execute(query, contact_numbers)
+        
+        # Fetch the result
+        rows = cursor.fetchall()
+        
+        # Define the columns
+        columns = [
+            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+            "status", "message_timestamp", "error_code", "error_message", "contact_name",
+            "message_from", "message_type", "message_body"
+        ]
+        
+        # Create a DataFrame
+        df = pd.DataFrame(rows, columns=columns)
+        
+        # Close the cursor and connection
+        cursor.close()
+        connection.close()
+        
+        return df
+    
+    except mysql.connector.Error as err:
+        print(f"Database error: {err}")
+        return None
+
+    except Exception as e:
+        print(f"An unexpected error occurred: {str(e)}")
+        return None
 
 @login_required
 def get_report_insight(request, report_id):
