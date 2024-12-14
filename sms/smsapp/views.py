@@ -31,7 +31,7 @@ import json
 import random
 import time
 from .functions.template_msg import header_handle, fetch_templates, delete_whatsapp_template
-from .fastapidata import send_api, send_flow_message_api, send_bot_api
+from .fastapidata import send_api, send_flow_message_api, send_bot_api, send_validate_req
 from django.utils.timezone import now
 from .functions.flows import create_message_template_with_flow, send_flow_messages_with_report, get_template_type, get_flow_id, get_flows
 from .functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages, schedule_subtract_coins
@@ -208,16 +208,18 @@ def Send_Sms(request):
                 media_id = None
             uploaded_file = request.FILES.get("files", None)
             contacts = request.POST.get("contact_number", "").strip()
-
+            
+            logger.info(contacts)
             action_type = request.POST.get("action_type")
 
-            if not campaign_title or not template_name:
+            if (not campaign_title or not template_name) and action_type == "submit":
                 messages.error(request, "Campaign title and template name are required.")
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
-            all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
-
+            all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount)
+            
+            
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(contact_list))
             if not coin_validation:
@@ -226,6 +228,9 @@ def Send_Sms(request):
             logger.info(f"Send_Sms: {current_user}, {display_phonenumber_id(request)}, {template_name}, {media_id}, {all_contact}, {contact_list}, {campaign_title}, {submitted_variables}")
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
+            elif action_type == 'validateRequest':
+                results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
+                logger.info(results)
             else:
                 schedule_date = request.POST.get("schedule_date")
                 schedule_time = request.POST.get("schedule_time")
@@ -249,6 +254,7 @@ def Send_Sms(request):
 import re
 def validate_phone_numbers(request, contacts, uploaded_file, discount):
     valid_numbers = set()
+    invalid_numbers = set()
     
     # Get user's country permissions
     try:
@@ -288,13 +294,19 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
                 if cell.value is not None:
                     numbers_list.add(str(cell.value).strip())
 
+    db_phonenumbers = get_unique_phone_numbers()
+    
     # Validate phone numbers against permitted country patterns
     for phone_number in numbers_list:
         phone_number = phone_number.strip()
+        if phone_number not in db_phonenumbers:
+            invalid_numbers.add(phone_number)
         for country, pattern in patterns.items():
             if pattern.match(phone_number):
                 valid_numbers.add(phone_number)
                 break
+        else:
+            invalid_numbers.add(phone_number)
 
     # Get whitelist and blacklist numbers
     whitelist_number, blacklist_number = whitelist_blacklist(request)
@@ -337,7 +349,7 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
     
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
     
-    return valid_numbers, final_list
+    return valid_numbers, final_list, list(set(invalid_numbers))
 
 ####################
 @login_required
@@ -560,7 +572,33 @@ def delete_report(request, report_id):
         return JsonResponse({'error': 'Report not found'}, status=404)
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=500)
-    
+
+def get_unique_phone_numbers():
+    try:
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
+        )
+        cursor = connection.cursor()
+        query = "SELECT DISTINCT contact_wa_id FROM webhook_responses"
+        cursor.execute(query)
+        unique_numbers = [row[0] for row in cursor.fetchall()]
+        cursor.close()
+        connection.close()
+
+        return unique_numbers
+
+    except mysql.connector.Error as err:
+        logger.error(f"Database error: {err}")
+        return []
+
+    except Exception as e:
+        logger.error(f"An unexpected error occurred: {str(e)}")
+        return []
 
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
@@ -1313,7 +1351,7 @@ def send_flow_message(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(contact_list))
@@ -2113,17 +2151,3 @@ def user_interaction(request):
         return JsonResponse({'status': 'error', 'message': 'Missing required fields'})
     
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
-
-@login_required
-def train_bot(request):
-    
-    return render(request, "train.html")
-
-def chat():
-    user_message = request.json.get('message', '')
-    
-    bot_response = process_wit_response(user_message)
-    
-    return jsonify({
-        'response': bot_response
-    })

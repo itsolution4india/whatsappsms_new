@@ -37,6 +37,23 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
     return 
 # Example usage
 
+def send_validate_req(token: str, phone_number_id: str, contact_list: List[str], body_text: str):
+    url="https://wtsdealnow.in/validate_numbers_api/"
+    
+    headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+    data = {
+        "token":token,
+        "phone_number_id": phone_number_id,
+        "contact_list": contact_list,
+        "body_text": body_text
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    return response
+
 def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: List[str]):
     url = "https://wtsdealnow.in/send_flow_message/"
     
