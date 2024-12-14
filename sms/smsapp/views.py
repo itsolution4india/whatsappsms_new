@@ -208,8 +208,6 @@ def Send_Sms(request):
                 media_id = None
             uploaded_file = request.FILES.get("files", None)
             contacts = request.POST.get("contact_number", "").strip()
-            
-            logger.info(contacts)
             action_type = request.POST.get("action_type")
 
             if (not campaign_title or not template_name) and action_type == "submit":
