@@ -245,6 +245,7 @@ def Send_Sms(request):
                         "final_invalid_numbers":final_invalid_numbers,
                         "final_valid_numbers": final_valid_numbers
                         })
+                    logger.info(f"Context being passed to template: {context}")
                 else:
                     logger.info("No any invalid numbers")
             else:
