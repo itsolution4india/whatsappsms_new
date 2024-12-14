@@ -235,7 +235,7 @@ def Send_Sms(request):
                     final_invalid_numbers = validation_data['contact_wa_id'].to_list()
                     final_valid_numbers = [item for item in contacts if item not in final_invalid_numbers]
                     
-                    logger.info(f"db output {validation_data}")
+                    logger.info(f"db output {final_invalid_numbers} {final_valid_numbers}")
                     context.update({
                         "final_invalid_numbers":final_invalid_numbers,
                         "final_valid_numbers": final_valid_numbers
