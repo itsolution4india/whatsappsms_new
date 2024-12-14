@@ -231,8 +231,15 @@ def Send_Sms(request):
                     results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
                     logger.info(f"results {results.json()}")
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
+                    validation_data = validation_data[validation_data['error_code'] == 131026]
+                    final_invalid_numbers = validation_data['contact_wa_id'].to_list()
+                    final_valid_numbers = [item for item in contacts if item not in final_invalid_numbers]
+                    
                     logger.info(f"db output {validation_data}")
-                    context.update({"validation_data":validation_data})
+                    context.update({
+                        "final_invalid_numbers":final_invalid_numbers,
+                        "final_valid_numbers": final_valid_numbers
+                        })
                 else:
                     logger.info("No any invalid numbers")
             else:

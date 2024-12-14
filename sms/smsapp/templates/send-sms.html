@@ -141,10 +141,86 @@
           </div>
         </div>
       </div>
-      {{ validation_data }}
       <!-- template report -->
       <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
 
+        {% if final_invalid_numbers or final_valid_numbers %}
+<div class="modal fade" id="validationResultsModal" tabindex="-1" role="dialog" aria-labelledby="validationResultsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="validationResultsModalLabel">Validation Results</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {% if final_valid_numbers %}
+                <div class="card bg-success text-white mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Valid Numbers
+                        <button class="btn btn-light btn-sm" onclick="copyNumbers('validNumbersList')">
+                            Copy Valid Numbers
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <ul id="validNumbersList" class="list-unstyled">
+                            {% for number in final_valid_numbers %}
+                            <li>{{ number }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if final_invalid_numbers %}
+                <div class="card bg-danger text-white">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        Invalid Numbers
+                        <button class="btn btn-light btn-sm" onclick="copyNumbers('invalidNumbersList')">
+                            Copy Invalid Numbers
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <ul id="invalidNumbersList" class="list-unstyled">
+                            {% for number in final_invalid_numbers %}
+                            <li>{{ number }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyNumbers(listId) {
+    const list = document.getElementById(listId);
+    const numbers = Array.from(list.querySelectorAll('li'))
+        .map(li => li.textContent.trim())
+        .join('\n');
+    
+    navigator.clipboard.writeText(numbers).then(() => {
+        alert('Numbers copied to clipboard!');
+    }).catch(err => {
+        console.error('Failed to copy numbers: ', err);
+        alert('Failed to copy numbers.');
+    });
+}
+
+// Automatically show modal when page loads if results exist
+document.addEventListener('DOMContentLoaded', function() {
+    {% if final_invalid_numbers or final_valid_numbers %}
+    $('#validationResultsModal').modal('show');
+    {% endif %}
+});
+</script>
+{% endif %}
 
         <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary w-100">
           <div>
