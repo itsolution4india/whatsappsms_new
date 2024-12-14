@@ -109,6 +109,7 @@
                   name="contact_number" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
+              <button type="button" class="btn btn-success" onclick="validateNumbers()">validate</button>
               <button type="button" id="toggleScheduleButton" class="btn btn-secondary"
                 onclick="toggleScheduleCall()">Schedule Call</button>
 
@@ -264,6 +265,16 @@
     }
     // Set the action type to "schedule"
     setActionType('schedule');
+    // Submit the form
+    document.getElementById('mediaForm').submit();
+  }
+
+  function validateNumbers() {
+    // Ensure the user selected both date and time
+    var validate_numbers = document.getElementById('floatingTextarea').value;
+
+    // Set the action type to "schedule"
+    setActionType('validateRequest');
     // Submit the form
     document.getElementById('mediaForm').submit();
   }
