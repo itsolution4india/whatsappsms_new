@@ -141,7 +141,41 @@
           </div>
         </div>
       </div>
-
+      {% if final_valid_numbers or final_invalid_numbers %}
+      <!-- Pop-up modal to display numbers -->
+      <div class="modal fade" id="numberValidationModal" tabindex="-1" role="dialog" aria-labelledby="numberValidationModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="numberValidationModalLabel">Validation Results</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                      {% if final_valid_numbers %}
+                      <div class="alert alert-success">
+                          <h6>Valid Numbers:</h6>
+                          <textarea id="validNumbers" class="form-control" readonly rows="5">{{ final_valid_numbers | join(', ') }}</textarea>
+                          <button class="btn btn-success mt-2" onclick="copyToClipboard('validNumbers')">Copy Valid Numbers</button>
+                      </div>
+                      {% endif %}
+                      
+                      {% if final_invalid_numbers %}
+                      <div class="alert alert-danger mt-3">
+                          <h6>Invalid Numbers:</h6>
+                          <textarea id="invalidNumbers" class="form-control" readonly rows="5">{{ final_invalid_numbers | join(', ') }}</textarea>
+                          <button class="btn btn-danger mt-2" onclick="copyToClipboard('invalidNumbers')">Copy Invalid Numbers</button>
+                      </div>
+                      {% endif %}
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  {% endif %}
       <!-- template report -->
       <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
 
@@ -232,7 +266,21 @@
   </div>
 </div>
 <!-- / Layout wrapper -->
+<script>
+  function copyToClipboard(elementId) {
+      var copyText = document.getElementById(elementId);
+      copyText.select();
+      document.execCommand("copy");
+      alert("Copied to clipboard: " + copyText.value);
+  }
 
+  // Automatically trigger the modal pop-up if there are valid or invalid numbers
+  {% if final_valid_numbers or final_invalid_numbers %}
+  $(document).ready(function(){
+      $('#numberValidationModal').modal('show');
+  });
+  {% endif %}
+</script>
 <script>
 
   // Usage example
