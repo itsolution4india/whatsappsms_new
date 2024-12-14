@@ -210,10 +210,6 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
-            numbers_list = set()
-            if contacts:
-                numbers_list.update(contacts.split("\r\n"))
-                
             if (not campaign_title or not template_name) and action_type == "submit":
                 messages.error(request, "Campaign title and template name are required.")
                 return render(request, "send-sms.html", context)
@@ -237,7 +233,7 @@ def Send_Sms(request):
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
                     validation_data = validation_data[validation_data['error_code'] == 131026]
                     final_invalid_numbers = validation_data['contact_wa_id'].to_list()
-                    final_valid_numbers = [item for item in numbers_list if item not in final_invalid_numbers]
+                    final_valid_numbers = [item for item in contacts if item not in final_invalid_numbers]
                     
                     logger.info(f"db output {final_invalid_numbers} {final_valid_numbers}")
                     context.update({
