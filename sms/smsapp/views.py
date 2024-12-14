@@ -246,6 +246,7 @@ def Send_Sms(request):
                         "final_valid_numbers": ', '.join(str(num) for num in final_valid_numbers)
                         })
                     logger.info(f"Context being passed to template: {context}")
+                    return render(request, "send-sms.html", context)
                 else:
                     logger.info("No any invalid numbers")
             else:
