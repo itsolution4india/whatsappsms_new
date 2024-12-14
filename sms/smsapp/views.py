@@ -231,6 +231,7 @@ def Send_Sms(request):
                     results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
                     logger.info(f"results {results.json()}")
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
+                    logger.info(f"db output {validation_data}")
                     context.update({"validation_data":validation_data})
                 else:
                     logger.info("No any invalid numbers")
