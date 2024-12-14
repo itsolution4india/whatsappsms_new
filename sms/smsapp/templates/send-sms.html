@@ -25,6 +25,7 @@
     display: flex;
     padding: 10px;
     gap: 10px;
+    border-radius: 7px;
 }
 
 .alert {
@@ -35,6 +36,11 @@
     margin-left: 10px;
     padding: 5px 10px;
     cursor: pointer;
+}
+.popup_close {
+  position: absolute;
+    right: -10px;
+    top: -5px;
 }
 </style>
 {% endblock %}
@@ -194,7 +200,7 @@
         </div>
 
         <!-- Close Button -->
-        <button class="btn btn-danger" onclick="closePopup()">Close</button>
+        <button class="btn btn-danger popup_close" onclick="closePopup()">Close</button>
     </div>
 {% endif %}
       <!-- template report -->
