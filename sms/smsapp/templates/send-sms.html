@@ -5,6 +5,24 @@
   .hideelement {
     display: none;
   }
+  .popup {
+        display: inline-block;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .alert {
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+
+    .btn {
+        margin-left: 10px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
 </style>
 {% endblock %}
 
@@ -142,57 +160,25 @@
         </div>
       </div>
 
-      {% if final_invalid_numbers or final_valid_numbers %}
-<div class="modal fade" id="validationResultsModal" tabindex="-1" role="dialog" aria-labelledby="validationResultsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="validationResultsModalLabel">Validation Results</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+      <div>
+        <!-- Final Valid Numbers Section -->
+        <div class="alert alert-success">
+            <strong>Final Valid Numbers:</strong>
+            <div id="valid-numbers-popup" class="popup">
+                <span>{{ final_valid_numbers|safe }}</span>
+                <button class="btn btn-primary" onclick="copyToClipboard('valid-numbers-popup')">Copy</button>
             </div>
-            <div class="modal-body">
-                {% if final_valid_numbers %}
-                <div class="card bg-success text-white mb-3">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        Valid Numbers
-                        <button class="btn btn-light btn-sm" onclick="copyValidNumbers()">
-                            Copy Valid Numbers
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <textarea id="validNumbersList" class="form-control" rows="5" readonly>
-{%- for number in final_valid_numbers -%}
-{{ number }}
-{%- endfor -%}</textarea>
-                    </div>
-                </div>
-                {% endif %}
-
-                {% if final_invalid_numbers %}
-                <div class="card bg-danger text-white">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        Invalid Numbers
-                        <button class="btn btn-light btn-sm" onclick="copyInvalidNumbers()">
-                            Copy Invalid Numbers
-                        </button>
-                    </div>
-                    <div class="card-body">
-                        <textarea id="invalidNumbersList" class="form-control" rows="5" readonly>
-{%- for number in final_invalid_numbers -%}
-{{ number }}
-{%- endfor -%}</textarea>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    
+        <!-- Final Invalid Numbers Section -->
+        <div class="alert alert-danger">
+            <strong>Final Invalid Numbers:</strong>
+            <div id="invalid-numbers-popup" class="popup">
+                <span>{{ final_invalid_numbers|safe }}</span>
+                <button class="btn btn-primary" onclick="copyToClipboard('invalid-numbers-popup')">Copy</button>
             </div>
         </div>
     </div>
-</div>
       <!-- template report -->
       <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
 
@@ -284,27 +270,22 @@
 </div>
 <!-- / Layout wrapper -->
 <script>
-  function copyValidNumbers() {
-      const validNumbersTextarea = document.getElementById('validNumbersList');
-      validNumbersTextarea.select();
+  function copyToClipboard(elementId) {
+      const element = document.getElementById(elementId);
+      const textToCopy = element.innerText;
+
+      // Create a temporary textarea to copy text to the clipboard
+      const textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
       document.execCommand('copy');
-      alert('Valid numbers copied to clipboard!');
+      document.body.removeChild(textArea);
+
+      // Optional: Provide feedback to user
+      alert('Numbers copied to clipboard!');
   }
-  
-  function copyInvalidNumbers() {
-      const invalidNumbersTextarea = document.getElementById('invalidNumbersList');
-      invalidNumbersTextarea.select();
-      document.execCommand('copy');
-      alert('Invalid numbers copied to clipboard!');
-  }
-  
-  // Automatically show modal when page loads if results exist
-  document.addEventListener('DOMContentLoaded', function() {
-      {% if final_invalid_numbers or final_valid_numbers %}
-      $('#validationResultsModal').modal('show');
-      {% endif %}
-  });
-  </script>
+</script>
 <script>
 
   // Usage example
