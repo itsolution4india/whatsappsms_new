@@ -30,6 +30,7 @@
 
 .alert {
     padding: 10px;
+    margin-bottom: 0 !important;
 }
 
 .btn {
@@ -296,16 +297,22 @@
 <script>
   function copyToClipboard(elementId) {
     const element = document.getElementById(elementId);
-    const textToCopy = element.innerText;
-
+    
+    // Get the text and split it by commas, then trim each number
+    const numbers = element.innerText
+      .replace('Copy', '')
+      .split(',')
+      .map(num => num.trim())
+      .join('\n');
+    
     // Create a temporary textarea to copy text to the clipboard
     const textArea = document.createElement('textarea');
-    textArea.value = textToCopy;
+    textArea.value = numbers;
     document.body.appendChild(textArea);
     textArea.select();
     document.execCommand('copy');
     document.body.removeChild(textArea);
-
+    
     // Optional: Provide feedback to user
     alert('Numbers copied to clipboard!');
 }
