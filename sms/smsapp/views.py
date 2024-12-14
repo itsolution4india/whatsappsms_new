@@ -217,7 +217,6 @@ def Send_Sms(request):
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount)
             
-            
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(contact_list))
             if not coin_validation:
@@ -231,6 +230,8 @@ def Send_Sms(request):
                     logger.info(f"invalid_numbers {invalid_numbers}")
                     results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
                     logger.info(f"results {results.json()}")
+                    validation_data = download_campaign_report(request, None, False, invalid_numbers)
+                    context.update({"validation_data":validation_data})
                 else:
                     logger.info("No any invalid numbers")
             else:
