@@ -623,18 +623,21 @@ def get_unique_phone_numbers():
         return []
 
 def modify_dates(df, base_date):
-    time_delta = timedelta(seconds=2)
-    if isinstance(base_date, str):
-        try:
-            base_date = datetime.strptime(base_date, '%m/%d/%Y %H:%M:%S')
-        except ValueError as e:
-            logger.error(f"Error parsing base_date: {e}")
-            return df
-        
-    for i in range(len(df)):
-        if i % 75 == 0:
-            base_date += time_delta
-        df.at[i, 'Date'] = base_date
+    try:
+        time_delta = timedelta(seconds=2)
+        if isinstance(base_date, str):
+            try:
+                base_date = datetime.strptime(base_date, '%m/%d/%Y %H:%M:%S')
+            except ValueError as e:
+                logger.error(f"Error parsing base_date: {e}")
+                return df
+            
+        for i in range(len(df)):
+            if i % 75 == 0:
+                base_date += time_delta
+            df.at[i, 'Date'] = base_date
+    except Exception as e:
+        logger.error(str(e))
         
     return df
 
