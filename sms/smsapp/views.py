@@ -1894,12 +1894,9 @@ class UpdateBalanceReportView(APIView):
             phone_numbers = request.data.get('phone_numbers')
             all_contact = request.data.get('all_contact')
             template_name = request.data.get('template_name')
+            category = request.data.get('category')
 
             user_data = customuser_list_view(request)
-            token, _ = get_token_and_app_id(request)
-            waba_id = display_whatsapp_id(request)
-            response = get_template_details_by_name(token, waba_id, template_name)
-            category = response.get('category', 'Category not found')
 
             if isinstance(user_data, JsonResponse):
                 data = json.loads(user_data.content.decode('utf-8'))
