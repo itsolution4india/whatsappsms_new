@@ -679,7 +679,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         rows = cursor.fetchall()
 
         # Create a dictionary for quick lookup
-        rows_dict = {(row[2], row[4]): row for row in rows if row[5] != 131047}
+        rows_dict = {(row[2], row[4]): row for row in rows if int(row[5]) != 131047}
         
         matched_rows = []
         non_reply_rows = []
