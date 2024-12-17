@@ -674,7 +674,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                     report_date = date_obj.strftime('%m/%d/%Y %H:%M:%S')
                     logger.info(f"Report Date is {report_date}")
                 except ValueError as e:
-                    print(f"Error parsing date: {e}")
+                    logger.error(f"Error parsing date: {e}")
 
             if not matched and non_reply_rows:
                 no_match_num.append(phone)
@@ -1588,7 +1588,6 @@ def delete_template_linkage(request, id):
         
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None):
-    logger.info("got request ------------ - -- --- - -- - - -- - - -- ")
     try:
         # Connect to the database
         connection = mysql.connector.connect(
