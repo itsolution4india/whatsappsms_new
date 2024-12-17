@@ -703,7 +703,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                     report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
                 except ValueError as e:
                     logger.error(f"Error parsing date: {e}")
-
+            logger.info(f"report_date {report_date}, no_match_num {len(no_match_num)}")
             if not matched and non_reply_rows:
                 no_match_num.append(phone)
                 new_row = copy.deepcopy(random.choice(non_reply_rows))
