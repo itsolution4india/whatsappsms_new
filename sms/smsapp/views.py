@@ -659,14 +659,25 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         if len(contact_all) > 100:
             non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
         
+        report_date = None
+        no_match_num = []
         for phone in contact_all:
             matched = False
             row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
+                date_value = row[0]
+                
+                try:
+                    date_obj = datetime.strptime(date_value, '%Y-%m-%d %H:%M:%S')
+                    report_date = date_obj.strftime('%m/%d/%Y %H:%M:%S')
+                    logger.info(f"Report Date is {report_date}")
+                except ValueError as e:
+                    print(f"Error parsing date: {e}")
 
             if not matched and non_reply_rows:
+                no_match_num.append(phone)
                 new_row = copy.deepcopy(random.choice(non_reply_rows))
                 new_row_list = list(new_row)
                 new_row_list[4] = phone  # Update the phone number
