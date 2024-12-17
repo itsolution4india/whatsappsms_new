@@ -234,7 +234,7 @@ def Send_Sms(request):
                 if invalid_numbers:
                     logger.info(f"invalid_numbers {invalid_numbers}")
                     results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
-                    logger.info(f"results {results.json()}")
+                    
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
                     validation_data = validation_data[validation_data['error_code'] == 131026]
                     final_invalid_numbers = validation_data['contact_wa_id'].to_list()
@@ -622,6 +622,26 @@ def get_unique_phone_numbers():
         logger.error(f"An unexpected error occurred: {str(e)}")
         return []
 
+def modify_dates(df, base_date):
+    time_delta = timedelta(seconds=2)
+    for i in range(len(df)):
+        if i % 75 == 0:
+            base_date += time_delta
+        df.at[i, 'Date'] = base_date
+        
+    return df
+
+def update_failed_messages(df, target_numbers):
+    df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+    df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    mask = df['contact_wa_id'].isin(target_numbers)
+    
+    df.loc[mask, 'status'] = 'failed'
+    df.loc[mask, 'error_code'] = '131026'
+    df.loc[mask, 'error_message'] = 'Message undeliverable'
+    
+    return df
+
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
     try:
@@ -671,7 +691,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 
                 try:
                     report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
-                    logger.info(f"Report Date is {report_date}")
                 except ValueError as e:
                     logger.error(f"Error parsing date: {e}")
 
@@ -694,6 +713,16 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         ]
 
         df = pd.DataFrame(matched_rows, columns=header)
+        # Modifiy Dates
+        df = modify_dates(df, report_date)
+        # Validate WhatsApp Phone numbers
+        token, _ = get_token_and_app_id(request)
+        _ = send_validate_req(token, display_phonenumber_id(request), no_match_num, "This is Just a testing message")
+        validation_data = get_latest_rows_by_contacts(no_match_num)
+        validation_data = validation_data[validation_data['error_code'] == 131026]
+        final_invalid_numbers = validation_data['contact_wa_id'].to_list()
+        df = update_failed_messages(df, final_invalid_numbers)
+        
         status_counts_df = df['status'].value_counts().reset_index()
         status_counts_df.columns = ['status', 'count']
         total_unique_contacts = len(df['contact_wa_id'].unique())
@@ -709,10 +738,10 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             response = HttpResponse(content_type='text/csv')
             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
             
-            writer = csv.writer(response)
-            writer.writerow(header)  # Write header
-            writer.writerows(matched_rows)  # Write rows
-            
+            # writer = csv.writer(response)
+            # writer.writerow(header)  # Write header
+            # writer.writerows(matched_rows)  # Write rows
+            df.to_csv(response, index=False)
             return response
     
     except mysql.connector.Error as err:
