@@ -670,8 +670,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 date_value = row[0]
                 
                 try:
-                    date_obj = datetime.strptime(date_value, '%Y-%m-%d %H:%M:%S')
-                    report_date = date_obj.strftime('%m/%d/%Y %H:%M:%S')
+                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
                     logger.info(f"Report Date is {report_date}")
                 except ValueError as e:
                     logger.error(f"Error parsing date: {e}")
