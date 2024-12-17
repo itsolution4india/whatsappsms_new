@@ -679,7 +679,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         rows = cursor.fetchall()
 
         # Create a dictionary for quick lookup
-        rows_dict = {(row[2], row[4], row[5]): row for row in rows}
+        rows_dict = {(row[2], row[4]): row for row in rows if row[5] != '131047'}
         
         matched_rows = []
         non_reply_rows = []
@@ -693,7 +693,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         no_match_num = []
         for phone in contact_all:
             matched = False
-            row = rows_dict.get((Phone_ID, phone, 131047), None)
+            row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
