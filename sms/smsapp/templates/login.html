@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +83,12 @@
      {{ form.as_p }}
 
         <input type="checkbox" id="agree" name="agree" required style="margin-left: 30px; width: auto !important;">
-        <label for="agree" class="terms" style="color: green; font-size: 13px;">Agree &<a href="#" style="color: green; text-decoration: none; font-size: 13px;">terms conditions</a></label>
+        <!-- <label for="agree" class="terms" style="color: green; font-size: 13px;"><a href="javascript:void(0)" onclick="window.open('termsnconditions.pdf','Reports','width=700,height=500,menubar=no,status=no,toolbar=no,location=no,scrollbars=yes,left=200,right=200,directories=no')">Agree terms &amp; conditions</a></label> -->
+        <label for="agree" class="terms" style="color: green; font-size: 13px;">
+            <a href="javascript:void(0)" onclick="window.open('{% static 'assets/pdf/termsnconditions.pdf' %}','Reports','width=700,height=500,menubar=no,status=no,toolbar=no,location=no,scrollbars=yes,left=200,right=200,directories=no')">
+                Agree terms &amp; conditions
+            </a>
+        </label>
 
         <button type="submit" value="Login" style="margin-left: 95px;background-color: #04AA6D; width: 70px;height: 35px;border-radius: 5px;">Login</button>
     </form>
