@@ -177,11 +177,8 @@ def create_message_template_with_flow(waba_id, body_text, lang, category, access
     try:
         response = requests.post(url, headers=headers, json=payload)
         response.raise_for_status()
-        print(response.json())
-        print("Response Content:", response.text)
-        print("Response Status Code:", response.status_code)
         return response.json()
         
     except requests.exceptions.RequestException as e:
-        print(str(e))
+        logger.error(str(e))
         return response
