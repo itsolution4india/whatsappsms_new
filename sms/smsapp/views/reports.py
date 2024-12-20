@@ -2,7 +2,7 @@ from .auth import check_user_permission, username
 from ..models import Templates, ReportInfo
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from ..utils import logger, display_whatsapp_id, display_phonenumber_id
+from ..utils import logger, display_whatsapp_id, display_phonenumber_id, get_token_and_app_id
 import pandas as pd
 import plotly.express as px
 import mysql.connector
@@ -12,6 +12,8 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
+from datetime import datetime, timedelta
+from ..fastapidata import send_validate_req
 
 
 @login_required
@@ -158,7 +160,37 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         if 'connection' in locals() and connection.is_connected():
             cursor.close()
             connection.close()
+
+def modify_dates(df, base_date):
+    try:
+        time_delta = timedelta(seconds=2)
+        if isinstance(base_date, str):
+            try:
+                base_date = datetime.strptime(base_date, '%m/%d/%Y %H:%M:%S')
+            except ValueError as e:
+                logger.error(f"Error parsing base_date: {e}")
+                return df
             
+        for i in range(len(df)):
+            if i % 75 == 0:
+                base_date += time_delta
+            df.at[i, 'Date'] = base_date
+    except Exception as e:
+        logger.error(str(e))
+        
+    return df
+
+def update_failed_messages(df, target_numbers):
+    df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+    df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    mask = df['contact_wa_id'].isin(target_numbers)
+    
+    df.loc[mask, 'status'] = 'failed'
+    df.loc[mask, 'error_code'] = '131026'
+    df.loc[mask, 'error_message'] = 'Message undeliverable'
+    
+    return df
+         
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
     try:
@@ -186,24 +218,34 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         rows = cursor.fetchall()
 
         # Create a dictionary for quick lookup
-        rows_dict = {(row[2], row[4]): row for row in rows}
+        rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
+        error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
         
         matched_rows = []
         non_reply_rows = []
         
-        excluded_error_codes = {131048, 131000, 131042, 131031, 131053}
+        excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047}
     
         if len(contact_all) > 100:
             non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
-        
+            
+        report_date = None
+        no_match_num = []
         for phone in contact_all:
             matched = False
             row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
-
+                date_value = row[0]
+                
+                try:
+                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
+                except ValueError as e:
+                    logger.error(f"Error parsing date: {e}")
+            logger.info(f"report_date {report_date}, no_match_num {len(no_match_num)}")
             if not matched and non_reply_rows:
+                no_match_num.append(phone)
                 new_row = copy.deepcopy(random.choice(non_reply_rows))
                 new_row_list = list(new_row)
                 new_row_list[4] = phone  # Update the phone number
@@ -221,6 +263,25 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         ]
 
         df = pd.DataFrame(matched_rows, columns=header)
+        
+        validate_req_num = []
+        if no_match_num:
+            # Validate numbers send request
+            for number in no_match_num:
+                row = error_rows_dict.get((Phone_ID, number), None)
+                if not row:
+                    validate_req_num.append(number)
+            # Modifiy Dates
+            df = modify_dates(df, report_date)
+            # Validate WhatsApp Phone numbers
+            token, _ = get_token_and_app_id(request)
+            if validate_req_num:
+                _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message")
+            validation_data = get_latest_rows_by_contacts(no_match_num)
+            validation_data = validation_data[validation_data['error_code'] == 131026]
+            final_invalid_numbers = validation_data['contact_wa_id'].to_list()
+            df = update_failed_messages(df, final_invalid_numbers)
+            
         status_counts_df = df['status'].value_counts().reset_index()
         status_counts_df.columns = ['status', 'count']
         total_unique_contacts = len(df['contact_wa_id'].unique())
