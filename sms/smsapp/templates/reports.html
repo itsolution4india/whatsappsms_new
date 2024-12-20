@@ -283,4 +283,45 @@
     var pieChart = {{ pie_chart | safe }};  // Use the pie chart JSON from Django
     Plotly.newPlot('pie-chart', pieChart.data, pieChart.layout);  // Render the pie chart
 </script>
+<script>
+    function showInsight(reportId) {
+        // Get the loading overlay element
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Display the loading overlay
+        loadingOverlay.style.display = 'block';
+
+        fetch(`/report_insight/${reportId}/`)
+            .then(response => response.json())
+            .then(data => {
+                // Hide the loading overlay when the data is received
+                loadingOverlay.style.display = 'none';
+
+                if (data.status === 'success') {
+                    const tableBody = document.getElementById('insightTableBody');
+                    tableBody.innerHTML = '';
+
+                    data.data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.status}</td>
+                            <td>${row.count}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+
+                    const modal = new bootstrap.Modal(document.getElementById('insightModal'));
+                    modal.show();
+                } else {
+                    alert('Failed to load insights');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Hide the loading overlay in case of error
+                loadingOverlay.style.display = 'none';
+                alert('Failed to load insights');
+            });
+    }
+</script>
 {% endblock %}
