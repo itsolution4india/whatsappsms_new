@@ -219,7 +219,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
 
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
-        error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
+        error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] == 131047}
         
         matched_rows = []
         non_reply_rows = []
