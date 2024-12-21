@@ -122,7 +122,7 @@ class TemplatesAdmin(admin.ModelAdmin):
     )
 
 class UserAccessAdmin(admin.ModelAdmin):
-    list_display = ('user', 'can_send_sms', 'can_view_reports', 'can_manage_campaign', 'can_schedule_tasks', 'can_create_flow_message', 'can_send_flow_message', 'can_link_templates', 'can_manage_bot_flow')
+    list_display = ('user', 'can_send_sms', 'can_view_reports', 'can_manage_campaign', 'can_schedule_tasks', 'can_create_flow_message', 'can_send_flow_message', 'can_link_templates', 'can_manage_bot_flow', "can_access_API_doc", 'can_manage_number_validation')
 
 class CountryPermissionAdmin(admin.ModelAdmin):
     list_display = ('user', 'can_send_msg_to_india', 'can_send_msg_to_nepal', 'can_send_msg_to_us', 'can_send_msg_to_australia', 'can_send_msg_to_uae')
