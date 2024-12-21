@@ -245,6 +245,8 @@ class UserAccess(models.Model):
     can_send_flow_message = models.BooleanField(default=False)
     can_link_templates = models.BooleanField(default=False)
     can_manage_bot_flow = models.BooleanField(default=False)
+    can_access_API_doc = models.BooleanField(default=False)
+    can_manage_number_validation = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.user.email} - Access Rights"

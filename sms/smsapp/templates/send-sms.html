@@ -147,7 +147,9 @@
                   name="contact_number" required></textarea>
               </div>
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
+              {% if api_doc_access %}
               <button type="button" class="btn btn-success" onclick="validateNumbers()">validate</button>
+              {% endif %}
               <button type="button" id="toggleScheduleButton" class="btn btn-secondary"
                 onclick="toggleScheduleCall()">Schedule Call</button>
 
