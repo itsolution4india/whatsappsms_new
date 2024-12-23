@@ -61,5 +61,8 @@ urlpatterns = [
     path('delete_intent/', delete_intent_view, name='delete_intent'),
     path('get_intents/', get_intents_view, name='get_intents'),
     
+    path('voice_call/', views.dashboard, name="voice_call"),
+    path("call/", views.make_call, name="make_call"),
+    
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
