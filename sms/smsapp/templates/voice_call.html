@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voice Call Dashboard</title>
+</head>
+<body>
+    <h1>Outbound Call Automation</h1>
+    <form method="post" action="/call/">
+        {% csrf_token %}
+        <input type="text" name="number" placeholder="Enter Phone Number" required>
+        <button type="submit">Call</button>
+    </form>
+
+    <h2>Recordings</h2>
+    <ul>
+        {% for recording in recordings %}
+            <li>{{ recording }}</li>
+        {% empty %}
+            <li>No recordings available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
