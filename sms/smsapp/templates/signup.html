@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Embedded Signup</title>
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_US/sdk.js"></script>
+</head>
+<body>
+    <h1>WhatsApp Embedded Signup</h1>
+
+    <!-- Button to trigger the embedded signup flow -->
+    <button id="signup-button">Sign up with WhatsApp</button>
+
+    <script>
+        // Initialize the Facebook SDK
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '1002275394751227',  // Replace with your actual app ID
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v20.0'  // Replace with the version you're working with
+            });
+
+            // Set up the event listener for the signup button
+            document.getElementById('signup-button').addEventListener('click', function() {
+                // Trigger the embedded signup flow
+                FB.login(function(response) {
+                    if (response.authResponse) {
+                        // Success! Handle the response.
+                        fetch('/process_signup/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': '{{ csrf_token }}'  // Pass CSRF token
+                            },
+                            body: JSON.stringify({
+                                access_token: response.authResponse.accessToken,
+                                user_id: response.authResponse.userID
+                            })
+                        }).then(res => res.json()).then(data => {
+                            console.log('Signup Success', data);
+                        }).catch(error => console.error('Error:', error));
+                    } else {
+                        console.log('User cancelled signup or did not fully authorize.');
+                    }
+                }, {scope: 'business_management,whatsapp_business_management,whatsapp_business_messaging'});
+            });
+        };
+    </script>
+</body>
+</html>
