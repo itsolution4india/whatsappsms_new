@@ -64,5 +64,7 @@ urlpatterns = [
     path('voice_call/', views.dashboard, name="voice_call"),
     path("call/", views.make_call, name="make_call"),
     
+    path('signup/', views.signup_view, name='signup'),
+    path('process_signup/', views.process_signup, name='process_signup'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
