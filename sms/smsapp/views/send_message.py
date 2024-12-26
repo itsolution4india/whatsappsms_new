@@ -328,7 +328,7 @@ def send_flow_message(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(contact_list))
