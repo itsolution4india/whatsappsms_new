@@ -21338,3 +21338,416 @@ start_scheduler called
 Scheduler started successfully.
 Scheduler started successfully.
 Scheduler started successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4279e13bfb614c1f802fe5c5b9647446 name=schedule_messages)>]
+Current time (localized): 2024-12-25 12:49:12.810247+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=5c12ba0eec4c4d45af64cc714679b694 name=schedule_messages)>]
+Current time (localized): 2024-12-25 12:49:12.816937+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=344b8e5de0634ca78ecabc7453ae0ac7 name=schedule_messages)>]
+Current time (localized): 2024-12-25 12:49:12.851686+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)
+Not Found: /robots.txt
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; spider-feedback@bytedance.com)
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4279e13bfb614c1f802fe5c5b9647446 name=schedule_messages)>]
+Current time (localized): 2024-12-25 13:34:12.259962+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=344b8e5de0634ca78ecabc7453ae0ac7 name=schedule_messages)>]
+Current time (localized): 2024-12-25 13:34:12.291596+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=5c12ba0eec4c4d45af64cc714679b694 name=schedule_messages)>]
+Current time (localized): 2024-12-25 13:34:12.313099+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; spider-feedback@bytedance.com)
+Not Found: /robots.txt
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (Linux; Android 5.0) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; Bytespider; spider-feedback@bytedance.com)
+Not Found: /robots.txt
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User test_demo@gmail.com logged in successfully.
+404 Not Found: /signup - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /signup
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 14:33:12.256683+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 14:33:12.422460+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 14:33:12.473810+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 15:18:12.255775+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 15:18:12.422058+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 15:18:12.423359+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:03:12.260174+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:03:12.425200+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:03:12.477021+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:48:12.255620+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:48:12.421993+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 16:48:12.473614+05:30
+404 Not Found: /ads.txt - IP:  - User-Agent: Mozilla/5.0 (compatible)
+Not Found: /ads.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 17:33:12.255977+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 17:33:12.422926+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 17:33:12.474365+05:30
+404 Not Found: /media/system/js/core.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /media/system/js/core.js
+404 Not Found: /wp-includes/js/jquery/jquery.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /wp-includes/js/jquery/jquery.js
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 18:18:12.262912+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 18:18:12.429968+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 18:18:12.482165+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:03:12.257147+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:03:12.424945+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:03:12.476336+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:48:12.255847+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:48:12.422493+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 19:48:12.473897+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 20:33:12.260713+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 20:33:12.430805+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 20:33:12.483000+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 21:18:12.257456+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 21:18:12.425323+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 21:18:12.477082+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:03:12.264199+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:03:12.431110+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:03:12.483422+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:48:12.256029+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:48:12.422728+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 22:48:12.473746+05:30
+Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'www.wtsdealnow.in'. You may need to add 'www.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-25 23:33:12.263264+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-25 23:33:12.430591+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-25 23:33:12.488065+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 00:18:12.256725+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 00:18:12.422706+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 00:18:12.473894+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:03:12.259510+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:03:12.422644+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:03:12.425147+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:48:12.263249+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:48:12.432836+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 01:48:12.485551+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 02:33:12.258524+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 02:33:12.422563+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 02:33:12.425882+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 03:18:12.256466+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 03:18:12.421984+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 03:18:12.423553+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:03:12.263637+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:03:12.433832+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:03:12.487766+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:48:12.256087+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:48:12.422501+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 04:48:12.474256+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 05:33:12.258747+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 05:33:12.422995+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 05:33:12.474356+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 06:18:12.264311+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 06:18:12.432939+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 06:18:12.483948+05:30
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Not Found: /robots.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:03:12.255658+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:03:12.422120+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:03:12.423548+05:30
+404 Not Found: /wp-login.php - IP:  - User-Agent: Mozilla/5.0
+Not Found: /wp-login.php
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:48:12.258612+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:48:12.423636+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 07:48:12.474953+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 08:33:12.255905+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 08:33:12.423328+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 08:33:12.474435+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 09:18:12.265558+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 09:18:12.432667+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 09:18:12.483167+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:03:12.257997+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:03:12.425698+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:03:12.476781+05:30
+404 Not Found: /RDWeb/webclient/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: /RDWeb/webclient/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:48:12.257186+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:48:12.422879+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 10:48:12.424874+05:30
+User test_demo@gmail.com logged in successfully.
+{'entities': {}, 'intents': [{'confidence': 0.9868666142982029, 'id': '1784169819059882', 'name': 'greeting'}], 'text': 'hi', 'traits': {}}
+resp {'entities': {}, 'intents': [{'confidence': 0.9868666142982029, 'id': '1784169819059882', 'name': 'greeting'}], 'text': 'hi', 'traits': {}}
+bot_response Hello! How can I help you today?
+{'entities': {}, 'intents': [], 'text': 'yes i want to buy', 'traits': {}}
+list index out of range
+bot_response We don't have the information for your query. Please contact support.
+Internal Server Error: /create_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/campaign_flows.py", line 28, in create_flow_message
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+                                                ~~~~^^^^^^^^
+TypeError: string indices must be integers, not 'str'
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1d25bf921f6e41388ce421968fcddd85 name=schedule_messages)>]
+Current time (localized): 2024-12-26 11:33:12.255843+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8af52ca680e84d0e8c9c43a9ac72f8cb name=schedule_messages)>]
+Current time (localized): 2024-12-26 11:33:12.425240+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 11:33:12.426455+05:30
+User demo2@gmail.com logged in successfully.
+User test_demo@gmail.com logged in successfully.
+404 Not Found: /accounts/login/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /accounts/login/
+numbers_list {'916361161836'}
+Send_Sms: test_demo@gmail.com, 554319807758978, testingadmin, None, ['916361161836'], ['916361161836'], testadmin, []
+Sending messages for user: test_demo@gmail.com, campaign title: testadmin
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testadmin, user: test_demo@gmail.com
+numbers_list {'916361161836'}
+Send_Sms: test_demo@gmail.com, 554319807758978, testingadmin, None, ['916361161836'], ['916361161836'], testadmin, []
+handle_schedule_update function called
+Schedule list: <QuerySet [<ScheduledMessage: testadmin - 2024-12-26 11:50:57>]>
+Scheduler state: [<Job (id=383d99d1f87a4f9bb48329aa2a9a83a6 name=schedule_messages)>]
+Current time (localized): 2024-12-26 11:49:02.935916+05:30
+Processing schedule: testadmin - 2024-12-26 11:50:57
+Adding job: message_48 with scheduled time: 2024-12-26 11:50:57+05:30
+Scheduled message saved for campaign: testadmin, user: test_demo@gmail.com
+Running scheduled message with id 48
+Executing message send for ID: 48 at 2024-12-26 06:20:57.000607+00:00
+send_messages function called for message 48
+Sending messages for user: test_demo@gmail.com, campaign title: testadmin
+Calculated money data for sending messages: 1
+Error while subtracting coins for user test_demo@gmail.com: 'str' object has no attribute 'marketing_coins'
+Messages sent successfully for campaign: testadmin, user: test_demo@gmail.com
+handle_schedule_update function called
+Message 48 sent successfully.
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+<QuerySet ['test_demo@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+numbers_list {'91'}
+Error processing form: File contains no valid workbook part
