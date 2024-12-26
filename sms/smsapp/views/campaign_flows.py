@@ -23,6 +23,7 @@ def create_flow_message(request):
     campaign_list = fetch_templates(display_whatsapp_id(request), token)
 
     flows = get_flows(token, waba_id)
+    print(flows)
     local_db_flows = Flows.objects.filter(email=request.user)
     flow_value = list(local_db_flows.values_list('flows', flat=True))
     filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
@@ -47,7 +48,7 @@ def create_flow_message(request):
                 Flows.objects.create(email=request.user, flows=flow_name)
                 messages.success(request, "Flow Created Successfully")
             else:
-                messages.error(request, "Failed to create flow template")
+                messages.error(request, f"Failed to create flow template {response.json()}")
         except Exception as e:
             messages.error(request, "Failed to create flow template")
             logger.error(f"Couldn't create flow template {e}")
@@ -149,16 +150,12 @@ def create_flow(token, waba_id, flow_name, categories, flow_json):
     }
 
     response = requests.post(url, headers=headers, json=data)
-    
     if response.status_code == 200:
         flow_id = response.json().get('id')
         response = update_flow_json(BASE_URL, flow_id, flow_name, token, flow_json)
         return response
     else:
-        return JsonResponse({
-            'success': False,
-            'message': f"Failed to create flow. Status code: {response.status_code}, Response: {response.text}"
-        })
+        return response
 
 
 def update_flow_json(base_url, flow_id, flow_name, access_token, flow_json):
