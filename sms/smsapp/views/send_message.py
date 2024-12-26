@@ -12,6 +12,7 @@ from .auth import check_user_permission
 from ..functions.flows import send_flow_messages_with_report
 from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
 from ..fastapidata import send_validate_req
+import pandas as pd
 
 
 
@@ -106,6 +107,9 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount)
+            print("all_contact", all_contact)
+            print("contact_list", contact_list)
+            print("invalid_numbers", invalid_numbers)
             
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(contact_list))
@@ -187,12 +191,9 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
 
     # Parse contacts from uploaded file
     if uploaded_file:
-        workbook = openpyxl.load_workbook(uploaded_file)
-        sheet = workbook.active
-        for row in sheet.iter_rows(min_col=1, max_col=1, min_row=1):
-            for cell in row:
-                if cell.value is not None:
-                    numbers_list.add(str(cell.value).strip())
+        df = pd.read_csv(uploaded_file)
+        for number in df['phone_numbers']:
+            numbers_list.add(str(number))
 
     db_phonenumbers = get_unique_phone_numbers()
     
@@ -201,7 +202,7 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
         phone_number = phone_number.strip()
         if phone_number not in db_phonenumbers:
             invalid_numbers.add(phone_number)
-        for country, pattern in patterns.items():
+        for _, pattern in patterns.items():
             if pattern.match(phone_number):
                 valid_numbers.add(phone_number)
                 break

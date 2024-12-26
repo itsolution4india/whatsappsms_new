@@ -137,14 +137,14 @@
               <div class="mb-3">
                 <label class="form-label">Upload Excel File</label>
                 <span class="text-secondary">* Optional</span>
-                <input type="file" id="id_files" name="files" class="form-control" accept=".xls,.xlsx">
+                <input type="file" id="id_files" name="files" class="form-control" accept=".xls,.xlsx,.csv">
               </div>
               <p style="text-align: center;"></p>
               <div class="mb-3">
                 <label class="form-label">Write Contact Numbers</label>
                 <p class="text-warning">* Please add the country code before sending. </p>
                 <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
-                  name="contact_number" required></textarea>
+                  name="contact_number"></textarea>
               </div>
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
               {% if api_doc_access %}
