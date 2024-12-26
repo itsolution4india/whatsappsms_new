@@ -11,7 +11,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str]):
+def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None):
     #url = 'http://127.0.0.1:8000/send_sms/'
     url="https://wtsdealnow.in/send_sms/"
     
@@ -34,6 +34,8 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
     #print(data)
     #print("Status Code:", response.status_code)
     #print("Response JSON:", response.json())
+    if response_req:
+        return response
     return 
 # Example usage
 

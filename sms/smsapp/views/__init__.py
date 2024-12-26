@@ -12,6 +12,6 @@ from .bot_automation import bot_flow, delete_message
 from .user_interactions import bot_interactions, user_interaction
 from .api_doc import customuser_list_view, customuser_detail_view, UpdateBalanceReportView, GetReportAPI, api_manual
 from .Eembeddedsignup import signup_view, process_signup
-
+from .twoauth import generate_otp, generate_otp_view, register_2fa_view, disable_2fa
 
 from .voice_call import dashboard, make_call

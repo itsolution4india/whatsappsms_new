@@ -304,3 +304,20 @@ class Train_wit_Bot(models.Model):
     
     def __str__(self):
         return self.intent
+    
+class Register_TwoAuth(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.CharField(max_length=200)
+    email = models.CharField(max_length=200)
+    phone_number = models.CharField(max_length=12, default=0)
+    
+    def __str__(self):
+        return self.user
+    
+class Validate_TwoAuth(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    email = models.CharField(max_length=200)
+    otp = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.email
