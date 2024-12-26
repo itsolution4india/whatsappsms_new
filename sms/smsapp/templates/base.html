@@ -263,6 +263,67 @@
         .refresh-btn.spinning i {
             animation: spin 1s linear infinite;
         }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto !important;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 50%;
+            max-width: 500px;
+        }
+
+        .close {
+            float: right;
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            right: 0;
+            padding: 0px 11px;
+            background: red;
+            color: #fff;
+            margin: 5px;
+            border-radius: 50px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
     </style>
     {% block head %}
     {% endblock %}
@@ -428,6 +489,34 @@
                     </li>
                 </ul>
             </aside>
+            <div id="twoFactorModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Enable Two-Factor Authentication</h2>
+                    
+                    <!-- Step 1: Email and Phone Number -->
+                    <div id="step1">
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <button onclick="requestOTP()">Request OTP</button>
+                    </div>
+                    
+                    <!-- Step 2: OTP Verification -->
+                    <div id="step2" style="display: none;">
+                        <div class="form-group">
+                            <label for="otp">Enter OTP:</label>
+                            <input type="text" id="otp" required>
+                        </div>
+                        <button onclick="register2FA()">Enable 2FA</button>
+                    </div>
+                </div>
+            </div>
             <!-- / Menu -->
 
             <!-- Layout container -->
@@ -508,6 +597,12 @@
                                                         {% if valid_num %}
                                                         <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link"><i class='bx bx-cog'></i> API Manual</a></p>
                                                         {% endif %}
+                                                        
+                                                        {% if twofauth %}
+                                                            <button onclick="disable2FA()" style="background-color: #c00000 !important;">Disable 2FA</button>
+                                                        {% else %}
+                                                            <button class="enable">Enablr 2FA</button>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             </div>
@@ -527,7 +622,114 @@
                     </div>
                 </nav>
                 <script src="/static/assets/js/it-solution-chat-sdk.js"></script>
-                
+                <script>
+                    function disable2FA() {
+                        fetch("{% url 'disable_2fa' %}", {
+                            method: "POST",
+                            headers: {
+                                "X-CSRFToken": "{{ csrf_token }}",  // Ensure CSRF token is included
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({})
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert("2FA has been disabled.");
+                                location.reload();  // Reload the page to update the button
+                            } else {
+                                alert("Failed to disable 2FA.");
+                            }
+                        })
+                        .catch(error => console.error('Error:', error));
+                    }
+                    </script>                    
+                <script>
+                    document.querySelector('.enable').parentElement.addEventListener('click', function() {
+                        document.getElementById('twoFactorModal').style.display = 'block';
+                    });
+                    
+                    document.querySelector('.close').addEventListener('click', function() {
+                        document.getElementById('twoFactorModal').style.display = 'none';
+                    });
+                    
+                    function getCookie(name) {
+                        let cookieValue = null;
+                        if (document.cookie && document.cookie !== '') {
+                            const cookies = document.cookie.split(';');
+                            for (let i = 0; i < cookies.length; i++) {
+                                const cookie = cookies[i].trim();
+                                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+                    
+                    function requestOTP() {
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+                        
+                        fetch('/generate_otp/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken')
+                            },
+                            body: JSON.stringify({
+                                email: email,
+                                phone: phone
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                document.getElementById('step1').style.display = 'none';
+                                document.getElementById('step2').style.display = 'block';
+                            } else {
+                                alert(data.message || 'Error generating OTP');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error generating OTP');
+                        });
+                    }
+                    
+                    function register2FA() {
+                        const email = document.getElementById('email').value;
+                        const phone = document.getElementById('phone').value;
+                        const otp = document.getElementById('otp').value;
+                        
+                        fetch('/register_2fa/', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'X-CSRFToken': getCookie('csrftoken')
+                            },
+                            body: JSON.stringify({
+                                email: email,
+                                phone: phone,
+                                otp: otp
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                alert('2FA enabled successfully!');
+                                document.getElementById('twoFactorModal').style.display = 'none';
+                            } else {
+                                alert(data.message || 'Error enabling 2FA');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Error enabling 2FA');
+                        });
+                    }
+                    </script>
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {
                         window.ITSolutionChatSDK.init({

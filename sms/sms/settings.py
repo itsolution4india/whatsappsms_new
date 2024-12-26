@@ -3,7 +3,15 @@ try:
 except ImportError:
     from pathlib2 import Path
 
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
+
+TOKEN = os.getenv('TOKEN')
+PHONEID = os.getenv('PHONEID')
+APPID = os.getenv('APPID')
+WABAID = os.getenv('WABAID')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

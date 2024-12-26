@@ -1,4 +1,4 @@
-from ..models import UserAccess, CustomUser
+from ..models import UserAccess, CustomUser, Register_TwoAuth
 from ..forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
@@ -8,6 +8,10 @@ from ..utils import logger, display_whatsapp_id, display_phonenumber_id
 from django.contrib.auth.tokens import default_token_generator
 import requests
 from django.core.exceptions import ObjectDoesNotExist
+from .twoauth import generate_otp
+from ..fastapidata import send_api
+import os
+from dotenv import load_dotenv
 
 
 def check_user_permission(user, permission):
@@ -44,11 +48,39 @@ def send_otp(email):
 @csrf_exempt
 def user_login(request):
     if request.method == "POST":
+        # Check if this is an OTP verification request
+        if 'otp' in request.POST:
+            otp = request.POST.get('otp')
+            user_id = request.session.get('temp_user_id')
+            
+            if not user_id:
+                return redirect('login')
+            
+            user = CustomUser.objects.get(id=user_id)
+            stored_otp = request.session.get('login_otp')
+            
+            if stored_otp and otp == stored_otp:
+                login(request, user)
+                # Clear temporary session data
+                del request.session['temp_user_id']
+                del request.session['login_otp']
+                logger.info(f"User {user.username} completed 2FA successfully.")
+                return redirect("dashboard")
+            else:
+                logger.warning(f"Invalid OTP attempt for user {user.username}")
+                return render(request, "login.html", {
+                    "show_otp": True,
+                    "form": UserLoginForm(),
+                    "error": "Invalid OTP. Please try again."
+                })
+                
+        # Regular login form submission
         form = UserLoginForm(request.POST)
         if form.is_valid():
             username_or_email = form.cleaned_data["username_or_email"]
             password = form.cleaned_data["password"]
             user = None
+            
             if '@' in username_or_email:
                 try:
                     user = CustomUser.objects.get(email=username_or_email)
@@ -61,9 +93,39 @@ def user_login(request):
                     user = None
 
             if user and user.check_password(password):
-                login(request, user)
-                logger.info(f"User {username_or_email} logged in successfully.")
-                return redirect("dashboard")
+                twofauth = Register_TwoAuth.objects.filter(user=user.username).exists()
+                
+                if twofauth:
+                    # Generate and send OTP
+                    otp = generate_otp()
+                    request.session['login_otp'] = otp
+                    request.session['temp_user_id'] = user.id
+                    
+                    # Get user's phone number from Register_TwoAuth
+                    user_2fa = Register_TwoAuth.objects.get(user=user.username)
+                    
+                    # Send OTP via your existing API
+                    response = send_api(
+                        os.getenv('TOKEN'),
+                        os.getenv('PHONEID'),
+                        "authtemp01",
+                        "en",
+                        "OTP",
+                        None,
+                        [str(user_2fa.phone_number)],
+                        [str(otp)],
+                        True
+                    )
+                    
+                    logger.info(f"2FA OTP sent for user {username_or_email}")
+                    return render(request, "login.html", {
+                        "show_otp": True,
+                        "form": UserLoginForm()
+                    })
+                else:
+                    login(request, user)
+                    logger.info(f"User {username_or_email} logged in successfully.")
+                    return redirect("dashboard")
             else:
                 logger.warning(f"Failed login attempt for {username_or_email}")
                 form.add_error(None, "Invalid email/username or password.")
@@ -73,7 +135,7 @@ def user_login(request):
     else:
         form = UserLoginForm()
 
-    return render(request, "login.html", {"form": form})
+    return render(request, "login.html", {"form": form, "show_otp": False})
 
 @login_required
 def user_dashboard(request):

@@ -66,5 +66,9 @@ urlpatterns = [
     
     path('signup/', views.signup_view, name='signup'),
     path('process_signup/', views.process_signup, name='process_signup'),
+    
+    path('generate_otp/', views.generate_otp_view, name='generate_otp'),
+    path('register_2fa/', views.register_2fa_view, name='register_2fa'),
+    path('disable-2fa/', views.disable_2fa, name='disable_2fa'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

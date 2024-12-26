@@ -93,3 +93,4 @@ def coins_history_list(request):
 @login_required
 def access_denide(request):
     return render(request, "access_denide.html") 
+
