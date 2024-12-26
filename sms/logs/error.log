@@ -21751,3 +21751,111 @@ Scheduler started successfully.
 bot automation message
 numbers_list {'91'}
 Error processing form: File contains no valid workbook part
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+<QuerySet ['test_demo@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+numbers_list set()
+Send_Sms: test_demo@gmail.com, 554319807758978, testingadmin, None, ['916361161836', '919315494292'], ['916361161836', '919315494292'], test, []
+Sending messages for user: test_demo@gmail.com, campaign title: test
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: test, user: test_demo@gmail.com
+report_date 12/26/2024 07:16:01, no_match_num 0
+report_date 12/26/2024 07:16:01, no_match_num 0
+report_date 12/26/2024 07:16:01, no_match_num 0
+report_date 12/26/2024 07:16:01, no_match_num 0
+{'entities': {}, 'intents': [{'confidence': 0.5971199795380822, 'id': '1784169819059882', 'name': 'greeting'}], 'text': 'hello give some birthday party for Zen', 'traits': {}}
+resp {'entities': {}, 'intents': [{'confidence': 0.5971199795380822, 'id': '1784169819059882', 'name': 'greeting'}], 'text': 'hello give some birthday party for Zen', 'traits': {}}
+bot_response Hello! How can I help you today?
+<QuerySet ['test_demo@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=5cc2091d6e464536bc1e9ee24fe4be0d name=schedule_messages)>]
+Current time (localized): 2024-12-26 13:29:58.252421+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=441a287cc7644214b1e0af360034316f name=schedule_messages)>]
+Current time (localized): 2024-12-26 13:29:58.274702+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=95bb7797d6a144d3a5631e742e8a8d71 name=schedule_messages)>]
+Current time (localized): 2024-12-26 13:29:58.300547+05:30
+Couldn't create flow template UNIQUE constraint failed: smsapp_flows.flows
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/470776626128146/message_templates
+400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/470776626128146/message_templates
