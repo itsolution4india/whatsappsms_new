@@ -15,7 +15,8 @@ urlpatterns = [
     #path('download_report/<int:report_id>/',views.download_campaign_report, name='report_download'),
     path('download_report/<int:report_id>/', views.download_campaign_report, name='report_download'),
     path('report_insight/<int:report_id>/', views.get_report_insight, name='report_insight'),
-    path('campaign/', views.Campaign, name='campaign'),
+    path('create_message_temp/', views.Campaign, name='campaign'),
+    path('campaign/', views.campaign_index, name='campaign'),
     # path('campaign/delete/<str:template_id>/', views.delete_campaign, name='delete_campaign'),
     path('media_upload/', views.upload_media, name='upload_media'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
@@ -70,5 +71,8 @@ urlpatterns = [
     path('generate_otp/', views.generate_otp_view, name='generate_otp'),
     path('register_2fa/', views.register_2fa_view, name='register_2fa'),
     path('disable-2fa/', views.disable_2fa, name='disable_2fa'),
+    
+    path('create/', views.TemplateCreateView.as_view(), name='create_template'),
+    path('upload-image/', views.ImageUploadView.as_view(), name='upload_image'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

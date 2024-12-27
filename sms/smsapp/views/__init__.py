@@ -1,4 +1,4 @@
-from .campaign_template import Campaign, delete_template
+from .campaign_template import Campaign, delete_template, campaign_index
 from .auth import user_login, logout_view, user_dashboard, initiate_password_reset, verify_otp, change_password
 from .send_message import Send_Sms, send_flow_message
 from .reports import Reports, download_campaign_report, get_report_insight, download_linked_report, delete_report
@@ -15,3 +15,4 @@ from .Eembeddedsignup import signup_view, process_signup
 from .twoauth import generate_otp, generate_otp_view, register_2fa_view, disable_2fa
 
 from .voice_call import dashboard, make_call
+from .create_carousels import TemplateCreateView, ImageUploadView
