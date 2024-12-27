@@ -152,6 +152,26 @@ def Campaign(request):
                 "has_error": True
             })
         
+    return render(request, "create_message_temp.html", context)
+
+@login_required
+def campaign_index(request):
+    token, _ = get_token_and_app_id(request)
+    campaign_list = fetch_templates(display_whatsapp_id(request), token)
+    if campaign_list is None :
+        campaign_list=[]
+    template_database = Templates.objects.filter(email=request.user)
+    template_value = list(template_database.values_list('templates', flat=True))
+    templates = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+    context = {
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
+        "username": username(request),
+        "WABA_ID": display_whatsapp_id(request),
+        "PHONE_ID": display_phonenumber_id(request),
+        "campaign_list": templates
+    }
     return render(request, "Campaign.html", context)
 
 @login_required

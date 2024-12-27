@@ -1,0 +1,1063 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    .error-modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(5px) saturate(200%);
+    -webkit-backdrop-filter: blur(14px) saturate(200%);
+    background-color: rgb(0 0 0 / 17%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-content {
+    background-color: #f8d7da;
+    border: 2px solid #dc3545;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.error-title {
+    color: #721c24;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+}
+
+.error-icon {
+    background-color: #dc3545;
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.error-details {
+    color: #721c24;
+}
+
+.error-details p {
+    margin: 10px 0;
+}
+
+.trace-id {
+    font-size: 0.8em;
+    color: #6c757d;
+    word-break: break-all;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #721c24;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #dc3545;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Content wrapper -->
+<div class="content-wrapper">
+    <!-- Content -->
+    {% if has_error %}
+    <div id="error-container" class="error-modal">
+        <div class="error-content">
+            <span class="close-btn">&times;</span>
+            <h2 class="error-title">
+                <i class="error-icon">!</i> 
+                {{ error.type|default:"Error" }}
+            </h2>
+            
+            <div class="error-details">
+                <p><strong>Error Code:</strong> {{ error.code }}</p>
+                <p><strong>Message:</strong> {{ error.message }}</p>
+                
+                {% if error.user_title %}
+                <p><strong>User Title:</strong> {{ error.user_title }}</p>
+                {% endif %}
+                
+                {% if error.user_message %}
+                <p><strong>User Message:</strong> {{ error.user_message }}</p>
+                {% endif %}
+                
+                {% if error.trace_id %}
+                <p class="trace-id"><strong>Trace ID:</strong> {{ error.trace_id }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="container-xxl flex-grow-1 container-p-y" style="height: 1200px;">
+
+        <div class="row" style="min-height: 800px; box-shadow: none;">
+            <h6 class="text-center mt-4">Template name can only have lower-case letters and underscores.</h6>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+
+                        <!-- new part -->
+
+
+                        <form method="POST" enctype="multipart/form-data" action="/campaign/">
+                            {% csrf_token %}
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="form-label mt-3">Template Name</label>
+                                        <input type="text" placeholder="Enter template name" class="form-control w-100"
+                                            name="template_name" id="templateName" required>
+                                    </div>
+                                    <div class="col">
+                                        <label class="form-label mt-3">Language</label>
+                                        <select name="language" class="form-select w-100" required>
+                                            <option value="af">Afrikaans</option>
+                                            <option value="sq">Albanian</option>
+                                            <option value="ar">Arabic</option>
+                                            <option value="az">Azerbaijani</option>
+                                            <option value="bn">Bengali</option>
+                                            <option value="bg">Bulgarian</option>
+                                            <option value="ca">Catalan</option>
+                                            <option value="zh_CN">Chinese (CHN)</option>
+                                            <option value="zh_HK">Chinese (HKG)</option>
+                                            <option value="zh_TW">Chinese (TAI)</option>
+                                            <option value="hr">Croatian</option>
+                                            <option value="cs">Czech</option>
+                                            <option value="da">Danish</option>
+                                            <option value="nl">Dutch</option>
+                                            <option value="en">English</option>
+                                            <option value="en_GB">English (UK)</option>
+                                            <option value="en_US">English (US)</option>
+                                            <option value="et">Estonian</option>
+                                            <option value="fil">Filipino</option>
+                                            <option value="fi">Finnish</option>
+                                            <option value="fr">French</option>
+                                            <option value="ka">Georgian</option>
+                                            <option value="de">German</option>
+                                            <option value="el">Greek</option>
+                                            <option value="gu">Gujarati</option>
+                                            <option value="ha">Hausa</option>
+                                            <option value="he">Hebrew</option>
+                                            <option value="hi">Hindi</option>
+                                            <option value="hu">Hungarian</option>
+                                            <option value="id">Indonesian</option>
+                                            <option value="ga">Irish</option>
+                                            <option value="it">Italian</option>
+                                            <option value="ja">Japanese</option>
+                                            <option value="kn">Kannada</option>
+                                            <option value="kk">Kazakh</option>
+                                            <option value="rw_RW">Kinyarwanda</option>
+                                            <option value="ko">Korean</option>
+                                            <option value="ky_KG">Kyrgyz (Kyrgyzstan)</option>
+                                            <option value="lo">Lao</option>
+                                            <option value="lv">Latvian</option>
+                                            <option value="lt">Lithuanian</option>
+                                            <option value="mk">Macedonian</option>
+                                            <option value="ms">Malay</option>
+                                            <option value="ml">Malayalam</option>
+                                            <option value="mr">Marathi</option>
+                                            <option value="nb">Norwegian</option>
+                                            <option value="fa">Persian</option>
+                                            <option value="pl">Polish</option>
+                                            <option value="pt_BR">Portuguese (BR)</option>
+                                            <option value="pt_PT">Portuguese (POR)</option>
+                                            <option value="pa">Punjabi</option>
+                                            <option value="ro">Romanian</option>
+                                            <option value="ru">Russian</option>
+                                            <option value="sr">Serbian</option>
+                                            <option value="sk">Slovak</option>
+                                            <option value="sl">Slovenian</option>
+                                            <option value="es">Spanish</option>
+                                            <option value="es_AR">Spanish (ARG)</option>
+                                            <option value="es_ES">Spanish (SPA)</option>
+                                            <option value="es_MX">Spanish (MEX)</option>
+                                            <option value="sw">Swahili</option>
+                                            <option value="sv">Swedish</option>
+                                            <option value="ta">Tamil</option>
+                                            <option value="te">Telugu</option>
+                                            <option value="th">Thai</option>
+                                            <option value="tr">Turkish</option>
+                                            <option value="uk">Ukrainian</option>
+                                            <option value="ur">Urdu</option>
+                                            <option value="uz">Uzbek</option>
+                                            <option value="vi">Vietnamese</option>
+                                            <option value="zu">Zulu</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col w-50">
+                                        <label class="form-label mt-3" for="actionHeaderType" id="headerLabel">Header</label>
+                                        <select class="form-select w-100" id="actionHeaderType" name="actionHeaderType"
+                                            onchange="handleActionHeader()">
+                                            <option selected>Select</option>
+                                            <option name="" value="headerText">Text</option>
+                                            <option name="" value="headerImage">Image</option>
+                                            <option name="" value="headerVideo">Video</option>
+                                            <option name="" value="headerDocument">Document</option>
+                                        </select>
+
+                                        <textarea id="headerInput" class="one form-control mt-3 hidden w-100"
+                                            style="height: 100px;" placeholder="Enter Header"
+                                            name="headerText"></textarea>
+
+                                        <input type="file" class="form-control w-100 mt-3 hidden" id="headerInputImage"
+                                            name="headerImage">
+
+                                        <input type="file" class="form-control w-100 mt-3 hidden" id="headerInputVideo"
+                                            name="headerVideo" accept="video/*">
+
+                                        <input type="file" class="form-control w-100 mt-3 hidden"
+                                            id="headerInputDocument" name="headerDocument"
+                                            accept=".pdf, .xls, .xlsx, .txt">
+
+                                        <input type="file" class="form-control w-100 mt-3 hidden" id="headerInputAudio"
+                                            name="headerAudio" accept="audio/*">
+                                    </div>
+                                    <div class="col w-50">
+                                        <label class="form-label mt-3" for="actionHeaderType">Category</label>
+                                        <select class="form-select" aria-label="Default select example "
+                                            name="category" required>
+                                            <option selected>Select</option>
+                                            <option name="">Authentication</option>
+                                            <option name="">Marketing</option>
+                                            <option name="">Utility</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="form-label mt-3 fs-6" id="bodyLabel">Body</label>
+
+                                        <textarea class="form-control" id="editor" rows="6" cols="50"
+                                            name="template_data"></textarea>
+
+
+                                        <div class="mb-3" id="bodyButtons">
+
+                                            <div class="btn btn-dark mt-3" id="bold-button">Bold</div>
+                                            <div class="btn btn-dark mt-3" onclick="addVariable()">Add Variable</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="variable-inputs-container" class="mb-3">
+                                <!-- Dynamic input fields will be added here -->
+                            </div>
+
+                            <input type="hidden" name="variables_data" id="variables_data">
+
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="form-label mt-3" id="footerLabel">Footer</label>
+                                        <input type="text" placeholder="Enter Footer" class="form-control w-100"
+                                            name="footer_data">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="container" id="addButtons">
+                                <div class="d-grid">
+                                    <div class="col">
+                                        <div class="form-group mt-3">
+                                            <label class="form-label">Buttons:</label>
+                                            <div class="form-check">
+                                                <input type="checkbox" id="callToActionCheckbox" name="actionType"
+                                                    class="form-check-input" onchange="handleCheckboxChange()">
+                                                <label class="form-check-label" for="callToActionCheckbox">Call
+                                                    to
+                                                    Action</label>
+                                            </div>
+
+                                        </div>
+                                        <div id="callToActionFields" class="hidden buttons_bg">
+                                            <div class="form-group">
+                                                <label for="buttonName" class="form-label">Button
+                                                    Name:</label>
+                                                <input type="text" id="buttonName" name="callbutton"
+                                                    placeholder="Enter button name" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="contactNumber" class="form-label">Contact
+                                                    Number:</label>
+                                                <input type="text" id="contactNumber" name="contactNumber"
+                                                    placeholder="+91XXXXXXXXXX" class="form-control">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group mt-3">
+                                            <label class="form-label">Buttons:</label>
+                                            <div class="form-check">
+                                                <input type="checkbox" id="visitWebsiteCheckbox" name="actionType"
+                                                    class="form-check-input" onchange="handleCheckboxChange()">
+                                                <label class="form-check-label" for="visitWebsiteCheckbox">Visit
+                                                    Website</label>
+                                            </div>
+                                        </div>
+                                        <div id="visitWebsiteFields" class="hidden buttons_bg">
+                                            <div class="form-group">
+                                                <label for="websiteButtonName" class="form-label">Button
+                                                    Name:</label>
+                                                <input type="text" id="buttonNameWeb" name="websitebutton"
+                                                    placeholder="Enter button name" class="form-control">
+
+                                                <label for="websiteUrl" class="form-label mt-3">Website
+                                                    URL:</label>
+                                                <input type="text" id="websiteUrl" name="websiteUrl"
+                                                    placeholder="Enter website URL" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col">
+                                        <div class="form-group mt-3">
+                                            <label class="form-label">Buttons:</label>
+                                            <div class="form-check">
+                                                <input type="checkbox" id="quickReplayCheckbox" name="actionType"
+                                                    class="form-check-input" onchange="handleCheckboxChange()">
+                                                <label class="form-check-label" for="quickReplayCheckbox">QUICK
+                                                    REPLY</label>
+                                            </div>
+                                        </div>
+                                        <div id="quickReplayFields" class="hidden buttons_bg">
+                                            <div class="form-group">
+
+                                                <div>
+                                                    <div class="m-1">
+                                                        <label for="quick_reply_one"
+                                                            class="form-label mt-1">Text</label>
+                                                        <input type="text" id="quick_reply_one" name="quick_reply_one"
+                                                            placeholder="Enter Quick Replay" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="m-1">
+                                                        <label for="quick_reply_two"
+                                                            class="form-label mt-1">Text</label>
+                                                        <input type="text" id="quick_reply_two" name="quick_reply_two"
+                                                            placeholder="Enter Quick Replay" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="m-1">
+                                                        <label for="quick_reply_three"
+                                                            class="form-label mt-1">Text</label>
+                                                        <input type="text" id="quick_reply_three"
+                                                            name="quick_reply_three" placeholder="Enter Quick Replay"
+                                                            class="form-control">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <center>
+                                <button class="btn btn-primary mt-4" style="width: 100px;" id="run"
+                                type="submit">Submit</button>
+                            </center>
+                        </form>
+                    </div>
+
+
+                    <div class="col">
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+
+                                    <h5 style="text-align: center;">Preview</h5>
+                                    <div class="card"
+                                        style="width: 350px; height: 600px; background-color: #333; margin-left: auto; margin-right: auto; background-image: url('/static/assets/img/backgrounds/whatsappbg.png'); background-size: cover; overflow-x: auto; overflow-clip-margin: inherit; position: relative;">
+                                        <div class="w-100 p-3 text-white rounded-top"
+                                            style="background-color: #075E54;position: absolute;">
+                                            WhatsApp
+                                        </div>
+                                        <div class="card mt-4"
+                                            style="width: 80%; min-height: 500px; background-color: white; margin-left: 30px; top: 50px; position: absolute; border-radius: 5px;">
+                                            <h6 id="headerOutput"
+                                                style="text-indent: 10px; margin-top: 10px; color: rgb(18, 18, 18); height: 10px;">
+                                            </h6>
+
+                                            <div id="headerOutputImage" class="hidden"
+                                                style="width: 90%; height: 120px; background-color: #333; border-radius: 20px; margin-left: auto; margin-right: auto; margin-top: 5px;">
+                                                <img id="uploadedImage" alt="" width="100%" height="120px"
+                                                    style="border-radius: 10px;">
+                                            </div>
+                                            <div id="videoContainer" class="hidden"
+                                                style="margin-left: auto; margin-right: auto; border-radius: 5px;">
+
+                                            </div>
+
+                                            <div>
+                                                <div id="iconContainer" class="hidden"
+                                                    style="width: 80px; height: 80px; margin-top: 0; margin-left: auto; margin-right: auto;">
+                                                </div>
+
+                                            </div>
+
+                                            <div id="audioContainer" class="hidden"
+                                                style="width: 100px; margin-top: 0;">
+
+                                            </div>
+
+
+                                            <div id="display">
+                                                <div id="formatted-text" style="margin-left: 15px; width: 250px;">
+
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="width: 100%; height: 70px; background-color: white; text-indent: 20px; margin-top: 70px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10; border-radius: 5px;">
+                                                <div style="display: block;" id="caller">
+                                                    <i class='bx bx-phone-call hidden' style='color:#0342d4;'
+                                                        id="call-foot">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="webber">
+                                                    <i class='bx bx-globe hidden' style='color:#195bf4;' id="web-foot">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="qickreplay">
+                                                    <i class='bx bx-globe hidden' style='color:#195bf4;' id="web-foot">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <script>
+                        const templateNameInput = document.getElementById('templateName');
+                
+                        templateNameInput.addEventListener('input', function() {
+                            this.value = this.value.replace(/[^a-z0-9]/g, '');
+                        });
+                    </script>
+                    {% verbatim %}
+                    <script>
+                        let counter = 1;
+                        let variableMap = new Map(); // Store variable positions and lengths
+                        
+                        function addVariable() {
+                            // Add variable to textarea
+                            const editor = document.getElementById('editor');
+                            const cursorPos = editor.selectionStart;
+                            const textBefore = editor.value.substring(0, cursorPos);
+                            const textAfter = editor.value.substring(cursorPos);
+                            const variable = '{{' + counter + '}}';
+                            
+                            // Store variable position and length
+                            variableMap.set(counter, {
+                                position: cursorPos,
+                                length: variable.length
+                            });
+                            
+                            editor.value = textBefore + variable + textAfter;
+                            const newCursorPos = cursorPos + variable.length;
+                            editor.setSelectionRange(newCursorPos, newCursorPos);
+                            
+                            // Create and add input field
+                            const container = document.getElementById('variable-inputs-container');
+                            const inputGroup = document.createElement('div');
+                            inputGroup.className = 'input-group mb-2 container';
+                            inputGroup.setAttribute('data-var-id', counter);
+                            inputGroup.innerHTML = `
+                                <span class="input-group-text">Variable {{${counter}}}</span>
+                                <input type="text" class="form-control variable-input" 
+                                       name="var_input_${counter}" 
+                                       placeholder="Enter value for variable ${counter}">
+                                <span class="input-group-text" style="cursor: pointer;" 
+                                      onclick="removeVariable(${counter})">
+                                    <i class='bx bx-x bg-danger p-1 text-white rounded-circle'></i>
+                                </span>
+                            `;
+                            container.appendChild(inputGroup);
+                            
+                            counter++;
+                            editor.focus();
+                        }
+                        
+                        function removeVariable(varId) {
+                            // Remove input field
+                            const inputGroup = document.querySelector(`[data-var-id="${varId}"]`);
+                            if (inputGroup) {
+                                inputGroup.remove();
+                            }
+                            
+                            // Remove variable from textarea
+                            const editor = document.getElementById('editor');
+                            let text = editor.value;
+                            
+                            // Create a new regex pattern that matches {{varId}} exactly
+                            const varPattern = new RegExp(`\\{\\{${varId}\\}\\}`);
+                            text = text.replace(varPattern, '');
+                            editor.value = text;
+                            
+                            // Update remaining variables in textarea if needed
+                            let updatedText = editor.value;
+                            for (let i = varId + 1; i < counter; i++) {
+                                const oldVar = `{{${i}}}`;
+                                const newVar = `{{${i-1}}}`;
+                                updatedText = updatedText.replace(oldVar, newVar);
+                            }
+                            editor.value = updatedText;
+                            
+                            // Update remaining input fields
+                            const remainingInputs = document.querySelectorAll('[data-var-id]');
+                            remainingInputs.forEach(input => {
+                                const currentId = parseInt(input.getAttribute('data-var-id'));
+                                if (currentId > varId) {
+                                    // Update data-var-id
+                                    input.setAttribute('data-var-id', currentId - 1);
+                                    // Update span text
+                                    input.querySelector('.input-group-text').textContent = `Variable {{${currentId - 1}}}`;
+                                    // Update input placeholder
+                                    input.querySelector('input').placeholder = `Enter value for variable ${currentId - 1}`;
+                                    // Update remove button onclick
+                                    input.querySelector('span:last-child').setAttribute('onclick', `removeVariable(${currentId - 1})`);
+                                }
+                            });
+                            
+                            // Decrement counter since we removed a variable
+                            counter--;
+                        }
+                        
+                        // Add form submit event listener
+                        document.getElementById('campaign_form').addEventListener('submit', function(e) {
+                            // Get all variable input values
+                            const inputs = document.querySelectorAll('.variable-input');
+                            const variablesData = Array.from(inputs).map(input => input.value);
+                            console.log('Variables Data:', variablesData);
+                            
+                            // Store the data in hidden input
+                            document.getElementById('variables_data').value = JSON.stringify(variablesData);
+                        });
+                    </script>
+                    {% endverbatim %}
+
+                    <script>
+
+                        document.getElementById('headerInputVideo').addEventListener('change', function (event) {
+                            const file = event.target.files[0];
+
+
+                            if (file && file.type.startsWith('video/')) {
+                                const videoContainer = document.getElementById('videoContainer');
+                                var headerTextOutput = document.getElementById('headerOutput')
+                                // var headerOutputImage = document.getElementById('headerOutputImage');
+                                // var headerOutputImageo = document.getElementById('uploadedImage');
+
+
+                                headerOutput.classList.add('hidden')
+                                videoContainer.classList.remove('hidden')
+                                // headerOutputImage.classList.add('hidden')
+                                // headerOutputImageo.classList.add('hidden')
+                                videoContainer.innerHTML = ''; // Clear any existing video
+
+                                const videoElement = document.createElement('video');
+                                videoElement.controls = true;
+                                videoElement.src = URL.createObjectURL(file);
+                                videoElement.width = 200; // Optional: Set a width for the video
+
+                                videoContainer.appendChild(videoElement);
+                            } else {
+                                alert('Please upload a valid video file.');
+                            }
+                        });
+
+                    </script>
+
+                    <script>
+
+                        document.getElementById('headerInputDocument').addEventListener('change', function (event) {
+                            const file = event.target.files[0];
+                            if (file) {
+                                const iconContainer = document.getElementById('iconContainer');
+
+                                iconContainer.classList.remove('hidden');
+                                iconContainer.innerHTML = ''; // Clear any existing icon
+
+                                let iconClass;
+                                const fileType = file.type;
+                                if (fileType === 'application/pdf') {
+                                    iconClass = 'bx bxs-file-pdf bxsize';
+                                } else if (fileType === 'application/vnd.ms-excel' || fileType === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+                                    iconClass = 'bx bxs-file-excel bxsize';
+                                } else if (fileType === 'text/plain') {
+                                    iconClass = 'bx bxs-file-txt bxsize';
+                                } else {
+                                    alert('Unsupported file type.');
+                                    return;
+                                }
+
+                                const iconElement = document.createElement('i');
+                                iconElement.className = iconClass;
+
+                                iconContainer.appendChild(iconElement);
+                            } else {
+                                alert('Please upload a valid document.');
+                            }
+                        });
+
+                    </script>
+                    <script>
+
+
+                        document.getElementById('headerInputAudio').addEventListener('change', function (event) {
+                            const file = event.target.files[0];
+                            if (file && file.type.startsWith('audio/')) {
+                                const audioContainer = document.getElementById('audioContainer');
+
+                                audioContainer.classList.remove('hidden')
+                                audioContainer.innerHTML = ''; // Clear any existing audio
+
+                                const audioElement = document.createElement('audio');
+                                audioElement.controls = true;
+                                audioElement.src = URL.createObjectURL(file);
+
+                                audioContainer.appendChild(audioElement);
+                            } else {
+                                alert('Please upload a valid audio file.');
+                            }
+                        });
+
+                    </script>
+
+                    <script>
+
+                        var fontSizeSelect = document.getElementById("fontSize");
+                        var callExtension = document.getElementById('buttonName');
+                        var callFoot = document.getElementById('call-foot');
+                        var WebExtension = document.getElementById('buttonNameWeb');
+                        var WebFoot = document.getElementById('web-foot');
+                        var qkreplay = document.getElementById('quick-replay');
+
+                        callExtension.addEventListener("input", updateCallFoot);
+
+                        function updateCallFoot() {
+                            var callEx = callExtension.value;
+                            callFoot.textContent = callEx;
+                            callFoot.style.fontSize = '15px'
+                            callFoot.style.marginLeft = "40px"
+                            callFoot.style.display = 'inline'
+                        }
+
+                        WebExtension.addEventListener("input", updateWebFoot);
+
+                        function updateWebFoot() {
+                            var webEx = WebExtension.value;
+                            WebFoot.textContent = webEx;
+                            WebFoot.style.fontSize = '15px'
+                            WebFoot.style.marginLeft = "40px"
+                            WebFoot.style.display = 'inline'
+                        }
+
+                        function updateFormattedText() {
+                            var editorContent = document.getElementById('editor').value;
+                            var formattedText = editorContent.replace(/\t/g, '    ');
+
+                            // Convert new lines to <br> for display
+                            formattedText = formattedText.replace(/\n/g, '<br>');
+                            //var formattedText = editorContent.replace(/\n/g, '<br>'); // Convert new lines to <br> for display
+                            var boldFormattedText = formattedText.replace(/<b>(.*?)<\/b>/g, '<strong>$1</strong>'); // Convert <b> to <strong>
+                            document.getElementById('formatted-text').innerHTML = boldFormattedText;
+                        }
+
+                        function boldSelection() {
+                            var editor = document.getElementById('editor');
+                            var start = editor.selectionStart;
+                            var end = editor.selectionEnd;
+                            var selectedText = editor.value.substring(start, end);
+                            var boldText = '<b>' + selectedText + '</b>';
+
+                            var newText = editor.value.substring(0, start) + boldText + editor.value.substring(end);
+                            editor.value = newText;
+
+                            updateFormattedText(); // Update formatted text area
+                        }
+
+                        document.getElementById('bold-button').addEventListener('click', function () {
+                            boldSelection();
+                        });
+
+                        document.getElementById('editor').addEventListener('input', function () {
+                            updateFormattedText(); // Update formatted text area on any input change
+                        });
+
+                        document.getElementById('editor').addEventListener('keyup', function (event) {
+                            if (event.key === 'Enter') {
+                                updateFormattedText(); // Update formatted text area on Enter key press
+                            }
+                        });
+
+                        // Initialize formatted text area on page load
+                        updateFormattedText();
+
+
+
+
+
+                        function handleCheckboxChange() {
+                            var callToActionCheckbox = document.getElementById('callToActionCheckbox');
+                            var visitWebsiteCheckbox = document.getElementById('visitWebsiteCheckbox');
+                            var quickReplayCheckbox = document.getElementById('quickReplayCheckbox');
+                            var callToActionFields = document.getElementById('callToActionFields');
+                            var visitWebsiteFields = document.getElementById('visitWebsiteFields');
+                            var quickReplayFields = document.getElementById('quickReplayFields');
+                            var callfooter = document.getElementById('caller');
+                            var webfooter = document.getElementById('webber');
+                            var qickreplay = document.getElementById('qickreplay');
+
+                            if (callToActionCheckbox.checked) {
+                                callToActionFields.classList.remove('hidden');
+                                callfooter.style.display = 'block';
+                            } else {
+                                callToActionFields.classList.add('hidden');
+                                callfooter.style.display = 'none';
+                                // Clear input fields
+                                callToActionFields.querySelectorAll('input').forEach(function (input) {
+                                    input.value = '';
+                                });
+                            }
+
+                            if (visitWebsiteCheckbox.checked) {
+                                visitWebsiteFields.classList.remove('hidden');
+                                webfooter.style.display = 'block';
+                                // Optionally refresh or update visitWebsiteFields content here
+                            } else {
+                                visitWebsiteFields.classList.add('hidden');
+                                webfooter.style.display = 'none';
+                                // Clear input fields
+                                visitWebsiteFields.querySelectorAll('input').forEach(function (input) {
+                                    input.value = '';
+                                });
+                            }
+
+
+                            if (quickReplayCheckbox.checked) {
+                                quickReplayFields.classList.remove('hidden');
+                                qickreplay.style.display = 'block';
+                                // Optionally refresh or update quickReplayFields content here
+                            } else {
+                                quickReplayFields.classList.add('hidden');
+                                qickreplay.style.display = 'none';
+                                // Clear input fields
+                                quickReplayFields.querySelectorAll('input').forEach(function (input) {
+                                    input.value = '';
+                                });
+                            }
+                        }
+
+
+
+
+
+                        function handleActionHeader() {
+                            const actionHeaderType = document.getElementById('actionHeaderType').value;
+
+                            const headerInput = document.getElementById('headerInput');
+                            const headerInputImage = document.getElementById('headerInputImage');
+                            const headerInputVideo = document.getElementById('headerInputVideo');
+                            const headerInputDocument = document.getElementById('headerInputDocument');
+                            const headerInputAudio = document.getElementById('headerInputAudio');
+
+                            headerInput.classList.add('hidden');
+                            headerInputImage.classList.add('hidden');
+                            headerInputVideo.classList.add('hidden');
+                            headerInputDocument.classList.add('hidden');
+                            headerInputAudio.classList.add('hidden');
+
+
+                            if (actionHeaderType === 'headerText') {
+                                headerInput.classList.remove('hidden');
+                            }
+                            else if (actionHeaderType === 'headerImage') {
+                                headerInputImage.classList.remove('hidden');
+                            }
+                            else if (actionHeaderType === 'headerVideo') {
+                                headerInputVideo.classList.remove('hidden');
+                            }
+                            else if (actionHeaderType === 'headerDocument') {
+                                headerInputDocument.classList.remove('hidden');
+                            }
+                            else if (actionHeaderType === 'headerAudio') {
+                                headerInputAudio.classList.remove('hidden');
+                            }
+                        }
+
+                        var headerInput = document.getElementById("headerInput");
+                        var headerOutput = document.getElementById("headerOutput");
+                        var headerOutputImage = document.getElementById('headerOutputImage');
+                        var headerOutputVideorun = document.getElementById('videoContainer');
+
+
+                        headerInput.addEventListener("input", updateHeader);
+
+                        function updateHeader() {
+
+                            const actionHeaderType = document.getElementById('actionHeaderType').value;
+
+                            const headerInput = document.getElementById('headerInput');
+
+
+
+                            if (actionHeaderType === 'headerText') {
+                                var inputValue = headerInput.value;
+                                headerOutput.textContent = inputValue;
+                                headerOutputImage.classList.add('hidden')
+                                headerOutputVideorun.classList.add('hidden')
+                            }
+
+                        }
+
+                        var headerInputImage = document.getElementById('headerInputImage');
+
+
+
+                        headerInputImage.addEventListener('change', function (event) {
+                            var file = event.target.files[0];
+                            var imageType = /image.*/;
+
+                            if (file.type.match(imageType)) {
+                                var reader = new FileReader();
+
+                                reader.onload = function () {
+                                    var img = document.getElementById('uploadedImage');
+                                    var headerOutputImage = document.getElementById('headerOutputImage');
+                                    var headerOutput = document.getElementById("headerOutput");
+                                    var headerOutputVideoDiv = document.getElementById('videoContainer')
+                                    headerOutputVideoDiv.classList.add('hidden')
+                                    headerOutput.classList.add('hidden');
+                                    img.src = reader.result;
+                                    headerOutputImage.style.display = 'block';
+                                    img.style.display = 'block'; // Show the image element
+                                };
+
+                                reader.readAsDataURL(file);
+
+                            } else {
+                                alert('Please select an image file.');
+                            }
+                        });
+
+
+                        document.getElementById('myTextarea').addEventListener('keydown', function (event) {
+                            // Check if Enter key is pressed (key code 13) and prevent default behavior
+                            if (event.keyCode === 13) {
+                                event.preventDefault();
+                                countLines(this);
+                            }
+                        });
+
+                    </script>
+
+
+                    <div class="container-xxl flex-grow-1 container-p-y"
+                        style="height: 500px; box-sizing: border-box;">
+
+                        <div class="row">
+                            <div class="card" style="min-height: 400px; box-shadow: none; overflow-y: auto;">
+
+                                <table class="table" style="font-size: small;">
+                                    <div class="w-100 p-3 text-white bg-dark rounded-top text-center fs-5">
+                                        Template Status Report
+                                    </div>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Template Name</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Media Type</th>
+                                            <th scope="col">Template Data</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for campaign in campaign_list %}
+                                        <tr>
+                                            <td>{{ campaign.template_name }}</td>
+                                            <td>{{ campaign.category }}</td>
+                                            <td>{{ campaign.media_type }}</td>
+                                            <td>{{ campaign.template_data }}</td>
+                                            <td>{{ campaign.status }}</td>
+                                            <td>
+                                                <form action="{% url 'delete_template' %}" method="POST"
+                                                    onsubmit="return confirmDelete('{{ campaign.template_name }}');">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="template_name"
+                                                        value="{{ campaign.template_name }}">
+                                                    <input type="hidden" name="template_id"
+                                                        value="{{ campaign.template_id }}">
+                                                    <button type="submit" class="btn-danger p-2 rounded-circle shadow">
+                                                        <i class='bx bx-trash'></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- / Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const errorContainer = document.getElementById('error-container');
+    const closeBtn = document.querySelector('.close-btn');
+
+    if (errorContainer && closeBtn) {
+        // Close modal when close button is clicked
+        closeBtn.addEventListener('click', function() {
+            errorContainer.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the modal
+        errorContainer.addEventListener('click', function(event) {
+            if (event.target === errorContainer) {
+                errorContainer.style.display = 'none';
+            }
+        });
+
+        // Optional: Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && errorContainer.style.display !== 'none') {
+                errorContainer.style.display = 'none';
+            }
+        });
+    }
+});
+</script>
+<script>
+    // Get the category select element
+const categorySelect = document.querySelector('select[name="category"]');
+
+// Get the relevant form elements
+const editorContainer = document.querySelector('#editor');
+const actionHeaderContainer = document.querySelector('#actionHeaderType');
+const footerContainer = document.querySelector('input[name="footer_data"]');
+const buttonsContainer = document.querySelector('.buttons_bg');
+
+const headerLabel = document.querySelector('#headerLabel');
+const bodyLabel = document.querySelector('#bodyLabel');
+const bodyButtons = document.querySelector('#bodyButtons');
+const addButtons = document.querySelector('#addButtons');
+const footerLabel = document.querySelector('#footerLabel');
+
+
+// Get the individual form fields
+const editorField = document.querySelector('#editor');
+const footerField = document.querySelector('input[name="footer_data"]');
+const buttonFields = document.querySelectorAll('.buttons_bg input');
+
+// Add event listener to the category select
+categorySelect.addEventListener('change', handleCategoryChange);
+
+function handleCategoryChange() {
+  const selectedCategory = categorySelect.value;
+
+  // Show/hide the relevant containers
+  if (selectedCategory === 'Authentication') {
+    editorContainer.classList.add('hidden');
+    actionHeaderContainer.classList.add('hidden');
+    footerContainer.classList.add('hidden');
+    buttonsContainer.classList.add('hidden');
+
+    headerLabel.classList.add('hidden');
+    bodyLabel.classList.add('hidden');
+    bodyButtons.classList.add('hidden');
+    addButtons.classList.add('hidden');
+    footerLabel.classList.add('hidden');
+
+    // Remove the required attribute from the relevant fields
+    buttonFields.forEach(field => field.required = false);
+  } else {
+    editorContainer.classList.remove('hidden');
+    actionHeaderContainer.classList.remove('hidden');
+    footerContainer.classList.remove('hidden');
+    // buttonsContainer.classList.remove('hidden');
+
+    headerLabel.classList.remove('hidden');
+    bodyLabel.classList.remove('hidden');
+    bodyButtons.classList.remove('hidden');
+    addButtons.classList.remove('hidden');
+    footerLabel.classList.remove('hidden');
+
+    // Restore the required attribute for the relevant fields
+    editorField.required = true;
+  }
+}
+</script>
+<script>
+    $(document).ready(function(){
+        $('#create_message_temp').addClass('active');
+    });
+  </script>
+<!-- / Layout wrapper -->
+{% endblock %}

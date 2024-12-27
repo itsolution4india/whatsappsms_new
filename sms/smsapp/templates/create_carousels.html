@@ -1,0 +1,484 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+    /* static/css/styles.css */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.carousel-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.carousel-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    align-items: center;
+    background: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+.remove-btn {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: #c82333;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.char-count {
+    text-align: right;
+    color: #666;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.error {
+    border-color: #dc3545;
+}
+
+.error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 4px;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container shadow card mt-3 mb-3">
+        <h3>Create WhatsApp Template</h3>
+        <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <p>Creating template...</p>
+        </div>
+        
+        <form id="templateForm">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="templateName">Template Name:</label>
+                <input type="text" id="templateName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="language">Language:</label>
+                <select id="language" required>
+                    <option value="en_US">English (US)</option>
+                    <option value="es_ES">Spanish (Spain)</option>
+                    <option value="pt_BR">Portuguese (Brazil)</option>
+                    <option value="id_ID">Indonesian</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" required>
+                    <option value="marketing">Marketing</option>
+                    <option value="utility">Utility</option>
+                    <option value="authentication">Authentication</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="bodyText">Body Text:</label>
+                <textarea id="bodyText" required></textarea>
+                <div class="char-count">0/1024</div>
+            </div>
+            
+            <div id="carouselCards"></div>
+            
+            <div class="form-actions">
+                <button type="button" id="addCardBtn" class="btn-secondary">Add Carousel Card</button>
+                <button type="submit" class="btn-primary">Create Template</button>
+            </div>
+        </form>
+    </div>
+
+<script>
+    // static/js/main.js
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('templateForm');
+    const addCardBtn = document.getElementById('addCardBtn');
+    const carouselCards = document.getElementById('carouselCards');
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const bodyText = document.getElementById('bodyText');
+    const charCount = document.querySelector('.char-count');
+    let cardCount = 0;
+
+    // Character count for body text
+    bodyText.addEventListener('input', function() {
+        const count = this.value.length;
+        charCount.textContent = `${count}/1024`;
+        if (count > 1024) {
+            this.classList.add('error');
+            charCount.classList.add('error-message');
+        } else {
+            this.classList.remove('error');
+            charCount.classList.remove('error-message');
+        }
+    });
+
+    addCardBtn.addEventListener('click', function() {
+        if (cardCount >= 3) {
+            alert('Maximum 3 carousel cards allowed');
+            return;
+        }
+        
+        const cardDiv = document.createElement('div');
+        cardDiv.className = 'carousel-card';
+        cardDiv.innerHTML = `
+            <h3>Carousel Card ${cardCount + 1}</h3>
+            <div class="form-group">
+                <label>Image (JPG/JPEG only):</label>
+                <input type="file" class="card-image" accept="image/jpeg" required>
+                <div class="error-message" style="display: none;"></div>
+            </div>
+            <div class="form-group">
+                <label>Body Text:</label>
+                <textarea class="card-body-text" required></textarea>
+                <div class="char-count">0/60</div>
+            </div>
+            <div class="button-container">
+                <button type="button" class="add-button btn-secondary">Add Button</button>
+                <button type="button" class="remove-btn">Remove Card</button>
+            </div>
+            <div class="card-buttons"></div>
+        `;
+        
+        carouselCards.appendChild(cardDiv);
+        cardCount++;
+        
+        if (cardCount >= 3) {
+            addCardBtn.style.display = 'none';
+        }
+        
+        // Add character count for card body text
+        const cardBodyText = cardDiv.querySelector('.card-body-text');
+        const cardCharCount = cardDiv.querySelector('.char-count');
+        
+        cardBodyText.addEventListener('input', function() {
+            const count = this.value.length;
+            cardCharCount.textContent = `${count}/60`;
+            if (count > 60) {
+                this.classList.add('error');
+                cardCharCount.classList.add('error-message');
+            } else {
+                this.classList.remove('error');
+                cardCharCount.classList.remove('error-message');
+            }
+        });
+        
+        // Add button click handler
+        const addButtonBtn = cardDiv.querySelector('.add-button');
+        const cardButtons = cardDiv.querySelector('.card-buttons');
+        let buttonCount = 0;
+        
+        addButtonBtn.addEventListener('click', function() {
+            if (buttonCount >= 2) {
+                alert('Maximum 2 buttons allowed per card');
+                return;
+            }
+            
+            const buttonDiv = document.createElement('div');
+            buttonDiv.className = 'button-group';
+            buttonDiv.innerHTML = `
+                <select class="button-type">
+                    <option value="quick_reply">Quick Reply</option>
+                    <option value="url">URL</option>
+                </select>
+                <input type="text" class="button-text" placeholder="Button Text" required>
+                <input type="url" class="button-url" placeholder="URL (for URL button)" style="display: none">
+                <button type="button" class="remove-btn">Remove</button>
+            `;
+            
+            cardButtons.appendChild(buttonDiv);
+            buttonCount++;
+            
+            // Handle button type change
+            const buttonType = buttonDiv.querySelector('.button-type');
+            const buttonUrl = buttonDiv.querySelector('.button-url');
+            
+            buttonType.addEventListener('change', function() {
+                buttonUrl.style.display = this.value === 'url' ? 'block' : 'none';
+                buttonUrl.required = this.value === 'url';
+            });
+            
+            // Handle remove button
+            buttonDiv.querySelector('.remove-btn').addEventListener('click', function() {
+                buttonDiv.remove();
+                buttonCount--;
+            });
+        });
+        
+        // Handle remove card
+        cardDiv.querySelector('.remove-btn').addEventListener('click', function() {
+            cardDiv.remove();
+            cardCount--;
+            addCardBtn.style.display = 'block';
+        });
+    });
+
+    // Helper function to get CSRF token
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Helper function to upload image
+    async function uploadImage(file) {
+        const formData = new FormData();
+        formData.append('image', file);
+        
+        try {
+            const response = await fetch('/upload-image/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                return data.media_handle;
+            } else {
+                console.error('Upload error:', data);  // Debug log
+                throw new Error(data.message);
+            }
+        } catch (error) {
+            console.error('Upload error details:', error);  // Debug log
+            throw new Error(`Failed to upload image: ${error.message}`);
+        }
+    }
+
+    // Form submission handler
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        try {
+            // Show loading overlay
+            loadingOverlay.style.display = 'flex';
+            
+            // Basic validation
+            if (bodyText.value.length > 1024) {
+                throw new Error('Body text exceeds 1024 characters');
+            }
+            
+            const cards = document.querySelectorAll('.carousel-card');
+            if (!cards.length) {
+                throw new Error('At least one carousel card is required');
+            }
+            
+            // Prepare template data
+            const templateData = {
+                name: document.getElementById('templateName').value,
+                language: document.getElementById('language').value,
+                category: document.getElementById('category').value,
+                body_text: bodyText.value,
+                cards: []
+            };
+            
+            // Process each card
+            for (const card of cards) {
+                const cardBodyText = card.querySelector('.card-body-text');
+                if (cardBodyText.value.length > 60) {
+                    throw new Error('Card body text exceeds 60 characters');
+                }
+                
+                const imageFile = card.querySelector('.card-image').files[0];
+                if (!imageFile) {
+                    throw new Error('Image is required for each card');
+                }
+                
+                // Upload image and get media handle
+                const mediaHandle = await uploadImage(imageFile);
+                
+                const cardData = {
+                    media_handle: mediaHandle,
+                    body_text: cardBodyText.value,
+                    buttons: []
+                };
+                
+                // Process buttons
+                const buttons = card.querySelectorAll('.button-group');
+                for (const button of buttons) {
+                    const buttonType = button.querySelector('.button-type').value;
+                    const buttonText = button.querySelector('.button-text').value;
+                    const buttonUrl = button.querySelector('.button-url');
+                    
+                    const buttonData = {
+                        type: buttonType,
+                        text: buttonText
+                    };
+                    
+                    if (buttonType === 'url') {
+                        if (!buttonUrl.value) {
+                            throw new Error('URL is required for URL button type');
+                        }
+                        buttonData.url = buttonUrl.value;
+                    }
+                    
+                    cardData.buttons.push(buttonData);
+                }
+                
+                templateData.cards.push(cardData);
+            }
+            
+            // Submit template
+            const response = await fetch('/create/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify(templateData)
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                alert('Template created successfully!');
+                // Reset form
+                form.reset();
+                carouselCards.innerHTML = '';
+                cardCount = 0;
+                addCardBtn.style.display = 'block';
+            } else {
+                throw new Error(result.message || 'Failed to create template');
+            }
+            
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            loadingOverlay.style.display = 'none';
+        }
+    });
+});
+</script>
+<script>
+    $(document).ready(function(){
+        $('#Carousel').addClass('active');
+    });
+  </script>
+{% endblock %}
