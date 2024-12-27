@@ -21859,3 +21859,658 @@ Not Found: /ajax/docs/nav/
 Not Found: /api/graphql/
 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/470776626128146/message_templates
 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/470776626128146/message_templates
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=f60b179995d64813a444555f55b6afb9 name=schedule_messages)>]
+Current time (localized): 2024-12-26 14:17:12.545043+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=aafa2dc4a9674e8e904bf3e4e5239e4f name=schedule_messages)>]
+Current time (localized): 2024-12-26 14:17:12.604622+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=39343347eb3241b6a1a1bf5558cc10d4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 14:17:12.698471+05:30
+404 Not Found: /wp-admin/css/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /wp-admin/css/
+404 Not Found: /.well-known/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /.well-known/
+404 Not Found: /sites/default/files/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /sites/default/files/
+404 Not Found: /uploads/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /uploads/
+404 Not Found: /images/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /images/
+404 Not Found: /files/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /files/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+Internal Server Error: /send_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/send_message.py", line 331, in send_flow_message
+    all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+Internal Server Error: /send_flow_message/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/send_message.py", line 331, in send_flow_message
+    all_contact, contact_list = validate_phone_numbers(request,contacts, uploaded_file, discount)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: too many values to unpack (expected 2)
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Flow: test_demo@gmail.com, 550919208086204, [{'template_id': '597545089523124', 'template_language': 'en', 'template_name': 'test_folw_temp92', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': [{'type': 'FLOW', 'text': 'Proceed', 'flow_id': 542259288967880, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '965503861705014', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}], test_folw_temp92, ['916361161836'], ['916361161836'], test
+<QuerySet ['test_demo@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+Send_Flow: test_demo@gmail.com, 550919208086204, [{'template_id': '597545089523124', 'template_language': 'en', 'template_name': 'test_folw_temp92', 'media_type': 'N/A', 'media_link': None, 'status': 'APPROVED', 'category': 'MARKETING', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': [{'type': 'FLOW', 'text': 'Proceed', 'flow_id': 542259288967880, 'flow_action': 'NAVIGATE', 'navigate_screen': 'ITSOLUTION'}]}, {'template_id': '965503861705014', 'template_language': 'en_US', 'template_name': 'hello_world', 'media_type': 'TEXT', 'media_link': None, 'status': 'APPROVED', 'category': 'UTILITY', 'template_data': 'Welcome and congratulations!! This message demonstrates your ability to send a WhatsApp message notification from the Cloud API, hosted by Meta. Thank you for taking the time to test with us.', 'button': None}], test_folw_temp92, ['919315494292', '916361161836'], ['919315494292', '916361161836'], test
+report_date 12/26/2024 09:21:14, no_match_num 0
+report_date 12/26/2024 09:21:43, no_match_num 0
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+User samsungindia@gmail.com logged in successfully.
+numbers_list {'916361161836'}
+Send_Sms: samsungindia@gmail.com, 550919208086204, ordertemp, None, ['916361161836'], ['916361161836'], testing, ['Prashanth G', '984583']
+Sending messages for user: samsungindia@gmail.com, campaign title: testing
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testing, user: samsungindia@gmail.com
+User Samsung logged in successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=3483b377c20d48e7aeb57982e7f73928 name=schedule_messages)>]
+Current time (localized): 2024-12-26 15:35:46.888023+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=d001cf1bd30c4f8e81a4dc594490963e name=schedule_messages)>]
+Current time (localized): 2024-12-26 15:35:46.894032+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=cc8a225d7d864eeeb68d026db5e5e199 name=schedule_messages)>]
+Current time (localized): 2024-12-26 15:35:47.039942+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=3483b377c20d48e7aeb57982e7f73928 name=schedule_messages)>]
+Current time (localized): 2024-12-26 16:20:46.889461+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=d001cf1bd30c4f8e81a4dc594490963e name=schedule_messages)>]
+Current time (localized): 2024-12-26 16:20:46.897281+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=cc8a225d7d864eeeb68d026db5e5e199 name=schedule_messages)>]
+Current time (localized): 2024-12-26 16:20:47.040415+05:30
+User samsungindia@gmail.com logged in successfully.
+numbers_list {'919711340505'}
+Send_Sms: samsungindia@gmail.com, 550919208086204, samsungdemo, 633821025757637, ['919711340505'], ['919711340505'], testcamp, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testcamp
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: testcamp, user: samsungindia@gmail.com
+numbers_list {'919711340505', '919654642919'}
+Send_Sms: samsungindia@gmail.com, 550919208086204, samsungdemo, 523497927386224, ['919711340505', '919654642919'], ['919711340505', '919654642919'], testing, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testing
+Calculated money data for sending messages: 2
+Messages sent successfully for campaign: testing, user: samsungindia@gmail.com
+report_date 12/26/2024 11:32:09, no_match_num 0
+report_date 12/26/2024 11:32:04, no_match_num 0
+report_date 12/26/2024 11:32:09, no_match_num 0
+report_date 12/26/2024 11:32:04, no_match_num 0
+report_date 12/26/2024 11:32:09, no_match_num 0
+report_date 12/26/2024 11:32:04, no_match_num 0
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=3483b377c20d48e7aeb57982e7f73928 name=schedule_messages)>]
+Current time (localized): 2024-12-26 17:05:46.888086+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=d001cf1bd30c4f8e81a4dc594490963e name=schedule_messages)>]
+Current time (localized): 2024-12-26 17:05:46.893985+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=cc8a225d7d864eeeb68d026db5e5e199 name=schedule_messages)>]
+Current time (localized): 2024-12-26 17:05:47.039426+05:30
+report_date 12/26/2024 11:32:09, no_match_num 0
+report_date 12/26/2024 11:32:04, no_match_num 0
+report_date 12/26/2024 11:32:09, no_match_num 0
+report_date 12/26/2024 11:32:04, no_match_num 0
+404 Not Found: //wp-includes/ID3/license.txt - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp-includes/ID3/license.txt
+404 Not Found: //feed/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //feed/
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //2020/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2020/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //2021/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //2021/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'autoconfig.wtsdealnow.in'. You may need to add 'autoconfig.wtsdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User demo2@gmail.com logged in successfully.
+numbers_list {'919667252263', '918802041885', '919711340505', '918178369973', '919319475083', '919273457480'}
+Send_Sms: demo2@gmail.com, 244226048784189, demotraning, 624474200148909, ['919667252263', '918802041885', '919711340505', '918178369973', '919319475083', '919273457480'], ['919711340505', '919667252263', '918802041885', '918178369973', '919319475083', '919273457480'], testcampaign, []
+Sending messages for user: demo2@gmail.com, campaign title: testcampaign
+Calculated money data for sending messages: 6
+Messages sent successfully for campaign: testcampaign, user: demo2@gmail.com
+<QuerySet ['it_demo@gmail.com', 'demo2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+report_date 12/26/2024 12:20:46, no_match_num 0
+report_date 12/26/2024 12:20:37, no_match_num 0
+report_date 12/26/2024 12:20:48, no_match_num 0
+report_date 12/26/2024 12:20:28, no_match_num 0
+report_date 12/26/2024 12:20:44, no_match_num 0
+report_date 12/26/2024 12:20:26, no_match_num 0
+report_date 12/26/2024 12:20:46, no_match_num 0
+report_date 12/26/2024 12:20:37, no_match_num 0
+report_date 12/26/2024 12:20:48, no_match_num 0
+report_date 12/26/2024 12:20:28, no_match_num 0
+report_date 12/26/2024 12:20:44, no_match_num 0
+report_date 12/26/2024 12:20:26, no_match_num 0
+<QuerySet ['it_demo@gmail.com', 'demo2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+report_date 12/26/2024 12:20:46, no_match_num 0
+report_date 12/26/2024 12:20:37, no_match_num 0
+report_date 12/26/2024 12:22:39, no_match_num 0
+report_date 12/26/2024 12:22:11, no_match_num 0
+report_date 12/26/2024 12:20:44, no_match_num 0
+report_date 12/26/2024 12:20:26, no_match_num 0
+numbers_list {'919278345748'}
+Send_Sms: demo2@gmail.com, 244226048784189, demotraning, 925273019581032, ['919278345748'], ['919278345748'], test2, []
+Sending messages for user: demo2@gmail.com, campaign title: test2
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: test2, user: demo2@gmail.com
+<QuerySet ['it_demo@gmail.com', 'demo2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+report_date 12/26/2024 12:23:57, no_match_num 0
+report_date 12/26/2024 12:23:57, no_match_num 0
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:11:04.886149+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:11:04.924838+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:11:04.936686+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:56:04.895192+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:56:04.933061+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 18:56:04.941031+05:30
+404 Not Found: /ads.txt - IP:  - User-Agent: Mozilla/5.0 (compatible)
+Not Found: /ads.txt
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /.env
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 19:41:04.886946+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 19:41:04.925791+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 19:41:04.936634+05:30
+404 Not Found: /+CSCOE+/logon.html - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: /+CSCOE+/logon.html
+<QuerySet ['it_demo@gmail.com', 'demo2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 20:26:04.896535+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 20:26:04.933139+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 20:26:04.947701+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:11:04.888619+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:11:04.926825+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:11:04.938738+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:56:04.894031+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:56:04.932821+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 21:56:04.943039+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 22:41:04.892633+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 22:41:04.932210+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 22:41:04.993941+05:30
+User itsolution4india2@gmail.com logged in successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-26 23:26:04.886575+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-26 23:26:04.925038+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-26 23:26:04.936859+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ea0a94dabff346638d9244a6ed0f5504 name=schedule_messages)>]
+Current time (localized): 2024-12-27 00:11:04.900042+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=a2321bf69a8c4ac2b917fc17ad8cfbfa name=schedule_messages)>]
+Current time (localized): 2024-12-27 00:11:04.933159+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=004fcd2625d74b0788a8595ebf0ae1a4 name=schedule_messages)>]
+Current time (localized): 2024-12-27 00:11:04.949691+05:30
+start_scheduler called
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User test_demo@gmail.com logged in successfully.
+2FA OTP sent for user test_demo@gmail.com
+User Demo01 completed 2FA successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 01:28:09.985951+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 01:28:10.008483+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 01:28:10.133004+05:30
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /.git/config
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.env
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:13:09.990957+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:13:10.019210+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:13:10.147124+05:30
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.env
+Invalid form submission: <ul class="errorlist"><li>username_or_email<ul class="errorlist"><li>This field is required.</li></ul></li><li>password<ul class="errorlist"><li>This field is required.</li></ul></li></ul>
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:58:09.985689+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:58:10.008754+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 02:58:10.133157+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 03:43:09.991772+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 03:43:10.019970+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 03:43:10.146350+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 04:28:09.985885+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 04:28:10.012424+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 04:28:10.133405+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:13:09.985975+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:13:10.008985+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:13:10.133059+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:58:09.991918+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:58:10.022842+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 05:58:10.145926+05:30
+404 Not Found: /cgi-bin/luci/;stok=/locale - IP:  - User-Agent: None
+Not Found: /cgi-bin/luci/;stok=/locale
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 06:43:09.985330+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 06:43:10.008384+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 06:43:10.132849+05:30
+404 Not Found: //wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp-includes/wlwmanifest.xml
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //website/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //website/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //news/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //news/wp-includes/wlwmanifest.xml
+404 Not Found: //2018/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //2018/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //media/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //media/wp-includes/wlwmanifest.xml
+404 Not Found: //wp2/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+404 Not Found: //sito/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36
+Not Found: //sito/wp-includes/wlwmanifest.xml
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 07:28:09.988725+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 07:28:10.013481+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 07:28:10.135375+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:13:09.985944+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:13:10.008707+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:13:10.133496+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:58:09.985502+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:58:10.008338+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 08:58:10.132939+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 09:43:09.986802+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 09:43:10.010903+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 09:43:10.134380+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 10:28:09.990607+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 10:28:10.020111+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 10:28:10.143721+05:30
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:13:09.985378+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:13:10.008771+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:13:10.133233+05:30
+Invalid HTTP_HOST header: '46.202.130.143:x'. The domain name provided is not valid according to RFC 1034/1035.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '46.202.130.143:x'. The domain name provided is not valid according to RFC 1034/1035.
+Bad Request: /
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:58:09.985569+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:58:10.008370+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 11:58:10.132441+05:30
+User Samsung logged in successfully.
+2FA OTP sent for user Samsung
+User Samsung completed 2FA successfully.
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+User Rudralogistic logged in successfully.
+numbers_list {'918766226824'}
+Send_Sms: rudralogistic@gmail.com, 492630533932274, rudraxrrrold, 568412622713609, ['918766226824'], ['918766226824'], rahul, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: rahul
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: rahul, user: rudralogistic@gmail.com
+User Itsolution4india logged in successfully.
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ddcf1319e85e4afeb58a5c03f499d991 name=schedule_messages)>]
+Current time (localized): 2024-12-27 12:43:10.008345+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=4389584a61184da18e9cfebe53230d1b name=schedule_messages)>]
+Current time (localized): 2024-12-27 12:43:10.097403+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=8d3bd12712d8489e9e07055e9331ad54 name=schedule_messages)>]
+Current time (localized): 2024-12-27 12:43:10.133694+05:30
+404 Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application - IP:  - User-Agent: Mozilla/5.0 zgrab/0.x
+Not Found: /ecp/Current/exporttool/microsoft.exchange.ediscovery.exporttool.application
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
