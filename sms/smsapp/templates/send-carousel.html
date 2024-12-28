@@ -1,0 +1,268 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex">
+    <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+        <div class="card z-index-2 w-100">
+          <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+            <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
+              <h5 style="color: white; text-align: center;">Send Carousel</h5>
+            </div>
+          </div>
+          <div class="card-body mt-4">
+            <form method="POST" id="mediaForm" action="" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label class="form-label">Campaign Name</label>
+                <input type="text" name="campaign_title" class="form-control" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Template Name</label>
+                <!-- <input type="text" id="params" name="params" class="form-control"> -->
+    
+                <select id="template-select" onchange="updateTemplate()" class="form-select" name="params" required>
+                  {% for name in template_name %}
+                  <option value="{{ name }}">{{ name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+                
+              <input type="hidden" id="media_type_input" name="media_type">
+              <input type="hidden" name="action_type" id="actionTypeInput" value="submit">
+    
+              <div class="mb-3">
+                <label class="form-label">Upload CSV File</label>
+                <input type="file" id="id_files" name="files" class="form-control" accept=".csv">
+              </div>
+
+              <div id="dynamic-file-uploads" class="row"></div>
+
+              <p style="text-align: center;"></p>
+              <div class="mb-3">
+                <label class="form-label">Write Contact Numbers</label>
+                <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
+                  name="contact_number"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
+    
+              {% if messages %}
+                {% for message in messages %}
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% elif message.tags == 'error' %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% elif message.tags == 'warning' %}
+                        <div class="alert alert-warning">{{ message }}</div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+    
+            </form>
+          </div>
+        </div>
+      </div>
+    
+      <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+                 
+    
+        <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary w-100">
+          <div>
+            <div class="card z-index-2">
+              <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
+                  <h5 style="color: white; text-align: center;">Template Content</h5>
+                </div>
+              </div>
+              <div class="card-body" style="overflow-y: auto; height:530px;" id="greeting-display">
+                <div class="mt-3">
+                  <div class="float-start"
+                    style="width: 120px; text-align: center; background-color: rgb(2, 140, 2); border-radius: 5px; letter-spacing: 2px; box-shadow: 1px 1px 4px rgb(189, 189, 189);">
+                    <b><span id="template-status" style="color: white;"></span></b>
+                  </div>
+                  <div class="float-end bg-primary"
+                    style="width: 120px; color: white; text-align: center; border-radius: 5px; letter-spacing: 2px; box-shadow: 1px 1px 4px rgb(189, 189, 189);">
+                    <b><span id="template-media"></span></b>
+                  </div>
+                </div>
+                <hr class="mt-5">
+                <div class="mt-3">
+                  <pre id="template-data"></pre>
+                </div>
+                <div style="width: 120px; margin-left: auto; margin-right: auto;">
+                  <div class="" style="width: 170px; height: 50px; text-align: center;">
+                    <!-- <i class='bx bx-phone-call float-start'></i> -->
+                    <h5 class="bg-primary" style="color: white; border-radius: 2px;">
+                      <pre id="template-button1" class="mt-2"></pre>
+                    </h5>
+                  </div>
+                </div>
+                <div class="" style="width: 120px; margin-left: auto; margin-right: auto;">
+                  <div class="" style="width: 170px; height: 50px; text-align: center;">
+                    <!-- <i class='bx bx-globe float-start'></i> -->
+                    <h5 class="bg-primary" style="color: white; border-radius: 2px;">
+                      <pre id="template-button2" class=""></pre>
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+  <script>
+
+function updateTemplate() {
+        const fileUploadContainer = document.getElementById('dynamic-file-uploads');
+        fileUploadContainer.innerHTML = '';  // Clear previous file inputs
+
+        for (let i = 0; i < selectedCarouselNums; i++) {
+            // Create a new div for each file input
+            const div = document.createElement('div');
+            div.className = 'm-1';
+            div.style.width = '40%';
+
+            // Create a label for the file input
+            const label = document.createElement('label');
+            label.className = 'form-label mt-1';
+            label.setAttribute('for', `file_${i}`);
+            label.textContent = `Upload Media ${i + 1}`;
+
+            // Create the file input element
+            const input = document.createElement('input');
+            input.className = 'form-control';
+            input.type = 'file';
+            input.name = `file_${i}`;
+            input.id = `file_${i}`;
+
+            // Append label and input to the div
+            div.appendChild(label);
+            div.appendChild(input);
+
+            // Append the div to the container
+            fileUploadContainer.appendChild(div);
+        }
+    }
+
+
+    function setActionType(actionType) {
+          document.getElementById('actionTypeInput').value = actionType;
+      }
+
+      function toggleScheduleCall() {
+          var dateFields = document.getElementById('date-time-fields');
+          var toggleButton = document.getElementById('toggleScheduleButton');
+
+          // Toggle the visibility of the date-time fields
+          if (dateFields.style.display === 'none') {
+              dateFields.style.display = 'block';
+              toggleButton.textContent = 'Hide Schedule Call'; // Change button text
+          } else {
+              dateFields.style.display = 'none';
+              toggleButton.textContent = 'Schedule Call'; // Reset button text
+          }
+      }
+
+      function confirmSchedule() {
+          // Ensure the user selected both date and time
+          var date = document.getElementById('scheduleDate').value;
+          var time = document.getElementById('scheduleTime').value;
+
+          if (!date || !time) {
+              alert("Please select both date and time.");
+              return;
+          }
+          // Set the action type to "schedule"
+          setActionType('schedule');
+          // Submit the form
+          document.getElementById('mediaForm').submit();
+      }
+
+      document.getElementById("mediaForm").addEventListener("submit", function (event) {
+        var mediaIdInput = document.getElementById("mediaIdInput");
+        if (mediaIdInput.value.trim() === "") {
+          mediaIdInput.value = "None";
+        }
+      });
+
+      // Template Data Preview
+
+      // Parse JSON strings passed from Django into JavaScript arrays
+      const templateData = JSON.parse('{{ template_data|escapejs }}');
+      const templateStatus = JSON.parse('{{ template_status|escapejs }}');
+      const templateButton = JSON.parse('{{ template_button|escapejs }}');
+      const templateMedia = JSON.parse('{{ template_media|escapejs }}');
+      const carousel_nums = JSON.parse('{{ carousel_nums|escapejs }}');
+
+      function updateTemplate() {
+        const select = document.getElementById('template-select');
+        const selectedIndex = select.selectedIndex;
+
+        // Clear previous data before updating
+        document.getElementById('template-status').innerText = '';
+        document.getElementById('template-media').innerText = '';
+        document.getElementById('template-data').innerText = '';
+        document.getElementById('template-button1').innerText = '';
+        document.getElementById('template-button2').innerText = '';
+
+        // Get the selected data
+        const selectedData = templateData[selectedIndex];
+        const selectedStatus = templateStatus[selectedIndex];
+        const selectedButton = JSON.parse(templateButton[selectedIndex]); // Parse button data if it's JSON
+        const selectedMedia = templateMedia[selectedIndex];
+        const selectedCarouselNums = carousel_nums[selectedIndex] || 0;
+        console.log("selectedCarouselNums", selectedCarouselNums)
+        // Clear and update dynamic file upload fields
+        const fileUploadContainer = document.getElementById('dynamic-file-uploads');
+        fileUploadContainer.innerHTML = '';  // Clear previous file inputs
+
+        for (let i = 0; i < selectedCarouselNums; i++) {
+          const div = document.createElement('div');
+          div.className = 'm-1';
+          div.style.width = '40%';
+
+          const label = document.createElement('label');
+          label.className = 'form-label mt-1';
+          label.setAttribute('for', `file_${i}`);
+          label.textContent = `Upload Media ${i + 1}`;
+
+          const input = document.createElement('input');
+          input.className = 'form-control';
+          input.type = 'file';
+          input.name = `file_${i}`;
+          input.id = `file_${i}`;
+
+          div.appendChild(label);
+          div.appendChild(input);
+          fileUploadContainer.appendChild(div);
+        }
+
+        // Display data
+        document.getElementById('template-status').innerText = selectedStatus;
+        document.getElementById('template-media').innerText = selectedMedia;
+        document.getElementById('template-data').innerText = typeof selectedData === 'object' ? JSON.stringify(selectedData, null, 2) : selectedData;
+        document.getElementById('template-button1').innerText = typeof selectedButton === 'object' ? JSON.stringify(selectedButton[0]['text'], null, 2) : selectedButton;
+        document.getElementById('template-button2').innerText = typeof selectedButton === 'object' ? JSON.stringify(selectedButton[1]['text'], null, 2) : selectedButton;
+
+        document.getElementById('media_type_input').value = selectedMedia;
+
+      }
+
+      // Initial display setup on page load
+      document.addEventListener("DOMContentLoaded", function () {
+        updateTemplate();
+      });
+  </script>
+  <script>
+    $(document).ready(function(){
+        $('#sendCarousel').addClass('active');
+    });
+</script>
+{% endblock %}

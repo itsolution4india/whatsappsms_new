@@ -29,6 +29,7 @@ urlpatterns = [
     path('user_responses/', views.save_phone_number, name='user_responses'),
     path('create_flow_message/', views.create_flow_message, name='create_flow_message'),
     path('send_flow_message/', views.send_flow_message, name='send_flow_message'),
+    path('send_carousel_messages/', views.send_carousel_messages, name='send_carousel_messages'),
     path('delete_template/', views.delete_template, name='delete_template'),
     path('link_templates/', views.link_templates, name='link_templates'),
     path('template-linkage/delete/<int:id>/', views.delete_template_linkage, name='delete_template_linkage'),

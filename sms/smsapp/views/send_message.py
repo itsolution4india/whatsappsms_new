@@ -9,11 +9,12 @@ from django.utils.timezone import now
 from ..functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
 from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount
 from .auth import check_user_permission
-from ..functions.flows import send_flow_messages_with_report
+from ..functions.flows import send_flow_messages_with_report, send_carousel_messages_with_report
 from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
-from ..fastapidata import send_validate_req
+from ..fastapidata import send_validate_req, send_carousel_message_api
 import pandas as pd
-
+from ..media_id import process_media_file
+import time
 
 
 @login_required
@@ -344,3 +345,92 @@ def send_flow_message(request):
         return redirect('send_flow_message')
         
     return render(request, "send-flow.html", context)
+
+
+@login_required
+def send_carousel_messages(request):
+    phone_id = display_phonenumber_id(request)
+    token, _ = get_token_and_app_id(request)
+    current_user = request.user
+    
+    try:
+        report_list = ReportInfo.objects.filter(email=request.user)
+        template_database = Templates.objects.filter(email=request.user)
+        template_value = list(template_database.values_list('templates', flat=True))
+        # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
+        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        if campaign_list is None :
+            campaign_list=[]
+        templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
+
+        context = {
+            "template_name": [template['template_name'] for template in templates],
+            "template_data": json.dumps([template['template_data'] for template in templates]),
+            "template_status": json.dumps([template['status'] for template in templates]),
+            "carousel_nums": json.dumps([template['num_cards'] for template in templates]),
+            "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
+            "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
+        }
+    except Exception as e:
+        logger.error(f"Error fetching templates: {e}")
+        context = {
+            "template_name": [],
+            "template_data": json.dumps([]),
+            "template_status": json.dumps([]),
+            "template_button": json.dumps([]),
+            "template_media": json.dumps([]),
+            "carousel_nums": json.dumps([])
+        }
+
+    context.update({
+        "coins":request.user.marketing_coins + request.user.authentication_coins,
+        "marketing_coins":request.user.marketing_coins,
+        "authentication_coins":request.user.authentication_coins,
+        "report_list": report_list,
+        "campaign_list": campaign_list,
+        "username": request.user.email if request.user.is_authenticated else None,
+        "WABA_ID": display_whatsapp_id(request),
+        "PHONE_ID": display_phonenumber_id(request)
+    })
+
+    if request.method == 'POST':
+        campaign_title = request.POST.get("campaign_title")
+        tempalate_name = request.POST.get("params")
+        uploaded_file = request.FILES.get("files", None)
+        contacts = request.POST.get("contact_number", "").strip()
+        
+        media_id_list = []
+        for i in range(0, 2):
+            file = request.FILES.get(f'file_{i}')
+            print("file", file)
+            if file:
+                try:
+                    media_id, _ = process_media_file(file, display_phonenumber_id(request), token)
+                    media_id_list.append(media_id)
+                    time.sleep(1.5)
+                except Exception as e:
+                    messages.error(request, f"Error processing file {i}: {str(e)}")
+                    continue
+        print("media_id_list", media_id_list)
+        template_details = fetch_templates(display_whatsapp_id(request), token, tempalate_name)
+        
+        if not campaign_title or not campaign_title:
+            messages.error(request, "Flow name is required.")
+            return render(request, "send-flow.html", context)
+
+        discount = show_discount(request.user)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
+        
+        total_coins = request.user.marketing_coins + request.user.authentication_coins
+        coin_validation = validate_balance(total_coins, len(contact_list))
+        if not coin_validation:
+            messages.error(request, "Insufficient balance. Please update.")
+            return render(request, "send-carousel.html", context)
+        try:
+            send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, template_details)
+        except Exception as e:
+            logger.error(f"Error processing Flow form: {e}")
+            messages.error(request, "There was an error processing your request.")
+        return redirect('send_carousel_messages')
+        
+    return render(request, "send-carousel.html", context)
