@@ -22514,3 +22514,916 @@ start_scheduler called
 start_scheduler called
 Scheduler started successfully.
 Scheduler started successfully.
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+Not Found: /robots.txt
+404 Not Found: /media/system/js/core.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /media/system/js/core.js
+404 Not Found: /wp-includes/js/jquery/jquery.js - IP:  - User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36
+Not Found: /wp-includes/js/jquery/jquery.js
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ab6eb8bf2e684fa981b03f49a2868af9 name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:11:53.142084+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1de6916591694150a9924a432ffe6d3d name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:11:53.380976+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=af4cec793abd40bb911fe65a10e6d8ff name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:11:53.432104+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ab6eb8bf2e684fa981b03f49a2868af9 name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:56:52.431480+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=af4cec793abd40bb911fe65a10e6d8ff name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:56:52.670605+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1de6916591694150a9924a432ffe6d3d name=schedule_messages)>]
+Current time (localized): 2024-12-27 14:56:52.722007+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=ab6eb8bf2e684fa981b03f49a2868af9 name=schedule_messages)>]
+Current time (localized): 2024-12-27 15:41:52.428650+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=af4cec793abd40bb911fe65a10e6d8ff name=schedule_messages)>]
+Current time (localized): 2024-12-27 15:41:52.666416+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=1de6916591694150a9924a432ffe6d3d name=schedule_messages)>]
+Current time (localized): 2024-12-27 15:41:52.676449+05:30
+Invalid HTTP_HOST header: '143-130-202-46.pool.ukrtel.net'. You may need to add '143-130-202-46.pool.ukrtel.net' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '143-130-202-46.pool.ukrtel.net'. You may need to add '143-130-202-46.pool.ukrtel.net' to ALLOWED_HOSTS.
+Bad Request: /
+2FA OTP sent for user test_demo@gmail.com
+<QuerySet ['it_demo@gmail.com', 'demo2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/auth.py", line 65, in user_login
+    del request.session['temp_user_id']
+        ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 60, in __delitem__
+    del self._session[key]
+        ~~~~~~~~~~~~~^^^^^
+KeyError: 'temp_user_id'
+2FA OTP sent for user test_demo@gmail.com
+User Demo01 completed 2FA successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /.git/config - IP:  - User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 17:20:06.184217+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 17:20:06.231632+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 17:20:06.258767+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:05:06.200822+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:05:06.248819+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:05:06.313563+05:30
+404 Not Found: //wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //wp-includes/wlwmanifest.xml
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //website/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //website/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //news/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //news/wp-includes/wlwmanifest.xml
+404 Not Found: //2020/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //2020/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //wp2/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+404 Not Found: //sito/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36
+Not Found: //sito/wp-includes/wlwmanifest.xml
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /ads.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:50:06.183229+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:50:06.235567+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 18:50:06.261989+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 19:35:06.198609+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 19:35:06.231049+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 19:35:06.267284+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 20:20:06.186334+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 20:20:06.247214+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 20:20:06.310556+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:05:06.183561+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:05:06.231641+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:05:06.259659+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:50:06.199263+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:50:06.233555+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 21:50:06.267760+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 22:35:06.188385+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 22:35:06.240722+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 22:35:06.262791+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-27 23:20:06.199849+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-27 23:20:06.239529+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-27 23:20:06.267556+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:05:06.198120+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:05:06.245852+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:05:06.268361+05:30
+404 Not Found: /wp-content/plugins/essential-addons-for-elementor-lite/readme.txt - IP:  - User-Agent: Mozilla/6.4 (Windows NT 11.1) Gecko/2010102 Firefox/99.0
+Not Found: /wp-content/plugins/essential-addons-for-elementor-lite/readme.txt
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:50:06.184013+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:50:06.231638+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 00:50:06.258726+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 01:35:06.182892+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 01:35:06.230439+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 01:35:06.259081+05:30
+404 Not Found: /wp-admin/css/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /wp-admin/css/
+404 Not Found: /.well-known/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /.well-known/
+404 Not Found: /sites/default/files/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /sites/default/files/
+404 Not Found: /uploads/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /uploads/
+404 Not Found: /images/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /images/
+404 Not Found: /files/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+Not Found: /files/
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 02:20:06.184743+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 02:20:06.231439+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 02:20:06.259298+05:30
+Invalid HTTP_HOST header: '/run/gunicorn.sock:'. The domain name provided is not valid according to RFC 1034/1035.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '/run/gunicorn.sock:'. The domain name provided is not valid according to RFC 1034/1035.
+Bad Request: /
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:05:06.200850+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:05:06.238666+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:05:06.271009+05:30
+Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'db.whtsappdealnow.in'. You may need to add 'db.whtsappdealnow.in' to ALLOWED_HOSTS.
+Bad Request: /
+404 Not Found: /.git/config - IP:  - User-Agent: SonyEricssonK610i/R1CB Browser/NetFront/3.3 Profile/MIDP-2.0 Configuration/CLDC-1.1
+Not Found: /.git/config
+404 Not Found: /.git/config - IP:  - User-Agent: msnbot/1.1 ( http://search.msn.com/msnbot.htm)
+Not Found: /.git/config
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:50:06.182410+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:50:06.230292+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 03:50:06.259040+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 04:35:06.186629+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 04:35:06.233777+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 04:35:06.260294+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 05:20:06.182937+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 05:20:06.230312+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 05:20:06.259091+05:30
+404 Not Found: /22.php - IP:  - User-Agent: None
+Not Found: /22.php
+404 Not Found: /wp-content/upgrade/about.php - IP:  - User-Agent: None
+Not Found: /wp-content/upgrade/about.php
+404 Not Found: /alfanew.PHP7 - IP:  - User-Agent: None
+Not Found: /alfanew.PHP7
+404 Not Found: /room.php - IP:  - User-Agent: None
+Not Found: /room.php
+404 Not Found: /cong.php - IP:  - User-Agent: None
+Not Found: /cong.php
+404 Not Found: /b0.php - IP:  - User-Agent: None
+Not Found: /b0.php
+404 Not Found: /wsa.php - IP:  - User-Agent: None
+Not Found: /wsa.php
+404 Not Found: /wp-includes/PHPMailer/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/PHPMailer/autoload_classmap.php
+404 Not Found: /wp-content/languages/index.php - IP:  - User-Agent: None
+Not Found: /wp-content/languages/index.php
+404 Not Found: /wp-admin/images/index.php - IP:  - User-Agent: None
+Not Found: /wp-admin/images/index.php
+404 Not Found: /radio.php - IP:  - User-Agent: None
+Not Found: /radio.php
+404 Not Found: /wp-admin/images/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-admin/images/autoload_classmap.php
+404 Not Found: /wp-includes/ID3/xleet.php - IP:  - User-Agent: None
+Not Found: /wp-includes/ID3/xleet.php
+404 Not Found: /search - IP:  - User-Agent: None
+Not Found: /search
+404 Not Found: /wp-includes/Text/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/Text/autoload_classmap.php
+404 Not Found: /xxx.php - IP:  - User-Agent: None
+Not Found: /xxx.php
+404 Not Found: /cookie.php - IP:  - User-Agent: None
+Not Found: /cookie.php
+404 Not Found: /randkeyword.php - IP:  - User-Agent: None
+Not Found: /randkeyword.php
+404 Not Found: /sim.php/wp-includes/certificates/plugins.php - IP:  - User-Agent: None
+Not Found: /sim.php/wp-includes/certificates/plugins.php
+404 Not Found: /.well-known/ - IP:  - User-Agent: None
+Not Found: /.well-known/
+404 Not Found: /wp-2019.php - IP:  - User-Agent: None
+Not Found: /wp-2019.php
+404 Not Found: /wp-content/plugins/about.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/about.php
+404 Not Found: /404.php - IP:  - User-Agent: None
+Not Found: /404.php
+404 Not Found: /index.php - IP:  - User-Agent: None
+Not Found: /index.php
+404 Not Found: /wp-admin/network/xleet.php - IP:  - User-Agent: None
+Not Found: /wp-admin/network/xleet.php
+404 Not Found: /wp-content/xleet.php - IP:  - User-Agent: None
+Not Found: /wp-content/xleet.php
+404 Not Found: /about.php - IP:  - User-Agent: None
+Not Found: /about.php
+404 Not Found: /12.php - IP:  - User-Agent: None
+Not Found: /12.php
+404 Not Found: /wp-admin/js/flower.php - IP:  - User-Agent: None
+Not Found: /wp-admin/js/flower.php
+404 Not Found: /version.php - IP:  - User-Agent: None
+Not Found: /version.php
+404 Not Found: /bala.php - IP:  - User-Agent: None
+Not Found: /bala.php
+404 Not Found: /ggfi.php - IP:  - User-Agent: None
+Not Found: /ggfi.php
+404 Not Found: /wp-includes/blocks/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/blocks/autoload_classmap.php
+404 Not Found: /themes.php - IP:  - User-Agent: None
+Not Found: /themes.php
+404 Not Found: /css/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /css/autoload_classmap.php
+404 Not Found: /wp-content/plugins/Core-Econ/1.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/Core-Econ/1.php
+404 Not Found: /wp-content/plugins/pwnd/1.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/pwnd/1.php
+404 Not Found: /wp-admin/classwithtostring.php - IP:  - User-Agent: None
+Not Found: /wp-admin/classwithtostring.php
+404 Not Found: /.well-known/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /.well-known/autoload_classmap.php
+404 Not Found: /wp-includes/ID3/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/ID3/autoload_classmap.php
+404 Not Found: /wp-content/plugins/erinyani/baxa1.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/erinyani/baxa1.php
+404 Not Found: /index/function.php - IP:  - User-Agent: None
+Not Found: /index/function.php
+404 Not Found: /wp-includes/block-supports/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/block-supports/autoload_classmap.php
+404 Not Found: /wp-admin/js/widgets/xleet.php - IP:  - User-Agent: None
+Not Found: /wp-admin/js/widgets/xleet.php
+404 Not Found: /baxa1.php - IP:  - User-Agent: None
+Not Found: /baxa1.php
+404 Not Found: /wp-admin/maint/flower.php - IP:  - User-Agent: None
+Not Found: /wp-admin/maint/flower.php
+404 Not Found: /back.php - IP:  - User-Agent: None
+Not Found: /back.php
+404 Not Found: /data.php - IP:  - User-Agent: None
+Not Found: /data.php
+404 Not Found: /goods.php - IP:  - User-Agent: None
+Not Found: /goods.php
+404 Not Found: /randkeyword.PhP7 - IP:  - User-Agent: None
+Not Found: /randkeyword.PhP7
+404 Not Found: /templates/beez3/index.php - IP:  - User-Agent: None
+Not Found: /templates/beez3/index.php
+404 Not Found: /wp-admin/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-admin/autoload_classmap.php
+404 Not Found: /edit.php - IP:  - User-Agent: None
+Not Found: /edit.php
+404 Not Found: /wp-content/mah.php - IP:  - User-Agent: None
+Not Found: /wp-content/mah.php
+404 Not Found: /chosen.php - IP:  - User-Agent: None
+Not Found: /chosen.php
+404 Not Found: /120f9.php - IP:  - User-Agent: None
+Not Found: /120f9.php
+404 Not Found: /wp-includes/certificates/wp-login.php - IP:  - User-Agent: None
+Not Found: /wp-includes/certificates/wp-login.php
+404 Not Found: /file.php - IP:  - User-Agent: None
+Not Found: /file.php
+404 Not Found: /ds.php - IP:  - User-Agent: None
+Not Found: /ds.php
+404 Not Found: /wp-admin/network/about.php - IP:  - User-Agent: None
+Not Found: /wp-admin/network/about.php
+404 Not Found: /files.php - IP:  - User-Agent: None
+Not Found: /files.php
+404 Not Found: /install.php - IP:  - User-Agent: None
+Not Found: /install.php
+404 Not Found: /wp-content/1.php - IP:  - User-Agent: None
+Not Found: /wp-content/1.php
+404 Not Found: /moon.php - IP:  - User-Agent: None
+Not Found: /moon.php
+404 Not Found: /byp.php - IP:  - User-Agent: None
+Not Found: /byp.php
+404 Not Found: /wp-mail.php - IP:  - User-Agent: None
+Not Found: /wp-mail.php
+404 Not Found: /autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /autoload_classmap.php
+404 Not Found: /disagreed.php - IP:  - User-Agent: None
+Not Found: /disagreed.php
+404 Not Found: /s.php - IP:  - User-Agent: None
+Not Found: /s.php
+404 Not Found: /f35.php - IP:  - User-Agent: None
+Not Found: /f35.php
+404 Not Found: /class-wp-lock.php - IP:  - User-Agent: None
+Not Found: /class-wp-lock.php
+404 Not Found: /xl2023.php.php - IP:  - User-Agent: None
+Not Found: /xl2023.php.php
+404 Not Found: /wp-admin/file.php - IP:  - User-Agent: None
+Not Found: /wp-admin/file.php
+404 Not Found: /al.php - IP:  - User-Agent: None
+Not Found: /al.php
+404 Not Found: /wp-includes/css/thems.php - IP:  - User-Agent: None
+Not Found: /wp-includes/css/thems.php
+404 Not Found: /hehehehe.php - IP:  - User-Agent: None
+Not Found: /hehehehe.php
+404 Not Found: /files/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /files/autoload_classmap.php
+404 Not Found: /sad/about.php - IP:  - User-Agent: None
+Not Found: /sad/about.php
+404 Not Found: /wp-content/themes/about.php - IP:  - User-Agent: None
+Not Found: /wp-content/themes/about.php
+404 Not Found: /ab.php - IP:  - User-Agent: None
+Not Found: /ab.php
+404 Not Found: /auth.php - IP:  - User-Agent: None
+Not Found: /auth.php
+404 Not Found: /wp/xleet.php - IP:  - User-Agent: None
+Not Found: /wp/xleet.php
+404 Not Found: /wp-content/install.php - IP:  - User-Agent: None
+Not Found: /wp-content/install.php
+404 Not Found: /wp-admin/js/index.php - IP:  - User-Agent: None
+Not Found: /wp-admin/js/index.php
+404 Not Found: /wp-includes/widgets/include.php - IP:  - User-Agent: None
+Not Found: /wp-includes/widgets/include.php
+404 Not Found: /wp-content/themes/pridmag/1.php - IP:  - User-Agent: None
+Not Found: /wp-content/themes/pridmag/1.php
+404 Not Found: /wp-config-sample.php - IP:  - User-Agent: None
+Not Found: /wp-config-sample.php
+404 Not Found: /NewFile.php - IP:  - User-Agent: None
+Not Found: /NewFile.php
+404 Not Found: /wp-content/plugins/TOPXOH/wDR.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/TOPXOH/wDR.php
+404 Not Found: /new.php - IP:  - User-Agent: None
+Not Found: /new.php
+404 Not Found: /wp-content/plugins/linkpreview/index.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/linkpreview/index.php
+404 Not Found: /wp-includes/fonts/index.php - IP:  - User-Agent: None
+Not Found: /wp-includes/fonts/index.php
+404 Not Found: /mah/function.php - IP:  - User-Agent: None
+Not Found: /mah/function.php
+404 Not Found: /aaa.php - IP:  - User-Agent: None
+Not Found: /aaa.php
+404 Not Found: /wp-content/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-content/autoload_classmap.php
+404 Not Found: /wp-content/plugins/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/autoload_classmap.php
+404 Not Found: /wp-includes/style-engine/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/style-engine/autoload_classmap.php
+404 Not Found: /hehe.php - IP:  - User-Agent: None
+Not Found: /hehe.php
+404 Not Found: /504.php - IP:  - User-Agent: None
+Not Found: /504.php
+404 Not Found: /wp-includes/SimplePie/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/SimplePie/autoload_classmap.php
+404 Not Found: /classwithtostring.php - IP:  - User-Agent: None
+Not Found: /classwithtostring.php
+404 Not Found: /css.php - IP:  - User-Agent: None
+Not Found: /css.php
+404 Not Found: /wp-admin/user/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-admin/user/autoload_classmap.php
+404 Not Found: /wp-content/classwithtostring.php - IP:  - User-Agent: None
+Not Found: /wp-content/classwithtostring.php
+404 Not Found: /upload2/10-27-24_8:26_1.php - IP:  - User-Agent: None
+Not Found: /upload2/10-27-24_8:26_1.php
+404 Not Found: /wp-content/plugins/core-plugin/include.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/core-plugin/include.php
+404 Not Found: /wp-content/plugins/Duplicatepost/src/ui/sidwso.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/Duplicatepost/src/ui/sidwso.php
+404 Not Found: /.well-known/pki-validation/ - IP:  - User-Agent: None
+Not Found: /.well-known/pki-validation/
+404 Not Found: /.well-known/ - IP:  - User-Agent: None
+Not Found: /.well-known/
+404 Not Found: /meta.php - IP:  - User-Agent: None
+Not Found: /meta.php
+404 Not Found: /functions.php - IP:  - User-Agent: None
+Not Found: /functions.php
+404 Not Found: /c99.php - IP:  - User-Agent: None
+Not Found: /c99.php
+404 Not Found: /themes/zMousse/otuz1.php - IP:  - User-Agent: None
+Not Found: /themes/zMousse/otuz1.php
+404 Not Found: /content.php - IP:  - User-Agent: None
+Not Found: /content.php
+404 Not Found: /print/bkindex.php - IP:  - User-Agent: None
+Not Found: /print/bkindex.php
+404 Not Found: /wp-includes/rest-api/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/rest-api/autoload_classmap.php
+404 Not Found: /wp-admin/images/about.php - IP:  - User-Agent: None
+Not Found: /wp-admin/images/about.php
+404 Not Found: /user.php - IP:  - User-Agent: None
+Not Found: /user.php
+404 Not Found: /text.php - IP:  - User-Agent: None
+Not Found: /text.php
+404 Not Found: /.well-known/acme-challenge/index.php - IP:  - User-Agent: None
+Not Found: /.well-known/acme-challenge/index.php
+404 Not Found: /wp-content/json.php - IP:  - User-Agent: None
+Not Found: /wp-content/json.php
+404 Not Found: /wp-includes/block-supports/index.php - IP:  - User-Agent: None
+Not Found: /wp-includes/block-supports/index.php
+404 Not Found: /1.php - IP:  - User-Agent: None
+Not Found: /1.php
+404 Not Found: /y.php - IP:  - User-Agent: None
+Not Found: /y.php
+404 Not Found: /wp-admin/css/wp-login.php - IP:  - User-Agent: None
+Not Found: /wp-admin/css/wp-login.php
+404 Not Found: /wp-content/plugins/WordPressCore/include.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/WordPressCore/include.php
+404 Not Found: /wp-admin/css/colors/index.php - IP:  - User-Agent: None
+Not Found: /wp-admin/css/colors/index.php
+404 Not Found: /cron.php - IP:  - User-Agent: None
+Not Found: /cron.php
+404 Not Found: /images/wp-login.php - IP:  - User-Agent: None
+Not Found: /images/wp-login.php
+404 Not Found: /wander.php - IP:  - User-Agent: None
+Not Found: /wander.php
+404 Not Found: /gzak2w.php - IP:  - User-Agent: None
+Not Found: /gzak2w.php
+404 Not Found: /b.php - IP:  - User-Agent: None
+Not Found: /b.php
+404 Not Found: /xleet.php - IP:  - User-Agent: None
+Not Found: /xleet.php
+404 Not Found: /wp-admin/js/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-admin/js/autoload_classmap.php
+404 Not Found: /alfa-rex.php - IP:  - User-Agent: None
+Not Found: /alfa-rex.php
+404 Not Found: /feeds.php - IP:  - User-Agent: None
+Not Found: /feeds.php
+404 Not Found: /wp-content/plugins/index.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/index.php
+404 Not Found: /index/function.php - IP:  - User-Agent: None
+Not Found: /index/function.php
+404 Not Found: /wp-content/plugins/sphinx/randkeyword.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/sphinx/randkeyword.php
+404 Not Found: /error.php - IP:  - User-Agent: None
+Not Found: /error.php
+404 Not Found: /GOD.php - IP:  - User-Agent: None
+Not Found: /GOD.php
+404 Not Found: /admin.php - IP:  - User-Agent: None
+Not Found: /admin.php
+404 Not Found: /wp-content/themes/digital-download/new.php - IP:  - User-Agent: None
+Not Found: /wp-content/themes/digital-download/new.php
+404 Not Found: /0.php - IP:  - User-Agent: None
+Not Found: /0.php
+404 Not Found: /403.php - IP:  - User-Agent: None
+Not Found: /403.php
+404 Not Found: /wp-includes/Text/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/Text/autoload_classmap.php
+404 Not Found: /wp-includes/IXR/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/IXR/autoload_classmap.php
+404 Not Found: /wp-content/themes/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-content/themes/autoload_classmap.php
+404 Not Found: /ee.php - IP:  - User-Agent: None
+Not Found: /ee.php
+404 Not Found: /wp-content/uploads/chosen.php - IP:  - User-Agent: None
+Not Found: /wp-content/uploads/chosen.php
+404 Not Found: /wp-content/plugins/sid/sidwso.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/sid/sidwso.php
+404 Not Found: /webadmin.php - IP:  - User-Agent: None
+Not Found: /webadmin.php
+404 Not Found: /help.php - IP:  - User-Agent: None
+Not Found: /help.php
+404 Not Found: /wp-includes/js/jcrop/Jcrop.php - IP:  - User-Agent: None
+Not Found: /wp-includes/js/jcrop/Jcrop.php
+404 Not Found: /wp-includes/ID3/index.php - IP:  - User-Agent: None
+Not Found: /wp-includes/ID3/index.php
+404 Not Found: /wp-includes/defaults.php - IP:  - User-Agent: None
+Not Found: /wp-includes/defaults.php
+404 Not Found: /flower.php - IP:  - User-Agent: None
+Not Found: /flower.php
+404 Not Found: /buy.php - IP:  - User-Agent: None
+Not Found: /buy.php
+404 Not Found: /wp-conflg.php - IP:  - User-Agent: None
+Not Found: /wp-conflg.php
+404 Not Found: /wp-includes/assets/index.php - IP:  - User-Agent: None
+Not Found: /wp-includes/assets/index.php
+404 Not Found: /xmlrpc.php - IP:  - User-Agent: None
+Not Found: /xmlrpc.php
+404 Not Found: /wp-add.php - IP:  - User-Agent: None
+Not Found: /wp-add.php
+404 Not Found: /x/index.php - IP:  - User-Agent: None
+Not Found: /x/index.php
+404 Not Found: /function.php - IP:  - User-Agent: None
+Not Found: /function.php
+404 Not Found: /wp-content/x/index.php - IP:  - User-Agent: None
+Not Found: /wp-content/x/index.php
+404 Not Found: /doc.php - IP:  - User-Agent: None
+Not Found: /doc.php
+404 Not Found: /ova.php - IP:  - User-Agent: None
+Not Found: /ova.php
+404 Not Found: /wp-includes/images/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/images/autoload_classmap.php
+404 Not Found: /alfanew.php - IP:  - User-Agent: None
+Not Found: /alfanew.php
+404 Not Found: /wp-content/themes/seotheme/mar.php - IP:  - User-Agent: None
+Not Found: /wp-content/themes/seotheme/mar.php
+404 Not Found: /as.php - IP:  - User-Agent: None
+Not Found: /as.php
+404 Not Found: /wp-content/plugins/dummyyummy/wp-signup.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/dummyyummy/wp-signup.php
+404 Not Found: /wp-admin/images/Mhbgf.php - IP:  - User-Agent: None
+Not Found: /wp-admin/images/Mhbgf.php
+404 Not Found: /simple.php - IP:  - User-Agent: None
+Not Found: /simple.php
+404 Not Found: /credits.php - IP:  - User-Agent: None
+Not Found: /credits.php
+404 Not Found: /wp-admin/css/index.php - IP:  - User-Agent: None
+Not Found: /wp-admin/css/index.php
+404 Not Found: /control.php - IP:  - User-Agent: None
+Not Found: /control.php
+404 Not Found: /wp-content/about.php - IP:  - User-Agent: None
+Not Found: /wp-content/about.php
+404 Not Found: /wp-content/plugins/ubh/1.php - IP:  - User-Agent: None
+Not Found: /wp-content/plugins/ubh/1.php
+404 Not Found: /wp-admin/js/about.php - IP:  - User-Agent: None
+Not Found: /wp-admin/js/about.php
+404 Not Found: /templates/beez3/1.php - IP:  - User-Agent: None
+Not Found: /templates/beez3/1.php
+404 Not Found: /.well-known/pki-validation/about.php - IP:  - User-Agent: None
+Not Found: /.well-known/pki-validation/about.php
+404 Not Found: /wp-admin/images/install.php - IP:  - User-Agent: None
+Not Found: /wp-admin/images/install.php
+404 Not Found: /wp-admin/maint/wp-login.php - IP:  - User-Agent: None
+Not Found: /wp-admin/maint/wp-login.php
+404 Not Found: /wp-includes/assets/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-includes/assets/autoload_classmap.php
+404 Not Found: /wp-configs.php - IP:  - User-Agent: None
+Not Found: /wp-configs.php
+404 Not Found: /gecko-new.php - IP:  - User-Agent: None
+Not Found: /gecko-new.php
+404 Not Found: /wp-admin/includes/flower.php - IP:  - User-Agent: None
+Not Found: /wp-admin/includes/flower.php
+404 Not Found: /.tmb/cloud.php - IP:  - User-Agent: None
+Not Found: /.tmb/cloud.php
+404 Not Found: /en.php - IP:  - User-Agent: None
+Not Found: /en.php
+404 Not Found: /jp.php - IP:  - User-Agent: None
+Not Found: /jp.php
+404 Not Found: /c.php - IP:  - User-Agent: None
+Not Found: /c.php
+404 Not Found: /wp-content/upgrade/autoload_classmap.php - IP:  - User-Agent: None
+Not Found: /wp-content/upgrade/autoload_classmap.php
+404 Not Found: /favicon.php - IP:  - User-Agent: None
+Not Found: /favicon.php
+404 Not Found: /about/function.php - IP:  - User-Agent: None
+Not Found: /about/function.php
+404 Not Found: /wp.php - IP:  - User-Agent: None
+Not Found: /wp.php
+404 Not Found: /dropdown.php - IP:  - User-Agent: None
+Not Found: /dropdown.php
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:05:06.187131+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:05:06.238634+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:05:06.265058+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:50:06.182899+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:50:06.230282+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 06:50:06.258516+05:30
+<QuerySet ['test_demo@gmail.com', 'samsungindia@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 07:35:06.182482+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 07:35:06.231010+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 07:35:06.258692+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 08:20:06.182251+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 08:20:06.229977+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 08:20:06.258882+05:30
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; XBLWP7; ZuneWP7) UCBrowser/2.9.0.263
+Not Found: /.env
+404 Not Found: /.env - IP:  - User-Agent: Mozilla/5.0 (Linux; Android 7.0; SAMSUNG SM-G925R6 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/5.4 Chrome/51.0.2704.106 Mobile Safari/537.36
+Not Found: /.env
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:05:06.181921+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:05:06.230005+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:05:06.259590+05:30
+404 Not Found: /wp-login.php - IP:  - User-Agent: Mozilla/5.0
+Not Found: /wp-login.php
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:50:06.182040+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:50:06.230063+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 09:50:06.258766+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 10:35:06.195088+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 10:35:06.239697+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 10:35:06.261734+05:30
+Failed login attempt for karan1997arora@gmail.com
+Failed login attempt for karan1997arora@gmail.com
+Failed login attempt for karan1997arora@gmail.com
+Failed login attempt for karan1997arora@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=47fc6ea8c75f48f4ba8d34bff43eb452 name=schedule_messages)>]
+Current time (localized): 2024-12-28 11:20:06.182352+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=7fcf42fdbc6e45f8bd2d5b4522123249 name=schedule_messages)>]
+Current time (localized): 2024-12-28 11:20:06.230336+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=c2ee8c566cc644edb41132d1c2f25826 name=schedule_messages)>]
+Current time (localized): 2024-12-28 11:20:06.258720+05:30
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+404 Not Found: //wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //wp-includes/wlwmanifest.xml
+404 Not Found: //xmlrpc.php - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //xmlrpc.php
+404 Not Found: //blog/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //blog/wp-includes/wlwmanifest.xml
+404 Not Found: //web/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //web/wp-includes/wlwmanifest.xml
+404 Not Found: //wordpress/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //wordpress/wp-includes/wlwmanifest.xml
+404 Not Found: //website/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //website/wp-includes/wlwmanifest.xml
+404 Not Found: //wp/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //wp/wp-includes/wlwmanifest.xml
+404 Not Found: //news/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //news/wp-includes/wlwmanifest.xml
+404 Not Found: //2018/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //2018/wp-includes/wlwmanifest.xml
+404 Not Found: //2019/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //2019/wp-includes/wlwmanifest.xml
+404 Not Found: //shop/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //shop/wp-includes/wlwmanifest.xml
+404 Not Found: //wp1/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //wp1/wp-includes/wlwmanifest.xml
+404 Not Found: //test/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //test/wp-includes/wlwmanifest.xml
+404 Not Found: //media/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //media/wp-includes/wlwmanifest.xml
+404 Not Found: //wp2/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //wp2/wp-includes/wlwmanifest.xml
+404 Not Found: //site/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //site/wp-includes/wlwmanifest.xml
+404 Not Found: //cms/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //cms/wp-includes/wlwmanifest.xml
+404 Not Found: //sito/wp-includes/wlwmanifest.xml - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36
+Not Found: //sito/wp-includes/wlwmanifest.xml
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+User test_demo@gmail.com logged in successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+start_scheduler called
+Scheduler started successfully.
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+<QuerySet ['itsolution4india2@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+404 Not Found: /send_carousel_message - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /send_carousel_message
+404 Not Found: /send_carousel_message - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /send_carousel_message
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+404 Not Found: /send_carousel_message - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /send_carousel_message
