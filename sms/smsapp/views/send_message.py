@@ -400,7 +400,7 @@ def send_carousel_messages(request):
         contacts = request.POST.get("contact_number", "").strip()
         
         media_id_list = []
-        for i in range(0, 2):
+        for i in range(0, 3):
             file = request.FILES.get(f'file_{i}')
             print("file", file)
             if file:
