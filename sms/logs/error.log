@@ -23427,3 +23427,79 @@ start_scheduler called
 Scheduler started successfully.
 404 Not Found: /send_carousel_message - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
 Not Found: /send_carousel_message
+<QuerySet ['test_demo@gmail.com', 'samsungindia@gmail.com']>, cannot access local variable 'reply_text' where it is not associated with a value
+bot automation message
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+report_date 12/28/2024 07:22:18, no_match_num 0
+report_date 12/28/2024 07:26:26, no_match_num 0
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /ajax/docs/nav/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /ajax/docs/nav/
+404 Not Found: /api/graphql/ - IP:  - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Not Found: /api/graphql/
+404 Not Found: /robots.txt - IP:  - User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36
+Not Found: /robots.txt
+404 Not Found: /sitemap.txt - IP:  - User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36
+Not Found: /sitemap.txt
+404 Not Found: /sitemap.xml - IP:  - User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36
+Not Found: /sitemap.xml
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+report_date 12/28/2024 07:35:18, no_match_num 0
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0f23780b3c684c34942f7645292484f8 name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:11:18.677767+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=acc216c56dc644bcb137b58bcf0dc96f name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:11:18.701287+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=95052021540443069fe547e3e97b0fa7 name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:11:18.828189+05:30
+User Rudralogistic logged in successfully.
+numbers_list {'918826990069'}
+Send_Sms: rudralogistic@gmail.com, 492630533932274, rudraxrrrold, 1096118318687275, ['918826990069'], ['918826990069'], f, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: f
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: f, user: rudralogistic@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0f23780b3c684c34942f7645292484f8 name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:56:18.673533+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=acc216c56dc644bcb137b58bcf0dc96f name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:56:18.703195+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=95052021540443069fe547e3e97b0fa7 name=schedule_messages)>]
+Current time (localized): 2024-12-28 14:56:18.830969+05:30
+numbers_list {'919810095681'}
+Send_Sms: rudralogistic@gmail.com, 492630533932274, rudraxrrrold, 2656671664540773, ['919810095681'], ['919810095681'], e, []
+Sending messages for user: rudralogistic@gmail.com, campaign title: e
+Calculated money data for sending messages: 1
+Messages sent successfully for campaign: e, user: rudralogistic@gmail.com
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=0f23780b3c684c34942f7645292484f8 name=schedule_messages)>]
+Current time (localized): 2024-12-28 15:41:18.678419+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=acc216c56dc644bcb137b58bcf0dc96f name=schedule_messages)>]
+Current time (localized): 2024-12-28 15:41:18.714496+05:30
+Schedule list: <QuerySet []>
+Scheduler state: [<Job (id=95052021540443069fe547e3e97b0fa7 name=schedule_messages)>]
+Current time (localized): 2024-12-28 15:41:18.845238+05:30
+User Itsolution4india logged in successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
+start_scheduler called
+Scheduler started successfully.
