@@ -122,6 +122,20 @@ def fetch_templates(waba_id, token, req_template_name=None):
             if header_component and 'example' in header_component:
                 media_link = header_component['example'].get('header_handle', [None])[0]
                 
+            image_one, image_two, image_three = None, None, None
+            
+            if carousel_component:
+                images = []
+                for card in carousel_component.get('cards', []):
+                    header = next((comp for comp in card.get("components", []) if comp.get("type") == "HEADER"), None)
+                    if header and 'example' in header:
+                        images.extend(header['example'].get('header_handle', []))
+                
+                # Assign first three images to image_one, image_two, and image_three
+                image_one = images[0] if len(images) > 0 else None
+                image_two = images[1] if len(images) > 1 else None
+                image_three = images[2] if len(images) > 2 else None
+                
             num_cards = len(carousel_component['cards']) if carousel_component else 0
             
             # Prepare the template details
@@ -135,7 +149,10 @@ def fetch_templates(waba_id, token, req_template_name=None):
                 "category": category,
                 "template_data": body_component["text"] if body_component else 'No BODY component found',
                 "button": button_component["buttons"] if button_component else None,
-                "num_cards": num_cards
+                "num_cards": num_cards,
+                "image_one": image_one,
+                "image_two": image_two,
+                "image_three": image_three
             }
 
             # If req_template_name is provided, filter based on the template name
