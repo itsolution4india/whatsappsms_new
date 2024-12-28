@@ -43,6 +43,49 @@
     right: -10px;
     top: -5px;
 }
+.notification {
+    position: fixed;
+    top: 20px;
+    right: -400px;
+    width: 350px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #28a745;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: right 0.5s ease;
+    z-index: 100000;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.notification.show {
+    right: 20px;
+}
+
+.notification-content {
+    margin-right: 15px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 0 3px;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #ffffff;
+    background-color: rgb(168, 0, 0);
+}
 </style>
 {% endblock %}
 
@@ -181,7 +224,12 @@
           </div>
         </div>
       </div>
-
+      <div class="notification" id="notification">
+        <div class="notification-content">
+          Please do not close this window or your browser while messages are being sent. Note: Due to server limitations, we can send up to 78 messages every 1.2 seconds.
+        </div>
+        <button class="close-btn" onclick="closeNotification()">×</button>
+    </div>
       {% if final_valid_numbers %}
     <div class="popup-main" id="popup-main">
         <!-- Final Valid Numbers Section -->
@@ -230,8 +278,20 @@
                   </div>
                 </div>
                 <hr class="mt-5">
+                <div id="mainImg">
+                  
+                </div>
                 <div class="mt-3">
                   <pre id="template-data"></pre>
+                </div>
+                <div id="imgOne">
+
+                </div>
+                <div id="imgTwo">
+                  
+                </div>
+                <div id="imgThree">
+                  
                 </div>
                 <div style="width: 120px; margin-left: auto; margin-right: auto;">
                   <div class="" style="width: 170px; height: 50px; text-align: center;">
@@ -384,6 +444,10 @@ function closePopup() {
   const templateStatus = JSON.parse('{{ template_status|escapejs }}');
   const templateButton = JSON.parse('{{ template_button|escapejs }}');
   const templateMedia = JSON.parse('{{ template_media|escapejs }}');
+  const templateImages = JSON.parse('{{ template_images|escapejs }}');
+  const templateImagesOne = JSON.parse('{{ template_images_one|escapejs }}');
+  const templateImagesTwo = JSON.parse('{{ template_images_two|escapejs }}');
+  const templateImagesThree = JSON.parse('{{ template_images_three|escapejs }}');
 
   {% verbatim %}
       function updateTemplate() {
@@ -417,6 +481,51 @@ function closePopup() {
         const selectedStatus = templateStatus[selectedIndex];
         const selectedButton = JSON.parse(templateButton[selectedIndex]); // Parse button data if it's JSON
         const selectedMedia = templateMedia[selectedIndex];
+        const selectedmainImg = templateImages[selectedIndex];
+        const selectedimgOne = templateImagesOne[selectedIndex];
+        const selectedimgTwo = templateImagesTwo[selectedIndex];
+        const selectedimgThree = templateImagesThree[selectedIndex];
+
+        // Check if selectedmainImg exists, if yes, create an img element and set its src
+        if (selectedmainImg) {
+            const mainImgDiv = document.getElementById("mainImg");
+            const mainImgElement = document.createElement("img");
+            mainImgElement.src = selectedmainImg;
+            mainImgElement.alt = "Main Image";
+            mainImgElement.style.width = "100%"; // You can adjust the size as per your requirement
+            mainImgDiv.appendChild(mainImgElement);
+        }
+
+        // Check if selectedimgOne exists, if yes, create an img element and set its src
+        if (selectedimgOne) {
+            const imgOneDiv = document.getElementById("imgOne");
+            const imgOneElement = document.createElement("img");
+            imgOneElement.src = selectedimgOne;
+            imgOneElement.alt = "Image One";
+            imgOneElement.style.width = "100%"; // Adjust size as needed
+            imgOneDiv.appendChild(imgOneElement);
+        }
+
+        // Check if selectedimgTwo exists, if yes, create an img element and set its src
+        if (selectedimgTwo) {
+            const imgTwoDiv = document.getElementById("imgTwo");
+            const imgTwoElement = document.createElement("img");
+            imgTwoElement.src = selectedimgTwo;
+            imgTwoElement.alt = "Image Two";
+            imgTwoElement.style.width = "100%"; // Adjust size as needed
+            imgTwoDiv.appendChild(imgTwoElement);
+        }
+
+        // Check if selectedimgThree exists, if yes, create an img element and set its src
+        if (selectedimgThree) {
+            const imgThreeDiv = document.getElementById("imgThree");
+            const imgThreeElement = document.createElement("img");
+            imgThreeElement.src = selectedimgThree;
+            imgThreeElement.alt = "Image Three";
+            imgThreeElement.style.width = "100%"; // Adjust size as needed
+            imgThreeDiv.appendChild(imgThreeElement);
+        }
+
 
         if ((selectedMedia === "TEXT") || (selectedMedia === "N/A")) {
           $('#upload_media').addClass('hideelement');
@@ -471,5 +580,21 @@ function closePopup() {
   $(document).ready(function(){
       $('#sendSms').addClass('active');
   });
+</script>
+<script>
+  // Show notification after 2 seconds
+  setTimeout(() => {
+      document.getElementById('notification').classList.add('show');
+  }, 2000);
+
+  // Auto close after 5 seconds
+  setTimeout(() => {
+      closeNotification();
+  }, 15000);  // 2s delay + 5s display = 7s total
+
+  function closeNotification() {
+      const notification = document.getElementById('notification');
+      notification.classList.remove('show');
+  }
 </script>
 {% endblock %}

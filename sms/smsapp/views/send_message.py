@@ -44,6 +44,10 @@ def Send_Sms(request):
             "template_name": [template['template_name'] for template in templates],
             "template_data": json.dumps([template['template_data'] for template in templates]),
             "template_status": json.dumps([template['status'] for template in templates]),
+            "template_images": json.dumps([template['media_link'] for template in templates]),
+            "template_images_one": json.dumps([template['image_one'] for template in templates]),
+            "template_images_two": json.dumps([template['image_two'] for template in templates]),
+            "template_images_three": json.dumps([template['image_three'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
             "scheduled_times": scheduled_times
@@ -56,6 +60,10 @@ def Send_Sms(request):
             "template_status": json.dumps([]),
             "template_button": json.dumps([]),
             "template_media": json.dumps([]),
+            "template_images": json.dumps([]),
+            "template_images_one": json.dumps([]),
+            "template_images_two": json.dumps([]),
+            "template_images_three": json.dumps([]),
             "scheduled_times": scheduled_times
         }
 
@@ -407,7 +415,7 @@ def send_carousel_messages(request):
                 try:
                     media_id, _ = process_media_file(file, display_phonenumber_id(request), token)
                     media_id_list.append(media_id)
-                    time.sleep(1.5)
+                    time.sleep(0.5)
                 except Exception as e:
                     messages.error(request, f"Error processing file {i}: {str(e)}")
                     continue
