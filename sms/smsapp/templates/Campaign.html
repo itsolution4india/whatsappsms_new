@@ -85,6 +85,12 @@
 .maincrads h5 {
     text-align: left;
 }
+.btn {
+    background: #0000cb;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
 </style>
 {% endblock %}
 
@@ -97,19 +103,28 @@
             <img src="/static/assets/img/backgrounds/messagetemp.png" alt="">
             <h5>WhatsApp messages</h5>
             <p>WhatsApp message templates help businesses send notifications or customer support messages to opted-in users</p>
-            <button><a href="/create_message_temp" class="text-white">Start</a></button>
+            <div class="d-flex justify-content-between">
+                <div class="btn"><a href="/create_message_temp" class="text-white">Create Template</a></div>
+                <div class="btn"><a href="/send-sms" class="text-white">Send Messages</a></div>
+            </div>
         </div>
         <div class="card shadow m-2 p-2 d-flex flex-col">
             <img src="/static/assets/img/backgrounds/flows.png" alt="">
             <h5>WhatsApp flows</h5>
             <p>Use Flows to generate leads, recommend products, or get sales leads with structured communication for customers</p>
-            <button><a href="/create_flow_message" class="text-white">Start</a></button>
+            <div class="d-flex justify-content-between">
+                <div class="btn"><a href="/create_flow_message" class="text-white">Create Template</a></div>
+                <div class="btn"><a href="/send_flow_message" class="text-white">Send Flows</a></div>
+            </div>
         </div>
         <div class="card shadow m-2 p-2 d-flex flex-col">
             <img src="/static/assets/img/backgrounds/carousel.png" alt="">
             <h5>WhatsApp carousels</h5>
             <p>Media card carousel templates let you send a text with up to 10 scrollable media cards in a single message.</p>
-            <button><a href="/create" class="text-white">Start</a></button>
+            <div class="d-flex justify-content-between">
+                <div class="btn"><a href="/create" class="text-white">Create Template</a></div>
+                <div class="btn"><a href="/send_carousel_message" class="text-white">Send Template</a></div>
+            </div>
         </div>
     </div>
 

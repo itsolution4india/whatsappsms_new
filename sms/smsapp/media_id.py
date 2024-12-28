@@ -43,7 +43,6 @@ def process_media_file(file, phone_number_id, access_token):
     if file:
         file_extension = file.name.split('.')[-1]
         media_type = get_media_format(file_extension)
-        print("media_type", media_type)
         response = generate_id(phone_number_id, media_type, file, access_token)
         return str(response.get('id')), str(media_type)
     return None, None

@@ -76,6 +76,25 @@ def send_flow_message_api(token: str, phone_number_id: str, template_name: str, 
     response = requests.post(url, headers=headers, json=data)
     return response.status_code, response.json()
     
+def send_carousel_message_api(token: str, phone_number_id: str, template_name: str, recipient_phone_number: List[str], media_id_list: List[str], template_details: dict):
+    url = "https://wtsdealnow.in/send_carousel_messages/"
+    
+    headers = {
+        'accept': 'application/json',
+        'Content-Type': 'application/json'
+    }
+    
+    data = {
+        "token": token,
+        "phone_number_id": phone_number_id,
+        "template_name": template_name,
+        "contact_list": recipient_phone_number,
+        "media_id_list": media_id_list,
+        "template_details": template_details
+    }
+    
+    response = requests.post(url, headers=headers, json=data)
+    return response
 
 def send_bot_api(
     token: str,

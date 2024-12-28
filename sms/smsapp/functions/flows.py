@@ -3,7 +3,7 @@ import json
 import logging
 from django.utils import timezone
 from ..models import ReportInfo
-from ..fastapidata import send_flow_message_api
+from ..fastapidata import send_flow_message_api, send_carousel_message_api
 from .send_messages import schedule_subtract_coins, subtract_coins
 from ..utils import logger
 
@@ -116,6 +116,49 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
         except Exception as e:
             logger.error(f"Error: {str(e)}")
             logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {flow_name}")
+        logging.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
+    except Exception as e:
+        logging.error(f"Error in sending messages: {str(e)}")
+        
+def send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, template_details):
+    try:
+        print("template_details", template_details[0])
+        for campaign in template_details:
+            if campaign['template_name'] == tempalate_name:
+                category = campaign['category']
+                money_data = len(all_contact)
+                current_user = request.user
+                logging.info(f"Calculated money data for sending flow messages: {money_data}")
+
+                if request:
+                    subtract_coins(request, money_data, category)
+                else:
+                    schedule_subtract_coins(current_user, money_data, category)
+                respose = send_carousel_message_api(token, phone_id, tempalate_name, contact_list,media_id_list, template_details[0])
+
+        formatted_numbers = []
+        for number in all_contact:
+            if number.startswith("+91"):
+                formatted_numbers.append("91" + number[3:])
+            elif not number.startswith("91"):
+                formatted_numbers.append("91" + number)
+            else:
+                formatted_numbers.append(number)
+
+        phone_numbers_string = ",".join(formatted_numbers)
+
+        try:
+            ReportInfo.objects.create(
+                email=str(current_user),
+                campaign_title=campaign_title,
+                contact_list=phone_numbers_string,
+                message_date=timezone.now(),
+                message_delivery=len(all_contact),
+                template_name=tempalate_name
+            )
+        except Exception as e:
+            logger.error(f"Error: {str(e)}")
+            logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {tempalate_name}")
         logging.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
         logging.error(f"Error in sending messages: {str(e)}")

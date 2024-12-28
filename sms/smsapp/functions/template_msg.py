@@ -115,11 +115,14 @@ def fetch_templates(waba_id, token, req_template_name=None):
             body_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "BODY"), None)
             header_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "HEADER"), None)
             button_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "BUTTONS"), None)
+            carousel_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "CAROUSEL"), None)
              
             # Extract media link from header component, if available
             media_link = None
             if header_component and 'example' in header_component:
                 media_link = header_component['example'].get('header_handle', [None])[0]
+                
+            num_cards = len(carousel_component['cards']) if carousel_component else 0
             
             # Prepare the template details
             template_data = {
@@ -131,7 +134,8 @@ def fetch_templates(waba_id, token, req_template_name=None):
                 "status": status,
                 "category": category,
                 "template_data": body_component["text"] if body_component else 'No BODY component found',
-                "button": button_component["buttons"] if button_component else None
+                "button": button_component["buttons"] if button_component else None,
+                "num_cards": num_cards
             }
 
             # If req_template_name is provided, filter based on the template name
