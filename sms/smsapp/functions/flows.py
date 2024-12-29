@@ -122,7 +122,6 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
         
 def send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, template_details):
     try:
-        print("template_details", template_details[0])
         for campaign in template_details:
             if campaign['template_name'] == tempalate_name:
                 category = campaign['category']
