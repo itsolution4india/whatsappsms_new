@@ -116,9 +116,6 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount)
-            print("all_contact", all_contact)
-            print("contact_list", contact_list)
-            print("invalid_numbers", invalid_numbers)
             
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(contact_list))
@@ -419,7 +416,6 @@ def send_carousel_messages(request):
         media_id_list = []
         for i in range(0, 3):
             file = request.FILES.get(f'file_{i}')
-            print("file", file)
             if file:
                 try:
                     media_id, _ = process_media_file(file, display_phonenumber_id(request), token)
@@ -428,7 +424,6 @@ def send_carousel_messages(request):
                 except Exception as e:
                     messages.error(request, f"Error processing file {i}: {str(e)}")
                     continue
-        print("media_id_list", media_id_list)
         template_details = fetch_templates(display_whatsapp_id(request), token, tempalate_name)
         
         if not campaign_title or not campaign_title:
