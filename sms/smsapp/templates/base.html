@@ -627,7 +627,10 @@
                                                         {% if twofauth %}
                                                             <button onclick="disable2FA()" style="background-color: #c00000 !important;">Disable 2FA</button>
                                                         {% else %}
+
+                                                        {% if twofauth_enable %}
                                                             <button class="enable">Enablr 2FA</button>
+                                                        {% end %}
                                                         {% endif %}
                                                     </div>
                                                 </div>
