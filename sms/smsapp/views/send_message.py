@@ -303,6 +303,10 @@ def send_flow_message(request):
             "template_status": json.dumps([template['status'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
+            "template_images": json.dumps([template['media_link'] for template in templates]),
+            "template_images_one": json.dumps([template['image_one'] for template in templates]),
+            "template_images_two": json.dumps([template['image_two'] for template in templates]),
+            "template_images_three": json.dumps([template['image_three'] for template in templates]),
             "scheduled_times": scheduled_times
         }
     except Exception as e:
@@ -378,6 +382,11 @@ def send_carousel_messages(request):
             "carousel_nums": json.dumps([template['num_cards'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
+            "template_images": json.dumps([template['media_link'] for template in templates]),
+            "template_images_one": json.dumps([template['image_one'] for template in templates]),
+            "template_images_two": json.dumps([template['image_two'] for template in templates]),
+            "template_images_three": json.dumps([template['image_three'] for template in templates]),
+            
         }
     except Exception as e:
         logger.error(f"Error fetching templates: {e}")
