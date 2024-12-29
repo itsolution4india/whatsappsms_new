@@ -434,7 +434,7 @@ def send_carousel_messages(request):
         all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
-        coin_validation = validate_balance(total_coins, len(contact_list))
+        coin_validation = validate_balance(total_coins, len(all_contact))
         if not coin_validation:
             messages.error(request, "Insufficient balance. Please update.")
             return render(request, "send-carousel.html", context)
