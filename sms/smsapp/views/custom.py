@@ -5,6 +5,7 @@ from ..models import Templates, CoinsHistory
 from .auth import username
 from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -96,6 +97,7 @@ def coins_history_list(request):
 def access_denide(request):
     return render(request, "access_denide.html") 
 
+@csrf_exempt
 def notify_user(request):
     if request.method == 'POST':
         try:
