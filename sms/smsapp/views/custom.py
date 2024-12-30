@@ -6,6 +6,8 @@ from .auth import username
 from ..utils import display_whatsapp_id, display_phonenumber_id
 from django.contrib.auth.decorators import login_required
 
+def custom_500(request, exception=None):
+    return render(request, 'error.html', status=500)
 
 def facebook_sdk_view(request):
     if request.method == 'POST':
