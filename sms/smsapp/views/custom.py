@@ -97,4 +97,12 @@ def access_denide(request):
     return render(request, "access_denide.html") 
 
 def notify_user(request):
-    logger.info(request)
+    if request.method == 'POST':
+        try:
+            data = request.body.decode('utf-8')
+            logger.info(f"Received notification: {data}")
+            return JsonResponse({"status": "success", "message": "Notification received successfully"})
+        except Exception as e:
+            logger.error(f"Error processing notification: {e} {request}")
+            return JsonResponse({"status": "error", "message": f"Failed to process notification: {e}"}, status=400)
+    return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
