@@ -79,5 +79,6 @@ urlpatterns = [
     
     path('create/', views.TemplateCreateView.as_view(), name='create_template'),
     path('upload-image/', views.ImageUploadView.as_view(), name='upload_image'),
+    path('notify_user/', views.notify_user, name='notify_user'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

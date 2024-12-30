@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from ..models import Templates, CoinsHistory
 from .auth import username
-from ..utils import display_whatsapp_id, display_phonenumber_id
+from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
 
 def custom_500(request, exception=None):
@@ -96,3 +96,5 @@ def coins_history_list(request):
 def access_denide(request):
     return render(request, "access_denide.html") 
 
+def notify_user(request):
+    logger.info(request)
