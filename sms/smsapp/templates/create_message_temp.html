@@ -49,6 +49,9 @@
     margin-right: 10px;
     font-weight: bold;
 }
+.form-check input {
+    width: auto;
+}
 
 .error-details {
     color: #721c24;
@@ -125,7 +128,7 @@
                         <!-- new part -->
 
 
-                        <form method="POST" enctype="multipart/form-data" action="/campaign/">
+                        <form method="POST" enctype="multipart/form-data" action="/create_message_temp/">
                             {% csrf_token %}
 
                             <div class="container">
