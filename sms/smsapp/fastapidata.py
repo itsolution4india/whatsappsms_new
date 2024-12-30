@@ -54,6 +54,7 @@ def send_validate_req(token: str, phone_number_id: str, contact_list: List[str],
     }
     
     response = requests.post(url, headers=headers, json=data)
+    logger.info(response.json())
     return response
 
 def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: List[str]):
