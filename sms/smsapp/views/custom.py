@@ -107,13 +107,20 @@ def notify_user(request):
             status = data.get('status')
             unique_id = data.get('unique_id')
             report_id = data.get('report_id')
+            report_id = str(report_id)
             if status == 'completed' and unique_id and report_id:
-                report_instance = get_object_or_404(ReportInfo, id=report_id)
+                if report_id.startswith("MESSAGE"):
+                    notification_instance = get_object_or_404(ReportInfo, request_id=report_id)
+                    notification_instance.end_request_id = unique_id
+                    notification_instance.save()
+                    logger.info(f"Updated response {report_id} with unique_id {unique_id} in end_request_id")
+                else:
+                    report_instance = get_object_or_404(ReportInfo, id=report_id)
 
-                report_instance.end_request_id = unique_id
-                report_instance.save()
+                    report_instance.end_request_id = unique_id
+                    report_instance.save()
 
-                logger.info(f"Updated report {report_id} with unique_id {unique_id} in end_request_id")
+                    logger.info(f"Updated report {report_id} with unique_id {unique_id} in end_request_id")
 
                 return JsonResponse({"status": "success", "message": "Notification processed successfully"})
             else:

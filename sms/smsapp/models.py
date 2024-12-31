@@ -324,3 +324,15 @@ class Validate_TwoAuth(models.Model):
     
     def __str__(self):
         return self.email
+    
+class Notifications(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    email = models.CharField(max_length=200)
+    campaign_title = models.CharField(max_length=255, default="")
+    start_request_id = models.CharField(max_length=100, default=0)
+    end_request_id = models.CharField(max_length=100, default=0)
+    request_id = models.CharField(max_length=100)
+    text = models.CharField(max_length=200, default="")
+    
+    def __str__(self):
+        return self.email
