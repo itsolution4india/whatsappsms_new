@@ -110,10 +110,13 @@ def notify_user(request):
             report_id = str(report_id)
             if status == 'completed' and unique_id and report_id:
                 if report_id.startswith("MESSAGE"):
-                    notification_instance = get_object_or_404(ReportInfo, request_id=report_id)
-                    notification_instance.end_request_id = unique_id
-                    notification_instance.save()
-                    logger.info(f"Updated response {report_id} with unique_id {unique_id} in end_request_id")
+                    try:
+                        notification_instance = get_object_or_404(ReportInfo, request_id=report_id)
+                        notification_instance.end_request_id = unique_id
+                        notification_instance.save()
+                        logger.info(f"Updated response {report_id} with unique_id {unique_id} in end_request_id")
+                    except Exception as e:
+                        logger.error(f"Failed to update Message end_request_id {str(e)}")
                 else:
                     report_instance = get_object_or_404(ReportInfo, id=report_id)
 

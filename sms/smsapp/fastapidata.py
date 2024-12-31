@@ -50,8 +50,6 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
                         request_id=request_id,
                     )
                     logger.info(f"Added notification entry for {email} with request ID {request_id} and unique ID {unique_id}")
-                
-                logger.info(f"Updated report {request_id} with unique_id {unique_id}")
             except Exception as e:
                 logger.error(f"Failed to update report {request_id}: {e}")
         else:
