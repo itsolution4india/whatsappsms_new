@@ -199,18 +199,29 @@
                             <td>{{ report.message_delivery }}</td>
                             <td>
                                 {% if report.template_name in template_names %}
-                                <div class="btn-group" role="group">
-                                    <a href="{% url 'report_download' report.id %}" class="btn btn-primary">
-                                        <i class='bx bxs-download'></i>
-                                    </a>
-                                    <button type="button" class="btn btn-info" onclick="showInsight({{ report.id }})">
-                                        <i class='bx bx-line-chart'></i>
+                                {% if report.end_request_id != 0 %}
+                                    <div class="btn-group" role="group">
+                                        <a href="{% url 'report_download' report.id %}" class="btn btn-primary">
+                                            <i class='bx bxs-download'></i>
+                                        </a>
+                                        <button type="button" class="btn btn-info" onclick="showInsight({{ report.id }})">
+                                            <i class='bx bx-line-chart'></i>
+                                        </button>
+                                        <!-- Delete button -->
+                                        <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </div>
+                                {% elif report.start_request_id != 0 %}
+                                    <button type="button" class="btn btn-danger">
+                                        Pending...
                                     </button>
-                                    <!-- Delete button -->
-                                    <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
-                                        <i class='bx bx-trash'></i>
+                                {% else %}
+                                    <button type="button" class="btn btn-danger" onclick="sendRequest({{ report.id }})">
+                                        Get Report
                                     </button>
-                                </div>
+                                {% endif %}
+
                                 {% else %}
                                 <span class="text-muted">Not available</span>
                                 {% endif %}
@@ -249,6 +260,16 @@
                     alert('Failed to load insights');
                 }
             })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to load insights');
+            });
+    }
+    </script>
+<script>
+    function sendRequest(reportId) {
+        fetch(`/report_insight/${reportId}/`)
+            .then(response => response.json())
             .catch(error => {
                 console.error('Error:', error);
                 alert('Failed to load insights');
