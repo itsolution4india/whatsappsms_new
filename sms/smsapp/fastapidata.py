@@ -4,8 +4,8 @@ from requests.exceptions import RequestException
 from django.shortcuts import get_object_or_404
 import json
 from decimal import Decimal
-from .utils import insert_bot_sent_message, logger
-from .models import ReportInfo
+from .utils import insert_bot_sent_message, logger, generate_code
+from .models import ReportInfo, Notifications
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -13,8 +13,9 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None):
-    #url = 'http://127.0.0.1:8000/send_sms/'
+def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None):
+    request_id = generate_code()
+    request_id = f"MESSAGE{request_id}"
     url="https://wtsdealnow.in/send_sms/"
     
     headers = {
@@ -29,13 +30,34 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
         "media_type": media_type,
         "media_id": media_id if media_id else "",
         "contact_list": contact_list,
-        "variable_list": variable_list if variable_list else None
+        "variable_list": variable_list if variable_list else None,
+        'request_id': request_id
     }
     
     response = requests.post(url, headers=headers, json=data)
-    #print(data)
-    #print("Status Code:", response.status_code)
-    #print("Response JSON:", response.json())
+    logger.info(response.json())
+    if response.status_code == 200:
+        response_data = response.json()
+        unique_id = response_data.get("unique_id")
+        
+        if request_id and unique_id:
+            try:
+                if email and template_name and request_id and unique_id:
+                    Notifications.objects.create(
+                        email=email,
+                        campaign_title=template_name,
+                        start_request_id=unique_id,
+                        request_id=request_id,
+                    )
+                    logger.info(f"Added notification entry for {email} with request ID {request_id} and unique ID {unique_id}")
+                
+                logger.info(f"Updated report {request_id} with unique_id {unique_id}")
+            except Exception as e:
+                logger.error(f"Failed to update report {request_id}: {e}")
+        else:
+            logger.error(f"Missing unique_id or report_id in response: {response_data}")
+    else:
+        logger.error(f"Failed to send validation request: {response.status_code} - {response.text}")
     if response_req:
         return response
     return 
