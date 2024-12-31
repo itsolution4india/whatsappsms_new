@@ -102,7 +102,7 @@ def access_denide(request):
 def notify_user(request):
     if request.method == 'POST':
         try:
-            data = request.body.decode('utf-8')
+            data = json.loads(request.body.decode('utf-8'))
             logger.info(f"Received notification: {data}")
             status = data.get('status')
             unique_id = data.get('unique_id')
