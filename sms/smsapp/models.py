@@ -118,6 +118,8 @@ class ReportInfo(models.Model):
     message_date = models.DateField()
     template_name=models.CharField(max_length=100)
     message_delivery = models.IntegerField()
+    start_request_id = models.IntegerField(default=0)
+    end_request_id = models.IntegerField(default=0)
     
 
 

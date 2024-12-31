@@ -275,8 +275,8 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             df = modify_dates(df, report_date)
             # Validate WhatsApp Phone numbers
             token, _ = get_token_and_app_id(request)
-            if validate_req_num:
-                _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message")
+            if validate_req_num and report_id:
+                _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
             validation_data = get_latest_rows_by_contacts(no_match_num)
             validation_data = validation_data[validation_data['error_code'] == 131026]
             final_invalid_numbers = validation_data['contact_wa_id'].to_list()

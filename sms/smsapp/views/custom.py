@@ -1,11 +1,12 @@
 import json, requests
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from ..models import Templates, CoinsHistory
+from ..models import Templates, CoinsHistory, ReportInfo
 from .auth import username
 from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import get_object_or_404
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -103,7 +104,24 @@ def notify_user(request):
         try:
             data = request.body.decode('utf-8')
             logger.info(f"Received notification: {data}")
-            return JsonResponse({"status": "success", "message": "Notification received successfully"})
+            status = data.get('status')
+            unique_id = data.get('unique_id')
+            report_id = data.get('report_id')
+            if status == 'completed' and unique_id and report_id:
+                report_instance = get_object_or_404(ReportInfo, id=report_id)
+
+                report_instance.end_request_id = unique_id
+                report_instance.save()
+
+                logger.info(f"Updated report {report_id} with unique_id {unique_id} in end_request_id")
+
+                return JsonResponse({"status": "success", "message": "Notification processed successfully"})
+            else:
+                return JsonResponse({"status": "error", "message": "Invalid data in notification"}, status=400)
+        
+        except json.JSONDecodeError as e:
+            logger.error(f"Error decoding JSON: {e} {request}")
+            return JsonResponse({"status": "error", "message": f"Failed to decode notification: {e}"}, status=400)
         except Exception as e:
             logger.error(f"Error processing notification: {e} {request}")
             return JsonResponse({"status": "error", "message": f"Failed to process notification: {e}"}, status=400)
