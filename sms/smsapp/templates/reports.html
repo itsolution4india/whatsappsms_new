@@ -114,6 +114,45 @@
     .modal-content {
         width: 100% !important;
     }
+    .popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.loading-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background-color: #3498db;
+    animation: bounce 1.2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
 </style>
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
@@ -122,7 +161,22 @@
 
 <!-- Content wrapper -->
 <div class="content-wrapper" style="height: 1500px;">
-
+    <div id="popup" class="popup-container" style="display: none;">
+        <div class="popup-content">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/>
+                <path d="M7 12L10 15L17 8" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h1>Request Received</h1>
+            <p>We got your request. Please wait a few minutes while we process it.</p>
+            <div class="loading-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </div>
+    
     <div class="modal fade" id="insightModal" tabindex="-1" aria-labelledby="insightModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -213,11 +267,11 @@
                                         </button>
                                     </div>
                                 {% elif report.start_request_id != 0 %}
-                                    <button type="button" class="btn btn-danger">
+                                    <button type="button" class="btn btn-danger btn-warning" style="border-radius: 10px !important;">
                                         Pending...
                                     </button>
                                 {% else %}
-                                    <button type="button" class="btn btn-danger" onclick="sendRequest({{ report.id }})">
+                                    <button type="button" class="btn btn-danger btn-primary" onclick="sendRequest({{ report.id }})" style="border-radius: 10px !important;">
                                         Get Report
                                     </button>
                                 {% endif %}
@@ -268,14 +322,28 @@
     </script>
 <script>
     function sendRequest(reportId) {
+        // Show the pop-up when the request is sent
+        document.getElementById('popup').style.display = 'block';
+
+        // Send the fetch request
         fetch(`/report_insight/${reportId}/`)
             .then(response => response.json())
+            .then(data => {
+                // Handle successful request here
+                console.log('Success:', data);
+                alert('Request processed successfully');
+            })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Failed to load insights');
+                alert('Failed to process the request');
+            })
+            .finally(() => {
+                // Hide the pop-up after the request is complete
+                document.getElementById('popup').style.display = 'none';
             });
     }
-    </script>
+</script>
+
 
 <script>
     function deleteReport(reportId) {
