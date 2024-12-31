@@ -190,6 +190,18 @@ def update_failed_messages(df, target_numbers):
     df.loc[mask, 'error_message'] = 'Message undeliverable'
     
     return df
+  
+def update_start_id(report_id):
+    try:
+        report_instance = get_object_or_404(ReportInfo, id=report_id)
+        
+        report_instance.start_request_id = 100
+        report_instance.end_request_id = 100
+        report_instance.save()
+        
+        logger.info(f"Updated report {report_id} with unique_id {100}")
+    except Exception as e:
+        logger.error(f"Failed to update report {report_id}: {e}")
          
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
@@ -281,6 +293,8 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             validation_data = validation_data[validation_data['error_code'] == 131026]
             final_invalid_numbers = validation_data['contact_wa_id'].to_list()
             df = update_failed_messages(df, final_invalid_numbers)
+        else:
+            update_start_id(report_id)
             
         status_counts_df = df['status'].value_counts().reset_index()
         status_counts_df.columns = ['status', 'count']
