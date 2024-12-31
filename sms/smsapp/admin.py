@@ -95,6 +95,8 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_date',
         'message_delivery',
         'template_name',
+        "start_request_id",
+        "end_request_id"
       
  
     )
