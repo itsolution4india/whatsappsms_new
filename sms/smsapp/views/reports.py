@@ -288,11 +288,20 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             # Validate WhatsApp Phone numbers
             token, _ = get_token_and_app_id(request)
             if validate_req_num and report_id:
-                _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
-            validation_data = get_latest_rows_by_contacts(no_match_num)
-            validation_data = validation_data[validation_data['error_code'] == 131026]
-            final_invalid_numbers = validation_data['contact_wa_id'].to_list()
-            df = update_failed_messages(df, final_invalid_numbers)
+                try:
+                    _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
+                except Exception as e:
+                    logger.error(f"Failed to call send_validate_req {str(e)}")
+            try:
+                validation_data = get_latest_rows_by_contacts(no_match_num)
+                validation_data = validation_data[validation_data['error_code'] == 131026]
+                final_invalid_numbers = validation_data['contact_wa_id'].to_list()
+            except Exception as e:
+                logger.error(f"Failed to get get_latest_rows_by_contacts {str(e)}")
+            try:
+                df = update_failed_messages(df, final_invalid_numbers)
+            except Exception as e:
+                logger.error(f"Failed to update_failed_messages {str(e)}")
         else:
             update_start_id(report_id)
             
@@ -396,11 +405,11 @@ def get_latest_rows_by_contacts(contact_numbers):
         return df
     
     except mysql.connector.Error as err:
-        print(f"Database error: {err}")
+        logger.error(f"Database error in get_latest_rows_by_contacts: {err}")
         return None
 
     except Exception as e:
-        print(f"An unexpected error occurred: {str(e)}")
+        logger.info(f"An unexpected error occurred get_latest_rows_by_contacts: {str(e)}")
         return None
     
 def get_unique_phone_numbers():
