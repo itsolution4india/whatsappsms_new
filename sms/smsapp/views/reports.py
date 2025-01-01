@@ -291,7 +291,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 try:
                     _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
                 except Exception as e:
-                    logger.error(f"Failed to call send_validate_req {str(e)}")
+                    logger.error(f"Failed to call send_validate_req {str(e)}, {len(validate_req_num)} {report_id} {type(report_id)}")
             try:
                 validation_data = get_latest_rows_by_contacts(no_match_num)
                 validation_data = validation_data[validation_data['error_code'] == 131026]
