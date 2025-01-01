@@ -62,41 +62,51 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
 # Example usage
 
 def send_validate_req(token: str, phone_number_id: str, contact_list: List[str], body_text: str, report_id=None):
-    url="https://wtsdealnow.in/validate_numbers_api/"
+    url = "https://wtsdealnow.in/validate_numbers_api/"
     
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json'
     }
     data = {
-        "token":token,
+        "token": token,
         "phone_number_id": phone_number_id,
         "contact_list": contact_list,
         "body_text": body_text,
         "report_id": str(report_id) if report_id else None
     }
     
-    response = requests.post(url, headers=headers, json=data)
-    logger.info(response.json())
-    if response.status_code == 200:
-        response_data = response.json()
-        unique_id = response_data.get("unique_id")
-        
-        if report_id and unique_id:
+    try:
+        response = requests.post(url, headers=headers, json=data)
+        logger.info(f"Response status code: {response.status_code}")
+        logger.info(f"Raw response text: {response.text}")
+
+        # Check if the response content is empty or not valid JSON
+        if response.status_code == 200:
             try:
-                report_instance = get_object_or_404(ReportInfo, id=report_id)
-                
-                report_instance.start_request_id = unique_id
-                report_instance.save()
-                
-                logger.info(f"Updated report {report_id} with unique_id {unique_id}")
-            except Exception as e:
-                logger.error(f"Failed to update report {report_id}: {e}")
+                response_data = response.json()
+                logger.info(f"Parsed JSON response: {response_data}")
+            except ValueError as e:
+                logger.error(f"Failed to parse JSON: {str(e)}")
+                return response
+            
+            unique_id = response_data.get("unique_id")
+            
+            if report_id and unique_id:
+                try:
+                    report_instance = get_object_or_404(ReportInfo, id=report_id)
+                    report_instance.start_request_id = unique_id
+                    report_instance.save()
+                    logger.info(f"Updated report {report_id} with unique_id {unique_id}")
+                except Exception as e:
+                    logger.error(f"Failed to update report {report_id}: {e}")
+            else:
+                logger.error(f"Missing unique_id or report_id in response: {response_data}")
         else:
-            logger.error(f"Missing unique_id or report_id in response: {response_data}")
-    else:
-        logger.error(f"Failed to send validation request: {response.status_code} - {response.text}")
-    
+            logger.error(f"Failed to send validation request: {response.status_code} - {response.text}")
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Request error: {e}")
+
     return response
 
 def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: List[str]):
