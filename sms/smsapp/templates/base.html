@@ -333,6 +333,13 @@
         #imgOne img, #imgTwo img, #imgThree img {
             width: 300px !important;
         }
+        .notification {
+            background: orange;
+            color: aliceblue;
+            border-radius: 50px;
+            padding: 12px;
+            margin: 6px;
+        }
     </style>
     {% block head %}
     {% endblock %}
@@ -574,11 +581,16 @@
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="#" id="userDropdown" onclick="toggleUserDropdown(event)">
-                                    <div class="avatar avatar-online">
-                                        <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
-                                    </div>
-                                </a>
+                                <div class="d-flex">
+                                    <a class="notification card shadow" href="/notifications/">
+                                        <i class='bx bxs-bell'></i>
+                                    </a>
+                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" id="userDropdown" onclick="toggleUserDropdown(event)">
+                                        <div class="avatar avatar-online">
+                                            <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                                        </div>
+                                    </a>
+                                </div>
                                 <ul class="dropdown-menu dropdown-menu-end" style="width: 350px !important;">
                                     <li>
                                         <a class="dropdown-item" href="#">
@@ -802,13 +814,22 @@
     function toggleUserDropdown(event) {
     event.preventDefault(); // Prevent default link behavior
     
-    // Get the dropdown menu element
+    // Get the dropdown toggle element (the clicked link)
     const dropdownToggle = event.currentTarget;
-    const dropdownMenu = dropdownToggle.nextElementSibling;
+    
+    // Find the closest parent element that contains the dropdown menu (ul with class 'dropdown-menu')
+    const dropdownMenu = dropdownToggle.closest('.dropdown').querySelector('.dropdown-menu');
+    
+    // Check if dropdownMenu exists before proceeding
+    if (!dropdownMenu) {
+        console.error('Dropdown menu not found');
+        return;
+    }
     
     // Toggle the show class on the dropdown menu
     if (dropdownMenu.classList.contains('show')) {
         dropdownMenu.classList.remove('show');
+        
         // Also remove show class from any open accordions
         const openAccordions = dropdownMenu.querySelectorAll('.accordion-collapse.show');
         openAccordions.forEach(accordion => accordion.classList.remove('show'));
