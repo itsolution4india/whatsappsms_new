@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    
+h1 {
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Notifications Grid */
+.notifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Notification Card */
+.notification-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.notification-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-delete {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+/* Status Indicators */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.status.pending {
+    background: #fff8e6;
+    color: #b27b16;
+}
+
+.status.success {
+    background: #e6f7ed;
+    color: #1a7f37;
+}
+
+.status.failed {
+    background: #ffebe9;
+    color: #cf222e;
+}
+
+/* Content Styling */
+.email {
+    color: #666;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.campaign-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.message {
+    color: #4a4a4a;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.time {
+    color: #888;
+    font-size: 0.875rem;
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-download {
+    background: #0366d6;
+    color: white;
+}
+
+.btn-download:hover {
+    background: #0256b9;
+}
+
+.btn-delete {
+    background: #fff;
+    color: #cf222e;
+    border: 1px solid #cf222e;
+}
+
+.btn-delete:hover {
+    background: #ffebe9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="notifications-grid m-3">
+    {% for notification in notifications %}
+    <div class="notification-card">
+        <div class="time">{{ notification.created_at }}</div>
+        <div class="status {{ notification.status }}">{{ notification.status }}</div>
+        <p>Template name: {{ notification.campaign_title }}</p>
+        <p>Request ID: {{ notification.request_id }}</p>
+        <div class="message">
+            {% if notification.status == "pending" %}
+                Your Template: {{ notification.campaign_title }} is in pending. Please wait to process your request.
+                <span class="loading"></span>
+            {% elif notification.status == "success" %}
+            {% if notification.text == "message" %}
+                <p>Your Send message request is completed successfully</p>
+                <p>Please check your report <a href="{% url 'reports' %}" class="btn btn-download p-3 pt-1 pb-1">Go to reports</a></p>
+            {% endif %}
+            {% else %}
+                Your {{ notification.campaign_title }} has failed.
+            {% endif %}
+        </div>
+        <form action="{% url 'delete_notification' notification.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-delete p-3 pt-1 pb-1">Delete</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

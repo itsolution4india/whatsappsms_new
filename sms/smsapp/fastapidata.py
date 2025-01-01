@@ -48,6 +48,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
                         campaign_title=template_name,
                         start_request_id=unique_id,
                         request_id=request_id,
+                        text = "message"
                     )
                     logger.info(f"Added notification entry for {email} with request ID {request_id} and unique ID {unique_id}")
             except Exception as e:
