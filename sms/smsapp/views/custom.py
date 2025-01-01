@@ -1,7 +1,7 @@
 import json, requests
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from ..models import Templates, CoinsHistory, ReportInfo
+from ..models import Templates, CoinsHistory, ReportInfo, Notifications
 from .auth import username
 from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
@@ -111,7 +111,7 @@ def notify_user(request):
             if status == 'completed' and unique_id and report_id:
                 if report_id.startswith("MESSAGE"):
                     try:
-                        notification_instance = get_object_or_404(ReportInfo, request_id=report_id)
+                        notification_instance = get_object_or_404(Notifications, request_id=report_id)
                         notification_instance.end_request_id = unique_id
                         notification_instance.save()
                         logger.info(f"Updated response {report_id} with unique_id {unique_id} in end_request_id")
