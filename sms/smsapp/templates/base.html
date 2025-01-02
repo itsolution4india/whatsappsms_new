@@ -228,11 +228,12 @@
             background-color: #4CAF50;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
+            z-index: 10000;
         }
 
         .refresh-btn:hover {
@@ -245,8 +246,8 @@
         }
 
         .refresh-btn i {
-            color: white;
-            font-size: 24px;
+            font-size: 23px;
+            transition: transform 0.2s;
         }
         .coin_body {
             padding: 5px;
@@ -256,8 +257,8 @@
         }
 
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .refresh-btn.spinning i {
@@ -662,6 +663,12 @@
                         </ul>
                     </div>
                 </nav>
+                <!-- <button id="refreshButton" class="refresh-btn">
+                    <i class='bx bx-loader'></i>
+                </button> -->
+                <button class="refresh-btn" id="refreshButton">
+                    <i class='bx bx-refresh'></i>
+                </button>
                 <script src="/static/assets/js/it-solution-chat-sdk.js"></script>
                 <script>
                     function disable2FA() {
@@ -894,18 +901,6 @@ document.addEventListener('keydown', function(e) {
     <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="/static/assets/vendor/js/vanillaEmojiPicker.js"></script>
     <script>
-        function handleRefresh() {
-            const btn = document.querySelector('.refresh-btn');
-            btn.classList.add('spinning');
-            
-            // Simulate refresh action
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
-        }
-    </script>
-
-    <script>
 
         new EmojiPicker({
             trigger: [
@@ -946,7 +941,30 @@ document.addEventListener('keydown', function(e) {
 
     <!-- Page JS -->
     <script src="/static/assets/js/dashboards-analytics.js"></script>
+    <script>
+        document.getElementById('refreshButton').addEventListener('click', function() {
+            const button = this;
+            const currentPath = window.location.pathname;
+            const url = new URL(window.location.href);
+            const searchParams = url.searchParams.toString();
+            const queryString = searchParams ? `?${searchParams}` : '';
 
+            // Add spinning class immediately when clicked
+            button.classList.add('spinning');
+            
+            // Disable the button while loading
+            button.disabled = true;
+
+            // Use window.location.href directly for better performance
+            window.location.href = currentPath + queryString;
+
+            // If the page hasn't reloaded within 5 seconds, remove the spinning class
+            setTimeout(() => {
+                button.classList.remove('spinning');
+                button.disabled = false;
+            }, 5000);
+        });
+    </script>
 </body>
 
 </html>
