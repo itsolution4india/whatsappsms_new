@@ -1,6 +1,7 @@
 import requests
 import json
 from typing import List, Dict
+from .utils import logger
 
 def template_create(token, waba_id, template_name, language, category, header_type, header_content, body_text, footer_text, call_button_text, phone_number, url_button_text, website_url, url_button_textTwo, website_urlTwo, quick_reply_one, quick_reply_two, quick_reply_three, body_example_values=None):
     
@@ -182,7 +183,7 @@ def create_auth_template(
         return response.status_code, response.json()
     
     except requests.exceptions.RequestException as e:
-        print(f"Error creating template: {str(e)}")
+        logger.error(f"Error creating template: {str(e)}")
         if hasattr(e.response, 'text'):
-            print(f"Response content: {e.response.text}")
+            logger.error(f"Response content: {e.response.text}")
         raise

@@ -42,8 +42,6 @@ def subtract_coins(request, final_count, category, template_name=None, campaign=
         logger.error("User or user coins not found.")
         return
     final_coins = final_count
-    total_coins = user.marketing_coins + user.authentication_coins
-    print(category, user.authentication_coins, final_coins)
     if category == "MARKETING" and user.marketing_coins >= final_coins:
         user.marketing_coins -= final_coins
         user.save()

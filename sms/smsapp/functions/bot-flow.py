@@ -1,6 +1,7 @@
 import typing as ty
 import logging
 import requests
+from ..utils import logger
 
 def send_interactive_message(
     token: str,
@@ -141,8 +142,7 @@ def send_interactive_message(
     try:
         response = requests.post(url, json=payload, headers=headers)
         if response.status_code != 200:
-            print(f"Failed to send {message_type} to {contact}. Status: {response.status_code}")
-            print(response.json())
+            logger.error(f"Failed to send {message_type} to {contact}. Status: {response.status_code} {response.json()}")
             return
     except Exception as e:
         logging.error(f"Error sending {message_type} to {contact}: {e}")

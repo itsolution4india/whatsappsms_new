@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from ..create_template import template_create, create_auth_template
 from ..functions.template_msg import fetch_templates, delete_whatsapp_template
 from ..functions.send_messages import display_phonenumber_id
-from ..utils import parse_fb_error, get_token_and_app_id, display_whatsapp_id
+from ..utils import parse_fb_error, get_token_and_app_id, display_whatsapp_id, logger
 from .auth import check_user_permission, username
 from ..functions.template_msg import header_handle
 import time
@@ -187,8 +187,8 @@ def delete_template(request):
     delete_result = delete_whatsapp_template(waba_id=display_whatsapp_id(request), token=token, template_name=template_name, template_id=template_id)
     
     if delete_result:
-        print(f"Template '{template_name}' deleted successfully.")
+        logger.info(f"Template '{template_name}' deleted successfully.")
     else:
-        print(f"Failed to delete template '{template_name}'.")
+        logger.info(f"Failed to delete template '{template_name}'.")
     
     return redirect('campaign')
