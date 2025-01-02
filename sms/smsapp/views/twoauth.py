@@ -8,6 +8,8 @@ from ..models import Register_TwoAuth, Validate_TwoAuth
 from ..fastapidata import send_api
 import os
 from dotenv import load_dotenv
+from ..utils import logger
+
 load_dotenv(os.path.join(os.path.dirname(__file__), '../../sms/.env'))
 
 def generate_otp():
@@ -30,7 +32,6 @@ def generate_otp_view(request):
         
         # Generate OTP
         otp = generate_otp()
-        print(otp)
         
         # Store OTP in session for verification
         request.session['otp'] = otp
@@ -43,17 +44,14 @@ def generate_otp_view(request):
             # Update existing record
             validate_record.otp = otp
             validate_record.save()
-            print(os.getenv('TOKEN'), os.getenv('PHONEID'), "authtemp01", "en", "OTP", None, [str(phone)], [str(otp)])
             response = send_api(os.getenv('TOKEN'), os.getenv('PHONEID'), "authtemp01", "en", "OTP", None, [str(phone)], [str(otp)], True)
-            print("response", response.json())
+            logger.info(f"Sending OTP {response}")
         except Validate_TwoAuth.DoesNotExist:
             # Create new record
             Validate_TwoAuth.objects.create(
                 email=email,
                 otp=otp
             )
-        
-        print(f"OTP for {email}: {otp}")
         
         return JsonResponse({
             'success': True,

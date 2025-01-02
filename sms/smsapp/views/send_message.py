@@ -89,6 +89,7 @@ def Send_Sms(request):
 
             campaign_title = request.POST.get("campaign_title")
             template_name = request.POST.get("params")
+            add_91 = request.POST.get("add_91")
             for key in request.POST:
                 if key.startswith('variable'):
                     submitted_variables.append(request.POST[key])
@@ -115,8 +116,7 @@ def Send_Sms(request):
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
-            all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount)
-            
+            all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
@@ -162,7 +162,7 @@ def Send_Sms(request):
 
     return render(request, "send-sms.html", context)
 
-def validate_phone_numbers(request, contacts, uploaded_file, discount):
+def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=None):
     valid_numbers = set()
     invalid_numbers = set()
     
@@ -198,6 +198,9 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount):
     # Parse contacts from uploaded file
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
+        if add_91:
+            df['phone_numbers'] = df['phone_numbers'].astype(str)
+            df['phone_numbers'] = df['phone_numbers'].apply(lambda x: '91' + x if not x.startswith('91') else x)
         for number in df['phone_numbers']:
             numbers_list.add(str(number))
 
@@ -331,6 +334,7 @@ def send_flow_message(request):
     if request.method == 'POST':
         campaign_title = request.POST.get("campaign_title")
         flow_name = request.POST.get("params")
+        add_91 = request.POST.get("add_91")
         uploaded_file = request.FILES.get("files", None)
         contacts = request.POST.get("contact_number", "").strip()
         if not campaign_title or not flow_name:
@@ -338,7 +342,7 @@ def send_flow_message(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(all_contact))
@@ -410,6 +414,7 @@ def send_carousel_messages(request):
     if request.method == 'POST':
         campaign_title = request.POST.get("campaign_title")
         tempalate_name = request.POST.get("params")
+        add_91 = request.POST.get("add_91")
         uploaded_file = request.FILES.get("files", None)
         contacts = request.POST.get("contact_number", "").strip()
         
@@ -431,7 +436,7 @@ def send_carousel_messages(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(all_contact))

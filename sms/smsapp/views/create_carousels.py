@@ -99,7 +99,7 @@ class TemplateCreateView(LoginRequiredMixin, View):
                 }, status=400)
                 
         except Exception as e:
-            print(str(e))
+            logger.error(str(e))
             return JsonResponse({
                 'status': 'error',
                 'message': str(e)
@@ -172,7 +172,7 @@ class ImageUploadView(LoginRequiredMixin, View):
             })
             
         except Exception as e:
-            print("Error:", str(e))  # Debug print
+            logger.error(str(e))
             return JsonResponse({
                 'status': 'error',
                 'message': str(e)

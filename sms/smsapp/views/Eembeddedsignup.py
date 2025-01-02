@@ -12,9 +12,6 @@ def process_signup(request):
         data = json.loads(request.body)
         access_token = data.get('access_token')
         user_id = data.get('user_id')
-        
-        print(access_token)
-        print(user_id)
 
         return JsonResponse({'status': 'success', 'message': 'Signup processed successfully'})
     return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)

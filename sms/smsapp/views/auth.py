@@ -41,7 +41,7 @@ def send_otp(email):
     otp_response = requests.post(otp_url, params=params)
 
     if otp_response.status_code == 200:
-        print("OTP sent successfully.")
+        logger.info("OTP sent successfully.")
     else:
         return redirect("password_reset.html")
 

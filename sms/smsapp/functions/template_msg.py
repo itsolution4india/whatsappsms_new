@@ -1,5 +1,6 @@
 import requests
 import os
+from ..utils import logger
 
 API_VERSION = "v20.0"
 
@@ -24,11 +25,10 @@ def delete_whatsapp_template(waba_id, token, template_name, template_id=None):
 
     # Check the response
     if response.status_code == 200:
-        print(f"Template '{template_name}' deleted successfully.")
+        logger.info(f"Template '{template_name}' deleted successfully.")
         return response.json()
     else:
-        print(f"Failed to delete template. Status code: {response.status_code}")
-        print(f"Response: {response.text}")
+        logger.error(f"Failed to delete template. Status code: {response.status_code} {response.text}")
         return None
     
 def header_handle(file_path, ACCESS_TOKEN, APP_ID):
@@ -62,7 +62,6 @@ def header_handle(file_path, ACCESS_TOKEN, APP_ID):
         file_data1 = f.read()
 
     response = requests.post(upload_url, headers=headers, data=file_data1)
-    print(response.json()['h'])
     return response.json()['h']
 
 def get_media_format(file_extension):
@@ -165,5 +164,5 @@ def fetch_templates(waba_id, token, req_template_name=None):
         return templates
 
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching templates: {e}")
+        logger.error(f"Error fetching templates: {e}")
         return None

@@ -23,7 +23,6 @@ def create_flow_message(request):
     campaign_list = fetch_templates(display_whatsapp_id(request), token)
 
     flows = get_flows(token, waba_id)
-    print(flows)
     local_db_flows = Flows.objects.filter(email=request.user)
     flow_value = list(local_db_flows.values_list('flows', flat=True))
     filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
@@ -301,12 +300,11 @@ def get_preview_url(request, flow_id):
 
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
-        print("Request successful!")
+        logger.info("Flow Request successful!")
         data = response.json()
         return data['preview']['preview_url']
     else:
-        print(f"Request failed. Status code: {response.status_code}")
-        print(response.text)
+        logger.error(f"Request failed. Status code: {response.status_code} {response.text}")
         return None
     
 def get_preview_url_view(request, flow_id):
@@ -341,6 +339,6 @@ def create_template_from_flow(request):
             return JsonResponse({'success': True})
         
         else:
-            print("response", response)
+            logger.error("Failed to crate Flow Template")
             messages.error(request, "Failed to crate Flow Template")
             return JsonResponse({'success': False, 'error': 'Failed to create template'})
