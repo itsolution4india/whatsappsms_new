@@ -91,7 +91,7 @@ def send_flow_messages_with_report(current_user, token, phone_id, campaign_list,
                 except Exception as e:
                     logging.error(f"Failed to get flow_id: {e}")
                     return
-                _, _ = send_flow_message_api(token, phone_id, flow_name, flow_id, language, contact_list)
+                _, _ = send_flow_message_api(token, phone_id, flow_name, flow_id, language, contact_list, current_user)
 
         formatted_numbers = []
         for number in all_contact:
