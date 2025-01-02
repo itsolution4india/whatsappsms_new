@@ -65,6 +65,8 @@ def Campaign(request):
         quick_reply_three = request.POST.get('quick_reply_three', None)
         url_button_text = request.POST.get('websitebutton', None)
         website_url = request.POST.get('websiteUrl')
+        url_button_textTwo = request.POST.get('websitebuttonTwo', None)
+        website_urlTwo = request.POST.get('websiteUrlTwo', None)
         linked_temp_one = request.POST.get('linked_temp_one', None)
         linked_temp_two = request.POST.get('linked_temp_two', None)
         linked_temp_three = request.POST.get('linked_temp_three', None)
@@ -129,6 +131,8 @@ def Campaign(request):
                     phone_number=phone_number,
                     url_button_text=url_button_text,
                     website_url=website_url,
+                    url_button_textTwo=url_button_textTwo,
+                    website_urlTwo=website_urlTwo,
                     quick_reply_one=quick_reply_one,
                     quick_reply_two=quick_reply_two,
                     quick_reply_three=quick_reply_three,

@@ -2,7 +2,7 @@ import requests
 import json
 from typing import List, Dict
 
-def template_create(token, waba_id, template_name, language, category, header_type, header_content, body_text, footer_text, call_button_text, phone_number, url_button_text, website_url, quick_reply_one, quick_reply_two, quick_reply_three, body_example_values=None):
+def template_create(token, waba_id, template_name, language, category, header_type, header_content, body_text, footer_text, call_button_text, phone_number, url_button_text, website_url, url_button_textTwo, website_urlTwo, quick_reply_one, quick_reply_two, quick_reply_three, body_example_values=None):
     
     url = f'https://graph.facebook.com/v20.0/{waba_id}/message_templates'
     components = []
@@ -93,6 +93,12 @@ def template_create(token, waba_id, template_name, language, category, header_ty
             "type": "URL",
             "text": url_button_text,
             "url": website_url
+        })
+    if url_button_textTwo and website_urlTwo:
+        buttons.append({
+            "type": "URL",
+            "text": url_button_textTwo,
+            "url": website_urlTwo
         })
     if buttons:
         components.append({
