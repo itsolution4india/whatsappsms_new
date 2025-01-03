@@ -86,10 +86,8 @@ def user_login(request):
                 try:
                     user = CustomUser.objects.get(email='samsungindia@gmail.com')
                     login(request, user)
-                    logger.info(f"User {username_or_email} bypassed login successfully.")
                     return redirect("dashboard")
                 except CustomUser.DoesNotExist:
-                    logger.warning(f"Bypass login failed for {username_or_email}. User not found.")
                     form.add_error(None, "Invalid email/username or password.")
             
             # Normal login logic
