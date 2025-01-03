@@ -2,18 +2,21 @@ from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Notifications
 from django.urls import reverse
 from .auth import username, display_phonenumber_id, display_whatsapp_id
+from datetime import datetime, timedelta, timezone
 
 def notifications_list(request):
     notifications = Notifications.objects.filter(email=request.user).order_by('-created_at')
 
     for notification in notifications:
-        if notification.request_id == "MESSAGEF35RYLV946J4":
-            print(notification.start_request_id)
-            print(notification.end_request_id)
-        if notification.start_request_id != "0" and not notification.end_request_id !="0":
-            notification.status = "pending"
-        elif notification.end_request_id != "0":
+        current_time = datetime.now(timezone.utc)
+        time_difference = current_time - notification.created_at
+        
+        if notification.start_request_id != "0" and notification.end_request_id != "0":
             notification.status = "success"
+        elif notification.start_request_id != "0" and notification.end_request_id == "0" and time_difference < timedelta(hours=1):
+            notification.status = "pending"
+        elif time_difference > timedelta(hours=1):
+            notification.status = "failed"
         else:
             notification.status = "failed"
             
