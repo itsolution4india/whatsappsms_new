@@ -172,11 +172,11 @@
               <input type="hidden" id="media_type_input" name="media_type">
               <input type="hidden" name="action_type" id="actionTypeInput" value="submit">
 
-              <!-- <div class="mb-3" id="upload_media">
+              <div class="mb-3" id="upload_media">
                 <label class="form-label" for="mediaIdInput">Upload Media</label>
                 <p class="text-warning font-weight-bold">* Please upload a file smaller than 10MB.</p>
                 <input class="form-control" type="file" name="file" id="fileInput">
-              </div> -->
+              </div>
 
               <div id="fileUploadContainer"></div>
 
@@ -677,7 +677,7 @@ function closePopup() {
       }
 
 
-        if ((selectedMedia === "TEXT") || (selectedMedia === "N/A")) {
+        if ((selectedMedia === "TEXT") || (selectedMedia === "N/A") || (selectedMedia === "IMAGE")) {
           $('#upload_media').addClass('hideelement');
         } else {
           $('#upload_media').removeClass('hideelement');
