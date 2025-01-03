@@ -109,7 +109,7 @@ def notify_user(request):
             report_id = data.get('report_id')
             request_id = str(report_id)
             if status == 'completed' and unique_id and request_id:
-                if request_id.startswith("MESSAGE") or request_id.startswith("FLOW"):
+                if request_id.startswith("MESSAGE") or request_id.startswith("FLOW") or request_id.startswith("CAROUSEL"):
                     try:
                         notification_instance = get_object_or_404(Notifications, request_id=request_id)
                         notification_instance.end_request_id = unique_id
