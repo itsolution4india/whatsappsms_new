@@ -165,7 +165,7 @@ h1 {
     {% for notification in notifications %}
     <div class="notification-card">
         <div class="time">{{ notification.created_at }}</div>
-        <div class="status {{ notification.status }}">{{ notification.status }}</div>
+        <div class="status {{ notification.status }}">{{ notification.status }} {% if notification.status == 'pending' %} <i class='bx bx-time'></i> {% elif notification.status == 'success' %}<i class='bx bxs-badge-check' ></i> {% else %} <i class='bx bxs-x-circle'></i> {% endif %}</div>
         <p>Template name: {{ notification.campaign_title }}</p>
         <p>Request ID: {{ notification.request_id }}</p>
         <div class="message">
@@ -173,8 +173,8 @@ h1 {
                 Your Template: {{ notification.campaign_title }} is in pending. Please wait to process your request.
                 <span class="loading"></span>
             {% elif notification.status == "success" %}
-            {% if notification.text == "message" %}
-                <p>Your Send message request is completed successfully</p>
+            {% if notification.text == "message" or notification.text == "flows" or notification.text == "carousels" %}
+                <p>Your send {{ notification.text }} request is completed successfully</p>
                 <p>Please check your report <a href="{% url 'reports' %}" class="btn btn-download p-3 pt-1 pb-1">Go to reports</a></p>
             {% endif %}
             {% else %}

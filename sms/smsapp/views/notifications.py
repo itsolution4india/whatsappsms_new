@@ -7,9 +7,12 @@ def notifications_list(request):
     notifications = Notifications.objects.filter(email=request.user).order_by('-created_at')
 
     for notification in notifications:
-        if notification.start_request_id != 0 and not notification.end_request_id !=0:
+        if notification.request_id == "MESSAGEF35RYLV946J4":
+            print(notification.start_request_id)
+            print(notification.end_request_id)
+        if notification.start_request_id != "0" and not notification.end_request_id !="0":
             notification.status = "pending"
-        elif notification.end_request_id != 0:
+        elif notification.end_request_id != "0":
             notification.status = "success"
         else:
             notification.status = "failed"
