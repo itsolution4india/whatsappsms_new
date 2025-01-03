@@ -133,7 +133,7 @@ def send_carousel_messages_with_report(request, token, phone_id, tempalate_name,
                     subtract_coins(request, money_data, category)
                 else:
                     schedule_subtract_coins(current_user, money_data, category)
-                respose = send_carousel_message_api(token, phone_id, tempalate_name, contact_list,media_id_list, template_details[0])
+                respose = send_carousel_message_api(token, phone_id, tempalate_name, contact_list,media_id_list, template_details[0], current_user)
 
         formatted_numbers = []
         for number in all_contact:
