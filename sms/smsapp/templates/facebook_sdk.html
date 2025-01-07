@@ -49,7 +49,7 @@
   // Facebook SDK initialization
   window.fbAsyncInit = function() {
     FB.init({
-      appId: '1002275394751227', // Replace with your Facebook App ID
+      appId: '490892730652855', // Replace with your Facebook App ID
       cookie: true,
       xfbml: true,
       version: 'v20.0'
@@ -69,7 +69,7 @@
   function launchWhatsAppSignup() {
     // Track WhatsApp embedded signup start event with Facebook Pixel
     fbq('track', 'WhatsAppOnboardingStart', { 
-      app_id: '1002275394751227', // Replace with your Facebook App ID
+      app_id: '490892730652855', // Replace with your Facebook App ID
       feature: 'whatsapp_embedded_signup' 
     });
 
@@ -86,7 +86,7 @@
       scope: 'business_management, whatsapp_business_management, whatsapp_business_messaging',
       auth_type: 'rerequest',
       return_scopes: true,
-      config_id: '1010681143888663', // Replace with your Facebook configuration ID
+      config_id: '490892730652855', // Replace with your Facebook configuration ID
       response_type: 'code',
       override_default_response_type: true,
       extras: {
