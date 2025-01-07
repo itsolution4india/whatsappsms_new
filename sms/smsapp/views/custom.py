@@ -25,6 +25,7 @@ def facebook_sdk_view(request):
                 'redirect_uri': 'https://developers.facebook.com/apps/1002275394751227/'
             }
             response = requests.get('https://graph.facebook.com/v20.0/oauth/access_token', params=params)
+            print(response.json())
             token_data = response.json()
 
             if 'access_token' not in token_data:
@@ -35,7 +36,7 @@ def facebook_sdk_view(request):
             # Step 2: Debug the access token
             debug_params = {
                 'input_token': access_token,
-                'access_token': 'EAAE3ZCQ8LZB48BO9KDbpZCjbM6ZADGoAZANvtahzlAaoRqF24zgwUYsGZCSVpi1IkOhgaGnfCzmh5axAWDrXyomeqmhYUSgofSlIXojlBBCkwguOsFUgeCIaXuUZAsBhMiSTBFwyqZCkFTwGV1n700ef4fe1iZAGqVuBr2x9ZAh8AUz3FxxXIOWfDf6xinJAreZChYwFwZDZD'  # Replace with your Facebook App Access Token
+                'access_token': 'EAAOPkGzfCvsBOwY9Nq2aOUcvJEXbFxF1XTjxao419fBn6LbhVdAFFZBmCFh7V0chnbAhnWTi7uErMYZB3gGAsZAvOwZCbSdnwBZCziV2LrU9ZAOA6ZBHKBLEtHxpjCbRZAODZCySM5y0nn11Rdr1vKAv5zMlHzXjbl68eTASdVD8Jqd0QwGqZBKhWb6g3Q5jhxvVObVwZDZD'  # Replace with your Facebook App Access Token
             }
             debug_response = requests.get('https://graph.facebook.com/v20.0/debug_token', params=debug_params)
             debug_data = debug_response.json()
