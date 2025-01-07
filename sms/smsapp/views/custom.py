@@ -51,7 +51,7 @@ def facebook_sdk_view(request):
             subscribe_endpoint = f'https://graph.facebook.com/v20.0/{waba_id}/subscribed_apps'
             subscribe_params = {
                 'subscribed_fields': 'messages, messaging_postbacks, messaging_optins, messaging_referrals',  # Adjust fields as per your requirements
-                'access_token': 'EAAE3ZCQ8LZB48BO9KDbpZCjbM6ZADGoAZANvtahzlAaoRqF24zgwUYsGZCSVpi1IkOhgaGnfCzmh5axAWDrXyomeqmhYUSgofSlIXojlBBCkwguOsFUgeCIaXuUZAsBhMiSTBFwyqZCkFTwGV1n700ef4fe1iZAGqVuBr2x9ZAh8AUz3FxxXIOWfDf6xinJAreZChYwFwZDZD'  # Replace with your Business Integration System Token
+                'access_token': 'EAAOPkGzfCvsBOZCd3Mi8513sZChVkFFCZBv6QHQ3sk6jY9sWleyaBavbzdpSumP9JOSLy0Ofa7jVRZBXXGgZATwlGY7zAK3PTv5LOSGRvYMZBmTEVzG8rcX64xHOFIMZCX8XhTHlCRjCpW5esq237SrBx0ujOz89ODnaQN3ePMhHJb1xstycxNKIvNZAi2ZBlJ4mImwZDZD'  # Replace with your Business Integration System Token
             }
             subscribe_response = requests.post(subscribe_endpoint, params=subscribe_params)
             subscribe_data = subscribe_response.json()
