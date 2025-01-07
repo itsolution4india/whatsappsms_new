@@ -19,10 +19,10 @@ def facebook_sdk_view(request):
 
             # Step 1: Exchange code for access token
             params = {
-                'client_id': '1002275394751227',  # Replace with your Facebook App ID
+                'client_id': '490892730652855',  # Replace with your Facebook App ID
                 'client_secret': '2a272b5573130b915db4bccc27caa34f',  # Replace with your Facebook App Secret
                 'code': code,
-                'redirect_uri': 'https://developers.facebook.com/apps/1002275394751227/'
+                'redirect_uri': 'https://developers.facebook.com/apps/490892730652855/'
             }
             response = requests.get('https://graph.facebook.com/v20.0/oauth/access_token', params=params)
             logger.info(response.json())
@@ -36,7 +36,7 @@ def facebook_sdk_view(request):
             # Step 2: Debug the access token
             debug_params = {
                 'input_token': access_token,
-                'access_token': 'EAAOPkGzfCvsBOwY9Nq2aOUcvJEXbFxF1XTjxao419fBn6LbhVdAFFZBmCFh7V0chnbAhnWTi7uErMYZB3gGAsZAvOwZCbSdnwBZCziV2LrU9ZAOA6ZBHKBLEtHxpjCbRZAODZCySM5y0nn11Rdr1vKAv5zMlHzXjbl68eTASdVD8Jqd0QwGqZBKhWb6g3Q5jhxvVObVwZDZD'  # Replace with your Facebook App Access Token
+                'access_token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD'  # Replace with your Facebook App Access Token
             }
             debug_response = requests.get('https://graph.facebook.com/v20.0/debug_token', params=debug_params)
             debug_data = debug_response.json()
@@ -51,7 +51,7 @@ def facebook_sdk_view(request):
             subscribe_endpoint = f'https://graph.facebook.com/v20.0/{waba_id}/subscribed_apps'
             subscribe_params = {
                 'subscribed_fields': 'messages, messaging_postbacks, messaging_optins, messaging_referrals',  # Adjust fields as per your requirements
-                'access_token': 'EAAOPkGzfCvsBOZCd3Mi8513sZChVkFFCZBv6QHQ3sk6jY9sWleyaBavbzdpSumP9JOSLy0Ofa7jVRZBXXGgZATwlGY7zAK3PTv5LOSGRvYMZBmTEVzG8rcX64xHOFIMZCX8XhTHlCRjCpW5esq237SrBx0ujOz89ODnaQN3ePMhHJb1xstycxNKIvNZAi2ZBlJ4mImwZDZD'  # Replace with your Business Integration System Token
+                'access_token': 'EAAGZBdt7VWLcBO8nr7i8nChTcNXzWF9aNMjPYVjjKU7BbNfIJGETpZAJY3A2y9vLxzo4xZCace1xKiqG7jS7772Hpak96BPl360cG8Dzt83ujr8BSwGyUbNRS2mIjwZBfUwhNFKXtpFZC2QJ9Lh6OcKLRuoNJ1sAXGk2LZBkNu9BN7JSpBbTnU2vR6neoYv4FFUwZDZD'  # Replace with your Business Integration System Token
             }
             subscribe_response = requests.post(subscribe_endpoint, params=subscribe_params)
             subscribe_data = subscribe_response.json()
