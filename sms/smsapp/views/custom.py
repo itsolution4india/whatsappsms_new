@@ -25,7 +25,7 @@ def facebook_sdk_view(request):
                 'redirect_uri': 'https://developers.facebook.com/apps/1002275394751227/'
             }
             response = requests.get('https://graph.facebook.com/v20.0/oauth/access_token', params=params)
-            print(response.json())
+            logger.info(response.json())
             token_data = response.json()
 
             if 'access_token' not in token_data:
@@ -40,12 +40,14 @@ def facebook_sdk_view(request):
             }
             debug_response = requests.get('https://graph.facebook.com/v20.0/debug_token', params=debug_params)
             debug_data = debug_response.json()
+            logger.info(f"debug_data {debug_data}")
 
             if 'error' in debug_data:
                 return JsonResponse({'error': debug_data['error']['message']}, status=400)
 
             # Step 3: Subscribe WhatsApp Business Account to an application
             waba_id =data.get('waba_id') # Replace with your WhatsApp Business Account ID
+            logger.info(f"waba_id, {waba_id}")
             subscribe_endpoint = f'https://graph.facebook.com/v20.0/{waba_id}/subscribed_apps'
             subscribe_params = {
                 'subscribed_fields': 'messages, messaging_postbacks, messaging_optins, messaging_referrals',  # Adjust fields as per your requirements
@@ -57,6 +59,7 @@ def facebook_sdk_view(request):
             if 'success' in subscribe_data:
                 # Retrieve the WABA ID from the session info (example assumes frontend sends WABA ID in JSON)
                 waba_id = data.get('waba_id')
+                logger.info(f"success waba_id {waba_id}")
                 
 
                 
