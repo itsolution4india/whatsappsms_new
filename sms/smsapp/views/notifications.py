@@ -48,7 +48,7 @@ def get_notification_type(request_id):
 def notifications_list(request):
     # Get both notifications and reports
     notifications = Notifications.objects.filter(email=request.user).order_by('-created_at')
-    reports = ReportInfo.objects.filter(email=request.user).order_by('-created_at')
+    reports = ReportInfo.objects.filter(email=request.user).exclude(start_request_id=0).order_by('-created_at')
     
     current_time = datetime.now(timezone.utc)
     
