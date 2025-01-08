@@ -5,6 +5,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.conf import settings
 import random
+from django.utils import timezone
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, email: str, username: str, password: str = None, **extra_fields: Any) -> 'CustomUser':
@@ -111,7 +112,7 @@ class Whitelist_Blacklist(models.Model):
 
 
 class ReportInfo(models.Model):
-    
+    created_at = models.DateTimeField(default=timezone.now)
     email = models.CharField(max_length=100)
     campaign_title=models.CharField(max_length=50)
     contact_list= models.TextField()
