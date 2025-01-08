@@ -72,6 +72,12 @@ urlpatterns = [
     
     path('signup/', views.signup_view, name='signup'),
     path('process_signup/', views.process_signup, name='process_signup'),
+    path('get-credit-line/', views.get_credit_line_id, name='get_credit_line'),
+    path('share-credit-line/', views.share_credit_line, name='share_credit_line'),
+    path('get_business_portfolio_id/<str:waba_id>/', views.get_business_portfolio_id, name='get_business_portfolio_id'),
+    path('attach_credit_line/<str:extended_credit_line_id>/<str:waba_currency>/<str:waba_id>/', views.attach_credit_line, name='attach_credit_line'),
+    path('get_receiving_credential/<str:extended_credit_allocation_id>/', views.get_receiving_credential, name='get_receiving_credential'),
+    path('get_primary_funding_id/<str:waba_id>/', views.get_primary_funding_id, name='get_primary_funding_id'),
     
     path('generate_otp/', views.generate_otp_view, name='generate_otp'),
     path('register_2fa/', views.register_2fa_view, name='register_2fa'),

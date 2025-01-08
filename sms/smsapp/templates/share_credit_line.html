@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Credit Line</title>
+</head>
+<body>
+    <h1>Share Credit Line</h1>
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label for="credit_line_id">Credit Line ID:</label>
+        <input type="text" name="credit_line_id" id="credit_line_id" required><br><br>
+
+        <label for="customer_waba_id">Customer WABA ID:</label>
+        <input type="text" name="customer_waba_id" id="customer_waba_id" required><br><br>
+
+        <label for="customer_currency">Customer Currency:</label>
+        <select name="customer_currency" id="customer_currency" required>
+            <option value="" disabled selected>Select a currency</option>
+            <option value="AUD">AUD - Australian Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="IDR">IDR - Indonesian Rupiah</option>
+            <option value="INR">INR - Indian Rupee</option>
+            <option value="USD">USD - US Dollar</option>
+        </select><br><br>
+
+        <button type="submit">Share Credit Line</button>
+    </form>
+</body>
+</html>

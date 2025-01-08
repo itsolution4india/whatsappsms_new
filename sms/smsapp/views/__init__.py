@@ -11,7 +11,7 @@ from .link_templates import link_templates, delete_template_linkage
 from .bot_automation import bot_flow, delete_message
 from .user_interactions import bot_interactions, user_interaction
 from .api_doc import customuser_list_view, customuser_detail_view, UpdateBalanceReportView, GetReportAPI, api_manual
-from .Eembeddedsignup import signup_view, process_signup
+from .Eembeddedsignup import signup_view, process_signup, get_credit_line_id, share_credit_line, get_business_portfolio_id, attach_credit_line, get_receiving_credential, get_primary_funding_id
 from .twoauth import generate_otp, generate_otp_view, register_2fa_view, disable_2fa
 from .notifications import delete_notification, notifications_list
 
