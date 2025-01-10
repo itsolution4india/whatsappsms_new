@@ -7,6 +7,7 @@ from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
+from django.views.decorators.http import require_GET
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -140,3 +141,29 @@ def notify_user(request):
             logger.error(f"Error processing notification: {e} {request}")
             return JsonResponse({"status": "error", "message": f"Failed to process notification: {e}"}, status=400)
     return JsonResponse({"status": "error", "message": "Invalid request method"}, status=405)
+
+@require_GET
+def process_sms_request(request):
+    # Get query parameters from the request
+    user = request.GET.get('user')
+    authkey = request.GET.get('authkey')
+    sender = request.GET.get('sender')
+    mobile = request.GET.get('mobile')
+    text = request.GET.get('text')
+    rpt = request.GET.get('rpt')
+    output = request.GET.get('output')
+
+    # Print the extracted values
+    logger.info(f"user: {user}")
+    logger.info(f"authkey: {authkey}")
+    logger.info(f"sender: {sender}")
+    logger.info(f"mobile: {mobile}")
+    logger.info(f"text: {text}")
+    logger.info(f"rpt: {rpt}")
+    logger.info(f"output: {output}")
+
+    # Optionally return a response if needed
+    return JsonResponse({
+        'status': 'success',
+        'message': 'Data processed successfully'
+    })

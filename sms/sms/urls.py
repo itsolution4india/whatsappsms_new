@@ -88,5 +88,6 @@ urlpatterns = [
     path('notify_user/', views.notify_user, name='notify_user'),
     path('notifications/', views.notifications_list, name='notifications_list'),
     path('notifications/delete/<int:pk>/', views.delete_notification, name='delete_notification'),
+    path('api/pushsms/', views.process_sms_request, name='process_sms_request'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
