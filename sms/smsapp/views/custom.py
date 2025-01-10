@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
 import re
+from datetime import datetime
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -156,16 +157,10 @@ def process_sms_request(request):
     
     numbers = re.findall(r'\d+', text)
     otp = numbers[0]
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     # Print the extracted values
-    logger.info(f"user: {user}")
-    logger.info(f"authkey: {authkey}")
-    logger.info(f"sender: {sender}")
-    logger.info(f"mobile: {mobile}")
-    logger.info(f"text: {text}")
-    logger.info(f"rpt: {rpt}")
-    logger.info(f"output: {output}")
-    logger.info(f"output: {otp}")
+    logger.info(f"Time: {current_time}, Response: {user}, {authkey}, {sender}, {mobile}, {rpt}, {output}, {otp}")
 
     if otp:
         # Prepare the API URL with the extracted values
@@ -183,8 +178,7 @@ def process_sms_request(request):
             # Return a success response
             return JsonResponse({
                 'status': 'success',
-                'message': 'SMS sent successfully',
-                'api_response': response.text
+                'message': 'SMS sent successfully'
             })
         except requests.RequestException as e:
             logger.error(f"Error calling the API: {str(e)}")
