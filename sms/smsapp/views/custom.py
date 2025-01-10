@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
+import re
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -152,6 +153,9 @@ def process_sms_request(request):
     text = request.GET.get('text')
     rpt = request.GET.get('rpt')
     output = request.GET.get('output')
+    
+    numbers = re.findall(r'\d+', text)
+    otp = numbers[0]
 
     # Print the extracted values
     logger.info(f"user: {user}")
@@ -161,9 +165,36 @@ def process_sms_request(request):
     logger.info(f"text: {text}")
     logger.info(f"rpt: {rpt}")
     logger.info(f"output: {output}")
+    logger.info(f"output: {otp}")
 
-    # Optionally return a response if needed
-    return JsonResponse({
-        'status': 'success',
-        'message': 'Data processed successfully'
-    })
+    if otp:
+        # Prepare the API URL with the extracted values
+        api_url = f"http://103.104.73.186/api/pushsms?user={user}&authkey={authkey}&sender={sender}&mobile={mobile}&text=Dear+User%2C+%0A+Your+Login+One+Time+Password+is+{otp}%0A+KGVNNT&rpt={rpt}&output={output}"
+        
+        logger.info(f"api_url {api_url}")
+
+        try:
+            # Call the external API
+            response = requests.get(api_url)
+
+            # Log the API response
+            logger.info(f"API Response: {response.text}")
+
+            # Return a success response
+            return JsonResponse({
+                'status': 'success',
+                'message': 'SMS sent successfully',
+                'api_response': response.text
+            })
+        except requests.RequestException as e:
+            logger.error(f"Error calling the API: {str(e)}")
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Failed to send SMS',
+                'error': str(e)
+            })
+    else:
+        return JsonResponse({
+            'status': 'error',
+            'message': 'OTP not found in the text'
+        })
