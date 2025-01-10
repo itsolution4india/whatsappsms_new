@@ -23,7 +23,6 @@ lock_file = os.path.join(settings.BASE_DIR, "scheduler.lock")
 
 
 def run_scheduled_message(message_id):
-    logger.info(f"Running scheduled message with id {message_id}")
     logger.info(f"Executing message send for ID: {message_id} at {timezone.now()}")
     with FileLock(lock_file):
         with transaction.atomic():
@@ -74,14 +73,9 @@ def schedule_messages():
         now = timezone.now().astimezone(india_timezone)
 
         schedule_list = ScheduledMessage.objects.filter(schedule_date__gte=now.date(), is_sent=False)
-        logger.info(f"Schedule list: {schedule_list}")
         existing_jobs = {job.id for job in scheduler.get_jobs()}
         
-        logger.info(f"Scheduler state: {scheduler.get_jobs()}")
-        logger.info(f"Current time (localized): {now}")
-        
         for schedule in schedule_list:
-            logger.info(f"Processing schedule: {schedule}")
 
             # Ensure schedule_date is a date object, converting if necessary
             if isinstance(schedule.schedule_date, str):
@@ -118,7 +112,6 @@ def handle_schedule_update(sender, instance, created, **kwargs):
 
 
 def start_scheduler():
-    logger.info("start_scheduler called")
     global scheduler
 
     if scheduler is None:
@@ -126,7 +119,6 @@ def start_scheduler():
         scheduler.add_job(schedule_messages, 'interval', minutes=45)
         try:
             scheduler.start()
-            logger.info("Scheduler started successfully.")
         except Exception as e:
             logger.error(f"Error starting the scheduler: {str(e)}")
 
