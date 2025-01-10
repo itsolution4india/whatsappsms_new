@@ -165,8 +165,6 @@ def process_sms_request(request):
     if otp:
         # Prepare the API URL with the extracted values
         api_url = f"http://103.104.73.186/api/pushsms?user={user}&authkey={authkey}&sender={sender}&mobile={mobile}&text=Dear+User%2C+%0A+Your+Login+One+Time+Password+is+{otp}%0A+KGVNNT&rpt={rpt}&output={output}"
-        
-        logger.info(f"api_url {api_url}")
 
         try:
             # Call the external API
