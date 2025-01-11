@@ -47,12 +47,22 @@ def save_phone_number(request):
 
                 try:
                     filter_message_response = MessageResponse.objects.filter(
-                        Q(user_response__iexact=user_response) &  # Case-insensitive exact match
+                        Q(user_response__iexact=user_response) &
                         Q(user__in=emails)
                     ).first()
                     logger.info("bot automation message")
                 except Exception as e:
                     filter_message_response = None
+                
+                if reply_text and not latest_template:
+                    try:
+                        filter_message_response = MessageResponse.objects.filter(
+                            Q(user_response__iexact=reply_text) &
+                            Q(user__in=emails)
+                        ).first()
+                        logger.info("bot automation message")
+                    except Exception as e:
+                        filter_message_response = None
 
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
