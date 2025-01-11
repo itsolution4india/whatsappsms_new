@@ -64,7 +64,7 @@ def save_phone_number(request):
                         logger.info("bot automation message")
                     except Exception as e:
                         filter_message_response = None
-
+                logger.info(f"reply_text: {reply_text}, {user_response}")
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
                     ).first()
