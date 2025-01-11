@@ -22,6 +22,7 @@ def save_phone_number(request):
                 try:
                     reply_text = response['entry'][0]['changes'][0]['value']['messages'][0]['button']['text']
                 except (KeyError, IndexError):
+                    reply_text = None
                     pass
                 try:
                     user_response = response['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
