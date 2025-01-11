@@ -11,6 +11,18 @@ from ..fastapidata import send_api, send_flow_message_api, send_bot_api
 from django.db.models import Q
 
 
+def filtermessageresponse(emails, user_response):
+    try:
+        filter_message_response = MessageResponse.objects.filter(
+            Q(user_response__iexact=user_response) &
+            Q(user__in=emails)
+        ).first()
+        logger.info("bot automation message")
+    except Exception as e:
+        filter_message_response = None
+        
+    return filter_message_response
+
 @csrf_exempt
 def save_phone_number(request):
     if request.method == "POST":
@@ -24,6 +36,11 @@ def save_phone_number(request):
                     reply_text = response['entry'][0]['changes'][0]['value']['messages'][0]['button']['text']
                 except (KeyError, IndexError):
                     reply_text = None
+                    pass
+                try:
+                    interactive_text = response['entry'][0]['changes'][0]['value']['messages'][0]['interactive']['button_reply']['title']
+                except (KeyError, IndexError):
+                    interactive_text = None
                     pass
                 try:
                     user_response = response['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
@@ -47,26 +64,15 @@ def save_phone_number(request):
                     logger.info(f"{emails}, {str(e)}")
                     linked_template_names = []
                     latest_template = None
-
-                try:
-                    filter_message_response = MessageResponse.objects.filter(
-                        Q(user_response__iexact=user_response) &
-                        Q(user__in=emails)
-                    ).first()
-                    logger.info("bot automation message")
-                except Exception as e:
-                    filter_message_response = None
-                
+                   
+                if user_response: 
+                    filter_message_response = filtermessageresponse(emails, user_response)
+                if interactive_text:
+                    filter_message_response = filtermessageresponse(emails, interactive_text)
                 if reply_text and not latest_template:
-                    try:
-                        filter_message_response = MessageResponse.objects.filter(
-                            Q(user_response__iexact=reply_text) &
-                            Q(user__in=emails)
-                        ).first()
-                        logger.info("bot automation message")
-                    except Exception as e:
-                        filter_message_response = None
-                logger.info(f"reply_text: {reply_text}, {user_response}")
+                    filter_message_response = filtermessageresponse(emails, user_response)
+                    
+                logger.info(f"reply_text: {reply_text}, {user_response} {interactive_text}")
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
                     ).first()
