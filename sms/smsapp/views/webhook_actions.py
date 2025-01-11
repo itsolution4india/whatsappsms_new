@@ -8,6 +8,7 @@ from ..functions.flows import get_template_type, get_flow_id
 import time
 from ..utils import insert_bot_sent_message
 from ..fastapidata import send_api, send_flow_message_api, send_bot_api
+from django.db.models import Q
 
 
 @csrf_exempt
@@ -46,12 +47,12 @@ def save_phone_number(request):
 
                 try:
                     filter_message_response = MessageResponse.objects.filter(
-                        user_response=user_response,
-                        user__in=emails
+                        Q(user_response__iexact=user_response) &  # Case-insensitive exact match
+                        Q(user__in=emails)
                     ).first()
                     logger.info("bot automation message")
                 except Exception as e:
-                    filter_message_response =None
+                    filter_message_response = None
 
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
