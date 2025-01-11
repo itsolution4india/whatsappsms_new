@@ -17,7 +17,7 @@ from rest_framework import status
 
 def customuser_list_view(request):
     users = CustomUser.objects.all().values('email', 'username', 'phone_number_id', 'whatsapp_business_account_id',
-                                            'coins', 'discount', 'is_active', 'is_staff', 'user_id', 'api_token',
+                                            'coins','marketing_coins', 'authentication_coins' 'discount', 'is_active', 'is_staff', 'user_id', 'api_token',
                                             'register_app__app_id', 'register_app__token')
     return JsonResponse(list(users), safe=False)
     
