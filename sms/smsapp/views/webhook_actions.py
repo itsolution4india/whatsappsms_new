@@ -17,6 +17,7 @@ def save_phone_number(request):
         try:
             data = json.loads(request.body)
             response = data.get('response')
+            logger.info(f"response {response}")
             if response:
                 phone_number = response['entry'][0]['changes'][0]['value']['contacts'][0]['wa_id']
                 try:
@@ -27,6 +28,7 @@ def save_phone_number(request):
                 try:
                     user_response = response['entry'][0]['changes'][0]['value']['messages'][0]['text']['body']
                 except (KeyError, IndexError):
+                    user_response = None
                     pass
                 phone_number_id = response['entry'][0]['changes'][0]['value']['metadata']['phone_number_id']
                 waba_id = response['entry'][0]['id']
