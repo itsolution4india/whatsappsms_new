@@ -43,34 +43,10 @@
   </style>
 </head>
 <body>
-  <div
-  class="fb-like"
-  data-share="true"
-  data-width="450"
-  data-show-faces="true">
-</div>
+
 <!-- SDK loading -->
-<!-- <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '490892730652855',
-      xfbml      : true,
-      version    : 'v21.0'
-    });
-    FB.AppEvents.logPageView();
-  };
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<!-- 
 <script>
   // SDK initialization
   window.fbAsyncInit = function() {
@@ -122,9 +98,9 @@
       }
     });
   }
-</script> -->
+</script>
 
 <!-- Launch button  -->
-<!-- <button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button> -->
+<button onclick="launchWhatsAppSignup()" style="background-color: #1877f2; border: 0; border-radius: 4px; color: #fff; cursor: pointer; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: bold; height: 40px; padding: 0 24px;">Login with Facebook</button>
 </body>
 </html>
