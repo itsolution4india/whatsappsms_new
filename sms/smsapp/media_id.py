@@ -1,4 +1,5 @@
 import requests
+from .utils import logger
 def get_media_format(file_extension):
     media_formats = {
         'jpg': 'image/jpeg', 'jpeg': 'image/jpeg', 'png': 'image/png',
@@ -36,7 +37,7 @@ def generate_id(phone_number_id, media_type, uploaded_file, access_token):
         return response.json()
 
     except Exception as e:
-        print(f'Error: {e}')
+        logger.error(f'Error: {e}')
         return {'error': str(e)}
     
 def process_media_file(file, phone_number_id, access_token):

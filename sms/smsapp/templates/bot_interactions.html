@@ -332,7 +332,8 @@
     <form id="chatForm" class="chat-form">
         {% csrf_token %}
         <input type="hidden" name="phone_number" value="{{ selected_phone }}" id="phoneNumber">
-        <!-- <div class="input-group">
+        {% if user.email != 'samsungindia@gmail.com' %}
+        <div class="input-group">
             <input type="text" 
                    name="chat_text" 
                    id="chatText" 
@@ -348,7 +349,8 @@
                     </svg>
                 </span>
             </button>
-        </div> -->
+        </div>
+        {% endif %}
     </form>
 </div>
 {% endif %}
