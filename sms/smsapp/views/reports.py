@@ -240,12 +240,14 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             params.append(created_at)
             
         if not params:
+            update_start_id(report_id)
             return pd.DataFrame()
         
         cursor.execute(query, params)
         rows = cursor.fetchall()
         
         if not rows:
+            update_start_id(report_id)
             return pd.DataFrame()
 
         # Create a dictionary for quick lookup
