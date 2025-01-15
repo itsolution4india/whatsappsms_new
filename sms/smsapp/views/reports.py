@@ -212,6 +212,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
             contacts = report.contact_list.split('\r\n')
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
         else:
             contact_all = contact_list
 
@@ -226,7 +227,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         )
         cursor = connection.cursor()
         query = "SELECT * FROM webhook_responses"
-        cursor.execute(query)
+        cursor.execute(query, (Phone_ID, created_at)) if created_at and Phone_ID else cursor.execute(query)
         rows = cursor.fetchall()
 
         # Create a dictionary for quick lookup
@@ -239,7 +240,10 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047}
     
         if len(contact_all) > 100:
-            non_reply_rows = [row for row in rows if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes]
+            non_reply_rows = [
+                row for row in rows 
+                if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes
+            ]
             
         report_date = None
         no_match_num = []
