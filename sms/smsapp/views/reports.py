@@ -14,7 +14,7 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
 from datetime import datetime, timedelta
 from ..fastapidata import send_validate_req
-
+from django.http import HttpResponse
 
 @login_required
 def Reports(request):
@@ -217,7 +217,13 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             contact_all = contact_list
             
         if not report_id and not contact_all:
-            return pd.DataFrame()
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
+                
 
         # Connect to the database
         connection = mysql.connector.connect(
@@ -241,14 +247,24 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             
         if not params:
             update_start_id(report_id)
-            return pd.DataFrame()
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
         
         cursor.execute(query, params)
         rows = cursor.fetchall()
         
         if not rows:
             update_start_id(report_id)
-            return pd.DataFrame()
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
 
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
