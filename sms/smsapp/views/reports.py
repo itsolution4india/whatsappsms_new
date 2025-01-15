@@ -215,6 +215,9 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
         else:
             contact_all = contact_list
+            
+        if not report_id and not contact_all:
+            return pd.DataFrame()
 
         # Connect to the database
         connection = mysql.connector.connect(
@@ -226,9 +229,24 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
-        query = "SELECT * FROM webhook_responses"
-        cursor.execute(query, (Phone_ID, created_at)) if created_at and Phone_ID else cursor.execute(query)
+        query = "SELECT * FROM webhook_responses WHERE 1=1"
+        params = []
+        
+        if Phone_ID:
+            query += " AND phone_number_id = %s"
+            params.append(Phone_ID)
+        if created_at:
+            query += " AND Date >= %s"
+            params.append(created_at)
+            
+        if not params:
+            return pd.DataFrame()
+        
+        cursor.execute(query, params)
         rows = cursor.fetchall()
+        
+        if not rows:
+            return pd.DataFrame()
 
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
@@ -347,6 +365,8 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
 def get_report_insight(request, report_id):
     try:
         insight_data = download_campaign_report(request, report_id, insight=True)
+        if insight_data.empty:
+            insight_data = pd.DataFrame([{'status': 'failed', 'count': 0}])
         return JsonResponse({
             'status': 'success',
             'data': insight_data.to_dict('records')
