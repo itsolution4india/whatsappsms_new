@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<style>
+    .responsive-width {
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 460px) {
+    .section-two {
+        flex-direction: column;
+    }
+    .responsive-width {
+        width: 100%;
+    }
+    .column img {
+        margin-left: 0px !important;
+    }
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -18,22 +35,22 @@
     <div class="container-xxl flex-grow-1 container-p-y">
 
         <!-- First row for whatsapp banner -->
-        <div class="row" style="height: 500px; box-shadow: none;">
-            <div class="card bg-light" style="height: 500px; overflow: auto; box-shadow: none;">
+        <div class="row" style="box-shadow: none;">
+            <div class="card bg-light" style="overflow: auto; box-shadow: none;">
                 <img src="/static/assets/img/backgrounds/whatsapp.png"
-                    style="width: 1000px; height: 500px; margin-left: auto; margin-right: auto;">
+                    style="width: 100%; margin-left: auto; margin-right: auto;">
             </div>
             <hr>
         </div>
 
         <!-- Second row for advertisement banner -->
-        <div class="row" style="height: 500px; overflow-y: auto; background-color: white; margin-top: 200px;">
-            <div class="card bg-light w-50 border-0">
+        <div class="row section-two" style=" overflow-y: auto; background-color: white;">
+            <div class="card bg-light responsive-width border-0">
                 <img src="/static/assets/img/backgrounds/about-left-image.png"
                     style="width: 400px; height: 350px; margin-left: auto; margin-right: auto; margin-top: 50px;">
             </div>
 
-            <div class="card bg-light w-50" style="box-shadow: none;">
+            <div class="card bg-light responsive-width" style="box-shadow: none;">
                 <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Best Bulk SMS Provider
                     In India</h3>
                 <ul style="font-size: 20px; font-weight: 700; list-style: square; margin-top: 50px;">
@@ -73,7 +90,7 @@
         <!-- Third row for instructions -->
         <div class="row" style="height: 500px; background-color: white; margin-top: 100px;">
 
-            <div class="card w-50" style="box-shadow: none;">
+            <div class="card responsive-width" style="box-shadow: none;">
                 <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Instructions</h3>
                 <ol id="ols" style="margin-top: 35px;">
 
@@ -113,7 +130,7 @@
                 </ol>
             </div>
 
-            <div class="card w-50" style="overflow-y: auto; box-shadow: none;">
+            <div class="card responsive-width" style="overflow-y: auto; box-shadow: none;">
 
                 <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Page Views</h3>
 
