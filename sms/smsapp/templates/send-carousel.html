@@ -54,13 +54,24 @@
         #imgOne img, #imgTwo img, #imgThree img {
           width: 300px;
         }
+        .responsive-width {
+            width: 50%;
+        }
+        @media only screen and (max-width: 460px) {
+        .responsive-width {
+            width: 100%;
+        }
+        #fileUploadContainer {
+          flex-wrap: wrap;
+        }
+        }
 </style>
 {% endblock %}
 
 {% block content %}
 
-<div class="d-flex">
-    <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+<div class="d-flex" style="flex-wrap: wrap;">
+    <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 responsive-width">
         <div class="card z-index-2 w-100">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
             <div class="border-radius-lg py-3 pe-1 bg-primary" style="height: 55px; border-radius: 10px;">
@@ -129,7 +140,7 @@
         </div>
         <button class="close-btn" onclick="closeNotification()">×</button>
     </div>
-      <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 w-50">
+      <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary mt-5 responsive-width">
                  
     
         <div class="col-12 col-lg-4 order-2 order-md-3 order-lg-2 mb-4 shadow-primary w-100">
