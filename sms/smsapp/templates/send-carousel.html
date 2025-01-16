@@ -355,6 +355,20 @@
           div.appendChild(urlInput);
           fileUploadContainer.appendChild(div);
 
+          const checkRequiredFields = () => {
+              if (hiddenFileInput.files.length > 0 || fileInput.files.length > 0 || urlInput.value.trim()) {
+                  fileInput.required = false;
+                  urlInput.required = false;
+                  hiddenFileInput = false;
+              } else {
+                  fileInput.required = true;
+                  urlInput.required = true;
+                  hiddenFileInput.required = true;
+              }
+          };
+
+          checkRequiredFields();
+
           // Handle drag & drop functionality
           dropZone.addEventListener('dragover', (e) => {
               e.preventDefault();
@@ -381,6 +395,8 @@
                   const dataTransfer = new DataTransfer();
                   dataTransfer.items.add(file);
                   hiddenFileInput.files = dataTransfer.files; // Assign the file to the hidden input
+
+                  checkRequiredFields();
               }
           });
 
@@ -399,29 +415,35 @@
                       hiddenFileInput.files = dataTransfer.files;
                   };
                   reader.readAsDataURL(file);
+
+                  checkRequiredFields();
               }
           });
 
           // Handle URL input functionality
           urlInput.addEventListener('input', async () => {
-              const url = urlInput.value.trim();
-              if (url) {
-                  imgPreview.src = url;
-                  imgPreview.style.display = 'block';
+            const url = urlInput.value.trim();
+            if (url) {
+                imgPreview.src = url;
+                imgPreview.style.display = 'block';
 
-                  try {
-                      const response = await fetch(url);
-                      const blob = await response.blob();
-                      const file = new File([blob], `image_${i}.jpg`, { type: blob.type });
+                try {
+                    const response = await fetch(url);
+                    const blob = await response.blob();
+                    const file = new File([blob], `image_${i}.jpg`, { type: blob.type });
 
-                      const dataTransfer = new DataTransfer();
-                      dataTransfer.items.add(file);
-                      hiddenFileInput.files = dataTransfer.files; // Assign the URL file to the hidden input
-                  } catch (error) {
-                      console.error('Error fetching image from URL:', error);
-                  }
-              }
-          });
+                    const dataTransfer = new DataTransfer();
+                    dataTransfer.items.add(file);
+                    hiddenFileInput.files = dataTransfer.files; // Assign the URL file to the hidden input
+
+                    checkRequiredFields(); // Recheck required fields
+                } catch (error) {
+                    console.error('Error fetching image from URL:', error);
+                }
+            } else {
+                checkRequiredFields(); // Recheck required fields if URL is cleared
+            }
+        });
       }
 
         // Display data
