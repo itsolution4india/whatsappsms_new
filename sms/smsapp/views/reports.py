@@ -396,7 +396,7 @@ def get_report_insight(request, report_id):
         }, status=500)
         
 @login_required
-@require_http_methods(["DELETE"])
+@require_http_methods(["DELETE", "POST"])
 def delete_report(request, report_id):
     try:
         report = ReportInfo.objects.get(id=report_id, email=request.user)
