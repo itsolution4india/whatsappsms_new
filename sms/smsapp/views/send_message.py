@@ -92,7 +92,7 @@ def Send_Sms(request):
             add_91 = request.POST.get("add_91")
             for key in request.POST:
                 if key.startswith('variable'):
-                    submitted_variables.append(request.POST[key])
+                    submitted_variables.append(request.POST[key]) if request.POST[key] else None
                     
             media_file = request.FILES.get('file', None)
             if media_file:
@@ -106,18 +106,16 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
-            csv_variables = make_variables_list(uploaded_file) if uploaded_file else None
             numbers_list = set()
             if contacts:
                 numbers_list.update(contacts.split("\r\n"))
-            logger.info(f"numbers_list {numbers_list}")
                 
             if (not campaign_title or not template_name) and action_type == "submit":
                 messages.error(request, "Campaign title and template name are required.")
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
-            all_contact, contact_list, invalid_numbers = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+            all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
@@ -166,6 +164,7 @@ def Send_Sms(request):
 def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=None):
     valid_numbers = set()
     invalid_numbers = set()
+    csv_variables = None
     
     # Get user's country permissions
     try:
@@ -193,18 +192,18 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
 
     # Parse contacts from POST request
     numbers_list = set()
-    if contacts:
+    if contacts or contacts != '':
         numbers_list.update(contacts.split("\r\n"))
 
     # Parse contacts from uploaded file
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
+        csv_variables = make_variables_list(df)
         if add_91:
             df['phone_numbers'] = df['phone_numbers'].astype(str)
             df['phone_numbers'] = df['phone_numbers'].apply(lambda x: '91' + x if not x.startswith('91') else x)
         for number in df['phone_numbers']:
             numbers_list.add(str(number))
-
     db_phonenumbers = get_unique_phone_numbers()
     
     # Validate phone numbers against permitted country patterns
@@ -260,7 +259,7 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
     
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
     
-    return valid_numbers, final_list, list(set(invalid_numbers))
+    return valid_numbers, final_list, list(set(invalid_numbers)), csv_variables
 
 @login_required
 def whitelist_blacklist(request):
@@ -343,7 +342,7 @@ def send_flow_message(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+        all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(all_contact))
@@ -437,7 +436,7 @@ def send_carousel_messages(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+        all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         total_coins = request.user.marketing_coins + request.user.authentication_coins
         coin_validation = validate_balance(total_coins, len(all_contact))
