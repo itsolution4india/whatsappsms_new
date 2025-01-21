@@ -174,11 +174,14 @@ def show_discount(user):
     discount=user.discount
     return discount
 
-def make_variables_list(file_path):
+def make_variables_list(df):
     try:
-        df = pd.read_csv(file_path)
-        df.iloc[:, 1:] = df.iloc[:, 1:].astype(str)
+        numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
+        for col in numeric_cols:
+            df[col] = df[col].astype(str)
+        
         var_cols_list = df.iloc[:, 1:].values.tolist()
-    except:
-        var_cols_list = None
-    return var_cols_list
+        return var_cols_list
+    except Exception as e:
+        logger.error(f"Error reading file: {e}")
+        return None
