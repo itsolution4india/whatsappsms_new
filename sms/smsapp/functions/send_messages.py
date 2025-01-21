@@ -66,7 +66,7 @@ def display_whatsapp_id(request):
     whatsapp_id = request.user.whatsapp_business_account_id
     return whatsapp_id
 
-def send_messages(current_user, token, phone_id, campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables):
+def send_messages(current_user, token, phone_id, campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables=None):
     try:
         logger.info(f"Sending messages for user: {current_user}, campaign title: {campaign_title}")
         for campaign in campaign_list:
@@ -84,7 +84,7 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                     schedule_subtract_coins(current_user, money_data, category)
                 media_type = "OTP" if category == "AUTHENTICATION" else media_type
                 logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
-                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user)
+                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables)
 
         formatted_numbers = []
         for number in all_contact:

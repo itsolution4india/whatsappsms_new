@@ -7,7 +7,7 @@ import json, re, openpyxl
 from ..functions.template_msg import fetch_templates
 from django.utils.timezone import now
 from ..functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
-from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount
+from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list
 from .auth import check_user_permission
 from ..functions.flows import send_flow_messages_with_report, send_carousel_messages_with_report
 from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
@@ -106,6 +106,7 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
+            csv_variables = make_variables_list(uploaded_file) if uploaded_file else None
             numbers_list = set()
             if contacts:
                 numbers_list.update(contacts.split("\r\n"))
@@ -124,7 +125,7 @@ def Send_Sms(request):
                 return render(request, "send-sms.html", context)
             logger.info(f"Send_Sms: {current_user}, {display_phonenumber_id(request)}, {template_name}, {media_id}, {all_contact}, {contact_list}, {campaign_title}, {submitted_variables}")
             if action_type == "submit":
-                send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables)
+                send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables)
             elif action_type == 'validateRequest':
                 if invalid_numbers:
                     logger.info(f"invalid_numbers {invalid_numbers}")
