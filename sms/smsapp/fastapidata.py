@@ -13,7 +13,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None):
+def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None):
     request_id = generate_code()
     request_id = f"MESSAGE{request_id}"
     url="https://wtsdealnow.in/send_sms/"
@@ -31,6 +31,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
         "media_id": media_id if media_id else "",
         "contact_list": contact_list,
         "variable_list": variable_list if variable_list else None,
+        "csv_variables": csv_variables if csv_variables else None,
         'request_id': request_id
     }
     

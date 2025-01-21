@@ -5,6 +5,7 @@ from django.utils import timezone
 import requests, logging, string, random, json
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
+import pandas as pd
 
 logger = logging.getLogger('django')
 
@@ -172,3 +173,12 @@ def display_phonenumber_id(request):
 def show_discount(user):
     discount=user.discount
     return discount
+
+def make_variables_list(file_path):
+    try:
+        df = pd.read_csv(file_path)
+        df.iloc[:, 1:] = df.iloc[:, 1:].astype(str)
+        var_cols_list = df.iloc[:, 1:].values.tolist()
+    except:
+        var_cols_list = None
+    return var_cols_list
