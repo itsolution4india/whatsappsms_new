@@ -4,7 +4,9 @@ from django.views.decorators.csrf import csrf_exempt
 import requests
 from django.shortcuts import render
 from .auth import username
-
+from django.http import FileResponse, HttpResponse
+from django.views.decorators.http import require_http_methods
+import mimetypes
 
 def generate_id(phone_number_id, media_type, uploaded_file, access_token):
     url = f'https://graph.facebook.com/v20.0/{phone_number_id}/media'
@@ -69,3 +71,43 @@ def get_media_format(file_extension):
         'txt': 'text/plain', 'csv': 'text/csv'
     }
     return media_formats.get(file_extension.lower(), 'application/octet-stream')
+
+def download_facebook_media(request, media_id):
+    access_token, _ = get_token_and_app_id(request)
+
+    # Fetch media URL from Facebook Graph API
+    media_url = f'https://graph.facebook.com/v16.0/{media_id}'
+    headers = {'Authorization': f'Bearer {access_token}'}
+
+    response = requests.get(media_url, headers=headers)
+    if response.status_code != 200:
+        print('Failed to get media URL:', response.status_code)
+        return HttpResponse('Failed to get media', status=500)
+
+    media_data = response.json()
+    
+    download_url = media_data.get('source') or media_data.get('url')
+    if not download_url:
+        return HttpResponse("No download URL found in the response", status=500)
+
+    # Download the actual media file
+    media_response = requests.get(download_url, headers={'Authorization': f'Bearer {access_token}'})
+    if media_response.status_code != 200:
+        return HttpResponse(f'Failed to download media: {media_response.status_code}', status=500)
+
+    # Determine file extension based on content type
+    content_type = media_response.headers.get('Content-Type', '')
+    extension = mimetypes.guess_extension(content_type) or '.bin'
+    if content_type.startswith('image'):
+        extension = '.jpg'
+    elif content_type.startswith('application'):
+        extension = '.pdf'
+    elif content_type.startswith('video'):
+        extension = '.mp4'
+
+    # Prepare the file for download
+    filename = f"facebook_media_{media_id}{extension}"
+    response = HttpResponse(media_response.content, content_type=content_type)
+    response['Content-Disposition'] = f'attachment; filename={filename}'
+
+    return response

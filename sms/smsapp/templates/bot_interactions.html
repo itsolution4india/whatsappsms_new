@@ -247,7 +247,24 @@
         {% for item in combined_data %}
             <div class="message {% if item.source == 'df' %}message-df{% else %}message-messages{% endif %}">
                 {% if item.message_body %}
-                    <div>{{ item.message_body }}</div>
+                {% if item.message_type == 'image' %}
+                    <div>
+                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Image</button>
+                    </div>
+                {% elif item.message_type == 'document' %}
+                    <div>
+                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Document</button>
+                    </div>
+                {% elif item.message_type == 'video' %}
+                    <div>
+                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Video</button>
+                    </div>
+                {% else %}
+                    <div>
+                        {{ item.message_body }}
+                    </div>
+                {% endif %}
+            
                     <div class="message-timestamp">
                         {% if item.source == 'df' and item.Date %}
                             {{ item.Date|date:"M d, Y H:i" }}
