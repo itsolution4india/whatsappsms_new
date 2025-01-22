@@ -167,7 +167,7 @@ textarea {
             {% csrf_token %}
             <div class="form-group">
                 <label for="templateName">Template Name:</label>
-                <input type="text" id="templateName" required>
+                <input type="text" id="templateName" placeholder="Unique names only" required>
             </div>
             
             <div class="form-group">
@@ -191,7 +191,7 @@ textarea {
             
             <div class="form-group">
                 <label for="bodyText">Body Text:</label>
-                <textarea id="bodyText" required></textarea>
+                <textarea id="bodyText" placeholder="Exceeds 1000 characters not accepted" required></textarea>
                 <div class="char-count">0/1024</div>
             </div>
             
