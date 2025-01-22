@@ -248,16 +248,19 @@
             <div class="message {% if item.source == 'df' %}message-df{% else %}message-messages{% endif %}">
                 {% if item.message_body %}
                 {% if item.message_type == 'image' %}
+                    <i class='bx bx-landscape d-flex justify-content-center' style="font-size: 100px;"></i>
                     <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Image</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Image</button>
                     </div>
                 {% elif item.message_type == 'document' %}
+                    <i class='bx bxs-file-doc d-flex justify-content-center' style="font-size: 100px;"></i>
                     <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Document</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Document</button>
                     </div>
                 {% elif item.message_type == 'video' %}
+                    <i class='bx bx-video d-flex justify-content-center' style="font-size: 100px;"></i>
                     <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Video</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Video</button>
                     </div>
                 {% else %}
                     <div>
