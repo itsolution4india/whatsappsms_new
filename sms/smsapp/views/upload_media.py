@@ -81,7 +81,6 @@ def download_facebook_media(request, media_id):
 
     response = requests.get(media_url, headers=headers)
     if response.status_code != 200:
-        print('Failed to get media URL:', response.status_code)
         return HttpResponse('Failed to get media', status=500)
 
     media_data = response.json()
@@ -97,7 +96,7 @@ def download_facebook_media(request, media_id):
 
     # Determine file extension based on content type
     content_type = media_response.headers.get('Content-Type', '')
-    extension = mimetypes.guess_extension(content_type) or '.bin'
+    extension = mimetypes.guess_extension(content_type) or '.bin'  # Default to .bin for unknown types
     if content_type.startswith('image'):
         extension = '.jpg'
     elif content_type.startswith('application'):

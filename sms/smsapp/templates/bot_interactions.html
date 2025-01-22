@@ -249,15 +249,15 @@
                 {% if item.message_body %}
                 {% if item.message_type == 'image' %}
                     <div>
-                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Image</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Image</button>
                     </div>
                 {% elif item.message_type == 'document' %}
                     <div>
-                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Document</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Document</button>
                     </div>
                 {% elif item.message_type == 'video' %}
                     <div>
-                        <button onclick="window.location.href='{% url download_media item.message_body %}'">Download Video</button>
+                        <button onclick="downloadMedia('{{ item.message_body }}')">Download Video</button>
                     </div>
                 {% else %}
                     <div>
@@ -382,7 +382,35 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function downloadMedia(mediaId) {
+        const url = `/download/${mediaId}/`;
+        
+        fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch media.');
+            }
+            return response.blob();  // Convert response to a blob
+        })
+        .then(blob => {
+            // Create a download link and simulate a click
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = `facebook_media_${mediaId}`;  // Set the filename
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);  // Clean up
+        })
+        .catch(error => {
+            console.error('Error downloading media:', error);
+        });
+    }
 </script>
+
 <script>
     $(document).ready(function(){
         $('#BotInteractions').addClass('active');
