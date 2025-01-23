@@ -337,3 +337,19 @@ class Notifications(models.Model):
     
     def __str__(self):
         return self.email
+    
+class Group(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+class Contact(models.Model):
+    phone_number = models.CharField(max_length=20, primary_key=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    groups = models.ManyToManyField(Group, related_name='contacts', blank=True)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.phone_number or self.name
