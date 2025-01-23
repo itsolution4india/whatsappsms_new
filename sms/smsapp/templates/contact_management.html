@@ -1,0 +1,392 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        #addContactToGroupPopup {
+            position: fixed;
+            top: 35vh;
+            left: 80vh;
+        }
+        
+    </style>
+{% endblock %}
+
+{% block content %}
+    <center><h2 class="mb-3 mt-2">Contact Management</h2></center>
+
+    <!-- Create Contact Section -->
+    <div class="m-2">
+        <div class="d-flex justify-content-between mb-3">
+            <div class="section bg-primary p-3 text-white rounded-2 w-50">
+                <h4 class="text-white">Create Contact</h4>
+                <form id="createContactForm" class="d-flex flex-column">
+                    <input class="mt-2" type="text" name="phone_number" placeholder="Phone Number" required>
+                    <input class="mt-2" type="text" name="name" placeholder="Name (Optional)">
+                    <button class="mt-2 bg-success bg-gradient" type="submit">Create Contact</button>
+                </form>
+                <input type="file" id="contactCsvUpload" accept=".csv">
+            </div>
+        
+            <!-- Create Group Section -->
+            <div class="section bg-primary p-3 text-white rounded-2 w-50 ms-2">
+                <h4 class="text-white">Create Group</h4>
+                <form id="createGroupForm" class="d-flex flex-column">
+                    <input class="mt-2" type="text" name="group_name" placeholder="Group Name" required>
+                    <input class="mt-2" type="file" name="csv_file" accept=".csv">
+                    <button class="mt-2 bg-success bg-gradient" type="submit">Create Group</button>
+                </form>
+            </div>
+        
+            <div id="addContactToGroupPopup" class="popup-form bg-primary p-3 text-white rounded-2" style="display: none;">
+                <button type="button" class="close-btn text-white" style="position: absolute; top: -10px; right: -10px; background: red; border: none; font-size: 24px;padding: 0px 10px;" onclick="closePopup('addContactToGroupPopup')">&times;</button>
+                <h3 class="text-white">Add Contact to Group</h3>
+                <form id="addContactToGroupForm" class="d-flex flex-column">
+                    <input type="hidden" name="group_id" id="groupIdInput">
+                    <select class="mt-2 p-2" name="phone_number" id="availableContactsSelect" required>
+                        <option value="">Select Contact</option>
+                    </select>
+                    <button class="mt-2 bg-success bg-gradient" type="submit">Add Contact</button>
+                    <button class="mt-2 bg-success bg-gradient" type="button" onclick="closePopup('addContactToGroupPopup')">Cancel</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Contacts Table -->
+        <div class="section mb-3">
+            <h4>Contacts</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Phone Number</th>
+                        <th>Name</th>
+                        <th>Created At</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="contactsTableBody">
+                    {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.phone_number }}</td>
+                        <td>{{ contact.name|default:'N/A' }}</td>
+                        <td>{{ contact.created_at }}</td>
+                        <td>
+                            <button onclick="deleteContact('{{ contact.phone_number }}')">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    
+        <!-- Groups Table -->
+        <div class="section mb-3">
+            <h4>Groups</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Created At</th>
+                        <th>Contacts</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="groupsTableBody">
+                    {% for group in groups %}
+                    <tr>
+                        <td>{{ group.name }}</td>
+                        <td>{{ group.created_at }}</td>
+                        <td>{{ group.contacts.count }}</td>
+                        <td>
+                            <button onclick="viewGroupContacts({{ group.id }})">View Contacts</button>
+                            <button onclick="showAddContactToGroupForm({{ group.id }})">Add Contact</button>
+                            <button onclick="deleteGroup({{ group.id }})">Delete</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+
+        // Close the popup when clicking outside of it
+        window.onclick = function(event) {
+            const popup = document.getElementById('addContactToGroupPopup');
+            if (event.target === popup) {
+                closePopup('addContactToGroupPopup');
+            }
+        }
+        function showAddContactToGroupForm(groupId) {
+            const selectElement = document.getElementById('availableContactsSelect');
+            document.getElementById('groupIdInput').value = groupId;
+            document.getElementById('addContactToGroupPopup').style.display = 'block';
+            
+            // Clear existing options except the first
+            while (selectElement.options.length > 1) {
+                selectElement.remove(1);
+            }
+
+            // Fetch available contacts for this group
+            fetch(`/group/${groupId}/available-contacts/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    data.contacts.forEach(contact => {
+                        const option = document.createElement('option');
+                        option.value = contact.phone_number;
+                        option.text = contact.name 
+                            ? `${contact.phone_number} (${contact.name})` 
+                            : contact.phone_number;
+                        selectElement.appendChild(option);
+                    });
+
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            })
+            .catch(error => {
+                Swal.fire('Error', 'Failed to load contacts', 'error');
+            });
+        }
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        // Create Contact
+        document.getElementById('createContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch('/contact/create/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire('Success', 'Contact created successfully', 'success');
+                    // Optionally refresh the page or update the table dynamically
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        });
+
+        // CSV Contact Upload
+        document.getElementById('contactCsvUpload').addEventListener('change', function(e) {
+            const formData = new FormData();
+            formData.append('csv_file', e.target.files[0]);
+            
+            fetch('/contact/upload/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire('Success', `${data.contacts.length} contacts uploaded`, 'success');
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        });
+
+        // Create Group
+        document.getElementById('createGroupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch('/group/create/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire('Success', 'Group created successfully', 'success');
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        });
+
+        // Delete Contact 
+        function deleteContact(phoneNumber) { 
+            fetch(`/contact/delete/${phoneNumber}/`, { 
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            }) 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => { 
+                if (data.status === 'success') { 
+                    Swal.fire('Success', 'Contact deleted', 'success')
+                        .then(() => location.reload()); // Refresh page after deletion
+                } else { 
+                    Swal.fire('Error', data.message, 'error'); 
+                } 
+            })
+            .catch(error => {
+                Swal.fire('Error', error.message, 'error');
+            }); 
+        } 
+        
+        // Delete Group 
+        function deleteGroup(groupId) { 
+            fetch(`/group/delete/${groupId}/`, { 
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            }) 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => { 
+                if (data.status === 'success') { 
+                    Swal.fire('Success', 'Group deleted', 'success')
+                        .then(() => location.reload()); // Refresh page after deletion
+                } else { 
+                    Swal.fire('Error', data.message, 'error'); 
+                } 
+            })
+            .catch(error => {
+                Swal.fire('Error', error.message, 'error');
+            }); 
+        }
+
+        // View Group Contacts
+        function viewGroupContacts(groupId) {
+            fetch(`/group/${groupId}/contacts/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    let contactsHtml = data.contacts.map(contact => 
+                        `<tr>
+                            <td>${contact.phone_number}</td>
+                            <td>${contact.name}</td>
+                            <td>
+                                <button onclick="removeContactFromGroup('${contact.phone_number}', ${groupId})">Remove</button>
+                            </td>
+                        </tr>`
+                    ).join('');
+
+                    Swal.fire({
+                        title: `Contacts in ${data.group_name}`,
+                        html: `
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Phone Number</th>
+                                        <th>Name</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${contactsHtml}
+                                </tbody>
+                            </table>
+                        `,
+                        width: '800px'
+                    });
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        }
+
+        // Add Contact to Group
+        document.getElementById('addContactToGroupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            
+            fetch('/group/contacts/add/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire('Success', data.message, 'success')
+                        .then(() => {
+                            closePopup('addContactToGroupPopup');
+                            location.reload();
+                        });
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        });
+
+        // Remove Contact from Group
+        function removeContactFromGroup(phoneNumber, groupId) {
+            const formData = new FormData();
+            formData.append('phone_number', phoneNumber);
+            formData.append('group_id', groupId);
+
+            fetch('/group/contacts/remove/', {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken'),
+                },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire('Success', data.message, 'success')
+                        .then(() => location.reload());
+                } else {
+                    Swal.fire('Error', data.message, 'error');
+                }
+            });
+        }
+
+        // Close Popup
+        function closePopup(popupId) {
+            document.getElementById(popupId).style.display = 'none';
+        }
+    </script>
+
+<script>
+    $(document).ready(function(){
+        $('#save_contacts').addClass('active');
+    });
+  </script>
+{% endblock %}

@@ -14,6 +14,7 @@ from .api_doc import customuser_list_view, customuser_detail_view, UpdateBalance
 from .Eembeddedsignup import signup_view, process_signup, get_credit_line_id, share_credit_line, get_business_portfolio_id, attach_credit_line, get_receiving_credential, get_primary_funding_id
 from .twoauth import generate_otp, generate_otp_view, register_2fa_view, disable_2fa
 from .notifications import delete_notification, notifications_list
+from .contacts import contact_management, create_contact, upload_contacts_csv, delete_contact, create_group, delete_group, add_contact_to_group, get_group_contacts, remove_contact_from_group, get_available_contacts
 
 from .voice_call import dashboard, make_call
 from .create_carousels import TemplateCreateView, ImageUploadView
