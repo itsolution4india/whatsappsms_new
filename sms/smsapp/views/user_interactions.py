@@ -10,17 +10,43 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from ..fastapidata import send_bot_api
 from django.utils import timezone
-from django.shortcuts import get_object_or_404
+from django.utils.timezone import make_aware
+from django.forms.models import model_to_dict
+import json
+import datetime
+
+def update_or_create_reply_data(request, all_replies_grouped):
+    for _, row in all_replies_grouped.iterrows():
+        existing_record = Last_Replay_Data.objects.filter(number=row['contact_wa_id']).first()
+        max_date = make_aware(row['max_date']) if isinstance(row['max_date'], datetime.datetime) else row['max_date']
+        
+        if existing_record:
+            if existing_record.created_at < max_date:
+                if int(row['count']) > int(existing_record.count):
+                    if existing_record.status == 'read':
+                        count_difference = int(row['count']) - int(existing_record.count)
+                    else:
+                        count_difference = int(row['count'])
+                    
+                    existing_record.count = str(count_difference)
+                    existing_record.name = row['contact_name']
+                    existing_record.status = 'unread'
+                    existing_record.save()
+        else:
+            Last_Replay_Data.objects.create(
+                number=row['contact_wa_id'],
+                user=request.user.email,
+                name=row['contact_name'],
+                count=str(row['count']),
+                status='unread'
+            )
+
 
 @login_required
 def bot_interactions(request):
     selected_phone = request.GET.get('phone_number', None)
     phone_id = display_phonenumber_id(request)
-    # start_date = datetime.now() - timedelta(days=7)
     combined_data = []
-    
-    last_replay_data = get_object_or_404(Last_Replay_Data, user=request.user.email)
-    last_view_date = last_replay_data.last_view
     
     report_list = ReportInfo.objects.filter(email=request.user)
     all_phone_numbers = []
@@ -30,8 +56,8 @@ def bot_interactions(request):
     all_phone_numbers = list(set(all_phone_numbers))
     
     df = download_linked_report(request)
-    df = df[df['status'] == 'reply']
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
     df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
@@ -39,29 +65,6 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
-    last_view_date = pd.Timestamp(last_view_date)
-    
-    try:
-        max_date = max_date.tz_localize(None)
-        last_view_date = pd.Timestamp(last_view_date).tz_localize(None)
-        
-        new_rows = df[df['Date'] > last_view_date]
-        new_rows_count = new_rows.shape[0]
-        logger.info(f"New rows count {new_rows_count}")
-    except Exception as e:
-        logger.error(str(e))
-        try:
-            last_view_date = pd.Timestamp(last_view_date).tz_localize('UTC')
-            max_date = max_date.tz_localize('UTC') 
-
-            new_rows = df[df['Date'] > last_view_date]
-            new_rows_count = new_rows.shape[0]
-            logger.info(f"New rows count {new_rows_count}")
-        except Exception as e:
-            logger.error(str(e))
-    
-    logger.info(f'Dates: {last_view_date} {max_date}')
-    logger.info(f"{type(last_view_date)} {type(max_date)}")
     
     unique_contact_wa_id = df['contact_wa_id'].unique().tolist()
     unique_contact_names = []
@@ -76,7 +79,24 @@ def bot_interactions(request):
     combined_list = [str(num) for sublist in contact_list for num in sublist] + matched_numbers
     matching_phone_numbers = list(set(filter(None, combined_list)))
     
+    all_replies = df[df['contact_wa_id'].isin(matching_phone_numbers)]
+    all_replies_grouped = all_replies.groupby(['contact_wa_id', 'contact_name']).agg(
+        count=('contact_wa_id', 'size'),  # Count the occurrences
+        max_date=('Date', 'max')  # Get the max date
+    ).reset_index()
+        
+    update_or_create_reply_data(request, all_replies_grouped)
+    
+    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email)
+    data_as_dict = [model_to_dict(record) for record in last_replay_data]
+    all_replies_dict = data_as_dict
+    
     if selected_phone:
+        Last_Replay_Data.objects.filter(
+            number=selected_phone,
+            user=request.user.email
+        ).update(status='read')
+        
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
             (df['status'] == 'reply')
@@ -134,7 +154,8 @@ def bot_interactions(request):
                 item['created_at'] = item['created_at'].replace(tzinfo=None)
 
         combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
-        
+
+    total_numbers = matching_phone_numbers
     context = {
         "coins":request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins":request.user.marketing_coins,
@@ -142,11 +163,13 @@ def bot_interactions(request):
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
-        "phone_numbers_list": matching_phone_numbers,
+        "phone_numbers_list": total_numbers,
+        "all_replies_dict": all_replies_dict,
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "selected_phone": selected_phone,
         "max_date": max_date,
+        # 'contact_names': contact_names,
         "contact_name": unique_contact_names[0] if len(unique_contact_names) > 0 else None
     }
     return render(request, "bot_interactions.html", context)
