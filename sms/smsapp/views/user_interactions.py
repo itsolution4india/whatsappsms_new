@@ -3,12 +3,13 @@ from django.shortcuts import render
 from ..functions.send_messages import display_phonenumber_id
 from ..utils import display_whatsapp_id, get_token_and_app_id
 from .auth import username
-from ..models import ReportInfo, BotSentMessages
+from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
 from .reports import download_linked_report
 import pandas as pd
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from ..fastapidata import send_bot_api
+from django.utils import timezone
 
 @login_required
 def bot_interactions(request):
@@ -137,3 +138,13 @@ def user_interaction(request):
         return JsonResponse({'status': 'error', 'message': 'Missing required fields'})
     
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
+@login_required
+def update_last_view(request):
+    if request.method == 'POST':
+        last_replay, created = Last_Replay_Data.objects.get_or_create(user=request.user.email)
+        last_replay.last_view = timezone.now()
+        last_replay.save()
+        return JsonResponse({'message': 'Last view time updated successfully!'}, status=200)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=400)

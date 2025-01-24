@@ -353,3 +353,11 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.phone_number or self.name
+    
+class Last_Replay_Data(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.CharField(max_length=200)
+    last_view = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.user or self.last_view
