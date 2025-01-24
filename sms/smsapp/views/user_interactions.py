@@ -39,16 +39,29 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
-    max_date = max_date.tz_localize(None)
     last_view_date = pd.Timestamp(last_view_date)
+    
+    try:
+        max_date = max_date.tz_localize(None)
+        last_view_date = pd.Timestamp(last_view_date).tz_localize(None)
+        
+        new_rows = df[df['Date'] > last_view_date]
+        new_rows_count = new_rows.shape[0]
+        logger.info(f"New rows count {new_rows_count}")
+    except Exception as e:
+        logger.error(str(e))
+        try:
+            last_view_date = pd.Timestamp(last_view_date).tz_localize('UTC')
+            max_date = max_date.tz_localize('UTC') 
+
+            new_rows = df[df['Date'] > last_view_date]
+            new_rows_count = new_rows.shape[0]
+            logger.info(f"New rows count {new_rows_count}")
+        except Exception as e:
+            logger.error(str(e))
     
     logger.info(f'Dates: {last_view_date} {max_date}')
     logger.info(f"{type(last_view_date)} {type(max_date)}")
-    
-    new_rows = df[df['Date'] > last_view_date]
-    new_rows_count = new_rows.shape[0]
-    
-    logger.info(f"New rows count {new_rows_count}")
     
     unique_contact_wa_id = df['contact_wa_id'].unique().tolist()
     unique_contact_names = []
