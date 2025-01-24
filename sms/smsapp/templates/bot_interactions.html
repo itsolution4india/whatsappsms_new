@@ -387,6 +387,23 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
+    $.ajax({
+        url: "{% url 'update_last_view' %}",
+        type: "POST",
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        success: function(response) {
+            console.log(response.message);
+            alert(response.message);
+        },
+        error: function(xhr, status, error) {
+            console.error("An error occurred: " + error);
+        }
+    });
+</script>
+
+<script>
     function downloadMedia(mediaId) {
         const url = `/download/${mediaId}/`;
         
