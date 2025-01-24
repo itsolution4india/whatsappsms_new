@@ -21,7 +21,6 @@ def bot_interactions(request):
     
     last_replay_data = get_object_or_404(Last_Replay_Data, user=request.user.email)
     last_view_date = last_replay_data.last_view
-    last_view_date = pd.to_datetime(last_view_date, errors='coerce')
     
     report_list = ReportInfo.objects.filter(email=request.user)
     all_phone_numbers = []
@@ -40,10 +39,15 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
+    last_view_date = pd.to_datetime(last_view_date)
+    
+    logger.info(f'{last_view_date} {max_date}')
+    logger.info(f"{type(last_view_date)} {type(max_date)}")
+    logger.info(f"{last_view_date.dtype}, {max_date.dtype}")
+    
     new_rows = df[df['Date'] > last_view_date]
     new_rows_count = new_rows.shape[0]
     
-    logger.info(f'{last_view_date} {max_date}')
     logger.info(f"New rows count {new_rows_count}")
     
     unique_contact_wa_id = df['contact_wa_id'].unique().tolist()
