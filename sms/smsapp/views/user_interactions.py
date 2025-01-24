@@ -30,6 +30,7 @@ def bot_interactions(request):
     all_phone_numbers = list(set(all_phone_numbers))
     
     df = download_linked_report(request)
+    df = df[df['status'] == 'reply']
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
@@ -38,11 +39,13 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
+    new_rows = df[df['Date'] > last_view_date]
+    new_rows_count = new_rows.shape[0]
     
     logger.info(f'{last_view_date} {max_date}')
+    logger.info(f"New rows count {new_rows_count}")
     
-    filter_main_data = df[df['status'] == 'reply']
-    unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
+    unique_contact_wa_id = df['contact_wa_id'].unique().tolist()
     unique_contact_names = []
     
     messages_data = list(BotSentMessages.objects.all().values())
