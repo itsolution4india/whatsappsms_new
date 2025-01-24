@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from ..fastapidata import send_bot_api
 from django.utils import timezone
+from django.shortcuts import get_object_or_404
 
 @login_required
 def bot_interactions(request):
@@ -17,7 +18,9 @@ def bot_interactions(request):
     phone_id = display_phonenumber_id(request)
     # start_date = datetime.now() - timedelta(days=7)
     combined_data = []
-    phone_numbers_list = set()
+    
+    last_replay_data = get_object_or_404(Last_Replay_Data, user=request.user.email)
+    last_view_date = last_replay_data.last_view
     
     report_list = ReportInfo.objects.filter(email=request.user)
     all_phone_numbers = []
@@ -28,11 +31,16 @@ def bot_interactions(request):
     
     df = download_linked_report(request)
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
-    df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-    df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
     df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
     df = df[df['phone_number_id'] == phone_id]
+    df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+    df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+    max_date = df['Date'].max()
+    
+    logger.info(f'{last_view_date} {max_date}')
+    
     filter_main_data = df[df['status'] == 'reply']
     unique_contact_wa_id = filter_main_data['contact_wa_id'].unique().tolist()
     unique_contact_names = []
@@ -106,7 +114,6 @@ def bot_interactions(request):
 
         combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
         
-    phone_numbers_list = matching_phone_numbers
     context = {
         "coins":request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins":request.user.marketing_coins,
@@ -114,7 +121,7 @@ def bot_interactions(request):
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
-        "phone_numbers_list": phone_numbers_list,
+        "phone_numbers_list": matching_phone_numbers,
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "selected_phone": selected_phone,
