@@ -211,6 +211,16 @@
 .phone-number-btn {
     color: #121212 !important;
 }
+.notification_count {
+    padding: 3px 10px;
+    background: #00b800;
+    border-radius: 50px;
+    color: #fff;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 12px;
+}
 @media only screen and (max-width: 460px) {
   .phone-selector {
     width: 100% !important;
@@ -234,12 +244,16 @@
             placeholder="Search phone numbers..."
         >
         <div id="phoneNumberContainer" class="d-flex flex-column">
-            {% for phone in phone_numbers_list %}
-                <button 
-                    class="phone-number-btn {% if phone == selected_phone %}active{% endif %}"
-                    onclick="window.location.href='?phone_number={{ phone }}'">
-                    {{ phone }}
-                </button>
+            {% for row in all_replies_dict %}
+            <button 
+                class="phone-number-btn text-start position-relative {% if row.number == selected_phone %}active{% endif %}"
+                onclick="window.location.href='?phone_number={{ row.number }}'">
+                <span class="fw-bold">{{ row.name }}</span><br>
+                <span>{{ row.number }}</span><br>
+                {% if row.status == "unread" %}
+                <span class="notification_count">{{ row.count }}</span>
+                {% endif %}
+            </button>
             {% endfor %}
         </div>
     </div>
@@ -435,7 +449,7 @@
     // Call the function when the document is ready
     $(document).ready(function() {
         $('#BotInteractions').addClass('active');
-        updateLastView();
+        // updateLastView();
     });
 </script>
 <script>
