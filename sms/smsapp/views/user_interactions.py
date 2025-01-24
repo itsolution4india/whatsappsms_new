@@ -39,14 +39,9 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
-    last_view_date = pd.to_datetime(last_view_date)
-    if last_view_date.tzinfo is None:
-        last_view_date = last_view_date.tz_localize('UTC')
-    max_date = pd.to_datetime(max_date)
-    if max_date.tzinfo is None:
-        max_date = max_date.tz_localize('UTC')
+    last_view_date = pd.Timestamp(last_view_date)
     
-    logger.info(f'{last_view_date} {max_date}')
+    logger.info(f'Dates: {last_view_date} {max_date}')
     logger.info(f"{type(last_view_date)} {type(max_date)}")
     
     new_rows = df[df['Date'] > last_view_date]
