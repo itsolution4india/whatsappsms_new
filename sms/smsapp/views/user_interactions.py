@@ -39,6 +39,7 @@ def bot_interactions(request):
     df['contact_wa_id'] = df['contact_wa_id'].astype(str)
     df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
     max_date = df['Date'].max()
+    max_date = max_date.tz_localize(None)
     last_view_date = pd.Timestamp(last_view_date)
     
     logger.info(f'Dates: {last_view_date} {max_date}')
