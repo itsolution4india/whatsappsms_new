@@ -146,6 +146,7 @@ def bot_interactions(request):
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "selected_phone": selected_phone,
+        "max_date": max_date,
         "contact_name": unique_contact_names[0] if len(unique_contact_names) > 0 else None
     }
     return render(request, "bot_interactions.html", context)

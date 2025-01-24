@@ -275,7 +275,9 @@
                         {% elif item.source == 'messages' and item.created_at %}
                             {{ item.created_at|date:"M d, Y H:i" }}
                         {% endif %}
+                        {{ max_date }}
                     </div>
+                    
                 {% endif %}
     
                 {% if item.created_at %}
