@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from ..functions.send_messages import display_phonenumber_id
-from ..utils import display_whatsapp_id, get_token_and_app_id
+from ..utils import display_whatsapp_id, get_token_and_app_id, logger
 from .auth import username
 from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
 from .reports import download_linked_report
@@ -142,6 +142,7 @@ def user_interaction(request):
 @login_required
 def update_last_view(request):
     if request.method == 'POST':
+        logger.info(f"{request.user.email} {timezone.now()}")
         last_replay, created = Last_Replay_Data.objects.get_or_create(user=request.user.email)
         last_replay.last_view = timezone.now()
         last_replay.save()
