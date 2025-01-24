@@ -20,6 +20,7 @@ def bot_interactions(request):
     combined_data = []
     
     last_replay_data = get_object_or_404(Last_Replay_Data, user=request.user.email)
+    last_view_date = pd.to_datetime(last_view_date, errors='coerce')
     last_view_date = last_replay_data.last_view
     
     report_list = ReportInfo.objects.filter(email=request.user)
