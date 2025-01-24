@@ -43,7 +43,6 @@ def bot_interactions(request):
     
     logger.info(f'{last_view_date} {max_date}')
     logger.info(f"{type(last_view_date)} {type(max_date)}")
-    logger.info(f"{last_view_date.dtype}, {max_date.dtype}")
     
     new_rows = df[df['Date'] > last_view_date]
     new_rows_count = new_rows.shape[0]
