@@ -188,29 +188,44 @@
 
               <div id="fileUploadContainer"></div>
 
-              <div class="mb-3">
-                <label class="form-label">Upload CSV File</label>
-                <span class="text-secondary">* Optional</span>
-                <input type="file" id="id_files" name="files" class="form-control" accept=".csv">
-              </div>
-              <div class="mb-3 form-check">
-                <input type="checkbox" id="add_91" name="add_91" class="form-check-input">
-                <label class="form-check-label" for="add_91">Add 91 in CSV</label>
-            </div>
+              <div class="p-2 mb-2" style="background-color: #e8e8e8; height: 200px; overflow: overlay; scrollbar-width: thin;">
 
-              <p style="text-align: center;"></p>
-              <div class="mb-3">
-                <label class="form-label">Write Contact Numbers</label>
-                <p class="text-warning">* Please add the country code before sending. </p>
-                <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
-                  name="contact_number"></textarea>
+                <div class="mb-3 bg-primary text-white p-2">
+                  <label class="form-label text-white">Write Contact Numbers</label>
+                  <p class="text-warning">* Ensure numbers include country code. </p>
+                  <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
+                    name="contact_number"></textarea>
+                </div>
+                <center><span>(or)</span></center>
+                <div class="mb-3 bg-primary text-white p-2">
+                  <label class="form-label text-white">Select Group</label>
+                  <select id="template-select" class="form-select" name="selectedGroup" required>
+                    <option value="nan">Select Group</option>
+                    <option value="all">All Contacts</option>
+                    {% for group in groups %}
+                    <option value="{{ group }}">{{ group }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <center><span>(or)</span></center>
+                <div class="mb-3 bg-primary text-white p-2">
+                  <label class="form-label text-white">Upload CSV File</label>
+                  <span class="text-secondary">* Optional</span>
+                  <input type="file" id="id_files" name="files" class="form-control" accept=".csv">
+                  <div class="mb-2 form-check">
+                    <input type="checkbox" id="add_91" name="add_91" class="form-check-input">
+                    <label class="form-check-label" for="add_91">Add 91 in CSV</label>
+                  </div>
+                </div>
               </div>
+
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
               {% if api_doc_access %}
               <button type="button" class="btn btn-success" onclick="validateNumbers()">validate</button>
               {% endif %}
               <button type="button" id="toggleScheduleButton" class="btn btn-secondary"
-                onclick="toggleScheduleCall()">Schedule Call</button>
+                onclick="toggleScheduleCall()">Schedule message</button>
 
               <div id="date-time-fields" style="display:none; margin-top: 15px;">
                 <div class="mb-3">
