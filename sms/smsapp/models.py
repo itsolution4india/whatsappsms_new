@@ -355,12 +355,13 @@ class Contact(models.Model):
         return self.phone_number or self.name
     
 class Last_Replay_Data(models.Model):
-    id = models.AutoField(primary_key=True)  # Add this line
+    id = models.AutoField(primary_key=True)
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.CharField(max_length=200)
-    number = models.CharField(max_length=15)  # Remove primary_key=True
+    number = models.CharField(max_length=15)
     name = models.CharField(max_length=200)
     count = models.CharField(max_length=3)
+    last_count = models.CharField(max_length=3, default=0)
     last_updated = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, default='unread')
     
