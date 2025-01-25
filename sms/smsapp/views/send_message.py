@@ -108,13 +108,15 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
-            if selectedGroup:
+            if selectedGroup and selectedGroup != 'nan':
                 group = Group.objects.get(name=selectedGroup)
                 available_contacts = Contact.objects.filter(groups=group) if group else Contact.objects.all()
                 contact_list = [contact.phone_number for contact in available_contacts]
+            else:
+                contact_list = None
             numbers_list = set()
             
-            contacts = contact_list if contact_list and not contacts else None
+            contacts = contact_list if contact_list and not contacts else contacts
             if contacts:
                 try:
                     numbers_list.update(contacts.split("\r\n"))
@@ -127,6 +129,7 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+            print(all_contact, contact_list, invalid_numbers, csv_variables)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
