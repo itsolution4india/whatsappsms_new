@@ -21,7 +21,7 @@ def update_or_create_reply_data(request, all_replies_grouped):
         max_date = make_aware(row['max_date']) if isinstance(row['max_date'], datetime.datetime) else row['max_date']
         
         if existing_record:
-            if existing_record.created_at < max_date:
+            if existing_record.last_updated < max_date:
                 if int(row['count']) > int(existing_record.count):
                     if existing_record.status == 'read':
                         count_difference = int(row['count']) - int(existing_record.count)
@@ -31,6 +31,7 @@ def update_or_create_reply_data(request, all_replies_grouped):
                     existing_record.count = str(count_difference)
                     existing_record.name = row['contact_name']
                     existing_record.status = 'unread'
+                    existing_record.last_updated=timezone.now()
                     existing_record.save()
         else:
             Last_Replay_Data.objects.create(
