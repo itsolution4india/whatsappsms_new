@@ -56,8 +56,8 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    # df = download_linked_report(request)
-    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
