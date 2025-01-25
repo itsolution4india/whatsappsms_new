@@ -56,8 +56,8 @@ def bot_interactions(request):
     report_list = ReportInfo.objects.filter(email=request.user).values_list('contact_list', flat=True)
     all_phone_numbers = set(phone for report in report_list for phone in report.split(','))
     
-    # df = download_linked_report(request)
-    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str).str.replace(r'\.0$', '', regex=True)
