@@ -361,6 +361,7 @@ class Last_Replay_Data(models.Model):
     number = models.CharField(max_length=15)  # Remove primary_key=True
     name = models.CharField(max_length=200)
     count = models.CharField(max_length=3)
+    last_updated = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, default='unread')
     
     def __str__(self):
