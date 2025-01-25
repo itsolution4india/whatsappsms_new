@@ -155,7 +155,6 @@
 }
 
 </style>
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -206,29 +205,7 @@
         </div>
     </div>
 
-    <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="position-relative" style="display: none !important;">
-            <div class="dashboard col-4">
-                {% for row in status_list %}
-                <div class="card {{ row.Status|lower }}">
-                    <div class="card-header">
-                        <h3>{{ row.Status }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>{{ row.Counts }} Contacts</p>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            
-            <div id="pie-chart" class="col-6"></div>
-
-            <div class="blur-overlay">
-                <div class="update-message">
-                    <h1>Next Upcoming Update</h1>
-                </div>
-            </div>
-        </div>        
+    <div class="container-xxl flex-grow-1 container-p-y">      
         <div class="row">
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
 
@@ -372,10 +349,6 @@
         $('#Reports').addClass('active');
     });
   </script>
-<script>
-    var pieChart = {{ pie_chart | safe }};  // Use the pie chart JSON from Django
-    Plotly.newPlot('pie-chart', pieChart.data, pieChart.layout);  // Render the pie chart
-</script>
 <script>
     function showInsight(reportId) {
         // Get the loading overlay element
