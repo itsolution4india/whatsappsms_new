@@ -20,47 +20,12 @@ from django.http import HttpResponse
 def Reports(request):
     if not check_user_permission(request.user, 'can_view_reports'):
         return redirect("access_denide")
+    
+    context = {}
     try:
-        template_database = Templates.objects.filter(email=request.user)
-        template_value = list(template_database.values_list('templates', flat=True))
-        report_list = ReportInfo.objects.filter(email=request.user)
-        # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
-        df = download_linked_report(request)
-        df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-        df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+        template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
+        report_list = ReportInfo.objects.filter(email=request.user).only('contact_list')
         
-        df['phone_number_id'] = df['phone_number_id'].astype(str)
-        df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
-        df['phone_number_id'] = pd.to_numeric(df['phone_number_id'], errors='coerce', downcast='integer').astype('Int64')
-
-        filterd_df = df[df['phone_number_id'] == int(display_phonenumber_id(request))]
-
-        all_phone_numbers = []
-        for report in report_list:
-            phone_numbers = report.contact_list.split(',')
-            all_phone_numbers.extend(phone_numbers)
-        all_phone_numbers = list(set(all_phone_numbers))
-
-        filtered_df = filterd_df[filterd_df['contact_wa_id'].isin(all_phone_numbers)]
-        filtered_df = filtered_df.sort_values(by='Date', ascending=False)
-        filtered_df = filtered_df.drop_duplicates(subset='waba_id', keep='first')
-        unique_count = filtered_df['contact_wa_id'].nunique()
-        total_count = filtered_df['contact_wa_id'].count()
-        status_counts = filtered_df['status'].value_counts()
-        status_df = status_counts.reset_index()
-        status_df.columns = ['Status', 'Counts']
-        total_conversations_df = pd.DataFrame({'Status': ['Total Conversations'], 'Counts': [total_count]})
-        total_contacts_df = pd.DataFrame({'Status': ['Total_Contacts'], 'Counts': [unique_count]})
-        status_df = pd.concat([status_df, total_conversations_df, total_contacts_df], ignore_index=True)
-
-        status_df = status_df[status_df['Status'] != 'Total_Contacts']
-        status_list = status_df.to_dict(orient='records')
-        status_df = status_df[status_df['Status'] != 'Total Conversations']
-        labels = status_df['Status'].tolist()
-        values = status_df['Counts'].tolist()
-        fig = px.pie(status_df, names=labels, values=values)
-        fig.update_layout(width=600, height=400)
-        pie_chart = fig.to_json()
         context = {
             "template_names": template_value,
             "coins":request.user.marketing_coins + request.user.authentication_coins,
@@ -70,13 +35,11 @@ def Reports(request):
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
             "report_list":report_list,
-            "status_list": status_list,
-            "pie_chart": pie_chart
             }
-        
 
         return render(request, "reports.html", context)
     except Exception as e:
+        logger.error(str(e))
         
         return render(request, "reports.html", context)
     
@@ -84,6 +47,7 @@ def Reports(request):
 def download_linked_report(request, button_name=None, start_date=None, end_date=None):
     try:
         # Connect to the database
+        phone_id = display_phonenumber_id(request)
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -98,13 +62,16 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         query = "SELECT * FROM webhook_responses"
         query_params = []
         
+        query += " WHERE phone_number_id = %s"
+        query_params.append(phone_id)
+        
         # Add date range filter if dates are provided
         if start_date and end_date and start_date != 'null' and end_date != 'null':
             # Convert date strings to Unix timestamps
             start_timestamp = int(datetime.strptime(start_date, '%Y-%m-%d').timestamp())
             end_timestamp = int(datetime.strptime(end_date, '%Y-%m-%d').timestamp()) + (24 * 60 * 60)  # Add 24 hours
             
-            query += " WHERE CAST(message_timestamp AS SIGNED) BETWEEN %s AND %s"
+            query += " AND CAST(message_timestamp AS SIGNED) BETWEEN %s AND %s"
             query_params.extend([start_timestamp, end_timestamp])
         
         # Add button_name filter if provided
@@ -112,10 +79,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             from urllib.parse import unquote
             button_name = unquote(button_name)
             
-            if 'WHERE' in query:
-                query += " AND LOWER(message_body) LIKE LOWER(%s)"
-            else:
-                query += " WHERE LOWER(message_body) LIKE LOWER(%s)"
+            query += " AND LOWER(message_body) LIKE LOWER(%s)"
             query_params.append(f"%{button_name}%")
             
         
