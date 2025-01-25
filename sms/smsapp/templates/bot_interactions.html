@@ -435,24 +435,9 @@
 </script>
 
 <script>
-    // Define a function to send the POST request
-    function updateLastView() {
-        $.ajax({
-            url: "{% url 'update_last_view' %}",
-            type: "POST",
-            headers: {
-                'X-CSRFToken': '{{ csrf_token }}'
-            },
-            error: function(xhr, status, error) {
-                console.error("An error occurred: " + error);
-            }
-        });
-    }
-
     // Call the function when the document is ready
     $(document).ready(function() {
         $('#BotInteractions').addClass('active');
-        // updateLastView();
     });
 </script>
 <script>

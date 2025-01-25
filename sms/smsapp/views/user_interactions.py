@@ -38,7 +38,8 @@ def update_or_create_reply_data(request, all_replies_grouped):
                 user=request.user.email,
                 name=row['contact_name'],
                 count=str(row['count']),
-                status='unread'
+                status='unread',
+                last_updated=timezone.now()
             )
 
 
@@ -55,8 +56,8 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
@@ -87,15 +88,19 @@ def bot_interactions(request):
         
     update_or_create_reply_data(request, all_replies_grouped)
     
-    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email).order_by('created_at')
-    data_as_dict = [model_to_dict(record) for record in last_replay_data]
+    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email).order_by('-last_updated')
+    data_as_dict = [
+        {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
+        for record in last_replay_data
+    ]
     all_replies_dict = data_as_dict
-    
     if selected_phone:
         Last_Replay_Data.objects.filter(
             number=selected_phone,
-            user=request.user.email
-        ).update(status='read')
+            user=request.user.email,
+        ).update(status='read',
+                 last_updated=timezone.now()
+                 )
         
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
@@ -190,14 +195,3 @@ def user_interaction(request):
         return JsonResponse({'status': 'error', 'message': 'Missing required fields'})
     
     return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
-
-@login_required
-def update_last_view(request):
-    if request.method == 'POST':
-        logger.info(f"{request.user.email} {timezone.now()}")
-        last_replay, created = Last_Replay_Data.objects.get_or_create(user=request.user.email)
-        last_replay.last_view = timezone.now()
-        last_replay.save()
-        return JsonResponse({'message': 'Last view time updated successfully!'}, status=200)
-
-    return JsonResponse({'error': 'Invalid request method'}, status=400)
