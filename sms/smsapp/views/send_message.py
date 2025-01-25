@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from ..models import ReportInfo,Templates, ScheduledMessage, CountryPermission, Whitelist_Blacklist
+from ..models import ReportInfo,Templates, ScheduledMessage, CountryPermission, Whitelist_Blacklist, Group, Contact
 from ..media_id import get_media_format,generate_id
 from django.contrib import messages
 import json, re, openpyxl
@@ -28,13 +28,13 @@ def Send_Sms(request):
     scheduled_messages = ScheduledMessage.objects.filter(schedule_date=now().date())
     scheduled_times = scheduled_messages.values_list('schedule_time', flat=True)
     
+    groups = Group.objects.all()
+    
     try:
-        coins = request.user.coins
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         
-        # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
         campaign_list = fetch_templates(display_whatsapp_id(request), token)
         if campaign_list is None :
             campaign_list=[]
@@ -50,7 +50,8 @@ def Send_Sms(request):
             "template_images_three": json.dumps([template['image_three'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
-            "scheduled_times": scheduled_times
+            "scheduled_times": scheduled_times,
+            "groups":groups
         }
     except Exception as e:
         logger.error(f"Error fetching templates: {e}")
@@ -89,6 +90,7 @@ def Send_Sms(request):
 
             campaign_title = request.POST.get("campaign_title")
             template_name = request.POST.get("params")
+            selectedGroup = request.POST.get("selectedGroup", None)
             add_91 = request.POST.get("add_91")
             for key in request.POST:
                 if key.startswith('variable'):
@@ -106,17 +108,25 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
+            if selectedGroup:
+                group = Group.objects.get(name=selectedGroup)
+                available_contacts = Contact.objects.filter(groups=group) if group else Contact.objects.all()
+                contact_list = [contact.phone_number for contact in available_contacts]
             numbers_list = set()
+            
+            contacts = contact_list if contact_list and not contacts else None
             if contacts:
-                numbers_list.update(contacts.split("\r\n"))
-                
+                try:
+                    numbers_list.update(contacts.split("\r\n"))
+                except:
+                    numbers_list = contacts
+            
             if (not campaign_title or not template_name) and action_type == "submit":
                 messages.error(request, "Campaign title and template name are required.")
                 return render(request, "send-sms.html", context)
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
-            print("csv_variables886", csv_variables)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
@@ -128,7 +138,7 @@ def Send_Sms(request):
             elif action_type == 'validateRequest':
                 if invalid_numbers:
                     logger.info(f"invalid_numbers {invalid_numbers}")
-                    results = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
+                    _ = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
                     
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
                     validation_data = validation_data[validation_data['error_code'] == 131026]
@@ -194,7 +204,10 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
     # Parse contacts from POST request
     numbers_list = set()
     if contacts or contacts != '':
-        numbers_list.update(contacts.split("\r\n"))
+        try:
+            numbers_list.update(contacts.split("\r\n"))
+        except:
+            numbers_list = contacts
 
     # Parse contacts from uploaded file
     if uploaded_file:

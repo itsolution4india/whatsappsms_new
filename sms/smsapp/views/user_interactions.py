@@ -55,8 +55,8 @@ def bot_interactions(request):
         all_phone_numbers.extend(phone_numbers)
     all_phone_numbers = list(set(all_phone_numbers))
     
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str)
@@ -87,7 +87,7 @@ def bot_interactions(request):
         
     update_or_create_reply_data(request, all_replies_grouped)
     
-    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email)
+    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email).order_by('created_at')
     data_as_dict = [model_to_dict(record) for record in last_replay_data]
     all_replies_dict = data_as_dict
     

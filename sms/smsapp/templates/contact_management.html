@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block head %}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
@@ -25,7 +25,14 @@
                     <input class="mt-2" type="text" name="name" placeholder="Name (Optional)">
                     <button class="mt-2 bg-success bg-gradient" type="submit">Create Contact</button>
                 </form>
-                <input type="file" id="contactCsvUpload" accept=".csv">
+                <div class="d-flex justify-content-between">
+                    <input class="w-50" type="file" id="contactCsvUpload" accept=".csv">
+                    <a class="w-50" href="{% static 'assets/pdf/phone_numbers.csv' %}" download="phone_numbers.csv">
+                        <button type="button">
+                        Download sample file
+                        </button>
+                    </a> 
+                </div>                 
             </div>
         
             <!-- Create Group Section -->
