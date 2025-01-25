@@ -226,6 +226,9 @@
     width: 100% !important;
   }
 }
+#it-solution-chat-toggle {
+    display: none !important;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -251,7 +254,7 @@
                 <span class="fw-bold">{{ row.name }}</span><br>
                 <span>{{ row.number }}</span><br>
                 {% if row.status == "unread" %}
-                <span class="notification_count">{{ row.count }}</span>
+                <span class="notification_count {% if row.number == selected_phone %}d-none{% endif %}">{{ row.count }}</span>
                 {% endif %}
             </button>
             {% endfor %}
