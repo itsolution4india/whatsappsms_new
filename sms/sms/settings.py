@@ -43,7 +43,7 @@ SECURE_HSTS_PRELOAD=False
 CSRF_COOKIE_SECURE=False
 SESSION_COOKIE_SECURE=False
 
-SESSION_COOKIE_AGE = 15 * 60
+SESSION_COOKIE_AGE = 900
 SESSION_SAVE_EVERY_REQUEST = True
 
 INSTALLED_APPS = [
@@ -60,6 +60,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'smsapp.middleware.Log404DetailsMiddleware',
+    'smsapp.middleware.AutoLogoutMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

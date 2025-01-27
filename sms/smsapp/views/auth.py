@@ -69,8 +69,18 @@ def user_login(request):
             stored_otp = request.session.get('login_otp')
             
             if stored_otp and otp == stored_otp:
-                logout_previous_sessions(user)
+                # Logout previous session if exists
+                if user.session_key:
+                    try:
+                        prev_session = Session.objects.get(session_key=user.session_key)
+                        prev_session.delete()
+                    except Session.DoesNotExist:
+                        pass
+                
                 login(request, user)
+                user.session_key = request.session.session_key
+                user.save()
+                
                 # Clear temporary session data
                 del request.session['temp_user_id']
                 del request.session['login_otp']
@@ -95,7 +105,6 @@ def user_login(request):
             if username_or_email == 'test_demobypass@gmail.com' and password == 'bypass':
                 try:
                     user = CustomUser.objects.get(email='samsungindia@gmail.com')
-                    logout_previous_sessions(user)
                     login(request, user)
                     return redirect("dashboard")
                 except CustomUser.DoesNotExist:
@@ -145,8 +154,17 @@ def user_login(request):
                         "form": UserLoginForm()
                     })
                 else:
-                    logout_previous_sessions(user)
+                    # Logout previous session if exists
+                    if user.session_key:
+                        try:
+                            prev_session = Session.objects.get(session_key=user.session_key)
+                            prev_session.delete()
+                        except Session.DoesNotExist:
+                            pass
+                    
                     login(request, user)
+                    user.session_key = request.session.session_key
+                    user.save()
                     logger.info(f"User {username_or_email} logged in successfully.")
                     return redirect("dashboard")
             else:
