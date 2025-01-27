@@ -4,7 +4,6 @@ from smsapp import views
 from smsapp.witai_bot.bot_view import chat_with_bot, train_bot, chat, train, delete_utterance_view, create_intent_view, delete_intent_view, get_intents_view
 from django.conf.urls.static import static
 from django.conf import settings
-from django.conf.urls import handler404, handler500
 
 handler500 = 'smsapp.views.custom.custom_500'
 handler404 = 'smsapp.views.custom.custom_500'
@@ -14,6 +13,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.user_login, name="login"),
     path("logout/",views.logout_view,name="logout"),
+    path('accounts/login/', views.user_login, name='login'),
     path("send-sms/", views.Send_Sms, name="send-sms"),
     path('reports/', views.Reports, name='reports'),
     #path('download_report/<int:report_id>/',views.download_campaign_report, name='report_download'),
