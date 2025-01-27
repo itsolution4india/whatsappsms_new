@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block head %}
 <style>
   .hideelement {
@@ -217,6 +217,11 @@
                     <input type="checkbox" id="add_91" name="add_91" class="form-check-input">
                     <label class="form-check-label" for="add_91">Add 91 in CSV</label>
                   </div>
+                  <a class="w-50" href="{% static 'assets/pdf/phone_numbers.csv' %}" download="phone_numbers.csv">
+                    <button class="bg-success" type="button">
+                    Download sample file
+                    </button>
+                </a> 
                 </div>
               </div>
 
