@@ -17,7 +17,9 @@ import datetime
 
 def update_or_create_reply_data(request, all_replies_grouped):
     for _, row in all_replies_grouped.iterrows():
-        existing_record = Last_Replay_Data.objects.filter(number=row['contact_wa_id']).first()
+        existing_record = Last_Replay_Data.objects.filter(
+            number=row['contact_wa_id'], user=request.user.email
+        ).first()
         max_date = make_aware(row['max_date']) if isinstance(row['max_date'], datetime.datetime) else row['max_date']
         
         if existing_record:
@@ -55,7 +57,6 @@ def bot_interactions(request):
     
     report_list = ReportInfo.objects.filter(email=request.user).values_list('contact_list', flat=True)
     all_phone_numbers = set(phone for report in report_list for phone in report.split(','))
-    
     df = download_linked_report(request)
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
@@ -75,7 +76,6 @@ def bot_interactions(request):
     matched_numbers = list(set(all_phone_numbers) & unique_contact_wa_id)
     combined_list = [str(num) for sublist in contact_list for num in sublist] + matched_numbers
     matching_phone_numbers = list(set(filter(None, combined_list)))
-    
     all_replies = df[df['contact_wa_id'].isin(matching_phone_numbers)]
     all_replies_grouped = all_replies.groupby(['contact_wa_id', 'contact_name']).agg(
         count=('contact_wa_id', 'size'),  # Count the occurrences
