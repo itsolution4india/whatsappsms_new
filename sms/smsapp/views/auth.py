@@ -12,16 +12,7 @@ from .twoauth import generate_otp
 from ..fastapidata import send_api
 import os
 from dotenv import load_dotenv
-from django.contrib.sessions.models import Session
-from django.utils import timezone
 
-def logout_previous_sessions(user):
-    """Logs out all previous sessions for the given user."""
-    sessions = Session.objects.filter(expire_date__gte=timezone.now())
-    for session in sessions:
-        session_data = session.get_decoded()
-        if user.id == session_data.get('_auth_user_id'):
-            session.delete()
 
 def check_user_permission(user, permission):
     """Helper function to check a specific permission for a user."""
@@ -69,18 +60,7 @@ def user_login(request):
             stored_otp = request.session.get('login_otp')
             
             if stored_otp and otp == stored_otp:
-                # Logout previous session if exists
-                if user.session_key:
-                    try:
-                        prev_session = Session.objects.get(session_key=user.session_key)
-                        prev_session.delete()
-                    except Session.DoesNotExist:
-                        pass
-                
                 login(request, user)
-                user.session_key = request.session.session_key
-                user.save()
-                
                 # Clear temporary session data
                 del request.session['temp_user_id']
                 del request.session['login_otp']
@@ -154,17 +134,7 @@ def user_login(request):
                         "form": UserLoginForm()
                     })
                 else:
-                    # Logout previous session if exists
-                    if user.session_key:
-                        try:
-                            prev_session = Session.objects.get(session_key=user.session_key)
-                            prev_session.delete()
-                        except Session.DoesNotExist:
-                            pass
-                    
                     login(request, user)
-                    user.session_key = request.session.session_key
-                    user.save()
                     logger.info(f"User {username_or_email} logged in successfully.")
                     return redirect("dashboard")
             else:
