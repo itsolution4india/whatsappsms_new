@@ -188,42 +188,34 @@
 
               <div id="fileUploadContainer"></div>
 
-              <div class="p-2 mb-2" style="background-color: #e8e8e8; height: 200px; overflow: overlay; scrollbar-width: thin;">
+                
+                <div class="mb-3 d-flex">
+                  <div>
+                    <label class="form-label">Upload CSV File</label>
+                  <span class="text-secondary">* Optional</span>
+                  <input type="file" id="id_files" name="files" class="form-control" accept=".csv">
+                  <div class="d-flex justify-content-around mt-2">
+                    <div class="mb-2 form-check">
+                      <input type="checkbox" id="add_91" name="add_91" class="form-check-input">
+                      <label class="form-check-label" for="add_91">Add 91 in CSV</label>
+                    </div>
+                    <div>
+                      <a class="w-50" href="{% static 'assets/pdf/var_test.csv' %}" download="phone_numbers.csv">
+                        <button class="bg-light text-danger" type="button" style="border: 1px solid black; padding: 0px 10px;">
+                        Download sample file
+                        </button>
+                      </a> 
+                    </div>
+                  </div>
+                  </div>
+                </div>
 
-                <div class="mb-3 bg-primary text-white p-2">
-                  <label class="form-label text-white">Write Contact Numbers</label>
+                <div class="mb-3">
+                  <label class="form-label">Write Contact Numbers</label>
                   <p class="text-warning">* Ensure numbers include country code. </p>
                   <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
                     name="contact_number"></textarea>
                 </div>
-                <center><span>(or)</span></center>
-                <div class="mb-3 bg-primary text-white p-2">
-                  <label class="form-label text-white">Select Group</label>
-                  <select id="template-select" class="form-select" name="selectedGroup" required>
-                    <option value="nan">Select Group</option>
-                    <option value="all">All Contacts</option>
-                    {% for group in groups %}
-                    <option value="{{ group }}">{{ group }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-
-                <center><span>(or)</span></center>
-                <div class="mb-3 bg-primary text-white p-2">
-                  <label class="form-label text-white">Upload CSV File</label>
-                  <span class="text-secondary">* Optional</span>
-                  <input type="file" id="id_files" name="files" class="form-control" accept=".csv">
-                  <div class="mb-2 form-check">
-                    <input type="checkbox" id="add_91" name="add_91" class="form-check-input">
-                    <label class="form-check-label" for="add_91">Add 91 in CSV</label>
-                  </div>
-                  <a class="w-50" href="{% static 'assets/pdf/phone_numbers.csv' %}" download="phone_numbers.csv">
-                    <button class="bg-success" type="button">
-                    Download sample file
-                    </button>
-                </a> 
-                </div>
-              </div>
 
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
               {% if api_doc_access %}
