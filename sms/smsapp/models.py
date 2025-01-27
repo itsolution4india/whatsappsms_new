@@ -58,7 +58,6 @@ class RegisterApp(models.Model):
         return self.app_id
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    session_key = models.CharField(max_length=40, blank=True, null=True)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
     phone_number_id = models.CharField(max_length=15, default=0, validators=[validate_phone_number_id])
