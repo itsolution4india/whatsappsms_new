@@ -18,8 +18,8 @@ def link_templates(request):
     phone_id = display_phonenumber_id(request)
     if not check_user_permission(request.user, 'can_link_templates'):
         return redirect("access_denide")
-    # df = download_linked_report(request)
-    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    df = download_linked_report(request)
+    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['phone_number_id'] = df['phone_number_id'].astype(str)
     df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
     df = df[df['phone_number_id'] == phone_id]
