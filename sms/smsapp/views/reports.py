@@ -98,8 +98,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             query_params.append(f"%{Phone_ID}%")
         if created_at:
             query += " AND Date >= %s"
-            query_params.append(f"%{created_at}%")
-            
+            query_params.append(created_at)
         
         # Execute query and log the results
         cursor.execute(query, tuple(query_params))
