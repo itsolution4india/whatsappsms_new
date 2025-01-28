@@ -96,9 +96,7 @@ def bot_interactions(request):
         Last_Replay_Data.objects.filter(
             number=selected_phone,
             user=request.user.email,
-        ).update(status='read',
-                 last_updated=timezone.now()
-                 )
+        ).update(status='read')
         
         filtered_df = df[
             (df['contact_wa_id'] == selected_phone) & 
