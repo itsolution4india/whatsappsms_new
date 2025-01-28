@@ -105,6 +105,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         
         df = pd.DataFrame(rows, columns=headers)
         backup_df = df
+        logger.info(f"contact_all: {contact_all}")
         if contact_all:
             # try:
             df['contact_wa_id'] = df['contact_wa_id'].astype(str)
