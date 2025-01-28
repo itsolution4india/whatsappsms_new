@@ -237,7 +237,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         matched_rows = []
         non_reply_rows = []
         
-        excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047}
+        excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047, 131042}
     
         if len(contact_all) > 100:
             non_reply_rows = [
