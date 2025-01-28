@@ -44,7 +44,17 @@ def Reports(request):
         return render(request, "reports.html", context)
     
 @login_required
-def download_linked_report(request, button_name=None, start_date=None, end_date=None):
+def download_linked_report(request, button_name=None, start_date=None, end_date=None, report_id=None):
+    if report_id:
+            report = get_object_or_404(ReportInfo, id=report_id)
+            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
+            contacts = report.contact_list.split('\r\n')
+            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    else:
+        contact_all = None
+        created_at = None
+        Phone_ID = None
     try:
         # Connect to the database
         phone_id = display_phonenumber_id(request)
@@ -94,6 +104,15 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                    'message_body']
         
         df = pd.DataFrame(rows, columns=headers)
+        backup_df = df
+        if contact_all:
+            try:
+                df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+                df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+                df = df[df['contact_wa_id'].isin(contact_all)]
+            except Exception as e:
+                df = backup_df
+                logger.error(str(e))
         
         # Create the HttpResponse object with CSV header
         response = HttpResponse(content_type='text/csv')

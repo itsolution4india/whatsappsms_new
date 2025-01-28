@@ -5,11 +5,12 @@ from .reports import download_linked_report
 from django.shortcuts import render, redirect
 from ..functions.template_msg import header_handle
 from ..functions.template_msg import header_handle, fetch_templates
-from ..models import TemplateLinkage, Templates
+from ..models import TemplateLinkage, Templates, ReportInfo
 import json, time
 from django.contrib import messages
 from ..media_id import process_media_file
 from django.shortcuts import get_object_or_404
+import pandas as pd
 
 
 @login_required
@@ -17,8 +18,8 @@ def link_templates(request):
     phone_id = display_phonenumber_id(request)
     if not check_user_permission(request.user, 'can_link_templates'):
         return redirect("access_denide")
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df['phone_number_id'] = df['phone_number_id'].astype(str)
     df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
     df = df[df['phone_number_id'] == phone_id]
@@ -27,6 +28,7 @@ def link_templates(request):
     if campaign_list is None:
         campaign_list = []
 
+    report_list = ReportInfo.objects.filter(email=request.user).only('contact_list')
     
     templatelinkage = TemplateLinkage.objects.filter(useremail= request.user)
     button_names = list(templatelinkage.values_list('button_name', flat=True))
@@ -66,7 +68,8 @@ def link_templates(request):
         "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
         "campaign_list": campaign_list,
         "template_value": template_value,
-        "templatelinkage": templatelinkage_with_counts
+        "templatelinkage": templatelinkage_with_counts,
+        "report_list":report_list
     }
 
     if request.method == 'POST':

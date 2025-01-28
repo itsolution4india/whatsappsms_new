@@ -78,8 +78,18 @@
                         <label for="endDate" class="form-label">End Date</label>
                         <input type="date" class="form-control" id="endDate">
                     </div>
+                
+                    <div class="mb-2">
+                        <label for="selectcampaign" class="form-label">Select Campaign</label>
+                        <select class="form-select" name="select_campaign_name" id="select_campaign_name" required>
+                            <option value="null">Select Campaign</option>
+                            {% for report in report_list %}
+                            <option value="{{ report.id }}">{{ report.message_date }}: {{ report.campaign_title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
                     <button type="button" class="btn btn-success" id="submitDateRange">Submit</button>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
@@ -156,13 +166,16 @@
         document.getElementById('submitDateRange').addEventListener('click', function() {
             const startDate = document.getElementById('startDate').value;
             const endDate = document.getElementById('endDate').value;
+            const report_id = document.getElementById('select_campaign_name').value;
+
+            console.log("report_id", report_id)
     
             if (!startDate || !endDate) {
                 alert('Please select both start and end dates');
                 return;
             }
     
-            window.location.href = `/template-linkage/download/${currentButtonName}/${startDate}/${endDate}/`;
+            window.location.href = `/template-linkage/download/${currentButtonName}/${startDate}/${endDate}/${report_id}/`;
             modal.hide();
         });
     });
