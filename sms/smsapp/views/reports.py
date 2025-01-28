@@ -93,6 +93,12 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             
             query += " AND LOWER(message_body) LIKE LOWER(%s)"
             query_params.append(f"%{button_name}%")
+        if Phone_ID:
+            query += " AND phone_number_id = %s"
+            query_params.append(f"%{Phone_ID}%")
+        if created_at:
+            query += " AND Date >= %s"
+            query_params.append(f"%{created_at}%")
             
         
         # Execute query and log the results
@@ -106,16 +112,15 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                    'message_body']
         
         df = pd.DataFrame(rows, columns=headers)
-        backup_df = df
         logger.info(f"contact_all: {contact_all}")
         if contact_all:
-            # try:
-            df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-            df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
-            df = df[df['contact_wa_id'].isin(contact_all)]
-            # except Exception as e:
-            #     df = backup_df
-            #     logger.error(str(e))
+            try:
+                df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+                df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+                df = df[df['contact_wa_id'].isin(contact_all)]
+                rows = [tuple(row) for row in df.itertuples(index=False, name=None)]
+            except Exception as e:
+                logger.error(str(e))
         
         # Create the HttpResponse object with CSV header
         response = HttpResponse(content_type='text/csv')
