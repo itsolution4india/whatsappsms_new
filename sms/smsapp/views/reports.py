@@ -46,12 +46,14 @@ def Reports(request):
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None, report_id=None):
     if report_id:
-            report = get_object_or_404(ReportInfo, id=report_id)
-            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
-            contacts = report.contact_list.split('\r\n')
-            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+        logger.info(f"report_id: {report_id}")
+        report = get_object_or_404(ReportInfo, id=report_id)
+        Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
+        contacts = report.contact_list.split('\r\n')
+        contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+        created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
     else:
+        logger.info("No report_id")
         contact_all = None
         created_at = None
         Phone_ID = None
