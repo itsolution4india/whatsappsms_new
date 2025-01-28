@@ -106,13 +106,13 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         df = pd.DataFrame(rows, columns=headers)
         backup_df = df
         if contact_all:
-            try:
-                df['contact_wa_id'] = df['contact_wa_id'].astype(str)
-                df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
-                df = df[df['contact_wa_id'].isin(contact_all)]
-            except Exception as e:
-                df = backup_df
-                logger.error(str(e))
+            # try:
+            df['contact_wa_id'] = df['contact_wa_id'].astype(str)
+            df['contact_wa_id'] = df['contact_wa_id'].str.replace(r'\.0$', '', regex=True)
+            df = df[df['contact_wa_id'].isin(contact_all)]
+            # except Exception as e:
+            #     df = backup_df
+            #     logger.error(str(e))
         
         # Create the HttpResponse object with CSV header
         response = HttpResponse(content_type='text/csv')
