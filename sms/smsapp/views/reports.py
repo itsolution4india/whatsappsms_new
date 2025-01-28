@@ -93,12 +93,6 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             
             query += " AND LOWER(message_body) LIKE LOWER(%s)"
             query_params.append(f"%{button_name}%")
-        if Phone_ID:
-            query += " AND phone_number_id = %s"
-            query_params.append(f"%{Phone_ID}%")
-        if created_at:
-            query += " AND Date >= %s"
-            query_params.append(created_at)
         
         # Execute query and log the results
         cursor.execute(query, tuple(query_params))
