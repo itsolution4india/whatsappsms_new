@@ -146,6 +146,8 @@ def Campaign(request):
                 })
 
             Templates.objects.create(email=request.user, templates=template_name)
+            if status == 200:
+                return redirect('create_message_temp')
         except Exception as e:
             context.update({
                 "error": {
