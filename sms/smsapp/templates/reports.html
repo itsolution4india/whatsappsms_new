@@ -239,10 +239,6 @@
                                         <button type="button" class="btn btn-info" onclick="showInsight({{ report.id }})">
                                             <i class='bx bx-line-chart'></i>
                                         </button>
-                                        <!-- Delete button -->
-                                        <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
-                                            <i class='bx bx-trash'></i>
-                                        </button>
                                     </div>
                                 {% elif report.start_request_id != 0 %}
                                     <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
@@ -253,7 +249,10 @@
                                         Get Report
                                     </button>
                                 {% endif %}
-
+                                    <!-- Delete button -->
+                                    <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
+                                        <i class='bx bx-trash'></i>
+                                    </button>
                                 {% else %}
                                 <span class="text-muted">Not available</span>
                                 {% endif %}
