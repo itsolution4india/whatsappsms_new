@@ -174,8 +174,9 @@ def show_discount(user):
     discount=user.discount
     return discount
 
-def make_variables_list(df):
+def make_variables_list(df, valid_numbers):
     try:
+        df = df[df['phone_numbers'].isin(valid_numbers)]
         numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns
         for col in numeric_cols:
             df[col] = df[col].astype(str)

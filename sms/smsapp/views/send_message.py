@@ -129,7 +129,6 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
-            print(all_contact, contact_list, invalid_numbers, csv_variables)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
@@ -175,6 +174,23 @@ def Send_Sms(request):
 
     return render(request, "send-sms.html", context)
 
+def process_phone_numbers(numbers_list, db_phonenumbers, patterns):
+    valid_numbers = set()
+    invalid_numbers = set()
+    
+    for phone_number in numbers_list:
+        phone_number = phone_number.strip()
+        if phone_number not in db_phonenumbers:
+            invalid_numbers.add(phone_number)
+        for _, pattern in patterns.items():
+            if pattern.match(phone_number):
+                valid_numbers.add(phone_number)
+                break
+        else:
+            invalid_numbers.add(phone_number)
+    
+    return valid_numbers, invalid_numbers
+
 def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=None):
     valid_numbers = set()
     invalid_numbers = set()
@@ -213,27 +229,20 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
             numbers_list = contacts
 
     # Parse contacts from uploaded file
+    db_phonenumbers = get_unique_phone_numbers()
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
-        csv_variables = make_variables_list(df)
         if add_91:
             df['phone_numbers'] = df['phone_numbers'].astype(str)
             df['phone_numbers'] = df['phone_numbers'].apply(lambda x: '91' + x if not x.startswith('91') else x)
         for number in df['phone_numbers']:
             numbers_list.add(str(number))
-    db_phonenumbers = get_unique_phone_numbers()
+        valid_numbers, invalid_numbers = process_phone_numbers(numbers_list, db_phonenumbers, patterns)
+        csv_variables = make_variables_list(df, valid_numbers)
     
     # Validate phone numbers against permitted country patterns
-    for phone_number in numbers_list:
-        phone_number = phone_number.strip()
-        if phone_number not in db_phonenumbers:
-            invalid_numbers.add(phone_number)
-        for _, pattern in patterns.items():
-            if pattern.match(phone_number):
-                valid_numbers.add(phone_number)
-                break
-        else:
-            invalid_numbers.add(phone_number)
+    if not uploaded_file:
+        valid_numbers, invalid_numbers = process_phone_numbers(numbers_list, db_phonenumbers, patterns)
 
     # Get whitelist and blacklist numbers
     whitelist_number, blacklist_number = whitelist_blacklist(request)
@@ -260,8 +269,6 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
         return final_list
 
     valid_numbers = list(valid_numbers)
-    
-    # Apply discount logic
     if len(valid_numbers) > 100:
         discount = discount
     else:
