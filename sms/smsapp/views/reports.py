@@ -24,7 +24,7 @@ def Reports(request):
     context = {}
     try:
         template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
-        report_list = ReportInfo.objects.filter(email=request.user).only('contact_list')
+        report_list = ReportInfo.objects.filter(email=request.user).only('contact_list').order_by('-created_at')
         
         context = {
             "template_names": template_value,
