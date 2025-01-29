@@ -300,9 +300,6 @@
     </script>
 <script>
     function sendRequest(reportId) {
-        // Show the pop-up when the request is sent
-        document.getElementById('popup').style.display = 'block';
-
         // Send the fetch request
         fetch(`/report_insight/${reportId}/`)
             .then(response => response.json())
@@ -310,15 +307,13 @@
                 // Handle successful request here
                 console.log('Success:', data);
                 alert('Request processed successfully');
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('Failed to process the request');
+                window.location.reload();
             })
-            .finally(() => {
-                // Hide the pop-up after the request is complete
-                document.getElementById('popup').style.display = 'none';
-            });
     }
 </script>
 
