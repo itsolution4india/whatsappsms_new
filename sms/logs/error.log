@@ -2344,3 +2344,370 @@ No report_id
 contact_all: None
 No report_id
 contact_all: None
+User Samsung logged in successfully.
+No report_id
+contact_all: None
+Send_Sms: samsungindia@gmail.com, 460844313788449, reeserveoints, None, ['919654642919', '919711340505'], ['919654642919', '919711340505'], testnew, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testnew
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '8090501901982573', 'request_id': 'MESSAGEI0PR817EQ6I0'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEI0PR817EQ6I0 and unique ID 8090501901982573
+Messages sent successfully for campaign: testnew, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '8090501901982573', 'report_id': 'MESSAGEI0PR817EQ6I0'}
+Updated response MESSAGEI0PR817EQ6I0 with unique_id 8090501901982573 in end_request_id
+Updated report 1590 with unique_id 100
+Updated report 1590 with unique_id 100
+Updated report 1590 with unique_id 100
+Received notification: {'status': 'completed', 'unique_id': '3656636832056755', 'report_id': 'MESSAGE1T45XIX6OO52'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Send_Sms: demo2@gmail.com, 244226048784189, expertnewone1, 1128270771779653, ['918572002877', '919540813820', '917827282833', '919971997281'], ['919540813820', '917827282833', '919971997281', '918572002877'], expertestatenew, []
+Sending messages for user: demo2@gmail.com, campaign title: expertestatenew
+Calculated money data for sending messages: 4
+{'message': 'Messages sent successfully', 'unique_id': '4066943030647987', 'request_id': 'MESSAGE9R62UV28YC4A'}
+Added notification entry for demo2@gmail.com with request ID MESSAGE9R62UV28YC4A and unique ID 4066943030647987
+Messages sent successfully for campaign: expertestatenew, user: demo2@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '4066943030647987', 'report_id': 'MESSAGE9R62UV28YC4A'}
+Updated response MESSAGE9R62UV28YC4A with unique_id 4066943030647987 in end_request_id
+Updated report 1591 with unique_id 100
+Updated report 1591 with unique_id 100
+Updated report 1591 with unique_id 100
+No report_id
+contact_all: None
+Updated report 1589 with unique_id 100
+Updated report 1589 with unique_id 100
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+Internal Server Error: /business/async/destinationcmsid/
+Internal Server Error: /ajax/bz
+Internal Server Error: /ajax/bz
+User BigTelInsurance logged in successfully.
+User Samsung logged in successfully.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'singhamar0887'}, 'wa_id': '919957709615'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5OTU3NzA5NjE1FQIAERgSRDdBOTZCNkZGMzQ0NzQzNDc5AA=='}, 'from': '919957709615', 'id': 'wamid.HBgMOTE5OTU3NzA5NjE1FQIAEhggMEMxRDMzOEIyRUIwMzUyMzgxNEE3RjBFRUNCOTgyQkQA', 'timestamp': '1738236835', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Sajal Agrawal'}, 'wa_id': '919871647204'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5ODcxNjQ3MjA0FQIAERgSRTg0RUNBMzFDNDk3RjZDNDg0AA=='}, 'from': '919871647204', 'id': 'wamid.HBgMOTE5ODcxNjQ3MjA0FQIAEhggRDNFQzNDRTAyQTk1NUIwRjcyNEQ4MERBQThCOTcwMzUA', 'timestamp': '1738236944', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919654642919'], ['919654642919'], Reminder Pre-Reserve Points Test, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points Test
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '3246526531997154', 'request_id': 'MESSAGEUTO709I6H18H'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEUTO709I6H18H and unique ID 3246526531997154
+Messages sent successfully for campaign: Reminder Pre-Reserve Points Test, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3246526531997154', 'report_id': 'MESSAGEUTO709I6H18H'}
+Updated response MESSAGEUTO709I6H18H with unique_id 3246526531997154 in end_request_id
+Send_Sms: bigtelinsurance@gmail.com, 575436692308716, temp30jan, 1381359843282168, ['919315494292', '918929973579', '919711340505', '916361161836'], ['919315494292', '918929973579', '919711340505', '916361161836'], admintesting, []
+Sending messages for user: bigtelinsurance@gmail.com, campaign title: admintesting
+Calculated money data for sending messages: 4
+{'message': 'Messages sent successfully', 'unique_id': '4812027424015487', 'request_id': 'MESSAGE1B458P8AYSC8'}
+Added notification entry for bigtelinsurance@gmail.com with request ID MESSAGE1B458P8AYSC8 and unique ID 4812027424015487
+Messages sent successfully for campaign: admintesting, user: bigtelinsurance@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '4812027424015487', 'report_id': 'MESSAGE1B458P8AYSC8'}
+Updated response MESSAGE1B458P8AYSC8 with unique_id 4812027424015487 in end_request_id
+User Kavita Gulati logged in successfully.
+Response status code: 200
+Raw response text: {"message":"Task is being processed in the background. You will be notified when it's complete.","unique_id":"3476198141485022","report_id":"1577"}
+Parsed JSON response: {'message': "Task is being processed in the background. You will be notified when it's complete.", 'unique_id': '3476198141485022', 'report_id': '1577'}
+Updated report 1577 with unique_id 3476198141485022
+Received notification: {'status': 'completed', 'unique_id': '3476198141485022', 'report_id': '1577'}
+Updated report 1577 with unique_id 3476198141485022 in end_request_id
+No report_id
+contact_all: None
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919873002378', '919629244777', '919850993599', '919319335628', '918929712345', '919927813555', '919389686852', '919166501444', '919646304007', '919881232476', '919779249676', '919205497881', '919403228274', '919895250550', '919922244944', '916375303579', '919971730119', '917000618128', '918000719287', '919353603260', '918500993311', '919510952021', '917774043106', '919779039647', '919922884587', '917737139334', '918367044046', '919814001636', '919437478888', '917022949444', '919686693411', '917902441122', '918124673787', '919896675015', '918138001007', '919999922169', '919325929999', '919799726733', '919963611611', '917041888811', '919836036017', '918144457962', '919830162550', '919996338896', '919931453265', '918107654321', '917728074787', '917046708818', '919366141459', '919978776309', '919845035125', '919788278626', '919845352535', '919949951365', '919779010199', '919096710000', '919814575717', '919993049090', '917027028880', '919830053139', '919989534051', '919204056729', '918268836666', '919717766461', '918589904333', '918173914808', '918050223888', '917337327626', '918208904352', '917719009990', '919874700901', '918855011511', '919831901463', '918599999376', '918301834478', '919899292813', '918334924444', '917600786563', '918335865648', '919665124735', '919940229392', '917979828122', '919270101000', '919719885000', '918861099165', '919020141234', '919553942444', '919953057688', '919553941444', '918329064221', '918530376286', '918918349163', '919625792022', '918700707949', '918197331303', '917405223639', '917080161718', '918526774477', '919699768312', '919905055555', '918733980990', '919719729494', '919311759549', '917419262666', '919822141454', '919993330020', '919454173346', '917858923815', '919890332215', '918851218809', '918149445555', '919568310626', '919620000979', '919099741005', '918810724151', '919716677177', '919710000251', '919811411140', '917845421777', '919438124444', '919619551109', '919511007878', '919919991511', '918726044099', '917302441893', '919820288849', '917006272355', '919499637777', '917399759999', '918091902000', '918851661534', '919974905429', '919401157111', '919898390810', '919246900366', '918929167675', '919835676146', '917447881161', '916263822644', '917878598433', '919119771340', '919385384038', '919712638844', '919669999904', '918618662608', '919321168863', '919924012500', '919825128514', '918805986802', '919843052289', '917558395514', '917737498296', '918338888774', '917600026669', '918124544445', '919990900576', '919937071656', '917434069069', '918624012401', '919919573188', '917738387777', '917815951409', '919884175064', '919216510455', '919700552244', '917010477483', '919872281714', '919756556655', '919825252621', '919503406116', '919975265510', '919894341775', '919811000346', '918105675957', '919633333218', '917044006372', '919886151428', '919809429000', '919941843193', '918890001222', '918317477227', '919886650699', '919884144492', '919815565601', '919858891611', '919079755464', '919033333543', '919600453377', '918880732694', '919724204141', '918087482756', '919900949785', '917053333303', '919227233777', '919113287822', '919902444422', '919896077777', '917042872428', '916267822230', '918111935558', '919960570928', '919586587007', '919384841477', '919849510051', '919173150293', '919913323111', '918307807760', '919553945444', '919760974907', '919988885006', '919814109894', '918411889856', '918725002227', '919660583258', '918557009800', '918171623695', '919826019697', '918769096618', '919992666612', '919650848484', '919732712341', '917353880044', '917376511877', '919974820623', '917010704072', '919541555544', '918511188246', '917306119007', '919561065232', '919790588277', '917815951407', '918866533111', '918884388383', '919690777766', '919793513000', '919650828282', '918169068881', '919799234133', '917340660167', '919328100001', '919909155620', '919966660097', '919587799666', '917000369606', '919082081687', '919735022690', '917354888003', '919973611288', '919434007630', '919225806070', '919434287270', '917057323444', '919966205499', '919560677768', '919522525252', '919922665567', '919893007662', '919465535355', '919445239168', '919898777367', '917034111136', '919914095795', '919892560138', '918866939277', '919886019185', '919023790236', '919727011116', '917990900095', '919441549989', '919899894171', '919434512360', '919731221958', '918789666856', '919879768074', '919891703703', '919054114844', '919798336232', '917013394352', '919544552122', '919050030088', '919506751163', '918317477232', '919226978000', '918146811552', '918459490000', '919487702745', '918000567777', '919205959005', '919893724197', '919818404241', '919998101224', '919947075228', '918433716333', '919826009999', '919822077088', '918902435619', '918754311157', '917020390381', '917070789437', '919845610030', '917309039792', '919606492155', '919053283222', '919927070064', '918530888383', '919888100599', '919758776677', '918076747111', '919063202222', '919278316368', '919905208650', '918792198137', '919398186617', '919409094190', '917456821051', '917766993730', '918828029379', '919899802121', '919838799888', '919849589313', '919784060606', '919355245000', '916281200941', '919610411111', '919888884991', '918530963434', '917096004696', '918951258116', '919019437541', '919430755488', '919121910051', '919934508991', '919018916514', '919827184288', '919741350992', '919988204657', '917868882515', '919380906038', '919891430664', '918898424111', '919216912340', '919811333444', '919660173718', '918123455668', '919881123269', '918051339533', '919815275000', '919829259498', '918584059959', '917990569300', '919630775787', '918791595191', '919465106000', '919419186197', '919937072519', '919823508080', '919977871000', '916232778711', '918151949999', '919762752222', '918147167365', '917845856877', '919896018868', '919654658565', '918920556437', '916382305123', '918867073274', '919062101020', '919927540404', '919881732660', '918604222417', '919815413466', '919674466976', '919161252222', '919501638365', '919730550333', '919790629777', '917419057148', '919934070686', '917003126946', '919824206876', '919334020799', '919041156364', '917404599200', '919638444425', '918955303094', '919662829545', '918968015469', '919789259777', '919539770008', '919555022753', '919591467707', '919906396303', '919893223813', '919934073464', '918870983377', '919487702744', '918899075788', '919654642919', '917796303132', '919226678678', '919370230060', '917875625498', '919880124775', '919978556666', '919960469447', '919594845333', '917020526588', '919879337770', '918888448822', '919830271000', '919760828255', '919819528977', '919881388808', '919762222331', '918000086440', '919716299156', '919914531166', '919414112829', '919932488808', '919876619157', '919855255558', '919876000143', '919009724197', '919898493111', '917719032225', '919786556339', '917984124949', '919897737588', '919926999333', '919685767567', '919023133077', '916352016909', '918690088988', '919924441740', '916235011119', '919000288111', '919660769644', '917733008811', '919997222053', '919625792023', '919985099000', '917624881864', '919820447744', '918925896777', '919999219900', '919328467778', '919842744742', '918100968187', '917744800009', '919477777759', '919329110009', '919304581138', '919177926616', '918794893659', '919848013473', '919767204383', '919758132222', '919567951234', '919737864718', '919730378999', '919897696330', '919814098141', '919517711177', '918349196999', '919752309292', '919176699922', '919828562220', '919898979850', '919877498772', '917015676028', '917061958085', '919714152930', '919044525181', '919511451515', '917997755222', '918886202555', '919177867862', '919441440459', '918188060037', '919916657575', '919165342222', '917357100009', '919428951052', '919781678678', '918600800008', '919075072073', '918888986095', '918427365867', '918329498478', '919832296311', '919000013379', '919421399786', '917698733333', '919766147886', '919897204191', '919806505050', '919459970741', '919111888919', '917870725725', '919518888881', '919637964143', '919814594115', '917856818142', '919422223283', '918789064885', '919225240116', '919752970333', '918140356000', '919975365781', '918317477226', '919435246928', '918140577891', '918092504090', '918585010180', '919164444644', '919429444324', '919139233333', '918725002229', '919096376444', '919366677776', '918107027000', '918017022116', '919653692828', '919830650401', '918822945533', '918815616191', '919513899866', '919991350000', '919592900173', '919950723303', '919783333555', '919591081111', '919977021999', '919225129129', '917845556377', '919389999666', '919914350010', '919923936160', '919104164499', '917302664935', '919871099999', '919158245824', '919916657574', '919810027815', '919780094000', '919566603010', '919306811900', '916378494394', '919235343536', '919828031733', '919316610985', '919566855133', '919983281116', '918822650763', '919566623345', '918897785022', '919845109168', '918683811111', '919875252621', '919888220066', '919538900719', '917801060372', '916000903853', '918010302707', '919038179415', '918219867700', '918459309277', '919845123990', '917003733799', '919291424166', '919827030270', '919892048600', '917036844819', '919890740420', '919699768311', '918949499553', '919871580000', '919053414141', '919431214230', '918875094281', '918668556621', '919526433333', '919434113427', '918390184456', '919702276543', '919925100853', '918962124344', '918130290144', '919895079442', '918814855511', '917978263636', '919205594801', '917008316242', '919960705784', '919887511128', '919822052025', '919583218310', '919828119828', '919913561356', '918556830000', '918882918744', '919871396341', '918820687755', '919922246284', '919915999159', '919924464218', '919644229000', '919911327600', '919875757519', '919363375833', '916901918409', '919223396873', '918360463001', '918435303277', '919384841472', '918098088800', '919462500000', '919999212650', '919155939000', '917711911411', '919707070103', '919814104141', '918199988188', '919966205399', '918094446111', '919842719090', '919821721575', '919509555155', '919870646256', '919538515007', '919950020002', '919368226784', '919827717171', '917904637383', '918308803838', '918618648945', '919846019888', '917845859877', '919528636295', '919823380800', '919899488588', '919591515393', '917755924564', '919497102466', '919039004928', '919890754155', '919219513337', '919645469494', '919514020404', '919922655577', '919896331333', '917780502302', '917620606065', '919821022266', '917704096886', '919043890777', '918055060626', '918814855515', '919075044112', '919890116336', '919702260443', '919813289555', '919492297734', '919462456550', '919765693696', '918907070708', '918269900268', '919227400130', '919999080295', '919879219730', '919919991519', '919421001585', '918602496487', '919991625904', '918019245000', '919193605012', '918788654344', '917004220665', '917710958135', '919043730777', '917996427042', '918078564714', '919111015115', '918725002224', '918408044548', '919863659616', '918485858410', '918951341799', '919993575501', '919311759550', '918308123222', '919983670070', '919818470075', '917574977789', '919254999998', '919630922728', '919110492251', '919912347444', '919591787869', '919829021857', '918087049348', '919256544403', '917055514447', '919821427490', '919976997350', '919460015443', '919900078820', '919685717777', '919979950777', '919848139611', '917262009999', '917036666465', '918999661640', '919970777190', '919953032172', '919144998068', '918078225300', '919024706399', '918237776871', '917737439969', '919068093163', '919923087772', '919634503855', '919041465369', '917095976663', '917889112124', '917019031647', '919319652477', '918668391569', '919819936993', '919414080501', '919302945000', '917014642006', '919855177325', '918754333577', '919999227973', '918861639929', '919358708777', '918898599599', '917827219373', '919820544181', '919139655555', '919311655022', '917845428777', '918607666555', '919815414700', '918727982000', '919380584144', '919616611111', '917009230003', '917076074339', '919923700900', '919414081529', '919727011115', '916291977147', '917571058027', '919874791123', '919082214135', '919388855544', '918180808001', '919966209899', '919311346622', '918329737272', '919746077755', '917907227551', '919688020000', '918811069453', '919988930125', '919447154644', '917021636085', '919811836993', '919428700501', '918591746023', '919952422058', '919766699999', '919920888490', '919425315050', '919422615657', '919814022266', '919764441130', '919530600100', '919272101000', '919860818310', '919911327599', '917738377772', '919937072171', '919915157523', '917573030124', '919722222278', '919825550008', '917030709030', '917540062077', '917006921346', '918130322775', '919425306034', '918806063807', '918511106066', '917904111276', '919887390354', '917011355471', '919937073234', '918981723456', '918017133333', '919816140990', '919910102030', '919474775655', '919463711342', '919841331444', '919999986135', '919923410517', '919985035353', '919774107071', '919001599996', '918074882714', '918179994719', '919776116411', '919883141806', '919786247476', '917073474632', '918017000181', '919856935935', '919424490618', '918660618611', '919964717171', '918308488884', '919593361360', '919384841476', '917845030777', '918602390000', '919708132144', '919965406897', '917007110230', '918866939276', '918287267864', '919818039116', '918199954821', '919557443955', '919312362810', '919199175562', '917206571100', '919619455455', '917425994133', '917020837953', '919856431234', '919810300138', '917668806995', '918098666650', '919995322001', '917503456024', '919888313630', '919824239400', '918237009893', '918969275990', '917396756855', '919768888879', '919306851155', '919897203117', '919828031833', '919732842736', '919856531234', '919729195195', '919493939888', '919959912234', '919850898505', '917873778202', '918683848000', '917974094431', '918699756163', '917382199525', '919415216291', '918111935444', '918129797926', '919887440146', '918678991199', '919721857681', '919732712343', '918883233355', '919884414444', '919896844444', '919999401114', '919552545736', '919923526630', '919993412881', '919153091530', '919558795137', '918050457211', '917020220567', '918317477233', '917517056333', '919998425600', '917000570007', '917405111154', '919930911555', '918169380053', '919630969552', '917829306000', '919867152077', '919799631968', '919712260379', '919874791119', '917016897813', '918074844355', '916364447706', '918887548503', '918014243000', '917795189001', '917620999333', '919687450750', '917900191616', '919337045208', '919839562970', '919709704089', '919623378080', '919369444999', '919425322731', '919898444524', '919377293110', '919384841478', '919814089781', '919308466660', '918866653531', '918142799959', '919019599920', '917008100729', '919910694010', '919830389379', '917063491604', '917480083131', '919822001962', '919845545230', '918511105196', '916269466269', '918460252824', '919999787901', '919945075293', '917417273757', '919758142222', '919971600071', '919168478000', '919829524542', '917987318692', '919876300049', '919413354353', '919052174995', '917069444409', '919937071770', '919890549033', '919595727727', '917903939992', '918249222311', '919626756000', '919574775252', '918709637254', '918200064229', '919633045544', '919999909403', '919625792021', '917829710733', '919895444816', '918007007321', '919310774308', '919952601907', '919891918873', '919212314001', '919778731749', '919725099097', '919147363809', '919949942375', '919881759477', '919464807762', '919041410523', '918980417770', '917997998481', '919642333354', '917997766222', '919301565659', '917229042415', '919323271818', '919888153629', '918088589299', '919501863777', '919166900605', '919073333194', '919897479171', '919898230003', '919831420565', '919096633323', '919871256112', '918561088801', '917000085905', '919317764815', '919334113469', '918898007771', '917004251315', '917548875757', '919895661234', '919848903336', '917548831677', '918655558180', '917975652852', '919820600733', '919082900208', '919811113007', '917019728186', '918830456661', '917633084125', '919147385409', '919999212378', '917701886714', '919215858585', '917247226426', '919925042562', '919712731217', '919997248989', '918138023122', '917030117777', '919953693533', '919920085470', '919700330100', '919376111666', '919637970970', '919813157148', '918630518653', '917837256006', '919303999200', '918130235777', '919463455188', '919668098048', '918159973982', '919835190255', '919815480004', '916000048300'], ['918789666856', '919654642919', '918898007771', '917004251315', '917548875757', '919895661234', '919848903336', '917548831677', '918655558180', '917975652852', '919820600733', '919082900208', '919811113007', '917019728186', '918830456661', '917633084125', '919147385409', '919999212378', '917701886714', '919215858585', '917247226426', '919925042562', '919712731217', '919997248989', '918138023122', '917030117777', '919953693533', '919920085470', '919700330100', '919376111666', '919637970970', '919813157148', '918630518653', '917837256006', '919303999200', '918130235777', '919463455188', '919668098048', '918159973982', '919835190255', '919815480004', '916000048300'], Reminder Pre-Reserve Points Live, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points Live
+Calculated money data for sending messages: 1033
+{'message': 'Messages sent successfully', 'unique_id': '1507630976591948', 'request_id': 'MESSAGE8RRZ45D038RD'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE8RRZ45D038RD and unique ID 1507630976591948
+Messages sent successfully for campaign: Reminder Pre-Reserve Points Live, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '1507630976591948', 'report_id': 'MESSAGE8RRZ45D038RD'}
+Updated response MESSAGE8RRZ45D038RD with unique_id 1507630976591948 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'SAMSUNG SMART CAFE (Choice The Samsung Store)'}, 'wa_id': '918138023122'}], 'messages': [{'from': '918138023122', 'id': 'wamid.HBgMOTE4MTM4MDIzMTIyFQIAEhggMUVFNzI3RTAxNzMyQTgwMjlFQkI5QjBENzZGNkNCNUIA', 'timestamp': '1738237315', 'text': {'body': 'Thank you for Contacting Samsung  Smart Cafe.How may I Help You'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung  Smart Cafe.How may I Help You None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'SAMSUNG SMART CAFE (Choice The Samsung Store)'}, 'wa_id': '918138023122'}], 'messages': [{'from': '918138023122', 'id': 'wamid.HBgMOTE4MTM4MDIzMTIyFQIAEhggRThERDQzNTQyRkMxRjEzQkRGMzZCRTAwOERDMUIzNzUA', 'timestamp': '1738237315', 'text': {'body': 'Thank you for contacting SAMSUNG SMART CAFE (Choice the Samsung store )! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for contacting SAMSUNG SMART CAFE (Choice the Samsung store )! Please let us know how we can help you. None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Manya Enterprises Samsung'}, 'wa_id': '919215858585'}], 'messages': [{'from': '919215858585', 'id': 'wamid.HBgMOTE5MjE1ODU4NTg1FQIAEhggQzYzN0VBQjMyQ0EyMEU5OTc2Mjk3MDQ1MTk0QTY3RjEA', 'timestamp': '1738237315', 'text': {'body': 'Thank you for contacting Manya Enterprises Samsung! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for contacting Manya Enterprises Samsung! Please let us know how we can help you. None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Smart Cafe - Poojan Computer'}, 'wa_id': '919712731217'}], 'messages': [{'from': '919712731217', 'id': 'wamid.HBgMOTE5NzEyNzMxMjE3FQIAEhggMDAwMjk5QkZBODU1NTY1RDc4NDUwQjFDRTAxNzQ5ODQA', 'timestamp': '1738237316', 'text': {'body': 'Samsung smart cafe.. \nB-19/20 Nilam shopping center Nr Sardar chowk krishnanagar naroda\nAhmedabad-382345'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Experience Store Ambience Mall Vasant Kunj'}, 'wa_id': '919700330100'}], 'messages': [{'from': '919700330100', 'id': 'wamid.HBgMOTE5NzAwMzMwMTAwFQIAEhggQkI5RkEwRjUyNDJEOTQyQzdDQUVBNDZCQTZEQjYxMkEA', 'timestamp': '1738237316', 'text': {'body': 'Thank you for contacting Samsung Experience Store Ambience Mall Vasant Kunj! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Smart Cafe - Poojan Computer'}, 'wa_id': '919712731217'}], 'messages': [{'from': '919712731217', 'id': 'wamid.HBgMOTE5NzEyNzMxMjE3FQIAEhggNzE2NjE5NTRCOEEzRTJEQTI3Njg0QzRGMEQ5OTQ0QjIA', 'timestamp': '1738237316', 'text': {'body': 'Thank you for contacting poojan mobile! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for contacting poojan mobile! Please let us know how we can help you. None
+bot automation message
+reply_text: None, Samsung smart cafe.. 
+B-19/20 Nilam shopping center Nr Sardar chowk krishnanagar naroda
+Ahmedabad-382345 None
+bot automation message
+reply_text: None, Thank you for contacting Samsung Experience Store Ambience Mall Vasant Kunj! Please let us know how we can help you. None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Experience Store Ambience Mall Vasant Kunj'}, 'wa_id': '919700330100'}], 'messages': [{'from': '919700330100', 'id': 'wamid.HBgMOTE5NzAwMzMwMTAwFQIAEhggMDhBRDU5NzJDQkJGODg4OUM2MzU3RUQ2QTEwNEZFQUUA', 'timestamp': '1738237316', 'text': {'body': 'Thank you for contacting Samsung Experience Store Ambience Mall Vasant Kunj! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'MOBILE EXPERTISE'}, 'wa_id': '917030117777'}], 'messages': [{'from': '917030117777', 'id': 'wamid.HBgMOTE3MDMwMTE3Nzc3FQIAEhggREVFRTY3NDM0NkVFRjQ3QjY4OUZFRUVBNzUyNEMyREUA', 'timestamp': '1738237317', 'text': {'body': 'Thank you for Contacting Samsung SmartCafe-  MOBILE EXPERTISE!\n\nPlease let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung SmartCafe-  MOBILE EXPERTISE!
+
+Please let us know how we can help you. None
+bot automation message
+reply_text: None, Thank you for contacting Samsung Experience Store Ambience Mall Vasant Kunj! Please let us know how we can help you. None
+Updated report 1579 with unique_id 100
+Updated report 1578 with unique_id 100
+Updated report 1578 with unique_id 100
+Received notification: {'status': 'completed', 'unique_id': '6271942742049240', 'report_id': 'MESSAGE3QAZ2D6GP023'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': '3DRealty'}, 'wa_id': '919999319962'}], 'messages': [{'from': '919999319962', 'id': 'wamid.HBgMOTE5OTk5MzE5OTYyFQIAEhggQjM1MjI2QjczQ0M1OEU2RkVEMjdGQzA2QzYxQjEzMkYA', 'timestamp': '1738237488', 'text': {'body': 'Thank you for contacting 3d Realty! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for contacting 3d Realty! Please let us know how we can help you. None
+User Kavita Gulati logged in successfully.
+Send_Sms: kavithagulati@gmail.com, 493713133832404, hiringibn, 1370312897295849, ['919997078583', '919903100501', '919599957405', '919899249654', '919999009384', '918800788821', '918879408859', '919899187948', '919560664333', '919599427155', '917303273060', '919015341595', '917500927684', '919811946045', '918766329168', '919811181367', '919873133190', '919326041114', '918802175636', '918882125757', '919599496102', '919899669129', '919599677114', '917066527654', '917827301096', '919891117338', '918874433535', '919886696225', '919540004495', '919250000570', '919694820737', '919953683774', '919871298877', '919910660388', '918586895874', '918960579650', '918791262671', '917002100133', '919811833462', '917838763789', '919654909740', '919811482845', '918269168751', '919818052562', '918299483696', '917042790940', '919810668866', '919990395359', '917985620653', '919911005029', '918800690584', '918368984128', '917065184876', '919971839889', '919871740909', '919910605780', '919818002015', '919711795550', '919811297656', '919971598855', '919711777692', '918800950615', '919212850225', '919050233783', '917838482837', '918800994990', '917838071549', '919654014353', '919999003282', '918800530648', '918920286363', '918375057580', '917011739359', '919971043676', '919654351497', '918130315254', '919015202085', '919711598126', '919871748122', '919871671671', '919711787478', '919008260360', '919999458006', '919871113997', '917903831298', '919582795259', '919810143939', '918607582985', '918585951525', '918800750429', '919871903311', '919407303638', '919717501001', '919958708410', '919818699274', '919871359652', '919992430444', '919871888470', '918802640986', '918588802563', '919174411151', '918792884566', '919540896707', '919958482892', '919650044565', '917827604897', '919205072215', '919582022248', '918810592425', '919873144984', '919911378536', '919871191289', '918287263441', '919999393099', '917982171434', '919971362474', '919811698720', '919818874694', '919654460421', '917073550020', '918506060321', '918800800924', '918383851997', '918840313028', '919582386875', '919899747802', '919650110745', '917988575683', '919873243000', '919696969244', '919761345007', '918929768848', '919999680286', '919971595427', '917879124746', '919896256203', '919650759854', '919999642958', '919315792891', '918271621147', '919639679422', '918445344561', '919050906135', '919990088889', '919582012311', '919039777903', '917859898333', '919015749150', '919811410009', '918860150213', '919821252343', '918384075079', '918700933301', '919874052125', '919599737900', '918076370239', '918058955862', '919711109458', '919015875901', '918700910621', '919718002454', '919711843245', '919650255883', '919821167969', '918586058896', '919871748089', '919899973357', '917668419734', '918929199936', '918447532823', '919013037667', '918882115977', '919811004686', '918527477902', '919873864648', '919146107668', '919958787605', '918445316201', '919784800375', '918960250608', '919899903666', '918851828540', '918882416054', '919810998886', '918130566605', '919810697651', '919812670332', '919555868019', '918595693116', '919810394569', '917056141561', '919711118179', '919891881842'], ['919555868019', '918595693116', '919810394569', '917056141561', '919711118179', '919891881842'], Neha Candidate Data, []
+Sending messages for user: kavithagulati@gmail.com, campaign title: Neha Candidate Data
+Calculated money data for sending messages: 193
+{'message': 'Messages sent successfully', 'unique_id': '7685409636956729', 'request_id': 'MESSAGE93J9EI72J1SV'}
+Added notification entry for kavithagulati@gmail.com with request ID MESSAGE93J9EI72J1SV and unique ID 7685409636956729
+Messages sent successfully for campaign: Neha Candidate Data, user: kavithagulati@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '7685409636956729', 'report_id': 'MESSAGE93J9EI72J1SV'}
+Updated response MESSAGE93J9EI72J1SV with unique_id 7685409636956729 in end_request_id
+Adding job: message_71 with scheduled time: 2025-01-31 09:00:39+05:30
+Adding job: message_72 with scheduled time: 2025-01-31 09:00:00+05:30
+Adding job: message_71 with scheduled time: 2025-01-31 09:00:39+05:30
+Adding job: message_72 with scheduled time: 2025-01-31 09:00:00+05:30
+Adding job: message_71 with scheduled time: 2025-01-31 09:00:39+05:30
+Adding job: message_72 with scheduled time: 2025-01-31 09:00:00+05:30
+User BigTelInsurance logged in successfully.
+User BigTelInsurance logged in successfully.
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'It solution 4 india'}, 'wa_id': '919711618080'}], 'messages': [{'context': {'from': '919711347474', 'id': 'wamid.HBgMOTE5NzExNjE4MDgwFQIAERgSRDY1QjMwREZBODhGRkQzRjk4AA=='}, 'from': '919711618080', 'id': 'wamid.HBgMOTE5NzExNjE4MDgwFQIAEhgUM0E4OTVBQjE4QzU2NDdBRUI5RTIA', 'timestamp': '1738237661', 'type': 'button', 'button': {'payload': 'Not Interested', 'text': 'Not Interested'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: Not Interested, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'It solution 4 india'}, 'wa_id': '919711618080'}], 'messages': [{'context': {'from': '919711347474', 'id': 'wamid.HBgMOTE5NzExNjE4MDgwFQIAERgSRDY1QjMwREZBODhGRkQzRjk4AA=='}, 'from': '919711618080', 'id': 'wamid.HBgMOTE5NzExNjE4MDgwFQIAEhgUM0E1QTYxQzM0MjIzRjNBNzNFNTMA', 'timestamp': '1738237662', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: Interested, None None
+User Samsung logged in successfully.
+Response status code: 200
+Raw response text: {"message":"Task is being processed in the background. You will be notified when it's complete.","unique_id":"9932490930534838","report_id":"1594"}
+Parsed JSON response: {'message': "Task is being processed in the background. You will be notified when it's complete.", 'unique_id': '9932490930534838', 'report_id': '1594'}
+Updated report 1594 with unique_id 9932490930534838
+Received notification: {'status': 'completed', 'unique_id': '9932490930534838', 'report_id': '1594'}
+Updated report 1594 with unique_id 9932490930534838 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Anshul Yadav'}, 'wa_id': '919473583417'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NDczNTgzNDE3FQIAERgSOTFGNjlCRjY0RjQ5RDZCMkQ4AA=='}, 'from': '919473583417', 'id': 'wamid.HBgMOTE5NDczNTgzNDE3FQIAEhgUM0ZGMTA4RkRDRDE3NUNFODBGRUYA', 'timestamp': '1738238313', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '8532505983055913', 'request_id': 'MESSAGEI5475Q5NX5NY'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919473583417, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '8532505983055913', 'report_id': 'MESSAGEI5475Q5NX5NY'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+Response status code: 200
+Raw response text: {"message":"Task is being processed in the background. You will be notified when it's complete.","unique_id":"2002218947960973","report_id":"1594"}
+Parsed JSON response: {'message': "Task is being processed in the background. You will be notified when it's complete.", 'unique_id': '2002218947960973', 'report_id': '1594'}
+Updated report 1594 with unique_id 2002218947960973
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+Received notification: {'status': 'completed', 'unique_id': '2002218947960973', 'report_id': '1594'}
+Updated report 1594 with unique_id 2002218947960973 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggMUIyOUVBN0Y2RkQ5RTY4MzZBNTk5QzE4MTdFODgyRUQA', 'timestamp': '1738238124', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'Ved Prakash Satija'}, 'wa_id': '919999765130'}], 'messages': [{'context': {'from': '919711347474', 'id': 'wamid.HBgMOTE5OTk5NzY1MTMwFQIAERgSMjI5QjIxMzlGNkI3Qzc1MUVEAA=='}, 'from': '919999765130', 'id': 'wamid.HBgMOTE5OTk5NzY1MTMwFQIAEhggMTNERkE2OEYxRTYxQzY4RjRCRTdBRDBBRTI5NjBDOTQA', 'timestamp': '1738238747', 'type': 'button', 'button': {'payload': 'Not Interested', 'text': 'Not Interested'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: Not Interested, None None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['917889174282'], ['917889174282'], Reminder Pre-Reserve Points Test, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points Test
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '5920878853028199', 'request_id': 'MESSAGEBF92627SX8RS'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEBF92627SX8RS and unique ID 5920878853028199
+Messages sent successfully for campaign: Reminder Pre-Reserve Points Test, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '5920878853028199', 'report_id': 'MESSAGEBF92627SX8RS'}
+Updated response MESSAGEBF92627SX8RS with unique_id 5920878853028199 in end_request_id
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919990913334'], ['919990913334'], Reminder Pre-Reserve Points, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '5654616876200594', 'request_id': 'MESSAGE0T9X0IX4X74D'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE0T9X0IX4X74D and unique ID 5654616876200594
+Messages sent successfully for campaign: Reminder Pre-Reserve Points, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '5654616876200594', 'report_id': 'MESSAGE0T9X0IX4X74D'}
+Updated response MESSAGE0T9X0IX4X74D with unique_id 5654616876200594 in end_request_id
+Updated report 1597 with unique_id 100
+Updated report 1597 with unique_id 100
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['917889174282'], ['917889174282'], Reminder Pre-Reserve Points, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '5096069284951680', 'request_id': 'MESSAGE235H1M68URSS'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE235H1M68URSS and unique ID 5096069284951680
+Messages sent successfully for campaign: Reminder Pre-Reserve Points, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '5096069284951680', 'report_id': 'MESSAGE235H1M68URSS'}
+Updated response MESSAGE235H1M68URSS with unique_id 5096069284951680 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Samsung Cafe'}, 'wa_id': '917247226426'}], 'messages': [{'from': '917247226426', 'id': 'wamid.HBgMOTE3MjQ3MjI2NDI2FQIAEhggRjA5RjQ5RjcxQTczOURENUI3QUQwMjY0NTdFN0NGM0QA', 'timestamp': '1738238123', 'text': {'body': 'Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for Contacting Samsung Smart Cafe! Please let us know how we can help you.😇 None
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919990913334'], ['919990913334'], Reminder Pre-Reserve 11, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve 11
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '4678067324580293', 'request_id': 'MESSAGE5W46498UQZXP'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE5W46498UQZXP and unique ID 4678067324580293
+Messages sent successfully for campaign: Reminder Pre-Reserve 11, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '4678067324580293', 'report_id': 'MESSAGE5W46498UQZXP'}
+Updated response MESSAGE5W46498UQZXP with unique_id 4678067324580293 in end_request_id
+Updated report 1599 with unique_id 100
+Updated report 1599 with unique_id 100
+Error processing form: 'utf-8' codec can't decode byte 0x92 in position 33: invalid start byte
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919415046445'], 'message_type': 'text', 'body': 'Please share you policy copy to generate discounted quote'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+No report_id
+contact_all: None
+No report_id
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919654642919', '917889174282'], ['919654642919', '917889174282'], Reminder Pre-Reserve 11, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve 11
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '9585181409878639', 'request_id': 'MESSAGEZ1161YBD19UD'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEZ1161YBD19UD and unique ID 9585181409878639
+Messages sent successfully for campaign: Reminder Pre-Reserve 11, user: samsungindia@gmail.com
+contact_all: None
+Received notification: {'status': 'completed', 'unique_id': '9585181409878639', 'report_id': 'MESSAGEZ1161YBD19UD'}
+Updated response MESSAGEZ1161YBD19UD with unique_id 9585181409878639 in end_request_id
+No report_id
+contact_all: None
+Updated report 1600 with unique_id 100
+Updated report 1599 with unique_id 100
+Updated report 1600 with unique_id 100
+Internal Server Error: /template-linkage/download/Interested/null/null/
+Response status code: 200
+Raw response text: {"message":"Task is being processed in the background. You will be notified when it's complete.","unique_id":"5286747301291033","report_id":"1594"}
+Parsed JSON response: {'message': "Task is being processed in the background. You will be notified when it's complete.", 'unique_id': '5286747301291033', 'report_id': '1594'}
+Updated report 1594 with unique_id 5286747301291033
+Received notification: {'status': 'completed', 'unique_id': '5286747301291033', 'report_id': '1594'}
+Updated report 1594 with unique_id 5286747301291033 in end_request_id
+Updated report 1600 with unique_id 100
+Updated report 1599 with unique_id 100
+Updated report 1600 with unique_id 100
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforalaxy25, None, ['919990913334'], ['919990913334'], Reminder Pre-Reserve 11, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve 11
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '2085812541952406', 'request_id': 'MESSAGEZ9S8A55H2N1Q'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEZ9S8A55H2N1Q and unique ID 2085812541952406
+Messages sent successfully for campaign: Reminder Pre-Reserve 11, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '2085812541952406', 'report_id': 'MESSAGEZ9S8A55H2N1Q'}
+Updated response MESSAGEZ9S8A55H2N1Q with unique_id 2085812541952406 in end_request_id
+Updated report 1601 with unique_id 100
+Updated report 1601 with unique_id 100
+Internal Server Error: /template-linkage/download/Interested/null/null/
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919838006701'], 'message_type': 'text', 'body': 'Please share policy copy to generate discount on quotation'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+No report_id
+contact_all: None
+Send_Sms: samsungindia@gmail.com, 460844313788449, newutility, None, ['919654642919', '919711340505'], ['919654642919', '919711340505'], test, []
+Sending messages for user: samsungindia@gmail.com, campaign title: test
+Calculated money data for sending messages: 2
+Insufficient coins to proceed.
+{'message': 'Messages sent successfully', 'unique_id': '3813499572302886', 'request_id': 'MESSAGE280X5O9YC6TM'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE280X5O9YC6TM and unique ID 3813499572302886
+Messages sent successfully for campaign: test, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3813499572302886', 'report_id': 'MESSAGE280X5O9YC6TM'}
+Updated response MESSAGE280X5O9YC6TM with unique_id 3813499572302886 in end_request_id
+User samsungindia@gmail.com logged in successfully.
+Send_Sms: samsungindia@gmail.com, 460844313788449, sageforgalaxy25utility, None, ['919654642919'], ['919654642919'], testadmin, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testadmin
+Calculated money data for sending messages: 1
+Insufficient coins to proceed.
+{'message': 'Messages sent successfully', 'unique_id': '3449846150438214', 'request_id': 'MESSAGE1K772AHMIM04'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE1K772AHMIM04 and unique ID 3449846150438214
+Messages sent successfully for campaign: testadmin, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3449846150438214', 'report_id': 'MESSAGE1K772AHMIM04'}
+Updated response MESSAGE1K772AHMIM04 with unique_id 3449846150438214 in end_request_id
+Updated report 1603 with unique_id 100
+Updated report 1603 with unique_id 100
+Updated report 1603 with unique_id 100
+Received notification: {'status': 'completed', 'unique_id': '4766064061495455', 'report_id': 'MESSAGEI6NP1M8Z23L2'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'Hey Ram'}, 'wa_id': '919910692863'}], 'messages': [{'context': {'from': '919711347474', 'id': 'wamid.HBgMOTE5OTEwNjkyODYzFQIAERgSMDRFQURGRUE1QzREQkIwQ0IwAA=='}, 'from': '919910692863', 'id': 'wamid.HBgMOTE5OTEwNjkyODYzFQIAEhggQzBCOTc0NTczMkZCMjU3REJEQTZEQUE0NzhDRkFCMDYA', 'timestamp': '1738240768', 'type': 'button', 'button': {'payload': 'Not Interested', 'text': 'Not Interested'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: Not Interested, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'Arun Neyol'}, 'wa_id': '919999455100'}], 'messages': [{'from': '919999455100', 'id': 'wamid.HBgMOTE5OTk5NDU1MTAwFQIAEhggN0U2MzY1OEVEMThGNzhDOEEzNkI0N0QyNzUwM0IwMjcA', 'timestamp': '1738240785', 'text': {'body': 'STOP'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, STOP None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '391799964022878', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919711347474', 'phone_number_id': '498352686693631'}, 'contacts': [{'profile': {'name': 'Deepak Yadav'}, 'wa_id': '919910338324'}], 'messages': [{'context': {'from': '919711347474', 'id': 'wamid.HBgMOTE5OTEwMzM4MzI0FQIAERgSM0FBMjE1MDdENEY2RUQ4RjE0AA=='}, 'from': '919910338324', 'id': 'wamid.HBgMOTE5OTEwMzM4MzI0FQIAEhggOTIyMkI2RThGMTlBOEYwOThERjI1RDgyN0M2ODkxMUQA', 'timestamp': '1738240992', 'type': 'button', 'button': {'payload': 'Not Interested', 'text': 'Not Interested'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: Not Interested, None None
+No report_id
+contact_all: None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Murari Archan Das'}, 'wa_id': '917906678232'}], 'messages': [{'from': '917906678232', 'id': 'wamid.HBgMOTE3OTA2Njc4MjMyFQIAEhggRjYzQjVBNDZDNUVDNjQ2QTZEQjVFMjYxRDRDN0UwMEIA', 'timestamp': '1738234743', 'text': {'body': 'Hare Krishna 🙏🙏'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hare Krishna 🙏🙏 None
