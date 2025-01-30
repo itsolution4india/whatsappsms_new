@@ -181,7 +181,7 @@ def make_variables_list(df, valid_numbers):
         for col in numeric_cols:
             df[col] = df[col].astype(str)
         
-        var_cols_list = df.iloc[:, 1:].values.tolist()
+        var_cols_list = df.iloc[:, :].values.tolist()
         return var_cols_list
     except Exception as e:
         logger.error(f"Error reading file: {e}")

@@ -34,10 +34,8 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
         "csv_variables": csv_variables if csv_variables else None,
         'request_id': request_id
     }
-    print("variable_list", variable_list)
-    print("csv_variables", csv_variables)
     response = requests.post(url, headers=headers, json=data)
-    print(response.json())
+
     logger.info(response.json())
     if response.status_code == 200:
         response_data = response.json()
