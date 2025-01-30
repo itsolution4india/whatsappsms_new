@@ -129,6 +129,9 @@ def Send_Sms(request):
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+            if not contact_list:
+                messages.error(request, "Number validation failed. Include the country code.")
+                return render(request, "send-sms.html", context)
             total_coins = request.user.marketing_coins + request.user.authentication_coins
             coin_validation = validate_balance(total_coins, len(all_contact))
             if not coin_validation:
@@ -282,6 +285,8 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
     discountnumber = fnn(valid_numbers, discount)
     
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
+    
+    csv_variables = [record for record in csv_variables if record[0] in [num for num in final_list]]
     
     return valid_numbers, final_list, list(set(invalid_numbers)), csv_variables
 
