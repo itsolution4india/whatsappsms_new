@@ -2019,3 +2019,328 @@ No report_id
 contact_all: None
 Template 'itsolutionmarketing' deleted successfully.
 Template 'itsolutionmarketing' deleted successfully.
+Template 'tempnew' deleted successfully.
+Template 'tempnew' deleted successfully.
+Template 'carblasttest' deleted successfully.
+Template 'carblasttest' deleted successfully.
+Template 'carblastupdated' deleted successfully.
+Template 'carblastupdated' deleted successfully.
+Template 'bigtel1' deleted successfully.
+Template 'bigtel1' deleted successfully.
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+Send_Sms: bigtelinsurance@gmail.com, 575436692308716, tem30jan, 1342826456727309, ['919643785867', '919871818589', '918376939018', '917678471513'], ['919643785867', '919871818589', '918376939018', '917678471513'], test30jann, []
+Sending messages for user: bigtelinsurance@gmail.com, campaign title: test30jann
+Calculated money data for sending messages: 4
+{'message': 'Messages sent successfully', 'unique_id': '7260604960724580', 'request_id': 'MESSAGE0ITVVG7307D9'}
+Added notification entry for bigtelinsurance@gmail.com with request ID MESSAGE0ITVVG7307D9 and unique ID 7260604960724580
+Messages sent successfully for campaign: test30jann, user: bigtelinsurance@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '7260604960724580', 'report_id': 'MESSAGE0ITVVG7307D9'}
+Updated response MESSAGE0ITVVG7307D9 with unique_id 7260604960724580 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Suresh'}, 'wa_id': '917678471513'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE3Njc4NDcxNTEzFQIAERgSNURFRDVCRDkyQjQzOEJEQjBEAA=='}, 'from': '917678471513', 'id': 'wamid.HBgMOTE3Njc4NDcxNTEzFQIAEhggNEJEMEI0RDBGNDcxRTIwNkI3RDI0NTZCQjM4QzFEQTMA', 'timestamp': '1738233369', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '5500937324525979', 'request_id': 'MESSAGEM62GXMB198C1'}
+Next reply message sent successfully. Template: tem30jan, Phone Number: 917678471513, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '5500937324525979', 'report_id': 'MESSAGEM62GXMB198C1'}
+Failed to update Message end_request_id No Notifications matches the given query.
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+User Kavita Gulati logged in successfully.
+No report_id
+contact_all: None
+No report_id
+No report_id
+contact_all: None
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+User Samsung logged in successfully.
+Template 'tem30jan' deleted successfully.
+Template 'tem30jan' deleted successfully.
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+User demo2@gmail.com logged in successfully.
+Error processing form: 'NoneType' object is not iterable
+Error processing form: 'NoneType' object is not iterable
+User demo2@gmail.com logged in successfully.
+User Samsung logged in successfully.
+User Samsung logged in successfully.
+User Samsung logged in successfully.
+Error processing form: 'NoneType' object is not iterable
+User Samsung logged in successfully.
+Error processing form: 'NoneType' object is not iterable
+Error processing form: 'NoneType' object is not iterable
+Send_Sms: bigtelinsurance@gmail.com, 575436692308716, temp30jan, 653095523816370, ['917678471513'], ['917678471513'], tst30jan, []
+Sending messages for user: bigtelinsurance@gmail.com, campaign title: tst30jan
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '9589585286909092', 'request_id': 'MESSAGE1D51CX8S5W0A'}
+Added notification entry for bigtelinsurance@gmail.com with request ID MESSAGE1D51CX8S5W0A and unique ID 9589585286909092
+Messages sent successfully for campaign: tst30jan, user: bigtelinsurance@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '9589585286909092', 'report_id': 'MESSAGE1D51CX8S5W0A'}
+Updated response MESSAGE1D51CX8S5W0A with unique_id 9589585286909092 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Suresh'}, 'wa_id': '917678471513'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE3Njc4NDcxNTEzFQIAERgSNkYwQTUxQTM2NzUxNEY3RUU1AA=='}, 'from': '917678471513', 'id': 'wamid.HBgMOTE3Njc4NDcxNTEzFQIAEhggNUIxRkFERTc1NkQxNzExQzNEMUVEOEUxQjIxQUMwNzEA', 'timestamp': '1738234465', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '9771883797609660', 'request_id': 'MESSAGEMTVS21908C0N'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 917678471513, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '9771883797609660', 'report_id': 'MESSAGEMTVS21908C0N'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Error processing form: 'NoneType' object is not iterable
+No report_id
+contact_all: None
+User samsungindia@gmail.com logged in successfully.
+Error processing form: 'NoneType' object is not iterable
+User demo2@gmail.com logged in successfully.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Support ItSolutions4India'}, 'wa_id': '919711340505'}], 'messages': [{'from': '919711340505', 'id': 'wamid.HBgMOTE5NzExMzQwNTA1FQIAEhgUMkYzODhENTM4MTJENzhGODM2QzkA', 'timestamp': '1738234670', 'text': {'body': 'Greetings from IT SOLUTION 4 INDIA 🤝\n\nIT SOLUTION 4 INDIA is a one of the best IT Advertising Company in pan india , \n\nwe provide various type of services in all-over pan India such as 👇🎯\n\n1. 💬Bulk SMS\n2. 📝Lead Generation \n3. 👩\u200d💻Digital Marketing \n4. 📞Voice calls\n5. ☎️IVR Service\n6. 📝Website Development\n7. 🔖E-commerce Management \n8. 🔭Graphic Designing \n9. 📱Election Campaign Management\n\nFor More Information👇\nItsolution4india.com\n\n📞 91-9711347474'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Greetings from IT SOLUTION 4 INDIA 🤝
+
+IT SOLUTION 4 INDIA is a one of the best IT Advertising Company in pan india , 
+
+we provide various type of services in all-over pan India such as 👇🎯
+
+1. 💬Bulk SMS
+2. 📝Lead Generation 
+3. 👩‍💻Digital Marketing 
+4. 📞Voice calls
+5. ☎️IVR Service
+6. 📝Website Development
+7. 🔖E-commerce Management 
+8. 🔭Graphic Designing 
+9. 📱Election Campaign Management
+
+For More Information👇
+Itsolution4india.com
+
+📞 91-9711347474 None
+Send_Sms: bigtelinsurance@gmail.com, 575436692308716, temp30jan, 1387241379308310, ['919621321284', '919811564420', '919811412908', '919532157600', '919717890862', '918954939666', '919927007700', '919953713101', '917607154043', '916396875840', '917011924575', '919557975555', '917905524437', '919336517008', '919967473906', '919415549600', '919711182929', '919575702940', '917351773767', '918130877688', '919810796653', '919990790920', '919415951194', '917417836240', '918840161315', '917905885016', '919557372418', '919650399646', '919557555468', '918957454545', '919999515300', '918285767385', '916371898687', '919911873225', '918800975288', '919795351245', '919810584294', '918800275280', '917985080421', '916394124668', '916393412099', '917408620068', '919910971616', '917037363794', '917532874049', '918400026500', '919415550244', '918742034677', '919311095429', '919650888134', '919953065131', '918360786393', '919911300727', '919870978095', '918601925770', '919760931931', '919810071106', '916386115486', '919839404687', '919792342139', '918920802214', '918299280647', '919839080980', '918318333516', '917500246143', '919012844850', '919818771335', '917503005383', '919616887477', '919412518957', '919839106745', '919415336885', '917830006610', '918770887818', '919415206340', '919012242953', '919648629888', '919811229912', '918475886010', '918126857808', '919415821157', '919897302297', '918851508582', '919837037555', '917905020090', '918285131571', '917905121414', '917669156667', '919897067111', '918700074990', '919760475009', '919774095736', '919927080913', '919839908570', '918439988009', '919598436504', '919759856111', '919810025376', '919696448101', '919639335620', '916283228736', '918887861156', '919012998525', '917827804409', '919650114318', '918756425253', '918279877344', '919415569631', '919838724819', '919964221336', '919667071735', '919308429239', '919755070111', '918194044210', '918171535093', '919473913858', '918826597045', '919412493721', '919821104887', '917752816421', '919990337940', '919026901529', '919415438668', '917895784466', '919756119538', '917007370145', '919819594487', '917889829816', '919935783011', '917428307123', '918285496657', '919454842288', '919999603901', '918957340132', '919634100418', '918287766008', '919818540116', '919838892285', '917500188277', '919560021381', '919889889132', '919971366771', '919536042730', '918979788679', '919721253033', '919897560655', '918756173984', '919818800626', '919838503137', '918510887601', '919312213555', '918077932975', '918130556353', '919837122833', '919045763184', '919311447676', '919560450535', '919837686257', '918299413187', '917706057696', '918909476349', '918279417477', '917388479111', '919648330366', '918858475015', '918765533967', '919690011990', '917310266104', '917394881344', '918840929920', '918828141634', '919695894077', '919450691213', '919936535955', '917355024311', '919935099951', '917905814211', '917607376748', '916306911906', '919838771172', '919839743211', '919310925179', '919810176861', '918958555555', '919455159443', '919871569965', '919810547778', '919321035681', '918287636023', '919811774079', '918052055127', '919412713223', '919415311392', '919415048354', '919415764433', '919999821249', '917860133028', '918813994462', '919695742828', '919528688016', '919811022308', '919997240919', '917417405026', '919837003934', '919560263150', '918285455750', '919897769167', '919811204285', '919721510043', '918447042955', '918527266995', '919319388369', '918318250736', '918953271913', '919654609360', '918868942383', '919399979791', '917895608534', '919837483003', '917311190197', '917060343051', '918057711112', '918126666666', '919897550477', '918090631313', '918447151380', '919896232341', '919899945100', '919717632380', '917618897883', '919696243888', '919811880361', '918737063189', '919807663871', '917275986386', '919897198116', '917800909506', '919910484390', '919616081836', '919927713949', '919450454020', '919473583753', '919454480974', '919837719966', '919810724622', '916393577242', '918869886748', '919999135165', '917830033008', '917503779715', '918266841265', '918960163520', '918299202739', '919794779079', '919599020390', '918840018448', '919557673495', '918085376763', '916394894216', '917599347432', '918604041554', '917500844670', '919984825517', '917720020393', '919760227006', '919910104576', '918130734146', '919811774918', '919369160940', '919826206275', '919818194376', '919212705619', '919811744568', '918218846347', '919977189039', '919839979951', '917839378851', '919711105309', '919837026369', '919411932231', '918875760315', '917999227905', '918826301308', '917982420206', '919935111111', '919769895142', '919837303172', '917017267882', '916396591362', '919415072090', '919839030243', '919911428160', '916386047988', '917088469194', '917060050056', '916395415552', '917042663980', '919997435825', '918896252425', '919369452015', '918318599270', '919810685630', '919506121258', '919358099202', '918960405063', '919415918449', '919897683302', '917454075204', '919837533272', '919258011002', '916005359244', '919795338888', '918160427335', '918090550032', '919917165400', '919897197319', '919873797370', '919919011299', '918650369464', '917018494288', '919810732133', '918826158170', '919997778020', '918006199499', '919990272422', '918700220085', '919634776773', '916392338411', '917905500863', '919616662954', '919639076963', '919690578887', '919370709090', '919910141190', '918318976664', '919919992853', '919319800858', '919799210531', '919627520538', '917417689847', '919891917258', '918938013333', '918933037000', '918923445701', '919389014115', '916386069680', '919415932966', '919582123453', '919412246132', '918410620181', '919627686288', '918882743081', '919411242843', '916393592867', '919935855453', '919259177445', '919910722599', '917499604922', '917007842281', '918630088272', '919650948241', '919335917607', '919634573511', '919711127716', '919773104612', '917275634076', '917867025188', '919555824091', '919811310035', '919839212036', '919410245031', '917905144682', '918756658021', '919548602010', '919598322222', '917897939556', '919719769916', '918077406598', '919810036495', '917905565426', '917088468526', '919897812207', '919717937118', '918791425236', '919811776746', '919837367903', '919455073738', '919793102124', '919899256134', '919560094455', '918384818471', '919999175701', '917307364157', '918192803444', '919555555106', '918881703417', '919639440001', '919559600476', '919935738478', '919897811611', '919455083253', '919690564916', '919027118413', '919997770575', '919918202123', '919810395486', '918826132435', '918445813539', '919911118906', '919412833441', '919953954264', '919993381933', '918979310444', '919910792150', '919719964276', '919415016285', '918826403330', '917838287704', '918394045873', '916307671282', '919389928071', '919555340093', '917269093599', '919452064947', '917905592018', '919871413754', '919455706809', '919719877398', '918979738320', '919473826690', '919455777734', '919451268229', '919599948322', '919336119559', '919355369667', '919451659762', '919758558157', '919720002202', '917906678232', '918750735956', '919719234869', '919930676405', '919818697915', '919415046445', '919838006701', '918290050862', '919897527265', '919717014228', '919990824630', '919897343032', '917906453152', '919717811766', '917753893235', '917007011556', '919305101725', '918532927964', '919871575874', '916392870023', '919455056925', '919519491386', '918077306570', '918299393907', '919871647204', '919027790320', '917872686353', '917982162908', '919599786427', '919870698329', '918899251954', '919999565424', '917892888500', '919654948490', '917827783967', '917985628417', '919811956501', '917466060942', '918445223196', '917602771393', '916393092567', '919450068412', '917000526619', '919956633112', '919910379312', '919368401958', '919005321999', '919336288577', '919005852460', '918368771955', '919867985259', '918958042724', '919411824882', '919639894341', '919794816510', '916392916327', '919359976003', '919921994799', '919958473173', '919634410755', '918865869930', '919643672907', '918218359565', '916394699816', '917451080899', '916396203081', '919897144129', '919835851800', '919957709615', '919997312173', '919818619972', '919899731401', '918382983977', '919452928388', '919899056432', '919473583417', '918445249236', '919654127090', '919540117661', '919711877094', '919639351911', '918077559959', '918860069976', '919456409403', '919839196788', '918477925771', '917417315255', '919811419062', '919557844868', '919910078608', '919599314210', '919026668499', '916396089389', '919760429674', '916387321039', '919560711206', '919368113341', '919897068940', '918840257661', '919818124004', '919719822407', '919559776949', '919310215986', '919917044522', '918433296933', '918601211000', '919650900631', '918273108957', '919565667702', '917275225275', '916393097321', '919719616654', '919696069078', '919936012703', '918077780026', '919258574446', '918426022240', '919810962891', '919717304021', '919936262920', '917355655100', '919084007267', '918112398267', '919717922800', '918795225120', '919453018803', '919868516106', '919454540081', '919997433997', '919818021191', '919971914518', '917860166666', '919792171383', '917054139453', '918808896875', '919616529948', '917738677051', '918573810460', '918800544570', '919457711977', '918650225216', '919839054999', '919407205279', '918126999993', '919935381211', '919897360301', '919555666626', '919410874269', '919837564989', '917985792795', '918755447780', '917985267299', '919837058671', '918423602553', '919560598525', '919599930298', '919450217450', '919910866088', '919839308652', '919927429794', '919997870566', '918630401300', '919407303446', '918826283347', '919648919325', '919810210910', '917508519167', '919899995866', '919881688954', '919598594444', '918630393136', '917895569411', '918303708908', '919793909693', '919044590125', '917239066348', '919700063222', '919219612024', '919760777900', '919457038565', '919781576903', '918700887706', '919810541366', '919795104239', '919792016445', '919415529309', '917275747400', '917068951895', '918800234380', '917007104004', '919408503129', '919415569000', '918574700650', '918887922683', '919717765563', '917607119100', '919839019056', '919971927348', '918840612472', '919818920878', '919690174496', '919412457586', '919315155670', '919212392444', '917607190491', '918218535948', '918392925394', '919839602862', '919997939181', '918920918900', '919634569494', '919818337989', '919837609098', '918755181225', '919717128782', '919910959762', '919919761108', '919810012641', '918433039240', '919958295307', '917571958411', '916394255129', '919639386205', '919999453344', '919997173163', '919839866337', '919810846347', '916387232132', '918447762903', '919811181439', '917983053385', '919005601462', '919415844593', '919415133023', '918750020300', '916261692970', '919532142383', '919919292430', '919557718190', '918887528335', '919582155200', '916395833729', '919506222503', '919758455925', '919719358575', '919897445711'], ['918954939666', '919927007700', '917607154043', '919967473906', '918130877688', '919999515300', '919795351245', '919810584294', '918800275280', '917985080421', '919910971616', '919650888134', '919810071106', '919792342139', '919415336885', '919415206340', '919897302297', '919837037555', '919412493721', '919560021381', '919889889132', '919971366771', '919818800626', '918510887601', '919837122833', '918299413187', '918765533967', '919690011990', '919936535955', '916306911906', '919310925179', '919811022308', '918447042955', '918318250736', '918868942383', '917311190197', '917830033008', '917599347432', '919910104576', '919711105309', '919935111111', '919769895142', '919839030243', '918960405063', '919837533272', '919258011002', '918090550032', '919919011299', '919810732133', '919997778020', '916392338411', '918933037000', '919627686288', '919935855453', '919910722599', '917499604922', '919839212036', '919410245031', '919719769916', '917088468526', '919555555106', '919997770575', '919911118906', '917838287704', '919555340093', '917905592018', '919455777734', '919930676405', '919818697915', '919415046445', '919838006701', '919990824630', '917753893235', '916394699816', '919839196788', '919910078608', '919368113341', '919565667702', '918795225120', '919454540081', '918573810460', '918650225216', '917985792795', '919560598525', '919910866088', '919927429794', '919810210910', '919899995866', '919700063222', '919760777900', '918700887706', '919415529309', '917068951895', '919971927348', '919690174496', '919997173163', '919557718190', '918887528335', '919582155200', '919897445711', '919711127716', '919773104612', '917275634076', '917867025188', '919555824091', '919811310035', '917905144682', '918756658021', '919548602010', '919598322222', '917897939556', '918077406598', '919810036495', '917905565426', '919897812207', '919717937118', '918791425236', '919811776746', '919837367903', '919455073738', '919793102124', '919899256134', '919560094455', '918384818471', '919999175701', '917307364157', '918192803444', '918881703417', '919639440001', '919559600476', '919935738478', '919897811611', '919455083253', '919690564916', '919027118413', '919918202123', '919810395486', '918826132435', '918445813539', '919412833441', '919953954264', '919993381933', '918979310444', '919910792150', '919719964276', '919415016285', '918826403330', '918394045873', '916307671282', '919389928071', '917269093599', '919452064947', '919871413754', '919455706809', '919719877398', '918979738320', '919473826690', '919451268229', '919599948322', '919336119559', '919355369667', '919451659762', '919758558157', '919720002202', '917906678232', '918750735956', '919719234869', '918290050862', '919897527265', '919717014228', '919897343032', '917906453152', '919717811766', '917007011556', '919305101725', '918532927964', '919871575874', '916392870023', '919455056925', '919519491386', '918077306570', '918299393907', '919871647204', '919027790320', '917872686353', '917982162908', '919599786427', '919870698329', '918899251954', '919999565424', '917892888500', '919654948490', '917827783967', '917985628417', '919811956501', '917466060942', '918445223196', '917602771393', '916393092567', '919450068412', '917000526619', '919956633112', '919910379312', '919368401958', '919005321999', '919336288577', '919005852460', '918368771955', '919867985259', '918958042724', '919411824882', '919639894341', '919794816510', '916392916327', '919359976003', '919921994799', '919958473173', '919634410755', '918865869930', '919643672907', '918218359565', '917451080899', '916396203081', '919897144129', '919835851800', '919957709615', '919997312173', '919818619972', '919899731401', '918382983977', '919452928388', '919899056432', '919473583417', '918445249236', '919654127090', '919540117661', '919711877094', '919639351911', '918077559959', '918860069976', '919456409403', '918477925771', '917417315255', '919811419062', '919557844868', '919599314210', '919026668499', '916396089389', '919760429674', '916387321039', '919560711206', '919897068940', '918840257661', '919818124004', '919719822407', '919559776949', '919310215986', '919917044522', '918433296933', '918601211000', '919650900631', '918273108957', '917275225275', '916393097321', '919719616654', '919696069078', '919936012703', '918077780026', '919258574446', '918426022240', '919810962891', '919717304021', '919936262920', '917355655100', '919084007267', '918112398267', '919717922800', '919453018803', '919868516106', '919997433997', '919818021191', '919971914518', '917860166666', '919792171383', '917054139453', '918808896875', '919616529948', '917738677051', '918800544570', '919457711977', '919839054999', '919407205279', '918126999993', '919935381211', '919897360301', '919555666626', '919410874269', '919837564989', '918755447780', '917985267299', '919837058671', '918423602553', '919599930298', '919450217450', '919839308652', '919997870566', '918630401300', '919407303446', '918826283347', '919648919325', '917508519167', '919881688954', '919598594444', '918630393136', '917895569411', '918303708908', '919793909693', '919044590125', '917239066348', '919219612024', '919457038565', '919781576903', '919810541366', '919795104239', '919792016445', '917275747400', '918800234380', '917007104004', '919408503129', '919415569000', '918574700650', '918887922683', '919717765563', '917607119100', '919839019056', '918840612472', '919818920878', '919412457586', '919315155670', '919212392444', '917607190491', '918218535948', '918392925394', '919839602862', '919997939181', '918920918900', '919634569494', '919818337989', '919837609098', '918755181225', '919717128782', '919910959762', '919919761108', '919810012641', '918433039240', '919958295307', '917571958411', '916394255129', '919639386205', '919999453344', '919839866337', '919810846347', '916387232132', '918447762903', '919811181439', '917983053385', '919005601462', '919415844593', '919415133023', '918750020300', '916261692970', '919532142383', '919919292430', '916395833729', '919506222503', '919758455925', '919719358575'], 30jan700, []
+Sending messages for user: bigtelinsurance@gmail.com, campaign title: 30jan700
+Calculated money data for sending messages: 684
+{'message': 'Messages sent successfully', 'unique_id': '2469758765270047', 'request_id': 'MESSAGETJGMH5782L84'}
+Added notification entry for bigtelinsurance@gmail.com with request ID MESSAGETJGMH5782L84 and unique ID 2469758765270047
+Messages sent successfully for campaign: 30jan700, user: bigtelinsurance@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '2469758765270047', 'report_id': 'MESSAGETJGMH5782L84'}
+Updated response MESSAGETJGMH5782L84 with unique_id 2469758765270047 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Dara Ply & Hardware Store'}, 'wa_id': '918112398267'}], 'messages': [{'from': '918112398267', 'id': 'wamid.HBgMOTE4MTEyMzk4MjY3FQIAEhgUMkY1NkVCNUQyQTcxNEE3RDJGMTUA', 'timestamp': '1738234712', 'text': {'body': 'Thank you for your message.Danish Khan is unavailable right now, but will respond as soon as possible.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for your message.Danish Khan is unavailable right now, but will respond as soon as possible. None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Vikram Jha'}, 'wa_id': '919717922800'}], 'messages': [{'from': '919717922800', 'id': 'wamid.HBgMOTE5NzE3OTIyODAwFQIAEhggNjEyRUMxMjI4Mzk0QkUwNzgwNUQ4MUMyNDc2MjJCQkQA', 'timestamp': '1738234713', 'text': {'body': 'Thank you for contacting VAlliance Financial Consultancy Pvt Ltd! Please let us know how we can help you.'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Thank you for contacting VAlliance Financial Consultancy Pvt Ltd! Please let us know how we can help you. None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Prakhar Parmar'}, 'wa_id': '919717128782'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NzE3MTI4NzgyFQIAERgSQjgzQkFBQzVBRTczNDY4MURBAA=='}, 'from': '919717128782', 'id': 'wamid.HBgMOTE5NzE3MTI4NzgyFQIAEhggMzZEMDg2QzIwNzAyMDA2MTFGNTlFMkUyQUNFQzQ2QTAA', 'timestamp': '1738234723', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '8184418832352018', 'request_id': 'MESSAGE5OUCR9ZF5245'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919717128782, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '8184418832352018', 'report_id': 'MESSAGE5OUCR9ZF5245'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Jitendar Gupta'}, 'wa_id': '919837122833'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5ODM3MTIyODMzFQIAERgSREY3N0M3MDZERDE2OEFFMDk0AA=='}, 'from': '919837122833', 'id': 'wamid.HBgMOTE5ODM3MTIyODMzFQIAEhggNEZEQTU4RjAyQ0RDODFFRTU1NjdCNzUyMjIxNjAzQUQA', 'timestamp': '1738234728', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Prime Leather World'}, 'wa_id': '919919761108'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5OTE5NzYxMTA4FQIAERgSOTgzN0Y5NTgwOEZFRTA2Mzc0AA=='}, 'from': '919919761108', 'id': 'wamid.HBgMOTE5OTE5NzYxMTA4FQIAEhgUM0FFRDIwNzMwQkVEQTQ3OEVGQzQA', 'timestamp': '1738234732', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+Error processing form: 'NoneType' object is not iterable
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Murari Archan Das'}, 'wa_id': '917906678232'}], 'messages': [{'from': '917906678232', 'id': 'wamid.HBgMOTE3OTA2Njc4MjMyFQIAEhggRjYzQjVBNDZDNUVDNjQ2QTZEQjVFMjYxRDRDN0UwMEIA', 'timestamp': '1738234743', 'text': {'body': 'Hare Krishna 🙏🙏'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hare Krishna 🙏🙏 None
+User Dhruv@gmail.com logged in successfully.
+Error processing form: 'NoneType' object is not iterable
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919717128782'], 'message_type': 'text', 'body': 'Please share you policy copy to generate discounted quote'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+User Kavita Gulati logged in successfully.
+No report_id
+contact_all: None
+Received notification: {'status': 'completed', 'unique_id': '0023173119061868', 'report_id': 'MESSAGE455SFPH043GU'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': '9773104612'}, 'wa_id': '919773104612'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NzczMTA0NjEyFQIAERgSQTUyNUUwRDhDMkM3MTZFOTM0AA=='}, 'from': '919773104612', 'id': 'wamid.HBgMOTE5NzczMTA0NjEyFQIAEhggMTlCNTIzMjg4NDM0MDA0QTU2REYwMUVBQUI1MjFEOTIA', 'timestamp': '1738234816', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': '9773104612'}, 'wa_id': '919773104612'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NzczMTA0NjEyFQIAERgSQTUyNUUwRDhDMkM3MTZFOTM0AA=='}, 'from': '919773104612', 'id': 'wamid.HBgMOTE5NzczMTA0NjEyFQIAEhggRTVGODQzNTEyMEI5MzI1REVEMzkzN0JEOEE3NjAzQkUA', 'timestamp': '1738234819', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '2288354473167809', 'request_id': 'MESSAGE17911KNHF9RD'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919773104612, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '2288354473167809', 'report_id': 'MESSAGE17911KNHF9RD'}
+Failed to update Message end_request_id No Notifications matches the given query.
+User samsungindia@gmail.com logged in successfully.
+Send_Sms: samsungindia@gmail.com, 460844313788449, weddingwisesh, 1265044144584151, ['916361161836', '919711340505'], ['916361161836', '919711340505'], testas, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testas
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '3087404201870669', 'request_id': 'MESSAGEO5RI609VI82M'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEO5RI609VI82M and unique ID 3087404201870669
+Messages sent successfully for campaign: testas, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3087404201870669', 'report_id': 'MESSAGEO5RI609VI82M'}
+Updated response MESSAGEO5RI609VI82M with unique_id 3087404201870669 in end_request_id
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919773104612'], 'message_type': 'text', 'body': 'Please share you policy copy to generate discounted quote'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+No report_id
+contact_all: None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'mnrmsaroj'}, 'wa_id': '919792016445'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NzkyMDE2NDQ1FQIAERgSOTU3QzQyNUNCQjI2RTU3RkNGAA=='}, 'from': '919792016445', 'id': 'wamid.HBgMOTE5NzkyMDE2NDQ1FQIAEhggRkZDMjVFNzhDMDY3OUY1NDI2RTUxMDlGRDI1NDNEODQA', 'timestamp': '1738234996', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '8175458340724053', 'request_id': 'MESSAGEK6CNT54A5B57'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919792016445, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '8175458340724053', 'report_id': 'MESSAGEK6CNT54A5B57'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Send_Sms: samsungindia@gmail.com, 460844313788449, reeserveoints, None, ['919654642919', '919711340505'], ['919654642919', '919711340505'], testnew, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testnew
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '3854151343808766', 'request_id': 'MESSAGE6K801VB3RN8D'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE6K801VB3RN8D and unique ID 3854151343808766
+Messages sent successfully for campaign: testnew, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3854151343808766', 'report_id': 'MESSAGE6K801VB3RN8D'}
+Updated response MESSAGE6K801VB3RN8D with unique_id 3854151343808766 in end_request_id
+Updated report 1585 with unique_id 100
+Updated report 1585 with unique_id 100
+Updated report 1585 with unique_id 100
+Updated report 1585 with unique_id 100
+Updated report 1585 with unique_id 100
+Updated report 1585 with unique_id 100
+No report_id
+contact_all: None
+Send_Sms: samsungindia@gmail.com, 460844313788449, reeserveoints, None, ['919654642919'], ['919654642919'], test, []
+Sending messages for user: samsungindia@gmail.com, campaign title: test
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '4544936494175961', 'request_id': 'MESSAGE95UZGD53W28O'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE95UZGD53W28O and unique ID 4544936494175961
+Messages sent successfully for campaign: test, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '4544936494175961', 'report_id': 'MESSAGE95UZGD53W28O'}
+Updated response MESSAGE95UZGD53W28O with unique_id 4544936494175961 in end_request_id
+No report_id
+contact_all: None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'SS HOSPITALITY _  BHAVYANSH KUMAR FOUJDAR'}, 'wa_id': '918920918900'}], 'messages': [{'from': '918920918900', 'id': 'wamid.HBgMOTE4OTIwOTE4OTAwFQIAEhggNEM4MjA0OTM5MDQyNjcyQzM3MTRBRUMyN0I5NDUwOEIA', 'timestamp': '1738234716', 'text': {'body': 'NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, NAMASKAR 🙏TEAM  SS HOSPITALITY THANKS TO CONNECTING WITH US  WE WILL COMMUNICATE WITH YOU VERY  -🔜 None
+Updated report 1586 with unique_id 100
+Updated report 1586 with unique_id 100
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'AP WOOD PLYWOOD'}, 'wa_id': '919838006701'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5ODM4MDA2NzAxFQIAERgSN0ExQUVDNzZENERFRUZFN0VDAA=='}, 'from': '919838006701', 'id': 'wamid.HBgMOTE5ODM4MDA2NzAxFQIAEhggMjAxNDY1ODkzMDY0QzZEODU5MTgyNUNFNzc4MkE5OTgA', 'timestamp': '1738235451', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '9243632980306663', 'request_id': 'MESSAGEJ39946RL0CEP'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919838006701, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '9243632980306663', 'report_id': 'MESSAGEJ39946RL0CEP'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'PUSHPENDRA MISHRA'}, 'wa_id': '919793102124'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NzkzMTAyMTI0FQIAERgSRjBDN0M5Q0RCNzMwMEIyMEE5AA=='}, 'from': '919793102124', 'id': 'wamid.HBgMOTE5NzkzMTAyMTI0FQIAEhggNkVFRjM1MzI5M0U0MzkwMkI4QTVBNDY3RTQ5QUU4ODQA', 'timestamp': '1738235473', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Ajey'}, 'wa_id': '918303708908'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE4MzAzNzA4OTA4FQIAERgSMDJFNkVCRUI0MEU2RjNFRUQyAA=='}, 'from': '918303708908', 'id': 'wamid.HBgMOTE4MzAzNzA4OTA4FQIAEhgUM0EwRUZDRUY1RTcwMTI4QjZEQzMA', 'timestamp': '1738235600', 'type': 'button', 'button': {'payload': 'STOP', 'text': 'STOP'}}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: STOP, None None
+Forbidden (CSRF token from the 'X-Csrftoken' HTTP header incorrect.): /delete_report/1415/
+Send_Sms: demo2@gmail.com, 244226048784189, expertestatenew, 1657271721808393, ['+918572002877'], ['+918572002877'], expertestatenew, []
+Sending messages for user: demo2@gmail.com, campaign title: expertestatenew
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '2054597704398784', 'request_id': 'MESSAGEJB8S6N232Q1N'}
+Added notification entry for demo2@gmail.com with request ID MESSAGEJB8S6N232Q1N and unique ID 2054597704398784
+Messages sent successfully for campaign: expertestatenew, user: demo2@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '2054597704398784', 'report_id': 'MESSAGEJB8S6N232Q1N'}
+Updated response MESSAGEJB8S6N232Q1N with unique_id 2054597704398784 in end_request_id
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919792016445'], 'message_type': 'text', 'body': 'Please share you policy copy to generate discounted quote'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+User Samsung logged in successfully.
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+No report_id
+contact_all: None
+Error processing form: 'id'
+Send_Sms: Dhruv@gmail.com, 346085425263787, twosastasmall, 1018086696872970, ['919711340505'], ['919711340505'], test, []
+Sending messages for user: Dhruv@gmail.com, campaign title: test
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '9483218177629741', 'request_id': 'MESSAGEFU4TZ813UF40'}
+Added notification entry for Dhruv@gmail.com with request ID MESSAGEFU4TZ813UF40 and unique ID 9483218177629741
+Messages sent successfully for campaign: test, user: Dhruv@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '9483218177629741', 'report_id': 'MESSAGEFU4TZ813UF40'}
+Updated response MESSAGEFU4TZ813UF40 with unique_id 9483218177629741 in end_request_id
+Updated report 1587 with unique_id 100
+Updated report 1587 with unique_id 100
+Send_Sms: samsungindia@gmail.com, 460844313788449, reeserveoints, None, ['918789666856'], ['918789666856'], Reminder Pre-Reserve Points, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Reminder Pre-Reserve Points
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '6764663287316542', 'request_id': 'MESSAGEIS3Y2587I0PV'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEIS3Y2587I0PV and unique ID 6764663287316542
+Messages sent successfully for campaign: Reminder Pre-Reserve Points, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '6764663287316542', 'report_id': 'MESSAGEIS3Y2587I0PV'}
+Updated response MESSAGEIS3Y2587I0PV with unique_id 6764663287316542 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Sahil'}, 'wa_id': '918572002877'}], 'messages': [{'context': {'from': '919599087996', 'id': 'wamid.HBgMOTE4NTcyMDAyODc3FQIAERgSQkREMzM2RTYwRkY1NzJFRTMwAA=='}, 'from': '918572002877', 'id': 'wamid.HBgMOTE4NTcyMDAyODc3FQIAEhggNDAzQzQ2NTZFREMzQzJFOEVCQzRBNTI1MzEzMDgwNzgA', 'timestamp': '1738235723', 'type': 'button', 'button': {'payload': 'Intrested', 'text': 'Intrested'}}]}, 'field': 'messages'}]}]}
+reply_text: Intrested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '3180888446944595', 'request_id': 'MESSAGECF2NP112K0C5'}
+Next reply message sent successfully. Template: dlfnewtesting, Phone Number: 918572002877, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '3180888446944595', 'report_id': 'MESSAGECF2NP112K0C5'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Updated report 1587 with unique_id 100
+No report_id
+contact_all: None
+No report_id
+contact_all: None
