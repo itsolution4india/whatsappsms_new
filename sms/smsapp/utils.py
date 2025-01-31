@@ -130,8 +130,12 @@ def get_template_details_by_name(token, waba_id, template_name):
         logging.error(f"Response: {response.text}")
         return None
 
-def validate_balance(balance, total_numbers):
-    if balance > total_numbers:
+def validate_balance(request, total_numbers, category=None):
+    marketing_coins = request.user.marketing_coins
+    auth_coins = request.user.authentication_coins
+    if category == "MARKETING" and marketing_coins >= total_numbers:
+        return True
+    elif (category == 'AUTHENTICATION' or category == 'UTILITY') and auth_coins >= total_numbers:
         return True
     else:
         return False
@@ -186,3 +190,12 @@ def make_variables_list(df, valid_numbers):
     except Exception as e:
         logger.error(f"Error reading file: {e}")
         return None
+    
+def get_template_details(campaign_list, template_name, required_data=None):
+    for campaign in campaign_list:
+        if campaign['template_name'] == template_name:
+            if required_data:
+                return campaign[required_data]  
+            else:
+                return campaign
+    return None

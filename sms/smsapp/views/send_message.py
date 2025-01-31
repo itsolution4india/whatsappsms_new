@@ -7,7 +7,7 @@ import json, re, openpyxl
 from ..functions.template_msg import fetch_templates
 from django.utils.timezone import now
 from ..functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
-from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list
+from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list, get_template_details
 from .auth import check_user_permission
 from ..functions.flows import send_flow_messages_with_report, send_carousel_messages_with_report
 from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
@@ -125,20 +125,24 @@ def Send_Sms(request):
             
             if (not campaign_title or not template_name) and action_type == "submit":
                 messages.error(request, "Campaign title and template name are required.")
-                return render(request, "send-sms.html", context)
+                return redirect('send-sms')
          
             discount = show_discount(request.user)
             all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
-            print(all_contact, contact_list, invalid_numbers, csv_variables)
-            print(media_id)
             if not contact_list:
                 messages.error(request, "Number validation failed. Include the country code.")
-                return render(request, "send-sms.html", context)
-            total_coins = request.user.marketing_coins + request.user.authentication_coins
-            coin_validation = validate_balance(total_coins, len(all_contact))
+                return redirect('send-sms')
+            try:
+                detailes = get_template_details(campaign_list, template_name)
+                category = detailes['category']
+            except Exception as e:
+                category = None
+                logger.error(f"Failed get template category {str(e)}")
+                
+            coin_validation = validate_balance(request, len(all_contact), category)
             if not coin_validation:
-                messages.error(request, "Insufficient balance. Please update.")
-                return render(request, "send-sms.html", context)
+                messages.error(request, "Insufficient balance. Recharge to continue our services.")
+                return redirect('send-sms')
             logger.info(f"Send_Sms: {current_user}, {display_phonenumber_id(request)}, {template_name}, {media_id}, {all_contact}, {contact_list}, {campaign_title}, {submitted_variables}")
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables)
@@ -376,10 +380,16 @@ def send_flow_message(request):
         discount = show_discount(request.user)
         all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
-        total_coins = request.user.marketing_coins + request.user.authentication_coins
-        coin_validation = validate_balance(total_coins, len(all_contact))
+        try:
+            detailes = get_template_details(campaign_list, flow_name)
+            category = detailes['category']
+        except Exception as e:
+            category = None
+            logger.error(f"Failed get template category {str(e)}")
+            
+        coin_validation = validate_balance(request, len(all_contact), category)
         if not coin_validation:
-            messages.error(request, "Insufficient balance. Please update.")
+            messages.error(request, "Insufficient balance. Recharge to continue our services.")
             return render(request, "send-flow.html", context)
         logger.info(f"Send_Flow: {current_user}, {phone_id}, {campaign_list}, {flow_name}, {all_contact}, {contact_list}, {campaign_title}")
         try:
@@ -470,10 +480,16 @@ def send_carousel_messages(request):
         discount = show_discount(request.user)
         all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
-        total_coins = request.user.marketing_coins + request.user.authentication_coins
-        coin_validation = validate_balance(total_coins, len(all_contact))
+        try:
+            detailes = get_template_details(campaign_list, tempalate_name)
+            category = detailes['category']
+        except Exception as e:
+            category = None
+            logger.error(f"Failed get template category {str(e)}")
+            
+        coin_validation = validate_balance(request, len(all_contact), category)
         if not coin_validation:
-            messages.error(request, "Insufficient balance. Please update.")
+            messages.error(request, "Insufficient balance. Recharge to continue our services.")
             return render(request, "send-carousel.html", context)
         try:
             send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, template_details)

@@ -225,11 +225,11 @@
                         {% for report in report_list %}
                         <tr id="report-row-{{ report.id }}">
                             <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                            <td>{{ report.message_date }}</td>
+                            <td style="width: 150px;">{{ report.message_date }}</td>
                             <td>{{ report.campaign_title }}</td>
                             <td>{{ report.template_name }}</td>
                             <td>{{ report.message_delivery }}</td>
-                            <td>
+                            <td style="width: 200px;">
                                 {% if report.template_name in template_names %}
                                 {% if report.end_request_id != 0 %}
                                     <div class="btn-group" role="group">
