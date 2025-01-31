@@ -45,7 +45,7 @@ def Reports(request):
     
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None, report_id=None):
-    if report_id:
+    if report_id and report_id !='null':
         logger.info(f"report_id: {report_id}")
         report = get_object_or_404(ReportInfo, id=report_id)
         Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
