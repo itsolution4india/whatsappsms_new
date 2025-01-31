@@ -90,7 +90,9 @@
     {% if has_error %}
     <div id="error-container" class="error-modal">
         <div class="error-content">
-            <span class="close-btn">&times;</span>
+            <span onClick="previous()" 
+                id="backward" class="close-btn">&times;
+            </span>
             <h2 class="error-title">
                 <i class="error-icon">!</i> 
                 {{ error.type|default:"Error" }}
@@ -352,7 +354,7 @@
                                             <div class="form-group buttons_bg ">
                                                 <label for="websiteButtonName" class="form-label">Button
                                                     Name:</label>
-                                                <input type="text" id="buttonNameWeb" name="websitebuttonTwo"
+                                                <input type="text" id="buttonNameWeb2" name="websitebuttonTwo"
                                                     placeholder="Enter button name" class="form-control">
 
                                                 <label for="websiteUrl" class="form-label mt-3">Website
@@ -466,7 +468,7 @@
                                                 </div>
                                             </div>
                                             <div
-                                                style="width: 100%; height: 70px; background-color: white; text-indent: 20px; margin-top: 70px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10; border-radius: 5px;">
+                                                style="width: 100%; height: 120px; background-color: white; text-indent: 20px; margin-top: 70px; font-size: 13px; font-weight: 700; letter-spacing: 1px; position: absolute; bottom: 0; z-index: 10; border-radius: 5px;">
                                                 <div style="display: block;" id="caller">
                                                     <i class='bx bx-phone-call hidden' style='color:#0342d4;'
                                                         id="call-foot">
@@ -484,6 +486,34 @@
 
                                                 <div class="mt-3" style="display: block;" id="qickreplay">
                                                     <i class='bx bx-globe hidden' style='color:#195bf4;' id="web-foot">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="qickreplay">
+                                                    <i class='bx bx-globe hidden' style='color:#195bf4;' id="web-foot2">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="qickreplay">
+                                                    <i class='bx bx-reply hidden' style='color:#195bf4;' id="web-foot3">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="qickreplay">
+                                                    <i class='bx bx-reply hidden' style='color:#195bf4;' id="web-foot4">
+                                                        <p style="display: block; font-size: 12px;">
+                                                        </p>
+                                                    </i>
+                                                </div>
+
+                                                <div class="mt-3" style="display: block;" id="qickreplay">
+                                                    <i class='bx bx-reply hidden' style='color:#195bf4;' id="web-foot5">
                                                         <p style="display: block; font-size: 12px;">
                                                         </p>
                                                     </i>
@@ -701,7 +731,15 @@
                         var callExtension = document.getElementById('buttonName');
                         var callFoot = document.getElementById('call-foot');
                         var WebExtension = document.getElementById('buttonNameWeb');
+                        var WebExtension2 = document.getElementById('buttonNameWeb2');
+                        var quick_reply_one = document.getElementById('quick_reply_one');
+                        var quick_reply_two = document.getElementById('quick_reply_two');
+                        var quick_reply_three = document.getElementById('quick_reply_three');
                         var WebFoot = document.getElementById('web-foot');
+                        var WebFoot2 = document.getElementById('web-foot2');
+                        var WebFoot3 = document.getElementById('web-foot3');
+                        var WebFoot4 = document.getElementById('web-foot4');
+                        var WebFoot5 = document.getElementById('web-foot5');
                         var qkreplay = document.getElementById('quick-replay');
 
                         callExtension.addEventListener("input", updateCallFoot);
@@ -715,6 +753,10 @@
                         }
 
                         WebExtension.addEventListener("input", updateWebFoot);
+                        WebExtension2.addEventListener("input", updateWebFoot2);
+                        quick_reply_one.addEventListener("input", update_quick_reply_one);
+                        quick_reply_two.addEventListener("input", update_quick_reply_two);
+                        quick_reply_three.addEventListener("input", update_quick_reply_three);
 
                         function updateWebFoot() {
                             var webEx = WebExtension.value;
@@ -722,6 +764,38 @@
                             WebFoot.style.fontSize = '15px'
                             WebFoot.style.marginLeft = "40px"
                             WebFoot.style.display = 'inline'
+                        }
+
+                        function updateWebFoot2() {
+                            var webEx2 = WebExtension2.value;
+                            WebFoot2.textContent = webEx2;
+                            WebFoot2.style.fontSize = '15px'
+                            WebFoot2.style.marginLeft = "40px"
+                            WebFoot2.style.display = 'inline'
+                        }
+
+                        function update_quick_reply_one() {
+                            var quick_reply1 = quick_reply_one.value;
+                            WebFoot3.textContent = quick_reply1;
+                            WebFoot3.style.fontSize = '15px'
+                            WebFoot3.style.marginLeft = "40px"
+                            WebFoot3.style.display = 'inline'
+                        }
+
+                        function update_quick_reply_two() {
+                            var quick_reply2 = quick_reply_two.value;
+                            WebFoot4.textContent = quick_reply2;
+                            WebFoot4.style.fontSize = '15px'
+                            WebFoot4.style.marginLeft = "40px"
+                            WebFoot4.style.display = 'inline'
+                        }
+
+                        function update_quick_reply_three() {
+                            var quick_reply3 = quick_reply_three.value;
+                            WebFoot5.textContent = quick_reply3;
+                            WebFoot5.style.fontSize = '15px'
+                            WebFoot5.style.marginLeft = "40px"
+                            WebFoot5.style.display = 'inline'
                         }
 
                         function updateFormattedText() {
@@ -982,6 +1056,10 @@
 
 </div>
 <script>
+
+    function previous() {
+        window.history.back();
+    }
     document.addEventListener('DOMContentLoaded', function() {
     const errorContainer = document.getElementById('error-container');
     const closeBtn = document.querySelector('.close-btn');
