@@ -70,12 +70,12 @@ def user_login(request):
             
             if stored_otp and otp == stored_otp:
                 # Logout previous session if exists
-                if user.session_key:
-                    try:
-                        prev_session = Session.objects.get(session_key=user.session_key)
-                        prev_session.delete()
-                    except Session.DoesNotExist:
-                        pass
+                # if user.session_key:
+                #     try:
+                #         prev_session = Session.objects.get(session_key=user.session_key)
+                #         prev_session.delete()
+                #     except Session.DoesNotExist:
+                #         pass
                 
                 login(request, user)
                 user.session_key = request.session.session_key
@@ -155,12 +155,12 @@ def user_login(request):
                     })
                 else:
                     # Logout previous session if exists
-                    if user.session_key:
-                        try:
-                            prev_session = Session.objects.get(session_key=user.session_key)
-                            prev_session.delete()
-                        except Session.DoesNotExist:
-                            pass
+                    # if user.session_key:
+                    #     try:
+                    #         prev_session = Session.objects.get(session_key=user.session_key)
+                    #         prev_session.delete()
+                    #     except Session.DoesNotExist:
+                    #         pass
                     
                     login(request, user)
                     user.session_key = request.session.session_key
