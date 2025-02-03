@@ -6,13 +6,13 @@ from ..utils import logger, display_whatsapp_id, display_phonenumber_id, get_tok
 import pandas as pd
 import plotly.express as px
 import mysql.connector
-from datetime import datetime
+import datetime
 import csv, copy, random
 from django.http import HttpResponse
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.http import require_http_methods
-from datetime import datetime, timedelta
+from datetime import timedelta
 from ..fastapidata import send_validate_req
 from django.http import HttpResponse
 
@@ -80,8 +80,8 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         # Add date range filter if dates are provided
         if start_date and end_date and start_date != 'null' and end_date != 'null':
             # Convert date strings to Unix timestamps
-            start_timestamp = int(datetime.strptime(start_date, '%Y-%m-%d').timestamp())
-            end_timestamp = int(datetime.strptime(end_date, '%Y-%m-%d').timestamp()) + (24 * 60 * 60)  # Add 24 hours
+            start_timestamp = int(datetime.datetime.strptime(start_date, '%Y-%m-%d').timestamp())
+            end_timestamp = int(datetime.datetime.strptime(end_date, '%Y-%m-%d').timestamp()) + (24 * 60 * 60)  # Add 24 hours
             
             query += " AND CAST(message_timestamp AS SIGNED) BETWEEN %s AND %s"
             query_params.extend([start_timestamp, end_timestamp])
@@ -150,7 +150,7 @@ def modify_dates(df, base_date):
         time_delta = timedelta(seconds=2)
         if isinstance(base_date, str):
             try:
-                base_date = datetime.strptime(base_date, '%m/%d/%Y %H:%M:%S')
+                base_date = datetime.datetime.strptime(base_date, '%m/%d/%Y %H:%M:%S')
             except ValueError as e:
                 logger.error(f"Error parsing base_date: {e}")
                 return df
