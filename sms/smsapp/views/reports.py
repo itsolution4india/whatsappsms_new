@@ -188,20 +188,24 @@ def update_start_id(report_id):
         logger.error(f"Failed to update report {report_id}: {e}")
         
 def filter_and_sort_records(rows_dict, phone_number=None):
+    # Priority mapping for statuses
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
     
-    # Filter the records based on the phone number
+    # Filter records based on the phone number
     filtered_records = {key: value for key, value in rows_dict.items() if key[2] == phone_number}
     
-    # Sort the filtered records by the first element of the key (assumed to be date or similar)
+    if not filtered_records:
+        return {}  # Return an empty dict if no matching records are found
+    
+    # Sort records by the first element of the key (likely the date)
     sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
     
     # Get the record with the least (earliest) date
     least_record = sorted_records[0]
     
-    # Check the status of the least record and process accordingly
-    if least_record[0][3] == 'failed':
-        # Directly access the dictionary values using key lookup
+    # Check the status of the least record
+    if least_record[0][3] == 'failed':  # Indexing the key tuple
+        # Create the output dictionary from the dictionary values (second item of the tuple)
         output = {
             'Date': least_record[1]['Date'],
             'display_phone_number': least_record[1]['display_phone_number'],
@@ -218,7 +222,7 @@ def filter_and_sort_records(rows_dict, phone_number=None):
             'message_body': least_record[1]['message_body']
         }
     else:
-        # Sort the records by status priority
+        # Sort records by status priority if not 'failed'
         sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
         selected_record = sorted_records[0]
         output = {
@@ -325,7 +329,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             try:
                 row = filter_and_sort_records(rows_tri, phone)
             except Exception as e:
-                logger.error(f"Error in filter_and_sort_records {str(e)}")
+                logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
                 row = None
             # row = rows_dict.get((Phone_ID, phone), None)
             if row:
