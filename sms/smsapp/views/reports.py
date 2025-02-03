@@ -319,6 +319,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             try:
                 row = filter_and_sort_records(rows_tri, phone)
             except Exception as e:
+                logger.error(f"Error in filter_and_sort_records {str(e)}")
                 row = None
             # row = rows_dict.get((Phone_ID, phone), None)
             if row:
