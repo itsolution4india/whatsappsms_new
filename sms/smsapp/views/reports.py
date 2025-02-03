@@ -264,7 +264,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
-        query = "SELECT * FROM webhook_r    esponses WHERE 1=1"
+        query = "SELECT * FROM webhook_responses WHERE 1=1"
         params = []
         
         if Phone_ID:
