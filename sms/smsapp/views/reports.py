@@ -249,7 +249,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 return JsonResponse({
                 'status': 'Failed to featch Data or Messages not delivered'
             })
-
+        logger.info("rows", rows)
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
         error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] == 131047}
@@ -267,7 +267,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             
         report_date = None
         no_match_num = []
-        logger.info("rows_dict", rows_dict)
+        
         for phone in contact_all:
             matched = False
             row = rows_dict.get((Phone_ID, phone), None)
