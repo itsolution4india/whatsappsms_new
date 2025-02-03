@@ -46,17 +46,11 @@ def Reports(request):
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None, report_id=None):
     if report_id and report_id !='null':
-        logger.info(f"report_id: {report_id}")
         report = get_object_or_404(ReportInfo, id=report_id)
-        Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
         contacts = report.contact_list.split('\r\n')
         contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-        created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
     else:
-        logger.info("No report_id")
         contact_all = None
-        created_at = None
-        Phone_ID = None
     try:
         # Connect to the database
         phone_id = display_phonenumber_id(request)
@@ -105,7 +99,6 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
                    'message_body']
         
         df = pd.DataFrame(rows, columns=headers)
-        logger.info(f"contact_all: {contact_all}")
         if contact_all:
             try:
                 df['contact_wa_id'] = df['contact_wa_id'].astype(str)
@@ -182,19 +175,16 @@ def update_start_id(report_id):
         report_instance.start_request_id = 100
         report_instance.end_request_id = 100
         report_instance.save()
-        
-        logger.info(f"Updated report {report_id} with unique_id {100}")
+
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
         
 def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
-    logger.info(f"rows_dict {rows_dict}")
     # Priority mapping for statuses
     if isinstance(created_at, str):
         created_at = datetime.datetime.fromisoformat(created_at)
         time_delta = datetime.timedelta(hours=5, minutes=30)
         created_at += time_delta
-    logger.info(f"created_at {created_at}")
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
 
     # Filter records based on the phone number
@@ -341,7 +331,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
                 row = None
             # row = rows_dict.get((Phone_ID, phone), None)
-            logger.info(f"row {row}")
             if row:
                 matched_rows.append(row)
                 matched = True
@@ -510,7 +499,7 @@ def get_latest_rows_by_contacts(contact_numbers):
         return None
 
     except Exception as e:
-        logger.info(f"An unexpected error occurred get_latest_rows_by_contacts: {str(e)}")
+        logger.error(f"An unexpected error occurred get_latest_rows_by_contacts: {str(e)}")
         return None
     
 def get_unique_phone_numbers():
