@@ -304,7 +304,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 return JsonResponse({
                 'status': 'Failed to featch Data or Messages not delivered'
             })
-        logger.info("rows", rows)
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
         rows_tri = {(row[0], row[2], row[4], row[5]): row for row in rows if row[7] != 131047}
@@ -328,6 +327,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             matched = False
             try:
                 row = filter_and_sort_records(rows_tri, phone)
+                logger.info(f"row {row}")
             except Exception as e:
                 logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
                 row = None
