@@ -284,6 +284,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         if created_at:
             query += " AND Date >= %s"
             params.append(created_at)
+        logger.info(f"created_at {created_at}")
             
         if not params:
             update_start_id(report_id)
