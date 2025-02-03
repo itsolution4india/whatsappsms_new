@@ -190,6 +190,8 @@ def update_start_id(report_id):
 def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
     logger.info(f"rows_dict {rows_dict}")
     # Priority mapping for statuses
+    if isinstance(created_at, str):
+        created_at = datetime.datetime.fromisoformat(created_at)
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
 
     # Filter records based on the phone number
