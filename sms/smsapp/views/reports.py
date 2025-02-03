@@ -204,41 +204,41 @@ def filter_and_sort_records(rows_dict, phone_number=None):
     least_record = sorted_records[0]
     
     # Check the status of the least record
-    if least_record[0][3] == 'failed':  # Indexing the key tuple
-        # Create the output dictionary from the dictionary values (second item of the tuple)
+    if least_record[0][3] == 'failed':  # Indexing the key tuple (status is at index 3)
+        # Create the output dictionary from the dictionary values (accessing the value tuple)
         output = {
-            'Date': least_record[1]['Date'],
-            'display_phone_number': least_record[1]['display_phone_number'],
-            'phone_number_id': least_record[1]['phone_number_id'],
-            'waba_id': least_record[1]['waba_id'],
-            'contact_wa_id': least_record[1]['contact_wa_id'],
-            'status': least_record[1]['status'],
-            'message_timestamp': least_record[1]['message_timestamp'],
-            'error_code': least_record[1]['error_code'],
-            'error_message': least_record[1]['error_message'],
-            'contact_name': least_record[1]['contact_name'],
-            'message_from': least_record[1]['message_from'],
-            'message_type': least_record[1]['message_type'],
-            'message_body': least_record[1]['message_body']
+            'Date': least_record[1][0],  # Accessing the datetime from the value tuple
+            'display_phone_number': least_record[1][1],
+            'phone_number_id': least_record[1][2],
+            'waba_id': least_record[1][3],
+            'contact_wa_id': least_record[1][4],
+            'status': least_record[1][5],
+            'message_timestamp': least_record[1][6],
+            'error_code': least_record[1][7],
+            'error_message': least_record[1][8],
+            'contact_name': least_record[1][9],
+            'message_from': least_record[1][10],
+            'message_type': least_record[1][11],
+            'message_body': least_record[1][12]
         }
     else:
         # Sort records by status priority if not 'failed'
         sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
         selected_record = sorted_records[0]
         output = {
-            'Date': selected_record[1]['Date'],
-            'display_phone_number': selected_record[1]['display_phone_number'],
-            'phone_number_id': selected_record[1]['phone_number_id'],
-            'waba_id': selected_record[1]['waba_id'],
-            'contact_wa_id': selected_record[1]['contact_wa_id'],
-            'status': selected_record[1]['status'],
-            'message_timestamp': selected_record[1]['message_timestamp'],
-            'error_code': selected_record[1]['error_code'],
-            'error_message': selected_record[1]['error_message'],
-            'contact_name': selected_record[1]['contact_name'],
-            'message_from': selected_record[1]['message_from'],
-            'message_type': selected_record[1]['message_type'],
-            'message_body': selected_record[1]['message_body']
+            'Date': selected_record[1][0],  # Accessing the datetime from the value tuple
+            'display_phone_number': selected_record[1][1],
+            'phone_number_id': selected_record[1][2],
+            'waba_id': selected_record[1][3],
+            'contact_wa_id': selected_record[1][4],
+            'status': selected_record[1][5],
+            'message_timestamp': selected_record[1][6],
+            'error_code': selected_record[1][7],
+            'error_message': selected_record[1][8],
+            'contact_name': selected_record[1][9],
+            'message_from': selected_record[1][10],
+            'message_type': selected_record[1][11],
+            'message_body': selected_record[1][12]
         }
     
     return output
