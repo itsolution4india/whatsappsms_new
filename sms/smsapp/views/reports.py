@@ -190,60 +190,57 @@ def update_start_id(report_id):
 def filter_and_sort_records(rows_dict, phone_number=None):
     # Priority mapping for statuses
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
-    
+
     # Filter records based on the phone number
-    if phone_number:
-        filtered_records = {key: value for key, value in rows_dict.items() if len(key) > 2 and key[2] == phone_number}
-    else:
-        filtered_records = rows_dict
-    
+    filtered_records = {key: value for key, value in rows_dict.items() if key[2] == phone_number}
+
     if not filtered_records:
         return {}  # Return an empty dict if no matching records are found
-    
+
     # Sort records by the first element of the key (likely the date)
     sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
-    
+
     # Get the record with the least (earliest) date
     least_record = sorted_records[0]
-    
+
     # Check the status of the least record
     if least_record[0][3] == 'failed':  # Indexing the key tuple
-        # Create the output dictionary from the dictionary values (second item of the tuple)
+        # Create the output dictionary from the tuple values (second item of the tuple)
         output = {
-            'Date': least_record[1]['Date'] if isinstance(least_record[1], dict) else least_record[1][0],
-            'display_phone_number': least_record[1]['display_phone_number'] if isinstance(least_record[1], dict) else least_record[1][1],
-            'phone_number_id': least_record[1]['phone_number_id'] if isinstance(least_record[1], dict) else least_record[1][2],
-            'waba_id': least_record[1]['waba_id'] if isinstance(least_record[1], dict) else least_record[1][3],
-            'contact_wa_id': least_record[1]['contact_wa_id'] if isinstance(least_record[1], dict) else least_record[1][4],
-            'status': least_record[1]['status'] if isinstance(least_record[1], dict) else least_record[1][5],
-            'message_timestamp': least_record[1]['message_timestamp'] if isinstance(least_record[1], dict) else least_record[1][6],
-            'error_code': least_record[1]['error_code'] if isinstance(least_record[1], dict) else least_record[1][7],
-            'error_message': least_record[1]['error_message'] if isinstance(least_record[1], dict) else least_record[1][8],
-            'contact_name': least_record[1]['contact_name'] if isinstance(least_record[1], dict) else least_record[1][9],
-            'message_from': least_record[1]['message_from'] if isinstance(least_record[1], dict) else least_record[1][10],
-            'message_type': least_record[1]['message_type'] if isinstance(least_record[1], dict) else least_record[1][11],
-            'message_body': least_record[1]['message_body'] if isinstance(least_record[1], dict) else least_record[1][12]
+            'Date': least_record[1][0],
+            'display_phone_number': least_record[1][1],
+            'phone_number_id': least_record[1][2],
+            'waba_id': least_record[1][3],
+            'contact_wa_id': least_record[1][4],
+            'status': least_record[1][5],
+            'message_timestamp': least_record[1][6],
+            'error_code': least_record[1][7],
+            'error_message': least_record[1][8],
+            'contact_name': least_record[1][9],
+            'message_from': least_record[1][10],
+            'message_type': least_record[1][11],
+            'message_body': least_record[1][12]
         }
     else:
         # Sort records by status priority if not 'failed'
         sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
         selected_record = sorted_records[0]
         output = {
-            'Date': selected_record[1]['Date'] if isinstance(selected_record[1], dict) else selected_record[1][0],
-            'display_phone_number': selected_record[1]['display_phone_number'] if isinstance(selected_record[1], dict) else selected_record[1][1],
-            'phone_number_id': selected_record[1]['phone_number_id'] if isinstance(selected_record[1], dict) else selected_record[1][2],
-            'waba_id': selected_record[1]['waba_id'] if isinstance(selected_record[1], dict) else selected_record[1][3],
-            'contact_wa_id': selected_record[1]['contact_wa_id'] if isinstance(selected_record[1], dict) else selected_record[1][4],
-            'status': selected_record[1]['status'] if isinstance(selected_record[1], dict) else selected_record[1][5],
-            'message_timestamp': selected_record[1]['message_timestamp'] if isinstance(selected_record[1], dict) else selected_record[1][6],
-            'error_code': selected_record[1]['error_code'] if isinstance(selected_record[1], dict) else selected_record[1][7],
-            'error_message': selected_record[1]['error_message'] if isinstance(selected_record[1], dict) else selected_record[1][8],
-            'contact_name': selected_record[1]['contact_name'] if isinstance(selected_record[1], dict) else selected_record[1][9],
-            'message_from': selected_record[1]['message_from'] if isinstance(selected_record[1], dict) else selected_record[1][10],
-            'message_type': selected_record[1]['message_type'] if isinstance(selected_record[1], dict) else selected_record[1][11],
-            'message_body': selected_record[1]['message_body'] if isinstance(selected_record[1], dict) else selected_record[1][12]
+            'Date': selected_record[1][0],
+            'display_phone_number': selected_record[1][1],
+            'phone_number_id': selected_record[1][2],
+            'waba_id': selected_record[1][3],
+            'contact_wa_id': selected_record[1][4],
+            'status': selected_record[1][5],
+            'message_timestamp': selected_record[1][6],
+            'error_code': selected_record[1][7],
+            'error_message': selected_record[1][8],
+            'contact_name': selected_record[1][9],
+            'message_from': selected_record[1][10],
+            'message_type': selected_record[1][11],
+            'message_body': selected_record[1][12]
         }
-    
+
     return output
  
 @login_required
