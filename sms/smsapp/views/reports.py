@@ -187,13 +187,17 @@ def update_start_id(report_id):
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
         
-def filter_and_sort_records(rows_dict, phone_number=None):
+def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
     logger.info(f"rows_dict {rows_dict}")
     # Priority mapping for statuses
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
 
     # Filter records based on the phone number
-    filtered_records = {key: value for key, value in rows_dict.items() if key[2] == phone_number}
+    filtered_records = {
+        key: value for key, value in rows_dict.items() 
+        if (phone_number is None or key[2] == phone_number) and 
+           (created_at is None or key[0] >= created_at)
+    }
 
     if not filtered_records:
         return ()  # Return an empty tuple if no matching records are found
@@ -284,7 +288,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         if created_at:
             query += " AND Date >= %s"
             params.append(created_at)
-        logger.info(f"created_at {created_at}")
             
         if not params:
             update_start_id(report_id)
@@ -328,8 +331,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         for phone in contact_all:
             matched = False
             try:
-                row = filter_and_sort_records(rows_tri, phone)
-                logger.info(f"row {row}")
+                row = filter_and_sort_records(rows_tri, phone, created_at)
             except Exception as e:
                 logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
                 row = None
