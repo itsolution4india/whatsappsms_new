@@ -186,14 +186,59 @@ def update_start_id(report_id):
         logger.info(f"Updated report {report_id} with unique_id {100}")
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
-         
+        
+def filter_and_sort_records(rows_dict, phone_number=None):
+    priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
+    
+    filtered_records = {key: value for key, value in rows_dict.items() if key[2] == phone_number}
+    
+    sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
+    
+    least_record = sorted_records[0]
+    
+    if least_record[0][3] == 'failed':
+        output = {
+            'Date': least_record[1]['Date'],
+            'display_phone_number': least_record[1]['display_phone_number'],
+            'phone_number_id': least_record[1]['phone_number_id'],
+            'waba_id': least_record[1]['waba_id'],
+            'contact_wa_id': least_record[1]['contact_wa_id'],
+            'status': least_record[1]['status'],
+            'message_timestamp': least_record[1]['message_timestamp'],
+            'error_code': least_record[1]['error_code'],
+            'error_message': least_record[1]['error_message'],
+            'contact_name': least_record[1]['contact_name'],
+            'message_from': least_record[1]['message_from'],
+            'message_type': least_record[1]['message_type'],
+            'message_body': least_record[1]['message_body']
+        }
+    else:
+        sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
+        selected_record = sorted_records[0]
+        output = {
+            'Date': selected_record[1]['Date'],
+            'display_phone_number': selected_record[1]['display_phone_number'],
+            'phone_number_id': selected_record[1]['phone_number_id'],
+            'waba_id': selected_record[1]['waba_id'],
+            'contact_wa_id': selected_record[1]['contact_wa_id'],
+            'status': selected_record[1]['status'],
+            'message_timestamp': selected_record[1]['message_timestamp'],
+            'error_code': selected_record[1]['error_code'],
+            'error_message': selected_record[1]['error_message'],
+            'contact_name': selected_record[1]['contact_name'],
+            'message_from': selected_record[1]['message_from'],
+            'message_type': selected_record[1]['message_type'],
+            'message_body': selected_record[1]['message_body']
+        }
+    
+    return output
+ 
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
     try:
-        # Fetch the specific report based on the report_id
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
-            Phone_ID = display_phonenumber_id(request)  # Ensure phone_number_id is defined
+            Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
@@ -219,7 +264,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
-        query = "SELECT * FROM webhook_responses WHERE 1=1"
+        query = "SELECT * FROM webhook_r    esponses WHERE 1=1"
         params = []
         
         if Phone_ID:
@@ -252,6 +297,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         logger.info("rows", rows)
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
+        rows_tri = {(row[0], row[2], row[4], row[5]): row for row in rows if row[7] != 131047}
         error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] == 131047}
         
         matched_rows = []
@@ -270,7 +316,11 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         
         for phone in contact_all:
             matched = False
-            row = rows_dict.get((Phone_ID, phone), None)
+            try:
+                row = filter_and_sort_records(rows_tri, phone)
+            except Exception as e:
+                row = None
+            # row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
