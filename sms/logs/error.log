@@ -40,3 +40,5 @@ An unexpected error occurred: 0
 row {'Date': datetime.datetime(2025, 2, 3, 21, 58, 3), 'display_phone_number': '919711629884', 'phone_number_id': '346085425263787', 'waba_id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggQTc4MEFCMDRDMUU5RTQxN0Q3Qzc3RDVERTU0RjhDODMA', 'contact_wa_id': '916361161836', 'status': 'reply', 'message_timestamp': '1738600083', 'error_code': None, 'error_message': None, 'contact_name': 'Prashanth G', 'message_from': '916361161836', 'message_type': 'button', 'message_body': 'Subscribe'}
 An unexpected error occurred: 0
 Internal Server Error: /report_insight/1716/
+row (datetime.datetime(2025, 2, 3, 21, 58, 24), '919711629884', '346085425263787', 'wamid.HBgMOTE2MzYxMTYxODM2FQIAERgSRUMxMzEzNTE5ODg5QUNCOENCAA==', '916361161836', 'delivered', '1738600103', None, None, None, None, None, None)
+Updated report 1716 with unique_id 100
