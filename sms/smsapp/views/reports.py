@@ -267,6 +267,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
             
         report_date = None
         no_match_num = []
+        logger.info("rows_dict", rows_dict)
         for phone in contact_all:
             matched = False
             row = rows_dict.get((Phone_ID, phone), None)
