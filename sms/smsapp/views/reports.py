@@ -188,6 +188,7 @@ def update_start_id(report_id):
         logger.error(f"Failed to update report {report_id}: {e}")
         
 def filter_and_sort_records(rows_dict, phone_number=None):
+    logger.info(f"rows_dict {rows_dict}")
     # Priority mapping for statuses
     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
 
