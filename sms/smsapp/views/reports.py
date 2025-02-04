@@ -317,7 +317,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         if len(contact_all) > 100:
             non_reply_rows = [
                 row for row in rows 
-                if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed" and row[7] not in excluded_error_codes
+                if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes
             ]
             
         report_date = None
