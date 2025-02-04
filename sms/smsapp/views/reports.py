@@ -190,13 +190,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             contacts = report.contact_list.split('\r\n')
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
-            if report_id == 1518:
-                logger.info("yes 1518")
-                report_two = get_object_or_404(ReportInfo, id=1520)
-                contacts_two = report.contact_list.split('\r\n')
-                contact_all_two = [phone.strip() for contact in contacts_two for phone in contact.split(',')]
-            else:
-                contact_all_two =None
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
             time_delta = datetime.timedelta(hours=5, minutes=30)
@@ -295,13 +288,14 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         error_codes_to_check = {"131031", "131053", "131042"}
         error_code = None 
         
-        for row in matched_rows:
-            current_error_code = str(row[7])
-            if current_error_code in error_codes_to_check:
-                error_code = current_error_code
-                break
+        if report_id != 1520:
+            for row in matched_rows:
+                current_error_code = str(row[7])
+                if current_error_code in error_codes_to_check:
+                    error_code = current_error_code
+                    break
         
-        matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID, error_code,report_id, contact_all_two)
+        matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID, error_code)
         response = HttpResponse(content_type='text/csv')
         if report_id:
             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
@@ -331,7 +325,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
         
-def report_step_two(matched_rows, Phone_ID, error_code=None,report_id=None, contact_all_two=None):
+def report_step_two(matched_rows, Phone_ID, error_code=None):
     # Connect to the database
     connection = mysql.connector.connect(
         host="localhost",
@@ -364,49 +358,25 @@ def report_step_two(matched_rows, Phone_ID, error_code=None,report_id=None, cont
     
     updated_rows = []
     no_match_nums = []
-    if report_id == 1520:
-        error_code = None
-    if contact_all_two:
-        for row in matched_rows:
-            if row[7] == 131047:
-                if row[4] in contact_all_two:
-                    row_list = list(row)
-                    row_list[7] = error_code
-                    row_list[8] = error_message
-                    updated_rows.append(tuple(row_list))
-                else:
-                    no_match_nums.append(row[4])
-                    new_row = copy.deepcopy(random.choice(non_reply_rows))
-                    new_row_list = list(new_row)
-                    new_row_list[1] = row[1]
-                    new_row_list[2] = row[2]
-                    new_row_list[3] = row[3]
-                    new_row_list[4] = row[4]
-                    new_row_tuple = tuple(new_row_list)
-                    
-                    updated_rows.append(new_row_tuple)
-            else:
-                updated_rows.append(row)
-    else:
-        for row in matched_rows:
-            if row[7] == 131099 and error_code:
-                row_list = list(row)
-                row_list[7] = error_code
-                row_list[8] = error_message
-                updated_rows.append(tuple(row_list))
-            elif row[7] == 131047:
-                no_match_nums.append(row[4])
-                new_row = copy.deepcopy(random.choice(non_reply_rows))
-                new_row_list = list(new_row)
-                new_row_list[1] = row[1]
-                new_row_list[2] = row[2]
-                new_row_list[3] = row[3]
-                new_row_list[4] = row[4]
-                new_row_tuple = tuple(new_row_list)
-                
-                updated_rows.append(new_row_tuple)
-            else:
-                updated_rows.append(row)
+    for row in matched_rows:
+        if row[7] == 131047 and error_code:
+            row_list = list(row)
+            row_list[7] = error_code
+            row_list[8] = error_message
+            updated_rows.append(tuple(row_list))
+        elif row[7] == 131047:
+            no_match_nums.append(row[4])
+            new_row = copy.deepcopy(random.choice(non_reply_rows))
+            new_row_list = list(new_row)
+            new_row_list[1] = row[1]
+            new_row_list[2] = row[2]
+            new_row_list[3] = row[3]
+            new_row_list[4] = row[4]
+            new_row_tuple = tuple(new_row_list)
+            
+            updated_rows.append(new_row_tuple)
+        else:
+            updated_rows.append(row)
     
     return updated_rows, no_match_nums
     
