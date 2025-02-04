@@ -284,6 +284,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         cursor.execute(query)
         matched_rows = cursor.fetchall()
+        
+        matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID)
+        
         logger.info(f"matched_rows {matched_rows}")
         
         response = HttpResponse(content_type='text/csv')
@@ -299,8 +302,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         ]
         
         writer = csv.writer(response)
-        writer.writerow(header)  # Write header
-        writer.writerows(matched_rows)  # Write rows
+        writer.writerow(header)
+        writer.writerows(matched_rows)
         
         cursor.close()
         connection.close()
@@ -314,6 +317,48 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
+        
+def report_step_two(matched_rows, Phone_ID):
+    # Connect to the database
+    connection = mysql.connector.connect(
+        host="localhost",
+        port=3306,
+        user="fedqrbtb_wtsdealnow",
+        password="Solution@97",
+        database="fedqrbtb_report",
+        auth_plugin='mysql_native_password'
+    )
+    cursor = connection.cursor()
+    query = "SELECT * FROM webhook_responses WHERE 1=1"
+    params = []
+    query += " AND phone_number_id = %s"
+    params.append(Phone_ID)
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+    
+    non_reply_rows = [
+        row for row in rows 
+        if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed"
+    ]
+    
+    updated_rows = []
+    no_match_nums = []
+    for row in matched_rows:
+        if row[7] == "131047":
+            no_match_nums.append(row[4])
+            new_row = copy.deepcopy(random.choice(non_reply_rows))
+            new_row_list = list(new_row)
+            new_row_list[1] = row[1]
+            new_row_list[2] = row[2]
+            new_row_list[3] = row[3]
+            new_row_list[4] = row[4]
+            new_row_tuple = tuple(new_row_list)
+            
+            updated_rows.append(new_row_tuple)
+        else:
+            updated_rows.append(row)
+    
+    return updated_rows, no_match_nums
     
 def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
     # Priority mapping for statuses
