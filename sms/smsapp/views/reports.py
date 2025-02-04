@@ -358,7 +358,7 @@ def report_step_two(matched_rows, Phone_ID, error_code=None):
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
-        if row[7] == 131047 and error_code:
+        if row[7] == 131099 and error_code:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
