@@ -253,7 +253,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                             {priority_case},
                             message_timestamp ASC
                     ) as rn
-                FROM messages
+                FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
             )
             SELECT 
@@ -306,16 +306,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
-    
-    except mysql.connector.Error as err:
-        logger.error(f"Database error: {err}")
-        messages.error(request, "Database error occurred.")
-        return redirect('reports')
-
-    except Exception as e:
-        logger.error(f"An unexpected error occurred: {str(e)}")
-        messages.error(request, f"Error: {str(e)}")
-        return redirect('reports')
     
 def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
     # Priority mapping for statuses
