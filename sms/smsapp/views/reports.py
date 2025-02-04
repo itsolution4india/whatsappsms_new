@@ -192,8 +192,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
-            # time_delta = datetime.timedelta(hours=5, minutes=30)
-            # created_at += time_delta
         else:
             contact_all = contact_list
         logger.info(f"contact_all {contact_all}")
@@ -218,48 +216,24 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         # Start with the base query
         query = """
-            SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
-                r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
-                r.message_from, r.message_type, r.message_body
-            FROM webhook_responses r
-            INNER JOIN (
-                SELECT contact_wa_id, MAX(message_timestamp) AS latest_message
-                FROM webhook_responses
-                WHERE contact_wa_id IN (%s)
-                AND message_timestamp > %s
-                GROUP BY contact_wa_id
-            ) latest 
-            ON r.contact_wa_id = latest.contact_wa_id 
-            AND r.message_timestamp = latest.latest_message
-        """
+        WITH RankedMessages AS (
+            SELECT 
+                `Date`, `display_phone_number`, `phone_number_id`, `waba_id`, `contact_wa_id`,
+                `status`, `message_timestamp`, `error_code`, `error_message`, `contact_name`,
+                `message_from`, `message_type`, `message_body`,
+                ROW_NUMBER() OVER (
+                    PARTITION BY contact_wa_id 
+                    ORDER BY 
+                        FIELD(status, 'reply', 'read', 'delivered', 'sent'),
+                        `Date` ASC
+                ) AS rn
+            FROM fedqrbtb_report
+            WHERE contact_wa_id IN ({})
+        )
+        SELECT * FROM RankedMessages WHERE rn = 1;
+        """.format(', '.join(f"'{num}'" for num in contact_all))
 
-        # Handling the dynamic placeholders for the IN clause
-        if contact_all:
-            query = query.replace("(%s)", "(" + ', '.join(['%s'] * len(contact_all)) + ")")
-            params = contact_all + [created_at]
-        else:
-            params = [created_at]
-
-        # Only add this clause if Phone_ID is provided
-        if Phone_ID:
-            query += " AND r.phone_number_id = %s"
-            params.append(Phone_ID)
-
-        # Continue with the order by clause
-        query += """
-            ORDER BY
-            CASE r.status
-                WHEN 'reply' THEN 1
-                WHEN 'read' THEN 2
-                WHEN 'delivered' THEN 3
-                WHEN 'sent' THEN 4
-                ELSE 5
-            END,
-            r.message_timestamp ASC
-        """
-
-        # Execute the query with params
-        cursor.execute(query, params)
+        cursor.execute(query)
         rows = cursor.fetchall()
         
         if not rows:
