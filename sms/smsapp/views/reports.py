@@ -217,47 +217,42 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         query = """
             SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
-                   r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
-                   r.message_from, r.message_type, r.message_body
+                r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
+                r.message_from, r.message_type, r.message_body
             FROM webhook_responses r
             INNER JOIN (
                 SELECT contact_wa_id, MAX(message_timestamp) AS latest_message
                 FROM webhook_responses
                 WHERE contact_wa_id IN (%s)
-                  AND message_timestamp > %s
+                AND message_timestamp > %s
                 GROUP BY contact_wa_id
             ) latest 
             ON r.contact_wa_id = latest.contact_wa_id 
-               AND r.message_timestamp = latest.latest_message
-        """ % ', '.join(['%s'] * len(contact_all))
-        
-        params = contact_all + [created_at]
-        
-        if Phone_ID:
-            query += " WHERE r.phone_number_id = %s"
-            params.append(Phone_ID)
-            
-        query += """
+            AND r.message_timestamp = latest.latest_message
             ORDER BY
-               CASE r.status
-                   WHEN 'reply' THEN 1
-                   WHEN 'read' THEN 2
-                   WHEN 'delivered' THEN 3
-                   WHEN 'sent' THEN 4
-                   ELSE 5
-               END,
-               r.message_timestamp ASC
+            CASE r.status
+                WHEN 'reply' THEN 1
+                WHEN 'read' THEN 2
+                WHEN 'delivered' THEN 3
+                WHEN 'sent' THEN 4
+                ELSE 5
+            END,
+            r.message_timestamp ASC
         """
-            
-        if not params:
-            update_start_id(report_id)
-            if insight:
-                return pd.DataFrame()
-            else:
-                return JsonResponse({
-                'status': 'Failed to featch Data or Messages not delivered'
-            })
-                
+
+        # Fixing the params handling
+        if contact_all:
+            # Modify the placeholder for IN clause for multiple contact numbers
+            query = query.replace("(%s)", "(" + ', '.join(['%s'] * len(contact_all)) + ")")
+            params = contact_all + [created_at]
+        else:
+            params = [created_at]
+
+        if Phone_ID:
+            query += " AND r.phone_number_id = %s"
+            params.append(Phone_ID)
+
+        # Execute the query with proper params
         cursor.execute(query, params)
         rows = cursor.fetchall()
         
@@ -271,8 +266,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             })
         # Create a dictionary for quick lookup
         rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
-        rows_tri = {(row[0], row[2], row[4], row[5]): row for row in rows if row[7] != 131047}
-        error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] == 131047}
         
         matched_rows = []
         non_reply_rows = []
@@ -290,11 +283,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         for phone in contact_all:
             matched = False
-            # try:
-            #     row = filter_and_sort_records(rows_tri, phone, created_at)
-            # except Exception as e:
-            #     logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
-            #     row = None
             row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
@@ -325,38 +313,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         ]
 
         df = pd.DataFrame(matched_rows, columns=header)
-        
-        validate_req_num = []
-        if no_match_num:
-            # Validate numbers send request
-            for number in no_match_num:
-                row = error_rows_dict.get((Phone_ID, number), None)
-                if not row:
-                    validate_req_num.append(number)
-            # Modifiy Dates
-            df = modify_dates(df, report_date)
-            # Validate WhatsApp Phone numbers
-            token, _ = get_token_and_app_id(request)
-            if validate_req_num and report_id:
-                try:
-                    _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
-                except Exception as e:
-                    logger.error(f"Failed to call send_validate_req {str(e)}, {len(validate_req_num)} {report_id} {type(report_id)}")
-            else:
-                logger.info("No validate_req_num found")
-                update_start_id(report_id)
-            try:
-                validation_data = get_latest_rows_by_contacts(no_match_num)
-                validation_data = validation_data[validation_data['error_code'] == 131026]
-                final_invalid_numbers = validation_data['contact_wa_id'].to_list()
-            except Exception as e:
-                logger.error(f"Failed to get get_latest_rows_by_contacts {str(e)}")
-            try:
-                df = update_failed_messages(df, final_invalid_numbers)
-            except Exception as e:
-                logger.error(f"Failed to update_failed_messages {str(e)}")
-        else:
-            update_start_id(report_id)
             
         status_counts_df = df['status'].value_counts().reset_index()
         status_counts_df.columns = ['status', 'count']
@@ -364,20 +320,14 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
         status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
 
-        # Generate CSV as HttpResponse (stream the file)
-        if insight:
-            return status_counts_df
-        elif contact_list:
-            return df
-        else:
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
-            
-            writer = csv.writer(response)
-            writer.writerow(header)  # Write header
-            writer.writerows(matched_rows)  # Write rows
-            
-            return response
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+        
+        writer = csv.writer(response)
+        writer.writerow(header)  # Write header
+        writer.writerows(matched_rows)  # Write rows
+        
+        return response
     
     except mysql.connector.Error as err:
         logger.error(f"Database error: {err}")
