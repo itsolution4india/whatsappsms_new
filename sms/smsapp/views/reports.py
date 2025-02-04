@@ -179,6 +179,216 @@ def update_start_id(report_id):
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
         
+        
+@login_required
+def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+    try:
+        if report_id:
+            report = get_object_or_404(ReportInfo, id=report_id)
+            Phone_ID = display_phonenumber_id(request)
+            contacts = report.contact_list.split('\r\n')
+            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            if isinstance(created_at, str):
+                created_at = datetime.datetime.fromisoformat(created_at)
+            time_delta = datetime.timedelta(hours=5, minutes=30)
+            created_at += time_delta
+        else:
+            contact_all = contact_list
+            
+        if not report_id and not contact_all:
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
+                
+        # Connect to the database
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
+        )
+        cursor = connection.cursor()
+        
+        query = """
+            SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
+                   r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
+                   r.message_from, r.message_type, r.message_body
+            FROM webhook_responses r
+            INNER JOIN (
+                SELECT contact_wa_id, MAX(message_timestamp) AS latest_message
+                FROM webhook_responses
+                WHERE contact_wa_id IN (%s)
+                  AND message_timestamp > %s
+                GROUP BY contact_wa_id
+            ) latest 
+            ON r.contact_wa_id = latest.contact_wa_id 
+               AND r.message_timestamp = latest.latest_message
+        """ % ', '.join(['%s'] * len(contact_all))
+        
+        params = contact_all + [created_at]
+        
+        if Phone_ID:
+            query += " WHERE r.phone_number_id = %s"
+            params.append(Phone_ID)
+            
+        query += """
+            ORDER BY
+               CASE r.status
+                   WHEN 'reply' THEN 1
+                   WHEN 'read' THEN 2
+                   WHEN 'delivered' THEN 3
+                   WHEN 'sent' THEN 4
+                   ELSE 5
+               END,
+               r.message_timestamp ASC
+        """
+            
+        if not params:
+            update_start_id(report_id)
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
+                
+        cursor.execute(query, params)
+        rows = cursor.fetchall()
+        
+        if not rows:
+            update_start_id(report_id)
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                'status': 'Failed to featch Data or Messages not delivered'
+            })
+        # Create a dictionary for quick lookup
+        rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
+        rows_tri = {(row[0], row[2], row[4], row[5]): row for row in rows if row[7] != 131047}
+        error_rows_dict = {(row[2], row[4]): row for row in rows if row[7] == 131047}
+        
+        matched_rows = []
+        non_reply_rows = []
+        
+        excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047, 131042}
+    
+        if len(contact_all) > 100:
+            non_reply_rows = [
+                row for row in rows 
+                if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed" and row[7] not in excluded_error_codes
+            ]
+            
+        report_date = None
+        no_match_num = []
+        
+        for phone in contact_all:
+            matched = False
+            # try:
+            #     row = filter_and_sort_records(rows_tri, phone, created_at)
+            # except Exception as e:
+            #     logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
+            #     row = None
+            row = rows_dict.get((Phone_ID, phone), None)
+            if row:
+                matched_rows.append(row)
+                matched = True
+                date_value = row[0]
+                
+                try:
+                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
+                except ValueError as e:
+                    logger.error(f"Error parsing date: {e}")
+            
+            if not matched and non_reply_rows:
+                no_match_num.append(phone)
+                new_row = copy.deepcopy(random.choice(non_reply_rows))
+                new_row_list = list(new_row)
+                new_row_list[4] = phone  # Update the phone number
+                new_row_tuple = tuple(new_row_list)
+                matched_rows.append(new_row_tuple)
+        
+        cursor.close()
+        connection.close()
+
+        # Define your header
+        header = [
+            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+            "status", "message_timestamp", "error_code", "error_message", "contact_name",
+            "message_from", "message_type", "message_body"
+        ]
+
+        df = pd.DataFrame(matched_rows, columns=header)
+        
+        validate_req_num = []
+        if no_match_num:
+            # Validate numbers send request
+            for number in no_match_num:
+                row = error_rows_dict.get((Phone_ID, number), None)
+                if not row:
+                    validate_req_num.append(number)
+            # Modifiy Dates
+            df = modify_dates(df, report_date)
+            # Validate WhatsApp Phone numbers
+            token, _ = get_token_and_app_id(request)
+            if validate_req_num and report_id:
+                try:
+                    _ = send_validate_req(token, display_phonenumber_id(request), validate_req_num, "This is Just a testing message", report_id)
+                except Exception as e:
+                    logger.error(f"Failed to call send_validate_req {str(e)}, {len(validate_req_num)} {report_id} {type(report_id)}")
+            else:
+                logger.info("No validate_req_num found")
+                update_start_id(report_id)
+            try:
+                validation_data = get_latest_rows_by_contacts(no_match_num)
+                validation_data = validation_data[validation_data['error_code'] == 131026]
+                final_invalid_numbers = validation_data['contact_wa_id'].to_list()
+            except Exception as e:
+                logger.error(f"Failed to get get_latest_rows_by_contacts {str(e)}")
+            try:
+                df = update_failed_messages(df, final_invalid_numbers)
+            except Exception as e:
+                logger.error(f"Failed to update_failed_messages {str(e)}")
+        else:
+            update_start_id(report_id)
+            
+        status_counts_df = df['status'].value_counts().reset_index()
+        status_counts_df.columns = ['status', 'count']
+        total_unique_contacts = len(df['contact_wa_id'].unique())
+        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
+        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+
+        # Generate CSV as HttpResponse (stream the file)
+        if insight:
+            return status_counts_df
+        elif contact_list:
+            return df
+        else:
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+            
+            writer = csv.writer(response)
+            writer.writerow(header)  # Write header
+            writer.writerows(matched_rows)  # Write rows
+            
+            return response
+    
+    except mysql.connector.Error as err:
+        logger.error(f"Database error: {err}")
+        messages.error(request, "Database error occurred.")
+        return redirect('reports')
+
+    except Exception as e:
+        logger.error(f"An unexpected error occurred: {str(e)}")
+        messages.error(request, f"Error: {str(e)}")
+        return redirect('reports')
+    
 def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
     # Priority mapping for statuses
     if isinstance(created_at, str):
