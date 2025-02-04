@@ -18,6 +18,7 @@ urlpatterns = [
     path('reports/', views.Reports, name='reports'),
     #path('download_report/<int:report_id>/',views.download_campaign_report, name='report_download'),
     path('download_report/<int:report_id>/', views.download_campaign_report, name='report_download'),
+    path('download_report2/<int:report_id>/', views.download_campaign_report2, name='report_download2'),
     path('download/<str:media_id>/', views.download_facebook_media, name='download_media'),
     path('report_insight/<int:report_id>/', views.get_report_insight, name='report_insight'),
     path('create_message_temp/', views.Campaign, name='create_message_temp'),
