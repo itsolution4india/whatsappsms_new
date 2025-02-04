@@ -180,6 +180,151 @@ def update_start_id(report_id):
         logger.error(f"Failed to update report {report_id}: {e}")
         
         
+# @login_required
+# def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+#     try:
+#         if report_id:
+#             logger.info(f"report_id, {report_id}")
+#             report = get_object_or_404(ReportInfo, id=report_id)
+#             Phone_ID = display_phonenumber_id(request)
+#             contacts = report.contact_list.split('\r\n')
+#             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+#             logger.info(f"contacts {len(contact_all)}")
+#             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+#             if isinstance(created_at, str):
+#                 created_at = datetime.datetime.fromisoformat(created_at)
+#             time_delta = datetime.timedelta(hours=5, minutes=30)
+#             created_at += time_delta
+#         else:
+#             contact_all = contact_list
+#             Phone_ID = display_phonenumber_id(request)
+#             created_at = None 
+            
+#         if not report_id and not contact_all:
+#             if insight:
+#                 return pd.DataFrame()
+#             else:
+#                 return JsonResponse({
+#                     'status': 'Failed to fetch Data or Messages not delivered'
+#                 })
+                
+#         # Connect to the database
+#         connection = mysql.connector.connect(
+#             host="localhost",
+#             port=3306,
+#             user="fedqrbtb_wtsdealnow",
+#             password="Solution@97",
+#             database="fedqrbtb_report",
+#             auth_plugin='mysql_native_password'
+#         )
+#         cursor = connection.cursor()
+        
+#         # Create the priority ranking case statement
+#         priority_case = """
+#             CASE status 
+#                 WHEN 'reply' THEN 1
+#                 WHEN 'read' THEN 2
+#                 WHEN 'delivered' THEN 3
+#                 WHEN 'sent' THEN 4
+#                 ELSE 5
+#             END
+#         """
+        
+#         # Convert contact list to string for SQL IN clause
+#         contacts_str = "', '".join(contact_all)
+        
+#         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
+        
+#         # SQL query to get the earliest record with highest priority for each contact
+#         query = f"""
+#             WITH RankedMessages AS (
+#                 SELECT 
+#                     Date,
+#                     display_phone_number,
+#                     phone_number_id,
+#                     waba_id,
+#                     contact_wa_id,
+#                     status,
+#                     message_timestamp,
+#                     error_code,
+#                     error_message,
+#                     contact_name,
+#                     message_from,
+#                     message_type,
+#                     message_body,
+#                     ROW_NUMBER() OVER (
+#                         PARTITION BY contact_wa_id 
+#                         ORDER BY 
+#                             {priority_case},
+#                             message_timestamp ASC
+#                     ) as rn
+#                 FROM webhook_responses
+#                 WHERE contact_wa_id IN ('{contacts_str}')
+#                 AND phone_number_id = '{Phone_ID}'
+#                 {date_filter}
+#             )
+#             SELECT 
+#                 Date,
+#                 display_phone_number,
+#                 phone_number_id,
+#                 waba_id,
+#                 contact_wa_id,
+#                 status,
+#                 message_timestamp,
+#                 error_code,
+#                 error_message,
+#                 contact_name,
+#                 message_from,
+#                 message_type,
+#                 message_body
+#             FROM RankedMessages
+#             WHERE rn = 1
+#             ORDER BY contact_wa_id;
+#         """
+        
+#         cursor.execute(query)
+#         matched_rows = cursor.fetchall()
+        
+#         error_codes_to_check = {"131031", "131053", "131042"}
+#         error_code = None 
+        
+#         if report_id != 1520:
+#             for row in matched_rows:
+#                 current_error_code = str(row[7])
+#                 if current_error_code in error_codes_to_check:
+#                     error_code = current_error_code
+#                     break
+        
+#         matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID, error_code)
+#         response = HttpResponse(content_type='text/csv')
+#         if report_id:
+#             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+#         else:
+#             response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
+        
+#         header = [
+#             "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+#             "status", "message_timestamp", "error_code", "error_message", "contact_name",
+#             "message_from", "message_type", "message_body"
+#         ]
+        
+#         writer = csv.writer(response)
+#         writer.writerow(header)
+#         writer.writerows(matched_rows)
+        
+#         cursor.close()
+#         connection.close()
+        
+#         return response
+        
+#     except Exception as e:
+#         logger.error(f"Error in download_campaign_report2: {str(e)}")
+#         if insight:
+#             return pd.DataFrame()
+#         return JsonResponse({
+#             'status': f'Error: {str(e)}'
+#         })
+        
 @login_required
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
@@ -221,12 +366,13 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         # Create the priority ranking case statement
         priority_case = """
-            CASE status 
-                WHEN 'reply' THEN 1
-                WHEN 'read' THEN 2
-                WHEN 'delivered' THEN 3
-                WHEN 'sent' THEN 4
-                ELSE 5
+            CASE 
+                WHEN status = 'failed' THEN 1
+                WHEN status = 'reply' THEN 2
+                WHEN status = 'read' THEN 3
+                WHEN status = 'delivered' THEN 4
+                WHEN status = 'sent' THEN 5
+                ELSE 6
             END
         """
         
@@ -235,7 +381,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
-        # SQL query to get the earliest record with highest priority for each contact
+        # SQL query to fetch the correct record for each contact
         query = f"""
             WITH RankedMessages AS (
                 SELECT 
@@ -252,10 +398,17 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     message_from,
                     message_type,
                     message_body,
+                    MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
+                        OVER (PARTITION BY contact_wa_id) AS failed_timestamp,
                     ROW_NUMBER() OVER (
                         PARTITION BY contact_wa_id 
                         ORDER BY 
-                            {priority_case},
+                            CASE 
+                                WHEN MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
+                                     OVER (PARTITION BY contact_wa_id) IS NOT NULL 
+                                     THEN CASE WHEN status = 'failed' THEN 1 ELSE 6 END
+                                ELSE {priority_case}
+                            END,
                             message_timestamp ASC
                     ) as rn
                 FROM webhook_responses
@@ -324,7 +477,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
-        
+
+
 def report_step_two(matched_rows, Phone_ID, error_code=None):
     # Connect to the database
     connection = mysql.connector.connect(
