@@ -184,6 +184,7 @@ def update_start_id(report_id):
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
+            logger.info(f"report_id, {report_id}")
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
@@ -195,7 +196,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             created_at += time_delta
         else:
             contact_all = contact_list
-            
+        logger.info(f"contact_all {contact_all}")
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
