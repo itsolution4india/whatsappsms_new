@@ -364,14 +364,14 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
-        # Create the priority ranking case statement
+        # Create the priority ranking case statement with new logic
         priority_case = """
-            CASE 
-                WHEN status = 'failed' THEN 1
-                WHEN status = 'reply' THEN 2
-                WHEN status = 'read' THEN 3
-                WHEN status = 'delivered' THEN 4
-                WHEN status = 'sent' THEN 5
+            CASE status 
+                WHEN 'failed' THEN 1
+                WHEN 'reply' THEN 2
+                WHEN 'read' THEN 3
+                WHEN 'delivered' THEN 4
+                WHEN 'sent' THEN 5
                 ELSE 6
             END
         """
@@ -381,7 +381,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
-        # SQL query to fetch the correct record for each contact
+        # SQL query to get records with prioritized status selection
         query = f"""
             WITH RankedMessages AS (
                 SELECT 
@@ -398,23 +398,37 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     message_from,
                     message_type,
                     message_body,
-                    MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
-                        OVER (PARTITION BY contact_wa_id) AS failed_timestamp,
                     ROW_NUMBER() OVER (
                         PARTITION BY contact_wa_id 
                         ORDER BY 
-                            CASE 
-                                WHEN MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
-                                     OVER (PARTITION BY contact_wa_id) IS NOT NULL 
-                                     THEN CASE WHEN status = 'failed' THEN 1 ELSE 6 END
-                                ELSE {priority_case}
-                            END,
+                            {priority_case},
                             message_timestamp ASC
-                    ) as rn
+                    ) as rn,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY 
+                            {priority_case},
+                            message_timestamp ASC
+                    ) as priority_rn
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
                 AND phone_number_id = '{Phone_ID}'
                 {date_filter}
+            ),
+            PrioritizedMessages AS (
+                SELECT *,
+                    FIRST_VALUE(status) OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY 
+                            CASE status 
+                                WHEN 'failed' THEN 1
+                                ELSE 2
+                            END,
+                            {priority_case},
+                            message_timestamp ASC
+                    ) as prioritized_status
+                FROM RankedMessages
+                WHERE rn <= 2
             )
             SELECT 
                 Date,
@@ -430,8 +444,11 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 message_from,
                 message_type,
                 message_body
-            FROM RankedMessages
-            WHERE rn = 1
+            FROM PrioritizedMessages
+            WHERE 
+                (status = prioritized_status AND priority_rn = 1)
+                OR 
+                (prioritized_status = 'failed' AND priority_rn = 2 AND status = 'failed')
             ORDER BY contact_wa_id;
         """
         
@@ -477,7 +494,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
-
 
 def report_step_two(matched_rows, Phone_ID, error_code=None):
     # Connect to the database
