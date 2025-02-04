@@ -317,7 +317,7 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         if len(contact_all) > 100:
             non_reply_rows = [
                 row for row in rows 
-                if row[5] != "reply" and row[2] == Phone_ID and row[7] not in excluded_error_codes
+                if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed" and row[7] not in excluded_error_codes
             ]
             
         report_date = None
@@ -325,12 +325,12 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         
         for phone in contact_all:
             matched = False
-            # try:
-            #     row = filter_and_sort_records(rows_tri, phone, created_at)
-            # except Exception as e:
-            #     logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
-            #     row = None
-            row = rows_dict.get((Phone_ID, phone), None)
+            try:
+                row = filter_and_sort_records(rows_tri, phone, created_at)
+            except Exception as e:
+                logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
+                row = None
+            # row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
