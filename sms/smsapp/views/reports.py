@@ -195,6 +195,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 created_at = datetime.datetime.fromisoformat(created_at)
         else:
             contact_all = contact_list
+            Phone_ID = display_phonenumber_id(request)
+            created_at = None 
             
         logger.info(f"contact_all {contact_all}")
         if not report_id and not contact_all:
@@ -230,6 +232,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         # Convert contact list to string for SQL IN clause
         contacts_str = "', '".join(contact_all)
         
+        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
+        
         # SQL query to get the earliest record with highest priority for each contact
         query = f"""
             WITH RankedMessages AS (
@@ -255,6 +259,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     ) as rn
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
+                AND phone_number_id = '{Phone_ID}'
+                {date_filter}
             )
             SELECT 
                 Date,
