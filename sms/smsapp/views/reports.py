@@ -285,10 +285,16 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
-        matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID)
+        error_codes_to_check = {"131031", "131053", "131042"}
+        error_code = None 
         
-        logger.info(f"matched_rows {matched_rows}")
+        for row in matched_rows:
+            current_error_code = str(row[7])
+            if current_error_code in error_codes_to_check:
+                error_code = current_error_code
+                break
         
+        matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID, error_code)
         response = HttpResponse(content_type='text/csv')
         if report_id:
             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
@@ -318,7 +324,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
         
-def report_step_two(matched_rows, Phone_ID):
+def report_step_two(matched_rows, Phone_ID, error_code=None):
     # Connect to the database
     connection = mysql.connector.connect(
         host="localhost",
@@ -341,10 +347,23 @@ def report_step_two(matched_rows, Phone_ID):
         if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed"
     ]
     
+    if error_code:
+        if str(error_code) == "131031":
+            error_message = 'Business Account locked'
+        elif str(error_code) == "131053":
+            error_message = 'Media upload error'
+        else:
+            error_message = 'Business eligibility payment issue'
+    
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
-        if row[7] == 131047:
+        if row[7] == 131047 and error_code:
+            row_list = list(row)
+            row_list[7] = error_code
+            row_list[8] = error_message
+            updated_rows.append(tuple(row_list))
+        elif row[7] == 131047:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
