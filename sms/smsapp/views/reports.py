@@ -344,7 +344,7 @@ def report_step_two(matched_rows, Phone_ID):
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
-        if row[7] == "131047":
+        if row[7] == 131047:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
