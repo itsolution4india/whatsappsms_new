@@ -182,30 +182,17 @@ def update_start_id(report_id):
         
 @login_required
 @login_required
-def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report2(request, created_at=None, contact_list=None):
     try:
-        if report_id:
-            logger.info(f"report_id, {report_id}")
-            report = get_object_or_404(ReportInfo, id=report_id)
-            Phone_ID = display_phonenumber_id(request)
-            contacts = report.contact_list.split('\r\n')
-            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
-            if isinstance(created_at, str):
-                created_at = datetime.datetime.fromisoformat(created_at)
-        else:
-            contact_all = contact_list
-            Phone_ID = display_phonenumber_id(request)
-            created_at = None 
+        contact_all = contact_list
+        Phone_ID = display_phonenumber_id(request)
+        created_at = None 
             
         logger.info(f"contact_all {contact_all}")
-        if not report_id and not contact_all:
-            if insight:
-                return pd.DataFrame()
-            else:
-                return JsonResponse({
-                    'status': 'Failed to fetch Data or Messages not delivered'
-                })
+        if not contact_all:
+            return JsonResponse({
+                'status': 'Failed to fetch Data or Messages not delivered'
+            })
                 
         # Connect to the database
         connection = mysql.connector.connect(
@@ -260,6 +247,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
                 AND phone_number_id = '{Phone_ID}'
+                AND (error_code IS NULL OR error_code != 131047)
                 {date_filter}
             )
             SELECT 
@@ -284,31 +272,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
-        response = HttpResponse(content_type='text/csv')
-        if report_id:
-            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
-        else:
-            response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
-        
-        header = [
-            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
-            "status", "message_timestamp", "error_code", "error_message", "contact_name",
-            "message_from", "message_type", "message_body"
-        ]
-        
-        writer = csv.writer(response)
-        writer.writerow(header)  # Write header
-        writer.writerows(matched_rows)  # Write rows
-        
-        cursor.close()
-        connection.close()
-        
-        return response
+        return matched_rows
         
     except Exception as e:
         logger.error(f"Error in download_campaign_report2: {str(e)}")
-        if insight:
-            return pd.DataFrame()
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
@@ -459,11 +426,11 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         
         for phone in contact_all:
             matched = False
-            try:
-                row = filter_and_sort_records(rows_tri, phone, created_at)
-            except Exception as e:
-                logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
-                row = None
+            # try:
+            #     row = filter_and_sort_records(rows_tri, phone, created_at)
+            # except Exception as e:
+            #     logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
+            #     row = None
             # row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
