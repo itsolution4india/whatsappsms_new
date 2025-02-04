@@ -260,7 +260,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
                 AND phone_number_id = '{Phone_ID}'
-                AND (error_code IS NULL OR error_code != 131047)
                 {date_filter}
             )
             SELECT 
