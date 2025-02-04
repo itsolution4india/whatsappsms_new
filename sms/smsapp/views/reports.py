@@ -215,6 +215,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
+        # Start with the base query
         query = """
             SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
                 r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
@@ -229,6 +230,22 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             ) latest 
             ON r.contact_wa_id = latest.contact_wa_id 
             AND r.message_timestamp = latest.latest_message
+        """
+
+        # Handling the dynamic placeholders for the IN clause
+        if contact_all:
+            query = query.replace("(%s)", "(" + ', '.join(['%s'] * len(contact_all)) + ")")
+            params = contact_all + [created_at]
+        else:
+            params = [created_at]
+
+        # Only add this clause if Phone_ID is provided
+        if Phone_ID:
+            query += " AND r.phone_number_id = %s"
+            params.append(Phone_ID)
+
+        # Continue with the order by clause
+        query += """
             ORDER BY
             CASE r.status
                 WHEN 'reply' THEN 1
@@ -240,19 +257,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             r.message_timestamp ASC
         """
 
-        # Fixing the params handling
-        if contact_all:
-            # Modify the placeholder for IN clause for multiple contact numbers
-            query = query.replace("(%s)", "(" + ', '.join(['%s'] * len(contact_all)) + ")")
-            params = contact_all + [created_at]
-        else:
-            params = [created_at]
-
-        if Phone_ID:
-            query += " AND r.phone_number_id = %s"
-            params.append(Phone_ID)
-
-        # Execute the query with proper params
+        # Execute the query with params
         cursor.execute(query, params)
         rows = cursor.fetchall()
         
@@ -311,14 +316,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             "status", "message_timestamp", "error_code", "error_message", "contact_name",
             "message_from", "message_type", "message_body"
         ]
-
-        df = pd.DataFrame(matched_rows, columns=header)
-            
-        status_counts_df = df['status'].value_counts().reset_index()
-        status_counts_df.columns = ['status', 'count']
-        total_unique_contacts = len(df['contact_wa_id'].unique())
-        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
-        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
 
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
