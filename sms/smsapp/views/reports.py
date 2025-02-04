@@ -217,28 +217,25 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             database="fedqrbtb_report",
             auth_plugin='mysql_native_password'
         )
-
         cursor = connection.cursor()
-
-        # Define the priority order
+        
+        # Create the priority ranking case statement
         priority_case = """
-            CASE 
-                WHEN status = 'failed' THEN 1
-                WHEN status = 'reply' THEN 2
-                WHEN status = 'read' THEN 3
-                WHEN status = 'delivered' THEN 4
-                WHEN status = 'sent' THEN 5
-                ELSE 6
+            CASE status 
+                WHEN 'reply' THEN 1
+                WHEN 'read' THEN 2
+                WHEN 'delivered' THEN 3
+                WHEN 'sent' THEN 4
+                ELSE 5
             END
         """
-
-        # Convert contact list to a string for SQL IN clause
+        
+        # Convert contact list to string for SQL IN clause
         contacts_str = "', '".join(contact_all)
-
-        # Apply date filter if 'created_at' is provided
+        
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
-
-        # SQL query to fetch the correct record for each contact
+        
+        # SQL query to get the earliest record with highest priority for each contact
         query = f"""
             WITH RankedMessages AS (
                 SELECT 
@@ -255,17 +252,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     message_from,
                     message_type,
                     message_body,
-                    MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
-                        OVER (PARTITION BY contact_wa_id) AS failed_timestamp,
                     ROW_NUMBER() OVER (
                         PARTITION BY contact_wa_id 
                         ORDER BY 
-                            CASE 
-                                WHEN MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
-                                    OVER (PARTITION BY contact_wa_id) IS NOT NULL 
-                                    THEN CASE WHEN status = 'failed' THEN 1 ELSE 6 END
-                                ELSE {priority_case}
-                            END,
+                            {priority_case},
                             message_timestamp ASC
                     ) as rn
                 FROM webhook_responses
@@ -291,7 +281,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
-
+        
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
