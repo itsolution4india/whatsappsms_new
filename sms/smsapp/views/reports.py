@@ -284,6 +284,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         cursor.execute(query)
         matched_rows = cursor.fetchall()
+        logger.info(f"matched_rows {matched_rows}")
         
         response = HttpResponse(content_type='text/csv')
         if report_id:
