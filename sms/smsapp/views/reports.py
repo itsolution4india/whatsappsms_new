@@ -534,54 +534,54 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
+        # Create the priority ranking case statement
+        priority_case = """
+            CASE status 
+                WHEN 'failed' THEN 1
+                WHEN 'reply' THEN 2
+                WHEN 'read' THEN 3
+                WHEN 'delivered' THEN 4
+                WHEN 'sent' THEN 5
+                ELSE 6
+            END
+        """
+        
         # Convert contact list to string for SQL IN clause
         contacts_str = "', '".join(contact_all)
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
-        # Updated SQL query with failed status priority
+        # SQL query to get unique record for each contact with prioritized selection
         query = f"""
-            WITH EarliestMessages AS (
+            WITH RankedMessages AS (
                 SELECT 
-                    contact_wa_id, 
-                    MIN(message_timestamp) AS earliest_timestamp
+                    Date,
+                    display_phone_number,
+                    phone_number_id,
+                    waba_id,
+                    contact_wa_id,
+                    status,
+                    message_timestamp,
+                    error_code,
+                    error_message,
+                    contact_name,
+                    message_from,
+                    message_type,
+                    message_body,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY 
+                            CASE status 
+                                WHEN 'failed' THEN 1
+                                ELSE 2
+                            END,
+                            {priority_case},
+                            message_timestamp ASC
+                    ) as rn
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
-                    AND phone_number_id = '{Phone_ID}'
-                    {date_filter}
-                GROUP BY contact_wa_id
-            ),
-            RankedMessages AS (
-                SELECT 
-                    wr.Date,
-                    wr.display_phone_number,
-                    wr.phone_number_id,
-                    wr.waba_id,
-                    wr.contact_wa_id,
-                    wr.status,
-                    wr.message_timestamp,
-                    wr.error_code,
-                    wr.error_message,
-                    wr.contact_name,
-                    wr.message_from,
-                    wr.message_type,
-                    wr.message_body,
-                    CASE 
-                        WHEN wr.status = 'failed' AND wr.message_timestamp = em.earliest_timestamp THEN 1 
-                        ELSE 0 
-                    END AS is_earliest_failed,
-                    CASE 
-                        WHEN wr.status = 'reply' THEN 1
-                        WHEN wr.status = 'read' THEN 2
-                        WHEN wr.status = 'delivered' THEN 3
-                        WHEN wr.status = 'sent' THEN 4
-                        ELSE 5
-                    END AS status_priority
-                FROM webhook_responses wr
-                LEFT JOIN EarliestMessages em ON wr.contact_wa_id = em.contact_wa_id
-                WHERE wr.contact_wa_id IN ('{contacts_str}')
-                    AND wr.phone_number_id = '{Phone_ID}'
-                    {date_filter}
+                AND phone_number_id = '{Phone_ID}'
+                {date_filter}
             )
             SELECT 
                 Date,
@@ -597,18 +597,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 message_from,
                 message_type,
                 message_body
-            FROM (
-                SELECT 
-                    *,
-                    ROW_NUMBER() OVER (
-                        PARTITION BY contact_wa_id 
-                        ORDER BY 
-                            is_earliest_failed DESC,
-                            status_priority,
-                            message_timestamp ASC
-                    ) as rn
-                FROM RankedMessages
-            ) AS FinalRanking
+            FROM RankedMessages
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
