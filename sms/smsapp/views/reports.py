@@ -181,6 +181,7 @@ def update_start_id(report_id):
         
         
 @login_required
+@login_required
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
@@ -194,14 +195,15 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 created_at = datetime.datetime.fromisoformat(created_at)
         else:
             contact_all = contact_list
+            
         logger.info(f"contact_all {contact_all}")
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
             else:
                 return JsonResponse({
-                'status': 'Failed to featch Data or Messages not delivered'
-            })
+                    'status': 'Failed to fetch Data or Messages not delivered'
+                })
                 
         # Connect to the database
         connection = mysql.connector.connect(
@@ -214,92 +216,96 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
-        # Start with the base query
-        query = """
-        WITH RankedMessages AS (
+        # Create the priority ranking case statement
+        priority_case = """
+            CASE status 
+                WHEN 'reply' THEN 1
+                WHEN 'read' THEN 2
+                WHEN 'delivered' THEN 3
+                WHEN 'sent' THEN 4
+                ELSE 5
+            END
+        """
+        
+        # Convert contact list to string for SQL IN clause
+        contacts_str = "', '".join(contact_all)
+        
+        # SQL query to get the earliest record with highest priority for each contact
+        query = f"""
+            WITH RankedMessages AS (
+                SELECT 
+                    Date,
+                    display_phone_number,
+                    phone_number_id,
+                    waba_id,
+                    contact_wa_id,
+                    status,
+                    message_timestamp,
+                    error_code,
+                    error_message,
+                    contact_name,
+                    message_from,
+                    message_type,
+                    message_body,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY 
+                            {priority_case},
+                            message_timestamp ASC
+                    ) as rn
+                FROM messages
+                WHERE contact_wa_id IN ('{contacts_str}')
+            )
             SELECT 
-                `Date`, `display_phone_number`, `phone_number_id`, `waba_id`, `contact_wa_id`,
-                `status`, `message_timestamp`, `error_code`, `error_message`, `contact_name`,
-                `message_from`, `message_type`, `message_body`,
-                ROW_NUMBER() OVER (
-                    PARTITION BY contact_wa_id 
-                    ORDER BY 
-                        FIELD(status, 'reply', 'read', 'delivered', 'sent'),
-                        `Date` ASC
-                ) AS rn
-            FROM fedqrbtb_report
-            WHERE contact_wa_id IN ({})
-        )
-        SELECT * FROM RankedMessages WHERE rn = 1;
-        """.format(', '.join(f"'{num}'" for num in contact_all))
-
+                Date,
+                display_phone_number,
+                phone_number_id,
+                waba_id,
+                contact_wa_id,
+                status,
+                message_timestamp,
+                error_code,
+                error_message,
+                contact_name,
+                message_from,
+                message_type,
+                message_body
+            FROM RankedMessages
+            WHERE rn = 1
+            ORDER BY contact_wa_id;
+        """
+        
         cursor.execute(query)
-        rows = cursor.fetchall()
+        matched_rows = cursor.fetchall()
         
-        if not rows:
-            update_start_id(report_id)
-            if insight:
-                return pd.DataFrame()
-            else:
-                return JsonResponse({
-                'status': 'Failed to featch Data or Messages not delivered'
-            })
-        # Create a dictionary for quick lookup
-        rows_dict = {(row[2], row[4]): row for row in rows if row[7] != 131047}
+        response = HttpResponse(content_type='text/csv')
+        if report_id:
+            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+        else:
+            response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
         
-        matched_rows = []
-        non_reply_rows = []
-        
-        excluded_error_codes = {131048, 131000, 131042, 131031, 131053, 131026, 131049, 131047, 131042}
-    
-        if len(contact_all) > 100:
-            non_reply_rows = [
-                row for row in rows 
-                if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed" and row[7] not in excluded_error_codes
-            ]
-            
-        report_date = None
-        no_match_num = []
-        
-        for phone in contact_all:
-            matched = False
-            row = rows_dict.get((Phone_ID, phone), None)
-            if row:
-                matched_rows.append(row)
-                matched = True
-                date_value = row[0]
-                
-                try:
-                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
-                except ValueError as e:
-                    logger.error(f"Error parsing date: {e}")
-            
-            if not matched and non_reply_rows:
-                no_match_num.append(phone)
-                new_row = copy.deepcopy(random.choice(non_reply_rows))
-                new_row_list = list(new_row)
-                new_row_list[4] = phone  # Update the phone number
-                new_row_tuple = tuple(new_row_list)
-                matched_rows.append(new_row_tuple)
-        
-        cursor.close()
-        connection.close()
-
-        # Define your header
         header = [
             "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
             "status", "message_timestamp", "error_code", "error_message", "contact_name",
             "message_from", "message_type", "message_body"
         ]
-
-        response = HttpResponse(content_type='text/csv')
-        response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
         
         writer = csv.writer(response)
         writer.writerow(header)  # Write header
         writer.writerows(matched_rows)  # Write rows
         
+        cursor.close()
+        connection.close()
+        
         return response
+        
+    except Exception as e:
+        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        if insight:
+            return pd.DataFrame()
+        return JsonResponse({
+            'status': f'Error: {str(e)}'
+        })
     
     except mysql.connector.Error as err:
         logger.error(f"Database error: {err}")
