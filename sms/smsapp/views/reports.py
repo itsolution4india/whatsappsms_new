@@ -189,6 +189,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            logger.info(f"contacts {len(contact_all)}")
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
@@ -199,7 +200,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             Phone_ID = display_phonenumber_id(request)
             created_at = None 
             
-        logger.info(f"contact_all {contact_all}")
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
@@ -217,25 +217,28 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             database="fedqrbtb_report",
             auth_plugin='mysql_native_password'
         )
+
         cursor = connection.cursor()
-        
-        # Create the priority ranking case statement
+
+        # Define the priority order
         priority_case = """
-            CASE status 
-                WHEN 'reply' THEN 1
-                WHEN 'read' THEN 2
-                WHEN 'delivered' THEN 3
-                WHEN 'sent' THEN 4
-                ELSE 5
+            CASE 
+                WHEN status = 'failed' THEN 1
+                WHEN status = 'reply' THEN 2
+                WHEN status = 'read' THEN 3
+                WHEN status = 'delivered' THEN 4
+                WHEN status = 'sent' THEN 5
+                ELSE 6
             END
         """
-        
-        # Convert contact list to string for SQL IN clause
+
+        # Convert contact list to a string for SQL IN clause
         contacts_str = "', '".join(contact_all)
-        
+
+        # Apply date filter if 'created_at' is provided
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
-        
-        # SQL query to get the earliest record with highest priority for each contact
+
+        # SQL query to fetch the correct record for each contact
         query = f"""
             WITH RankedMessages AS (
                 SELECT 
@@ -252,10 +255,17 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     message_from,
                     message_type,
                     message_body,
+                    MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
+                        OVER (PARTITION BY contact_wa_id) AS failed_timestamp,
                     ROW_NUMBER() OVER (
                         PARTITION BY contact_wa_id 
                         ORDER BY 
-                            {priority_case},
+                            CASE 
+                                WHEN MIN(CASE WHEN status = 'failed' THEN message_timestamp ELSE NULL END) 
+                                    OVER (PARTITION BY contact_wa_id) IS NOT NULL 
+                                    THEN CASE WHEN status = 'failed' THEN 1 ELSE 6 END
+                                ELSE {priority_case}
+                            END,
                             message_timestamp ASC
                     ) as rn
                 FROM webhook_responses
@@ -281,7 +291,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
-        
+
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
@@ -380,69 +390,69 @@ def report_step_two(matched_rows, Phone_ID, error_code=None):
     
     return updated_rows, no_match_nums
     
-def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
-    # Priority mapping for statuses
-    if isinstance(created_at, str):
-        created_at = datetime.datetime.fromisoformat(created_at)
-        time_delta = datetime.timedelta(hours=5, minutes=30)
-        created_at += time_delta
-    priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
+# def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
+#     # Priority mapping for statuses
+#     if isinstance(created_at, str):
+#         created_at = datetime.datetime.fromisoformat(created_at)
+#         time_delta = datetime.timedelta(hours=5, minutes=30)
+#         created_at += time_delta
+#     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
 
-    # Filter records based on the phone number
-    filtered_records = {
-        key: value for key, value in rows_dict.items() 
-        if (phone_number is None or key[2] == phone_number) and 
-           (created_at is None or key[0] >= created_at)
-    }
+#     # Filter records based on the phone number
+#     filtered_records = {
+#         key: value for key, value in rows_dict.items() 
+#         if (phone_number is None or key[2] == phone_number) and 
+#            (created_at is None or key[0] >= created_at)
+#     }
 
-    if not filtered_records:
-        return ()  # Return an empty tuple if no matching records are found
+#     if not filtered_records:
+#         return ()  # Return an empty tuple if no matching records are found
 
-    # Sort records by the first element of the key (likely the date)
-    sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
+#     # Sort records by the first element of the key (likely the date)
+#     sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
 
-    # Get the record with the least (earliest) date
-    least_record = sorted_records[0]
+#     # Get the record with the least (earliest) date
+#     least_record = sorted_records[0]
 
-    # Check the status of the least record
-    if least_record[0][3] == 'failed':  # Indexing the key tuple
-        # Create the output tuple from the values
-        output = (
-            least_record[1][0],  # Date
-            least_record[1][1],  # display_phone_number
-            least_record[1][2],  # phone_number_id
-            least_record[1][3],  # waba_id
-            least_record[1][4],  # contact_wa_id
-            least_record[1][5],  # status
-            least_record[1][6],  # message_timestamp
-            least_record[1][7],  # error_code
-            least_record[1][8],  # error_message
-            least_record[1][9],  # contact_name
-            least_record[1][10], # message_from
-            least_record[1][11], # message_type
-            least_record[1][12]  # message_body
-        )
-    else:
-        # Sort records by status priority if not 'failed'
-        sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
-        selected_record = sorted_records[0]
-        output = (
-            selected_record[1][0],  # Date
-            selected_record[1][1],  # display_phone_number
-            selected_record[1][2],  # phone_number_id
-            selected_record[1][3],  # waba_id
-            selected_record[1][4],  # contact_wa_id
-            selected_record[1][5],  # status
-            selected_record[1][6],  # message_timestamp
-            selected_record[1][7],  # error_code
-            selected_record[1][8],  # error_message
-            selected_record[1][9],  # contact_name
-            selected_record[1][10], # message_from
-            selected_record[1][11], # message_type
-            selected_record[1][12]  # message_body
-        )
+#     # Check the status of the least record
+#     if least_record[0][3] == 'failed':  # Indexing the key tuple
+#         # Create the output tuple from the values
+#         output = (
+#             least_record[1][0],  # Date
+#             least_record[1][1],  # display_phone_number
+#             least_record[1][2],  # phone_number_id
+#             least_record[1][3],  # waba_id
+#             least_record[1][4],  # contact_wa_id
+#             least_record[1][5],  # status
+#             least_record[1][6],  # message_timestamp
+#             least_record[1][7],  # error_code
+#             least_record[1][8],  # error_message
+#             least_record[1][9],  # contact_name
+#             least_record[1][10], # message_from
+#             least_record[1][11], # message_type
+#             least_record[1][12]  # message_body
+#         )
+#     else:
+#         # Sort records by status priority if not 'failed'
+#         sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
+#         selected_record = sorted_records[0]
+#         output = (
+#             selected_record[1][0],  # Date
+#             selected_record[1][1],  # display_phone_number
+#             selected_record[1][2],  # phone_number_id
+#             selected_record[1][3],  # waba_id
+#             selected_record[1][4],  # contact_wa_id
+#             selected_record[1][5],  # status
+#             selected_record[1][6],  # message_timestamp
+#             selected_record[1][7],  # error_code
+#             selected_record[1][8],  # error_message
+#             selected_record[1][9],  # contact_name
+#             selected_record[1][10], # message_from
+#             selected_record[1][11], # message_type
+#             selected_record[1][12]  # message_body
+#         )
 
-    return output
+#     return output
  
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
