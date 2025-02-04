@@ -325,12 +325,12 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         
         for phone in contact_all:
             matched = False
-            try:
-                row = filter_and_sort_records(rows_tri, phone, created_at)
-            except Exception as e:
-                logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
-                row = None
-            # row = rows_dict.get((Phone_ID, phone), None)
+            # try:
+            #     row = filter_and_sort_records(rows_tri, phone, created_at)
+            # except Exception as e:
+            #     logger.error(f"Error in filter_and_sort_records {rows_tri} {str(e)}")
+            #     row = None
+            row = rows_dict.get((Phone_ID, phone), None)
             if row:
                 matched_rows.append(row)
                 matched = True
