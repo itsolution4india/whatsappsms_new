@@ -178,155 +178,6 @@ def update_start_id(report_id):
 
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
-        
-        
-# @login_required
-# def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
-#     try:
-#         if report_id:
-#             logger.info(f"report_id, {report_id}")
-#             report = get_object_or_404(ReportInfo, id=report_id)
-#             Phone_ID = display_phonenumber_id(request)
-#             contacts = report.contact_list.split('\r\n')
-#             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-#             logger.info(f"contacts {len(contact_all)}")
-#             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
-#             if isinstance(created_at, str):
-#                 created_at = datetime.datetime.fromisoformat(created_at)
-#             time_delta = datetime.timedelta(hours=5, minutes=30)
-#             created_at += time_delta
-#         else:
-#             contact_all = contact_list
-#             Phone_ID = display_phonenumber_id(request)
-#             created_at = None 
-            
-#         if not report_id and not contact_all:
-#             if insight:
-#                 return pd.DataFrame()
-#             else:
-#                 return JsonResponse({
-#                     'status': 'Failed to fetch Data or Messages not delivered'
-#                 })
-                
-#         # Connect to the database
-#         connection = mysql.connector.connect(
-#             host="localhost",
-#             port=3306,
-#             user="fedqrbtb_wtsdealnow",
-#             password="Solution@97",
-#             database="fedqrbtb_report",
-#             auth_plugin='mysql_native_password'
-#         )
-#         cursor = connection.cursor()
-        
-#         # Create the priority ranking case statement
-#         priority_case = """
-#             CASE status 
-#                 WHEN 'reply' THEN 1
-#                 WHEN 'read' THEN 2
-#                 WHEN 'delivered' THEN 3
-#                 WHEN 'sent' THEN 4
-#                 ELSE 5
-#             END
-#         """
-        
-#         # Convert contact list to string for SQL IN clause
-#         contacts_str = "', '".join(contact_all)
-        
-#         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
-        
-#         # SQL query to get the earliest record with highest priority for each contact
-#         query = f"""
-#             WITH RankedMessages AS (
-#                 SELECT 
-#                     Date,
-#                     display_phone_number,
-#                     phone_number_id,
-#                     waba_id,
-#                     contact_wa_id,
-#                     status,
-#                     message_timestamp,
-#                     error_code,
-#                     error_message,
-#                     contact_name,
-#                     message_from,
-#                     message_type,
-#                     message_body,
-#                     ROW_NUMBER() OVER (
-#                         PARTITION BY contact_wa_id 
-#                         ORDER BY 
-#                             {priority_case},
-#                             message_timestamp ASC
-#                     ) as rn
-#                 FROM webhook_responses
-#                 WHERE contact_wa_id IN ('{contacts_str}')
-#                 AND phone_number_id = '{Phone_ID}'
-#                 {date_filter}
-#             )
-#             SELECT 
-#                 Date,
-#                 display_phone_number,
-#                 phone_number_id,
-#                 waba_id,
-#                 contact_wa_id,
-#                 status,
-#                 message_timestamp,
-#                 error_code,
-#                 error_message,
-#                 contact_name,
-#                 message_from,
-#                 message_type,
-#                 message_body
-#             FROM RankedMessages
-#             WHERE rn = 1
-#             ORDER BY contact_wa_id;
-#         """
-        
-#         cursor.execute(query)
-#         matched_rows = cursor.fetchall()
-        
-#         error_codes_to_check = {"131031", "131053", "131042"}
-#         error_code = None 
-        
-#         if report_id != 1520:
-#             for row in matched_rows:
-#                 current_error_code = str(row[7])
-#                 if current_error_code in error_codes_to_check:
-#                     error_code = current_error_code
-#                     break
-        
-#         matched_rows, no_match_nums = report_step_two(matched_rows, Phone_ID, error_code)
-#         response = HttpResponse(content_type='text/csv')
-#         if report_id:
-#             response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
-#         else:
-#             response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
-        
-#         header = [
-#             "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
-#             "status", "message_timestamp", "error_code", "error_message", "contact_name",
-#             "message_from", "message_type", "message_body"
-#         ]
-        
-#         writer = csv.writer(response)
-#         writer.writerow(header)
-#         writer.writerows(matched_rows)
-        
-#         cursor.close()
-#         connection.close()
-        
-#         return response
-        
-#     except Exception as e:
-#         logger.error(f"Error in download_campaign_report2: {str(e)}")
-#         if insight:
-#             return pd.DataFrame()
-#         return JsonResponse({
-#             'status': f'Error: {str(e)}'
-#         })
-        
-
-
 
 @login_required
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
@@ -487,14 +338,22 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             "message_from", "message_type", "message_body"
         ]
         
-        writer = csv.writer(response)
-        writer.writerow(header)
-        writer.writerows(updated_matched_rows)
+        df = pd.DataFrame(updated_matched_rows, columns=header)
+        status_counts_df = df['status'].value_counts().reset_index()
+        status_counts_df.columns = ['status', 'count']
+        total_unique_contacts = len(df['contact_wa_id'].unique())
+        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
+        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
         
-        cursor.close()
-        connection.close()
-        
-        return response
+        if insight:
+            return status_counts_df
+        else:
+            writer = csv.writer(response)
+            writer.writerow(header)
+            writer.writerows(updated_matched_rows)
+            cursor.close()
+            connection.close()
+            return response
         
     except Exception as e:
         logger.error(f"Error in download_campaign_report2: {str(e)}")
@@ -558,70 +417,6 @@ def report_step_two(matched_rows, Phone_ID, error_code=None):
             updated_rows.append(row)
     
     return updated_rows, non_reply_rows
-    
-# def filter_and_sort_records(rows_dict, phone_number=None, created_at=None):
-#     # Priority mapping for statuses
-#     if isinstance(created_at, str):
-#         created_at = datetime.datetime.fromisoformat(created_at)
-#         time_delta = datetime.timedelta(hours=5, minutes=30)
-#         created_at += time_delta
-#     priority = {'reply': 1, 'read': 2, 'delivered': 3, 'sent': 4}
-
-#     # Filter records based on the phone number
-#     filtered_records = {
-#         key: value for key, value in rows_dict.items() 
-#         if (phone_number is None or key[2] == phone_number) and 
-#            (created_at is None or key[0] >= created_at)
-#     }
-
-#     if not filtered_records:
-#         return ()  # Return an empty tuple if no matching records are found
-
-#     # Sort records by the first element of the key (likely the date)
-#     sorted_records = sorted(filtered_records.items(), key=lambda x: x[0][0])
-
-#     # Get the record with the least (earliest) date
-#     least_record = sorted_records[0]
-
-#     # Check the status of the least record
-#     if least_record[0][3] == 'failed':  # Indexing the key tuple
-#         # Create the output tuple from the values
-#         output = (
-#             least_record[1][0],  # Date
-#             least_record[1][1],  # display_phone_number
-#             least_record[1][2],  # phone_number_id
-#             least_record[1][3],  # waba_id
-#             least_record[1][4],  # contact_wa_id
-#             least_record[1][5],  # status
-#             least_record[1][6],  # message_timestamp
-#             least_record[1][7],  # error_code
-#             least_record[1][8],  # error_message
-#             least_record[1][9],  # contact_name
-#             least_record[1][10], # message_from
-#             least_record[1][11], # message_type
-#             least_record[1][12]  # message_body
-#         )
-#     else:
-#         # Sort records by status priority if not 'failed'
-#         sorted_records = sorted(sorted_records, key=lambda x: priority.get(x[0][3], float('inf')))
-#         selected_record = sorted_records[0]
-#         output = (
-#             selected_record[1][0],  # Date
-#             selected_record[1][1],  # display_phone_number
-#             selected_record[1][2],  # phone_number_id
-#             selected_record[1][3],  # waba_id
-#             selected_record[1][4],  # contact_wa_id
-#             selected_record[1][5],  # status
-#             selected_record[1][6],  # message_timestamp
-#             selected_record[1][7],  # error_code
-#             selected_record[1][8],  # error_message
-#             selected_record[1][9],  # contact_name
-#             selected_record[1][10], # message_from
-#             selected_record[1][11], # message_type
-#             selected_record[1][12]  # message_body
-#         )
-
-#     return output
  
 @login_required
 def download_campaign_report(request, report_id=None, insight=False, contact_list=None):
@@ -808,6 +603,22 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
 def get_report_insight(request, report_id):
     try:
         insight_data = download_campaign_report(request, report_id, insight=True)
+        if insight_data.empty:
+            insight_data = pd.DataFrame([{'status': 'failed', 'count': 0}])
+        return JsonResponse({
+            'status': 'success',
+            'data': insight_data.to_dict('records')
+        })
+    except Exception as e:
+        return JsonResponse({
+            'status': 'error',
+            'message': str(e)
+        }, status=500)
+        
+@login_required
+def get_report_insight2(request, report_id):
+    try:
+        insight_data = download_campaign_report2(request, report_id, insight=True)
         if insight_data.empty:
             insight_data = pd.DataFrame([{'status': 'failed', 'count': 0}])
         return JsonResponse({
