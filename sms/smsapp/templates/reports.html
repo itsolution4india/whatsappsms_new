@@ -247,6 +247,9 @@
                                         <button type="button" class="btn btn-info" onclick="showInsight({{ report.id }})">
                                             <i class='bx bx-line-chart'></i>
                                         </button>
+                                        <button type="button" class="btn btn-info d-none" onclick="showInsight2({{ report.id }})">
+                                            <i class='bx bx-line-chart'></i>
+                                        </button>
                                     </div>
                                 {% elif report.start_request_id != 0 %}
                                     <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
@@ -275,36 +278,6 @@
     <!-- / Content -->
 </div>
 <!-- / Layout wrapper -->
-<script>
-    function showInsight(reportId) {
-        fetch(`/report_insight/${reportId}/`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    const tableBody = document.getElementById('insightTableBody');
-                    tableBody.innerHTML = '';
-                    
-                    data.data.forEach(row => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${row.status}</td>
-                            <td>${row.count}</td>
-                        `;
-                        tableBody.appendChild(tr);
-                    });
-                    
-                    const modal = new bootstrap.Modal(document.getElementById('insightModal'));
-                    modal.show();
-                } else {
-                    alert('Failed to load insights');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to load insights');
-            });
-    }
-    </script>
 <script>
     function sendRequest(reportId) {
         // Send the fetch request
@@ -360,6 +333,48 @@
         loadingOverlay.style.display = 'block';
 
         fetch(`/report_insight/${reportId}/`)
+            .then(response => response.json())
+            .then(data => {
+                // Hide the loading overlay when the data is received
+                loadingOverlay.style.display = 'none';
+
+                if (data.status === 'success') {
+                    const tableBody = document.getElementById('insightTableBody');
+                    tableBody.innerHTML = '';
+
+                    data.data.forEach(row => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${row.status}</td>
+                            <td>${row.count}</td>
+                        `;
+                        tableBody.appendChild(tr);
+                    });
+
+                    const modal = new bootstrap.Modal(document.getElementById('insightModal'));
+                    modal.show();
+                } else {
+                    alert('Failed to load insights');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Hide the loading overlay in case of error
+                loadingOverlay.style.display = 'none';
+                alert('Failed to load insights');
+            });
+    }
+</script>
+
+<script>
+    function showInsight2(reportId) {
+        // Get the loading overlay element
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        // Display the loading overlay
+        loadingOverlay.style.display = 'block';
+
+        fetch(`/report_insight2/${reportId}/`)
             .then(response => response.json())
             .then(data => {
                 // Hide the loading overlay when the data is received

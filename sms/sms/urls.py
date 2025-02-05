@@ -21,6 +21,7 @@ urlpatterns = [
     path('download_report2/<int:report_id>/', views.download_campaign_report2, name='report_download2'),
     path('download/<str:media_id>/', views.download_facebook_media, name='download_media'),
     path('report_insight/<int:report_id>/', views.get_report_insight, name='report_insight'),
+    path('report_insight2/<int:report_id>/', views.get_report_insight2, name='report_insight2'),
     path('create_message_temp/', views.Campaign, name='create_message_temp'),
     path('campaign/', views.campaign_index, name='campaign'),
     # path('campaign/delete/<str:template_id>/', views.delete_campaign, name='delete_campaign'),
