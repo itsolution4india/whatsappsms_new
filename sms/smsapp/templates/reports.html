@@ -325,7 +325,7 @@
         const loadingOverlay = document.getElementById('loadingOverlay');
 
         // Display the loading overlay
-        loadingOverlay.style.display = 'block';
+        loadingOverlay.style.display = 'flex';
 
         fetch(`/report_insight/${reportId}/`)
             .then(response => response.json())
@@ -367,7 +367,7 @@
         const loadingOverlay = document.getElementById('loadingOverlay');
 
         // Display the loading overlay
-        loadingOverlay.style.display = 'block';
+        loadingOverlay.style.display = 'flex';
 
         fetch(`/report_insight2/${reportId}/`)
             .then(response => response.json())
