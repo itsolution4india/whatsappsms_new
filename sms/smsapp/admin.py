@@ -15,7 +15,7 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ('email', 'username')
     ordering = ('email',)
     fieldsets = (
-        (None, {'fields': ('email', 'user_id', 'phone_number_id', 'whatsapp_business_account_id','marketing_coins','authentication_coins', 'discount', 'password', 'register_app', 'api_token')}),
+        (None, {'fields': ('email', 'user_id', 'phone_number_id', 'whatsapp_business_account_id','marketing_coins','authentication_coins', 'discount',"remarks", 'password', 'register_app', 'api_token')}),
         (_('Personal info'), {'fields': ('username',)}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
     )

@@ -71,6 +71,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     user_id = models.CharField(max_length=20, default='0')
     api_token = models.TextField(default='0')
+    remarks = models.CharField(max_length=20, default='0')
 
     register_app = models.ForeignKey(RegisterApp, on_delete=models.SET_NULL, null=True)
     def save(self, *args, **kwargs):
