@@ -636,10 +636,13 @@
                                                     <div class="accordion-body">
                                                         <p style="font-weight: bold"><i class='bx bx-globe'></i> WABA ID : {{ WABA_ID }}</p>
                                                         <p style="font-weight: bold"><i class='bx bxs-phone'></i> PHONE ID : {{ PHONE_ID }} </p>
+                                                        {% if user.email != 'samsungindia@gmail.com' %}
                                                         <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ coins }} </p>
                                                         <p style="font-weight: bold; background: #FFA500;" class="coin_body"><i class='bx bxs-megaphone'></i> Marketing : {{ marketing_coins }} </p>
                                                         <p style="font-weight: bold; background: #2ECC71;" class="coin_body"><i class='bx bx-shield-quarter'></i> Utility : {{ authentication_coins }} </p>
-                                                        
+                                                        {% else %}
+                                                        <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ marketing_coins }} </p>
+                                                        {% endif %}
                                                         <p style="font-weight: bold"><a style="color: #697a8d;" href="/coins-history/" class="menu-link"><i class='bx bx-history'></i> Coin History</a></p>
                                                         {% if valid_num %}
                                                         <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link"><i class='bx bx-cog'></i> API Manual</a></p>

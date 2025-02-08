@@ -133,6 +133,8 @@ def get_template_details_by_name(token, waba_id, template_name):
 def validate_balance(request, total_numbers, category=None):
     marketing_coins = request.user.marketing_coins
     auth_coins = request.user.authentication_coins
+    if request.user.email == 'samsungindia@gmail.com':
+        category = "MARKETING"
     if category == "MARKETING" and marketing_coins >= total_numbers:
         return True
     elif (category == 'AUTHENTICATION' or category == 'UTILITY') and auth_coins >= total_numbers:

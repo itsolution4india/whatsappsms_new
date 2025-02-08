@@ -12,12 +12,13 @@ def schedule_subtract_coins(user, final_count, category, template_name=None, cam
             logger.error("User or user coins not found.")
             return
         final_coins = final_count
-        total_coins = data.marketing_coins + data.authentication_coins
         
-        if category == "MARKETING" and user.marketing_coins >= final_coins:
+        if user == 'samsungindia@gmail.com':
+            category = "MARKETING"
+        if category == "MARKETING" and data.marketing_coins >= final_coins:
             data.marketing_coins -= final_coins
             data.save()
-        elif (category == 'AUTHENTICATION' or category == 'UTILITY') and user.authentication_coins >= final_coins:
+        elif (category == 'AUTHENTICATION' or category == 'UTILITY') and data.authentication_coins >= final_coins:
             data.authentication_coins -= final_coins
             data.save()
         else:
@@ -42,6 +43,8 @@ def subtract_coins(request, final_count, category, template_name=None, campaign=
         logger.error("User or user coins not found.")
         return
     final_coins = final_count
+    if request.user.email == 'samsungindia@gmail.com':
+        category = "MARKETING"
     if category == "MARKETING" and user.marketing_coins >= final_coins:
         user.marketing_coins -= final_coins
         user.save()
