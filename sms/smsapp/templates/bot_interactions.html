@@ -229,6 +229,44 @@
 #it-solution-chat-toggle {
     display: none !important;
 }
+
+.upload-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .file-input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        transition: border-color 0.3s;
+    }
+
+    .icon-wrapper:hover {
+        border-color: #3b82f6;
+    }
+
+    .icon-wrapper i {
+        font-size: 24px;
+        color: #6b7280;
+    }
+
+    .success i {
+        color: #22c55e;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -292,7 +330,6 @@
                         {% elif item.source == 'messages' and item.created_at %}
                             {{ item.created_at|date:"M d, Y H:i" }}
                         {% endif %}
-                        {{ max_date }}
                     </div>
                     
                 {% endif %}
@@ -379,6 +416,19 @@
         <input type="hidden" name="phone_number" value="{{ selected_phone }}" id="phoneNumber">
         {% if user.email != 'samsungindia@gmail.com' %}
         <div class="input-group">
+            <div class="upload-container">
+                <input 
+                    name="attachment" 
+                    id="attachment"
+                    type="file" 
+                    class="file-input" 
+                    accept=".jpeg,.png,.pdf,.mp4"
+                >
+                <div class="icon-wrapper">
+                    <i class='bx bx-upload'></i>
+                </div>
+            </div>
+
             <input type="text" 
                    name="chat_text" 
                    id="chatText" 
@@ -406,6 +456,47 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<script>
+    const fileInput = document.querySelector('.file-input');
+    const iconWrapper = document.querySelector('.icon-wrapper');
+    const iconElement = iconWrapper.querySelector('i');
+    // const fileNameDiv = document.querySelector('.file-name');
+
+    const allowedTypes = [
+        'image/jpeg',
+        'image/png',
+        'application/pdf',
+        'video/mp4'
+    ];
+
+    fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        
+        if (file) {
+            if (allowedTypes.includes(file.type)) {
+                // Update icon and add success class
+                iconElement.className = 'bx bx-check';
+                iconWrapper.classList.add('success');
+                
+                // Display file name
+                fileNameDiv.textContent = file.name;
+            } else {
+                // Reset if invalid file type
+                alert('Please select a valid file type (JPEG, PNG, PDF, or MP4)');
+                fileInput.value = '';
+                resetUploader();
+            }
+        } else {
+            resetUploader();
+        }
+    });
+
+    function resetUploader() {
+        iconElement.className = 'bx bx-upload';
+        iconWrapper.classList.remove('success');
+        fileNameDiv.textContent = '';
+    }
+</script>
 <script>
     function downloadMedia(mediaId) {
         const url = `/download/${mediaId}/`;
@@ -509,6 +600,8 @@
                 
                 const chatText = document.getElementById('chatText').value.trim();
                 const phoneNumber = document.getElementById('phoneNumber').value.trim();
+                const attachmentInput = document.getElementById('attachment');
+                const attachment = attachmentInput ? attachmentInput.files[0] : null;
                 
                 // Validate inputs
                 if (!chatText) {
@@ -521,16 +614,15 @@
                     return;
                 }
                 
-                console.log('Sending data:', {
-                    chat_text: chatText,
-                    phone_number: phoneNumber
-                });
-                
                 setLoading(true);
                 
                 try {
                     const formData = new FormData();
                     formData.append('chat_text', chatText);
+                    formData.append('phone_number', phoneNumber);
+                    if (attachment) {
+                        formData.append('attachment', attachment);
+                    }
                     formData.append('phone_number', phoneNumber);
                     
                     const response = await fetch('{% url "user_interaction" %}', {
