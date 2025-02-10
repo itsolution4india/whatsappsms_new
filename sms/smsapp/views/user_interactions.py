@@ -4,7 +4,6 @@ from ..functions.send_messages import display_phonenumber_id
 from ..utils import display_whatsapp_id, get_token_and_app_id, logger
 from .auth import username
 from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
-from .reports import download_linked_report
 import pandas as pd
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -12,8 +11,9 @@ from ..fastapidata import send_bot_api
 from django.utils import timezone
 from django.utils.timezone import make_aware
 from django.forms.models import model_to_dict
-import json
 import datetime
+from ..media_id import process_media_file
+from .reports import download_linked_report
 
 def update_or_create_reply_data(request, all_replies_grouped):
     for _, row in all_replies_grouped.iterrows():
@@ -104,20 +104,63 @@ def bot_interactions(request):
         ].copy()
         
         filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
-        unique_contact_names = filtered_df['contact_name'].unique()  
+        unique_contact_names = filtered_df['contact_name'].unique() 
         
-        combined_data.extend(filtered_df.to_dict('records'))
+        for _, row in filtered_df.iterrows():
+            record = {
+                'source': 'df',
+                'Date': row['Date'],
+                'display_phone_number': row['display_phone_number'],
+                'phone_number_id': row['phone_number_id'],
+                'waba_id': row['waba_id'],
+                'contact_wa_id': row['contact_wa_id'],
+                'status': row['status'],
+                'message_timestamp': row['message_timestamp'],
+                'error_code': row['error_code'],
+                'error_message': row['error_message'],
+                'contact_name': row['contact_name'],
+                'message_from': row['message_from'],
+                'message_type': row['message_type'],
+                'message_body': row['message_body'],
+            }
+            combined_data.append(record)
+            
+        messages_df = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
+        for _, row in messages_df.iterrows():
+            record = {
+                'source': 'messages',
+                'id': row['id'],
+                'token': row['token'],
+                'phone_number_id': row['phone_number_id'],
+                'contact_list': row['contact_list'],
+                'message_type': row['message_type'],
+                'header': row['header'],
+                'body': row['body'],
+                'footer': row['footer'],
+                'button_data': row['button_data'],
+                'product_data': row['product_data'],
+                'catalog_id': row['catalog_id'],
+                'latitude': row['latitude'],
+                'longitude': row['longitude'],
+                'media_id': row['media_id'],
+                'created_at': row['created_at'],
+                'sections': row['sections'],
+            }
+            combined_data.append(record)
         
-        messages_df_filtered = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
-        combined_data.extend(messages_df_filtered.to_dict('records'))
+        # combined_data.extend(filtered_df.to_dict('records'))
+        
+        # messages_df_filtered = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
+        # combined_data.extend(messages_df_filtered.to_dict('records'))
 
         for item in combined_data:
-            if 'Date' in item and item['Date'] is not None:
-                item['Date'] = item['Date'].replace(tzinfo=None)
+            # if 'Date' in item and item['Date'] is not None:
+            #     item['Date'] = item['Date'].replace(tzinfo=None)
             if 'created_at' in item and item['created_at'] is not None:
                 item['created_at'] = item['created_at'].replace(tzinfo=None)
 
-        combined_data.sort(key=lambda x: (x.get('Date', x.get('created_at'))))
+        # combined_data.sort(key=lambda x: (x.get('Date', x.get('created_at'))))
+        combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
 
     total_numbers = matching_phone_numbers
     context = {
@@ -142,11 +185,22 @@ def user_interaction(request):
     if request.method == 'POST':
         chat_text = request.POST.get('chat_text', '')
         phone_number = request.POST.get('phone_number', '')
+        attachment = request.FILES.get('attachment')
         if chat_text and phone_number:
             token, _ = get_token_and_app_id(request)
             phone_number_id = display_phonenumber_id(request)
-            
-            response = send_bot_api(token, phone_number_id, phone_number, "text", body=chat_text)
+            if attachment:
+                media_id_one, media_type_one = process_media_file(attachment, phone_number_id, token)
+                if media_type_one in ['image/jpeg', 'image/png']:
+                    response = send_bot_api(token, phone_number_id, phone_number, "image", body=chat_text, media_id=media_id_one)
+                elif media_type_one == "application/pdf":
+                    response = send_bot_api(token, phone_number_id, phone_number, "document", body=chat_text, media_id=media_id_one)
+                elif media_type_one == "video/mp4":
+                    response = send_bot_api(token, phone_number_id, phone_number, "video", body=chat_text, media_id=media_id_one)
+                else:
+                    return JsonResponse({'status': 'error', 'message': 'File type not supported'})
+            else:
+                response = send_bot_api(token, phone_number_id, phone_number, "text", body=chat_text)
             return JsonResponse({'status': 'success', 'message': 'Message sent successfully'})
         
         return JsonResponse({'status': 'error', 'message': 'Missing required fields'})

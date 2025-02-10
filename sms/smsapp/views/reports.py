@@ -299,7 +299,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     error_code = current_error_code
                     break
         
-        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code)
+        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
         
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
@@ -363,7 +363,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
-def report_step_two(matched_rows, Phone_ID, error_code=None):
+def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
     # Connect to the database
     connection = mysql.connector.connect(
         host="localhost",
@@ -406,6 +406,14 @@ def report_step_two(matched_rows, Phone_ID, error_code=None):
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
+            
+            try:
+                random_seconds = random.randint(0, 300)
+                new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                new_row_list[0] = new_date
+            except Exception as e:
+                logger.info(str(e))
+                
             new_row_list[1] = row[1]
             new_row_list[2] = row[2]
             new_row_list[3] = row[3]
