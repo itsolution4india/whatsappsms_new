@@ -60,59 +60,63 @@
         </div>
     
         <!-- Contacts Table -->
-        <div class="section mb-3">
+        <div class="section mb-3" >
             <h4>Contacts</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Phone Number</th>
-                        <th>Name</th>
-                        <th>Created At</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="contactsTableBody">
-                    {% for contact in contacts %}
-                    <tr>
-                        <td>{{ contact.phone_number }}</td>
-                        <td>{{ contact.name|default:'N/A' }}</td>
-                        <td>{{ contact.created_at }}</td>
-                        <td>
-                            <button onclick="deleteContact('{{ contact.phone_number }}')">Delete</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div style="max-height: 70vh;overflow-y: scroll;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Created At</th>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsTableBody">
+                        {% for contact in contacts %}
+                        <tr>
+                            <td>{{ contact.created_at }}</td>
+                            <td>{{ contact.name|default:'N/A' }}</td>
+                            <td>{{ contact.phone_number }}</td>
+                            <td>
+                                <button onclick="deleteContact('{{ contact.phone_number }}')">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     
         <!-- Groups Table -->
         <div class="section mb-3">
             <h4>Groups</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Created At</th>
-                        <th>Contacts</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody id="groupsTableBody">
-                    {% for group in groups %}
-                    <tr>
-                        <td>{{ group.name }}</td>
-                        <td>{{ group.created_at }}</td>
-                        <td>{{ group.contacts.count }}</td>
-                        <td>
-                            <button onclick="viewGroupContacts({{ group.id }})">View Contacts</button>
-                            <button onclick="showAddContactToGroupForm({{ group.id }})">Add Contact</button>
-                            <button onclick="deleteGroup({{ group.id }})">Delete</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+            <div style="max-height: 70vh;overflow-y: scroll;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Created At</th>
+                            <th>Contacts</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="groupsTableBody">
+                        {% for group in groups %}
+                        <tr>
+                            <td>{{ group.name }}</td>
+                            <td>{{ group.created_at }}</td>
+                            <td>{{ group.contacts.count }}</td>
+                            <td>
+                                <button onclick="viewGroupContacts({{ group.id }})">View Contacts</button>
+                                <button onclick="showAddContactToGroupForm({{ group.id }})">Add Contact</button>
+                                <button onclick="deleteGroup({{ group.id }})">Delete</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
