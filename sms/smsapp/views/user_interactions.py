@@ -104,6 +104,13 @@ def bot_interactions(request):
         ].copy()
         
         filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
+        max_date = filtered_df['Date'].max()
+        current_date = datetime.datetime.now()
+        time_difference = current_date - max_date
+        if time_difference <= datetime.timedelta(hours=24):
+            status = "active"
+        else:
+            status = "inactive"
         unique_contact_names = filtered_df['contact_name'].unique() 
         
         for _, row in filtered_df.iterrows():
@@ -147,19 +154,11 @@ def bot_interactions(request):
                 'sections': row['sections'],
             }
             combined_data.append(record)
-        
-        # combined_data.extend(filtered_df.to_dict('records'))
-        
-        # messages_df_filtered = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
-        # combined_data.extend(messages_df_filtered.to_dict('records'))
 
         for item in combined_data:
-            # if 'Date' in item and item['Date'] is not None:
-            #     item['Date'] = item['Date'].replace(tzinfo=None)
             if 'created_at' in item and item['created_at'] is not None:
                 item['created_at'] = item['created_at'].replace(tzinfo=None)
 
-        # combined_data.sort(key=lambda x: (x.get('Date', x.get('created_at'))))
         combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
 
     total_numbers = matching_phone_numbers
@@ -175,6 +174,7 @@ def bot_interactions(request):
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "max_date": max_date,
+        "status": status,
         "contact_name": unique_contact_names[0] if unique_contact_names else None
     }
     return render(request, "bot_interactions.html", context)
