@@ -50,6 +50,7 @@ def update_or_create_reply_data(request, all_replies_grouped):
 
 @login_required
 def bot_interactions(request):
+    user_status = None
     unique_contact_names = []
     selected_phone = request.GET.get('phone_number', None)
     phone_id = display_phonenumber_id(request)
@@ -57,8 +58,8 @@ def bot_interactions(request):
     
     report_list = ReportInfo.objects.filter(email=request.user).values_list('contact_list', flat=True)
     all_phone_numbers = set(phone for report in report_list for phone in report.split(','))
-    df = download_linked_report(request)
-    # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
+    # df = download_linked_report(request)
+    df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
     df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str).str.replace(r'\.0$', '', regex=True)
@@ -104,6 +105,14 @@ def bot_interactions(request):
         ].copy()
         
         filtered_df['Date'] = pd.to_datetime(filtered_df['Date'], errors='coerce')
+        max_date = filtered_df['Date'].max()
+        current_date = datetime.datetime.now()
+        time_difference = current_date - max_date
+        if time_difference <= datetime.timedelta(hours=24):
+            user_status = "active"
+        else:
+            user_status = "inactive"
+        print("max_date 2", max_date)
         unique_contact_names = filtered_df['contact_name'].unique() 
         
         for _, row in filtered_df.iterrows():
@@ -147,19 +156,11 @@ def bot_interactions(request):
                 'sections': row['sections'],
             }
             combined_data.append(record)
-        
-        # combined_data.extend(filtered_df.to_dict('records'))
-        
-        # messages_df_filtered = messages_df[messages_df['contact_list'].apply(lambda x: selected_phone in x)]
-        # combined_data.extend(messages_df_filtered.to_dict('records'))
 
         for item in combined_data:
-            # if 'Date' in item and item['Date'] is not None:
-            #     item['Date'] = item['Date'].replace(tzinfo=None)
             if 'created_at' in item and item['created_at'] is not None:
                 item['created_at'] = item['created_at'].replace(tzinfo=None)
 
-        # combined_data.sort(key=lambda x: (x.get('Date', x.get('created_at'))))
         combined_data = sorted(combined_data, key=lambda x: (x['Date'] if 'Date' in x else x['created_at']))
 
     total_numbers = matching_phone_numbers
@@ -175,6 +176,7 @@ def bot_interactions(request):
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "max_date": max_date,
+        "user_status": user_status,
         "contact_name": unique_contact_names[0] if unique_contact_names else None
     }
     return render(request, "bot_interactions.html", context)
