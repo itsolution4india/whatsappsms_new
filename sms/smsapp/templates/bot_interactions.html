@@ -436,7 +436,6 @@
                    class="form-control" 
                    placeholder="Type your message..." 
                    required>
-            {% if status == active %}
             <button type="submit" class="btn btn-primary">
                 <span class="button-text">Send</span>
                 <span class="spinner hidden">
@@ -446,9 +445,6 @@
                     </svg>
                 </span>
             </button>
-            {% else %}
-            <button class="btn btn-secondary" disabled>User not active</button>
-            {% endif %}
         </div>
         {% endif %}
     </form>
