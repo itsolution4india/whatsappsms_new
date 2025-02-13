@@ -11,7 +11,7 @@ from django.db import transaction
 from filelock import FileLock
 from django.conf import settings
 from ..models import ScheduledMessage, CustomUser
-from .send_messages import send_messages
+from .send_messages import send_messages, send_admin_testing_messages
 from .template_msg import fetch_templates
 import logging
 from ..utils import logger
@@ -47,19 +47,36 @@ def run_scheduled_message(message_id):
                     submitted_variables = message.submitted_variables
                     
                 logger.info(f"send_messages function called for message {message_id}")
-                send_messages(
-                    message.current_user,
-                    app_info['token'],
-                    user_data.phone_number_id,
-                    campaign_list,
-                    message.template_name,
-                    message.media_id,
-                    ast.literal_eval(message.all_contact),
-                    ast.literal_eval(message.contact_list),
-                    message.campaign_title,
-                    request=None,
-                    submitted_variables=submitted_variables
-                )
+                if message.admin_schedule:
+                    send_admin_testing_messages(
+                        message.current_user,
+                        app_info['token'],
+                        user_data.phone_number_id,
+                        campaign_list,
+                        message.template_name,
+                        message.media_id,
+                        ast.literal_eval(message.all_contact),
+                        ast.literal_eval(message.contact_list),
+                        message.campaign_title,
+                        request=None,
+                        submitted_variables=submitted_variables
+                    )
+                    logger.info(f"Admin testing message {message_id} sent successfully.")
+                else:
+                    send_messages(
+                        message.current_user,
+                        app_info['token'],
+                        user_data.phone_number_id,
+                        campaign_list,
+                        message.template_name,
+                        message.media_id,
+                        ast.literal_eval(message.all_contact),
+                        ast.literal_eval(message.contact_list),
+                        message.campaign_title,
+                        request=None,
+                        submitted_variables=submitted_variables
+                    )
+                    logger.info(f"Message {message_id} sent successfully.")
                 message.is_sent = True
                 message.save()
                 logger.info(f"Message {message_id} sent successfully.")
@@ -76,15 +93,13 @@ def schedule_messages():
         existing_jobs = {job.id for job in scheduler.get_jobs()}
         
         for schedule in schedule_list:
-
-            # Ensure schedule_date is a date object, converting if necessary
-            if isinstance(schedule.schedule_date, str):
-                schedule_date = datetime.strptime(schedule.schedule_date, "%Y-%m-%d").date()
+            if schedule.schedule_type == ScheduledMessage.DAILY:
+                schedule_date = now.date()
             else:
-                schedule_date = schedule.schedule_date
+                schedule_date = datetime.strptime(schedule.schedule_date, "%Y-%m-%d").date()
 
             scheduled_datetime = datetime.combine(
-                datetime.strptime(schedule.schedule_date, "%Y-%m-%d").date(),
+                schedule_date,
                 datetime.strptime(schedule.schedule_time, "%H:%M:%S").time()
             )
             scheduled_datetime = india_timezone.localize(scheduled_datetime)

@@ -131,6 +131,13 @@ class Templates(models.Model):
     templates=models.CharField(unique=True,max_length=100)
     
 class ScheduledMessage(models.Model):
+    DAILY = 'Daily'
+    ONCE = 'Once'
+    
+    SCHEDULE_TYPE_CHOICES = [
+        (DAILY, 'Daily'),
+        (ONCE, 'Once'),
+    ]
     current_user = models.CharField(max_length=50)
     template_name = models.CharField(max_length=255)
     media_id = models.CharField(max_length=255, blank=True, null=True)
@@ -139,6 +146,12 @@ class ScheduledMessage(models.Model):
     campaign_title = models.CharField(max_length=255)
     schedule_date = models.CharField(max_length=50)
     schedule_time = models.CharField(max_length=50)
+    schedule_type = models.CharField(
+        max_length=5,
+        choices=SCHEDULE_TYPE_CHOICES,
+        default=ONCE,
+    )
+    admin_schedule = models.BooleanField(default=False)
     submitted_variables = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -146,7 +159,7 @@ class ScheduledMessage(models.Model):
     is_sent = models.BooleanField(default=False)
     
     def __str__(self):
-        return f"{self.campaign_title} - {self.schedule_date} {self.schedule_time}"
+        return f"{self.current_user} - {self.campaign_title} - {self.schedule_date} {self.schedule_time}"
     
 class TemplateLinkage(models.Model):
     updated_at = models.DateTimeField(auto_now=True)

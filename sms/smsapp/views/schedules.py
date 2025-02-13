@@ -11,7 +11,7 @@ from django.contrib import messages
 def schedules(request):
     if not check_user_permission(request.user, 'can_schedule_tasks'):
         return redirect("access_denide")
-    scheduledmessages = ScheduledMessage.objects.filter(current_user=request.user.email)
+    scheduledmessages = ScheduledMessage.objects.filter(current_user=request.user.email).exclude(admin_schedule=True)
     context = {
         "coins":request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins":request.user.marketing_coins,
