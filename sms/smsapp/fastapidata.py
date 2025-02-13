@@ -13,7 +13,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None):
+def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None, testing_msg=None):
     request_id = generate_code()
     request_id = f"MESSAGE{request_id}"
     url="https://wtsdealnow.in/send_sms/"
@@ -37,7 +37,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
     response = requests.post(url, headers=headers, json=data)
 
     logger.info(response.json())
-    if response.status_code == 200:
+    if response.status_code == 200 and not testing_msg:
         response_data = response.json()
         unique_id = response_data.get("unique_id")
         
@@ -56,6 +56,8 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
                 logger.error(f"Failed to update report {request_id}: {e}")
         else:
             logger.error(f"Missing unique_id or report_id in response: {response_data}")
+    elif testing_msg:
+        logger.info("Testing message sent successfully")
     else:
         logger.error(f"Failed to send validation request: {response.status_code} - {response.text}")
     if response_req:

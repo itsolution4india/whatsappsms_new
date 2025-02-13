@@ -119,6 +119,23 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
         logger.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
         logger.error(f"Error in sending messages: {str(e)}")
+        
+def send_admin_testing_messages(current_user, token, phone_id, campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables=None):
+    try:
+        logger.info(f"Sending messages for user: {current_user}, campaign title: {campaign_title}")
+        for campaign in campaign_list:
+            if campaign['template_name'] == template_name:
+                language = campaign['template_language']
+                media_type = campaign['media_type']
+                category = campaign['category']
+                
+                media_type = "OTP" if category == "AUTHENTICATION" else media_type
+                logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
+                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables)
+
+        logger.info(f"Admin testing Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
+    except Exception as e:
+        logger.error(f"Error in sending messages: {str(e)}")
 
 def save_schedule_messages(current_user, template_name, media_id, all_contact, contact_list, campaign_title, schedule_date, schedule_time, submitted_variables):
     try:
