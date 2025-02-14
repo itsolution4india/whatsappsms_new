@@ -753,6 +753,7 @@ function closePopup() {
           inputField.name = `variable${variableNumber}`;
           inputField.id = `variable${variableNumber}`;  // Set id to match the label's "for" attribute
           inputField.placeholder = `Enter value for {{${variableNumber}}}`;
+          inputField.required = true;
           
           // Add the label and input field to the div
           variableInputsDiv.appendChild(label);
