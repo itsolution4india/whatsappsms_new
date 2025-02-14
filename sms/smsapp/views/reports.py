@@ -331,6 +331,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     no_match_num.append(phone)
                     new_row = copy.deepcopy(random.choice(non_reply_rows))
                     new_row_list = list(new_row)
+                    try:
+                        new_row_list[0] = created_at
+                    except Exception as e:
+                        logger.info(str(e))
                     new_row_list[4] = phone
                     new_row_list[5] = "failed"
                     new_row_list[7] = 100
