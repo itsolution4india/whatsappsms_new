@@ -304,20 +304,21 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
         no_match_num = []
-        if len(contact_all) > 100:
-            for phone in contact_all:
-                matched = False
-                row = rows_dict.get((Phone_ID, phone), None)
-                if row:
-                    updated_matched_rows.append(row)
-                    matched = True
-                    date_value = row[0]
-                    
-                    try:
-                        report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
-                    except ValueError as e:
-                        logger.error(f"Error parsing date: {e}")
-                        
+        
+        for phone in contact_all:
+            matched = False
+            row = rows_dict.get((Phone_ID, phone), None)
+            if row:
+                updated_matched_rows.append(row)
+                matched = True
+                date_value = row[0]
+                
+                try:
+                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
+                except ValueError as e:
+                    logger.error(f"Error parsing date: {e}")
+            
+            if len(contact_all) > 100: 
                 if not matched and non_reply_rows:
                     no_match_num.append(phone)
                     new_row = copy.deepcopy(random.choice(non_reply_rows))
