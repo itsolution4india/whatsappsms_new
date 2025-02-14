@@ -112,11 +112,7 @@ def bot_interactions(request):
             user_status = "active"
         else:
             user_status = "inactive"
-        unique_contact_names = filtered_df['contact_name'].unique() 
-        logger.info(f"user_status {user_status}")
-        logger.info(f"current_date {current_date}")
-        logger.info(f"current_date {current_date}")
-        logger.info(f"time_difference {time_difference}")
+        unique_contact_names = filtered_df['contact_name'].unique()
         for _, row in filtered_df.iterrows():
             record = {
                 'source': 'df',
