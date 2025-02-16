@@ -656,18 +656,18 @@
                                                             <button class="enable">Enablr 2FA</button>
                                                         {% endif %}
                                                         {% endif %}
+                                                        <div>
+                                                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                                                <i class="bx bx-power-off me-2"></i>
+                                                                <span class="align-middle" style="font-weight: bold">Log Out</span>
+                                                            </a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </li>
 
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'logout' %}">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle" style="font-weight: bold">Log Out</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                             <!--/ User -->

@@ -362,7 +362,6 @@
                                 {% endfor %}
                             </select> -->
                             <select id="selectedTempale" onchange="updateTemplate()" class="form-select" name="selectedTempale">
-                                <option value="">Select template</option>
                                 {% for name in template_name %}
                                 <option value="{{ name }}">{{ name }}</option>
                                 {% endfor %}
