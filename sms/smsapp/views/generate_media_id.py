@@ -7,6 +7,7 @@ from .auth import username
 from django.http import FileResponse, HttpResponse
 from django.views.decorators.http import require_http_methods
 import mimetypes
+from django.http import JsonResponse
 
 def generate_id(phone_number_id, media_type, uploaded_file, access_token):
     url = f'https://graph.facebook.com/v20.0/{phone_number_id}/media'
@@ -53,10 +54,28 @@ def upload_media(request):
         media_type = get_media_format(file_extension)
         response = generate_id(phone_number_id, media_type, uploaded_file, token)
         
-       
+        print(response)
         return render(request, "media-file.html", {'response': response.get('id'),"username":username(request),"coins":request.user.coins,"WABA_ID":display_whatsapp_id(request),"PHONE_ID":display_phonenumber_id(request)})
     else:
         return render(request, "media-file.html",context)
+
+@login_required
+@csrf_exempt
+def generatemediaid(request):
+    token, _ = get_token_and_app_id(request)
+    if request.method == 'POST':
+        uploaded_file = request.FILES['file']
+        file_extension = uploaded_file.name.split('.')[-1]
+        phone_number_id=display_phonenumber_id(request)
+        media_type = get_media_format(file_extension)
+        response = generate_id(phone_number_id, media_type, uploaded_file, token)
+        
+        if 'id' in response:
+            return JsonResponse({'media_id': response['id']}, status=200)
+        else:
+            return JsonResponse({'error': 'Failed to generate media ID'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
     
 def get_media_format(file_extension):
     media_formats = {

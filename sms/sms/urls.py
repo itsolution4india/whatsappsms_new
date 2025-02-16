@@ -26,6 +26,7 @@ urlpatterns = [
     path('campaign/', views.campaign_index, name='campaign'),
     # path('campaign/delete/<str:template_id>/', views.delete_campaign, name='delete_campaign'),
     path('media_upload/', views.upload_media, name='upload_media'),
+    path('generatemediaid/', views.generatemediaid, name='generatemediaid'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
     path('schedules/', views.schedules, name='schedules'),
     path('schedules/delete/<int:schedule_id>/', views.delete_schedule, name='delete_schedule'),
