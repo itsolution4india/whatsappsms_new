@@ -554,7 +554,7 @@
                 formData.append('file', file);
         
                 $.ajax({
-                    url: "{% url 'upload_media' %}",
+                    url: "{% url 'generatemediaid' %}",
                     type: 'POST',
                     data: formData,
                     contentType: false,
