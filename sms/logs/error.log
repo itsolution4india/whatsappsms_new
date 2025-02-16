@@ -1,0 +1,49 @@
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Cheeku🥰🥰'}, 'wa_id': '919560214085'}], 'messages': [{'from': '919560214085', 'id': 'wamid.HBgMOTE5NTYwMjE0MDg1FQIAEhggQTJBRjg1NTc1Rjk0MDM3RDRFQUZEQkYyMTIzNDQ4MkQA', 'timestamp': '1739704830', 'text': {'body': 'Hello'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hello None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Cheeku🥰🥰'}, 'wa_id': '919560214085'}], 'messages': [{'context': {'from': '918810617207', 'id': 'wamid.HBgMOTE5NTYwMjE0MDg1FQIAERgSQTgwRjU0RDM4MEQ3Rjk3REI0AA=='}, 'from': '919560214085', 'id': 'wamid.HBgMOTE5NTYwMjE0MDg1FQIAEhggQzA3RUNCNTAyRDk4MEJEM0E4Mjg0MDZBM0VENTY5NzMA', 'timestamp': '1739704839', 'type': 'button', 'button': {'payload': 'Interested', 'text': 'Interested'}}]}, 'field': 'messages'}]}]}
+reply_text: Interested, None None
+detected linktemplate message
+Error image_id format is incorrect. Expected format: 'id|type'
+{'message': 'Messages sent successfully', 'unique_id': '0362910194408209', 'request_id': 'MESSAGE9WAFB9E8A257'}
+Next reply message sent successfully. Template: replyforinterested, Phone Number: 919560214085, Media Type: <class 'str'> TEXT, Image ID Type: <class 'str'> None
+Received notification: {'status': 'completed', 'unique_id': '0362910194408209', 'report_id': 'MESSAGE9WAFB9E8A257'}
+Failed to update Message end_request_id No Notifications matches the given query.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Cheeku🥰🥰'}, 'wa_id': '919560214085'}], 'messages': [{'from': '919560214085', 'id': 'wamid.HBgMOTE5NTYwMjE0MDg1FQIAEhggOEQyQkRFQTJDNjhBRDQxQ0U4NEE2RTgxMDVCQ0NDRjQA', 'timestamp': '1739704876', 'text': {'body': 'Yes'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Yes None
+User demo2@gmail.com logged in successfully.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggNjYwRTJCNkZDNUY5NkRCNjFDRUZGOTMzQkI2QTAwMEIA', 'timestamp': '1739705324', 'text': {'body': '1'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, 1 None
+detected bot message
+Error saving BotSentMessages: cannot access local variable 'product_data' where it is not associated with a value
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/277561478782644/message_templates?access_token=EAANdvtzSZB7kBO1tXZBLe8YTsggcBSZAYz3SP12GbKflg7J6PlIbdpdg8JqnpqiYGkkqrJGwyDx0INRKMI9peCLXIooDUJJVdWsEL6scrsyjE77XQZB8V76bDlP2wuPLeQIzoGmy2p6nxtKJxS97psI9aSW1WJY99TZCc3r8Grl3dlgIYb6MZACXPgHraulBZCdmQZDZD
+Error processing phone number: 'NoneType' object is not iterable
+Internal Server Error: /user_responses/
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggREZBNzIzRjQ1NEU2OUQzMDc5OTVCMzUzQkVGNkM5MUUA', 'timestamp': '1739705375', 'text': {'body': 'Hi'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hi None
+detected bot message
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAANdvtzSZB7kBO1tXZBLe8YTsggcBSZAYz3SP12GbKflg7J6PlIbdpdg8JqnpqiYGkkqrJGwyDx0INRKMI9peCLXIooDUJJVdWsEL6scrsyjE77XQZB8V76bDlP2wuPLeQIzoGmy2p6nxtKJxS97psI9aSW1WJY99TZCc3r8Grl3dlgIYb6MZACXPgHraulBZCdmQZDZD', 'phone_number_id': '244226048784189', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'choose the correct answer'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggOUNBMzJCQkE0MURFOEVEMjQyQzRCRkE0ODg3NDIyQjUA', 'timestamp': '1739705460', 'text': {'body': 'Hello'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hello None
+User demo2@gmail.com logged in successfully.
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggNzI0QkI4NjU5MEZFODhDRjA1OTJGNkJCNTg4MkE4MTgA', 'timestamp': '1739706603', 'text': {'body': 'Hi'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hi None
+detected bot message
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAANdvtzSZB7kBO1tXZBLe8YTsggcBSZAYz3SP12GbKflg7J6PlIbdpdg8JqnpqiYGkkqrJGwyDx0INRKMI9peCLXIooDUJJVdWsEL6scrsyjE77XQZB8V76bDlP2wuPLeQIzoGmy2p6nxtKJxS97psI9aSW1WJY99TZCc3r8Grl3dlgIYb6MZACXPgHraulBZCdmQZDZD', 'phone_number_id': '244226048784189', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'choose the correct answer'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggODFFNzFDMUE5QTE4ODJENzdDQ0IxOTNBRjYxMUZEQTgA', 'timestamp': '1739706730', 'text': {'body': '1'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, 1 None
+detected bot message
+Error saving BotSentMessages: cannot access local variable 'product_data' where it is not associated with a value
+Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/277561478782644/message_templates?access_token=EAANdvtzSZB7kBO1tXZBLe8YTsggcBSZAYz3SP12GbKflg7J6PlIbdpdg8JqnpqiYGkkqrJGwyDx0INRKMI9peCLXIooDUJJVdWsEL6scrsyjE77XQZB8V76bDlP2wuPLeQIzoGmy2p6nxtKJxS97psI9aSW1WJY99TZCc3r8Grl3dlgIYb6MZACXPgHraulBZCdmQZDZD
+Error processing phone number: 'NoneType' object is not iterable
+Internal Server Error: /user_responses/
