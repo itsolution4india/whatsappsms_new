@@ -61,6 +61,7 @@ def run_scheduled_message(message_id):
                         request=None,
                         submitted_variables=submitted_variables
                     )
+                    message.is_sent = False
                     logger.info(f"Admin testing message {message_id} sent successfully.")
                 else:
                     send_messages(
@@ -77,7 +78,7 @@ def run_scheduled_message(message_id):
                         submitted_variables=submitted_variables
                     )
                     logger.info(f"Message {message_id} sent successfully.")
-                message.is_sent = True
+                    message.is_sent = True
                 message.save()
                 logger.info(f"Message {message_id} sent successfully.")
             except ScheduledMessage.DoesNotExist:
