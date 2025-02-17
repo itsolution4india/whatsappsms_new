@@ -427,19 +427,24 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
             WITH LeastDateWaba AS (
-                -- Part 1: Get the least Date and the corresponding waba_id for each contact_wa_id
+                -- Part 1: Get the least Date and corresponding waba_id for each contact_wa_id using a subquery
                 SELECT 
                     contact_wa_id,
                     waba_id,
-                    MIN(Date) AS least_date
-                FROM webhook_responses
-                WHERE contact_wa_id IN ('{contacts_str}')
-                AND phone_number_id = '{Phone_ID}'
-                {date_filter}
-                GROUP BY contact_wa_id
+                    Date AS least_date
+                FROM webhook_responses wr1
+                WHERE (Date, contact_wa_id) IN (
+                    -- Subquery to get the least Date for each contact_wa_id
+                    SELECT MIN(Date) AS least_date, contact_wa_id
+                    FROM webhook_responses
+                    WHERE contact_wa_id IN ('{contacts_str}')
+                    AND phone_number_id = '{Phone_ID}'
+                    {date_filter}
+                    GROUP BY contact_wa_id
+                )
             ),
             LatestMessage AS (
-                -- Part 2: For each contact_wa_id and the identified waba_id, get the latest message_timestamp
+                -- Part 2: For each contact_wa_id and waba_id, get the latest message based on message_timestamp
                 SELECT 
                     wr.Date,
                     wr.display_phone_number,
@@ -456,7 +461,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                     wr.message_body,
                     ROW_NUMBER() OVER (
                         PARTITION BY wr.contact_wa_id 
-                        ORDER BY wr.message_timestamp DESC  -- Prioritize latest message_timestamp
+                        ORDER BY wr.message_timestamp DESC  -- Get the latest message based on timestamp
                     ) as rn
                 FROM webhook_responses wr
                 JOIN LeastDateWaba ldw 
