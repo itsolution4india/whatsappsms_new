@@ -180,7 +180,7 @@ def update_start_id(report_id):
         logger.error(f"Failed to update report {report_id}: {e}")
 
 @login_required
-def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
@@ -381,7 +381,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         })
 
 @login_required
-def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
