@@ -455,7 +455,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                     wr2.message_type,
                     wr2.message_body,
                     ROW_NUMBER() OVER (
-                        PARTITION BY wr2.contact_wa_id 
+                        PARTITION BY wr2.contact_wa_id, wr2.waba_id  -- Partition by both contact_wa_id and waba_id
                         ORDER BY wr2.message_timestamp DESC  -- Get the latest message based on timestamp
                     ) as rn
                 FROM webhook_responses wr2
@@ -463,7 +463,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 ON wr2.contact_wa_id = ldw.contact_wa_id
                 AND wr2.waba_id = ldw.waba_id  -- Ensure the waba_id matches the least date waba_id
             )
-            -- Step 3: Only select the latest message for each contact
+            -- Step 3: Only select the latest message for each contact and waba_id pair
             SELECT 
                 Date,
                 display_phone_number,
@@ -479,7 +479,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 message_type,
                 message_body
             FROM LatestMessage
-            WHERE rn = 1  -- Filter to get only the latest message
+            WHERE rn = 1  -- Filter to get only the latest message for each waba_id and contact_wa_id
             ORDER BY contact_wa_id;
         """
 
