@@ -15,6 +15,6 @@ from .Eembeddedsignup import signup_view, process_signup, get_credit_line_id, sh
 from .twoauth import generate_otp, generate_otp_view, register_2fa_view, disable_2fa
 from .notifications import delete_notification, notifications_list
 from .contacts import contact_management, create_contact, upload_contacts_csv, delete_contact, create_group, delete_group, add_contact_to_group, get_group_contacts, remove_contact_from_group, get_available_contacts
-
+from .generate_qr import generate_qr_code
 from .voice_call import dashboard, make_call
 from .create_carousels import TemplateCreateView, ImageUploadView

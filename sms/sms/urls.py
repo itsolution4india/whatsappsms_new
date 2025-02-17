@@ -25,6 +25,7 @@ urlpatterns = [
     path('report_insight2/<int:report_id>/', views.get_report_insight2, name='report_insight2'),
     path('create_message_temp/', views.Campaign, name='create_message_temp'),
     path('campaign/', views.campaign_index, name='campaign'),
+    path('generate-qr/', views.generate_qr_code, name='generate_qr'),
     # path('campaign/delete/<str:template_id>/', views.delete_campaign, name='delete_campaign'),
     path('media_upload/', views.upload_media, name='upload_media'),
     path('generatemediaid/', views.generatemediaid, name='generatemediaid'),
