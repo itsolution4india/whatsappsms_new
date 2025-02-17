@@ -426,32 +426,45 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
-            WITH RankedMessages AS (
+            WITH LeastDateWaba AS (
+                -- Part 1: Get the least Date and the corresponding waba_id for each contact_wa_id
                 SELECT 
-                    Date,
-                    display_phone_number,
-                    phone_number_id,
-                    waba_id,
                     contact_wa_id,
-                    status,
-                    message_timestamp,
-                    error_code,
-                    error_message,
-                    contact_name,
-                    message_from,
-                    message_type,
-                    message_body,
-                    ROW_NUMBER() OVER (
-                        PARTITION BY contact_wa_id 
-                        ORDER BY 
-                            waba_id DESC,  -- Prioritize latest waba_id
-                            Date ASC        -- Prioritize earliest Date
-                    ) as rn
+                    waba_id,
+                    MIN(Date) AS least_date
                 FROM webhook_responses
                 WHERE contact_wa_id IN ('{contacts_str}')
                 AND phone_number_id = '{Phone_ID}'
                 {date_filter}
+                GROUP BY contact_wa_id
+            ),
+            LatestMessage AS (
+                -- Part 2: For each contact_wa_id and the identified waba_id, get the latest message_timestamp
+                SELECT 
+                    wr.Date,
+                    wr.display_phone_number,
+                    wr.phone_number_id,
+                    wr.waba_id,
+                    wr.contact_wa_id,
+                    wr.status,
+                    wr.message_timestamp,
+                    wr.error_code,
+                    wr.error_message,
+                    wr.contact_name,
+                    wr.message_from,
+                    wr.message_type,
+                    wr.message_body,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY wr.contact_wa_id 
+                        ORDER BY wr.message_timestamp DESC  -- Prioritize latest message_timestamp
+                    ) as rn
+                FROM webhook_responses wr
+                JOIN LeastDateWaba ldw 
+                ON wr.contact_wa_id = ldw.contact_wa_id
+                AND wr.waba_id = ldw.waba_id
+                AND wr.Date = ldw.least_date
             )
+            -- Only take the latest message for each contact
             SELECT 
                 Date,
                 display_phone_number,
@@ -466,10 +479,11 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 message_from,
                 message_type,
                 message_body
-            FROM RankedMessages
+            FROM LatestMessage
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
+
         
         cursor.execute(query)
         matched_rows = cursor.fetchall()
