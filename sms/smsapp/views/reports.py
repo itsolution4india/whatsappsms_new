@@ -188,17 +188,17 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
-            logger.info(f"contacts {len(contact_all)}")
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
+                logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30)
             created_at += time_delta
         else:
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
             created_at = None 
-            
+        logger.info(f"created_at2 {created_at}")
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
