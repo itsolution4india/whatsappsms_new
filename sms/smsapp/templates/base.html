@@ -653,7 +653,7 @@
                                                         {% else %}
 
                                                         {% if twofauth_enable %}
-                                                            <button class="enable">Enablr 2FA</button>
+                                                            <button class="enable" id="enable_2f">Enablr 2FA</button>
                                                         {% endif %}
                                                         {% endif %}
                                                         <div class="mb-6">
@@ -841,7 +841,7 @@
                     }
                     </script>                    
                 <script>
-                    document.querySelector('.enable').parentElement.addEventListener('click', function() {
+                    document.getElementById('enable_2f').addEventListener('click', function() {
                         document.getElementById('twoFactorModal').style.display = 'block';
                     });
                     
