@@ -72,7 +72,7 @@ def save_phone_number(request):
                 if reply_text and not latest_template:
                     filter_message_response = filtermessageresponse(emails, user_response)
                     
-                logger.info(f"reply_text: {reply_text}, {user_response} {interactive_text}")
+                logger.info(f"reply_text: {reply_text}, {user_response}, {interactive_text}")
                 latest_user = CustomUser.objects.filter(
                         phone_number_id=phone_number_id
                     ).first()

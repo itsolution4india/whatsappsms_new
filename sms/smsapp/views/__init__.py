@@ -1,7 +1,7 @@
 from .campaign_template import Campaign, delete_template, campaign_index
 from .auth import user_login, logout_view, user_dashboard, initiate_password_reset, verify_otp, change_password
 from .send_message import Send_Sms, send_flow_message, send_carousel_messages
-from .reports import Reports, download_campaign_report, get_report_insight, download_linked_report, delete_report, download_campaign_report2, get_report_insight2
+from .reports import Reports, download_campaign_report, get_report_insight, download_linked_report, delete_report, download_campaign_report2, get_report_insight2, download_campaign_report3
 from  .generate_media_id import upload_media, download_facebook_media, generatemediaid
 from .schedules import schedules, delete_schedule
 from .custom import facebook_sdk_view, coins_history_list, access_denide, custom_500, notify_user, process_sms_request
