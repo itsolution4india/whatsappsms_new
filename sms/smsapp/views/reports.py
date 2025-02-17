@@ -380,6 +380,191 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
+@login_required
+def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
+    try:
+        if report_id:
+            logger.info(f"report_id, {report_id}")
+            report = get_object_or_404(ReportInfo, id=report_id)
+            Phone_ID = display_phonenumber_id(request)
+            contacts = report.contact_list.split('\r\n')
+            contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            if isinstance(created_at, str):
+                created_at = datetime.datetime.fromisoformat(created_at)
+                logger.info(f"created_at {created_at}")
+            time_delta = datetime.timedelta(hours=5, minutes=30)
+            created_at += time_delta
+        else:
+            contact_all = contact_list
+            Phone_ID = display_phonenumber_id(request)
+            created_at = None 
+        logger.info(f"created_at2 {created_at}")
+        if not report_id and not contact_all:
+            if insight:
+                return pd.DataFrame()
+            else:
+                return JsonResponse({
+                    'status': 'Failed to fetch Data or Messages not delivered'
+                })
+                
+        # Connect to the database
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="fedqrbtb_wtsdealnow",
+            password="Solution@97",
+            database="fedqrbtb_report",
+            auth_plugin='mysql_native_password'
+        )
+        cursor = connection.cursor()
+        
+        # Convert contact list to string for SQL IN clause
+        contacts_str = "', '".join(contact_all)
+        
+        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
+        
+        # SQL query to get unique record for each contact with prioritized selection
+        query = f"""
+            WITH RankedMessages AS (
+                SELECT 
+                    Date,
+                    display_phone_number,
+                    phone_number_id,
+                    waba_id,
+                    contact_wa_id,
+                    status,
+                    message_timestamp,
+                    error_code,
+                    error_message,
+                    contact_name,
+                    message_from,
+                    message_type,
+                    message_body,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY 
+                            waba_id DESC,  -- Prioritize latest waba_id
+                            Date ASC        -- Prioritize earliest Date
+                    ) as rn
+                FROM webhook_responses
+                WHERE contact_wa_id IN ('{contacts_str}')
+                AND phone_number_id = '{Phone_ID}'
+                {date_filter}
+            )
+            SELECT 
+                Date,
+                display_phone_number,
+                phone_number_id,
+                waba_id,
+                contact_wa_id,
+                status,
+                message_timestamp,
+                error_code,
+                error_message,
+                contact_name,
+                message_from,
+                message_type,
+                message_body
+            FROM RankedMessages
+            WHERE rn = 1
+            ORDER BY contact_wa_id;
+        """
+        
+        cursor.execute(query)
+        matched_rows = cursor.fetchall()
+        
+        error_codes_to_check = {"131031", "131053", "131042"}
+        error_code = None 
+        
+        if report_id != 1520:
+            for row in matched_rows:
+                current_error_code = str(row[7])
+                if current_error_code in error_codes_to_check:
+                    error_code = current_error_code
+                    break
+        
+        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        
+        rows_dict = {(row[2], row[4]): row for row in matched_rows}
+        updated_matched_rows = []
+        no_match_num = []
+        
+        for phone in contact_all:
+            matched = False
+            row = rows_dict.get((Phone_ID, phone), None)
+            if row:
+                updated_matched_rows.append(row)
+                matched = True
+                date_value = row[0]
+                
+                try:
+                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
+                except ValueError as e:
+                    logger.error(f"Error parsing date: {e}")
+            
+            if len(contact_all) > 100: 
+                if not matched and non_reply_rows:
+                    no_match_num.append(phone)
+                    new_row = copy.deepcopy(random.choice(non_reply_rows))
+                    new_row_list = list(new_row)
+                    new_row_list[4] = phone
+                    new_row_tuple = tuple(new_row_list)
+                    updated_matched_rows.append(new_row_tuple)
+            else:
+                if not matched and non_reply_rows:
+                    no_match_num.append(phone)
+                    new_row = copy.deepcopy(random.choice(non_reply_rows))
+                    new_row_list = list(new_row)
+                    try:
+                        new_row_list[0] = created_at
+                    except Exception as e:
+                        logger.info(str(e))
+                    new_row_list[4] = phone
+                    new_row_list[5] = "failed"
+                    new_row_list[7] = 100
+                    new_row_list[8] = "Internal server Error"
+                    new_row_tuple = tuple(new_row_list)
+                    updated_matched_rows.append(new_row_tuple)
+                
+        
+        response = HttpResponse(content_type='text/csv')
+        if report_id:
+            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+        else:
+            response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
+        
+        header = [
+            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+            "status", "message_timestamp", "error_code", "error_message", "contact_name",
+            "message_from", "message_type", "message_body"
+        ]
+        
+        df = pd.DataFrame(updated_matched_rows, columns=header)
+        status_counts_df = df['status'].value_counts().reset_index()
+        status_counts_df.columns = ['status', 'count']
+        total_unique_contacts = len(df['contact_wa_id'].unique())
+        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
+        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+        
+        if insight:
+            return status_counts_df
+        else:
+            writer = csv.writer(response)
+            writer.writerow(header)
+            writer.writerows(updated_matched_rows)
+            cursor.close()
+            connection.close()
+            return response
+        
+    except Exception as e:
+        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        if insight:
+            return pd.DataFrame()
+        return JsonResponse({
+            'status': f'Error: {str(e)}'
+        })
+
 def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
     # Connect to the database
     connection = mysql.connector.connect(
