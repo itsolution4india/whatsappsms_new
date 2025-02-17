@@ -436,10 +436,10 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 WHERE wr1.contact_wa_id IN ('{contacts_str}')
                 AND wr1.phone_number_id = '{Phone_ID}'
                 {date_filter}
-                GROUP BY wr1.contact_wa_id, wr1.waba_id
+                GROUP BY wr1.contact_wa_id
             ),
             LatestMessage AS (
-                -- Step 2: For each contact_wa_id and waba_id from LeastDateWaba, get the latest message
+                -- Step 2: Get the latest message for the waba_id found in the least date
                 SELECT 
                     wr2.Date,
                     wr2.display_phone_number,
@@ -455,13 +455,13 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                     wr2.message_type,
                     wr2.message_body,
                     ROW_NUMBER() OVER (
-                        PARTITION BY wr2.contact_wa_id, wr2.waba_id  -- Partition by both contact_wa_id and waba_id
-                        ORDER BY wr2.message_timestamp DESC  -- Get the latest message based on timestamp
+                        PARTITION BY wr2.contact_wa_id
+                        ORDER BY wr2.message_timestamp DESC  -- Get the latest message for each contact_wa_id
                     ) as rn
                 FROM webhook_responses wr2
                 JOIN LeastDateWaba ldw 
                 ON wr2.contact_wa_id = ldw.contact_wa_id
-                AND wr2.waba_id = ldw.waba_id  -- Ensure the waba_id matches the least date waba_id
+                AND wr2.waba_id = ldw.waba_id  -- Ensure the waba_id matches the least date's waba_id
             )
             -- Step 3: Only select the latest message for each contact and waba_id pair
             SELECT 
@@ -479,7 +479,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 message_type,
                 message_body
             FROM LatestMessage
-            WHERE rn = 1  -- Filter to get only the latest message for each waba_id and contact_wa_id
+            WHERE rn = 1  -- Filter to get only the latest message for each contact_wa_id
             ORDER BY contact_wa_id;
         """
 
