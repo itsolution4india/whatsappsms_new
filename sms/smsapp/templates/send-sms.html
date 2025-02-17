@@ -389,6 +389,24 @@
   </div>
 </div>
 <!-- / Layout wrapper -->
+
+<script>
+  document.getElementById("id_files").addEventListener("change", function() {
+    var fileInput = document.getElementById("id_files");
+    var variableInputs = document.getElementById("variable_inputs");
+    var inputFields = variableInputs.querySelectorAll("input[required]");
+
+    if (fileInput.files.length > 0) {
+      inputFields.forEach(function(input) {
+        input.removeAttribute("required");
+      });
+    } else {
+      inputFields.forEach(function(input) {
+        input.setAttribute("required", "required");
+      });
+    }
+  });
+</script>
 <script>
   function copyToClipboard(elementId) {
     const element = document.getElementById(elementId);
