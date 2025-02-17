@@ -47,3 +47,794 @@ Error saving BotSentMessages: cannot access local variable 'product_data' where 
 Error fetching templates: 400 Client Error: Bad Request for url: https://graph.facebook.com/v20.0/277561478782644/message_templates?access_token=EAANdvtzSZB7kBO1tXZBLe8YTsggcBSZAYz3SP12GbKflg7J6PlIbdpdg8JqnpqiYGkkqrJGwyDx0INRKMI9peCLXIooDUJJVdWsEL6scrsyjE77XQZB8V76bDlP2wuPLeQIzoGmy2p6nxtKJxS97psI9aSW1WJY99TZCc3r8Grl3dlgIYb6MZACXPgHraulBZCdmQZDZD
 Error processing phone number: 'NoneType' object is not iterable
 Internal Server Error: /user_responses/
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggNEI0RjVDMDQyRUZBNjI5M0QxRDNFN0ZBNDdDQUU1MjIA', 'timestamp': '1739707336', 'text': {'body': 'Hi'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hi None
+detected bot message
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAALLAdIYSB0BO5Y21WgZC0YZA58ZA3Qu5t4BegFevO91h6FZAUNZCpV5ONkwaWEFBLRjyrutVQ5YdZBPmZBLhPgrUegx3ryy0YYK0SyYgA9QQEjQ1lBGDtrOh4AX6HgO22SpQekr6FGvRgPPlu96auiDNK5Vpt3pDYLiCUgQIHzvT1Eg8NdXF9n9XLRrZCmQz7z8rwZDZD', 'phone_number_id': '244226048784189', 'contact_list': ['916361161836'], 'message_type': 'text', 'body': 'choose the correct answer'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '919599087996', 'phone_number_id': '244226048784189'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggQjIwRjc5NEY1Q0U5M0E4QzEyMjQ2QjgyOUY2RkE3NUQA', 'timestamp': '1739707344', 'text': {'body': '1'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, 1 None
+detected bot message
+Error saving BotSentMessages: cannot access local variable 'product_data' where it is not associated with a value
+sent bot message, travelwelcome en, IMAGE 1352650872841194
+{'message': 'Messages sent successfully', 'unique_id': '3420213273013108', 'request_id': 'MESSAGE0UE6ZW49Z4Z7'}
+Received notification: {'status': 'completed', 'unique_id': '3420213273013108', 'report_id': 'MESSAGE0UE6ZW49Z4Z7'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Adding job: message_91 with scheduled time: 2025-02-17 09:00:52+05:30
+Adding job: message_91 with scheduled time: 2025-02-17 09:00:52+05:30
+Adding job: message_91 with scheduled time: 2025-02-17 09:00:52+05:30
+Internal Server Error: /robots.txt
+Internal Server Error: /robots.txt
+Internal Server Error: /sftp-config.json
+Internal Server Error: /.vscode/sftp.json
+Adding job: message_92 with scheduled time: 2025-02-17 09:00:00+05:30
+Adding job: message_92 with scheduled time: 2025-02-17 09:00:00+05:30
+Adding job: message_92 with scheduled time: 2025-02-17 09:00:00+05:30
+Executing message send for ID: 92 at 2025-02-17 03:30:00.003967+00:00
+Executing message send for ID: 92 at 2025-02-17 03:30:00.004713+00:00
+Executing message send for ID: 92 at 2025-02-17 03:30:00.004915+00:00
+send_messages function called for message 92
+Sending messages for user: samsungindia@gmail.com, campaign title: Admin Testing
+{'message': 'Messages sent successfully', 'unique_id': '5751484779037584', 'request_id': 'MESSAGEM2SC987E46SR'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEM2SC987E46SR and unique ID 5751484779037584
+Admin testing Messages sent successfully for campaign: Admin Testing, user: samsungindia@gmail.com
+Admin testing message 92 sent successfully.
+handle_schedule_update function called
+Received notification: {'status': 'completed', 'unique_id': '5751484779037584', 'report_id': 'MESSAGEM2SC987E46SR'}
+Failed to update Message end_request_id No Notifications matches the given query.
+Executing message send for ID: 91 at 2025-02-17 03:30:52.003601+00:00
+Executing message send for ID: 91 at 2025-02-17 03:30:52.006526+00:00
+Executing message send for ID: 91 at 2025-02-17 03:30:52.007080+00:00
+Internal Server Error: /media/system/js/core.js
+Internal Server Error: /wp-includes/js/jquery/jquery.js
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 440, in login
+    return LoginView.as_view(**defaults)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/debug.py", line 143, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 88, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 107, in form_valid
+    auth_login(self.request, form.get_user())
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 440, in login
+    return LoginView.as_view(**defaults)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/debug.py", line 143, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 88, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 107, in form_valid
+    auth_login(self.request, form.get_user())
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+Failed login attempt for test-demo@gmail.com
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/auth.py", line 165, in user_login
+    login(request, user)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/auth.py", line 165, in user_login
+    login(request, user)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+Internal Server Error: /admin/login/
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 440, in login
+    return LoginView.as_view(**defaults)(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/debug.py", line 143, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 188, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 186, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 88, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/views.py", line 107, in form_valid
+    auth_login(self.request, form.get_user())
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/whatsappsms_develop/sms/smsapp/views/auth.py", line 165, in user_login
+    login(request, user)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 126, in login
+    request.session.cycle_key()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/base.py", line 304, in cycle_key
+    self.create()
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 54, in create
+    self.save(must_create=True)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/contrib/sessions/backends/db.py", line 86, in save
+    obj.save(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1071, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/base.py", line 1112, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/query.py", line 1847, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1823, in execute_sql
+    cursor.execute(sql, params)
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/wtsdashboard/wtsenv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+User demo2@gmail.com logged in successfully.
+User expertestate@gmail.com logged in successfully.
+handle_schedule_update function called
+User samsungindia@gmail.com logged in successfully.
+handle_schedule_update function called
+Adding job: message_91 with scheduled time: 2025-02-17 10:20:52+05:30
+Executing message send for ID: 91 at 2025-02-17 04:50:52.000959+00:00
+send_messages function called for message 91
+Sending messages for user: samsungindia@gmail.com, campaign title: Dinesh BD 17 Feb
+Calculated money data for sending messages: 15
+Message sent successfully. Deducted 15 coins from your account. Remaining balance: 433785
+{'message': 'Messages sent successfully', 'unique_id': '5988708862890134', 'request_id': 'MESSAGEVJ8G4790ITZ4'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEVJ8G4790ITZ4 and unique ID 5988708862890134
+Messages sent successfully for campaign: Dinesh BD 17 Feb, user: samsungindia@gmail.com
+Message 91 sent successfully.
+handle_schedule_update function called
+Message 91 sent successfully.
+Received notification: {'status': 'completed', 'unique_id': '5988708862890134', 'report_id': 'MESSAGEVJ8G4790ITZ4'}
+Updated response MESSAGEVJ8G4790ITZ4 with unique_id 5988708862890134 in end_request_id
+User Samsung logged in successfully.
+report_id, 1862
+contacts 17
+report_id, 1863
+contacts 17
+report_id, 1864
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1921
+contacts 15
+User samsungindia@gmail.com logged in successfully.
+report_id, 1921
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1921
+contacts 15
+User Samsung logged in successfully.
+report_id, 1921
+contacts 15
+report_id, 1921
+contacts 15
+handle_schedule_update function called
+Adding job: message_91 with scheduled time: 2025-02-17 10:41:00+05:30
+report_id, 1887
+contacts 15
+Executing message send for ID: 91 at 2025-02-17 05:11:00.000799+00:00
+send_messages function called for message 91
+Sending messages for user: samsungindia@gmail.com, campaign title: Dinesh BD 17 Feb
+Calculated money data for sending messages: 15
+Message sent successfully. Deducted 15 coins from your account. Remaining balance: 433770
+report_id, 1864
+contacts 15
+{'message': 'Messages sent successfully', 'unique_id': '4162869130746915', 'request_id': 'MESSAGE4UIXT5R2O085'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE4UIXT5R2O085 and unique ID 4162869130746915
+Messages sent successfully for campaign: Dinesh BD 17 Feb, user: samsungindia@gmail.com
+Message 91 sent successfully.
+handle_schedule_update function called
+Message 91 sent successfully.
+Received notification: {'status': 'completed', 'unique_id': '4162869130746915', 'report_id': 'MESSAGE4UIXT5R2O085'}
+Updated response MESSAGE4UIXT5R2O085 with unique_id 4162869130746915 in end_request_id
+report_id, 1862
+contacts 17
+report_id, 1863
+contacts 17
+report_id, 1922
+contacts 15
+User demo-trail@gmail.com logged in successfully.
+User samsungindia@gmail.com logged in successfully.
+Send_Sms: samsungindia@gmail.com, 460844313788449, birthdaysamsung, 467776192938045, ['918929973579', '916361161836'], ['918929973579', '916361161836'], admin testing, []
+handle_schedule_update function called
+Adding job: message_97 with scheduled time: 2025-02-17 10:49:09+05:30
+Scheduled message saved for campaign: admin testing, user: samsungindia@gmail.com
+Send_Sms: samsungindia@gmail.com, 460844313788449, 2birthdaywishes, 983850210009588, ['916361161836'], ['916361161836'], admin testing2, []
+Sending messages for user: samsungindia@gmail.com, campaign title: admin testing2
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '3983394048838517', 'request_id': 'MESSAGED1G28R974VZN'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGED1G28R974VZN and unique ID 3983394048838517
+Messages sent successfully for campaign: admin testing2, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '3983394048838517', 'report_id': 'MESSAGED1G28R974VZN'}
+Updated response MESSAGED1G28R974VZN with unique_id 3983394048838517 in end_request_id
+Executing message send for ID: 97 at 2025-02-17 05:19:09.000938+00:00
+send_messages function called for message 97
+Sending messages for user: samsungindia@gmail.com, campaign title: admin testing
+Calculated money data for sending messages: 2
+Message sent successfully. Deducted 2 coins from your account. Remaining balance: 433767
+{'message': 'Messages sent successfully', 'unique_id': '6139636745300703', 'request_id': 'MESSAGEQ16G5N31D6ZF'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEQ16G5N31D6ZF and unique ID 6139636745300703
+Messages sent successfully for campaign: admin testing, user: samsungindia@gmail.com
+Message 97 sent successfully.
+handle_schedule_update function called
+Message 97 sent successfully.
+Received notification: {'status': 'completed', 'unique_id': '6139636745300703', 'report_id': 'MESSAGEQ16G5N31D6ZF'}
+Updated response MESSAGEQ16G5N31D6ZF with unique_id 6139636745300703 in end_request_id
+report_id, 1923
+contacts 1
+report_id, 1924
+contacts 2
+Send_Sms: samsungindia@gmail.com, 460844313788449, birthdaysamsung, 636209122105470, ['918929973579', '916361161836'], ['918929973579', '916361161836'], testingadmin, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testingadmin
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '4902599938984827', 'request_id': 'MESSAGEC88LO2P02TC5'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEC88LO2P02TC5 and unique ID 4902599938984827
+Messages sent successfully for campaign: testingadmin, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '4902599938984827', 'report_id': 'MESSAGEC88LO2P02TC5'}
+Updated response MESSAGEC88LO2P02TC5 with unique_id 4902599938984827 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggRkFBMzk5RjlBNUY1Nzk0ODFENjgwRERGQzYwRjUyODQA', 'timestamp': '1739769707', 'text': {'body': 'Got it'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Got it None
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '554304434436508', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918384036595', 'phone_number_id': '559825697215701'}, 'contacts': [{'profile': {'name': '918302877313'}, 'wa_id': '918302877313'}], 'messages': [{'from': '918302877313', 'id': 'wamid.HBgMOTE4MzAyODc3MzEzFQIAEhggMTBFQkQ2RUM2MjJDMDNBN0U3OTNBOUM3QTA2OEVFRDEA', 'timestamp': '1739769719', 'text': {'body': 'Hi,How are you?'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Hi,How are you? None
+Send_Sms: samsungindia@gmail.com, 460844313788449, birthdaysamsung, 894861825912291, ['916361161836'], ['916361161836'], admin testing, []
+Sending messages for user: samsungindia@gmail.com, campaign title: admin testing
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '2693928121373938', 'request_id': 'MESSAGEG1L89Q0O7N9U'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEG1L89Q0O7N9U and unique ID 2693928121373938
+Messages sent successfully for campaign: admin testing, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '2693928121373938', 'report_id': 'MESSAGEG1L89Q0O7N9U'}
+Updated response MESSAGEG1L89Q0O7N9U with unique_id 2693928121373938 in end_request_id
+Send_Sms: samsungindia@gmail.com, 460844313788449, 2birthdaywishes, 1095303429278015, ['916361161836'], ['916361161836'], admin testing, []
+Sending messages for user: samsungindia@gmail.com, campaign title: admin testing
+Calculated money data for sending messages: 1
+{'message': 'Messages sent successfully', 'unique_id': '9368061450885145', 'request_id': 'MESSAGE8F8J5CU2W33P'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGE8F8J5CU2W33P and unique ID 9368061450885145
+Messages sent successfully for campaign: admin testing, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '9368061450885145', 'report_id': 'MESSAGE8F8J5CU2W33P'}
+Updated response MESSAGE8F8J5CU2W33P with unique_id 9368061450885145 in end_request_id
+report_id, 1887
+contacts 15
+report_id, 1864
+contacts 15
+report_id, 1864
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1864
+contacts 15
+report_id, 1863
+contacts 17
+report_id, 1863
+contacts 17
+report_id, 1926
+contacts 1
+report_id, 1922
+contacts 15
+Internal Server Error: /admin
+Received notification: {'status': 'completed', 'unique_id': '9866701288551634', 'report_id': None}
+Error processing notification: No ReportInfo matches the given query. <WSGIRequest: POST '/notify_user/'>
+Bad Request: /notify_user/
+Message sent successfully. Deducted 1 coins from your account. Remaining balance: 433762
+report_id, 1864
+contacts 15
+report_id, 1864
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1887
+contacts 15
+report_id, 1864
+contacts 15
+report_id, 1863
+contacts 17
+report_id, 1862
+contacts 17
+report_id, 1862
+contacts 17
+User Samsung logged in successfully.
+Send_Sms: samsungindia@gmail.com, 460844313788449, 2birthdaywishes, 551255807923380, ['919811568727', '918789666856', '919310136555', '919711869922', '919879161880', '918860066600', '919717807755', '919811090780', '919892563128', '919007602333', '917654084699', '919903475000', '919903065324', '919654642919', '919818604399'], ['919811568727', '918789666856', '919310136555', '919711869922', '919879161880', '918860066600', '919717807755', '919811090780', '919892563128', '919007602333', '917654084699', '919903475000', '919903065324', '919654642919', '919818604399'], Dinesh BD 17 Feb, []
+Sending messages for user: samsungindia@gmail.com, campaign title: Dinesh BD 17 Feb
+Calculated money data for sending messages: 15
+{'message': 'Messages sent successfully', 'unique_id': '1302182206589771', 'request_id': 'MESSAGEQ66TAUVY8896'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEQ66TAUVY8896 and unique ID 1302182206589771
+Messages sent successfully for campaign: Dinesh BD 17 Feb, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '1302182206589771', 'report_id': 'MESSAGEQ66TAUVY8896'}
+Updated response MESSAGEQ66TAUVY8896 with unique_id 1302182206589771 in end_request_id
+User BigTelInsurance logged in successfully.
+report_id, 1862
+contacts 17
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919560214085'], 'message_type': 'text', 'body': 'sir please share policy copy 2nd page where addons are shown'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919811412908'], 'message_type': 'text', 'body': 'Please share policy copy to generate discount on quotation'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+fastapi https://wtsdealnow.in/bot_api/ {'accept': 'application/json', 'Content-Type': 'application/json'} {'token': 'EAAQdyle4CxgBOZCsw8Trl3ZBRjVphx3IE2EbFqVZAZA85kerU4qZA4B2qcTPMWy0kPqB4ZAjq8CZCBkP6ZBOpS219UIcGM7q3sfJbZAjlr9D7QE1tuPlaicH0kKKxwmFRHZANtZAaewvZCgJ2SshxMZAFOZAnRKtQwIy89fZAbAbwoXsUmZA6ok2Q1zzyC6Mieg24dVRCU5ZAngZDZD', 'phone_number_id': '575436692308716', 'contact_list': ['919811412908'], 'message_type': 'text', 'body': 'koi claim liya tha sir last year'}
+<class 'list'>
+BotSentMessages successfully saved in the database
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '523627124169600', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918810617207', 'phone_number_id': '575436692308716'}, 'contacts': [{'profile': {'name': 'Avnish'}, 'wa_id': '919811412908'}], 'messages': [{'from': '919811412908', 'id': 'wamid.HBgMOTE5ODExNDEyOTA4FQIAEhggQ0MzQ0M2MDY4NkFGRTA4MzdCNzFGNTU5NTIzMzFFMjcA', 'timestamp': '1739772438', 'text': {'body': 'No'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, No None
+User samsungindia@gmail.com logged in successfully.
+Send_Sms: samsungindia@gmail.com, 460844313788449, 2birthdaywishes, 1223472103120786, ['919711340505', '916361161836'], ['919711340505', '916361161836'], testing, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testing
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '5401456277367383', 'request_id': 'MESSAGEH020E3PS4ZO0'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEH020E3PS4ZO0 and unique ID 5401456277367383
+Messages sent successfully for campaign: testing, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '5401456277367383', 'report_id': 'MESSAGEH020E3PS4ZO0'}
+Updated response MESSAGEH020E3PS4ZO0 with unique_id 5401456277367383 in end_request_id
+Send_Sms: samsungindia@gmail.com, 460844313788449, 2birthdaywishes, 1108698251027429, ['919711340505', '916361161836'], ['919711340505', '916361161836'], testing2, []
+Sending messages for user: samsungindia@gmail.com, campaign title: testing2
+Calculated money data for sending messages: 2
+{'message': 'Messages sent successfully', 'unique_id': '8448041022765616', 'request_id': 'MESSAGEPI470DMS38V0'}
+Added notification entry for samsungindia@gmail.com with request ID MESSAGEPI470DMS38V0 and unique ID 8448041022765616
+Messages sent successfully for campaign: testing2, user: samsungindia@gmail.com
+Received notification: {'status': 'completed', 'unique_id': '8448041022765616', 'report_id': 'MESSAGEPI470DMS38V0'}
+Updated response MESSAGEPI470DMS38V0 with unique_id 8448041022765616 in end_request_id
+response {'object': 'whatsapp_business_account', 'entry': [{'id': '277561478782644', 'changes': [{'value': {'messaging_product': 'whatsapp', 'metadata': {'display_phone_number': '918744002643', 'phone_number_id': '460844313788449'}, 'contacts': [{'profile': {'name': 'Prashanth G'}, 'wa_id': '916361161836'}], 'messages': [{'from': '916361161836', 'id': 'wamid.HBgMOTE2MzYxMTYxODM2FQIAEhggNURBQkY1RDdEQkJDOEZCNzk3NTJCMzJFQzMxNTVEQzMA', 'timestamp': '1739772846', 'text': {'body': 'Recived'}, 'type': 'text'}]}, 'field': 'messages'}]}]}
+bot automation message
+reply_text: None, Recived None
+report_id, 1931
+contacts 2
+report_id, 1930
+contacts 2
+User One99 logged in successfully.
+User BigTelInsurance logged in successfully.
+User BigTelInsurance logged in successfully.
