@@ -427,49 +427,43 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
             WITH LeastDateWaba AS (
-                -- Part 1: Get the least Date and corresponding waba_id for each contact_wa_id using a subquery
+                -- Step 1: Get the least Date and corresponding waba_id for each contact_wa_id
                 SELECT 
-                    contact_wa_id,
-                    waba_id,
-                    Date AS least_date
+                    wr1.contact_wa_id,
+                    wr1.waba_id,
+                    MIN(wr1.Date) AS least_date
                 FROM webhook_responses wr1
-                WHERE (Date, contact_wa_id) IN (
-                    -- Subquery to get the least Date for each contact_wa_id
-                    SELECT MIN(Date) AS least_date, contact_wa_id
-                    FROM webhook_responses
-                    WHERE contact_wa_id IN ('{contacts_str}')
-                    AND phone_number_id = '{Phone_ID}'
-                    {date_filter}
-                    GROUP BY contact_wa_id
-                )
+                WHERE wr1.contact_wa_id IN ('{contacts_str}')
+                AND wr1.phone_number_id = '{Phone_ID}'
+                {date_filter}
+                GROUP BY wr1.contact_wa_id, wr1.waba_id
             ),
             LatestMessage AS (
-                -- Part 2: For each contact_wa_id and waba_id, get the latest message based on message_timestamp
+                -- Step 2: For each contact_wa_id and waba_id from LeastDateWaba, get the latest message
                 SELECT 
-                    wr.Date,
-                    wr.display_phone_number,
-                    wr.phone_number_id,
-                    wr.waba_id,
-                    wr.contact_wa_id,
-                    wr.status,
-                    wr.message_timestamp,
-                    wr.error_code,
-                    wr.error_message,
-                    wr.contact_name,
-                    wr.message_from,
-                    wr.message_type,
-                    wr.message_body,
+                    wr2.Date,
+                    wr2.display_phone_number,
+                    wr2.phone_number_id,
+                    wr2.waba_id,
+                    wr2.contact_wa_id,
+                    wr2.status,
+                    wr2.message_timestamp,
+                    wr2.error_code,
+                    wr2.error_message,
+                    wr2.contact_name,
+                    wr2.message_from,
+                    wr2.message_type,
+                    wr2.message_body,
                     ROW_NUMBER() OVER (
-                        PARTITION BY wr.contact_wa_id 
-                        ORDER BY wr.message_timestamp DESC  -- Get the latest message based on timestamp
+                        PARTITION BY wr2.contact_wa_id 
+                        ORDER BY wr2.message_timestamp DESC  -- Get the latest message based on timestamp
                     ) as rn
-                FROM webhook_responses wr
+                FROM webhook_responses wr2
                 JOIN LeastDateWaba ldw 
-                ON wr.contact_wa_id = ldw.contact_wa_id
-                AND wr.waba_id = ldw.waba_id
-                AND wr.Date = ldw.least_date
+                ON wr2.contact_wa_id = ldw.contact_wa_id
+                AND wr2.waba_id = ldw.waba_id  -- Ensure the waba_id matches the least date waba_id
             )
-            -- Only take the latest message for each contact
+            -- Step 3: Only select the latest message for each contact
             SELECT 
                 Date,
                 display_phone_number,
@@ -485,7 +479,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 message_type,
                 message_body
             FROM LatestMessage
-            WHERE rn = 1
+            WHERE rn = 1  -- Filter to get only the latest message
             ORDER BY contact_wa_id;
         """
 
