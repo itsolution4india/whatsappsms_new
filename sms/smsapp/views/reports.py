@@ -43,6 +43,7 @@ def Reports(request):
         
         return render(request, "reports.html", context)
     
+# version 1
 @login_required
 def download_linked_report(request, button_name=None, start_date=None, end_date=None, report_id=None):
     if report_id and report_id !='null':
@@ -179,8 +180,9 @@ def update_start_id(report_id):
     except Exception as e:
         logger.error(f"Failed to update report {report_id}: {e}")
 
+#version 2
 @login_required
-def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
@@ -380,8 +382,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
+# version 3
 @login_required
-def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
