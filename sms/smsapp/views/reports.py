@@ -427,10 +427,17 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
             WITH LeastDateWaba AS (
-                -- Step 1: Get the least Date and corresponding waba_id for each contact_wa_id
+                -- Step 1: Get the least Date for each contact_wa_id and retrieve corresponding waba_id using subquery
                 SELECT 
                     wr1.contact_wa_id,
-                    wr1.waba_id,
+                    -- Using a subquery to get the waba_id corresponding to the least date
+                    (SELECT waba_id 
+                    FROM webhook_responses sub_wr 
+                    WHERE sub_wr.contact_wa_id = wr1.contact_wa_id
+                    AND sub_wr.phone_number_id = '{Phone_ID}'
+                    {date_filter}
+                    ORDER BY sub_wr.Date ASC
+                    LIMIT 1) AS waba_id,
                     MIN(wr1.Date) AS least_date
                 FROM webhook_responses wr1
                 WHERE wr1.contact_wa_id IN ('{contacts_str}')
@@ -483,7 +490,6 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
             ORDER BY contact_wa_id;
         """
 
-        
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
