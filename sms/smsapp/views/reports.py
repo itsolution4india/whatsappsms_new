@@ -441,7 +441,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             start_date = datetime.datetime.fromisoformat(start_date)
             end_date = f"{end_date} 23:59:59"
             end_date = datetime.datetime.fromisoformat(end_date)
-            contact_all = contact_list
+            contact_all = list(contact_list)
             Phone_ID = display_phonenumber_id(request)
             created_at = start_date
         else:
