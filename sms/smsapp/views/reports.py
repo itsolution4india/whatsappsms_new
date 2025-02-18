@@ -270,7 +270,9 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         """
         
         # Convert contact list to string for SQL IN clause
+        logger.info(f"contact_all {contact_all}")
         contacts_str = "', '".join(contact_all)
+        logger.info(f"contacts_str {contacts_str}")
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
