@@ -62,7 +62,7 @@ def Reports(request):
             report_ids = report_query.values_list('id', flat=True)
             report_ids = list(report_ids)
             print(report_ids)
-            response = bulk_download(report_ids)
+            response = bulk_download(request, report_ids)
             return response
             
         report_list = report_query.only('contact_list').order_by('-created_at')
