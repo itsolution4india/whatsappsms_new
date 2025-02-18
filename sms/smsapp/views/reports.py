@@ -433,7 +433,7 @@ def bulk_download(request, report_ids=None):
                     report = get_object_or_404(ReportInfo, id=single_report_id)
                     report_response = download_campaign_report2(
                         request=request,
-                        report=report,
+                        report_id=report,
                     )
                     
                     if isinstance(report_response, HttpResponse):
