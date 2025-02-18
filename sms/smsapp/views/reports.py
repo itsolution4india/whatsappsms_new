@@ -29,8 +29,9 @@ def Reports(request):
         if campaign_list is None :
             campaign_list=[]
         template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
-        template_value = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+        template_value2 = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
         report_query = ReportInfo.objects.filter(email=request.user)
+        template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
         
         if request.GET.get('start_date'):
             report_query = report_query.filter(message_date__gte=request.GET.get('start_date'))
@@ -50,6 +51,7 @@ def Reports(request):
         report_list = report_query.only('contact_list').order_by('-created_at')
         
         context = {
+            "all_template_names": template_value2,
             "template_names": template_value,
             "coins": request.user.marketing_coins + request.user.authentication_coins,
             "marketing_coins": request.user.marketing_coins,
