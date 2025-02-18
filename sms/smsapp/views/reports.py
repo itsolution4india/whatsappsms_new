@@ -58,7 +58,8 @@ def Reports(request):
                     'status': 'Select start and end date'
                 })
             numbers = report_query.values_list('contact_list', flat=True)
-            _ = download_campaign_report2(request, None, False, numbers, start_date, end_date)
+            response = download_campaign_report2(request, None, False, numbers, start_date, end_date)
+            return response
             
         report_list = report_query.only('contact_list').order_by('-created_at')
         
