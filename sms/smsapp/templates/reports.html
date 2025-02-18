@@ -167,23 +167,23 @@
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
 
             <!-- Filter Form -->
-            <div class="card mb-4 d-none">
+            <div class="mb-4 bg-gray">
                 <div class="card-body">
                     <form method="GET" class="row g-3">
                         <div class="col-md-3">
-                            <label for="start_date" class="form-label">Start Date</label>
+                            <label for="start_date" class="form-label text-white">Start Date</label>
                             <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.GET.start_date }}">
                         </div>
                         <div class="col-md-3">
-                            <label for="end_date" class="form-label">End Date</label>
+                            <label for="end_date" class="form-label text-white">End Date</label>
                             <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.GET.end_date }}">
                         </div>
                         <div class="col-md-3">
-                            <label for="campaign_title" class="form-label">Campaign Title</label>
+                            <label for="campaign_title" class="form-label text-white">Campaign Title</label>
                             <input type="text" class="form-control" id="campaign_title" name="campaign_title" value="{{ request.GET.campaign_title }}">
                         </div>
                         <div class="col-md-3">
-                            <label for="template_name" class="form-label">Template Name</label>
+                            <label for="template_name" class="form-label text-white">Template Name</label>
                             <select class="form-select" id="template_name" name="template_name">
                                 <option value="">All Templates</option>
                                 {% for template in template_names %}
@@ -192,7 +192,7 @@
                             </select>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            <button type="submit" class="btn btn-primary p-2">Apply Filters</button>
                             <a href="{% url 'reports' %}" class="btn btn-secondary">Clear Filters</a>
                         </div>
                     </form>
