@@ -270,9 +270,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         """
         
         # Convert contact list to string for SQL IN clause
-        logger.info(f"contact_all {contact_all}")
         contacts_str = "', '".join(contact_all)
-        logger.info(f"contacts_str {contacts_str}")
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
@@ -470,8 +468,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
-        # Convert contact list to string for SQL IN clause
+        logger.info(f"contact_all {contact_all}")
         contacts_str = "', '".join(contact_all)
+        logger.info(f"contacts_str {contacts_str}")
         
         if start_date and end_date:
             logger.info(f"In download {start_date}, {end_date}")
