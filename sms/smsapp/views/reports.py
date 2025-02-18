@@ -24,23 +24,39 @@ def Reports(request):
     context = {}
     try:
         template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
-        report_list = ReportInfo.objects.filter(email=request.user).only('contact_list').order_by('-created_at')
+        report_query = ReportInfo.objects.filter(email=request.user)
+        
+        if request.GET.get('start_date'):
+            report_query = report_query.filter(message_date__gte=request.GET.get('start_date'))
+        
+        if request.GET.get('end_date'):
+            report_query = report_query.filter(message_date__lte=request.GET.get('end_date'))
+        
+        if request.GET.get('campaign_title'):
+            report_query = report_query.filter(
+                campaign_title__icontains=request.GET.get('campaign_title')
+            )
+        
+        if request.GET.get('template_name'):
+            report_query = report_query.filter(
+                template_name=request.GET.get('template_name')
+            )
+        report_list = report_query.only('contact_list').order_by('-created_at')
         
         context = {
             "template_names": template_value,
-            "coins":request.user.marketing_coins + request.user.authentication_coins,
-            "marketing_coins":request.user.marketing_coins,
-            "authentication_coins":request.user.authentication_coins,
+            "coins": request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins": request.user.marketing_coins,
+            "authentication_coins": request.user.authentication_coins,
             "username": username(request),
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
-            "report_list":report_list,
-            }
+            "report_list": report_list,
+        }
 
         return render(request, "reports.html", context)
     except Exception as e:
         logger.error(str(e))
-        
         return render(request, "reports.html", context)
     
 # version 1

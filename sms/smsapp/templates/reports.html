@@ -161,54 +161,43 @@
 
 <!-- Content wrapper -->
 <div class="content-wrapper" style="height: 1500px;">
-    <div id="popup" class="popup-container" style="display: none; width: 370px;">
-        <div class="popup-content">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100px; margin: 25px;">
-                <circle cx="12" cy="12" r="11" stroke="#3498db" stroke-width="2"/>
-                <path d="M7 12L10 15L17 8" stroke="#3498db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <h3>Request Received</h3>
-            <p>We got your request. Please wait a few minutes while we process it.</p>
-            <div class="loading-dots">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal fade" id="insightModal" tabindex="-1" aria-labelledby="insightModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="insightModalLabel">Campaign Insights</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Status</th>
-                                    <th>Count</th>
-                                </tr>
-                            </thead>
-                            <tbody id="insightTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container-xxl flex-grow-1 container-p-y">      
         <div class="row">
             <div class="w-100 p-3 text-white rounded-top bg-dark">Message Report</div>
 
+            <!-- Filter Form -->
+            <div class="card mb-4 d-none">
+                <div class="card-body">
+                    <form method="GET" class="row g-3">
+                        <div class="col-md-3">
+                            <label for="start_date" class="form-label">Start Date</label>
+                            <input type="date" class="form-control" id="start_date" name="start_date" value="{{ request.GET.start_date }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="end_date" class="form-label">End Date</label>
+                            <input type="date" class="form-control" id="end_date" name="end_date" value="{{ request.GET.end_date }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="campaign_title" class="form-label">Campaign Title</label>
+                            <input type="text" class="form-control" id="campaign_title" name="campaign_title" value="{{ request.GET.campaign_title }}">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="template_name" class="form-label">Template Name</label>
+                            <select class="form-select" id="template_name" name="template_name">
+                                <option value="">All Templates</option>
+                                {% for template in template_names %}
+                                <option value="{{ template }}" {% if request.GET.template_name == template %}selected{% endif %}>{{ template }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                            <a href="{% url 'reports' %}" class="btn btn-secondary">Clear Filters</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
 
             <thead class="thead-dark">
                 <table class="table table-bordered table-striped">
@@ -233,15 +222,9 @@
                                 {% if report.template_name in template_names %}
                                 {% if report.end_request_id != 0 %}
                                     <div class="btn-group" role="group">
-                                        <a href="{% url 'report_download3' report.id %}" class="btn btn-primary d-none">
-                                            <i class='bx bxs-download'></i>
-                                        </a>
                                         <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
                                             <i class='bx bxs-download'></i>
                                         </a>
-                                        <!-- <button type="button" class="btn btn-info" onclick="showInsight({{ report.id }})">
-                                            <i class='bx bx-line-chart'></i>
-                                        </button> -->
                                         <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
                                             <i class='bx bx-line-chart'></i>
                                         </button>
