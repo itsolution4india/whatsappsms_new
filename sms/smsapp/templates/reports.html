@@ -186,8 +186,8 @@
                             <label for="template_name" class="form-label text-white">Template Name</label>
                             <select class="form-select" id="template_name" name="template_name">
                                 <option value="">All Templates</option>
-                                {% for report in report_list %}
-                                <option value="{{ report.template_name }}" {% if request.GET.template_name == report.template_name %}selected{% endif %}>{{ report.template_name }}</option>
+                                {% for template in template_names %}
+                                <option value="{{ template.template_name }}" {% if request.GET.template_name == template.template_name %}selected{% endif %}>{{ template.template_name }}</option>
                                 {% endfor %}
                             </select>
                         </div>
