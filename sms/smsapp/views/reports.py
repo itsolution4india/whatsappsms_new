@@ -52,6 +52,7 @@ def Reports(request):
         if request.GET.get('print_numbers'):
             start_date = request.GET.get('start_date')
             end_date = request.GET.get('end_date')
+            logger.info(f"in view {start_date}, {end_date}")
             if not start_date and not end_date:
                 return JsonResponse({
                     'status': 'Select start and end date'
