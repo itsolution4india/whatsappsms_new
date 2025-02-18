@@ -430,11 +430,16 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
+                logger.info(f"created_at_main {created_at}")
                 created_at = datetime.datetime.fromisoformat(created_at)
                 logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30, seconds=4)
             created_at += time_delta
         elif contact_list and start_date and end_date:
+            start_date = f"{start_date} 00:00:00"
+            start_date = datetime.datetime.fromisoformat(start_date)
+            end_date = f"{end_date} 23:59:59"
+            end_date = datetime.datetime.fromisoformat(end_date)
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
             created_at = start_date
@@ -466,7 +471,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         contacts_str = "', '".join(contact_all)
         
         if start_date and end_date:
-            logger.info(f"{start_date}, {end_date}")
+            logger.info(f"In download {start_date}, {end_date}")
             date_filter = f"AND Date BETWEEN '{start_date}' AND '{end_date}'"
         else:
             date_filter = f"AND Date >= '{created_at}'" if created_at else ""
