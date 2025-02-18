@@ -48,6 +48,17 @@ def Reports(request):
             report_query = report_query.filter(
                 template_name=request.GET.get('template_name')
             )
+        
+        if request.GET.get('print_numbers'):
+            start_date = request.GET.get('start_date')
+            end_date = request.GET.get('end_date')
+            if not start_date and not end_date:
+                return JsonResponse({
+                    'status': 'Select start and end date'
+                })
+            numbers = report_query.values_list('contact_list', flat=True)
+            _ = download_campaign_report2(request, None, False, numbers, start_date, end_date)
+            
         report_list = report_query.only('contact_list').order_by('-created_at')
         
         context = {
@@ -408,7 +419,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
 
 # version 3
 @login_required
-def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
+def download_campaign_report2(request, report_id=None, insight=False, contact_list=None, start_date=None, end_date=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
@@ -422,6 +433,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30, seconds=4)
             created_at += time_delta
+        elif contact_list and start_date and end_date:
+            contact_all = contact_list
+            Phone_ID = display_phonenumber_id(request)
+            created_at = start_date
         else:
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
@@ -449,7 +464,11 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         # Convert contact list to string for SQL IN clause
         contacts_str = "', '".join(contact_all)
         
-        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
+        if start_date and end_date:
+            logger.info(f"{start_date}, {end_date}")
+            date_filter = f"AND Date BETWEEN '{start_date}' AND '{end_date}'"
+        else:
+            date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
@@ -561,7 +580,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     new_row = copy.deepcopy(random.choice(non_reply_rows))
                     new_row_list = list(new_row)
                     try:
-                        new_row_list[0] = created_at
+                        random_seconds = random.randint(0, 300)
+                        new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                        new_row_list[0] = new_date
                     except Exception as e:
                         logger.info(str(e))
                     new_row_list[4] = phone
