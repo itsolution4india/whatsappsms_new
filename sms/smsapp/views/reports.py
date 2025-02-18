@@ -15,7 +15,6 @@ from django.views.decorators.http import require_http_methods
 from datetime import timedelta
 from ..fastapidata import send_validate_req
 from django.http import HttpResponse
-from ..functions.template_msg import fetch_templates
 
 @login_required
 def Reports(request):
@@ -24,12 +23,7 @@ def Reports(request):
     
     context = {}
     try:
-        token, _ = get_token_and_app_id(request)
-        campaign_list = fetch_templates(display_whatsapp_id(request), token)
-        if campaign_list is None :
-            campaign_list=[]
         template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
-        template_value = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
         report_query = ReportInfo.objects.filter(email=request.user)
         
         if request.GET.get('start_date'):
