@@ -16,6 +16,8 @@ from datetime import timedelta
 from ..fastapidata import send_validate_req
 from django.http import HttpResponse
 from ..functions.template_msg import fetch_templates
+import zipfile
+import io
 
 @login_required
 def Reports(request):
@@ -57,8 +59,10 @@ def Reports(request):
                 return JsonResponse({
                     'status': 'Select start and end date'
                 })
-            numbers = report_query.values_list('contact_list', flat=True)
-            response = download_campaign_report2(request, None, False, numbers, start_date, end_date)
+            report_ids = report_query.values_list('id', flat=True)
+            report_ids = list(report_ids)
+            print(report_ids)
+            response = bulk_download(report_ids)
             return response
             
         report_list = report_query.only('contact_list').order_by('-created_at')
@@ -419,9 +423,38 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
+@login_required
+def bulk_download(request, report_ids=None):
+    try:
+        if report_ids:
+            zip_buffer = io.BytesIO()
+            with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+                for single_report_id in report_ids:
+                    report = get_object_or_404(ReportInfo, id=single_report_id)
+                    report_response = download_campaign_report2(
+                        request=request,
+                        report=report,
+                    )
+                    
+                    if isinstance(report_response, HttpResponse):
+                        csv_content = report_response.content
+                        zip_file.writestr(f"{report.campaign_title}.csv", csv_content)
+                    
+            zip_buffer.seek(0)
+            response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
+            response['Content-Disposition'] = 'attachment; filename="campaign_reports.zip"'
+            return response
+            
+            
+    except Exception as e:
+        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        return JsonResponse({
+            'status': f'Error: {str(e)}'
+        })
+
 # version 3
 @login_required
-def download_campaign_report2(request, report_id=None, insight=False, contact_list=None, start_date=None, end_date=None):
+def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
             logger.info(f"report_id, {report_id}")
@@ -436,14 +469,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30, seconds=4)
             created_at += time_delta
-        elif contact_list and start_date and end_date:
-            start_date = f"{start_date} 00:00:00"
-            start_date = datetime.datetime.fromisoformat(start_date)
-            end_date = f"{end_date} 23:59:59"
-            end_date = datetime.datetime.fromisoformat(end_date)
-            contact_all = list(contact_list)
-            Phone_ID = display_phonenumber_id(request)
-            created_at = start_date
         else:
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
@@ -472,11 +497,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         contacts_str = "', '".join(contact_all)
         logger.info(f"contacts_str {contacts_str}")
         
-        if start_date and end_date:
-            logger.info(f"In download {start_date}, {end_date}")
-            date_filter = f"AND Date BETWEEN '{start_date}' AND '{end_date}'"
-        else:
-            date_filter = f"AND Date >= '{created_at}'" if created_at else ""
+        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
