@@ -430,21 +430,26 @@ def bulk_download(request, report_ids=None):
             zip_buffer = io.BytesIO()
             with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
                 for single_report_id in report_ids:
-                    report = get_object_or_404(ReportInfo, id=single_report_id)
-                    report_response = download_campaign_report2(
-                        request=request,
-                        report_id=report,
-                    )
-                    
-                    if isinstance(report_response, HttpResponse):
-                        csv_content = report_response.content
-                        zip_file.writestr(f"{report.campaign_title}.csv", csv_content)
+                    try:
+                        report = get_object_or_404(ReportInfo, id=single_report_id)
+                        report_response = download_campaign_report2(
+                            request=request,
+                            report_id=single_report_id,
+                        )
+                        if isinstance(report_response, HttpResponse) and report_response.get('content-type') == 'text/csv':
+                            csv_content = report_response.content
+                            zip_file.writestr(f"{report.campaign_title}.csv", csv_content)
+                        else:
+                            logger.error(f"Invalid response type for report ID {single_report_id}")
+                            
+                    except Exception as e:
+                        logger.error(f"Error processing report ID {single_report_id}: {str(e)}")
+                        continue
                     
             zip_buffer.seek(0)
             response = HttpResponse(zip_buffer.getvalue(), content_type='application/zip')
             response['Content-Disposition'] = 'attachment; filename="campaign_reports.zip"'
             return response
-            
             
     except Exception as e:
         logger.error(f"Error in download_campaign_report2: {str(e)}")
