@@ -51,22 +51,21 @@ def Reports(request):
                 template_name=request.GET.get('template_name')
             )
         
-        if request.GET.get('print_numbers'):
+        if request.GET.get('download_in_bulk'):
             start_date = request.GET.get('start_date')
             end_date = request.GET.get('end_date')
-            logger.info(f"in view {start_date}, {end_date}")
             if not start_date and not end_date:
                 return JsonResponse({
-                    'status': 'Select start and end date'
+                    'status': 'Failed',
+                    "Reason": "Select Start Date And End Date"
                 })
             report_ids = report_query.values_list('id', flat=True)
             report_ids = list(report_ids)
-            print(report_ids)
             response = bulk_download(request, report_ids)
             return response
             
         report_list = report_query.only('contact_list').order_by('-created_at')
-        
+        show_button = any(report.end_request_id == 0 or report.start_request_id == 0 for report in report_list)
         context = {
             "all_template_names": template_value2,
             "template_names": template_value,
@@ -77,6 +76,7 @@ def Reports(request):
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
             "report_list": report_list,
+            "show_button": show_button
         }
 
         return render(request, "reports.html", context)
