@@ -154,6 +154,35 @@
     40% { transform: scale(1); }
 }
 
+.tooltip-wrapper {
+        position: relative;
+        display: inline-block;
+        cursor: not-allowed;
+    }
+
+    .tooltip-wrapper .tooltip-text {
+        visibility: hidden;
+        width: 250px !important;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; /* Adjust based on where you want the tooltip */
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+    }
+
+    .tooltip-wrapper:hover .tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+
 </style>
 {% endblock %}
 
@@ -237,7 +266,18 @@
                         <div class="col-12">
                             <button type="submit" class="btn btn-primary p-2" style="border-radius: 5px !important;">Apply Filters</button>
                             <a href="{% url 'reports' %}" class="btn btn-secondary">Clear Filters</a>
-                            <button type="submit" class="btn btn-warning p-2 d-none" name="print_numbers" value="true" style="border-radius: 5px !important;">Download in bluk</button>
+                            {% if show_button %}
+                            <div class="tooltip-wrapper">
+                                <button class="btn btn-warning p-2 download_hover" 
+                                        style="border-radius: 5px !important;" 
+                                        disabled>
+                                    Download in bulk
+                                </button>
+                                <span class="tooltip-text">Select start end dates and complete Get Report before download in bulk</span>
+                            </div>
+                            {% else %}
+                                <button type="submit" class="btn btn-warning p-2" name="download_in_bulk" value="true" style="border-radius: 5px !important;">Download in bulk</button>
+                            {% endif %}
                         </div>
                     </form>
                 </div>
