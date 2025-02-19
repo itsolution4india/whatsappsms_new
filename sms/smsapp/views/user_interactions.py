@@ -47,6 +47,20 @@ def update_or_create_reply_data(request, all_replies_grouped):
                 last_updated=timezone.now()
             )
 
+def count_response(all_replies_dict):
+    now = datetime.datetime.now(datetime.timezone.utc)
+    start_of_today = datetime.datetime(now.year, now.month, now.day, tzinfo=datetime.timezone.utc)
+    last_7_days = now - datetime.timedelta(days=7)
+    today_responses = 0
+    last_7_days_responses = 0
+    for reply in all_replies_dict:
+        last_updated = reply['last_updated']
+        if last_updated >= start_of_today:
+            today_responses += 1
+        if last_updated >= last_7_days:
+            last_7_days_responses += 1
+    
+    return today_responses, last_7_days_responses
 
 @login_required
 def bot_interactions(request):
@@ -90,7 +104,7 @@ def bot_interactions(request):
         {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
         for record in last_replay_data
     ]
-    all_replies_dict = data_as_dict
+    today_responses, last_7_days_responses = count_response(data_as_dict)
     
     combined_data = []
     if selected_phone:
@@ -170,11 +184,13 @@ def bot_interactions(request):
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
         "phone_numbers_list": total_numbers,
-        "all_replies_dict": all_replies_dict,
+        "all_replies_dict": data_as_dict,
         "selected_phone": selected_phone,
         "combined_data": combined_data,
         "max_date": max_date,
         "user_status": user_status,
+        "today_responses": today_responses,
+        "last_7_days_responses": last_7_days_responses,
         "contact_name": unique_contact_names[0] if unique_contact_names else None
     }
     return render(request, "bot_interactions.html", context)
