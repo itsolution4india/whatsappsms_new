@@ -2,11 +2,20 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 import json
-from ..utils import display_phonenumber_id, get_token_and_app_id
+from ..utils import display_phonenumber_id, get_token_and_app_id, display_whatsapp_id
 from django.contrib.auth.decorators import login_required
+from .auth import username
 
 @login_required
 def generate_qr_code(request):
+    context = {
+            "coins": request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins": request.user.marketing_coins,
+            "authentication_coins": request.user.authentication_coins,
+            "username": username(request),
+            "WABA_ID": display_whatsapp_id(request),
+            "PHONE_ID": display_phonenumber_id(request)
+        }
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -38,3 +47,5 @@ def generate_qr_code(request):
                 
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=500)
+    
+    return render(request, "generateqr.html", context)
