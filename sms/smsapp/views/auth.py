@@ -195,10 +195,8 @@ def user_dashboard(request):
     data_as_dict = [
         {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
         for record in last_replay_data
-    ]  
-    # print(data_as_dict)  
+    ]
     chart_data = process_response_data(data_as_dict)
-
     today_responses, last_7_days_responses, last_30_days_responses, total_responses = calculate_responses(chart_data)
     
     total_contacts = Contact.objects.filter(user=request.user.email).count()
