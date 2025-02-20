@@ -202,7 +202,12 @@ def user_dashboard(request):
     total_contacts = Contact.objects.filter(user=request.user.email).count()
     total_groups = Group.objects.filter(user=request.user.email).count()
     today_str = timezone.now().strftime('%Y-%m-%d')
-    active_schedule_count = ScheduledMessage.objects.filter(schedule_date=today_str, is_sent=False).count()
+    active_schedule_count = ScheduledMessage.objects.filter(
+        schedule_date=today_str,
+        is_sent=False,
+        current_user=request.user.email,
+        admin_schedule=False
+    ).count()
     context={
     "coins":request.user.marketing_coins + request.user.authentication_coins,
     "marketing_coins":request.user.marketing_coins,
