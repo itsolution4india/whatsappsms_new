@@ -13,10 +13,9 @@ from ..fastapidata import send_api
 import os
 from django.contrib.sessions.models import Session
 from django.utils import timezone
-from ..utils import get_token_and_app_id, analyize_templates, count_response
+from ..utils import get_token_and_app_id, analyize_templates, calculate_responses
 from ..functions.template_msg import fetch_templates
 from django.forms.models import model_to_dict
-from collections import defaultdict
 
 def logout_previous_sessions(user):
     """Logs out all previous sessions for the given user."""
@@ -181,20 +180,6 @@ def user_login(request):
 
     return render(request, "login.html", {"form": form, "show_otp": False})
 
-def process_response_data(data):
-    date_counts = defaultdict(int)
-    for item in data:
-        date = item['created_at'].split(' ')[0]
-        count = int(item['count'])
-        date_counts[date] += count
-    
-    # Convert to sorted list of dictionaries
-    chart_data = [
-        {'date': date, 'count': count} 
-        for date, count in sorted(date_counts.items())
-    ]
-    return chart_data
-
 @login_required
 def user_dashboard(request):
     token, _ = get_token_and_app_id(request)
@@ -214,7 +199,7 @@ def user_dashboard(request):
     # print(data_as_dict)  
     chart_data = process_response_data(data_as_dict)
 
-    today_responses, last_7_days_responses, last_30_days_responses, total_responses = count_response(data_as_dict)
+    today_responses, last_7_days_responses, last_30_days_responses, total_responses = calculate_responses(chart_data)
     
     total_contacts = Contact.objects.filter(user=request.user.email).count()
     total_groups = Group.objects.filter(user=request.user.email).count()

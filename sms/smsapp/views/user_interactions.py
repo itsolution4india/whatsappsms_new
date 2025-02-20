@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from ..functions.send_messages import display_phonenumber_id
-from ..utils import display_whatsapp_id, get_token_and_app_id, count_response
+from ..utils import display_whatsapp_id, get_token_and_app_id, process_response_data, calculate_responses
 from .auth import username
 from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
 import pandas as pd
@@ -89,7 +89,8 @@ def bot_interactions(request):
         {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
         for record in last_replay_data
     ]
-    today_responses, last_7_days_responses, _, _ = count_response(data_as_dict)
+    chart_data = process_response_data(data_as_dict)
+    today_responses, last_7_days_responses, _, _ = calculate_responses(chart_data)
     
     combined_data = []
     if selected_phone:

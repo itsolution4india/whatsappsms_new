@@ -6,6 +6,7 @@ import requests, logging, string, random, json
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 import pandas as pd
+from collections import defaultdict
 
 logger = logging.getLogger('django')
 
@@ -217,27 +218,36 @@ def analyize_templates(data):
             authentication_templates += 1
     return total_templates,marketing_templates,utility_templates,authentication_templates
 
-def count_response(all_replies_dict):
-    now = datetime.datetime.now(datetime.timezone.utc)
-    start_of_today = datetime.datetime(now.year, now.month, now.day, tzinfo=datetime.timezone.utc)
-    last_7_days = now - datetime.timedelta(days=7)
-    last_30_days = now - datetime.timedelta(days=30)
+
+def process_response_data(data):
+    date_counts = defaultdict(int)
+    for item in data:
+        date = item['created_at'].split(' ')[0]
+        count = int(item['count'])
+        date_counts[date] += count
     
+    chart_data = [
+        {'date': date, 'count': count} 
+        for date, count in sorted(date_counts.items())
+    ]
+    return chart_data
+
+def calculate_responses(data):
+    today = datetime.datetime.today().date()
     today_responses = 0
     last_7_days_responses = 0
     last_30_days_responses = 0
-    total_responses = len(all_replies_dict)
-    
-    for reply in all_replies_dict:
-        last_updated = reply['last_updated']
-        
-        if last_updated >= start_of_today:
-            today_responses += 1
-        
-        if last_updated >= last_7_days:
-            last_7_days_responses += 1
-            
-        if last_updated >= last_30_days:
-            last_30_days_responses += 1
-    
+    total_responses = 0
+
+    for entry in data:
+        entry_date = datetime.datetime.strptime(entry['date'], '%Y-%m-%d').date()
+        count = entry['count']
+        total_responses += count
+        if entry_date == today:
+            today_responses += count
+        if today - datetime.timedelta(days=7) <= entry_date <= today:
+            last_7_days_responses += count
+        if today - datetime.timedelta(days=30) <= entry_date <= today:
+            last_30_days_responses += count
+
     return today_responses, last_7_days_responses, last_30_days_responses, total_responses
