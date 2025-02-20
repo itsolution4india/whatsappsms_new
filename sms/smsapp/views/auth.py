@@ -13,7 +13,7 @@ from ..fastapidata import send_api
 import os
 from django.contrib.sessions.models import Session
 from django.utils import timezone
-from ..utils import get_token_and_app_id, analyize_templates, calculate_responses
+from ..utils import get_token_and_app_id, analyize_templates, calculate_responses, process_response_data
 from ..functions.template_msg import fetch_templates
 from django.forms.models import model_to_dict
 
