@@ -230,10 +230,13 @@ def count_response(all_replies_dict):
     
     for reply in all_replies_dict:
         last_updated = reply['last_updated']
+        
         if last_updated >= start_of_today:
             today_responses += 1
+        
         if last_updated >= last_7_days:
             last_7_days_responses += 1
+            
         if last_updated >= last_30_days:
             last_30_days_responses += 1
     
