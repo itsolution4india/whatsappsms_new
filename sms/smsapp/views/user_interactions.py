@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from ..functions.send_messages import display_phonenumber_id
-from ..utils import display_whatsapp_id, get_token_and_app_id, logger
+from ..utils import display_whatsapp_id, get_token_and_app_id, count_response
 from .auth import username
 from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
 import pandas as pd
@@ -47,21 +47,6 @@ def update_or_create_reply_data(request, all_replies_grouped):
                 last_updated=timezone.now()
             )
 
-def count_response(all_replies_dict):
-    now = datetime.datetime.now(datetime.timezone.utc)
-    start_of_today = datetime.datetime(now.year, now.month, now.day, tzinfo=datetime.timezone.utc)
-    last_7_days = now - datetime.timedelta(days=7)
-    today_responses = 0
-    last_7_days_responses = 0
-    for reply in all_replies_dict:
-        last_updated = reply['last_updated']
-        if last_updated >= start_of_today:
-            today_responses += 1
-        if last_updated >= last_7_days:
-            last_7_days_responses += 1
-    
-    return today_responses, last_7_days_responses
-
 @login_required
 def bot_interactions(request):
     user_status = None
@@ -104,7 +89,7 @@ def bot_interactions(request):
         {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
         for record in last_replay_data
     ]
-    today_responses, last_7_days_responses = count_response(data_as_dict)
+    today_responses, last_7_days_responses, _, _ = count_response(data_as_dict)
     
     combined_data = []
     if selected_phone:
