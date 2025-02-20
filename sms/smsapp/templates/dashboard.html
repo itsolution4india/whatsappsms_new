@@ -15,8 +15,6 @@
         margin: auto;
     }
     .custom_w {
-        width: 30px;
-        height: 30px;
         text-align: center;
     }
     .dashboard_img {
@@ -44,10 +42,10 @@
                     <canvas id="responseChart"></canvas>
                 </div>
                 <div class="d-flex flex-column justify-content-around pe-1" style="width: 30%;">
-                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Today Responses</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{today_responses}} </span></div>
-                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 7 days Response</p>  <span class="bg-info custom_w rounded-circle text-white p-1 ms-2"> {{last_7_days_responses}}</span></div>
-                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 30 days Response</p> <span class="bg-warning custom_w rounded-circle text-white p-1 ms-2"> {{last_30_days_responses}}</span></div>
-                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Responses</p> <span class="bg-dark custom_w rounded-circle text-white p-1 ms-2">   {{total_responses}}</span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Today Responses</p> <span class="bg-success custom_w rounded text-white p-1 ms-2"> {{today_responses}} </span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 7 days Response</p>  <span class="bg-info custom_w rounded text-white p-1 ms-2"> {{last_7_days_responses}}</span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 30 days Response</p> <span class="bg-warning custom_w rounded text-white p-1 ms-2"> {{last_30_days_responses}}</span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Responses</p> <span class="bg-dark custom_w rounded text-white p-1 ms-2">   {{total_responses}}</span></div>
                 </div>
             </div>
         </div>
@@ -56,10 +54,10 @@
                 <h5 class="m-0 text-white">Template management</h5>
             </div>
             <div class="d-flex justify-content-around p-2 light_gray">
-                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-plus-circle me-2"></i>Total Templates <span class="bg-dark custom_w rounded-circle text-white p-1">   {{total_templates}}</span></div>
-                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-megaphone me-2"></i> Marketing Templates <span class="bg-warning custom_w rounded-circle text-white p-1"> {{marketing_templates}}</span></div>
-                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class='bx bx-cog me-2'></i> Utility Templates <span class="bg-info custom_w rounded-circle text-white p-1"> {{utility_templates}}</span></div>
-                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bx-shield-quarter me-2"></i> Authentication Templates <span class="bg-success custom_w rounded-circle text-white p-1"> {{authentication_templates}} </span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-plus-circle me-2"></i>Total Templates <span class="bg-dark custom_w rounded text-white p-1">   {{total_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-megaphone me-2"></i> Marketing Templates <span class="bg-warning custom_w rounded text-white p-1"> {{marketing_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class='bx bx-cog me-2'></i> Utility Templates <span class="bg-info custom_w rounded text-white p-1"> {{utility_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bx-shield-quarter me-2"></i> Authentication Templates <span class="bg-success custom_w rounded text-white p-1"> {{authentication_templates}} </span></div>
             </div>
         </div>
 
@@ -73,15 +71,15 @@
                 <div class="d-flex card shadow flex-row p-2 w-50 me-3">
                     <img src="/static/assets/img/illustrations/contact-managemnet.webp" alt class="dashboard_img" />
                     <div>
-                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Saved contacts</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{total_contacts}} </span></div>
-                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Groups Created</p>  <span class="bg-info custom_w rounded-circle text-white p-1 ms-2"> {{total_groups}}</span></div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Saved contacts</p> <span class="bg-success custom_w rounded text-white p-1 ms-2"> {{total_contacts}} </span></div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Groups Created</p>  <span class="bg-info custom_w rounded text-white p-1 ms-2"> {{total_groups}}</span></div>
                         <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/contact_management/" class="text-white">Manage Contacts</a></div>
                     </div>
                 </div>
                 <div class="d-flex card shadow flex-row p-2 w-50">
                     <img src="/static/assets/img/illustrations/schedules.webp" alt class="dashboard_img" />
                     <div>
-                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Active schedules today</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{active_schedule_count}} </span></div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Active schedules today</p> <span class="bg-success custom_w rounded text-white p-1 ms-2"> {{active_schedule_count}} </span></div>
                         <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/schedules/" class="text-white">Check schedule status</a></div>
                         <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/send-sms/" class="text-white">Create new schedule</a></div>
                     </div>
