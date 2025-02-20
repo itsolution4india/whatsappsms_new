@@ -343,6 +343,9 @@
             padding: 12px !important;
             margin: 6px !important;
         }
+        .light_gray {
+            background-color: #f0f0f0 !important;
+        }
     </style>
     {% block head %}
     {% endblock %}
@@ -357,7 +360,7 @@
         <div class="layout-container">
             <!-- Menu -->
 
-            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme light_gray">
                 <div class="app-brand demo">
                     <a href="/dashboard/" class="app-brand-link">
                         <i class="menu-icon tf-icons bx bx-globe"></i>
@@ -369,8 +372,6 @@
                         <i class="bx bx-chevron-left bx-sm align-middle"></i>
                     </a>
                 </div>
-
-                <div class="menu-inner-shadow"></div>
 
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
@@ -688,7 +689,7 @@
                 <button class="refresh-btn" id="refreshButton">
                     <i class='bx bx-refresh'></i>
                 </button>
-                <script src="/static/assets/js/it-solution-chat-sdk.js"></script>
+                <!-- <script src="/static/assets/js/it-solution-chat-sdk.js"></script> -->
 
                 <script>
                     function disable2FA() {

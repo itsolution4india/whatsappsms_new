@@ -1,163 +1,163 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-    .responsive-width {
-        width: 50%;
+    .btn {
+        background: #0000cb;
+        padding: 10px;
+        text-align: center;
+        border-radius: 10px;
     }
+    .maincrads img {
+        width: 200px;
+        height: 200px;
+        margin: auto;
+    }
+    .custom_w {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+    }
+    .dashboard_img {
+        width: 200px;
+        height: 200px;
 
-    @media only screen and (max-width: 460px) {
-    .section-two {
-        flex-direction: column;
     }
-    .responsive-width {
-        width: 100%;
-    }
-    .column img {
-        margin-left: 0px !important;
-    }
+    .light_blue {
+        background-color: aliceblue !important;
     }
 </style>
 {% endblock %}
-
 {% block content %}
-
-
-<!-- Content wrapper -->
-<div class="content-wrapper">
-    <div class="bg"></div>
-    <div class="bg bg2"></div>
-    <div class="bg bg3"></div>
-
-
-    <!-- Content -->
-
-    <div class="container-xxl flex-grow-1 container-p-y">
-
-        <!-- First row for whatsapp banner -->
-        <div class="row" style="box-shadow: none;">
-            <div class="card bg-light" style="overflow: auto; box-shadow: none;">
-                <img src="/static/assets/img/backgrounds/whatsapp01.png"
-                    style="width: 100%; margin-left: auto; margin-right: auto;">
+<section>
+    <div class="m-3">
+        <!-- <div>
+            <h3 class="text-center pt-2">Manage Templates</h3>
+        </div> -->
+        <div class="mb-3">
+            <div class="p-3 bg-gray text-white">
+                <h5 class="m-0 text-white">Daily Respnse Activity</h5>
             </div>
-            <hr>
+            <div class="d-flex light_gray">
+                <div class="chart-container card m-2 shadow p-1" style="width: 70%;">
+                    <canvas id="responseChart"></canvas>
+                </div>
+                <div class="d-flex flex-column justify-content-around pe-1" style="width: 30%;">
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Today Responses</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{today_responses}} </span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 7 days Response</p>  <span class="bg-info custom_w rounded-circle text-white p-1 ms-2"> {{last_7_days_responses}}</span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Last 30 days Response</p> <span class="bg-warning custom_w rounded-circle text-white p-1 ms-2"> {{last_30_days_responses}}</span></div>
+                    <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Responses</p> <span class="bg-dark custom_w rounded-circle text-white p-1 ms-2">   {{total_responses}}</span></div>
+                </div>
+            </div>
         </div>
-
-        <!-- Second row for advertisement banner -->
-        <div class="row section-two" style=" overflow-y: auto; background-color: white;">
-            <div class="card bg-light responsive-width border-0">
-                <img src="/static/assets/img/backgrounds/about-left-image.png"
-                    style="width: 400px; height: 350px; margin-left: auto; margin-right: auto; margin-top: 50px;">
+        <div class="mb-3">
+            <div class="p-3 bg-gray text-white">
+                <h5 class="m-0 text-white">Template management</h5>
             </div>
-
-            <div class="card bg-light responsive-width" style="box-shadow: none;">
-                <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Best Bulk SMS Provider
-                    In India</h3>
-                <ul style="font-size: 20px; font-weight: 700; list-style: square; margin-top: 50px;">
-                    <li>
-                        Properly Integrated
-                    </li>
-                    <li>
-                        Timely Execution
-                    </li>
-                    <li>
-                        Technical Support
-                    </li>
-                    <li>
-                        Versatile Plateform
-                    </li>
-                    <li>
-                        24/7 Support
-                    </li>
-                    <li>
-                        Totally Secured
-                    </li>
-                    <li>
-                        Master Analytics
-                    </li>
-                    <li>
-                        Original Content
-                    </li>
-                    <li>
-                        Simpler Execution
-                    </li>
-                </ul>
+            <div class="d-flex justify-content-around p-2 light_gray">
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-plus-circle me-2"></i>Total Templates <span class="bg-dark custom_w rounded-circle text-white p-1">   {{total_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-megaphone me-2"></i> Marketing Templates <span class="bg-warning custom_w rounded-circle text-white p-1"> {{marketing_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class='bx bx-cog me-2'></i> Utility Templates <span class="bg-info custom_w rounded-circle text-white p-1"> {{utility_templates}}</span></div>
+                <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bx-shield-quarter me-2"></i> Authentication Templates <span class="bg-success custom_w rounded-circle text-white p-1"> {{authentication_templates}} </span></div>
             </div>
-
         </div>
 
 
-        <!-- Third row for instructions -->
-        <div class="row" style="height: 500px; background-color: white; margin-top: 100px;">
-
-            <div class="card responsive-width" style="box-shadow: none;">
-                <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Instructions</h3>
-                <ol id="ols" style="margin-top: 35px;">
-
-                    <li id="lis">Step 1 - Go to Campaign page
-                        <ol id="ols" style="margin-top: 10px; font-size: 18px;">
-                            <li id="clis">Fill all the requirements</li>
-                            <li id="clis">Click save button</li>
-                            <li id="clis">Check your template status
-                                <ol id="ols">
-                                    <li>- If your template is approved then follow <u>Step 2</u></li>
-                                    <li>- If template is pending then please wait until approval</li>
-                                </ol>
-                            </li>
-
-                        </ol>
-                    </li>
-                    <li id="lis">Step 2 - There are two options: (a) If you haven't selected any media
-                        type in campaign page for template then you can go on SEND SMS page directly
-                        after approval.
-                    </li>
-                    <li id="lis">
-                        (b)If you have selected media type in campaign page (text, document, video,
-                        image) then please
-                        read following instructions:-
-                        <ol id="ols" style="margin-top: 10px; font-size: 18px;">
-                            <li id="clis">Go to MEDIA ID page</li>
-                            <li id="clis">Upload your media file and fill your approved template id</li>
-                            <li id="clis">Click on submit button to generate media id</li>
-                            <li id="clis">Copy generated media id and go to send sms page</li>
-                        </ol>
-                    </li>
-                    <li id="lis" style="margin-top: 30px;">Step 3 - Now go to Send SMS page</li>
-                    <li id="lis" style="margin-top: 30px;">Step 4 - Upload your file of contacts</li>
-                    <li id="lis" style="margin-top: 30px;">Step 5 - Click on send button</li>
-                    <li id="lis" style="margin-top: 30px;">Step 6 - To check report, Go to Report Page
-                    </li>
-                </ol>
+        <div class="mb-3">
+            <div class="p-3 bg-gray text-white">
+                <h5 class="m-0 text-white">Explore Features</h5>
             </div>
 
-            <div class="card responsive-width" style="overflow-y: auto; box-shadow: none;">
-
-                <h3 style="text-align: center; font-weight: 700; color: #184cd0;">Page Views</h3>
-
-                <div class="gallery">
-                    <div class="column">
-                        <img src="/static/assets/img/backgrounds/campaign.png" width="350px" height="240px"
-                            style="margin-left: 100px; margin-top: 20px; box-shadow: 2px 2px 5px rgba(196, 196, 196, 0.797); border-radius: 5px; transition: 0.3s; cursor: pointer;"
-                            id="pageview1" class="mt-3">
-                        <!-- <img src="/static/assets/img/bg-smart-home-1.jpg" width="170px" height="170px" style="margin-left: 20px; margin-top: 30px;">
-                                        <img src="/static/assets/img/bg-smart-home-1.jpg" width="170px" height="170px" style="margin-left: 20px; margin-top: 30px;"> -->
-                        <img src="/static/assets/img/backgrounds/mediaid.png" width="350px" height="240px"
-                            style="margin-left: 100px; margin-top: 20px; box-shadow: 2px 2px 5px rgba(196, 196, 196, 0.797); border-radius: 5px; transition: 0.3s; cursor: pointer;"
-                            id="pageview1" class="mt-3">
-                        <img src="/static/assets/img/backgrounds/pagev.png" width="350px" height="240px"
-                            style="margin-left: 100px; margin-top: 20px; box-shadow: 2px 2px 5px rgba(196, 196, 196, 0.797); border-radius: 5px; transition: 0.3s; cursor: pointer;"
-                            id="pageview1" class="mt-3">
+            <div class="d-flex justify-content-around p-3 light_gray">
+                <div class="d-flex card shadow flex-row p-2 w-50 me-3">
+                    <img src="/static/assets/img/illustrations/contact-managemnet.webp" alt class="dashboard_img" />
+                    <div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Saved contacts</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{total_contacts}} </span></div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Total Groups Created</p>  <span class="bg-info custom_w rounded-circle text-white p-1 ms-2"> {{total_groups}}</span></div>
+                        <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/contact_management/" class="text-white">Manage Contacts</a></div>
+                    </div>
+                </div>
+                <div class="d-flex card shadow flex-row p-2 w-50">
+                    <img src="/static/assets/img/illustrations/schedules.webp" alt class="dashboard_img" />
+                    <div>
+                        <div class="card p-3 m-1 d-flex flex-row align-center shadow"><p class="m-0">Active schedules today</p> <span class="bg-success custom_w rounded-circle text-white p-1 ms-2"> {{active_schedule_count}} </span></div>
+                        <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/schedules/" class="text-white">Check schedule status</a></div>
+                        <div class="btn m-1" style="width: -webkit-fill-available;"><a href="/send-sms/" class="text-white">Create new schedule</a></div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
-    <!-- / Content -->
-</div>
-<!-- / Layout wrapper -->
+    
+</section>
+
+
 <script>
-    $(document).ready(function(){
-        $('#Dashboard').addClass('active');
+    // Get the chart data from Django template
+    const chartData = {{ chart_data|safe }};
+    
+    // Prepare data for Chart.js
+    const dates = chartData.map(item => item.date);
+    const counts = chartData.map(item => item.count);
+
+    // Create the chart
+    const ctx = document.getElementById('responseChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: 'Daily Response Count',
+                data: counts,
+                borderColor: '#2563eb',
+                backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                borderWidth: 2,
+                pointRadius: 4,
+                pointBackgroundColor: '#2563eb',
+                fill: true,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Daily Response Count Timeline',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+                tooltip: {
+                    mode: 'index',
+                    intersect: false,
+                }
+            },
+            scales: {
+                x: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Date'
+                    },
+                    ticks: {
+                        maxRotation: 45,
+                        minRotation: 45
+                    }
+                },
+                y: {
+                    display: true,
+                    title: {
+                        display: true,
+                        text: 'Response Count'
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
     });
-  </script>
+</script>
 {% endblock %}

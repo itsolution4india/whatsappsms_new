@@ -1,4 +1,4 @@
-from ..models import UserAccess, CustomUser, Register_TwoAuth
+from ..models import UserAccess, CustomUser, Register_TwoAuth, Templates, Last_Replay_Data, Contact, Group, ScheduledMessage
 from ..forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
@@ -11,9 +11,12 @@ from django.core.exceptions import ObjectDoesNotExist
 from .twoauth import generate_otp
 from ..fastapidata import send_api
 import os
-from dotenv import load_dotenv
 from django.contrib.sessions.models import Session
 from django.utils import timezone
+from ..utils import get_token_and_app_id, analyize_templates, count_response
+from ..functions.template_msg import fetch_templates
+from django.forms.models import model_to_dict
+from collections import defaultdict
 
 def logout_previous_sessions(user):
     """Logs out all previous sessions for the given user."""
@@ -178,16 +181,66 @@ def user_login(request):
 
     return render(request, "login.html", {"form": form, "show_otp": False})
 
+def process_response_data(data):
+    date_counts = defaultdict(int)
+    for item in data:
+        date = item['created_at'].split(' ')[0]
+        count = int(item['count'])
+        date_counts[date] += count
+    
+    # Convert to sorted list of dictionaries
+    chart_data = [
+        {'date': date, 'count': count} 
+        for date, count in sorted(date_counts.items())
+    ]
+    return chart_data
+
 @login_required
 def user_dashboard(request):
+    token, _ = get_token_and_app_id(request)
+    campaign_list = fetch_templates(display_whatsapp_id(request), token)
+    if campaign_list is None :
+        campaign_list=[]
+    template_database = Templates.objects.filter(email=request.user)
+    template_value = list(template_database.values_list('templates', flat=True))
+    templates = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+    total_templates,marketing_templates,utility_templates,authentication_templates = analyize_templates(templates)
+    
+    last_replay_data = Last_Replay_Data.objects.filter(user=request.user.email).order_by('-last_updated')
+    data_as_dict = [
+        {**model_to_dict(record), 'created_at': record.created_at.strftime('%Y-%m-%d %H:%M:%S')}
+        for record in last_replay_data
+    ]  
+    # print(data_as_dict)  
+    chart_data = process_response_data(data_as_dict)
+
+    today_responses, last_7_days_responses, last_30_days_responses, total_responses = count_response(data_as_dict)
+    
+    total_contacts = Contact.objects.filter(user=request.user.email).count()
+    total_groups = Group.objects.filter(user=request.user.email).count()
+    today_str = timezone.now().strftime('%Y-%m-%d')
+    active_schedule_count = ScheduledMessage.objects.filter(schedule_date=today_str, is_sent=False).count()
     context={
     "coins":request.user.marketing_coins + request.user.authentication_coins,
     "marketing_coins":request.user.marketing_coins,
     "authentication_coins":request.user.authentication_coins,
     "username":username(request),
     "WABA_ID":display_whatsapp_id(request),
-     "PHONE_ID":display_phonenumber_id(request)
+     "PHONE_ID":display_phonenumber_id(request),
+     "authentication_templates":authentication_templates,
+     "total_templates":total_templates,
+     "utility_templates": utility_templates,
+     "marketing_templates": marketing_templates,
+     "chart_data": chart_data,
+     "today_responses": today_responses,
+     "last_7_days_responses": last_7_days_responses,
+     "last_30_days_responses": last_30_days_responses,
+     "total_responses": total_responses,
+     "total_contacts": total_contacts,
+     "total_groups": total_groups,
+     "active_schedule_count": active_schedule_count,
     }
+    
     return render(request, "dashboard.html",context)
 
 def verify_otp_server(otp):

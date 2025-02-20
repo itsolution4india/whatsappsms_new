@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta
+import datetime
 from .models import ScheduledMessage, ReportInfo, BotSentMessages, RegisterApp
 from django.utils.timezone import now
 from django.utils import timezone
@@ -12,9 +12,9 @@ logger = logging.getLogger('django')
 def expand_times(time_list):
     expanded_times = []
     for time_str in time_list:
-        time_obj = datetime.strptime(time_str, '%H:%M:%S')
+        time_obj = datetime.datetime.strptime(time_str, '%H:%M:%S')
         for i in range(3):
-            expanded_times.append((time_obj + timedelta(seconds=i)).strftime('%H:%M:%S'))
+            expanded_times.append((time_obj + datetime.timedelta(seconds=i)).strftime('%H:%M:%S'))
     return sorted(set(expanded_times))
 
 def check_schedule_timings(schedule_time, delta_seconds=5):
@@ -22,17 +22,17 @@ def check_schedule_timings(schedule_time, delta_seconds=5):
     scheduled_times = scheduled_messages.values_list('schedule_time', flat=True)
     
     scheduled_times = expand_times(scheduled_times)
-    schedule_time_obj = datetime.strptime(schedule_time, '%H:%M:%S')
-    scheduled_times_dt = [datetime.strptime(time, '%H:%M:%S') for time in scheduled_times]
+    schedule_time_obj = datetime.datetime.strptime(schedule_time, '%H:%M:%S')
+    scheduled_times_dt = [datetime.datetime.strptime(time, '%H:%M:%S') for time in scheduled_times]
     
     result = []
     if schedule_time in scheduled_times:
         for i in range(3, delta_seconds + 3):
-            before_time = schedule_time_obj - timedelta(seconds=i)
+            before_time = schedule_time_obj - datetime.timedelta(seconds=i)
             if before_time not in scheduled_times_dt and len(result) < 5:
                 result.append(before_time.strftime('%H:%M:%S'))
 
-            after_time = schedule_time_obj + timedelta(seconds=i)
+            after_time = schedule_time_obj + datetime.timedelta(seconds=i)
             if after_time not in scheduled_times_dt and len(result) < 5:
                 result.append(after_time.strftime('%H:%M:%S'))
 
@@ -201,3 +201,40 @@ def get_template_details(campaign_list, template_name, required_data=None):
             else:
                 return campaign
     return None
+
+def analyize_templates(data):
+    total_templates = len(data)
+    marketing_templates = 0
+    utility_templates = 0
+    authentication_templates = 0
+    
+    for template in data:
+        if template['category'] == 'MARKETING':
+            marketing_templates += 1
+        elif template['category'] == 'UTILITY':
+            utility_templates += 1
+        elif template['category'] == 'AUTHENTICATION':
+            authentication_templates += 1
+    return total_templates,marketing_templates,utility_templates,authentication_templates
+
+def count_response(all_replies_dict):
+    now = datetime.datetime.now(datetime.timezone.utc)
+    start_of_today = datetime.datetime(now.year, now.month, now.day, tzinfo=datetime.timezone.utc)
+    last_7_days = now - datetime.timedelta(days=7)
+    last_30_days = now - datetime.timedelta(days=30)
+    
+    today_responses = 0
+    last_7_days_responses = 0
+    last_30_days_responses = 0
+    total_responses = len(all_replies_dict)
+    
+    for reply in all_replies_dict:
+        last_updated = reply['last_updated']
+        if last_updated >= start_of_today:
+            today_responses += 1
+        if last_updated >= last_7_days:
+            last_7_days_responses += 1
+        if last_updated >= last_30_days:
+            last_30_days_responses += 1
+    
+    return today_responses, last_7_days_responses, last_30_days_responses, total_responses
