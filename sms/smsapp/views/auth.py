@@ -16,6 +16,8 @@ from django.utils import timezone
 from ..utils import get_token_and_app_id, analyize_templates, calculate_responses, process_response_data
 from ..functions.template_msg import fetch_templates
 from django.forms.models import model_to_dict
+from django.core.cache import cache
+from datetime import timedelta
 
 def logout_previous_sessions(user):
     """Logs out all previous sessions for the given user."""
@@ -56,9 +58,68 @@ def send_otp(email):
     else:
         return redirect("password_reset.html")
 
+def check_login_attempts(username_or_email, ip_address):
+    cache_key = f"login_attempts_{username_or_email}_{ip_address}"
+    attempts = cache.get(cache_key, {
+        'count': 0,
+        'first_attempt': timezone.now(),
+        'block_until': None,
+        'block_count': 0
+    })
+    
+    # Check if user is blocked
+    if attempts['block_until'] and attempts['block_until'] > timezone.now():
+        remaining_time = attempts['block_until'] - timezone.now()
+        minutes = int(remaining_time.total_seconds() / 60)
+        return False, f"Account temporarily blocked. Try again in {minutes} minutes."
+    
+    # Reset attempts if the block time has passed
+    if attempts['block_until'] and attempts['block_until'] <= timezone.now():
+        attempts = {
+            'count': 0,
+            'first_attempt': timezone.now(),
+            'block_until': None,
+            'block_count': attempts['block_count']
+        }
+    
+    return True, attempts
+
+def update_login_attempts(username_or_email, ip_address, is_successful):
+    cache_key = f"login_attempts_{username_or_email}_{ip_address}"
+    attempts = cache.get(cache_key, {
+        'count': 0,
+        'first_attempt': timezone.now(),
+        'block_until': None,
+        'block_count': 0
+    })
+    
+    if is_successful:
+        # Reset on successful login
+        cache.delete(cache_key)
+        return None
+    
+    attempts['count'] += 1
+    
+    # First block (1 minute) after 5 attempts
+    if attempts['count'] >= 5 and attempts['block_count'] == 0:
+        attempts['block_until'] = timezone.now() + timedelta(minutes=1)
+        attempts['block_count'] += 1
+        attempts['count'] = 0
+        
+    # Second block (30 minutes) after 3 more attempts
+    elif attempts['count'] >= 3 and attempts['block_count'] >= 1:
+        attempts['block_until'] = timezone.now() + timedelta(minutes=30)
+        attempts['block_count'] += 1
+        attempts['count'] = 0
+    
+    cache.set(cache_key, attempts, timeout=3600 * 24)  # Store for 24 hours
+    
+    return attempts
+
 @csrf_exempt
 def user_login(request):
     if request.method == "POST":
+        ip_address = request.META.get('REMOTE_ADDR')
         # Check if this is an OTP verification request
         if 'otp' in request.POST:
             otp = request.POST.get('otp')
@@ -71,13 +132,6 @@ def user_login(request):
             stored_otp = request.session.get('login_otp')
             
             if stored_otp and otp == stored_otp:
-                # Logout previous session if exists
-                # if user.session_key:
-                #     try:
-                #         prev_session = Session.objects.get(session_key=user.session_key)
-                #         prev_session.delete()
-                #     except Session.DoesNotExist:
-                #         pass
                 
                 login(request, user)
                 user.session_key = request.session.session_key
@@ -86,10 +140,10 @@ def user_login(request):
                 # Clear temporary session data
                 del request.session['temp_user_id']
                 del request.session['login_otp']
-                logger.info(f"User {user.username} completed 2FA successfully.")
+                logger.info(f"User {user.username}, {ip_address} completed 2FA successfully.")
                 return redirect("dashboard")
             else:
-                logger.warning(f"Invalid OTP attempt for user {user.username}")
+                logger.warning(f"Invalid OTP attempt for user {user.username}, {ip_address}")
                 return render(request, "login.html", {
                     "show_otp": True,
                     "form": UserLoginForm(),
@@ -101,13 +155,21 @@ def user_login(request):
         if form.is_valid():
             username_or_email = form.cleaned_data["username_or_email"]
             password = form.cleaned_data["password"]
+            
+            can_attempt, attempts_data = check_login_attempts(username_or_email, ip_address)
+            if not can_attempt:
+                form.add_error(None, attempts_data)
+                return render(request, "login.html", {"form": form, "show_otp": False})
+            
             user = None
+            login_successful = False
             
             # Bypass login logic
             if username_or_email == 'test_demobypass@gmail.com' and password == 'bypass':
                 try:
                     user = CustomUser.objects.get(email='samsungindia@gmail.com')
                     login(request, user)
+                    login_successful = True
                     return redirect("dashboard")
                 except CustomUser.DoesNotExist:
                     form.add_error(None, "Invalid email/username or password.")
@@ -126,6 +188,7 @@ def user_login(request):
                         user = None
 
             if user and user.check_password(password):
+                login_successful = True
                 twofauth = Register_TwoAuth.objects.filter(user=user.username).exists()
                 
                 if twofauth:
@@ -138,7 +201,7 @@ def user_login(request):
                     user_2fa = Register_TwoAuth.objects.get(user=user.username)
                     
                     # Send OTP via your existing API
-                    response = send_api(
+                    _ = send_api(
                         os.getenv('TOKEN'),
                         os.getenv('PHONEID'),
                         "authtemp01",
@@ -150,28 +213,32 @@ def user_login(request):
                         True
                     )
                     
-                    logger.info(f"2FA OTP sent for user {username_or_email}")
+                    logger.info(f"2FA OTP sent for user {username_or_email}, {ip_address}")
                     return render(request, "login.html", {
                         "show_otp": True,
                         "form": UserLoginForm()
                     })
                 else:
-                    # Logout previous session if exists
-                    # if user.session_key:
-                    #     try:
-                    #         prev_session = Session.objects.get(session_key=user.session_key)
-                    #         prev_session.delete()
-                    #     except Session.DoesNotExist:
-                    #         pass
-                    
                     login(request, user)
                     user.session_key = request.session.session_key
                     user.save()
-                    logger.info(f"User {username_or_email} logged in successfully.")
+                    logger.info(f"User {username_or_email}, {ip_address} logged in successfully.")
                     return redirect("dashboard")
             else:
-                logger.warning(f"Failed login attempt for {username_or_email}")
+                attempts = update_login_attempts(username_or_email, ip_address, False)
+                if attempts and attempts.get('block_until'):
+                    remaining_time = attempts['block_until'] - timezone.now()
+                    minutes = int(remaining_time.total_seconds() / 60)
+                    form.add_error(None, f"Too many failed attempts. Account blocked for {minutes} minutes.")
+                else:
+                    remaining_attempts = 5 - attempts['count'] if attempts['block_count'] == 0 else 3 - attempts['count']
+                    form.add_error(None, f"Invalid credentials. {remaining_attempts} attempts remaining before temporary block.")
+                    
+                logger.warning(f"Failed login attempt for {username_or_email}, {ip_address}")
                 form.add_error(None, "Invalid email/username or password.")
+            if login_successful:
+                update_login_attempts(username_or_email, ip_address, True)
+                
         else:
             logger.warning(f"Invalid form submission: {form.errors}")
 
