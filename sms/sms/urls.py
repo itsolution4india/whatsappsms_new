@@ -11,7 +11,7 @@ handler404 = 'smsapp.views.custom.custom_500'
 
 urlpatterns = [
     
-    path("admin/", admin.site.urls),
+    path('skdasfjnkailf/', admin.site.urls),
     path("", lambda request: redirect('login')),
     path("logout/",views.logout_view,name="logout"),
     path('accounts/login/', views.user_login, name='login'),
