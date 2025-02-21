@@ -28,6 +28,13 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(email, username, password, **extra_fields)
 
+class LoginAttempt(models.Model):
+    username_or_email = models.CharField(max_length=255)
+    attempt_time = models.DateTimeField(auto_now_add=True)
+    is_successful = models.BooleanField(default=False)
+    ip_address = models.GenericIPAddressField(null=True)
+    block_until = models.DateTimeField(null=True)
+
 def validate_digits(value: int, min_digits: int, max_digits: int):
     num_digits = len(str(value))
     if num_digits < min_digits:

@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from .models import CustomUser,Whitelist_Blacklist,ReportInfo,Templates, RegisterApp, ScheduledMessage, TemplateLinkage, MessageResponse, UserAccess, CoinsHistory, Flows, CountryPermission, BotSentMessages, Train_wit_Bot
-from .models import Register_TwoAuth, Validate_TwoAuth, Notifications, Group, Contact, Last_Replay_Data
+from .models import Register_TwoAuth, Validate_TwoAuth, Notifications, Group, Contact, Last_Replay_Data, LoginAttempt
 from .emailsend import main_send
 from django.utils.html import format_html
 from django import forms
@@ -151,3 +151,4 @@ admin.site.register(Notifications)
 admin.site.register(Group)
 admin.site.register(Contact)
 admin.site.register(Last_Replay_Data)
+admin.site.register(LoginAttempt)
