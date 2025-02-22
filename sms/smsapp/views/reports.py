@@ -620,9 +620,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     except Exception as e:
                         logger.info(str(e))
                     new_row_list[4] = phone
-                    new_row_list[5] = "failed"
+                    new_row_list[5] = "Pending"
                     new_row_list[7] = 100
-                    new_row_list[8] = "Failed to featch data or Message undeliverable"
+                    new_row_list[8] = "Kindly wait for few minutes"
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
                 
