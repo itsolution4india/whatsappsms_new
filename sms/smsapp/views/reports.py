@@ -472,7 +472,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 logger.info(f"created_at_main {created_at}")
                 created_at = datetime.datetime.fromisoformat(created_at)
                 logger.info(f"created_at {created_at}")
-            time_delta = datetime.timedelta(hours=5, minutes=30, seconds=4)
+            time_delta = datetime.timedelta(hours=5, minutes=30)
             created_at += time_delta
         else:
             contact_all = contact_list
