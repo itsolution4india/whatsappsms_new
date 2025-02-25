@@ -74,8 +74,8 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_delivery',
         "contact_list",
         "start_request_id",
-        "end_request_id"
-        
+        "end_request_id",
+        "waba_id_list"
         
 
     )
@@ -98,7 +98,8 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_delivery',
         'template_name',
         "start_request_id",
-        "end_request_id"
+        "end_request_id",
+        "waba_id_list"
       
  
     )
