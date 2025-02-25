@@ -125,12 +125,11 @@ class ReportInfo(models.Model):
     email = models.CharField(max_length=100)
     campaign_title=models.CharField(max_length=50)
     contact_list= models.TextField()
-    waba_id_list= models.TextField(default=0)
     message_date = models.DateField()
     template_name=models.CharField(max_length=100)
     message_delivery = models.IntegerField()
-    start_request_id = models.CharField(max_length=50, default='0')
-    end_request_id = models.CharField(max_length=50, default='0')
+    start_request_id = models.IntegerField(default=0)
+    end_request_id = models.IntegerField(default=0)
     
 
 

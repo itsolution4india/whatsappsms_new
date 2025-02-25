@@ -3,7 +3,7 @@ from ..models import ReportInfo, ScheduledMessage, CustomUser, CoinsHistory
 from django.utils import timezone
 from django.contrib import messages
 import logging
-from ..utils import logger, generate_code
+from ..utils import logger
 
 def schedule_subtract_coins(user, final_count, category, template_name=None, campaign=None):
     try:
@@ -70,8 +70,6 @@ def display_whatsapp_id(request):
     return whatsapp_id
 
 def send_messages(current_user, token, phone_id, campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables=None):
-    request_id = generate_code()
-    request_id = f"MESSAGE{request_id}"
     try:
         logger.info(f"Sending messages for user: {current_user}, campaign title: {campaign_title}")
         for campaign in campaign_list:
@@ -89,8 +87,8 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                     schedule_subtract_coins(current_user, money_data, category)
                 media_type = "OTP" if category == "AUTHENTICATION" else media_type
                 logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
-                test_numbers = [num for num in all_contact if num not in contact_list]
-                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables, None, test_numbers, request_id)
+                # test_numbers = [num for num in all_contact if num not in contact_list]
+                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables)
 
         formatted_numbers = []
         for number in all_contact:
@@ -114,11 +112,10 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                 contact_list=phone_numbers_string,
                 message_date=timezone.now(),
                 message_delivery=len(all_contact),
-                template_name=template_name,
-                start_request_id=request_id
+                template_name=template_name
             )
         except Exception as e:
-            logger.error(f"Report save Error: {str(e)}")
+            logger.error(f"Error: {str(e)}")
             logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {template_name}")
         logger.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:
