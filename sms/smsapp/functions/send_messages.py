@@ -90,7 +90,7 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                 media_type = "OTP" if category == "AUTHENTICATION" else media_type
                 logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
                 test_numbers = [num for num in all_contact if num not in contact_list]
-                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables, test_numbers, request_id)
+                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables, None, test_numbers, request_id)
 
         formatted_numbers = []
         for number in all_contact:
@@ -118,7 +118,7 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                 start_request_id=request_id
             )
         except Exception as e:
-            logger.error(f"Error: {str(e)}")
+            logger.error(f"Report save Error: {str(e)}")
             logger.error(f"{str(current_user)}, {campaign_title}, {phone_numbers_string}, {timezone.now()}, {len(all_contact)}, {template_name}")
         logger.info(f"Messages sent successfully for campaign: {campaign_title}, user: {current_user}")
     except Exception as e:

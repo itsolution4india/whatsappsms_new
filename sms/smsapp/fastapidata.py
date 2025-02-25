@@ -33,7 +33,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
         "variable_list": variable_list if variable_list else None,
         "csv_variables": csv_variables if csv_variables else None,
         'request_id': request_id,
-        "test_numbers": test_numbers if test_numbers else None
+        "test_numbers": test_numbers
     }
     response = requests.post(url, headers=headers, json=data)
 
