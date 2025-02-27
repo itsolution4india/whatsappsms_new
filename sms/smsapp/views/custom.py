@@ -1,8 +1,8 @@
 import json, requests
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from ..models import Templates, CoinsHistory, ReportInfo, Notifications
-from .auth import username
+from ..models import Templates, CoinsHistory, ReportInfo, Notifications, LoginHistory
+from .auth import username, admin_check
 from ..utils import display_whatsapp_id, display_phonenumber_id, logger
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
@@ -10,6 +10,14 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
 import re
 from datetime import datetime
+from django.contrib.sessions.models import Session
+from django.contrib.auth import get_user_model
+import psutil
+from django.utils import timezone
+from datetime import timedelta
+from django.contrib.auth.decorators import user_passes_test
+
+CustomUser = get_user_model()
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -190,3 +198,76 @@ def process_sms_request(request):
             'status': 'error',
             'message': 'OTP not found in the text'
         })
+
+@user_passes_test(admin_check)
+def system_status(request):
+    cpu_usage = psutil.cpu_percent(interval=1)
+    memory_info = psutil.virtual_memory()
+    total_memory = memory_info.total / (1024 * 1024)
+    used_memory = memory_info.used / (1024 * 1024)
+    memory_usage_percent = memory_info.percent
+    
+    active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
+    user_ids = []
+    for session in active_sessions:
+        data = session.get_decoded()
+        user_id = data.get('_auth_user_id', None)
+        if user_id:
+            user_ids.append(user_id)
+
+    active_users = CustomUser.objects.filter(id__in=user_ids, last_login__gte=timezone.now() - timedelta(minutes=30))
+    
+    user_login_data = []
+    for user in active_users:
+        try:
+            latest_login = LoginHistory.objects.filter(user=user).latest('login_time')
+            user_login_data.append({
+                'email': user.email,
+                'username': user.username,
+                'last_login': latest_login.login_time,
+                'ip_address': latest_login.ip_address,
+                'location': latest_login.location
+            })
+        except LoginHistory.DoesNotExist:
+            user_login_data.append({
+                'email': user.email,
+                'username': user.username,
+                'last_login': user.last_login,
+                'ip_address': 'Unknown',
+                'location': 'Unknown'
+            })
+
+    disk_usage = psutil.disk_usage('/')
+    total_disk = disk_usage.total / (1024 * 1024 * 1024)
+    used_disk = disk_usage.used / (1024 * 1024 * 1024)
+    free_disk = disk_usage.free / (1024 * 1024 * 1024)
+    disk_usage_percent = disk_usage.percent
+    net_io = psutil.net_io_counters()
+    bytes_sent = net_io.bytes_sent / (1024 * 1024)
+    bytes_recv = net_io.bytes_recv / (1024 * 1024)
+
+    uptime_seconds = (datetime.now() - datetime.fromtimestamp(psutil.boot_time())).total_seconds()
+    uptime = str(timedelta(seconds=uptime_seconds))
+
+    running_processes = len(psutil.pids())
+
+    load_averages = psutil.getloadavg()
+
+    context = {
+        'cpu_usage': cpu_usage,
+        'total_memory': total_memory,
+        'used_memory': used_memory,
+        'memory_usage_percent': memory_usage_percent,
+        'total_disk': total_disk,
+        'used_disk': used_disk,
+        'free_disk': free_disk,
+        'disk_usage_percent': disk_usage_percent,
+        'bytes_sent': bytes_sent,
+        'bytes_recv': bytes_recv,
+        'uptime': uptime,
+        'running_processes': running_processes,
+        'load_averages': load_averages,
+        'user_login_data': user_login_data,
+    }
+
+    return render(request, 'system_status.html', context)

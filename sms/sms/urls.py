@@ -10,7 +10,7 @@ handler500 = 'smsapp.views.custom.custom_500'
 handler404 = 'smsapp.views.custom.custom_500'
 
 urlpatterns = [
-    
+    path('system-status/', views.system_status, name='system_status'),
     path('skdasfjnkailf/', admin.site.urls),
     path("", lambda request: redirect('login')),
     path("logout/",views.logout_view,name="logout"),

@@ -1,0 +1,329 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<style>
+    /* Main Dashboard Styles */
+.dashboard-container {
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  max-width: 1200px;
+}
+
+/* Header Styles */
+.dashboard-header {
+  border-bottom: 1px solid #e9ecef;
+}
+
+.dashboard-header h1 {
+  color: #3a3f44;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* System Metrics */
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.metric-title {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #3a3f44;
+  margin-bottom: 0.5rem;
+}
+
+.metric-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Progress Bars */
+.progress {
+  height: 8px;
+  margin-top: 0.5rem;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s ease;
+}
+
+.progress-bar-cpu {
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+}
+
+.progress-bar-memory {
+  background: linear-gradient(to right, #667eea, #764ba2);
+}
+
+/* Card Styles */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e9ecef;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.card-header {
+  background-color: #fff;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.card-header h3 {
+  margin: 0;
+  color: #3a3f44;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th, .table td {
+  padding: 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.table thead th {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table tbody td {
+  border-bottom: 1px solid #e9ecef;
+  color: #495057;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* User status indicators */
+.user-status {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-active {
+  background-color: #4caf50;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+  
+  .metrics-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table th, .table td {
+    padding: 0.75rem;
+  }
+}
+
+.uptime-info {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.progress-bar-disk {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.badge-incoming {
+  background-color: #e3f2fd;
+  color: #0d6efd;
+}
+
+.badge-outgoing {
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+/* Make the metrics container more responsive */
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 992px) {
+  .metrics-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>Server Status</h1>
+    <p class="uptime-info">System Uptime: {{ uptime }}</p>
+  </div>
+  
+  <!-- System Resource Metrics -->
+  <div class="metrics-container">
+    <div class="metric-card">
+      <div class="metric-title">CPU Usage</div>
+      <div class="metric-value">{{ cpu_usage }}%</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-cpu" style="width: {{ cpu_usage }}%"></div>
+      </div>
+      <div class="metric-description">Load Avg: {{ load_averages.0|floatformat:2 }}, {{ load_averages.1|floatformat:2 }}, {{ load_averages.2|floatformat:2 }}</div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Memory Usage</div>
+      <div class="metric-value">{{ memory_usage_percent }}%</div>
+      <div class="metric-description">{{ used_memory|floatformat:0 }} / {{ total_memory|floatformat:0 }} MB</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-memory" style="width: {{ memory_usage_percent }}%"></div>
+      </div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Disk Usage</div>
+      <div class="metric-value">{{ disk_usage_percent }}%</div>
+      <div class="metric-description">{{ used_disk|floatformat:1 }} / {{ total_disk|floatformat:1 }} GB</div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-disk" style="width: {{ disk_usage_percent }}%"></div>
+      </div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Network Traffic</div>
+      <div class="metric-value">{{ bytes_recv|floatformat:1 }} MB</div>
+      <div class="metric-description">
+        <span class="badge badge-incoming">Received</span>
+        <span class="badge badge-outgoing">Sent: {{ bytes_sent|floatformat:1 }} MB</span>
+      </div>
+    </div>
+    
+    <div class="metric-card">
+      <div class="metric-title">Running Processes</div>
+      <div class="metric-value">{{ running_processes }}</div>
+      <div class="metric-description">Active system processes</div>
+    </div>
+  </div>
+
+  <!-- Active Users Card -->
+  <div class="card">
+    <div class="card-header">
+      <h3>Active Users</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Last Login</th>
+              <th>IP Address</th>
+              <th>Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for user_data in user_login_data %}
+            <tr>
+              <td>
+                <div class="d-flex align-items-center">
+                  <span class="user-status status-active"></span>
+                  {{ user_data.username }}
+                </div>
+              </td>
+              <td>{{ user_data.email }}</td>
+              <td>{{ user_data.last_login|date:"Y-m-d H:i:s" }}</td>
+              <td>{{ user_data.ip_address }}</td>
+              <td>{{ user_data.location }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="5" class="text-center">No active users</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

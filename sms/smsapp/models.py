@@ -391,3 +391,15 @@ class Last_Replay_Data(models.Model):
     
     def __str__(self):
         return f"{self.user} | {self.name} | {self.count}"
+    
+class LoginHistory(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    login_time = models.DateTimeField(default=timezone.now)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
+    location = models.CharField(max_length=255, null=True, blank=True)
+    
+    class Meta:
+        ordering = ['-login_time']
+        
+    def __str__(self):
+        return f"{self.user.username} - {self.login_time}"
