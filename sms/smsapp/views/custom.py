@@ -16,6 +16,8 @@ import psutil
 from django.utils import timezone
 from datetime import timedelta
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Sum
+from django.utils.timezone import make_aware
 
 CustomUser = get_user_model()
 
@@ -207,6 +209,44 @@ def system_status(request):
     used_memory = memory_info.used / (1024 * 1024)
     memory_usage_percent = memory_info.percent
     
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    user = request.GET.get('user')
+    if not start_date:
+        start_date = "2024-12-20"
+    
+    today = datetime.now().date()
+    coins_history = CoinsHistory.objects.all()
+    if start_date:
+        start_date = make_aware(datetime.strptime(start_date, '%Y-%m-%d'))
+        coins_history = coins_history.filter(created_at__gte=start_date)
+
+    # Filter by end date if provided
+    if end_date:
+        end_date = make_aware(datetime.strptime(end_date, '%Y-%m-%d') + timedelta(days=1))  # Include the full day
+        coins_history = coins_history.filter(created_at__lt=end_date)
+
+    # Filter by user if provided
+    if user:
+        coins_history = coins_history.filter(user=user)
+        
+    total_coins_utilized_today = CoinsHistory.objects.filter(created_at__date=today).aggregate(Sum('number_of_coins'))['number_of_coins__sum'] or 0
+    total_coins_available = CoinsHistory.objects.aggregate(Sum('number_of_coins'))['number_of_coins__sum'] or 0
+    
+    coins_by_date = (
+        coins_history
+        .values('created_at__date')
+        .annotate(total_coins=Sum('number_of_coins'))
+        .order_by('created_at__date')
+    )
+    
+    coins_chart_data = {
+        'dates': [str(entry['created_at__date']) for entry in coins_by_date],
+        'coins_used': [entry['total_coins'] for entry in coins_by_date],
+    }
+    
+    users = CoinsHistory.objects.values_list('user', flat=True).distinct()
+    
     active_sessions = Session.objects.filter(expire_date__gte=timezone.now())
     user_ids = []
     for session in active_sessions:
@@ -268,6 +308,13 @@ def system_status(request):
         'running_processes': running_processes,
         'load_averages': load_averages,
         'user_login_data': user_login_data,
+        'coins_chart_data': coins_chart_data,
+        'total_coins_utilized_today': total_coins_utilized_today,
+        'total_coins_available': total_coins_available,
+        'users': users,
+        'selected_user': user,
+        'selected_start_date': start_date,
+        'selected_end_date': end_date,
     }
 
     return render(request, 'system_status.html', context)
