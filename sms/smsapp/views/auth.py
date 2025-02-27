@@ -133,7 +133,6 @@ def get_location_from_ip(ip_address):
 @csrf_exempt
 def user_login(request):
     if request.method == "POST":
-        ip_address = request.META.get('REMOTE_ADDR')
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
             ip_address = x_forwarded_for.split(',')[0]
