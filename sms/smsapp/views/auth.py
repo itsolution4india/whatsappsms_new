@@ -153,6 +153,11 @@ def user_login(request):
             if stored_otp and otp == stored_otp:
                 
                 login(request, user)
+                LoginHistory.objects.create(
+                    user=user,
+                    ip_address=ip_address,
+                    location=location
+                )
                 user.session_key = request.session.session_key
                 user.save()
                 
@@ -239,6 +244,11 @@ def user_login(request):
                     })
                 else:
                     login(request, user)
+                    LoginHistory.objects.create(
+                        user=user,
+                        ip_address=ip_address,
+                        location=location
+                    )
                     user.session_key = request.session.session_key
                     user.save()
                     logger.info(f"User {username_or_email}, {ip_address}, {location} logged in successfully.")
