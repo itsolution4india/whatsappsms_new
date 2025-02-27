@@ -229,7 +229,58 @@
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   }
 }
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+input[type="date"],
+select {
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+canvas {
+    display: block;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -284,6 +335,36 @@
     </div>
   </div>
 
+    <form method="GET" action="">
+      <div>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" value="{{ selected_start_date|date:'Y-m-d' }}">
+      </div>
+
+      <div>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" value="{{ selected_end_date|date:'Y-m-d' }}">
+      </div>
+
+      <div>
+        <label for="user">User:</label>
+        <select id="user" name="user">
+            <option value="">All Users</option>
+            {% for usr in users %}
+                <option value="{{ usr }}" {% if selected_user == usr %}selected{% endif %}>{{ usr }}</option>
+            {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit">Filter</button>
+  </form>
+
+  <div class="d-flex mb-2">
+    <p class="card p-2 m-1">Total Coins Utilized Today: {{ total_coins_utilized_today }}</p>
+    <p class="card p-2 m-1">Total Coins Available: {{ total_coins_available }}</p>
+  </div>
+
+    <canvas id="coinsChart" width="400" height="200"></canvas>
   <!-- Active Users Card -->
   <div class="card">
     <div class="card-header">
@@ -326,4 +407,33 @@
     </div>
   </div>
 </div>
+
+
+<script>
+  // Get the chart data from Django context
+  const coinsChartData = {{ coins_chart_data|safe }};
+
+  // Create a line chart using Chart.js
+  const ctx = document.getElementById('coinsChart').getContext('2d');
+  const coinsChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: coinsChartData.dates,  // X-axis: Dates
+          datasets: [{
+              label: 'Coins Used',
+              data: coinsChartData.coins_used,  // Y-axis: Coins used
+              borderColor: 'rgba(0, 23, 174, 1)',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+</script>
 {% endblock %}
