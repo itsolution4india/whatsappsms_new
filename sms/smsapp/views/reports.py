@@ -377,7 +377,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                     try:
                         new_row_list[0] = created_at
                     except Exception as e:
-                        logger.info(str(e))
+                        logger.error(str(e))
                     new_row_list[4] = phone
                     new_row_list[5] = "failed"
                     new_row_list[7] = 100
@@ -605,6 +605,12 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     no_match_num.append(phone)
                     new_row = copy.deepcopy(random.choice(non_reply_rows))
                     new_row_list = list(new_row)
+                    try:
+                        random_seconds = random.randint(0, 300)
+                        new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                        new_row_list[0] = new_date
+                    except Exception as e:
+                        logger.error(str(e))
                     new_row_list[4] = phone
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
@@ -618,7 +624,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                         new_date = created_at + datetime.timedelta(seconds=random_seconds)
                         new_row_list[0] = new_date
                     except Exception as e:
-                        logger.info(str(e))
+                        logger.error(str(e))
                     new_row_list[4] = phone
                     new_row_list[5] = "Pending"
                     new_row_list[7] = 100
@@ -713,7 +719,7 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
                 new_date = created_at + datetime.timedelta(seconds=random_seconds)
                 new_row_list[0] = new_date
             except Exception as e:
-                logger.info(str(e))
+                logger.error(str(e))
                 
             new_row_list[1] = row[1]
             new_row_list[2] = row[2]
