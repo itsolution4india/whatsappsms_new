@@ -1,4 +1,4 @@
-from ..models import UserAccess, CustomUser, Register_TwoAuth, Templates, Last_Replay_Data, Contact, Group, ScheduledMessage
+from ..models import UserAccess, CustomUser, Register_TwoAuth, Templates, Last_Replay_Data, Contact, Group, ScheduledMessage, LoginHistory
 from ..forms import UserLoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
@@ -43,6 +43,9 @@ def access_denide(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+def admin_check(user):
+    return user.is_superuser
 
 @login_required
 def username(request):
@@ -116,10 +119,27 @@ def update_login_attempts(username_or_email, ip_address, is_successful):
     
     return attempts
 
+def get_location_from_ip(ip_address):
+    try:
+        response = requests.get(f"http://ipinfo.io/{ip_address}/json")
+        if response.status_code == 200:
+            data = response.json()
+            location = data.get("city", "Unknown city") + ", " + data.get("region", "Unknown region") + ", " + data.get("country", "Unknown country")
+            return location
+    except Exception as e:
+        print(f"Error fetching location: {e}")
+    return "Unknown location"
+
 @csrf_exempt
 def user_login(request):
     if request.method == "POST":
         ip_address = request.META.get('REMOTE_ADDR')
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip_address = x_forwarded_for.split(',')[0]
+        else:
+            ip_address = request.META.get('REMOTE_ADDR')
+        location = get_location_from_ip(ip_address)
         # Check if this is an OTP verification request
         if 'otp' in request.POST:
             otp = request.POST.get('otp')
@@ -140,10 +160,10 @@ def user_login(request):
                 # Clear temporary session data
                 del request.session['temp_user_id']
                 del request.session['login_otp']
-                logger.info(f"User {user.username}, {ip_address} completed 2FA successfully.")
+                logger.info(f"User {user.username}, {ip_address}, {location} completed 2FA successfully.")
                 return redirect("dashboard")
             else:
-                logger.warning(f"Invalid OTP attempt for user {user.username}, {ip_address}")
+                logger.warning(f"Invalid OTP attempt for user {user.username}, {ip_address}, {location}")
                 return render(request, "login.html", {
                     "show_otp": True,
                     "form": UserLoginForm(),
@@ -213,7 +233,7 @@ def user_login(request):
                         True
                     )
                     
-                    logger.info(f"2FA OTP sent for user {username_or_email}, {ip_address}")
+                    logger.info(f"2FA OTP sent for user {username_or_email}, {ip_address}, {location}")
                     return render(request, "login.html", {
                         "show_otp": True,
                         "form": UserLoginForm()
@@ -222,9 +242,14 @@ def user_login(request):
                     login(request, user)
                     user.session_key = request.session.session_key
                     user.save()
-                    logger.info(f"User {username_or_email}, {ip_address} logged in successfully.")
+                    logger.info(f"User {username_or_email}, {ip_address}, {location} logged in successfully.")
                     return redirect("dashboard")
             else:
+                LoginHistory.objects.create(
+                    user=user,
+                    ip_address=ip_address,
+                    location=location
+                )
                 attempts = update_login_attempts(username_or_email, ip_address, False)
                 if attempts and attempts.get('block_until'):
                     remaining_time = attempts['block_until'] - timezone.now()
@@ -234,9 +259,14 @@ def user_login(request):
                     remaining_attempts = 5 - attempts['count'] if attempts['block_count'] == 0 else 3 - attempts['count']
                     form.add_error(None, f"Invalid credentials. {remaining_attempts} attempts remaining before temporary block.")
                     
-                logger.warning(f"Failed login attempt for {username_or_email}, {ip_address}")
+                logger.warning(f"Failed login attempt for {username_or_email}, {ip_address}, {location}")
                 form.add_error(None, "Invalid email/username or password.")
             if login_successful:
+                LoginHistory.objects.create(
+                    user=user,
+                    ip_address=ip_address,
+                    location=location
+                )
                 update_login_attempts(username_or_email, ip_address, True)
                 
         else:
