@@ -77,6 +77,8 @@
             right: 0px;
             top: 15%;
             transform: translateY(-50%);
+            background: #0d6efd !important;
+            color: #fff !important  ;
         }
         
         .code-block {
@@ -92,9 +94,6 @@
             position: absolute;
             right: 10px;
             top: 10px;
-        }
-        .btn-primary:hover {
-            transform: translateY(-15px) !important;
         }
         .api-url {
             background-color: #f8f9fa;
@@ -298,6 +297,9 @@
                 opacity: 1;
             }
         }
+        .btn-primary:hover {
+            transform: translateY(0px) !important;
+        }
 </style>
 {% endblock %}
 
@@ -312,7 +314,7 @@
                     <div class="api-url">
                         <span class="api-method">POST</span>
                         https://wtsdealnow.in/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">TEXT</span>&media_id=<span class="api-static">null</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('text')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('text')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -321,7 +323,7 @@
                     <div class="api-url">
                         <span class="api-method">POST</span>
                         https://wtsdealnow.in/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">IMAGE</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('image')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('image')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -330,7 +332,7 @@
                     <div class="api-url">
                         <span class="api-method">POST</span>
                         https://wtsdealnow.in/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">DOCUMENT</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('document')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('document')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -339,7 +341,7 @@
                     <div class="api-url">
                         <span class="api-method">POST</span>
                         https://wtsdealnow.in/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">VIDEO</span>&media_id=<span class="api-param">MEDIA_ID</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-static">null</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('video')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('video')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -348,7 +350,7 @@
                     <div class="api-url">
                         <span class="api-method">OTP</span>
                         https://wtsdealnow.in/send_sms_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&template_name=<span class="api-param">TEMPLATE_NAME</span>&language=<span class="api-param">LANGUAGE</span>&media_type=<span class="api-static">OTP</span>&media_id=<span class="api-static">null</span>&contact_list=<span class="api-param">CONTACT_LIST</span>&variable_list=<span class="api-param">OTP</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('otp')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('otp')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -357,7 +359,7 @@
                     <div class="api-url">
                         <span class="api-method">GET</span>
                         https://wtsdealnow.com/get-report?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>&report_id=<span class="api-param">REPORT_ID</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('report')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('report')">Generate cURL</button>
                     </div>
                 </div>
 
@@ -366,7 +368,7 @@
                     <div class="api-url">
                         <span class="api-method">GET</span>
                         https://wtsdealnow.in/balance_check_api?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>
-                        <button class="btn btn-sm btn-primary curl-btn" onclick="showCurlForm('balance')">Generate cURL</button>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('balance')">Generate cURL</button>
                     </div>
                 </div>
             </div>
@@ -385,11 +387,11 @@
                     <form id="curlForm">
                         <div class="mb-3">
                             <label class="form-label">User ID</label>
-                            <input type="text" class="form-control" name="user_id" required>
+                            <input type="text" class="form-control" name="user_id" value="{{ user_id }}" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">API Token</label>
-                            <input type="text" class="form-control" name="api_token" required>
+                            <input type="text" class="form-control" name="api_token" value="{{ api_token }}" required>
                         </div>
                         <div id="additionalFields"></div>
                     </form>
@@ -780,7 +782,7 @@ curl_close($ch);</code></pre>
                     template_name: data.template_name,
                     language: data.language,
                     media_type: "OTP",
-                    media_id: currentEndpoint === 'text' ? null : data.media_id,
+                    media_id: null,
                     contact_list: data.contact_list ? data.contact_list.split(',').map(num => num.trim()) : [],
                     variable_list: data.variable_list ? data.variable_list.split(',').map(num => num.trim()) : [],
                 };
