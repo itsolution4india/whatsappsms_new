@@ -6,7 +6,7 @@ from ..functions.send_messages import display_phonenumber_id, schedule_subtract_
 import json, copy, random
 import mysql.connector
 import pandas as pd
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .auth import username
 
 
@@ -183,13 +183,18 @@ class GetReportAPI(APIView):
             return Response({"error": "999, An unexpected error occurred", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def api_manual(request):
-
-    context = {
-        "coins":request.user.marketing_coins + request.user.authentication_coins,
-        "marketing_coins":request.user.marketing_coins,
-        "authentication_coins":request.user.authentication_coins,
-        "username": username(request),
-        "WABA_ID": display_whatsapp_id(request),
-        "PHONE_ID": display_phonenumber_id(request)
-        }
-    return render(request, "api_manual.html", context)
+    user = CustomUser.objects.get(email=request.user.email)
+    if user.user_id and user.api_token:
+        context = {
+            "coins":request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins":request.user.marketing_coins,
+            "authentication_coins":request.user.authentication_coins,
+            "username": username(request),
+            "WABA_ID": display_whatsapp_id(request),
+            "PHONE_ID": display_phonenumber_id(request),
+            "user_id": user.user_id,
+            "api_token": user.api_token
+            }
+        return render(request, "api_manual.html", context)
+    else:
+        return redirect("access_denide")
