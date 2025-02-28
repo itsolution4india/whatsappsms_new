@@ -35,7 +35,7 @@ def Send_Sms(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         
-        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
@@ -326,7 +326,7 @@ def send_flow_message(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
-        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
@@ -411,7 +411,7 @@ def send_carousel_messages(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
-        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]

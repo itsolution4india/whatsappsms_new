@@ -86,7 +86,7 @@ def handle_uploaded_file(file):
             tmp_file.write(chunk)
         return tmp_file.name
     
-def fetch_templates(waba_id, token, req_template_name=None):
+def fetch_templates(waba_id, token, req_template_name=None, include_rejected=True):
     
     url = f"https://graph.facebook.com/v20.0/{waba_id}/message_templates"
     
@@ -160,7 +160,10 @@ def fetch_templates(waba_id, token, req_template_name=None):
                 if req_template_name.lower() == template_name.lower():
                     templates.append(template_data)
             else:
-                templates.append(template_data)
+                if include_rejected:
+                    templates.append(template_data)
+                elif status != "REJECTED":
+                    templates.append(template_data)
         
         return templates
 
