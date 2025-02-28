@@ -91,7 +91,8 @@ def fetch_templates(waba_id, token, req_template_name=None):
     url = f"https://graph.facebook.com/v20.0/{waba_id}/message_templates"
     
     params = {
-        'access_token': token
+        'access_token': token,
+        "limit": 6000
     }
     
     try:

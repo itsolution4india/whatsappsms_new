@@ -335,38 +335,8 @@ canvas {
     </div>
   </div>
 
-    <form method="GET" action="">
-      <div>
-        <label for="start_date">Start Date:</label>
-        <input type="date" id="start_date" name="start_date" value="{{ selected_start_date|date:'Y-m-d' }}">
-      </div>
-
-      <div>
-        <label for="end_date">End Date:</label>
-        <input type="date" id="end_date" name="end_date" value="{{ selected_end_date|date:'Y-m-d' }}">
-      </div>
-
-      <div>
-        <label for="user">User:</label>
-        <select id="user" name="user">
-            <option value="">All Users</option>
-            {% for usr in users %}
-                <option value="{{ usr }}" {% if selected_user == usr %}selected{% endif %}>{{ usr }}</option>
-            {% endfor %}
-        </select>
-      </div>
-
-      <button type="submit">Filter</button>
-  </form>
-
-  <div class="d-flex mb-2">
-    <p class="card p-2 m-1">Total Coins Utilized Today: {{ total_coins_utilized_today }}</p>
-    <p class="card p-2 m-1">Total Coins Available: {{ total_coins_available }}</p>
-  </div>
-
-    <canvas id="coinsChart" width="400" height="200"></canvas>
   <!-- Active Users Card -->
-  <div class="card">
+  <div class="card mt-2">
     <div class="card-header">
       <h3>Active Users</h3>
     </div>
@@ -406,6 +376,38 @@ canvas {
       </div>
     </div>
   </div>
+
+  
+  <form method="GET" action="">
+    <div>
+      <label for="start_date">Start Date:</label>
+      <input type="date" id="start_date" name="start_date" value="{{ selected_start_date|date:'Y-m-d' }}">
+    </div>
+
+    <div>
+      <label for="end_date">End Date:</label>
+      <input type="date" id="end_date" name="end_date" value="{{ selected_end_date|date:'Y-m-d' }}">
+    </div>
+
+    <div>
+      <label for="user">User:</label>
+      <select id="user" name="user">
+          <option value="">All Users</option>
+          {% for usr in users %}
+              <option value="{{ usr }}" {% if selected_user == usr %}selected{% endif %}>{{ usr }}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit">Filter</button>
+</form>
+
+<div class="d-flex mb-2">
+  <p class="card p-2 m-1">Total Coins Utilized Today: {{ total_coins_utilized_today }}</p>
+  <p class="card p-2 m-1">Total Coins Available: {{ total_coins_available }}</p>
+</div>
+
+  <canvas id="coinsChart" width="400" height="200"></canvas>
 </div>
 
 
