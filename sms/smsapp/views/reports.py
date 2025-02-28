@@ -626,9 +626,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     except Exception as e:
                         logger.error(str(e))
                     new_row_list[4] = phone
-                    new_row_list[5] = "Pending"
-                    new_row_list[7] = 100
-                    new_row_list[8] = "Kindly wait for few minutes"
+                    new_row_list[5] = "Failed" if report_id == 2045 else "Pending"
+                    new_row_list[7] = 404 if report_id == 2045 else 100
+                    new_row_list[8] = "Template not Found" if report_id == 2045 else "Kindly wait for few minutes"
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
                 
