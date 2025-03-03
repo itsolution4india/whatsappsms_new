@@ -122,9 +122,9 @@ if __name__ == "__main__":
     # Database configuration
     db_config = {
         'NAME': 'admin',
-        'USER': 'itsolutions',
+        'USER': 'postgres',
         'PASSWORD': 'Solution@97',
-        'HOST': 'localhost',
+        'HOST': '217.145.69.172',
         'PORT': '5432'
     }
     
