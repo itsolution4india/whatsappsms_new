@@ -19,11 +19,11 @@ SECRET_KEY ='django-insecure-ux$&02l*ri@g!fp$@@8g7kxd4#ix6$_=xo!r+bzmz3@f2&=i@6'
 DEBUG = False # Set to False in production
 
 ALLOWED_HOSTS = [
-    'www.wtsdealnow.com',
-    '.wtsdealnow.com',  # Allow subdomains
+    'www.main.wtsmessage.xyz',
+    '.wtsmessage.xyz',  # Allow subdomains
     'localhost',
     '127.0.0.1',
-    '46.202.130.143',
+    '217.145.69.172',
     '[::1]'
 ]
 # CORS Configuration
@@ -97,12 +97,12 @@ WSGI_APPLICATION = 'sms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'OPTIONS': {
-            'timeout': 30,
-            'isolation_level': None,
-        },
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'admin',
+        'USER': 'postgres',
+        'PASSWORD': 'Solution@97',
+        'HOST': '217.145.69.172',
+        'PORT': '5432',
     }
 }
 
