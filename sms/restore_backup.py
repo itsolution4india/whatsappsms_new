@@ -120,7 +120,7 @@ if __name__ == "__main__":
         'NAME': 'admin',
         'USER': 'itsolutions',
         'PASSWORD': 'Solution@97',
-        'HOST': 'localhost',
+        'HOST': '217.145.69.172',
         'PORT': '5432'
     }
     
