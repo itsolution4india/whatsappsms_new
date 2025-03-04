@@ -37,7 +37,7 @@ def execute_sql_file(filename):
 
 # Call the function to execute SQL file.
 if __name__ == "__main__":
-    execute_sql_file('webhook_responses04.sql')
+    execute_sql_file('webhook_responses05.sql')
 
 # Close the database connection
 db_connection.close()
