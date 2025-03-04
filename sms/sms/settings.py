@@ -177,19 +177,14 @@ LOGGING = {
             'propagate': True,
         },
         'django.request': {
-            'handlers': ['file'],
-            'level': 'ERROR',
+            'handlers': ['file', '404_file'],  # Both handlers here
+            'level': 'WARNING',  # Handles WARNING and above (including ERROR)
             'propagate': False,
         },
         'django.security.DisallowedHost': {
             'handlers': ['file'],
             'level': 'ERROR',
             'propagate': False,
-        },
-        'django.request': {
-            'handlers': ['404_file'],
-            'level': 'WARNING',
-            'propagate': True,
         },
     },
 }
