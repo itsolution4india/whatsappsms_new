@@ -99,9 +99,9 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -254,9 +254,9 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -491,9 +491,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -675,9 +675,9 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
     connection = mysql.connector.connect(
         host="localhost",
         port=3306,
-        user="fedqrbtb_wtsdealnow",
+        user="prashanth@itsolution4india.com",
         password="Solution@97",
-        database="fedqrbtb_report",
+        database="webhook_responses",
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
@@ -758,9 +758,9 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -963,9 +963,9 @@ def get_latest_rows_by_contacts(contact_numbers):
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         
@@ -1013,9 +1013,9 @@ def get_unique_phone_numbers():
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
-            user="fedqrbtb_wtsdealnow",
+            user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="fedqrbtb_report",
+            database="webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
