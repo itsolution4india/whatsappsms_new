@@ -101,7 +101,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             port=3306,
             user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="webhook_responses",
+            database=f"webhook_responses_{phone_id}",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -493,7 +493,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             port=3306,
             user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database="webhook_responses",
+            database=f"webhook_responses_{Phone_ID}",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -677,7 +677,7 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
         port=3306,
         user="prashanth@itsolution4india.com",
         password="Solution@97",
-        database="webhook_responses",
+        database=f"webhook_responses_{Phone_ID}",
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
