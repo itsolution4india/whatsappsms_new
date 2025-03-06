@@ -73,6 +73,7 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_date',
         'message_delivery',
         "contact_list",
+        "waba_id_list",
         "start_request_id",
         "end_request_id"
         
@@ -94,6 +95,7 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'email',
         "campaign_title",
         "contact_list",
+        "waba_id_list",
         'message_date',
         'message_delivery',
         'template_name',
