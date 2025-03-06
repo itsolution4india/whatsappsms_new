@@ -511,17 +511,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         waba_query = f"""
-        SELECT *
-        FROM webhook_responses_{Phone_ID} AS wr
-        WHERE wr.waba_id IN ('{wamids_list_str}')
-        AND wr.phone_number_id = '{Phone_ID}'
-        AND wr.Date = (
-            SELECT MAX(wr2.Date)
-            FROM webhook_responses_{Phone_ID} AS wr2
-            WHERE wr2.waba_id = wr.waba_id
-            AND wr2.phone_number_id = wr.phone_number_id
-        )
-        ORDER BY wr.Date DESC;
+        SELECT * FROM webhook_responses_{Phone_ID}
+        WHERE waba_id IN ('{wamids_list_str}')
+        AND phone_number_id = '{Phone_ID}'
+        ORDER BY `Date` DESC;
         """
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
