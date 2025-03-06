@@ -589,12 +589,14 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         query = waba_query if wamids_list_str else contacts_query
         cursor.execute(query)
         matched_rows = cursor.fetchall()
+        logger.info(f"matched_rows {matched_rows}")
         
         error_codes_to_check = {"131031", "131053", "131042"}
         error_code = None 
         
         if report_id != 1520:
             for row in matched_rows:
+                logger.info(f"row, {row}")
                 current_error_code = str(row[7])
                 if current_error_code in error_codes_to_check:
                     error_code = current_error_code
