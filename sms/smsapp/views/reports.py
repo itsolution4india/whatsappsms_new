@@ -512,12 +512,12 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         waba_query = f"""
         SELECT *
-        FROM webhook_responses AS wr
+        FROM webhook_responses_{Phone_ID} AS wr
         WHERE wr.waba_id IN ('{wamids_list_str}')
         AND wr.phone_number_id = '{Phone_ID}'
         AND wr.Date = (
             SELECT MAX(wr2.Date)
-            FROM webhook_responses AS wr2
+            FROM webhook_responses_{Phone_ID} AS wr2
             WHERE wr2.waba_id = wr.waba_id
             AND wr2.phone_number_id = wr.phone_number_id
         )
