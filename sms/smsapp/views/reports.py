@@ -517,7 +517,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         ORDER BY `Date` DESC;
         """
         # SQL query to get unique record for each contact with prioritized selection
-        query = f"""
+        contacts_query = f"""
             WITH LeastDateWaba AS (
                 SELECT 
                     contact_wa_id,
@@ -579,7 +579,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
-        query = waba_query if wamids_list_str else query
+        query = waba_query if wamids_list_str else contacts_query
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
