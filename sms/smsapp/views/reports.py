@@ -773,7 +773,8 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
             updated_rows.append(new_row_tuple)
         else:
             updated_rows.append(row)
-        
+            
+    logger.info(f"Number of columns in updated_rows: {len(updated_rows[0])}")
     response = HttpResponse(content_type='text/csv')
     if report_id:
         response['Content-Disposition'] = f'attachment; filename="{campaign_title}.csv"'
