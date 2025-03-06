@@ -466,7 +466,14 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
+            try:
+                wamids = report.waba_id_list.split('\r\n')
+            except:
+                wamids = None
+            wamids = None if wamids == ['0'] else wamids
             contact_all = [phone.strip() for contact in contacts for phone in contact.split(',')]
+            wamids_list = [wa_mid.strip() for wamid in wamids for wa_mid in wamid.split(',')] if wamids else None
+            
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 logger.info(f"created_at_main {created_at}")
@@ -498,12 +505,24 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         )
         cursor = connection.cursor()
         
-        logger.info(f"contact_all {contact_all}")
         contacts_str = "', '".join(contact_all)
-        logger.info(f"contacts_str {contacts_str}")
+        wamids_list_str = "', '".join(wamids_list) if wamids_list else None
         
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
+        waba_query = f"""
+        SELECT *
+        FROM webhook_responses AS wr
+        WHERE wr.waba_id IN ('{wamids_list_str}')
+        AND wr.phone_number_id = '{Phone_ID}'
+        AND wr.Date = (
+            SELECT MAX(wr2.Date)
+            FROM webhook_responses AS wr2
+            WHERE wr2.waba_id = wr.waba_id
+            AND wr2.phone_number_id = wr.phone_number_id
+        )
+        ORDER BY wr.Date DESC;
+        """
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
             WITH LeastDateWaba AS (
@@ -567,7 +586,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             WHERE rn = 1
             ORDER BY contact_wa_id;
         """
-
+        query = waba_query if wamids_list_str else query
         cursor.execute(query)
         matched_rows = cursor.fetchall()
         
