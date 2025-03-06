@@ -508,6 +508,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         contacts_str = "', '".join(contact_all)
         wamids_list_str = "', '".join(wamids_list) if wamids_list else None
         logger.info(f"wamids_list_str {wamids_list_str}")
+        logger.info(f"wamids_list {wamids_list}")
+        logger.info(f"contacts_str {contacts_str}")
+        logger.info(f"contact_all {contact_all}")
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         waba_query = f"""
