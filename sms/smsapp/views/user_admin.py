@@ -1,94 +1,25 @@
 import psutil
-import time
+import os
 from datetime import datetime, timedelta
 from collections import deque
-import threading
-import statistics
+from django.http import JsonResponse, FileResponse
 from django.contrib.auth.decorators import user_passes_test
 from django.db.models import Sum
 from django.utils.timezone import make_aware
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .auth import admin_check
 from ..models import CoinsHistory, LoginHistory
 from django.contrib.sessions.models import Session
 from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.conf import settings
+from django.views.decorators.csrf import csrf_exempt
+import json
+from django.contrib import messages
 
 CustomUser = get_user_model()
 
-# Global variables to track CPU usage history
-cpu_history = deque(maxlen=300)  # Store 5 minutes of data at 1-second intervals
-cpu_history_lock = threading.Lock()
-monitoring_thread = None
-is_monitoring = False
-
-def start_cpu_monitoring():
-    """Start a background thread to monitor CPU usage"""
-    global monitoring_thread, is_monitoring
-    
-    if is_monitoring:
-        return  # Already monitoring
-    
-    is_monitoring = True
-    
-    def monitor_cpu():
-        while is_monitoring:
-            with cpu_history_lock:
-                cpu_history.append((datetime.now(), psutil.cpu_percent(interval=1)))
-    
-    monitoring_thread = threading.Thread(target=monitor_cpu)
-    monitoring_thread.daemon = True  # Thread will exit when main program exits
-    monitoring_thread.start()
-
-def stop_cpu_monitoring():
-    """Stop the CPU monitoring thread"""
-    global is_monitoring
-    is_monitoring = False
-    if monitoring_thread:
-        monitoring_thread.join(timeout=2)
-
-def get_cpu_history_stats(minutes=5):
-    """Get statistics about CPU usage over the specified period"""
-    with cpu_history_lock:
-        if not cpu_history:
-            return {
-                'current': 0,
-                'average': 0,
-                'max': 0,
-                'min': 0,
-                'above_90_percent': False,
-                'samples_count': 0,
-                'high_samples_count': 0
-            }
-        
-        # Get samples from the last X minutes
-        cutoff_time = datetime.now() - timedelta(minutes=minutes)
-        recent_samples = [usage for timestamp, usage in cpu_history if timestamp >= cutoff_time]
-        
-        if not recent_samples:
-            current = cpu_history[-1][1] if cpu_history else 0
-            return {
-                'current': current,
-                'average': 0,
-                'max': 0,
-                'min': 0,
-                'above_90_percent': False,
-                'samples_count': 0,
-                'high_samples_count': 0
-            }
-        
-        # Calculate statistics
-        high_samples = [s for s in recent_samples if s >= 90]
-        
-        return {
-            'current': cpu_history[-1][1] if cpu_history else 0,
-            'average': statistics.mean(recent_samples),
-            'max': max(recent_samples),
-            'min': min(recent_samples),
-            'above_90_percent': len(high_samples) / len(recent_samples) >= 0.8,
-            'samples_count': len(recent_samples),
-            'high_samples_count': len(high_samples)
-        }
+LOG_FILE_PATH = os.path.join(settings.BASE_DIR, 'logs', 'error.log')
 
 @user_passes_test(admin_check)
 def system_status(request):
@@ -208,10 +139,86 @@ def system_status(request):
 
     return render(request, 'system_status.html', context)
 
-# Add this to your app's initialization code (e.g., in apps.py or a suitable place)
-def initialize_monitoring():
-    start_cpu_monitoring()
+@user_passes_test(admin_check)
+def display_logs(request):
+    """
+    Display the logs with a text editor interface
+    """
+    # Check if the logs file exists
+    if os.path.exists(LOG_FILE_PATH):
+        try:
+            # Read the logs file content with utf-8 encoding
+            with open(LOG_FILE_PATH, 'r', encoding='utf-8') as log_file:
+                logs_content = log_file.read()
+        except UnicodeDecodeError:
+            # If utf-8 decoding fails, try with latin-1 encoding which can handle any byte value
+            try:
+                with open(LOG_FILE_PATH, 'r', encoding='latin-1') as log_file:
+                    logs_content = log_file.read()
+            except Exception as e:
+                logs_content = f"Error reading logs: {str(e)}"
+        except Exception as e:
+            logs_content = f"Error reading logs: {str(e)}"
+    else:
+        logs_content = ""  # Empty string for a new file
+    
+    context = {'logs': logs_content}
+    return render(request, 'display_logs.html', context)
 
-# Add this to your app's shutdown code (e.g., signal handlers)
-def cleanup_monitoring():
-    stop_cpu_monitoring()
+@user_passes_test(admin_check)
+@csrf_exempt
+def save_logs(request):
+    """
+    Save edited log content
+    """
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            log_content = data.get('content', '')
+            
+            # Create directory if it doesn't exist
+            os.makedirs(os.path.dirname(LOG_FILE_PATH), exist_ok=True)
+            
+            # Save the log content
+            with open(LOG_FILE_PATH, 'w', encoding='utf-8') as log_file:
+                log_file.write(log_content)
+            
+            return JsonResponse({'status': 'success', 'message': 'Logs saved successfully'})
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
+@user_passes_test(admin_check)
+def delete_logs(request):
+    """
+    Delete all logs
+    """
+    if request.method == 'POST':
+        if os.path.exists(LOG_FILE_PATH):
+            try:
+                # Truncate the log file
+                open(LOG_FILE_PATH, 'w').close()
+                messages.success(request, "Logs deleted successfully.")
+            except Exception as e:
+                messages.error(request, f"Error deleting logs: {str(e)}")
+        else:
+            messages.info(request, "Log file not found.")
+        
+        # Redirect back to the logs display page after deletion
+        return redirect('display_logs')
+    
+    return JsonResponse({'status': 'error', 'message': 'Invalid request'}, status=400)
+
+@user_passes_test(admin_check)
+def download_logs(request):
+    """
+    Download the logs file
+    """
+    if os.path.exists(LOG_FILE_PATH):
+        response = FileResponse(open(LOG_FILE_PATH, 'rb'))
+        response['Content-Disposition'] = 'attachment; filename="logs.txt"'
+        return response
+    
+    messages.error(request, "Log file not found.")
+    return redirect('display_logs')

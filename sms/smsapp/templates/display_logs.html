@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/theme/monokai.min.css" rel="stylesheet">
+<style>
+    .log-container {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 200px);
+        min-height: 500px;
+    }
+    
+    .toolbar {
+        display: flex;
+        gap: 10px;
+        padding: 10px 0;
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .CodeMirror {
+        height: 100%;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+    
+    .btn-primary {
+        background-color: #4a6ee0;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #3a5bc0;
+    }
+    
+    .btn-danger {
+        background-color: #e74c3c;
+        color: white;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c0392b;
+    }
+    
+    .btn-success {
+        background-color: #2ecc71;
+        color: white;
+    }
+    
+    .btn-success:hover {
+        background-color: #27ae60;
+    }
+    
+    .btn-secondary {
+        background-color: #95a5a6;
+        color: white;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #7f8c8d;
+    }
+    
+    .message {
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 4px;
+    }
+    
+    .message-success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    
+    .message-error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    
+    .status-bar {
+        padding: 5px 10px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+    }
+    
+    .search-box {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .search-input {
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 50%;
+        max-width: 500px;
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .close:hover {
+        color: black;
+    }
+    .logEditor {
+        width: 100%;
+        height: 100vh;
+        background: #3c3c3c;
+        color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Log Manager</h3>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <div class="message {% if message.tags %}message-{{ message.tags }}{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div class="toolbar">
+        <button id="saveBtn" class="btn btn-primary">Save</button>
+        <button id="searchBtn" class="btn btn-secondary">Search</button>
+        <button id="clearSearchBtn" class="btn btn-secondary" style="display: none;">Clear Search</button>
+        <button id="downloadBtn" class="btn btn-success">Download</button>
+        <button id="deleteBtn" class="btn btn-danger">Delete All</button>
+        <div class="search-box" style="display: none;">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search logs...">
+            <button id="nextMatchBtn" class="btn btn-secondary">Next</button>
+            <button id="prevMatchBtn" class="btn btn-secondary">Previous</button>
+        </div>
+    </div>
+    
+    <div class="log-container">
+        <textarea id="logEditor" class="logEditor">{{ logs }}</textarea>
+    </div>
+    
+    <div class="status-bar">
+        <span id="linesCount">0 lines</span>
+        <span id="charsCount">0 characters</span>
+        <span id="positionInfo">Line: 1, Column: 1</span>
+    </div>
+</div>
+
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Confirm Action</h2>
+        <p id="confirmMessage"></p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+            <button id="cancelBtn" class="btn btn-secondary">Cancel</button>
+            <button id="confirmBtn" class="btn btn-danger">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<form id="deleteForm" action="{% url 'delete_logs' %}" method="post" style="display: none;">
+    {% csrf_token %}
+</form>
+
+<form id="downloadForm" action="{% url 'download_logs' %}" method="get" style="display: none;"></form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/search/search.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/search/searchcursor.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/dialog/dialog.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/edit/matchbrackets.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize CodeMirror
+        var editor = CodeMirror.fromTextArea(document.getElementById('logEditor'), {
+            lineNumbers: true,
+            mode: 'text/plain',
+            theme: 'monokai',
+            matchBrackets: true,
+            lineWrapping: true,
+            tabSize: 2,
+            indentWithTabs: false,
+            scrollbarStyle: 'native'
+        });
+        
+        // Update status bar
+        function updateStatusBar() {
+            const content = editor.getValue();
+            const lines = content.split('\n').length;
+            const chars = content.length;
+            const cursor = editor.getCursor();
+            
+            document.getElementById('linesCount').textContent = lines + ' lines';
+            document.getElementById('charsCount').textContent = chars + ' characters';
+            document.getElementById('positionInfo').textContent = `Line: ${cursor.line + 1}, Column: ${cursor.ch + 1}`;
+        }
+        
+        editor.on('change', updateStatusBar);
+        editor.on('cursorActivity', updateStatusBar);
+        
+        // Initial update
+        updateStatusBar();
+        
+        // Save functionality
+        document.getElementById('saveBtn').addEventListener('click', function() {
+            const content = editor.getValue();
+            
+            fetch('{% url "save_logs" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: content
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    showMessage('Logs saved successfully', 'success');
+                } else {
+                    showMessage('Error: ' + data.message, 'error');
+                }
+            })
+            .catch(error => {
+                showMessage('Error: ' + error.message, 'error');
+            });
+        });
+        
+        // Delete functionality
+        document.getElementById('deleteBtn').addEventListener('click', function() {
+            showConfirmModal('Are you sure you want to delete all logs?', function() {
+                document.getElementById('deleteForm').submit();
+            });
+        });
+        
+        // Download functionality
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            document.getElementById('downloadForm').submit();
+        });
+        
+        // Search functionality
+        let currentSearch = null;
+        
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const searchBox = document.querySelector('.search-box');
+            if (searchBox.style.display === 'none') {
+                searchBox.style.display = 'flex';
+                document.getElementById('clearSearchBtn').style.display = 'block';
+                document.getElementById('searchInput').focus();
+            } else {
+                searchBox.style.display = 'none';
+                document.getElementById('clearSearchBtn').style.display = 'none';
+            }
+        });
+        
+        document.getElementById('clearSearchBtn').addEventListener('click', function() {
+            document.querySelector('.search-box').style.display = 'none';
+            document.getElementById('clearSearchBtn').style.display = 'none';
+            if (currentSearch) {
+                currentSearch = null;
+                editor.focus();
+            }
+        });
+        
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const query = this.value;
+            if (query) {
+                currentSearch = editor.getSearchCursor(query);
+                if (currentSearch.findNext()) {
+                    editor.setSelection(currentSearch.from(), currentSearch.to());
+                    editor.scrollIntoView({from: currentSearch.from(), to: currentSearch.to()}, 100);
+                }
+            }
+        });
+        
+        document.getElementById('nextMatchBtn').addEventListener('click', function() {
+            if (currentSearch && currentSearch.findNext()) {
+                editor.setSelection(currentSearch.from(), currentSearch.to());
+                editor.scrollIntoView({from: currentSearch.from(), to: currentSearch.to()}, 100);
+            } else if (currentSearch) {
+                // Wrap around to the beginning
+                currentSearch = editor.getSearchCursor(document.getElementById('searchInput').value);
+                if (currentSearch.findNext()) {
+                    editor.setSelection(currentSearch.from(), currentSearch.to());
+                    editor.scrollIntoView({from: currentSearch.from(), to: currentSearch.to()}, 100);
+                }
+            }
+        });
+        
+        document.getElementById('prevMatchBtn').addEventListener('click', function() {
+            if (currentSearch) {
+                // Creating a search from the end to find previous match
+                const query = document.getElementById('searchInput').value;
+                const content = editor.getValue();
+                const cursor = editor.getCursor();
+                
+                let tempCursor = editor.getSearchCursor(query, {line: cursor.line, ch: cursor.ch - 1});
+                let lastMatch = null;
+                
+                while (tempCursor.findPrevious()) {
+                    lastMatch = {from: tempCursor.from(), to: tempCursor.to()};
+                }
+                
+                if (lastMatch) {
+                    editor.setSelection(lastMatch.from, lastMatch.to);
+                    editor.scrollIntoView({from: lastMatch.from, to: lastMatch.to}, 100);
+                }
+            }
+        });
+        
+        // Modal functionality
+        const modal = document.getElementById('confirmModal');
+        const closeBtn = document.querySelector('.close');
+        const cancelBtn = document.getElementById('cancelBtn');
+        
+        closeBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+        
+        function showConfirmModal(message, confirmCallback) {
+            document.getElementById('confirmMessage').textContent = message;
+            document.getElementById('confirmBtn').onclick = function() {
+                confirmCallback();
+                closeModal();
+            };
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+        // Message display
+        function showMessage(message, type) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message message-${type}`;
+            messageElement.textContent = message;
+            
+            const container = document.querySelector('.container');
+            container.insertBefore(messageElement, container.querySelector('.toolbar'));
+            
+            setTimeout(function() {
+                messageElement.remove();
+            }, 5000);
+        }
+    });
+</script>
+{% endblock %}

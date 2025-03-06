@@ -57,6 +57,10 @@ urlpatterns = [
     path('user-interactions/', views.user_interaction, name='user_interaction'),
     path('delete_report/<int:report_id>/', views.delete_report, name='delete_report'),
     path('delete_message/<int:message_id>/', views.delete_message, name='delete_message'),
+    path('logs/', views.display_logs, name='display_logs'),
+    path('logs/save/', views.save_logs, name='save_logs'),
+    path('logs/delete/', views.delete_logs, name='delete_logs'),
+    path('logs/download/', views.download_logs, name='download_logs'),
     
     path('contact_management/', views.contact_management, name='contact_management'),
     path('contact/create/', views.create_contact, name='create_contact'),
