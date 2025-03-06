@@ -13,9 +13,7 @@ class DecimalEncoder(json.JSONEncoder):
             return float(obj)
         return super(DecimalEncoder, self).default(obj)
 
-def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None, testing_msg=None):
-    request_id = generate_code()
-    request_id = f"MESSAGE{request_id}"
+def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None, testing_msg=None, request_id=None):
     url="https://fastapi.wtsmessage.xyz/send_sms/"
     
     headers = {

@@ -147,7 +147,7 @@ def Send_Sms(request):
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables)
             elif action_type == 'validateRequest':
                 if invalid_numbers:
-                    _ = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, "This is Just a testing message")
+                    _ = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, " ")
                     
                     validation_data = get_latest_rows_by_contacts(invalid_numbers)
                     validation_data = validation_data[validation_data['error_code'] == 131026]
