@@ -1,8 +1,12 @@
 import mysql.connector
 import re
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Set
 import os
 import logging
+from mysql.connector.pooling import MySQLConnectionPool
+import time
+from io import StringIO
+import concurrent.futures
 
 # Set up logging
 logging.basicConfig(
@@ -12,23 +16,29 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Database connection details
-db_connection = mysql.connector.connect(
-    host="localhost",
-    port=3306,
-    user="prashanth@itsolution4india.com",
-    password="Solution@97",
-    database="webhook_responses",
-    auth_plugin='mysql_native_password'
-)
+db_config = {
+    "host": "localhost",
+    "port": 3306,
+    "user": "prashanth@itsolution4india.com",
+    "password": "Solution@97",
+    "database": "webhook_responses",
+    "auth_plugin": 'mysql_native_password'
+}
 
-def create_phone_specific_table(phone_number_id: str, cursor) -> None:
+# Create a connection pool
+pool = MySQLConnectionPool(pool_name="mypool", pool_size=5, **db_config)
+
+def get_connection():
+    return pool.get_connection()
+
+def create_phone_specific_table(phone_number_id: str, cursor) -> str:
     """Create a table specific to a phone number ID if it doesn't exist."""
     table_name = f"webhook_responses_{phone_number_id}"
     
     # Check if table exists
     check_table_query = (
         f"SELECT COUNT(*) FROM information_schema.tables "
-        f"WHERE table_schema = 'webhook_responses' AND table_name = '{table_name}'"
+        f"WHERE table_schema = '{db_config['database']}' AND table_name = '{table_name}'"
     )
     cursor.execute(check_table_query)
     table_exists = cursor.fetchone()[0] > 0
@@ -54,90 +64,126 @@ def create_phone_specific_table(phone_number_id: str, cursor) -> None:
         )
         """
         cursor.execute(create_table_query)
-        db_connection.commit()
-        logger.info(f"Created new table: {table_name}")
     
     return table_name
 
-def parse_insert_statements(sql_content: str) -> List[Tuple[str, str]]:
-    """
-    Parse INSERT statements from SQL file and extract phone_number_id 
-    and the complete INSERT statement.
-    """
-    # Regular expression to find INSERT statements
-    insert_pattern = r"INSERT INTO\s+`webhook_responses`\s+\([^)]+\)\s+VALUES\s+([^;]+)"
-    
-    # Find all insert statements
-    insert_statements = re.findall(insert_pattern, sql_content)
-    
-    results = []
-    for statement in insert_statements:
-        # Extract all value sets
-        values_pattern = r"\(([^)]+)\)"
-        value_sets = re.findall(values_pattern, statement)
-        
-        for value_set in value_sets:
-            # Split the values
-            values = [v.strip() for v in value_set.split(',')]
-            
-            # Check we have enough values (phone_number_id should be the 3rd item)
-            if len(values) >= 3:
-                # Extract phone_number_id (removing quotes if present)
-                phone_number_id = values[2].strip("'\"")
-                
-                # Reconstruct the insert with just this value set
-                insert_sql = f"INSERT INTO `placeholder_table` (`Date`, `display_phone_number`, `phone_number_id`, `waba_id`, `contact_wa_id`, `status`, `message_timestamp`, `error_code`, `error_message`, `contact_name`, `message_from`, `message_type`, `message_body`) VALUES ({value_set})"
-                
-                results.append((phone_number_id, insert_sql))
-    
-    return results
+def extract_phone_number_ids(sql_content: str) -> Set[str]:
+    """Extract unique phone_number_ids from the SQL content."""
+    # Regular expression to find phone_number_id values (assuming they're in the 3rd position)
+    # This is much faster than parsing the entire SQL syntax
+    pattern = r"VALUES\s*\([^,]+,[^,]+,\s*'([^']+)'"
+    matches = re.findall(pattern, sql_content)
+    return set(matches)
 
-def execute_sql_file(filename: str) -> None:
-    """Read and execute SQL file, creating phone-specific tables."""
+def create_tables_first(phone_ids: Set[str]):
+    """Pre-create all tables for the phone_number_ids."""
+    connection = get_connection()
+    cursor = connection.cursor()
+    
     try:
+        for phone_id in phone_ids:
+            create_phone_specific_table(phone_id, cursor)
+        connection.commit()
+        logger.info(f"Pre-created {len(phone_ids)} tables")
+    finally:
+        cursor.close()
+        connection.close()
+
+def process_sql_chunk(chunk: str):
+    """Process a chunk of SQL statements."""
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    try:
+        # Split SQL commands by semicolon
+        sql_commands = chunk.strip().split(';')
+        
+        for command in sql_commands:
+            command = command.strip()
+            if not command:
+                continue
+            
+            # Look for phone_number_id
+            match = re.search(r"VALUES\s*\([^,]+,[^,]+,\s*'([^']+)'", command)
+            if not match:
+                continue
+                
+            phone_id = match.group(1)
+            table_name = f"webhook_responses_{phone_id}"
+            
+            # Replace the table name
+            modified_command = command.replace("`webhook_responses`", f"`{table_name}`")
+            
+            try:
+                cursor.execute(modified_command)
+            except mysql.connector.Error as err:
+                logger.error(f"Error executing command: {err}")
+                
+        connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+
+def process_sql_file_in_chunks(filename: str, chunk_size: int = 10 * 1024 * 1024):
+    """Process a large SQL file in chunks using a thread pool."""
+    start_time = time.time()
+    
+    try:
+        # First pass - extract all unique phone_number_ids and create tables
+        logger.info("First pass - extracting phone IDs and creating tables...")
         with open(filename, 'r') as sql_file:
             sql_content = sql_file.read()
+            
+        phone_ids = extract_phone_number_ids(sql_content)
+        logger.info(f"Found {len(phone_ids)} unique phone number IDs")
         
-        # Parse the INSERT statements and extract phone_number_id
-        insert_data = parse_insert_statements(sql_content)
+        create_tables_first(phone_ids)
         
-        # Create a cursor
-        cursor = db_connection.cursor()
+        # Second pass - process data in chunks with multiple threads
+        logger.info("Second pass - processing data in chunks...")
+        chunks = []
         
-        # Process each INSERT statement
-        tables_created = set()
-        for phone_number_id, insert_sql in insert_data:
-            try:
-                # Create table specific to this phone_number_id if needed
-                table_name = create_phone_specific_table(phone_number_id, cursor)
+        # Split the file into manageable chunks
+        file_size = os.path.getsize(filename)
+        num_chunks = (file_size // chunk_size) + 1
+        logger.info(f"Processing file in {num_chunks} chunks")
+        
+        with open(filename, 'r') as sql_file:
+            buffer = StringIO()
+            lines_read = 0
+            
+            for line in sql_file:
+                buffer.write(line)
+                lines_read += 1
                 
-                if table_name not in tables_created:
-                    tables_created.add(table_name)
-                
-                # Replace placeholder with actual table name
-                insert_sql = insert_sql.replace("placeholder_table", table_name)
-                
-                # Execute the INSERT
-                cursor.execute(insert_sql)
-                db_connection.commit()
-                logger.info(f"Inserted data into {table_name}")
-                
-            except mysql.connector.Error as err:
-                logger.error(f"Error: {err}")
-                db_connection.rollback()
+                if lines_read % 1000 == 0 and buffer.tell() >= chunk_size:
+                    chunks.append(buffer.getvalue())
+                    buffer = StringIO()
+            
+            # Add the last chunk if not empty
+            if buffer.tell() > 0:
+                chunks.append(buffer.getvalue())
         
-        cursor.close()
-        logger.info(f"Created {len(tables_created)} tables and processed {len(insert_data)} records")
+        # Process chunks in parallel
+        with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+            futures = [executor.submit(process_sql_chunk, chunk) for chunk in chunks]
+            
+            # Wait for all futures to complete
+            for i, future in enumerate(concurrent.futures.as_completed(futures)):
+                logger.info(f"Completed chunk {i+1}/{len(chunks)}")
+                try:
+                    future.result()
+                except Exception as e:
+                    logger.error(f"Error processing chunk: {e}")
         
-    except FileNotFoundError:
-        logger.error(f"File not found: {filename}")
+        elapsed_time = time.time() - start_time
+        logger.info(f"Completed SQL processing in {elapsed_time:.2f} seconds")
+        
     except Exception as e:
-        logger.error(f"Unexpected error: {e}")
+        logger.error(f"Error processing SQL file: {e}")
 
-# Call the function to execute SQL file
+# Main execution
 if __name__ == "__main__":
-    execute_sql_file('webhook_responses01.sql')
-    
-    # Close the database connection
-    db_connection.close()
-    logger.info("Database connection closed")
+    # Process the SQL file with optimized performance
+    process_sql_file_in_chunks('webhook_responses02.sql')
+    logger.info("SQL processing complete")
