@@ -101,13 +101,13 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
             port=3306,
             user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database=f"webhook_responses_{phone_id}",
+            database=f"webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
         
         # Base query
-        query = "SELECT * FROM webhook_responses"
+        query = f"SELECT * FROM webhook_responses_{phone_id}"
         query_params = []
         
         query += " WHERE phone_number_id = %s"
@@ -493,7 +493,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             port=3306,
             user="prashanth@itsolution4india.com",
             password="Solution@97",
-            database=f"webhook_responses_{Phone_ID}",
+            database=f"webhook_responses",
             auth_plugin='mysql_native_password'
         )
         cursor = connection.cursor()
@@ -515,7 +515,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                         PARTITION BY contact_wa_id 
                         ORDER BY Date ASC
                     ) AS rn
-                FROM webhook_responses
+                FROM webhook_responses_{Phone_ID}
                 WHERE 
                     contact_wa_id IN ('{contacts_str}')
                     AND phone_number_id = '{Phone_ID}'
@@ -540,7 +540,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                         PARTITION BY wr2.contact_wa_id
                         ORDER BY wr2.message_timestamp DESC
                     ) AS rn
-                FROM webhook_responses wr2
+                FROM webhook_responses_{Phone_ID} wr2
                 INNER JOIN LeastDateWaba ldw 
                     ON wr2.contact_wa_id = ldw.contact_wa_id
                     AND wr2.waba_id = ldw.waba_id
@@ -677,11 +677,11 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
         port=3306,
         user="prashanth@itsolution4india.com",
         password="Solution@97",
-        database=f"webhook_responses_{Phone_ID}",
+        database=f"webhook_responses",
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
-    query = "SELECT * FROM webhook_responses WHERE 1=1"
+    query = f"SELECT * FROM webhook_responses_{Phone_ID} WHERE 1=1"
     params = []
     query += " AND phone_number_id = %s"
     params.append(Phone_ID)
@@ -971,7 +971,7 @@ def get_latest_rows_by_contacts(contact_numbers):
         
         cursor = connection.cursor()
         
-        query = """
+        query = f"""
             SELECT r.Date, r.display_phone_number, r.phone_number_id, r.waba_id, r.contact_wa_id, 
                    r.status, r.message_timestamp, r.error_code, r.error_message, r.contact_name, 
                    r.message_from, r.message_type, r.message_body
