@@ -506,7 +506,11 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         cursor = connection.cursor()
         
         contacts_str = "', '".join(contact_all)
-        wamids_list_str = "', '".join(wamids_list) if wamids_list else None
+        if wamids_list:
+            wamids_list_str = "', '".join(wamids_list)
+            wamids_list_str = f"'{wamids_list_str}'"
+        else:
+            wamids_list_str = None
         logger.info(f"wamids_list_str {wamids_list_str}")
         logger.info(f"wamids_list {wamids_list}")
         logger.info(f"contacts_str {contacts_str}")
@@ -514,10 +518,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         waba_query = f"""
-        SELECT * FROM webhook_responses_{Phone_ID}
-        WHERE waba_id IN ('{wamids_list_str}')
-        AND phone_number_id = '{Phone_ID}'
-        ORDER BY `Date` DESC;
+            SELECT * FROM webhook_responses_{Phone_ID}
+            WHERE waba_id IN ({wamids_list_str})
+            AND phone_number_id = '{Phone_ID}'
+            ORDER BY `Date` DESC;
         """
         # SQL query to get unique record for each contact with prioritized selection
         contacts_query = f"""
