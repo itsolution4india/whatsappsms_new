@@ -385,8 +385,8 @@ class Last_Replay_Data(models.Model):
     user = models.CharField(max_length=200)
     number = models.CharField(max_length=15)
     name = models.CharField(max_length=200)
-    count = models.CharField(max_length=3)
-    last_count = models.CharField(max_length=3, default=0)
+    count = models.CharField(max_length=10)
+    last_count = models.CharField(max_length=10, default=0)
     last_updated = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=10, default='unread')
     
