@@ -29,7 +29,8 @@ def link_templates(request):
     
     templatelinkage_with_counts = []
     if button_names:
-        counts = [int(df['message_body'].str.lower().str.contains(button.lower()).fillna(False).sum()) for button in button_names]
+        df_lower = df['message_body'].str.lower().fillna('')
+        counts = df_lower.apply(lambda body: [body.count(button.lower()) for button in button_names]).sum(axis=0)
         # Create a list of dictionaries combining templatelinkage and counts
         templatelinkage_with_counts = []
         for linkage, count in zip(templatelinkage, counts):
