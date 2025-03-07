@@ -16,6 +16,7 @@ from ..media_id import process_media_file
 from .reports import get_user_responses
 
 def update_or_create_reply_data(request, all_replies_grouped):
+    logger.info(f"all_replies_grouped {all_replies_grouped}")
     for _, row in all_replies_grouped.iterrows():
         existing_record = Last_Replay_Data.objects.filter(
             number=row['contact_wa_id'], user=request.user.email
