@@ -717,7 +717,20 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     )
     cursor = connection.cursor()
     query = f"""
-        SELECT * FROM webhook_responses_{Phone_ID}
+        SELECT `Date`,
+               `display_phone_number`,
+               `phone_number_id`,
+               `waba_id`,
+               `contact_wa_id`,
+               `status`,
+               `message_timestamp`,
+               `error_code`,
+               `error_message`,
+               `contact_name`,
+               `message_from`,
+               `message_type`,
+               `message_body`
+        FROM webhook_responses_{Phone_ID}
         WHERE waba_id IN ({wamids_list_str})
         ORDER BY `Date` DESC;
     """
