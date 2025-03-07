@@ -23,29 +23,35 @@ def update_or_create_reply_data(request, all_replies_grouped):
         max_date = make_aware(row['max_date']) if isinstance(row['max_date'], datetime.datetime) else row['max_date']
         
         if existing_record:
-            if existing_record.last_updated < max_date:
-                if int(row['count']) > int(existing_record.count):
-                    if existing_record.status == 'read':
-                        count_difference = int(row['count']) - int(existing_record.last_count)
-                    else:
-                        count_difference = int(row['count'])
-                    
-                    existing_record.count = str(count_difference)
-                    existing_record.name = row['contact_name']
-                    existing_record.status = 'unread'
-                    existing_record.last_updated=timezone.now()
-                    existing_record.last_count = int(row['count'])
-                    existing_record.save()
+            try:
+                if existing_record.last_updated < max_date:
+                    if int(row['count']) > int(existing_record.count):
+                        if existing_record.status == 'read':
+                            count_difference = int(row['count']) - int(existing_record.last_count)
+                        else:
+                            count_difference = int(row['count'])
+                        
+                        existing_record.count = str(count_difference)
+                        existing_record.name = row['contact_name']
+                        existing_record.status = 'unread'
+                        existing_record.last_updated=timezone.now()
+                        existing_record.last_count = int(row['count'])
+                        existing_record.save()
+            except Exception as e:
+                logger.error(f"Error while updating existing_record {e}")
         else:
-            Last_Replay_Data.objects.create(
-                number=row['contact_wa_id'],
-                user=request.user.email,
-                name=row['contact_name'],
-                count=str(row['count']),
-                last_count=str(row['count']),
-                status='unread',
-                last_updated=timezone.now()
-            )
+            try:
+                Last_Replay_Data.objects.create(
+                    number=row['contact_wa_id'],
+                    user=request.user.email,
+                    name=row['contact_name'],
+                    count=str(row['count']),
+                    last_count=str(row['count']),
+                    status='unread',
+                    last_updated=timezone.now()
+                )
+            except Exception as e:
+                logger.error(f"Error while creating new record {e}")
 
 @login_required
 def bot_interactions(request):
