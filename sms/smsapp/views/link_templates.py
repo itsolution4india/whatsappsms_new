@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from ..utils import display_phonenumber_id, get_token_and_app_id, display_whatsapp_id, logger
 from .auth import check_user_permission, username
-from .reports import download_linked_report
+from .reports import get_user_responses
 from django.shortcuts import render, redirect
 from ..functions.template_msg import header_handle
 from ..functions.template_msg import header_handle, fetch_templates
@@ -18,11 +18,9 @@ def link_templates(request):
     phone_id = display_phonenumber_id(request)
     if not check_user_permission(request.user, 'can_link_templates'):
         return redirect("access_denide")
-    df = download_linked_report(request)
+    df = get_user_responses(request)
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
-    df['phone_number_id'] = df['phone_number_id'].astype(str)
-    df['phone_number_id'] = df['phone_number_id'].str.replace(r'\.0$', '', regex=True)
-    df = df[df['phone_number_id'] == phone_id]
+    df['phone_number_id'] = df['phone_number_id'].astype(str).str.replace(r'\.0$', '', regex=True)
     token, app_id = get_token_and_app_id(request)
     campaign_list = fetch_templates(display_whatsapp_id(request), token)
     if campaign_list is None:
