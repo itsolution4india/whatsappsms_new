@@ -1215,8 +1215,8 @@ def get_user_responses(request):
                 `message_type`,
                 `message_body`
             FROM webhook_responses_{Phone_ID}
-            WHERE status = 'reply';
-            ORDER BY `Date` DESC;
+            WHERE status = 'reply'
+            ORDER BY `Date` DESC
         """
         cursor.execute(query)
         rows = cursor.fetchall()
