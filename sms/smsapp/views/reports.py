@@ -1185,3 +1185,57 @@ def get_unique_phone_numbers():
     except Exception as e:
         logger.error(f"An unexpected error occurred: {str(e)}")
         return []
+    
+@login_required
+def get_user_responses(request):
+    try:
+        Phone_ID = display_phonenumber_id(request)
+        connection = mysql.connector.connect(
+            host="localhost",
+            port=3306,
+            user="prashanth@itsolution4india.com",
+            password="Solution@97",
+            database=f"webhook_responses",
+            auth_plugin='mysql_native_password'
+        )
+        cursor = connection.cursor()
+        
+        query = f"""
+            SELECT `Date`,
+                `display_phone_number`,
+                `phone_number_id`,
+                `waba_id`,
+                `contact_wa_id`,
+                `status`,
+                `message_timestamp`,
+                `error_code`,
+                `error_message`,
+                `contact_name`,
+                `message_from`,
+                `message_type`,
+                `message_body`
+            FROM webhook_responses_{Phone_ID}
+            WHERE status == 'reply';
+            ORDER BY `Date` DESC;
+        """
+        cursor.execute(query)
+        rows = cursor.fetchall()
+        
+        headers = ['Date', 'display_phone_number', 'phone_number_id', 'waba_id',
+                   'contact_wa_id', 'status', 'message_timestamp', 'error_code',
+                   'error_message', 'contact_name', 'message_from', 'message_type',
+                   'message_body']
+        
+        df = pd.DataFrame(rows, columns=headers)
+        
+        return df
+            
+    except Exception as e:
+        logger.error(f"Error in download_linked_report: {str(e)}")
+        logger.error(f"Full error details: {str(e)}")
+        messages.error(request, "An error occurred while generating the report.")
+        return redirect('reports')
+    finally:
+        if 'connection' in locals() and connection.is_connected():
+            cursor.close()
+            connection.close()
