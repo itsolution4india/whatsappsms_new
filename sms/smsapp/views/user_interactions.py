@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from ..functions.send_messages import display_phonenumber_id
-from ..utils import display_whatsapp_id, get_token_and_app_id, process_response_data, calculate_responses
+from ..utils import display_whatsapp_id, get_token_and_app_id, process_response_data, calculate_responses, logger
 from .auth import username
 from ..models import ReportInfo, BotSentMessages, Last_Replay_Data
 import pandas as pd
@@ -13,7 +13,7 @@ from django.utils.timezone import make_aware
 from django.forms.models import model_to_dict
 import datetime
 from ..media_id import process_media_file
-from .reports import download_linked_report
+from .reports import get_user_responses
 
 def update_or_create_reply_data(request, all_replies_grouped):
     for _, row in all_replies_grouped.iterrows():
@@ -57,12 +57,11 @@ def bot_interactions(request):
     
     report_list = ReportInfo.objects.filter(email=request.user).values_list('contact_list', flat=True)
     all_phone_numbers = set(phone for report in report_list for phone in report.split(','))
-    df = download_linked_report(request)
+    df = get_user_responses(request)
+    logger.info(df.shape)
     # df = pd.read_csv(r"C:\Users\user\Downloads\webhook_responses.csv")
-    df = df[df['status'] == 'reply']
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     df['phone_number_id'] = df['phone_number_id'].astype(str).str.replace(r'\.0$', '', regex=True)
-    df = df[df['phone_number_id'] == phone_id]
     df['contact_wa_id'] = df['contact_wa_id'].astype(str).str.replace(r'\.0$', '', regex=True)
     
     max_date = df['Date'].max()
