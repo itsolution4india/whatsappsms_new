@@ -1215,7 +1215,7 @@ def get_user_responses(request):
                 `message_type`,
                 `message_body`
             FROM webhook_responses_{Phone_ID}
-            WHERE status == 'reply';
+            WHERE status = 'reply';
             ORDER BY `Date` DESC;
         """
         cursor.execute(query)
@@ -1231,7 +1231,7 @@ def get_user_responses(request):
         return df
             
     except Exception as e:
-        logger.error(f"Error in download_linked_report: {str(e)}")
+        logger.error(f"Error in get_user_responses: {str(e)}")
         logger.error(f"Full error details: {str(e)}")
         messages.error(request, "An error occurred while generating the report.")
         return redirect('reports')
