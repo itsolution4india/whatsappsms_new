@@ -1220,6 +1220,7 @@ def get_user_responses(request):
         """
         cursor.execute(query)
         rows = cursor.fetchall()
+        logger.info(f"rows {rows}")
         
         headers = ['Date', 'display_phone_number', 'phone_number_id', 'waba_id',
                    'contact_wa_id', 'status', 'message_timestamp', 'error_code',
