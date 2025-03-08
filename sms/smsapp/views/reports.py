@@ -226,7 +226,6 @@ def update_start_id(report_id):
 def download_campaign_report3(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
-            logger.info(f"report_id, {report_id}")
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
@@ -234,14 +233,12 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
-                logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30)
             created_at += time_delta
         else:
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
             created_at = None 
-        logger.info(f"created_at2 {created_at}")
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
@@ -462,7 +459,6 @@ def bulk_download(request, report_ids=None):
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
         if report_id:
-            logger.info(f"report_id, {report_id}")
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
             contacts = report.contact_list.split('\r\n')
@@ -476,16 +472,13 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
-                logger.info(f"created_at_main {created_at}")
                 created_at = datetime.datetime.fromisoformat(created_at)
-                logger.info(f"created_at {created_at}")
             time_delta = datetime.timedelta(hours=5, minutes=30)
             created_at += time_delta
         else:
             contact_all = contact_list
             Phone_ID = display_phonenumber_id(request)
-            created_at = None 
-        logger.info(f"created_at2 {created_at}")
+            created_at = None
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
@@ -580,21 +573,18 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         """
         cursor.execute(query)
         matched_rows = cursor.fetchall()
-        logger.info(f"matched_rows {matched_rows}")
         
         error_codes_to_check = {"131031", "131053", "131042"}
         error_code = None 
         
         if report_id != 1520:
             for row in matched_rows:
-                logger.info(f"row, {row}")
                 current_error_code = str(row[7])
                 if current_error_code in error_codes_to_check:
                     error_code = current_error_code
                     break
         
         matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
-        logger.info(f"matched_rows2 {matched_rows}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
         no_match_num = []
@@ -742,7 +732,6 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     
     if report_id != 1520:
         for row in matched_rows:
-            logger.info(f"row, {row}")
             current_error_code = str(row[7])
             if current_error_code in error_codes_to_check:
                 error_code = current_error_code
@@ -787,7 +776,6 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
         else:
             updated_rows.append(row)
             
-    logger.info(f"Number of columns in updated_rows: {len(updated_rows[0])} {updated_rows}")
     response = HttpResponse(content_type='text/csv')
     if report_id:
         response['Content-Disposition'] = f'attachment; filename="{campaign_title}.csv"'
@@ -1015,7 +1003,6 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
                 except Exception as e:
                     logger.error(f"Failed to call send_validate_req {str(e)}, {len(validate_req_num)} {report_id} {type(report_id)}")
             else:
-                logger.info("No validate_req_num found")
                 update_start_id(report_id)
             try:
                 validation_data = get_latest_rows_by_contacts(no_match_num)
