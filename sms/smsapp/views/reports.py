@@ -449,7 +449,7 @@ def bulk_download(request, report_ids=None):
             return response
             
     except Exception as e:
-        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        logger.error(f"Error in bulk_download: {str(e)}")
         return JsonResponse({
             'status': f'Error: {str(e)}'
         })
@@ -672,29 +672,27 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
-def get_non_reply_rows(request, Phone_ID):
+def get_non_reply_rows(request):
     connection = mysql.connector.connect(
         host="localhost",
         port=3306,
         user="prashanth@itsolution4india.com",
         password="Solution@97",
-        database=f"webhook_responses",
+        database="webhook_responses",
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
-    query = f"SELECT * FROM webhook_responses_{Phone_ID} WHERE 1=1"
-    params = []
-    query += " AND phone_number_id = %s"
-    params.append(Phone_ID)
+    
+    query = """
+    SELECT * FROM webhook_responses 
+    WHERE status NOT IN (%s, %s)
+    """
+    
+    params = ["reply", "failed"]
     cursor.execute(query, params)
     rows = cursor.fetchall()
     
-    non_reply_rows = [
-        row for row in rows 
-        if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed"
-    ]
-    
-    return non_reply_rows
+    return rows
 
 def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
     connection = mysql.connector.connect(
@@ -745,7 +743,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
         else:
             error_message = 'Business eligibility payment issue'
             
-    non_reply_rows = get_non_reply_rows(request, Phone_ID)
+    non_reply_rows = get_non_reply_rows(request)
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
