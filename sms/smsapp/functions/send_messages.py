@@ -89,8 +89,10 @@ def send_messages(current_user, token, phone_id, campaign_list, template_name, m
                     schedule_subtract_coins(current_user, money_data, category)
                 media_type = "OTP" if category == "AUTHENTICATION" else media_type
                 logger.info(phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables)
-                # test_numbers = [num for num in all_contact if num not in contact_list]
-                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables, None, request_id)
+                test_numbers = [num for num in all_contact if num not in contact_list]
+                logger.info(f"test_numbers {test_numbers}")
+                logger.info(f"contact_list {contact_list}")
+                send_api(token, phone_id, template_name, language, media_type, media_id, contact_list, submitted_variables, None, current_user, csv_variables, None, request_id, test_numbers)
 
         formatted_numbers = []
         for number in all_contact:
