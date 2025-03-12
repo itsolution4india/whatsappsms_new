@@ -7,7 +7,7 @@ import json, re, openpyxl
 from ..functions.template_msg import fetch_templates
 from django.utils.timezone import now
 from ..functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
-from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list, get_template_details
+from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list, get_template_details, clean_phone_number
 from .auth import check_user_permission
 from ..functions.flows import send_flow_messages_with_report, send_carousel_messages_with_report
 from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
@@ -241,6 +241,7 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
         df = pd.read_csv(uploaded_file)
         if add_91:
             df['phone_numbers'] = df['phone_numbers'].astype(str)
+            df['phone_numbers'] = df['phone_numbers'].apply(clean_phone_number)
             df['phone_numbers'] = df['phone_numbers'].apply(lambda x: '91' + x if not x.startswith('91') else x)
         for number in df['phone_numbers']:
             numbers_list.add(str(number))
