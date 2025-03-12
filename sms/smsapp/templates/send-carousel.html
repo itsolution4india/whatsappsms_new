@@ -252,6 +252,14 @@
         document.getElementById('template-media').innerText = '';
         document.getElementById('template-data').innerText = '';
 
+        const fileUploadContainer = document.getElementById('fileUploadContainer');
+        fileUploadContainer.innerHTML = '';
+
+        document.getElementById('mainImg').innerHTML = '';
+        document.getElementById('imgOne').innerHTML = '';
+        document.getElementById('imgTwo').innerHTML = '';
+        document.getElementById('imgThree').innerHTML = '';
+
         // Get the selected data
         const selectedData = templateData[selectedIndex];
         const selectedStatus = templateStatus[selectedIndex];

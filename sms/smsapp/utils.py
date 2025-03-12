@@ -251,3 +251,9 @@ def calculate_responses(data):
             last_30_days_responses += count
 
     return today_responses, last_7_days_responses, last_30_days_responses, total_responses
+
+def clean_phone_number(x):
+    try:
+        return str(int(float(x))) if '.0' in x else x
+    except ValueError:
+        return x
