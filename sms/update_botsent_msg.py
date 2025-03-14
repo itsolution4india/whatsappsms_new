@@ -13,6 +13,12 @@ db_config = {
     'PORT': '5432'
 }
 
+# Function to safely strip strings (returns None if not a string)
+def safe_strip(value):
+    if isinstance(value, str):
+        return value.strip()
+    return value
+
 # Function to import data from CSV to PostgreSQL
 def import_bot_sent_messages(csv_file, db_config):
     conn = None
@@ -54,20 +60,20 @@ def import_bot_sent_messages(csv_file, db_config):
         data = []
         for _, row in df.iterrows():
             data.append((
-                row['token'].strip(),
-                row['phone_number_id'].strip(),
+                safe_strip(row['token']),
+                safe_strip(row['phone_number_id']),
                 row['contact_list'],
-                row['message_type'].strip(),
-                row['header'].strip() if pd.notna(row['header']) else None,
-                row['body'].strip(),
-                row['footer'].strip() if pd.notna(row['footer']) else None,
+                safe_strip(row['message_type']),
+                safe_strip(row['header']) if pd.notna(row['header']) else None,
+                safe_strip(row['body']),
+                safe_strip(row['footer']) if pd.notna(row['footer']) else None,
                 row['button_data'],
                 row['product_data'],
-                row['catalog_id'].strip() if pd.notna(row['catalog_id']) else None,
+                safe_strip(row['catalog_id']) if pd.notna(row['catalog_id']) else None,
                 row['sections'],
                 row['latitude'],
                 row['longitude'],
-                row['media_id'].strip() if pd.notna(row['media_id']) else None,
+                safe_strip(row['media_id']) if pd.notna(row['media_id']) else None,
                 row['created_at']
             ))
 
