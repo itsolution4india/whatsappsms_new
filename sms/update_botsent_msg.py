@@ -19,6 +19,12 @@ def safe_strip(value):
         return value.strip()
     return value
 
+# Function to safely convert dictionaries and lists to JSON strings
+def safe_json(value):
+    if isinstance(value, (dict, list)):
+        return json.dumps(value)  # Convert to JSON string
+    return value
+
 # Function to import data from CSV to PostgreSQL
 def import_bot_sent_messages(csv_file, db_config):
     conn = None
@@ -62,15 +68,15 @@ def import_bot_sent_messages(csv_file, db_config):
             data.append((
                 safe_strip(row['token']),
                 safe_strip(row['phone_number_id']),
-                row['contact_list'],
+                safe_json(row['contact_list']),  # Convert to JSON string
                 safe_strip(row['message_type']),
                 safe_strip(row['header']) if pd.notna(row['header']) else None,
                 safe_strip(row['body']),
                 safe_strip(row['footer']) if pd.notna(row['footer']) else None,
-                row['button_data'],
-                row['product_data'],
+                safe_json(row['button_data']),  # Convert to JSON string
+                safe_json(row['product_data']),  # Convert to JSON string
                 safe_strip(row['catalog_id']) if pd.notna(row['catalog_id']) else None,
-                row['sections'],
+                safe_json(row['sections']),  # Convert to JSON string
                 row['latitude'],
                 row['longitude'],
                 safe_strip(row['media_id']) if pd.notna(row['media_id']) else None,
