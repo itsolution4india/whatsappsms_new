@@ -32,7 +32,7 @@ def import_coins_history(csv_file, db_config):
 
         # Insert query with escaped "user"
         insert_query = """
-        INSERT INTO coins_history ("user", type, number_of_coins, created_at, reason, transaction_id)
+        INSERT INTO smsapp_coinshistory ("user", type, number_of_coins, created_at, reason, transaction_id)
         VALUES %s
         ON CONFLICT (transaction_id) DO NOTHING
         """
