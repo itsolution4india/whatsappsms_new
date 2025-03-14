@@ -30,23 +30,26 @@ def import_coins_history(csv_file, db_config):
         )
         cursor = conn.cursor()
 
-        # Insert query
+        # Insert query with escaped "user"
         insert_query = """
-        INSERT INTO coins_history (user, type, number_of_coins, created_at, reason, transaction_id)
+        INSERT INTO coins_history ("user", type, number_of_coins, created_at, reason, transaction_id)
         VALUES %s
         ON CONFLICT (transaction_id) DO NOTHING
-        """  # This prevents duplicate transaction_id entries
+        """
 
         # Prepare data for bulk insert
         data = []
         for _, row in df.iterrows():
-            # Format date correctly from the CSV
+            # Handle created_at with better parsing and rounding for decimal times
             created_at = datetime.now()  # Default to current datetime
             try:
                 time_str = str(row['created_at'])
                 if ':' in time_str:
                     today = datetime.now().date()
-                    hour, minute = map(int, time_str.split(':')[0:2])
+                    hour, minute = time_str.split(':')
+                    # Handle decimal cases (e.g., '22.1', '57.9') by rounding them to the nearest valid int
+                    hour = int(float(hour)) % 24  # Ensure hour is valid (0-23)
+                    minute = int(float(minute)) % 60  # Ensure minute is valid (0-59)
                     created_at = datetime.combine(today, datetime.min.time().replace(hour=hour, minute=minute))
             except Exception as e:
                 print(f"Warning: Could not parse created_at for {row['transaction_id']}, using current time. Error: {e}")
