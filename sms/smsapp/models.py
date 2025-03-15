@@ -123,14 +123,14 @@ class Whitelist_Blacklist(models.Model):
 class ReportInfo(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     email = models.CharField(max_length=100)
-    campaign_title=models.CharField(max_length=50)
+    campaign_title = models.CharField(max_length=200)
     contact_list= models.TextField()
     waba_id_list= models.TextField(default=0, null=True)
     message_date = models.DateField()
     template_name=models.CharField(max_length=100)
     message_delivery = models.BigIntegerField()
-    start_request_id = models.CharField(max_length=25, default=0)
-    end_request_id = models.CharField(max_length=25, default=0)
+    start_request_id = models.CharField(max_length=200, default=0)
+    end_request_id = models.CharField(max_length=200, default=0)
     
 
 

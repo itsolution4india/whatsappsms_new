@@ -212,7 +212,7 @@ def restore_to_postgres(backup_data, db_name, user, password, host='localhost', 
 
 if __name__ == "__main__":
     # PostgreSQL connection details - UPDATE THESE!
-    PG_DB_NAME = 'admin'
+    PG_DB_NAME = 'adminmain'
     PG_USER = 'postgres'
     PG_PASSWORD = 'Solution@97'
     PG_HOST = '217.145.69.172'
