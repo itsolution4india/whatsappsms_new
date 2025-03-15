@@ -117,7 +117,7 @@ def restore_sql_backup(sql_file, db_config):
 if __name__ == "__main__":
     # Database configuration
     db_config = {
-        'NAME': 'admin',
+        'NAME': 'adminmain',
         'USER': 'postgres',
         'PASSWORD': 'Solution@97',
         'HOST': '217.145.69.172',
