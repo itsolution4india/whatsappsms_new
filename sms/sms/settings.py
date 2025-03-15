@@ -20,6 +20,8 @@ DEBUG = False # Set to False in production
 
 ALLOWED_HOSTS = [
     'www.main.wtsmessage.xyz',
+    'www.wtsdealnow.com',
+    '.wtsdealnow.com'
     '.wtsmessage.xyz',  # Allow subdomains
     'localhost',
     '127.0.0.1',
