@@ -458,16 +458,6 @@ def bulk_download(request, report_ids=None):
 @login_required
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
-        non_reply_rows = get_non_reply_rows(request)
-        if not non_reply_rows:
-            logger.warning("get_non_reply_rows returned empty data")
-            non_reply_rows = []
-    except Exception as e:
-        logger.error(f"Error in get_non_reply_rows: {str(e)}")
-        non_reply_rows = []
-
-    logger.info(f"non_reply_rows length: {len(non_reply_rows)}")
-    try:
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
@@ -592,7 +582,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     break
         
         try:
-            matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+            matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
         except Exception as e:
             logger.error(f"Error in report_step_two {str(e)}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
@@ -605,12 +595,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             if row:
                 updated_matched_rows.append(row)
                 matched = True
-                date_value = row[0]
-                
-                try:
-                    report_date = date_value.strftime('%m/%d/%Y %H:%M:%S')
-                except ValueError as e:
-                    logger.error(f"Error parsing date: {e}")
             
             if len(contact_all) > 100: 
                 if not matched and non_reply_rows and len(non_reply_rows) > 0:
@@ -828,17 +812,13 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
-    query = f"SELECT * FROM webhook_responses_{Phone_ID} WHERE 1=1"
-    params = []
-    query += " AND phone_number_id = %s"
-    params.append(Phone_ID)
+    query = """
+    SELECT * FROM webhook_responses 
+    WHERE status NOT IN (%s, %s)
+    """
+    params = ["reply", "failed"]
     cursor.execute(query, params)
-    rows = cursor.fetchall()
-    
-    non_reply_rows = [
-        row for row in rows 
-        if row[5] != "reply" and row[2] == Phone_ID and row[5] != "failed"
-    ]
+    non_reply_rows = cursor.fetchall()
     
     if error_code:
         if str(error_code) == "131031":
