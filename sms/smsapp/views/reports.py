@@ -627,7 +627,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
                 else:
-                    logger.info(f"No matched or non_reply_rows {non_reply_rows}")
+                    logger.info(f"No matched or non_reply_rows")
             else:
                 if not matched and non_reply_rows:
                     no_match_num.append(phone)
@@ -646,7 +646,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
                 else:
-                    logger.info(f"No matched or non_reply_rows {non_reply_rows}")
+                    logger.info(f"No matched or non_reply_rows")
                 
         
         response = HttpResponse(content_type='text/csv')
