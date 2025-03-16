@@ -584,7 +584,9 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     error_code = current_error_code
                     break
         
-        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        non_reply_rows = get_non_reply_rows(request)
+        logger.info(f"non_reply_rows {non_reply_rows}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
         no_match_num = []
@@ -810,7 +812,7 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
         port=3306,
         user="prashanth@itsolution4india.com",
         password="Solution@97",
-        database=f"webhook_responses",
+        database="webhook_responses",
         auth_plugin='mysql_native_password'
     )
     cursor = connection.cursor()
