@@ -585,7 +585,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     break
         
         matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
-        non_reply_rows = get_non_reply_rows(request)
+        non_reply_rows = get_non_reply_rows(request) or []
         logger.info(f"non_reply_rows {non_reply_rows}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
@@ -605,7 +605,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     logger.error(f"Error parsing date: {e}")
             
             if len(contact_all) > 100: 
-                if not matched and non_reply_rows:
+                if not matched and non_reply_rows and len(non_reply_rows) > 0:
                     no_match_num.append(phone)
                     new_row = copy.deepcopy(random.choice(non_reply_rows))
                     new_row_list = list(new_row)
@@ -618,6 +618,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     new_row_list[4] = phone
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
+                else:
+                    logger.info(f"No matched or non_reply_rows {non_reply_rows}")
             else:
                 if not matched and non_reply_rows:
                     no_match_num.append(phone)
@@ -635,6 +637,8 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     new_row_list[8] = "Template not Found" if report_id == 2045 else "Kindly wait for few minutes"
                     new_row_tuple = tuple(new_row_list)
                     updated_matched_rows.append(new_row_tuple)
+                else:
+                    logger.info(f"No matched or non_reply_rows {non_reply_rows}")
                 
         
         response = HttpResponse(content_type='text/csv')
