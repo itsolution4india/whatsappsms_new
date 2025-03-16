@@ -458,6 +458,16 @@ def bulk_download(request, report_ids=None):
 @login_required
 def download_campaign_report2(request, report_id=None, insight=False, contact_list=None):
     try:
+        non_reply_rows = get_non_reply_rows(request)
+        if not non_reply_rows:
+            logger.warning("get_non_reply_rows returned empty data")
+            non_reply_rows = []
+    except Exception as e:
+        logger.error(f"Error in get_non_reply_rows: {str(e)}")
+        non_reply_rows = []
+
+    logger.info(f"non_reply_rows length: {len(non_reply_rows)}")
+    try:
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
@@ -585,8 +595,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     break
         
         matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
-        non_reply_rows = get_non_reply_rows(request) or []
-        logger.info(f"non_reply_rows {non_reply_rows}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
         no_match_num = []
