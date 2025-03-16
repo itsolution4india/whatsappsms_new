@@ -1,7 +1,5 @@
-# migration_script.py
-import sqlite3
-import psycopg2
 import json
+import psycopg2
 from datetime import datetime
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
@@ -37,42 +35,17 @@ def convert_sqlite_value(value, is_boolean=False, is_date=False, is_timestamp=Fa
     
     return value
 
-def backup_sqlite_to_json(sqlite_db_path, output_file):
-    """Backup SQLite database to a JSON file"""
-    connection = sqlite3.connect(sqlite_db_path)
-    cursor = connection.cursor()
-    
-    # Get all tables
-    cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-    tables = cursor.fetchall()
-    
-    backup_data = {}
-    
-    for table in tables:
-        table_name = table[0]
-        # Skip SQLite internal tables
-        if table_name.startswith('sqlite_'):
-            continue
-            
-        cursor.execute(f"SELECT * FROM {table_name};")
-        columns = [description[0] for description in cursor.description]
-        rows = cursor.fetchall()
-        
-        table_data = []
-        for row in rows:
-            row_dict = dict(zip(columns, row))
-            table_data.append(row_dict)
-            
-        backup_data[table_name] = {
-            'columns': columns,
-            'data': table_data
-        }
-    
-    with open(output_file, 'w') as f:
-        json.dump(backup_data, f, indent=2)
-        
-    connection.close()
-    return backup_data
+def load_backup_from_json(json_file_path):
+    """Load backup data from a JSON file"""
+    print(f"Loading backup data from {json_file_path}...")
+    try:
+        with open(json_file_path, 'r') as f:
+            backup_data = json.load(f)
+        print(f"Successfully loaded backup data with {len(backup_data)} tables")
+        return backup_data
+    except Exception as e:
+        print(f"Error loading backup data: {str(e)}")
+        return None
 
 def check_table_exists(cursor, table_name):
     """Check if a table exists in PostgreSQL"""
@@ -215,23 +188,25 @@ if __name__ == "__main__":
     PG_DB_NAME = 'adminmain'
     PG_USER = 'postgres'
     PG_PASSWORD = 'Solution@97'
-    PG_HOST = '217.145.69.172'
+    PG_HOST = 'localhost'
     PG_PORT = '5432'
     
-    SQLITE_DB_PATH = 'db.sqlite3'
+    # Path to the existing JSON backup file
     BACKUP_FILE = 'database_backup.json'
     
-    print("Starting SQLite backup...")
-    backup_data = backup_sqlite_to_json(SQLITE_DB_PATH, BACKUP_FILE)
-    print("SQLite backup completed!")
+    print("Loading existing backup from JSON file...")
+    backup_data = load_backup_from_json(BACKUP_FILE)
     
-    print("Starting PostgreSQL restoration...")
-    restore_to_postgres(
-        backup_data,
-        PG_DB_NAME,
-        PG_USER,
-        PG_PASSWORD,
-        PG_HOST,
-        PG_PORT
-    )
-    print("Migration completed!")
+    if backup_data:
+        print("Starting PostgreSQL restoration...")
+        restore_to_postgres(
+            backup_data,
+            PG_DB_NAME,
+            PG_USER,
+            PG_PASSWORD,
+            PG_HOST,
+            PG_PORT
+        )
+        print("Migration completed!")
+    else:
+        print("Failed to load backup data. Migration aborted.")
