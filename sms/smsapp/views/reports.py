@@ -496,8 +496,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 return JsonResponse({
                     'status': 'Failed to fetch Data or Messages not delivered'
                 })
-        logger.info(f"{contact_all}")
-        logger.info(f'{wamids_list}')
         # Connect to the database
         connection = mysql.connector.connect(
             host="localhost",
@@ -516,8 +514,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         else:
             wamids_list_str = None
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
-        logger.info(f'date_filter {date_filter}')
-        logger.info(f"contacts_str {contacts_str}")
         if wamids_list_str:
             return fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, report.campaign_title, insight)
         # SQL query to get unique record for each contact with prioritized selection
@@ -596,7 +592,10 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     error_code = current_error_code
                     break
         
-        matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        try:
+            matched_rows, _ = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        except Exception as e:
+            logger.error(f"Error in report_step_two {str(e)}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
         no_match_num = []
