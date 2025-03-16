@@ -188,7 +188,7 @@ if __name__ == "__main__":
     PG_DB_NAME = 'adminmain'
     PG_USER = 'postgres'
     PG_PASSWORD = 'Solution@97'
-    PG_HOST = 'localhost'
+    PG_HOST = '217.145.69.172'
     PG_PORT = '5432'
     
     # Path to the existing JSON backup file
