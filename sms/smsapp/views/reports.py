@@ -584,7 +584,6 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         
         error_codes_to_check = {"131031", "131053", "131042"}
         error_code = None 
-        
         if report_id != 1520:
             for row in matched_rows:
                 current_error_code = str(row[7])
