@@ -96,6 +96,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
     try:
         # Connect to the database
         phone_id = display_phonenumber_id(request)
+        _, AppID = get_token_and_app_id(request)
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -107,7 +108,7 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         cursor = connection.cursor()
         
         # Base query
-        query = f"SELECT * FROM webhook_responses_{phone_id}"
+        query = f"SELECT * FROM webhook_responses_{AppID}"
         query_params = []
         
         query += " WHERE phone_number_id = %s"
@@ -461,6 +462,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
             Phone_ID = display_phonenumber_id(request)
+            _, AppID = get_token_and_app_id(request)
             contacts = report.contact_list.split('\r\n')
             try:
                 wamids = report.waba_id_list.split('\r\n')
@@ -517,7 +519,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                         PARTITION BY contact_wa_id 
                         ORDER BY Date ASC
                     ) AS rn
-                FROM webhook_responses_{Phone_ID}
+                FROM webhook_responses_{AppID}
                 WHERE 
                     contact_wa_id IN ('{contacts_str}')
                     AND phone_number_id = '{Phone_ID}'
@@ -542,7 +544,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                         PARTITION BY wr2.contact_wa_id
                         ORDER BY wr2.message_timestamp DESC
                     ) AS rn
-                FROM webhook_responses_{Phone_ID} wr2
+                FROM webhook_responses_{AppID} wr2
                 INNER JOIN LeastDateWaba ldw 
                     ON wr2.contact_wa_id = ldw.contact_wa_id
                     AND wr2.waba_id = ldw.waba_id
@@ -693,6 +695,7 @@ def get_non_reply_rows(request):
     return rows
 
 def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
+    _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
         host="localhost",
         port=3306,
@@ -716,7 +719,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
                `message_from`,
                `message_type`,
                `message_body`
-        FROM webhook_responses_{Phone_ID}
+        FROM webhook_responses_{AppID}
         WHERE waba_id IN ({wamids_list_str})
         ORDER BY `Date` DESC;
     """
@@ -1169,6 +1172,7 @@ def get_unique_phone_numbers():
 def get_user_responses(request):
     try:
         Phone_ID = display_phonenumber_id(request)
+        _, AppID = get_token_and_app_id(request)
         connection = mysql.connector.connect(
             host="localhost",
             port=3306,
@@ -1193,7 +1197,7 @@ def get_user_responses(request):
                 `message_from`,
                 `message_type`,
                 `message_body`
-            FROM webhook_responses_{Phone_ID}
+            FROM webhook_responses_{AppID}
             WHERE status = 'reply'
             ORDER BY `Date` DESC
         """
