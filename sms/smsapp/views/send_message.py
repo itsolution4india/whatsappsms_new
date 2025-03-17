@@ -100,7 +100,12 @@ def Send_Sms(request):
             if media_file:
                 file_extension = media_file.name.split('.')[-1]
                 media_type = get_media_format(file_extension)
-                media_id = generate_id(display_phonenumber_id(request), media_type, media_file, token) 
+                try:
+                    media_id = generate_id(display_phonenumber_id(request), media_type, media_file, token) 
+                except Exception as e:
+                    logger.error(f"Error creating media_id {str(e)}")
+                    messages.error(request, "Couldn't process image, please try again")
+                    return redirect('send-sms')
                 media_id = media_id['id']
             else:
                 media_id = None
