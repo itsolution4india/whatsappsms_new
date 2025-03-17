@@ -42,14 +42,6 @@ def validate_digits(value: int, min_digits: int, max_digits: int):
     if num_digits > max_digits:
         raise ValidationError(f'{value} has more than {max_digits} digits.')
 
-def validate_phone_number_id(value: str):
-    if not value.isdigit() or len(value) != 15:
-        raise ValidationError(f'{value} must be exactly 15 digits long.')
-
-def validate_whatsapp_business_account_id(value: str):
-    if not value.isdigit() or len(value) != 15:
-        raise ValidationError(f'{value} must be exactly 15 digits long.')
-
 class RegisterApp(models.Model):
     app_name = models.CharField(max_length=20)
     token = models.TextField()
@@ -68,8 +60,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     session_key = models.CharField(max_length=40, blank=True, null=True)
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=150, unique=True)
-    phone_number_id = models.CharField(max_length=15, default=0, validators=[validate_phone_number_id])
-    whatsapp_business_account_id = models.CharField(max_length=15,default=0, validators=[validate_whatsapp_business_account_id])
+    phone_number_id = models.CharField(max_length=20, default=0)
+    whatsapp_business_account_id = models.CharField(max_length=20,default=0)
     coins = models.IntegerField(default=0, editable=False)
     marketing_coins = models.IntegerField(default=0)
     authentication_coins = models.IntegerField(default=0)
