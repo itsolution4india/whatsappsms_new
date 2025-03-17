@@ -42,6 +42,14 @@ def validate_digits(value: int, min_digits: int, max_digits: int):
     if num_digits > max_digits:
         raise ValidationError(f'{value} has more than {max_digits} digits.')
 
+def validate_phone_number_id(value: str):
+    if not value.isdigit() or len(value) != 15:
+        raise ValidationError(f'{value} must be exactly 15 digits long.')
+
+def validate_whatsapp_business_account_id(value: str):
+    if not value.isdigit() or len(value) != 15:
+        raise ValidationError(f'{value} must be exactly 15 digits long.')
+
 class RegisterApp(models.Model):
     app_name = models.CharField(max_length=20)
     token = models.TextField()
