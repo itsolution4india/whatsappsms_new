@@ -695,7 +695,6 @@ def get_non_reply_rows(request):
     return rows
 
 def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
-    logger.info(f"wamids_list_str {wamids_list_str}")
     _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
         host="localhost",
@@ -726,7 +725,6 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     """
     cursor.execute(query)
     matched_rows = cursor.fetchall()
-    logger.info(f"matched_rows {matched_rows}")
     
     error_codes_to_check = {"131031", "131053", "131042"}
     error_code = None 
