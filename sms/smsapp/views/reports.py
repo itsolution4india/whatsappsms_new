@@ -726,11 +726,26 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     cursor.execute(query)
     matched_rows = cursor.fetchall()
     
+    status_priority = {"read": 1, "sent": 2, "deliverd": 3}
+    unique_rows = {}
+    for row in matched_rows:
+        row_key = (row[0], row[3])
+        current_status = row[5]
+
+        if row_key not in unique_rows:
+            unique_rows[row_key] = row
+        else:
+            existing_status = unique_rows[row_key][5]
+            if status_priority.get(current_status, float('inf')) < status_priority.get(existing_status, float('inf')):
+                unique_rows[row_key] = row
+                
+    filtered_rows = list(unique_rows.values())
+    
     error_codes_to_check = {"131031", "131053", "131042"}
     error_code = None 
     
     if report_id != 1520:
-        for row in matched_rows:
+        for row in filtered_rows:
             current_error_code = str(row[7])
             if current_error_code in error_codes_to_check:
                 error_code = current_error_code
@@ -747,7 +762,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     non_reply_rows = get_non_reply_rows(request)
     updated_rows = []
     no_match_nums = []
-    for row in matched_rows:
+    for row in filtered_rows:
         if row[7] == 131047 and error_code:
             row_list = list(row)
             row_list[7] = error_code
