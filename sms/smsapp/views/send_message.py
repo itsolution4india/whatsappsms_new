@@ -133,7 +133,7 @@ def Send_Sms(request):
                 return redirect('send-sms')
          
             discount = show_discount(request.user)
-            all_contact, contact_list, invalid_numbers, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+            all_contact, contact_list, csv_variables = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
             if not contact_list:
                 messages.error(request, "Number validation failed. Include the country code.")
                 return redirect('send-sms')
@@ -150,24 +150,6 @@ def Send_Sms(request):
                 return redirect('send-sms')
             if action_type == "submit":
                 send_messages(current_user, token, display_phonenumber_id(request), campaign_list, template_name, media_id, all_contact, contact_list, campaign_title, request, submitted_variables, csv_variables)
-            elif action_type == 'validateRequest':
-                if invalid_numbers:
-                    _ = send_validate_req(token, display_phonenumber_id(request), invalid_numbers, " ")
-                    
-                    validation_data = get_latest_rows_by_contacts(invalid_numbers)
-                    validation_data = validation_data[validation_data['error_code'] == 131026]
-                    final_invalid_numbers = validation_data['contact_wa_id'].to_list()
-                    final_valid_numbers = [item for item in list(numbers_list) if item not in final_invalid_numbers]
-                    
-                    logger.info(f"db output {final_invalid_numbers} {final_valid_numbers}")
-                    context.update({
-                        "final_invalid_numbers": ', '.join(str(num) for num in final_invalid_numbers),
-                        "final_valid_numbers": ', '.join(str(num) for num in final_valid_numbers)
-                        })
-                    logger.info(f"Context being passed to template: {context}")
-                    return render(request, "send-sms.html", context)
-                else:
-                    logger.info("No any invalid numbers")
             else:
                 schedule_date = request.POST.get("schedule_date")
                 schedule_time = request.POST.get("schedule_time")
@@ -186,26 +168,20 @@ def Send_Sms(request):
 
     return render(request, "send-sms.html", context)
 
-def process_phone_numbers(numbers_list, db_phonenumbers, patterns):
+def process_phone_numbers(numbers_list, patterns):
     valid_numbers = set()
-    invalid_numbers = set()
     
     for phone_number in numbers_list:
         phone_number = phone_number.strip()
-        if phone_number not in db_phonenumbers:
-            invalid_numbers.add(phone_number)
         for _, pattern in patterns.items():
             if pattern.match(phone_number):
                 valid_numbers.add(phone_number)
                 break
-        else:
-            invalid_numbers.add(phone_number)
     
-    return valid_numbers, invalid_numbers
+    return valid_numbers
 
 def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=None):
     valid_numbers = set()
-    invalid_numbers = set()
     csv_variables = None
     
     # Get user's country permissions
@@ -241,7 +217,6 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
             numbers_list = contacts
 
     # Parse contacts from uploaded file
-    db_phonenumbers = get_unique_phone_numbers()
     if uploaded_file:
         df = pd.read_csv(uploaded_file)
         if add_91:
@@ -250,12 +225,12 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
             df['phone_numbers'] = df['phone_numbers'].apply(lambda x: '91' + x if not x.startswith('91') else x)
         for number in df['phone_numbers']:
             numbers_list.add(str(number))
-        valid_numbers, invalid_numbers = process_phone_numbers(numbers_list, db_phonenumbers, patterns)
+        valid_numbers = process_phone_numbers(numbers_list, patterns)
         csv_variables = make_variables_list(df, valid_numbers)
     
     # Validate phone numbers against permitted country patterns
     if not uploaded_file:
-        valid_numbers, invalid_numbers = process_phone_numbers(numbers_list, db_phonenumbers, patterns)
+        valid_numbers = process_phone_numbers(numbers_list, patterns)
 
     # Get whitelist and blacklist numbers
     whitelist_number, blacklist_number = whitelist_blacklist(request)
@@ -299,7 +274,7 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
     if uploaded_file:
         csv_variables = [record for record in csv_variables if record[0] in [num for num in final_list]]
     
-    return valid_numbers, final_list, list(set(invalid_numbers)), csv_variables
+    return valid_numbers, final_list, csv_variables
 
 @login_required
 def whitelist_blacklist(request):
@@ -382,7 +357,7 @@ def send_flow_message(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         try:
             detailes = get_template_details(campaign_list, flow_name)
@@ -482,7 +457,7 @@ def send_carousel_messages(request):
             return render(request, "send-flow.html", context)
 
         discount = show_discount(request.user)
-        all_contact, contact_list, _, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
+        all_contact, contact_list, _ = validate_phone_numbers(request,contacts, uploaded_file, discount, add_91)
         
         try:
             detailes = get_template_details(campaign_list, tempalate_name)
