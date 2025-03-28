@@ -73,6 +73,8 @@ def bot_interactions(request):
     unique_contact_wa_id = set(df['contact_wa_id'].unique())
     
     messages_data = BotSentMessages.objects.filter(phone_number_id=phone_id).values()
+    for message in messages_data:
+        message['created_at'] = timezone.localtime(message['created_at'], timezone.get_current_timezone())
     messages_df = pd.DataFrame(messages_data)
     messages_df['created_at'] = pd.to_datetime(messages_df['created_at'], errors='coerce')
     
