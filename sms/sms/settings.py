@@ -15,8 +15,8 @@ WABAID = os.getenv('WABAID')
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY ='django-insecure-ux$&02l*ri@g!fp$@@8g7kxd4#ix6$_=xo!r+bzmz3@f2&=i@6'
-DEBUG = False # Set to False in production
+SECRET_KEY = os.getenv('SECRET_KEY')
+DEBUG = os.getenv('DEBUG')
 
 ALLOWED_HOSTS = [
     'www.main.wtsmessage.xyz',
@@ -62,6 +62,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'smsapp.middleware.Log404DetailsMiddleware',
+    'smsapp.middleware.ConnectionCleanupMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -97,16 +98,37 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'sms.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'adminmain',
-        'USER': 'postgres',
-        'PASSWORD': 'Solution@97',
-        'HOST': '217.145.69.172',
-        'PORT': '5432',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'OPTIONS': {
+                'timeout': 30,
+                'isolation_level': None,
+            },
+            'CONN_MAX_AGE': 60,
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.getenv('ENGINE'),
+            'NAME': os.getenv('NAME'),
+            'USER': os.getenv('USER'),
+            'PASSWORD': os.getenv('PASSWORD'),
+            'HOST': os.getenv('HOST'),
+            'PORT': os.getenv('PORT'),
+            'CONN_MAX_AGE': 60,
+            'OPTIONS': {
+                'connect_timeout': 10,
+                'keepalives': 1,
+                'keepalives_idle': 30,
+                'keepalives_interval': 10,
+                'keepalives_count': 5,
+            }
+        }
+    }
 
 CACHES = {
     'default': {
@@ -191,7 +213,7 @@ LOGGING = {
     },
 }
 
-ADMIN_URL = 'skdasfjnkailf/'
+ADMIN_URL = os.getenv('ADMIN_URL')
 
 SECURE_BROWSER_XSS_FILTER = True
 SECURE_CONTENT_TYPE_NOSNIFF = True

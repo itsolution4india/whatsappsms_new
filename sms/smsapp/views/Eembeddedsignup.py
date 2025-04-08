@@ -4,11 +4,16 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import requests
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 # Constants (you may want to store these in environment variables)
-API_VERSION = 'v20.0'  # Replace with your Graph API version
-SYSTEM_TOKEN = 'EAAGZBdt7VWLcBOZCicoK0kqkM9wjDgXcQqrSmeSSS5XmQv3JYQBOfm8sZCZCmIQMOXB1Uw3Hyk7KFSfI1wiSNx6KRV89r9OeZBNTVY7ZCcz7OUUpeCq491KSTRzZBJFVBOoL9cy7vA6M7JJkB8iWEbGUjxvsllLzurp4zzIQmoZCZC6nlGQJzewRHz8LDPe9DLIGGZAwZDZD'
-BUSINESS_PORTFOLIO_ID = '396605563347029'
-SUPPORTED_CURRENCIES = ['AUD', 'EUR', 'GBP', 'IDR', 'INR', 'USD']
+API_VERSION = os.getenv('API_VERSION')
+SYSTEM_TOKEN = os.getenv('SYSTEM_TOKEN')
+BUSINESS_PORTFOLIO_ID = os.getenv('BUSINESS_PORTFOLIO_ID')
+SUPPORTED_CURRENCIES = os.getenv('SUPPORTED_CURRENCIES')
 
 def signup_view(request):
     return render(request, 'signup.html')

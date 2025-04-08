@@ -3,6 +3,7 @@ from django.contrib.auth import logout
 import logging
 from django.shortcuts import redirect
 from datetime import datetime
+from django.db import close_old_connections
 
 logger = logging.getLogger('django.request')
 
@@ -37,4 +38,15 @@ class AutoLogoutMiddleware:
             request.session['last_activity'] = timezone.now().isoformat()
 
         response = self.get_response(request)
+        return response
+    
+class ConnectionCleanupMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        close_old_connections()
+        response = self.get_response(request)
+        close_old_connections()
+        
         return response
