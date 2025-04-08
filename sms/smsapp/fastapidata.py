@@ -6,6 +6,13 @@ import json
 from decimal import Decimal
 from .utils import insert_bot_sent_message, logger, generate_code
 from .models import ReportInfo, Notifications
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+base_url = os.getenv("FASTAPI_BASE_URL")
+
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -14,7 +21,7 @@ class DecimalEncoder(json.JSONEncoder):
         return super(DecimalEncoder, self).default(obj)
 
 def send_api(token: str, phone_number_id: str, template_name: str, language: str, media_type: str, media_id: Optional[str], contact_list: List[str], variable_list: List[str], response_req=None, email=None, csv_variables=None, testing_msg=None, request_id=None, test_numbers=None):
-    url="https://fastapi.wtsmessage.xyz/send_sms/"
+    url=f"{base_url}/send_sms/"
     
     headers = {
         'accept': 'application/json',
@@ -65,7 +72,7 @@ def send_api(token: str, phone_number_id: str, template_name: str, language: str
 # Example usage
 
 def send_validate_req(token: str, phone_number_id: str, contact_list: List[str], body_text: str, report_id=None):
-    url = "https://fastapi.wtsmessage.xyz/validate_numbers_api/"
+    url = f"{base_url}/validate_numbers_api/"
     
     headers = {
         'accept': 'application/json',
@@ -115,7 +122,7 @@ def send_validate_req(token: str, phone_number_id: str, contact_list: List[str],
 def send_flow_message_api(token: str, phone_number_id: str, template_name: str, flow_id: str, language: str, recipient_phone_number: List[str], email=None):
     request_id = generate_code()
     request_id = f"FLOW{request_id}"
-    url = "https://fastapi.wtsmessage.xyz/send_flow_message/"
+    url = f"{base_url}/send_flow_message/"
     
     headers = {
         'accept': 'application/json',
@@ -161,7 +168,7 @@ def send_flow_message_api(token: str, phone_number_id: str, template_name: str, 
 def send_carousel_message_api(token: str, phone_number_id: str, template_name: str, recipient_phone_number: List[str], media_id_list: List[str], template_details: dict, email=None):
     request_id = generate_code()
     request_id = f"CAROUSEL{request_id}"
-    url = "https://fastapi.wtsmessage.xyz/send_carousel_messages/"
+    url = f"{base_url}/send_carousel_messages/"
     
     headers = {
         'accept': 'application/json',
@@ -219,7 +226,7 @@ def send_bot_api(
     longitude: Optional[float | Decimal] = None,
     media_id: Optional[str] = None
 ) -> Dict:
-    url = "https://fastapi.wtsmessage.xyz/bot_api/"
+    url = f"{base_url}/bot_api/"
     
     headers = {
         'accept': 'application/json',

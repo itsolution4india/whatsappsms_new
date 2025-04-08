@@ -36,7 +36,7 @@ def system_status(request):
         start_date = "2024-12-20"
     
     today = datetime.now().date()
-    coins_history = CoinsHistory.objects.all()
+    coins_history = CoinsHistory.objects.filter(type=CoinsHistory.DEBIT)
     if start_date:
         start_date = make_aware(datetime.strptime(start_date, '%Y-%m-%d'))
         coins_history = coins_history.filter(created_at__gte=start_date)

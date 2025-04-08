@@ -19,6 +19,11 @@ from ..functions.template_msg import fetch_templates
 import zipfile
 import io
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 @login_required
 def Reports(request):
     if not check_user_permission(request.user, 'can_view_reports'):
@@ -98,12 +103,12 @@ def download_linked_report(request, button_name=None, start_date=None, end_date=
         phone_id = display_phonenumber_id(request)
         _, AppID = get_token_and_app_id(request)
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database=f"webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         
@@ -250,12 +255,12 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                 
         # Connect to the database
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database="webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         
@@ -490,12 +495,12 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                 })
         # Connect to the database
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database=f"webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         
@@ -674,12 +679,12 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
 
 def get_non_reply_rows(request):
     connection = mysql.connector.connect(
-        host="localhost",
-        port=3306,
-        user="prashanth@itsolution4india.com",
-        password="Solution@97",
-        database="webhook_responses",
-        auth_plugin='mysql_native_password'
+        host=os.getenv('SQLHOST'),
+        port=os.getenv('SQLPORT'),
+        user=os.getenv('SQLUSER'),
+        password=os.getenv('SQLPASSWORD'),
+        database= os.getenv('SQLDATABASE'),
+        auth_plugin=os.getenv('SQLAUTH')
     )
     cursor = connection.cursor()
     
@@ -697,12 +702,12 @@ def get_non_reply_rows(request):
 def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
     _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
-        host="localhost",
-        port=3306,
-        user="prashanth@itsolution4india.com",
-        password="Solution@97",
-        database=f"webhook_responses",
-        auth_plugin='mysql_native_password'
+        host=os.getenv('SQLHOST'),
+        port=os.getenv('SQLPORT'),
+        user=os.getenv('SQLUSER'),
+        password=os.getenv('SQLPASSWORD'),
+        database= os.getenv('SQLDATABASE'),
+        auth_plugin=os.getenv('SQLAUTH')
     )
     cursor = connection.cursor()
     query = f"""
@@ -822,12 +827,12 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
 def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
     # Connect to the database
     connection = mysql.connector.connect(
-        host="localhost",
-        port=3306,
-        user="prashanth@itsolution4india.com",
-        password="Solution@97",
-        database="webhook_responses",
-        auth_plugin='mysql_native_password'
+        host=os.getenv('SQLHOST'),
+        port=os.getenv('SQLPORT'),
+        user=os.getenv('SQLUSER'),
+        password=os.getenv('SQLPASSWORD'),
+        database= os.getenv('SQLDATABASE'),
+        auth_plugin=os.getenv('SQLAUTH')
     )
     cursor = connection.cursor()
     query = """
@@ -901,12 +906,12 @@ def download_campaign_report(request, report_id=None, insight=False, contact_lis
 
         # Connect to the database
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database="webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         query = "SELECT * FROM webhook_responses WHERE 1=1"
@@ -1105,12 +1110,12 @@ def delete_report(request, report_id):
 def get_latest_rows_by_contacts(contact_numbers):
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database="webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         
         cursor = connection.cursor()
@@ -1155,12 +1160,12 @@ def get_latest_rows_by_contacts(contact_numbers):
 def get_unique_phone_numbers():
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database="webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         query = """
@@ -1189,12 +1194,12 @@ def get_user_responses(request):
         Phone_ID = display_phonenumber_id(request)
         _, AppID = get_token_and_app_id(request)
         connection = mysql.connector.connect(
-            host="localhost",
-            port=3306,
-            user="prashanth@itsolution4india.com",
-            password="Solution@97",
-            database=f"webhook_responses",
-            auth_plugin='mysql_native_password'
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
         )
         cursor = connection.cursor()
         
