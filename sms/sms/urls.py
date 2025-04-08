@@ -61,6 +61,8 @@ urlpatterns = [
     path('logs/save/', views.save_logs, name='save_logs'),
     path('logs/delete/', views.delete_logs, name='delete_logs'),
     path('logs/download/', views.download_logs, name='download_logs'),
+    path('coin-transaction/', views.coin_transaction_view, name='coin_transaction'),
+    path('get-user-balance/', views.get_user_balance),
     
     path('contact_management/', views.contact_management, name='contact_management'),
     path('contact/create/', views.create_contact, name='create_contact'),

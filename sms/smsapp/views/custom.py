@@ -1,15 +1,19 @@
 import json, requests
-from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
-from ..models import Templates, CoinsHistory, ReportInfo, Notifications
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
+from ..models import Templates, CoinsHistory, ReportInfo, Notifications, CustomUser
 from .auth import username
 from ..utils import display_whatsapp_id, display_phonenumber_id, logger
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_GET
 import re
 from datetime import datetime
+from ..forms import CoinTransactionForm
+import random
+from django.contrib import messages
+from .auth import admin_check
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -190,3 +194,65 @@ def process_sms_request(request):
             'status': 'error',
             'message': 'OTP not found in the text'
         })
+
+@user_passes_test(admin_check)
+def coin_transaction_view(request):
+    form = CoinTransactionForm(request.POST or None)
+    current_balance = None
+    users = CustomUser.objects.all()
+
+    if request.method == 'POST' and form.is_valid():
+        user = form.cleaned_data['user']
+        category = form.cleaned_data['category']
+        transaction_type = form.cleaned_data['transaction_type']
+        number_of_coins = form.cleaned_data['number_of_coins']
+
+        # Fetch current category balance
+        if category == 'marketing':
+            current_balance = user.marketing_coins
+        else:
+            current_balance = user.authentication_coins
+
+        # Credit/Debit Logic
+        if transaction_type == 'debit':
+            if current_balance < number_of_coins:
+                messages.error(request, f"Insufficient {category} balance.")
+                return redirect('coin_transaction')
+            new_balance = current_balance - number_of_coins
+            reason = f"{number_of_coins} coins have been deducted from your account for the {category.upper()} category."
+        else:
+            new_balance = current_balance + number_of_coins
+            reason = f"{number_of_coins} coins have been credited to your account for {category.upper()} category. Your current balance is {new_balance}"
+
+        # Update user balance
+        if category == 'marketing':
+            user.marketing_coins = new_balance
+        else:
+            user.authentication_coins = new_balance
+        user.save()
+
+        # Add history
+        CoinsHistory.objects.create(
+            user=str(user.username),
+            type=transaction_type,
+            number_of_coins=number_of_coins,
+            reason=reason,
+            transaction_id=str(random.randint(100000000, 999999999))
+        )
+
+        messages.success(request, "Transaction completed successfully.")
+        return redirect('coin_transaction')
+
+    return render(request, 'coin_transaction.html', {'form': form,'users': users})
+
+def get_user_balance(request):
+    user_id = request.GET.get('user_id')
+    category = request.GET.get('category')
+    user = CustomUser.objects.get(pk=user_id)
+
+    if category == 'marketing':
+        balance = user.marketing_coins
+    else:
+        balance = user.authentication_coins
+
+    return JsonResponse({'balance': balance})
