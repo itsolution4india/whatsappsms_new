@@ -1,94 +1,149 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
-<style>
-    h3 {
-        text-align: center;
-        margin: 10px;
-        color: #333;
-    }
-
-    table {
-        margin: 0px 20px 20px 20px;
-        width: 95%;
-        border-collapse: collapse;
-        background-color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    thead {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    th, td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
-
-    th {
-        background-color: #a5a6ff;
-        color: white;
-        letter-spacing: 1px;
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    tbody tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    tbody tr td {
-        color: #333;
-    }
-
-    td:last-child {
-        font-weight: bold;
-        text-transform: capitalize;
-        color: #4CAF50;
-    }
-
-    .credit {
-        color: #28a745;
-    }
-
-    .debit {
-        color: #e28f53 !important;
-    }
-</style>
-
 {% endblock %}
 
 {% block content %}
-<h3>Coins History</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Transaction ID</th>
-            <th>Number of Coins</th>
-            <th>Date</th>
-            <th>Type</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for entry in coins_history %}
-        <tr>
-            <td>{{ entry.transaction_id }}</td>
-            <td>{{ entry.created_at }}</td>
-            <td>{{ entry.reason }}</td>
-            <td class="{{ entry.type }}">{{ entry.get_type_display }}</td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5">No coins history available.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Coins History</h3>
+        <form method="get" class="d-flex gap-2">
+            <input type="date" name="start_date" value="{{ start_date|date:'Y-m-d' }}" class="form-control form-control-sm">
+            <input type="date" name="end_date" value="{{ end_date|date:'Y-m-d' }}" class="form-control form-control-sm">
+            <select name="type" class="form-select form-select-sm">
+                <option value="">All Types</option>
+                <option value="credit" {% if transaction_type == "credit" %}selected{% endif %}>Credit</option>
+                <option value="debit" {% if transaction_type == "debit" %}selected{% endif %}>Debit</option>
+            </select>
+            <button type="submit" class="btn btn-sm btn-primary">Filter</button>
+        </form>
+    </div>
+
+    <div class="row">
+        <!-- Coins History (70% width) -->
+        <div class="col-lg-8" style="height: 70vh !important;overflow: auto;">
+            <div class="list-group">
+                {% for entry in coins_history %}
+                <div class="list-group-item d-flex justify-content-between align-items-start flex-wrap border rounded mb-2 shadow-sm">
+                    <div class="d-flex flex-column col-lg-8">
+                        <div class="mb-1 text-muted small">{{ entry.created_at|date:"d M Y, H:i" }}</div>
+                        <div>
+                            <strong>{{ entry.get_type_display }}</strong> 
+                            <span class="badge 
+                                {% if entry.type == 'credit' %} bg-success 
+                                {% elif entry.type == 'debit' %} bg-danger 
+                                {% endif %} ms-2">{{ entry.type|title }}</span>
+                        </div>
+                        <div class="mt-1">Transaction ID: <code>{{ entry.transaction_id }}</code></div>
+                        <div>Reason: {{ entry.reason }}</div>
+                    </div>
+                    <div class="fs-5 mt-2 mt-sm-0">
+                        <strong>{{ entry.number_of_coins }}</strong> coins
+                    </div>
+                </div>
+                {% empty %}
+                <div class="alert alert-info">No coins history available.</div>
+                {% endfor %}
+            </div>
+
+            {% if coins_history.has_other_pages %}
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    {% if coins_history.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ coins_history.previous_page_number }}{% if transaction_type %}&type={{ transaction_type }}{% endif %}{% if start_date %}&start_date={{ start_date|date:'Y-m-d' }}{% endif %}{% if end_date %}&end_date={{ end_date|date:'Y-m-d' }}{% endif %}">&laquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                    {% endif %}
+
+                    {% for num in coins_history.paginator.page_range %}
+                        {% if coins_history.number == num %}
+                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                        {% elif num > coins_history.number|add:'-3' and num < coins_history.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ num }}{% if transaction_type %}&type={{ transaction_type }}{% endif %}{% if start_date %}&start_date={{ start_date|date:'Y-m-d' }}{% endif %}{% if end_date %}&end_date={{ end_date|date:'Y-m-d' }}{% endif %}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    {% if coins_history.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ coins_history.next_page_number }}{% if transaction_type %}&type={{ transaction_type }}{% endif %}{% if start_date %}&start_date={{ start_date|date:'Y-m-d' }}{% endif %}{% if end_date %}&end_date={{ end_date|date:'Y-m-d' }}{% endif %}">&raquo;</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div>
+
+        <!-- Bar Chart (30% width) -->
+        <div class="col-lg-4" style="height: 370px !important;">
+            <div class="card shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="card-title mb-0">Total Coins Activity</h5>
+                    <small class="text-muted">{{ start_date|date:"d M Y" }} - {{ end_date|date:"d M Y" }}</small>
+                </div>
+                <div class="card-body">
+                    <canvas id="coinsBarChart" height="270"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Chart.js from CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('coinsBarChart').getContext('2d');
+    
+    // Parse chart data from Django view
+    const chartData = JSON.parse('{{ chart_data|safe }}');
+    
+    // Create the chart
+    const coinsChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: chartData.labels,
+            datasets: [
+                {
+                    label: 'Total Coins',
+                    data: chartData.data,
+                    backgroundColor: [
+                        'rgba(40, 167, 69, 0.7)',  // Green for credits
+                        'rgba(220, 53, 69, 0.7)'   // Red for debits
+                    ],
+                    borderColor: [
+                        'rgba(40, 167, 69, 1)',
+                        'rgba(220, 53, 69, 1)'
+                    ],
+                    borderWidth: 1,
+                    barPercentage: 0.6
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Coins'
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false  // Hide legend since colors indicate the type
+                }
+            }
+        }
+    });
+});
+</script>
 {% endblock %}

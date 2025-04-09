@@ -1,9 +1,8 @@
 import json, requests
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
-from ..models import Templates, CoinsHistory, ReportInfo, Notifications, CustomUser
-from .auth import username
-from ..utils import display_whatsapp_id, display_phonenumber_id, logger
+from ..models import CoinsHistory, ReportInfo, Notifications, CustomUser
+from ..utils import logger
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
@@ -14,6 +13,10 @@ from ..forms import CoinTransactionForm
 import random
 from django.contrib import messages
 from .auth import admin_check
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from datetime import timedelta, datetime
+from django.db.models.functions import TruncDate
+from django.db.models import Sum
 
 def custom_500(request, exception=None):
     return render(request, 'error.html', status=500)
@@ -88,21 +91,80 @@ def facebook_sdk_view(request):
     else:
         # Handle other HTTP methods (shouldn't happen in your case)
         return JsonResponse({'error': 'Method not allowed'}, status=405)
-    
+
 def coins_history_list(request):
-    template_database = Templates.objects.filter(email=request.user)
-    template_value = list(template_database.values_list('templates', flat=True))
-    coins_history = CoinsHistory.objects.filter(user=request.user).order_by('-created_at')
+    # Handle custom date range
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+    transaction_type = request.GET.get('type')
+
+    if start_date and end_date:
+        start_date_obj = datetime.strptime(start_date, '%Y-%m-%d').date()
+        end_date_obj = datetime.strptime(end_date, '%Y-%m-%d').date()
+    else:
+        end_date_obj = datetime.today().date()
+        start_date_obj = end_date_obj - timedelta(days=30)
+        start_date = start_date_obj.strftime('%Y-%m-%d')
+        end_date = end_date_obj.strftime('%Y-%m-%d')
+
+    # Base query for coins history within range
+    coins_query = CoinsHistory.objects.filter(
+        user=request.user,
+        created_at__date__range=(start_date_obj, end_date_obj)
+    )
+    
+    # Apply transaction type filter if specified
+    if transaction_type:
+        coins_query = coins_query.filter(type=transaction_type)
+    
+    # Get ordered coins history
+    coins_history_all = coins_query.order_by('-created_at')
+    
+    # Paginate the results
+    paginator = Paginator(coins_history_all, 10)  # Show 10 transactions per page
+    page = request.GET.get('page')
+    try:
+        coins_history = paginator.page(page)
+    except PageNotAnInteger:
+        coins_history = paginator.page(1)
+    except EmptyPage:
+        coins_history = paginator.page(paginator.num_pages)
+
+    # Calculate totals for the bar chart (use the unfiltered query by type to show both credit and debit)
+    base_query = CoinsHistory.objects.filter(
+        user=request.user,
+        created_at__date__range=(start_date_obj, end_date_obj)
+    )
+    
+    # Get total credits and debits
+    totals_by_type = (
+        base_query
+        .values('type')
+        .annotate(total=Sum('number_of_coins'))
+    )
+
+    # Prepare simplified chart data with just two bars
+    total_credits = 0
+    total_debits = 0
+    
+    for entry in totals_by_type:
+        if entry['type'] == 'credit':
+            total_credits = entry['total'] or 0
+        elif entry['type'] == 'debit':
+            total_debits = entry['total'] or 0
+    
+    chart_data = {
+        'labels': ['Credits', 'Debits'],
+        'data': [total_credits, total_debits]
+    }
+
     context = {
-            "template_names": template_value,
-            "coins":request.user.marketing_coins + request.user.authentication_coins,
-            "marketing_coins":request.user.marketing_coins,
-            "authentication_coins":request.user.authentication_coins,
-            "username": username(request),
-            "WABA_ID": display_whatsapp_id(request),
-            "PHONE_ID": display_phonenumber_id(request),
-            "coins_history":coins_history
-            }
+        "coins_history": coins_history,
+        "start_date": start_date_obj,
+        "end_date": end_date_obj,
+        "transaction_type": transaction_type,
+        "chart_data": json.dumps(chart_data)  # Serialize chart data for JavaScript
+    }
     return render(request, 'coins_history_list.html', context)
 
 @login_required
