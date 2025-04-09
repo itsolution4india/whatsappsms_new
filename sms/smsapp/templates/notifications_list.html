@@ -2,229 +2,111 @@
 
 {% block head %}
 <style>
-    
-h1 {
-    color: #1a1a1a;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    animation: slideDown 0.5s ease-out;
-}
+.bg-pending { background-color: #ffc107 !important; color: #000; }
+.bg-success { background-color: #28a745 !important; }
+.bg-failed  { background-color: #dc3545 !important; }
 
-/* Notifications Grid */
-.notifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 1.5rem;
-    animation: fadeIn 0.6s ease-out;
-}
-
-/* Notification Card */
-.notification-card {
-    position: relative;
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.notification-card p {
-    margin: 8px 0px;
-}
-
-.notification-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn-delete {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-}
-
-/* Status Indicators */
-.status {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-}
-
-.status.pending {
-    background: #fff8e6;
-    color: #b27b16;
-}
-
-.status.success {
-    background: #e6f7ed;
-    color: #1a7f37;
-}
-
-.status.failed {
-    background: #ffebe9;
-    color: #cf222e;
-}
-
-/* Content Styling */
-.email {
-    color: #666;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-.campaign-title {
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.message {
-    color: #4a4a4a;
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.time {
-    color: #888;
-    font-size: 0.875rem;
-}
-
-/* Button Styles */
-.btn {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background-color 0.2s;
-}
-
-.btn-download {
-    background: #0366d6;
-    color: white;
-}
-
-.btn-download:hover {
-    background: #0256b9;
-}
-
-.btn-delete {
-    background: #fff;
-    color: #cf222e;
-    border: 1px solid #cf222e;
-}
-
-.btn-delete:hover {
-    background: #ffebe9;
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Loading Animation */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid #3498db;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@media only screen and (max-width: 460px) {
-    .notifications-grid {
-        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    }
-}
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="notifications-grid m-3">
-    {% for item in notifications %}
-    <div class="notification-card">
-        <div class="time">{{ item.created_at }}</div>
-        <div class="status {{ item.status }}">
-            {{ item.status }} 
-            {% if item.status == 'pending' %}
-                <i class='bx bx-time'></i>
-            {% elif item.status == 'success' %}
-                <i class='bx bxs-badge-check'></i>
-            {% else %}
-                <i class='bx bxs-x-circle'></i>
-            {% endif %}
-        </div>
-        <span class="status bg-primary text-white ms-2">
-            {{ item.type }} 
-            <i class='bx bx-git-pull-request'></i>
-        </span>
-        <p>Template name: {{ item.campaign_title }}</p>
-        <p>Request ID: {{ item.request_id }}</p>
-        
-        <div class="message">
-            {% if item.is_notification %}
-                {% if item.status == "pending" %}
-                    Your Template: {{ item.campaign_title }} is in pending. Please wait to process your request.
-                    <span class="loading"></span>
-                {% elif item.status == "success" %}
-                    {% if item.text == "message" or item.text == "flows" or item.text == "carousels" %}
-                        <p>Your send {{ item.text }} request is completed successfully</p>
-                        <p>Please check your report <a href="{% url 'reports' %}" class="btn btn-download p-3 pt-1 pb-1">Go to reports</a></p>
-                    {% endif %}
-                {% else %}
-                    Your {{ item.campaign_title }} has failed.
-                {% endif %}
-            {% else %}
-                {% if item.status == "pending" %}
-                    Your report is being generated. Please wait.
-                    <span class="loading"></span>
-                {% elif item.status == "success" %}
-                    Your report has been generated successfully.
-                {% else %}
-                    Report generation failed.
-                {% endif %}
-            {% endif %}
-        </div>
+<div class="container mt-4">
+    <div class="list-group">
+        {% for item in notifications %}
+        <div class="list-group-item d-flex justify-content-between align-items-start flex-wrap bg-light border rounded mb-2 shadow-sm">
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center mb-1">
+                    <span class="badge me-2 
+                        {% if item.status == 'pending' %} bg-warning text-dark
+                        {% elif item.status == 'success' %} bg-success
+                        {% else %} bg-danger
+                        {% endif %}">
+                        {{ item.status|title }}
+                        {% if item.status == 'pending' %}
+                            <i class='bx bx-time'></i>
+                        {% elif item.status == 'success' %}
+                            <i class='bx bxs-badge-check'></i>
+                        {% else %}
+                            <i class='bx bxs-x-circle'></i>
+                        {% endif %}
+                    </span>
+                    <small class="text-muted">{{ item.created_at }}</small>
+                </div>
 
-        {% if item.is_notification %}
-            <form action="{% url 'delete_notification' item.id %}" method="post">
+                <div class="mb-1">
+                    <strong>{{ item.type }}</strong> 
+                    <i class='bx bx-git-pull-request'></i> &mdash; 
+                    <strong>Template:</strong> {{ item.campaign_title }} |
+                    <strong>Request ID:</strong> {{ item.request_id }}
+                </div>
+
+                <div class="mb-2">
+                    {% if item.is_notification %}
+                        {% if item.status == "pending" %}
+                            Your Template <strong>{{ item.campaign_title }}</strong> is pending. Please wait.
+                            <span class="spinner-border spinner-border-sm text-warning ms-2" role="status"></span>
+                        {% elif item.status == "success" %}
+                            {% if item.text in "message flows carousels" %}
+                                Your <strong>{{ item.text }}</strong> request completed successfully. 
+                                <a href="{% url 'reports' %}" class="btn btn-sm btn-outline-primary ms-2">Go to reports</a>
+                            {% endif %}
+                        {% else %}
+                            <span class="text-danger">Your template <strong>{{ item.campaign_title }}</strong> has failed.</span>
+                        {% endif %}
+                    {% else %}
+                        {% if item.status == "pending" %}
+                            Your report is being generated. Please wait.
+                            <span class="spinner-border spinner-border-sm text-secondary ms-2" role="status"></span>
+                        {% elif item.status == "success" %}
+                            Your report has been generated successfully.
+                        {% else %}
+                            <span class="text-danger">Report generation failed.</span>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <form action="{% url item.is_notification|yesno:'delete_notification,delete_report' item.id %}" method="post" class="ms-auto">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-delete p-3 pt-1 pb-1">Delete</button>
+                <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
             </form>
-        {% else %}
-            <form action="{% url 'delete_report' item.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn btn-delete p-3 pt-1 pb-1">Delete</button>
-            </form>
-        {% endif %}
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>
+<nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      {% if notifications.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ notifications.previous_page_number }}" aria-label="Previous">
+            &laquo;
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&laquo;</span>
+        </li>
+      {% endif %}
+  
+      {% for num in notifications.paginator.page_range %}
+        {% if notifications.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+        {% elif num > notifications.number|add:'-3' and num < notifications.number|add:'3' %}
+          <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+  
+      {% if notifications.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ notifications.next_page_number }}" aria-label="Next">
+            &raquo;
+          </a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">&raquo;</span>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>  
 {% endblock %}

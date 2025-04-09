@@ -3,7 +3,7 @@ from ..models import Notifications, ReportInfo
 from django.urls import reverse
 from .auth import username, display_phonenumber_id, display_whatsapp_id
 from datetime import datetime, timedelta, timezone
-
+from django.core.paginator import Paginator
 from itertools import chain
 from operator import attrgetter
 
@@ -46,34 +46,34 @@ def get_notification_type(request_id):
     return "Get report request"
 
 def notifications_list(request):
-    # Get both notifications and reports
     notifications = Notifications.objects.filter(email=request.user).order_by('-created_at')
     reports = ReportInfo.objects.filter(email=request.user).exclude(start_request_id=0).order_by('-created_at')
     
     current_time = datetime.now(timezone.utc)
-    
-    # Process notifications
+
     for notification in notifications:
         notification.status = process_status(notification, current_time)
         notification.type = get_notification_type(notification.request_id)
-        notification.is_notification = True  # Flag to identify in template
+        notification.is_notification = True
         
-    # Process reports
     for report in reports:
         report.status = process_report_status(report, current_time)
-        report.type = "Report"  # Reports always have type "Report"
-        report.is_notification = False  # Flag to identify in template
-        # Add fields to match notification structure
+        report.type = "Report"
+        report.is_notification = False
         report.request_id = str(report.start_request_id)
         report.text = ""
-    
-    # Combine and sort notifications and reports
+
     combined_items = sorted(
         chain(notifications, reports),
         key=attrgetter('created_at'),
         reverse=True
     )
-    
+
+    # Apply pagination
+    paginator = Paginator(combined_items, 10)  # 10 items per page
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
     context = {
         "coins": request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins": request.user.marketing_coins,
@@ -81,7 +81,7 @@ def notifications_list(request):
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
-        'notifications': combined_items
+        "notifications": page_obj,  # use page_obj instead of full list
     }
     return render(request, 'notifications_list.html', context)
 
