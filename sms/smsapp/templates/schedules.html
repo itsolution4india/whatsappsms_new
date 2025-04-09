@@ -44,35 +44,35 @@
                                 <div class="col-xl-4 col-lg-4 col-md-6 mb-4">
                                     <div class="card h-100 position-relative schedule-card 
                                         {% if message.is_sent %}border-success{% else %}border-warning{% endif %} shadow-sm hover-shadow">
-                                        <div class="card-header d-flex justify-content-between align-items-center pb-3 pt-3
-                                            {% if message.is_sent %}bg-success text-white{% else %}bg-warning{% endif %}">
+                                        <div class="card-header d-flex justify-content-between align-items-center pb-3 pt-3 border
+                                            {% if message.is_sent %}text-white{% else %}text-white{% endif %}">
                                             <h5 class="mb-0 text-truncate" title="{{ message.campaign_title }}">
                                                 {{ message.campaign_title }}
                                             </h5>
                                             <span class="badge rounded-pill 
-                                                {% if message.is_sent %}bg-light text-success{% else %}bg-light text-warning{% endif %}">
+                                                {% if message.is_sent %}bg-success text-white{% else %}bg-warning text-white{% endif %}">
                                                 {% if message.is_sent %}
                                                     <i class="fa fa-check-circle me-1"></i> Sent
                                                 {% else %}
-                                                    <i class="fa fa-clock me-1"></i> Pending
+                                                    <i class="fa fa-clock-o me-1"></i> Pending
                                                 {% endif %}
                                             </span>
                                         </div>
                                         <div class="card-body pb-0">
                                             <div class="info-row mb-2">
-                                                <div class="info-label">Template: {{ message.template_name }}</div>
+                                                <div class="info-label"><span class="text-dark">Template:</span> <span>{{ message.template_name }}</span></div>
                                             </div>
                                             
                                             <div class="info-row mb-2">
-                                                <div class="info-label">Date: {{ message.schedule_date }}</div>
+                                                <div class="info-label"><span class="text-dark">Scheduled Date:</span> <span>{{ message.schedule_date }}</span></div>
                                             </div>
                                             
                                             <div class="info-row mb-2">
-                                                <div class="info-label">Time: {{ message.schedule_time }}</div>
+                                                <div class="info-label"><span class="text-dark">Scheduled Time:</span> <span>{{ message.schedule_time }}</span></div>
                                             </div>
                                             
                                             <div class="info-row mb-2">
-                                                <div class="info-label">Created: {{ message.created_at|date:"M d, Y H:i" }}</div>
+                                                <div class="info-label"><span class="text-dark">Created at:</span> <span>{{ message.created_at|date:"M d, Y H:i" }}</span></div>
                                             </div>
                                         </div>
                                         <div class="card-footer bg-transparent pb-2 pt-2">
