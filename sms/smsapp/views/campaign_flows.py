@@ -25,7 +25,7 @@ def create_flow_message(request):
     flows = get_flows(token, waba_id)
     local_db_flows = Flows.objects.filter(email=request.user)
     flow_value = list(local_db_flows.values_list('flows', flat=True))
-    filtered_flows = [flow for flow in flows if flow['name'] in flow_value]
+    filtered_flows = [flow for flow in flows if flow['name'] in flow_value] if flow_value else []
     
     if campaign_list is None :
         campaign_list=[]
