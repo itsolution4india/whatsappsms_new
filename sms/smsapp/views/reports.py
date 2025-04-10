@@ -18,6 +18,8 @@ from django.http import HttpResponse
 from ..functions.template_msg import fetch_templates
 import zipfile
 import io
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 
 from dotenv import load_dotenv
 import os
@@ -33,13 +35,13 @@ def Reports(request):
     try:
         token, _ = get_token_and_app_id(request)
         campaign_list = fetch_templates(display_whatsapp_id(request), token)
-        if campaign_list is None :
-            campaign_list=[]
+        if campaign_list is None:
+            campaign_list = []
         template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
         template_value2 = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
         report_query = ReportInfo.objects.filter(email=request.user)
-        template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
         
+        # Apply filters
         if request.GET.get('start_date'):
             report_query = report_query.filter(message_date__gte=request.GET.get('start_date'))
         
@@ -69,7 +71,21 @@ def Reports(request):
             response = bulk_download(request, report_ids)
             return response
             
+        # Order the reports
         report_list = report_query.only('contact_list').order_by('-created_at')
+        
+        # Pagination
+        page = request.GET.get('page', 1)
+        items_per_page = 10  # You can adjust this number
+        paginator = Paginator(report_list, items_per_page)
+        
+        try:
+            report_list_paginated = paginator.page(page)
+        except PageNotAnInteger:
+            report_list_paginated = paginator.page(1)
+        except EmptyPage:
+            report_list_paginated = paginator.page(paginator.num_pages)
+        
         show_button = any(report.end_request_id == 0 or report.start_request_id == 0 for report in report_list)
         context = {
             "all_template_names": template_value2,
@@ -80,7 +96,7 @@ def Reports(request):
             "username": username(request),
             "WABA_ID": display_whatsapp_id(request),
             "PHONE_ID": display_phonenumber_id(request),
-            "report_list": report_list,
+            "report_list": report_list_paginated,
             "show_button": show_button
         }
 
