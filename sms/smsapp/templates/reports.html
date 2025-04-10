@@ -189,7 +189,7 @@
 {% block content %}
 
 <!-- Content wrapper -->
-<div class="content-wrapper" style="height: 1500px;">
+<div class="content-wrapper">
     <div id="popup" class="popup-container" style="display: none; width: 370px;">
         <div class="popup-content">
             <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100px; margin: 25px;">
@@ -283,63 +283,109 @@
                 </div>
             </div>
 
-            <thead class="thead-dark">
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Date</th>
-                            <th scope="col">Campaign Title</th>
-                            <th scope="col">Template Name</th>
-                            <th scope="col">No. of Contacts</th>
-                            <th scope="col">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for report in report_list %}
-                        <tr id="report-row-{{ report.id }}">
-                            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-                            <td style="width: 150px;">{{ report.message_date }}</td>
-                            <td>{{ report.campaign_title }}</td>
-                            <td>{{ report.template_name }}</td>
-                            <td>{{ report.message_delivery }}</td>
-                            <td style="width: 200px;">
-                                {% if report.template_name in template_names %}
-                                {% if report.end_request_id != 0 %}
-                                    <div class="btn-group" role="group">
-                                        <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
-                                            <i class='bx bxs-download'></i>
-                                        </a>
-                                        <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
-                                            <i class='bx bx-line-chart'></i>
-                                        </button>
-                                    </div>
-                                {% elif report.start_request_id != 0 %}
-                                    <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
-                                        Pending...
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Campaign Title</th>
+                        <th scope="col">Template Name</th>
+                        <th scope="col">No. of Contacts</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for report in report_list %}
+                    <tr id="report-row-{{ report.id }}">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                        <td style="width: 150px;">{{ report.message_date }}</td>
+                        <td>{{ report.campaign_title }}</td>
+                        <td>{{ report.template_name }}</td>
+                        <td>{{ report.message_delivery }}</td>
+                        <td style="width: 200px;">
+                            {% if report.template_name in template_names %}
+                            {% if report.end_request_id != 0 %}
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
+                                        <i class='bx bxs-download'></i>
+                                    </a>
+                                    <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
+                                        <i class='bx bx-line-chart'></i>
                                     </button>
-                                {% else %}
-                                    <button type="button" class="btn btn-primary" onclick="sendRequest({{ report.id }})" style="border-radius: 10px !important;">
-                                        Get Report
-                                    </button>
-                                {% endif %}
-                                    <!-- Delete button -->
-                                    <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
-                                        <i class='bx bx-trash'></i>
-                                    </button>
-                                {% else %}
-                                <span class="text-muted">Not available</span>
-                                {% endif %}
-                            </td>
-                        </tr>
+                                </div>
+                            {% elif report.start_request_id != 0 %}
+                                <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
+                                    Pending...
+                                </button>
+                            {% else %}
+                                <button type="button" class="btn btn-primary" onclick="sendRequest({{ report.id }})" style="border-radius: 10px !important;">
+                                    Get Report
+                                </button>
+                            {% endif %}
+                                <!-- Delete button -->
+                                <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            {% else %}
+                            <span class="text-muted">Not available</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                <nav aria-label="Page navigation">
+                    {% if report_list.has_other_pages %}
+                    <ul class="pagination">
+                        {% if report_list.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% if request.GET.start_date %}start_date={{ request.GET.start_date }}&{% endif %}{% if request.GET.end_date %}end_date={{ request.GET.end_date }}&{% endif %}{% if request.GET.campaign_title %}campaign_title={{ request.GET.campaign_title }}&{% endif %}{% if request.GET.template_name %}template_name={{ request.GET.template_name }}&{% endif %}page={{ report_list.previous_page_number }}" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+
+                        {% for i in report_list.paginator.page_range %}
+                            {% if report_list.number == i %}
+                            <li class="page-item active"><a class="page-link" href="#">{{ i }}</a></li>
+                            {% elif i > report_list.number|add:'-3' and i < report_list.number|add:'3' %}
+                            <li class="page-item">
+                                <a class="page-link" href="?{% if request.GET.start_date %}start_date={{ request.GET.start_date }}&{% endif %}{% if request.GET.end_date %}end_date={{ request.GET.end_date }}&{% endif %}{% if request.GET.campaign_title %}campaign_title={{ request.GET.campaign_title }}&{% endif %}{% if request.GET.template_name %}template_name={{ request.GET.template_name }}&{% endif %}page={{ i }}">{{ i }}</a>
+                            </li>
+                            {% endif %}
                         {% endfor %}
-                    </tbody>
-                </table>
+
+                        {% if report_list.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?{% if request.GET.start_date %}start_date={{ request.GET.start_date }}&{% endif %}{% if request.GET.end_date %}end_date={{ request.GET.end_date }}&{% endif %}{% if request.GET.campaign_title %}campaign_title={{ request.GET.campaign_title }}&{% endif %}{% if request.GET.template_name %}template_name={{ request.GET.template_name }}&{% endif %}page={{ report_list.next_page_number }}" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                    {% endif %}
+                </nav>
+            </div>
+            <!-- End Pagination -->
 
         </div>
     </div>
     <!-- / Content -->
 </div>
-<!-- / Layout wrapper -->
 <script>
     function sendRequest(reportId) {
         // Send the fetch request
