@@ -64,17 +64,6 @@ urlpatterns = [
     path('coin-transaction/', views.coin_transaction_view, name='coin_transaction'),
     path('get-user-balance/', views.get_user_balance),
     
-    path('contact_management/', views.contact_management, name='contact_management'),
-    path('contact/create/', views.create_contact, name='create_contact'),
-    path('contact/upload/', views.upload_contacts_csv, name='upload_contacts'),
-    path('contact/delete/<str:phone_number>/', views.delete_contact, name='delete_contact'),
-    path('group/create/', views.create_group, name='create_group'),
-    path('group/delete/<int:group_id>/', views.delete_group, name='delete_group'),
-    path('group/contacts/add/', views.add_contact_to_group, name='add_contact_to_group'),
-    path('group/<int:group_id>/contacts/', views.get_group_contacts, name='get_group_contacts'),
-    path('group/contacts/remove/', views.remove_contact_from_group, name='remove_contact_from_group'),
-    path('group/<int:group_id>/available-contacts/', views.get_available_contacts, name='get_available_contacts'),
-    
     path('api/users/', views.customuser_list_view, name='customuser-list'),
     path('api/users/<str:email>/', views.customuser_detail_view, name='customuser-detail'),
     path('update-balance-report/', views.UpdateBalanceReportView.as_view(), name='update_balance_report'),

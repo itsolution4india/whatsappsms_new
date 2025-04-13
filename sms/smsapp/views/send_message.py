@@ -35,7 +35,7 @@ def Send_Sms(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         
-        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "standard")
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
@@ -307,7 +307,7 @@ def send_flow_message(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
-        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "flow")
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
@@ -392,7 +392,7 @@ def send_carousel_messages(request):
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
-        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "carousel")
         if campaign_list is None :
             campaign_list=[]
         templates = [campaign for campaign in campaign_list if campaign['template_name'] in template_value]
@@ -450,7 +450,6 @@ def send_carousel_messages(request):
                 except Exception as e:
                     messages.error(request, f"Error processing file {i}: {str(e)}")
                     continue
-        template_details = fetch_templates(display_whatsapp_id(request), token, tempalate_name)
         
         if not campaign_title or not campaign_title:
             messages.error(request, "Flow name is required.")
@@ -471,7 +470,7 @@ def send_carousel_messages(request):
             messages.error(request, "Insufficient balance. Recharge to continue our services.")
             return render(request, "send-carousel.html", context)
         try:
-            send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, template_details)
+            send_carousel_messages_with_report(request, token, phone_id, tempalate_name, campaign_title, contact_list,all_contact,media_id_list, campaign_list)
         except Exception as e:
             logger.error(f"Error processing Flow form: {e}")
             messages.error(request, "There was an error processing your request.")

@@ -173,7 +173,7 @@ def campaign_index(request):
         "coins":request.user.marketing_coins + request.user.authentication_coins,
         "marketing_coins":request.user.marketing_coins,
         "authentication_coins":request.user.authentication_coins,
-        "username": username(request),
+        "username": username(request),  
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
         "campaign_list": templates

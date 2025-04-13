@@ -998,56 +998,238 @@
                     </script>
 
 
-                    <div class="container-xxl flex-grow-1 container-p-y"
-                        style="height: 500px; box-sizing: border-box;">
+                        <!-- New Templates Display Section -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card shadow-sm">
+            <div class="w-100 p-3 text-dark bg-light rounded-top d-flex justify-content-between align-items-center border">
+                <span class="fs-5">Template Status Report</span>
+                <div class="d-flex">
+                    <div class="input-group me-3" style="width: 300px;">
+                        <input type="text" class="form-control" id="templateSearch" placeholder="Search templates...">
+                        <button class="btn btn-outline-light border text-primary" type="button">
+                            <i class='bx bx-search'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-                        <div class="row">
-                            <div class="card" style="min-height: 400px; box-shadow: none; overflow-y: auto;">
-
-                                <table class="table" style="font-size: small;">
-                                    <div class="w-100 p-3 text-white bg-dark rounded-top text-center fs-5">
-                                        Template Status Report
+            <!-- Templates container with WhatsApp-like style -->
+            <div class="p-3" style="background-color: #e5ddd5; min-height: 500px;">
+                <div id="templates-container" class="row">
+                    {% for campaign in campaign_list %}
+                    <div class="col-md-6 col-lg-4 mb-3 template-card" 
+                         data-template-name="{{ campaign.template_name }}" 
+                         data-category="{{ campaign.category }}">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-light d-flex justify-content-between align-items-center pb-1">
+                                <h6 class="mb-0">{{ campaign.template_name }}</h6>
+                                <span class="badge {% if campaign.status == 'APPROVED' %}bg-success{% elif campaign.status == 'PENDING' %}bg-warning{% else %}bg-danger{% endif %}">
+                                    {{ campaign.status }}
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <!-- WhatsApp-like message display -->
+                                <div class="mb-3 rounded" style="background-color: #fff; border-radius: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.1);">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="rounded-circle bg-secondary me-2" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                            <i class='bx bxl-whatsapp text-white'></i>
+                                        </div>
+                                        <div>
+                                            <small class="text-muted">Category: {{ campaign.category }}</small>
+                                        </div>
                                     </div>
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Template Name</th>
-                                            <th scope="col">Category</th>
-                                            <th scope="col">Media Type</th>
-                                            <th scope="col">Template Data</th>
-                                            <th scope="col">Status</th>
-                                            <th scope="col">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {% for campaign in campaign_list %}
-                                        <tr>
-                                            <td>{{ campaign.template_name }}</td>
-                                            <td>{{ campaign.category }}</td>
-                                            <td>{{ campaign.media_type }}</td>
-                                            <td>{{ campaign.template_data }}</td>
-                                            <td>{{ campaign.status }}</td>
-                                            <td>
-                                                <form action="{% url 'delete_template' %}" method="POST"
-                                                    onsubmit="return confirmDelete('{{ campaign.template_name }}');">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="template_name"
-                                                        value="{{ campaign.template_name }}">
-                                                    <input type="hidden" name="template_id"
-                                                        value="{{ campaign.template_id }}">
-                                                    <button type="submit" class="btn-danger p-2 rounded-circle shadow">
-                                                        <i class='bx bx-trash'></i>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
-                                </table>
-
+                                    
+                                    {% if campaign.media_type == 'IMAGE' %}
+                                    <div>
+                                        <img src="/static/assets/img/backgrounds/default_image.png" alt="Template Image" class="img-fluid rounded">
+                                    </div>
+                                    {% elif campaign.media_type == 'VIDEO' %}
+                                    <div>
+                                        <img src="/static/assets/img/backgrounds/default_video.png" alt="Template Video" class="img-fluid rounded">
+                                    </div>
+                                    {% endif %}
+                                    
+                                    <div class="whatsapp-text p-2 rounded" style="background-color: #dcf8c6; border-radius: 8px;">
+                                        <div class="template-text-truncated">
+                                            {{ campaign.template_data|truncatechars:150 }}
+                                        </div>
+                                        {% if campaign.template_data|length > 150 %}
+                                        <div class="template-text-full d-none">
+                                            {{ campaign.template_data }}
+                                        </div>
+                                        <a href="#" class="text-primary read-more-toggle small">Read more</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="d-flex justify-content-between">
+                                    <small class="text-muted">Media: {{ campaign.media_type|default:"TEXT" }}</small>
+                                    <form action="{% url 'delete_template' %}" method="POST"
+                                        onsubmit="return confirmDelete('{{ campaign.template_name }}');">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="template_name" value="{{ campaign.template_name }}">
+                                        <input type="hidden" name="template_id" value="{{ campaign.template_id }}">
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-circle shadow p-2">
+                                            <i class='bx bx-trash'></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
-
                     </div>
+                    {% empty %}
+                    <div class="col-12 text-center p-5">
+                        <div class="alert alert-info">
+                            <i class='bx bx-info-circle me-2'></i>
+                            No templates found. Create a new template to get started.
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    <nav aria-label="Template pagination">
+                        <ul class="pagination" id="template-pagination">
+                            <li class="page-item disabled" id="prevPage">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                            <!-- More pagination items will be added dynamically -->
+                            <li class="page-item" id="nextPage">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    
+    // Pagination functionality
+    const templatesPerPage = 6;
+    const $templateCards = $('.template-card');
+    const totalTemplates = $templateCards.length;
+    const totalPages = Math.ceil(totalTemplates / templatesPerPage);
+    
+    let currentPage = 1;
+    
+    // Initialize pagination
+    function initPagination() {
+        const $pagination = $('#template-pagination');
+        $pagination.empty();
+        
+        // Previous button
+        $pagination.append(`
+            <li class="page-item ${currentPage === 1 ? 'disabled' : ''}" id="prevPage">
+                <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+        `);
+        
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            $pagination.append(`
+                <li class="page-item ${currentPage === i ? 'active' : ''}">
+                    <a class="page-link page-number" href="#" data-page="${i}">${i}</a>
+                </li>
+            `);
+        }
+        
+        // Next button
+        $pagination.append(`
+            <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}" id="nextPage">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        `);
+        
+        // Update displayed templates
+        showTemplatesForPage(currentPage);
+        
+        // Event handlers
+        $('.page-number').click(function(e) {
+            e.preventDefault();
+            currentPage = parseInt($(this).data('page'));
+            initPagination();
+        });
+        
+        $('#prevPage a').click(function(e) {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                initPagination();
+            }
+        });
+        
+        $('#nextPage a').click(function(e) {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                initPagination();
+            }
+        });
+        
+        $('.read-more-toggle').click(function(e) {
+            e.preventDefault();
+            const $messageContainer = $(this).closest('.whatsapp-text');
+            const $truncated = $messageContainer.find('.template-text-truncated');
+            const $full = $messageContainer.find('.template-text-full');
+            
+            if ($truncated.is(':visible')) {
+                $truncated.hide();
+                $full.removeClass('d-none');
+                $(this).text('Show less');
+            } else {
+                $full.addClass('d-none');
+                $truncated.show();
+                $(this).text('Read more');
+            }
+        });
+    }
+    
+    // Show templates for the current page
+    function showTemplatesForPage(page) {
+        const startIndex = (page - 1) * templatesPerPage;
+        const endIndex = startIndex + templatesPerPage;
+        
+        $templateCards.hide();
+        $templateCards.slice(startIndex, endIndex).show();
+    }
+    
+    // Search functionality
+    $('#templateSearch').on('keyup', function() {
+        const searchTerm = $(this).val().toLowerCase();
+        
+        if (searchTerm.length > 0) {
+            $templateCards.hide();
+            $templateCards.filter(function() {
+                const templateName = $(this).data('template-name').toLowerCase();
+                const category = $(this).data('category').toLowerCase();
+                return templateName.includes(searchTerm) || category.includes(searchTerm);
+            }).show();
+            
+            // Disable pagination during search
+            $('#template-pagination').hide();
+        } else {
+            // Re-enable pagination and show current page
+            $('#template-pagination').show();
+            showTemplatesForPage(currentPage);
+        }
+    });
+    
+    // Initialize on load
+    if (totalTemplates > 0) {
+        initPagination();
+    }
+});
+
+function confirmDelete(templateName) {
+    return confirm(`Are you sure you want to delete template "${templateName}"?`);
+}
+</script>
                     <!-- / Content -->
                 </div>
             </div>

@@ -18,8 +18,9 @@
         text-align: center;
     }
     .dashboard_img {
-        width: 200px;
-        height: 200px;
+        width: 135px;
+        height: 135px;
+        margin: 35px;
 
     }
     .light_blue {
@@ -34,10 +35,10 @@
             <h3 class="text-center pt-2">Manage Templates</h3>
         </div> -->
         <div class="mb-3">
-            <div class="p-3 bg-gray text-white">
-                <h5 class="m-0 text-white">Daily Respnse Activity</h5>
+            <div class="p-3 bg-light light_gray">
+                <h5 class="m-0 text-dark">Daily Respnse Activity</h5>
             </div>
-            <div class="d-flex light_gray">
+            <div class="d-flex border">
                 <div class="chart-container card m-2 shadow p-1" style="width: 70%;">
                     <canvas id="responseChart"></canvas>
                 </div>
@@ -50,10 +51,10 @@
             </div>
         </div>
         <div class="mb-3">
-            <div class="p-3 bg-gray text-white">
-                <h5 class="m-0 text-white">Template management</h5>
+            <div class="p-3 bg-light light_gray">
+                <h5 class="m-0 text-dark">Template management</h5>
             </div>
-            <div class="d-flex justify-content-around p-2 light_gray">
+            <div class="d-flex justify-content-around p-2 border">
                 <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-plus-circle me-2"></i>Total Templates <span class="bg-dark custom_w rounded text-white p-1">   {{total_templates}}</span></div>
                 <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class="bx bxs-megaphone me-2"></i> Marketing Templates <span class="bg-warning custom_w rounded text-white p-1"> {{marketing_templates}}</span></div>
                 <div class="card p-3 m-1 d-flex flex-row align-center shadow"><i class='bx bx-cog me-2'></i> Utility Templates <span class="bg-info custom_w rounded text-white p-1"> {{utility_templates}}</span></div>
@@ -63,11 +64,11 @@
 
 
         <div class="mb-3">
-            <div class="p-3 bg-gray text-white">
-                <h5 class="m-0 text-white">Explore Features</h5>
+            <div class="p-3 bg-light light_gray">
+                <h5 class="m-0 text-dark">Explore Features</h5>
             </div>
 
-            <div class="d-flex justify-content-around p-3 light_gray">
+            <div class="d-flex justify-content-around p-3 border">
                 <div class="d-flex card shadow flex-row p-2 w-50 me-3">
                     <img src="/static/assets/img/illustrations/contact-managemnet.webp" alt class="dashboard_img" />
                     <div>
