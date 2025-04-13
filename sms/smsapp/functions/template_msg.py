@@ -86,25 +86,31 @@ def handle_uploaded_file(file):
             tmp_file.write(chunk)
         return tmp_file.name
     
-def fetch_templates(waba_id, token, req_template_name=None, include_rejected=True):
-    
+def fetch_templates(waba_id, token, req_template_name=None, include_rejected=True, label=None):
+
     url = f"https://graph.facebook.com/v20.0/{waba_id}/message_templates"
     
     params = {
         'access_token': token,
         "limit": 6000
     }
-    
+
+    # Helper to identify template type
+    def get_template_label(template_data):
+        if template_data.get('num_cards', 0) > 0:
+            return 'carousel'
+        buttons = template_data.get('button', [])
+        if buttons and any(btn.get('type') == 'FLOW' for btn in buttons):
+            return 'flow'
+        return 'standard'
+
     try:
-        # Sending the request to the API
         response = requests.get(url, params=params)
-        response.raise_for_status()  # Raise an error for bad responses
+        response.raise_for_status()
 
         data = response.json()
-
         templates = []
-        
-        # Iterating through the templates in the response
+
         for entry in data.get("data", []):
             template_id = entry.get("id", "N/A")
             template_language = entry.get("language", "N/A")
@@ -116,29 +122,25 @@ def fetch_templates(waba_id, token, req_template_name=None, include_rejected=Tru
             header_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "HEADER"), None)
             button_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "BUTTONS"), None)
             carousel_component = next((comp for comp in entry.get("components", []) if comp.get("type") == "CAROUSEL"), None)
-             
-            # Extract media link from header component, if available
+
             media_link = None
             if header_component and 'example' in header_component:
                 media_link = header_component['example'].get('header_handle', [None])[0]
                 
             image_one, image_two, image_three = None, None, None
-            
             if carousel_component:
                 images = []
                 for card in carousel_component.get('cards', []):
                     header = next((comp for comp in card.get("components", []) if comp.get("type") == "HEADER"), None)
                     if header and 'example' in header:
                         images.extend(header['example'].get('header_handle', []))
-                
-                # Assign first three images to image_one, image_two, and image_three
+
                 image_one = images[0] if len(images) > 0 else None
                 image_two = images[1] if len(images) > 1 else None
                 image_three = images[2] if len(images) > 2 else None
-                
+
             num_cards = len(carousel_component['cards']) if carousel_component else 0
-            
-            # Prepare the template details
+
             template_data = {
                 "template_id": template_id,
                 "template_language": template_language,
@@ -155,18 +157,20 @@ def fetch_templates(waba_id, token, req_template_name=None, include_rejected=Tru
                 "image_three": image_three
             }
 
-            # If req_template_name is provided, filter based on the template name
-            if req_template_name:
-                if req_template_name.lower() == template_name.lower():
-                    templates.append(template_data)
-            else:
-                if include_rejected:
-                    templates.append(template_data)
-                elif status != "REJECTED":
-                    templates.append(template_data)
-        
+            # Detect the type of template
+            detected_label = get_template_label(template_data)
+
+            # Apply filters
+            if req_template_name and req_template_name.lower() != template_name.lower():
+                continue
+            if not include_rejected and status == "REJECTED":
+                continue
+            if label and label.lower() != detected_label:
+                continue
+
+            templates.append(template_data)
+
         return templates
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Error fetching templates: {e}")
         return None
