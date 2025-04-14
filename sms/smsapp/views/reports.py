@@ -361,7 +361,7 @@ def download_campaign_report3(request, report_id=None, insight=False, contact_li
                     error_code = current_error_code
                     break
         
-        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+        matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at, report_id)
         
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
         updated_matched_rows = []
@@ -606,7 +606,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
                     break
         
         try:
-            matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at)
+            matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at, report_id)
         except Exception as e:
             logger.error(f"Error in report_step_two {str(e)}")
         rows_dict = {(row[2], row[4]): row for row in matched_rows}
@@ -766,7 +766,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     error_codes_to_check = {"131031", "131053", "131042"}
     error_code = None 
     
-    if report_id != 1520:
+    if report_id != 1520 and report_id != 8753:
         for row in filtered_rows:
             current_error_code = str(row[7])
             if current_error_code in error_codes_to_check:
@@ -785,12 +785,12 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
-        if row[7] is not None and int(row[7]) == 131047 and error_code:
+        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [1520, 8753]:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
-        elif row[7] is not None and int(row[7]) == 131047:
+        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [1520, 8753]:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
@@ -841,7 +841,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
         connection.close()
         return response
 
-def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
+def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None, report_id=None):
     # Connect to the database
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
@@ -871,12 +871,12 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None):
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
-        if row[7] == 131047 and error_code:
+        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [1520, 8753]:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
-        elif row[7] == 131047:
+        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [1520, 8753]:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
