@@ -528,6 +528,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             wamids_list_str = None
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         if wamids_list_str:
+            logger.info("fetching data using wamids_list_str")
             return fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, report.campaign_title, insight)
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
