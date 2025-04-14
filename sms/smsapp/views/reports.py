@@ -750,6 +750,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     
     status_priority = {"read": 1, "sent": 2, "deliverd": 3}
     unique_rows = {}
+    logger.info(f'matched_rows {matched_rows}')
     for row in matched_rows:
         row_key = (row[0], row[3])
         current_status = row[5]
@@ -762,6 +763,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
                 unique_rows[row_key] = row
                 
     filtered_rows = list(unique_rows.values())
+    logger.info(f'filtered_rows {filtered_rows}')
     
     error_codes_to_check = {"131031", "131053", "131042"}
     error_code = None 
