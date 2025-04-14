@@ -791,6 +791,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
         elif row[7] == 131047:
+            logger.info("yes")
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
