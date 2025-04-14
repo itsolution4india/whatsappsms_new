@@ -785,12 +785,12 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
-        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [1520, 8753]:
+        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [2541, 2538, 2537]:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
-        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [1520, 8753]:
+        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [2541, 2538, 2537]:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
@@ -871,12 +871,12 @@ def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None, re
     updated_rows = []
     no_match_nums = []
     for row in matched_rows:
-        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [1520, 8753]:
+        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [2541, 2538, 2537]:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
-        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [1520, 8753]:
+        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [2541, 2538, 2537]:
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
             new_row_list = list(new_row)
