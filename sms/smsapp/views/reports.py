@@ -785,6 +785,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
+        logger.info(row[7])
         if row[7] == 131047 and error_code:
             row_list = list(row)
             row_list[7] = error_code
