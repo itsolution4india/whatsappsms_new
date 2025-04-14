@@ -750,7 +750,6 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     
     status_priority = {"read": 1, "sent": 2, "deliverd": 3}
     unique_rows = {}
-    logger.info(f'matched_rows {matched_rows}')
     for row in matched_rows:
         row_key = (row[0], row[3])
         current_status = row[5]
@@ -763,7 +762,6 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
                 unique_rows[row_key] = row
                 
     filtered_rows = list(unique_rows.values())
-    logger.info(f'filtered_rows {filtered_rows}')
     
     error_codes_to_check = {"131031", "131053", "131042"}
     error_code = None 
@@ -787,13 +785,13 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
-        logger.info(row[7])
-        if row[7] == 131047 and error_code:
+        logger.info(f"Value: {row[7]}, Type: {type(row[7]).__name__}")
+        if int(row[7]) == 131047 and error_code:
             row_list = list(row)
             row_list[7] = error_code
             row_list[8] = error_message
             updated_rows.append(tuple(row_list))
-        elif row[7] == 131047:
+        elif int(row[7]) == 131047:
             logger.info("yes")
             no_match_nums.append(row[4])
             new_row = copy.deepcopy(random.choice(non_reply_rows))
