@@ -662,7 +662,7 @@ print(response.json())  # If the response is JSON formatted</code></pre>
     <div class="text-content">
         <h4>Python Implementation for File Upload</h4>
         
-        <li>In Python, file uploads can be accomplished using the <span class="text-hilight">requests</span> library. This example demonstrates how to send a file to the <span class="text-hilight">'https://wtsdealnow.in/media_api/'</span> endpoint. The requests library handles the complexities of creating a multipart/form-data request, requiring only the separation of form fields and file data.</li><br>
+        <li>In Python, file uploads can be accomplished using the <span class="text-hilight">requests</span> library. This example demonstrates how to send a file to the <span class="text-hilight">'https://fastapi.wtsmessage.xyz/media_api/'</span> endpoint. The requests library handles the complexities of creating a multipart/form-data request, requiring only the separation of form fields and file data.</li><br>
         
         <li>The Python code opens the file in binary mode with <span class="text-hilight">open(file_path, 'rb')</span> and includes it in the <span class="text-hilight">files</span> dictionary. The <span class="text-hilight">requests.post()</span> method sends the request with both form data and file content. After checking the response status, the code properly closes the file to prevent resource leaks.</li><br>
     </div>
@@ -673,7 +673,7 @@ print(response.json())  # If the response is JSON formatted</code></pre>
     import requests
     
     # Define the API endpoint
-    url = 'https://wtsdealnow.in/media_api/'
+    url = 'https://fastapi.wtsmessage.xyz/media_api/'
     
     # Set your credentials and file path
     user_id = 'DemoTesting01'
@@ -754,7 +754,7 @@ curl_close($ch);</code></pre>
     <div class="text-content">
         <h4>Example File Upload to Media API</h4>
         
-        <li>To upload a file to an API using <span class="text-hilight">cURL</span> in PHP, you need to create a multipart/form-data request. In the provided code, the URL <span class="text-hilight">'https://wtsdealnow.in/media_api/'</span> serves as the endpoint for the file upload. The request includes authentication parameters <span class="text-hilight">'user_id'</span> and <span class="text-hilight">'api_token'</span>, along with the <span class="text-hilight">file</span> to be uploaded.</li><br>
+        <li>To upload a file to an API using <span class="text-hilight">cURL</span> in PHP, you need to create a multipart/form-data request. In the provided code, the URL <span class="text-hilight">'https://fastapi.wtsmessage.xyz/media_api/'</span> serves as the endpoint for the file upload. The request includes authentication parameters <span class="text-hilight">'user_id'</span> and <span class="text-hilight">'api_token'</span>, along with the <span class="text-hilight">file</span> to be uploaded.</li><br>
         
         <li>The PHP example uses <span class="text-hilight">CURLFile</span> to properly handle file uploads in the multipart request. A cURL session is initialized with <span class="text-hilight">curl_init()</span>, and options are set with <span class="text-hilight">curl_setopt()</span> to specify the POST method and form data. After executing the request with <span class="text-hilight">curl_exec()</span>, the response is captured and displayed, followed by proper cleanup with <span class="text-hilight">curl_close()</span>.</li><br>
     </div>
@@ -763,7 +763,7 @@ curl_close($ch);</code></pre>
         <pre><code class="language-python">
     <span>&lt;?php</span>
     // Define the API endpoint
-    $url = 'https://wtsdealnow.in/media_api/';
+    $url = 'https://fastapi.wtsmessage.xyz/media_api/';
     
     // Set your credentials and file path
     $user_id = 'DemoTesting01';
