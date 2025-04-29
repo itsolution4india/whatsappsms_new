@@ -71,6 +71,12 @@ def save_phone_number(request):
                     filter_message_response = filtermessageresponse(emails, interactive_text)
                 if reply_text and not latest_template:
                     filter_message_response = filtermessageresponse(emails, user_response)
+
+                if not filter_message_response:
+                    logger.info("No match found, applying default message fallback.")
+                    filter_message_response = MessageResponse.objects.filter(
+                        Q(user_response_iexact='default') & Q(user_in=emails)
+                    ).first()
                     
                 logger.info(f"reply_text: {reply_text}, {user_response}, {interactive_text}")
                 latest_user = CustomUser.objects.filter(
