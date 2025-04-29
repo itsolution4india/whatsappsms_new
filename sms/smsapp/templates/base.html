@@ -646,7 +646,7 @@
                                                         <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ marketing_coins }} </p>
                                                         {% endif %}
                                                         <p style="font-weight: bold"><a style="color: #697a8d;" href="/coins-history/" class="menu-link"><i class='bx bx-history'></i> Coin History</a></p>
-                                                        {% if valid_num %}
+                                                        {% if api_doc_access %}
                                                         <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link"><i class='bx bx-cog'></i> API Manual</a></p>
                                                         {% endif %}
                                                         
@@ -656,9 +656,6 @@
 
                                                         {% if twofauth_enable %}
                                                             <button class="enable" id="enable_2f">Enablr 2FA</button>
-                                                        {% endif %}
-                                                        {% if api_doc_access %}
-                                                            <button class="enable">API Documentation</button>
                                                         {% endif %}
                                                         
                                                         {% endif %}

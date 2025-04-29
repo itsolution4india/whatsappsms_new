@@ -75,7 +75,7 @@ def save_phone_number(request):
                 if not filter_message_response:
                     logger.info("No match found, applying default message fallback.")
                     filter_message_response = MessageResponse.objects.filter(
-                        Q(user_response_iexact='default') & Q(user_in=emails)
+                        Q(user_response__iexact='default') & Q(user_in=emails)
                     ).first()
                     
                 logger.info(f"reply_text: {reply_text}, {user_response}, {interactive_text}")
