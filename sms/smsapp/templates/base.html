@@ -691,6 +691,80 @@
                                         </div>
                                     </a>
                                 </div>
+<<<<<<< HEAD
+=======
+                                <ul class="dropdown-menu dropdown-menu-end" style="width: 350px !important;">
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            <div class="d-flex">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar avatar-online">
+                                                        <img src="/static/assets/img/avatars/1.png" alt
+                                                            class="w-px-40 h-auto rounded-circle" />
+                                                    </div>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <span class="fw-semibold d-block fs-5 ml-5 mt-1">{{user.email}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+
+                                    <li>
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne"
+                                                        style="font-weight: bold">
+                                                        My Profile
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <p style="font-weight: bold"><i class='bx bx-globe'></i> WABA ID : {{ WABA_ID }}</p>
+                                                        <p style="font-weight: bold"><i class='bx bxs-phone'></i> PHONE ID : {{ PHONE_ID }} </p>
+                                                        {% if user.email != 'samsungindia@gmail.com' %}
+                                                        <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ coins }} </p>
+                                                        <p style="font-weight: bold; background: #FFA500;" class="coin_body"><i class='bx bxs-megaphone'></i> Marketing : {{ marketing_coins }} </p>
+                                                        <p style="font-weight: bold; background: #2ECC71;" class="coin_body"><i class='bx bx-shield-quarter'></i> Utility : {{ authentication_coins }} </p>
+                                                        {% else %}
+                                                        <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ marketing_coins }} </p>
+                                                        {% endif %}
+                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/coins-history/" class="menu-link"><i class='bx bx-history'></i> Coin History</a></p>
+                                                        {% if api_doc_access %}
+                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link"><i class='bx bx-cog'></i> API Manual</a></p>
+                                                        {% endif %}
+                                                        
+                                                        {% if twofauth %}
+                                                            <button onclick="disable2FA()" style="background-color: #c00000 !important;">Disable 2FA</button>
+                                                        {% else %}
+
+                                                        {% if twofauth_enable %}
+                                                            <button class="enable" id="enable_2f">Enablr 2FA</button>
+                                                        {% endif %}
+                                                        
+                                                        {% endif %}
+                                                        
+                                                        <div>
+                                                            <a class="dropdown-item" href="{% url 'logout' %}">
+                                                                <i class="bx bx-power-off me-2"></i>
+                                                                <span class="align-middle" style="font-weight: bold">Log Out</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+>>>>>>> 85f6f46f2d5c2342d1184e1bfd058437f087dd6d
                             </li>
                             
                            
