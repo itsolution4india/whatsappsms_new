@@ -70,7 +70,6 @@ urlpatterns = [
     path('update-balance-report/', views.UpdateBalanceReportView.as_view(), name='update_balance_report'),
     path('get-report/', views.GetReportAPI.as_view(), name='get_report_api'),
     path('api_manual/', views.api_manual, name="api_manual"),
-    path('api-report/',views.apireport,name="api-report"),
     
     path('chat_bot/', chat_with_bot, name='chat_with_bot'),
     path('train/', train_bot, name='train_bot'),
