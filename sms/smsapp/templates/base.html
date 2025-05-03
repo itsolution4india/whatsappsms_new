@@ -1,6 +1,6 @@
 <html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
     data-template="vertical-menu-template-free">
-
+{% load static %}
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -11,7 +11,7 @@
     <meta name="description" content="" />
 
     <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/admin/css/font-awesome-min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -346,6 +346,67 @@
         .light_gray {
             background-color: #f0f0f0 !important;
         }
+        .icon-container {
+            width: 40px;
+            height: 40px;
+            background-color:#17a2b8;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .icon-container:hover {
+            background-color:F0C993 ;
+        }
+        .icon-container1 {
+            width: 40px;
+            height: 40px;
+            background-color:#696cff;
+            color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .icon-container1:hover {
+            background-color: #3e8e41 ;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            color: black;
+        }
+        
+        .hover-text {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            background-color: white;
+            padding: 8px;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.15);
+            display: none;
+            white-space: nowrap;
+            z-index: 100;
+        }
+        
+        .icon-container:hover .hover-text {
+            display: block;
+            color: white;
+            background-color:rgb(15, 6, 6);
+   
+        }
+        
     </style>
     {% block head %}
     {% endblock %}
@@ -458,6 +519,12 @@
                         <a href="/reports/" class="menu-link">
                             <i class="menu-icon text-primary tf-icons bx bxs-report"></i>
                             <div data-i18n="Tables">Reports</div>
+                        </a>
+                    </li>
+                    <li class="menu-item" id="Apireports">
+                        <a href="/api-report/" class="menu-link">
+                            <i class="menu-icon text-primary tf-icons bx bxs-report"></i>
+                            <div data-i18n="Tables">Api Reports</div>
                         </a>
                     </li>
                     <li class="menu-item" id="BotInteractions">
@@ -592,90 +659,41 @@
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <div class="d-flex">
-                                    <a class="nav_notifications shadow" href="/notifications/">
+                                <div class="d-flex align-items-center gap-2">
+                                    <!-- Coins Icon -->
+                                    <div class="icon-container rounded-circle">
+                                        <a href="#">
+                                            <i class='bx bx-dollar' style='color:#f7f7f7'  ></i>
+                                        </a>
+                                        <div class="hover-text">
+                                            Total Coins: {{ coins }}<br/>
+                                            Marketing Coins: {{ marketing_coins }}<br/>
+                                            Utility Coins: {{ authentication_coins }}
+                                        </div>
+                                    </div>
+                            
+                                    <!-- Logout Icon -->
+                                    <div class="icon-container1 rounded-circle">
+                                        <a href="{% url 'logout' %}">
+                                            <i class='bx bx-log-out' style='color:#f7f7f7'></i>
+                                        </a>
+                                    </div>
+                            
+                                    <!-- Notifications -->
+                                    <a class="nav_notifications shadow icon-container rounded-circle" href="/notifications/">
                                         <i class='bx bxs-bell'></i>
                                     </a>
-                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" id="userDropdown" onclick="toggleUserDropdown(event)">
+                            
+                                    <!-- Profile Image -->
+                                    <a class="nav-link dropdown-toggle hide-arrow" id="userDropdown" href="{% url 'profileuser' %}">
                                         <div class="avatar avatar-online">
                                             <img src="/static/assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                                         </div>
                                     </a>
                                 </div>
-                                <ul class="dropdown-menu dropdown-menu-end" style="width: 350px !important;">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="/static/assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block fs-5 ml-5 mt-1">{{user.email}}</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-
-                                    <li>
-                                        <div class="accordion" id="accordionExample">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header">
-                                                    <button class="accordion-button" type="button"
-                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                                                        aria-expanded="true" aria-controls="collapseOne"
-                                                        style="font-weight: bold">
-                                                        My Profile
-                                                    </button>
-                                                </h2>
-                                                <div id="collapseOne" class="accordion-collapse collapse show"
-                                                    data-bs-parent="#accordionExample">
-                                                    <div class="accordion-body">
-                                                        <p style="font-weight: bold"><i class='bx bx-globe'></i> WABA ID : {{ WABA_ID }}</p>
-                                                        <p style="font-weight: bold"><i class='bx bxs-phone'></i> PHONE ID : {{ PHONE_ID }} </p>
-                                                        {% if user.email != 'samsungindia@gmail.com' %}
-                                                        <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ coins }} </p>
-                                                        <p style="font-weight: bold; background: #FFA500;" class="coin_body"><i class='bx bxs-megaphone'></i> Marketing : {{ marketing_coins }} </p>
-                                                        <p style="font-weight: bold; background: #2ECC71;" class="coin_body"><i class='bx bx-shield-quarter'></i> Utility : {{ authentication_coins }} </p>
-                                                        {% else %}
-                                                        <p style="font-weight: bold; background: lavender;" class="coin_body"><i class='bx bxs-plus-circle'></i> Total coins : {{ marketing_coins }} </p>
-                                                        {% endif %}
-                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/coins-history/" class="menu-link"><i class='bx bx-history'></i> Coin History</a></p>
-                                                        {% if valid_num %}
-                                                        <p style="font-weight: bold"><a style="color: #697a8d;" href="/api_manual/" class="menu-link"><i class='bx bx-cog'></i> API Manual</a></p>
-                                                        {% endif %}
-                                                        
-                                                        {% if twofauth %}
-                                                            <button onclick="disable2FA()" style="background-color: #c00000 !important;">Disable 2FA</button>
-                                                        {% else %}
-
-                                                        {% if twofauth_enable %}
-                                                            <button class="enable" id="enable_2f">Enablr 2FA</button>
-                                                        {% endif %}
-                                                        {% endif %}
-                                                        
-                                                        <div>
-                                                            <a class="dropdown-item" href="{% url 'logout' %}">
-                                                                <i class="bx bx-power-off me-2"></i>
-                                                                <span class="align-middle" style="font-weight: bold">Log Out</span>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-
-                                </ul>
                             </li>
-                            <!--/ User -->
-                        </ul>
-                    </div>
+                            
+                           
                 </nav>
                 <!-- <button id="refreshButton" class="refresh-btn">
                     <i class='bx bx-loader'></i>
@@ -683,8 +701,6 @@
                 <button class="refresh-btn" id="refreshButton">
                     <i class='bx bx-refresh'></i>
                 </button>
-                <!-- <script src="/static/assets/js/it-solution-chat-sdk.js"></script> -->
-
                 <script>
                     function disable2FA() {
                         fetch("{% url 'disable_2fa' %}", {

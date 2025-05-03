@@ -295,7 +295,7 @@ def coin_transaction_view(request):
 
         # Add history
         CoinsHistory.objects.create(
-            user=str(user.username),
+            user=str(user.email),
             type=transaction_type,
             number_of_coins=number_of_coins,
             reason=reason,
