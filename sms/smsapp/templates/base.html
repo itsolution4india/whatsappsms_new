@@ -521,12 +521,12 @@
                             <div data-i18n="Tables">Reports</div>
                         </a>
                     </li>
-                    <li class="menu-item" id="Apireports">
+                    <!-- <li class="menu-item" id="Apireports">
                         <a href="/api-report/" class="menu-link">
                             <i class="menu-icon text-primary tf-icons bx bxs-report"></i>
                             <div data-i18n="Tables">Api Reports</div>
                         </a>
-                    </li>
+                    </li> -->
                     <li class="menu-item" id="BotInteractions">
                         <a href="/bot-interactions/" class="menu-link">
                             <i class='menu-icon text-primary tf-icons bx bx-conversation'></i>
@@ -662,7 +662,7 @@
                                 <div class="d-flex align-items-center gap-2">
                                     <!-- Coins Icon -->
                                     <div class="icon-container rounded-circle">
-                                        <a href="#">
+                                        <a href="{% url 'coins_history_list' %}">
                                             <i class='bx bx-dollar' style='color:#f7f7f7'  ></i>
                                         </a>
                                         <div class="hover-text">
