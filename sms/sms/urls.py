@@ -31,6 +31,7 @@ urlpatterns = [
     path('media_upload/', views.upload_media, name='upload_media'),
     path('generatemediaid/', views.generatemediaid, name='generatemediaid'),
     path('dashboard/', views.user_dashboard, name='dashboard'),
+    path('profileuser/',views.UserProfileView.as_view(), name='profileuser'),
     path('schedules/', views.schedules, name='schedules'),
     path('schedules/delete/<int:schedule_id>/', views.delete_schedule, name='delete_schedule'),
     path("reset-password/", views.initiate_password_reset, name="initiate_password_reset"),
