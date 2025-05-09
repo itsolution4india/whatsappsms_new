@@ -2,90 +2,92 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Error {{ code }}</title>
+  <title>Request Received</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
-    
-      display: flex;
-      /* align-items: center; */
-      justify-content: center;
-      height: 100vh;
       margin: 0;
+      padding: 0;
+     
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
 
     .error-box {
-      margin-top: 60px;
+     
       text-align: center;
-      background: #fff;
-      /* border-radius: 15px; */
-  
-      overflow: hidden;
-      max-width: 900px;
-      width: 100%;
-      /* padding: 30px; */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 30px 20px;
+      border-radius: 10px;
+    
+      max-width: 600px;
+      width: 90%;
     }
 
-    .error-image {
-      width: 100%;
-      max-height: 100px;
-      object-fit: contain;
+    .error-box h1 {
+      color: rgb(19, 210, 19);
+      font-size: 36px;
       margin-bottom: 20px;
-     
     }
 
-    .error-text h1 {
-     
-      font-size: 42px;
-      color: #dc3545;
-      margin-bottom: 10px;
+    .error-image img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      margin-bottom: 20px;
     }
 
     .error-text p {
-      margin-top: 280px;
-      font-size: 20px;
+      font-size: 18px;
       color: #002b5c;
       margin-bottom: 20px;
     }
 
-    .error-text a,
-    .error-text button {
+    .error-text a {
       display: inline-block;
       padding: 10px 20px;
-      margin: 5px;
-      margin-top: 5px;
       background: #dc3545;
-      color: white;
-      border: none;
+      color: #fff;
       border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
       transition: background 0.3s ease;
     }
 
-    .error-text a:hover,
-    .error-text button:hover {
+    .error-text a:hover {
       background: #c82333;
+    }
+
+    @media (max-width: 480px) {
+      .error-box h1 {
+        font-size: 28px;
+      }
+
+      .error-text p {
+        font-size: 16px;
+      }
+
+      .error-image img {
+        max-width: 220px;
+      }
     }
   </style>
 </head>
 <body>
- 
   <div class="error-box">
-    <h1 style="color: rgb(19, 210, 19);">Request Received 👍</h1>
+    <h1>Request Received 👍</h1>
     <div class="error-image">
-      <img src="/static/admin/img/request.gif" alt="Error" style="width: 70%; height: auto;">
+      <img src="/static/admin/img/request.gif" alt="Request in progress">
     </div>
     <div class="error-text">
- 
-      <p>Request is in progress Go back to home.</p>
+      <p>Request is in progress. You can go back to the home page.</p>
       <a href="/dashboard">← Go to Home</a>
-
     </div>
   </div>
 </body>
