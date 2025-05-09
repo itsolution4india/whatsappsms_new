@@ -19,3 +19,4 @@ from .generate_qr import generate_qr_code
 from .voice_call import dashboard, make_call
 from .create_carousels import TemplateCreateView, ImageUploadView
 from .profileuser import UserProfileView
+from .dynamic_error_view import dynamic_error_view

@@ -4,6 +4,9 @@ import logging
 from django.shortcuts import redirect
 from datetime import datetime
 from django.db import close_old_connections
+from django.urls import reverse
+import traceback
+
 
 logger = logging.getLogger('django.request')
 
@@ -50,3 +53,22 @@ class ConnectionCleanupMiddleware:
         close_old_connections()
         
         return response
+    
+
+class ErrorRedirectMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        try:
+            response = self.get_response(request)
+
+            # Check for all error codes you want to handle dynamically
+            if response.status_code in [400, 401, 403, 404, 405, 408, 500, 502, 503, 504]:
+                return redirect(f"{reverse('dynamic_error_view')}?code={response.status_code}")
+
+            return response
+        except Exception:
+            # Handle any unexpected error as 500
+            traceback.print_exc()
+            return redirect(f"{reverse('dynamic_error_view')}?code=500")

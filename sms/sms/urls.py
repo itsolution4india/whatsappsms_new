@@ -64,7 +64,7 @@ urlpatterns = [
     path('logs/download/', views.download_logs, name='download_logs'),
     path('coin-transaction/', views.coin_transaction_view, name='coin_transaction'),
     path('get-user-balance/', views.get_user_balance),
-    
+    path('error/',views.dynamic_error_view,name='dynamic_error_view'),
     path('api/users/', views.customuser_list_view, name='customuser-list'),
     path('api/users/<str:email>/', views.customuser_detail_view, name='customuser-detail'),
     path('update-balance-report/', views.UpdateBalanceReportView.as_view(), name='update_balance_report'),
