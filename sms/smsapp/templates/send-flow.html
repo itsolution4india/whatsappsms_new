@@ -100,10 +100,14 @@
               <p style="text-align: center;"></p>
               <div class="mb-3">
                 <label class="form-label">Write Contact Numbers</label>
+                <p class="text-warning">* Ensure numbers include country code. </p>
                 <textarea class="form-control" placeholder="9844XXXXXX" id="floatingTextarea"
-                  name="contact_number"></textarea>
+                  name="contact_number" oninput="validateInput()"></textarea>
+                <p id="errorMsg" class="text-danger mt-1" style="display:none;">Remove special characters!</p>
               </div>
-              <button type="submit" class="btn btn-primary" onclick="setActionType('submit')">Submit</button>
+              <p id="statusMsg" class="mt-2 fw-bold text-info"></p>
+
+              <button type="submit" class="btn btn-primary" onclick="setActionType('submit')" id="submitBtn" disabled>Submit</button>
     
               {% if messages %}
                 {% for message in messages %}
@@ -189,7 +193,45 @@
         </div>
       </div>
 </div>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const campaignInput = document.querySelector('input[name="campaign_title"]');
+    const templateSelect = document.querySelector('select[name="params"]');
+    const contactTextarea = document.querySelector('textarea[name="contact_number"]');
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('errorMsg');
+  
+    // Initial validation
+    validateForm();
+  
+    // Listen to input changes
+    campaignInput.addEventListener('input', validateForm);
+    templateSelect.addEventListener('change', validateForm);
+    contactTextarea.addEventListener('input', validateForm);
+  
+    function isContactValid(value) {
+      return /^[0-9,\s\n\r]*$/.test(value);
+    }
+  
+    function validateForm() {
+      const isCampaignFilled = campaignInput.value.trim() !== '';
+      const isTemplateSelected = templateSelect.value.trim() !== '';
+      const contactValue = contactTextarea.value.trim();
+      const isContactFilled = contactValue !== '';
+      const contactValid = isContactValid(contactValue);
+  
+      errorMsg.style.display = contactValid ? 'none' : 'block';
+  
+      submitBtn.disabled = !(isCampaignFilled && isTemplateSelected && isContactFilled && contactValid);
+    }
+  
+    // Disable submit button on actual submission
+    document.getElementById('mediaForm').addEventListener('submit', function () {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...'; // Optional: gives user feedback
+    });
+  });
+  </script>
 
   <script>
     function setActionType(actionType) {
