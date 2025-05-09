@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'smsapp.middleware.Log404DetailsMiddleware',
     'smsapp.middleware.ConnectionCleanupMiddleware',
+    'smsapp.middleware.ErrorRedirectMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
