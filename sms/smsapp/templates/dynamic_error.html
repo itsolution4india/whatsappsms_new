@@ -1,85 +1,86 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Request Received</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+{% extends 'base.html' %}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-     
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-    .error-box {
-     
-      text-align: center;
-      padding: 30px 20px;
-      border-radius: 10px;
-    
-      max-width: 600px;
-      width: 90%;
-    }
+  body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
+  .center-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+    min-height: 91vh;
+  }
+
+  .error-box {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+  }
+
+  .error-box h1 {
+    color: rgb(19, 210, 19);
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .error-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .error-text p {
+    font-size: 18px;
+    color: #002b5c;
+    margin-bottom: 20px;
+  }
+
+  .error-text a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #dc3545;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+
+  .error-text a:hover {
+    background: #c82333;
+  }
+
+  @media (max-width: 480px) {
     .error-box h1 {
-      color: rgb(19, 210, 19);
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .error-image img {
-      width: 100%;
-      max-width: 450px;
-      height: auto;
-      margin-bottom: 20px;
+      font-size: 28px;
     }
 
     .error-text p {
-      font-size: 18px;
-      color: #002b5c;
-      margin-bottom: 20px;
+      font-size: 16px;
     }
 
-    .error-text a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #dc3545;
-      color: #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s ease;
+    .error-image img {
+      max-width: 220px;
     }
+  }
+</style>
+{% endblock %}
 
-    .error-text a:hover {
-      background: #c82333;
-    }
-
-    @media (max-width: 480px) {
-      .error-box h1 {
-        font-size: 28px;
-      }
-
-      .error-text p {
-        font-size: 16px;
-      }
-
-      .error-image img {
-        max-width: 220px;
-      }
-    }
-  </style>
-</head>
-<body>
+{% block content %}
+<div class="center-wrapper">
   <div class="error-box">
     <h1>Request Received 👍</h1>
     <div class="error-image">
@@ -90,5 +91,5 @@
       <a href="/dashboard">← Go to Home</a>
     </div>
   </div>
-</body>
-</html>
+</div>
+{% endblock %}
