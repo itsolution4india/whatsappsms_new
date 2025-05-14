@@ -195,43 +195,53 @@
 </div>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const campaignInput = document.querySelector('input[name="campaign_title"]');
-    const templateSelect = document.querySelector('select[name="params"]');
-    const contactTextarea = document.querySelector('textarea[name="contact_number"]');
-    const submitBtn = document.getElementById('submitBtn');
-    const errorMsg = document.getElementById('errorMsg');
+      const campaignInput = document.querySelector('input[name="campaign_title"]');
+      const templateSelect = document.querySelector('select[name="params"]');
+      const contactTextarea = document.querySelector('textarea[name="contact_number"]');
+      const submitBtn = document.getElementById('submitBtn');
+      const fileInput = document.getElementById('id_files');  // CSV file input
+      const add91Checkbox = document.getElementById('add_91'); // Add 91 checkbox
+      const errorMsg = document.getElementById('errorMsg');
   
-    // Initial validation
-    validateForm();
+      // Initial validation
+      validateForm();
   
-    // Listen to input changes
-    campaignInput.addEventListener('input', validateForm);
-    templateSelect.addEventListener('change', validateForm);
-    contactTextarea.addEventListener('input', validateForm);
+      // Listen to input changes
+      campaignInput.addEventListener('input', validateForm);
+      templateSelect.addEventListener('change', validateForm);
+      contactTextarea.addEventListener('input', validateForm);
+      fileInput.addEventListener('change', validateForm); // Listen for file input change
+      add91Checkbox.addEventListener('change', validateForm); // Listen for checkbox change
   
-    function isContactValid(value) {
-      return /^[0-9,\s\n\r]*$/.test(value);
-    }
+      function isContactValid(value) {
+          return /^[0-9,\s\n\r]*$/.test(value);
+      }
   
-    function validateForm() {
-      const isCampaignFilled = campaignInput.value.trim() !== '';
-      const isTemplateSelected = templateSelect.value.trim() !== '';
-      const contactValue = contactTextarea.value.trim();
-      const isContactFilled = contactValue !== '';
-      const contactValid = isContactValid(contactValue);
+      function validateForm() {
+          const isCampaignFilled = campaignInput.value.trim() !== '';
+          const isTemplateSelected = templateSelect.value.trim() !== '';
+          const contactValue = contactTextarea.value.trim();
+          const isContactFilled = contactValue !== '';
+          const contactValid = isContactValid(contactValue);
+          const isFileUploaded = fileInput.files.length > 0;  // Check if file is uploaded
+          const isAdd91Checked = add91Checkbox.checked;  // Check if Add 91 checkbox is checked
   
-      errorMsg.style.display = contactValid ? 'none' : 'block';
+          // Show or hide error message based on contact validity
+          errorMsg.style.display = contactValid ? 'none' : 'block';
+       
   
-      submitBtn.disabled = !(isCampaignFilled && isTemplateSelected && isContactFilled && contactValid);
-    }
+          // Enable the submit button if the conditions are met
+          submitBtn.disabled = !(isCampaignFilled && isTemplateSelected && (isContactFilled || isFileUploaded));
+      }
   
-    // Disable submit button on actual submission
-    document.getElementById('mediaForm').addEventListener('submit', function () {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting...'; // Optional: gives user feedback
-    });
+      // Disable submit button on actual submission
+      document.getElementById('mediaForm').addEventListener('submit', function () {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...'; // Optional: gives user feedback
+      });
   });
   </script>
+    
 
   <script>
     function setActionType(actionType) {
