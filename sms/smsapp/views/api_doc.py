@@ -14,6 +14,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 
 def customuser_list_view(request):
     users = CustomUser.objects.all().values('email', 'username', 'phone_number_id', 'whatsapp_business_account_id',
@@ -103,6 +108,8 @@ class GetReportAPI(APIView):
             user_data = customuser_list_view(request)
             if isinstance(user_data, JsonResponse):
                 data = json.loads(user_data.content.decode('utf-8'))
+                for user in data:
+                    AppID = user.get('register_app__app_id')
                 filtered_user = next((user for user in data if user['user_id'] == user_id and user['api_token'] == api_token), None)
                 
                 if not filtered_user:
@@ -126,15 +133,15 @@ class GetReportAPI(APIView):
             # Database connection setup
             try:
                 connection = mysql.connector.connect(
-                    host="localhost",
-                    port=3306,
-                    user="fedqrbtb_wtsdealnow",
-                    password="Solution@97",
-                    database="fedqrbtb_report",
-                    auth_plugin='mysql_native_password'
+                    host=os.getenv('SQLHOST'),
+                    port=os.getenv('SQLPORT'),
+                    user=os.getenv('SQLUSER'),
+                    password=os.getenv('SQLPASSWORD'),
+                    database= os.getenv('SQLDATABASE'),
+                    auth_plugin=os.getenv('SQLAUTH')
                 )
                 cursor = connection.cursor()
-                query = "SELECT * FROM webhook_responses"
+                query = "SELECT * FROM webhook_responses_{AppID}"
                 cursor.execute(query)
                 rows = cursor.fetchall()
             except mysql.connector.Error as err:
