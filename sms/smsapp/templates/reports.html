@@ -317,9 +317,14 @@
                                     Pending...
                                 </button>
                             {% else %}
-                             <button type="button" class="btn btn-danger" style="border-radius: 10px !important;">
-                                    Failed !
+                             <div class="btn-group" role="group">
+                                <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
+                                    <i class='bx bxs-download'></i>
+                                </a>
+                                <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
+                                    <i class='bx bx-line-chart'></i>
                                 </button>
+                            </div>
                             {% endif %}
                                 <!-- Delete button -->
                                 <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
