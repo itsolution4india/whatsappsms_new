@@ -141,7 +141,7 @@ class GetReportAPI(APIView):
                     auth_plugin=os.getenv('SQLAUTH')
                 )
                 cursor = connection.cursor()
-                query = "SELECT * FROM webhook_responses_{AppID}"
+                query = f"SELECT * FROM webhook_responses_{AppID}"
                 cursor.execute(query)
                 rows = cursor.fetchall()
             except mysql.connector.Error as err:
