@@ -303,35 +303,44 @@
                         <td>{{ report.message_delivery }}</td>
                         <td style="width: 200px;">
                             {% if report.template_name in template_names %}
-                            {% if report.start_request_id and report.start_request_id != "0" and report.end_request_id and report.end_request_id != "0" %}
-                                <div class="btn-group" role="group">
-                                    <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
-                                        <i class='bx bxs-download'></i>
-                                    </a>
-                                    <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
-                                        <i class='bx bx-line-chart'></i>
-                                    </button>
-                                </div>
-                            {% elif report.start_request_id != "0" or report.end_request_id != "0" %}
-                                <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
-                                    Pending...
-                                </button>
-                            {% else %}
-                             <div class="btn-group" role="group">
-                                <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
-                                    <i class='bx bxs-download'></i>
-                                </a>
-                                <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
-                                    <i class='bx bx-line-chart'></i>
-                                </button>
-                            </div>
-                            {% endif %}
+                                {% with report.created_at|date:"U"|add:"86400" as cutoff_timestamp %}
+                                    {% now "U" as current_timestamp %}
+                                    {% if report.start_request_id and report.start_request_id != "0" and report.end_request_id and report.end_request_id != "0" %}
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
+                                                <i class='bx bxs-download'></i>
+                                            </a>
+                                            <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
+                                                <i class='bx bx-line-chart'></i>
+                                            </button>
+                                        </div>
+                                    {% elif report.start_request_id == "0" or report.end_request_id == "0" %}
+                                        {% if current_timestamp|add:"0" > cutoff_timestamp %}
+                                            <button type="button" class="btn btn-danger" style="border-radius: 10px !important;">
+                                                Failed
+                                            </button>
+                                        {% else %}
+                                            <button type="button" class="btn btn-warning" style="border-radius: 10px !important;">
+                                                Pending...
+                                            </button>
+                                        {% endif %}
+                                    {% else %}
+                                        <div class="btn-group" role="group">
+                                            <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
+                                                <i class='bx bxs-download'></i>
+                                            </a>
+                                            <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
+                                                <i class='bx bx-line-chart'></i>
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
                                 <!-- Delete button -->
                                 <button type="button" class="btn btn-danger" onclick="deleteReport({{ report.id }})">
                                     <i class='bx bx-trash'></i>
                                 </button>
                             {% else %}
-                            <span class="text-muted">Not available</span>
+                                <span class="text-muted">Not available</span>
                             {% endif %}
                         </td>
                     </tr>
