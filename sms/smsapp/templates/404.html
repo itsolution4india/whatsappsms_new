@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops! Something's Not Right</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            padding: 2rem;
+            border-radius: 1rem;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 720px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #95f871;
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #95f871 0%, #ef4444 100%);
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 2rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            box-shadow: 0 10px 15px -3px rgba(239, 68, 68, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 20px -3px rgba(239, 68, 68, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover::after {
+            transform: translateY(0);
+        }
+
+        .particles-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: #95f871;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 10s infinite linear;
+        }
+
+        .error-illustration {
+            margin: 1rem auto 2rem;
+            position: relative;
+            width: 220px;
+            height: 150px;
+        }
+
+        .human-figure {
+            position: absolute;
+            width: 60px;
+            height: 120px;
+            left: 30px;
+            bottom: 20px;
+        }
+
+        .head {
+            width: 40px;
+            height: 40px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .body {
+            width: 30px;
+            height: 50px;
+            background: #cbd5e1;
+            margin: 5px auto 0;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .legs {
+            display: flex;
+            justify-content: space-between;
+            width: 30px;
+            margin: 0 auto;
+        }
+
+        .leg {
+            width: 12px;
+            height: 30px;
+            background: #cbd5e1;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .arms {
+            position: absolute;
+            top: 50px;
+            width: 70px;
+            display: flex;
+            justify-content: space-between;
+            left: -5px;
+        }
+
+        .arm {
+            width: 12px;
+            height: 40px;
+            background: #cbd5e1;
+            border-radius: 5px;
+        }
+
+        .road-sign {
+            position: absolute;
+            right: 30px;
+            bottom: 20px;
+        }
+
+        .sign {
+            width: 80px;
+            height: 50px;
+            background: #95f871;
+            border-radius: 5px;
+            position: relative;
+            left: -32.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        .question-mark {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 70px;
+            color: #95f871;
+            animation: bounce 2s infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-20px);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-700px) translateX(var(--tx));
+                opacity: 0;
+            }
+        }
+
+        .tips {
+            display: flex;
+            background-color: rgba(30, 41, 59, 0.7);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .tips h3 {
+            color: #95f871;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .tips ul {
+            padding-left: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .tips li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-container" id="particles"></div>
+    
+    <div class="container">
+        <h1><img src="https://www.itsolution4india.com/assets/images/white-logo.png" alt="IT Solution 4 India Logo" style="width: 70px;"> Oops! You Took a Wrong Turn</h1>
+        <p>It looks like you might have made a mistake in the process. Don't worry, it happens to the best of us!</p>
+        
+        
+        
+        <div class="tips">
+            <div>
+                <h3>Here's What Might Have Gone Wrong:</h3>
+                <ul>
+                    <li>You may have skipped a required step in the process</li>
+                    <li>The information you entered might be in an incorrect format</li>
+                    <li>You might have used an expired or invalid link</li>
+                    <li>Your session might have timed out due to inactivity</li>
+                </ul>
+            </div>
+            <div class="error-illustration">
+            <div class="question-mark">?</div>
+            <div class="human-figure">
+                <div class="head"></div>
+                <div class="body"></div>
+                <div class="arms">
+                    <div class="arm"></div>
+                    <div class="arm"></div>
+                </div>
+                <div class="legs">
+                    <div class="leg"></div>
+                    <div class="leg"></div>
+                </div>
+            </div>
+            <div class="road-sign">
+                <div class="sign">!</div>
+            </div>
+        </div>
+        </div>
+        
+        <p>Let's get you back on track!</p>
+        <a href="/" class="btn">Return to Home</a>
+    </div>
+
+    <script>
+        // Create the particles
+        const particlesContainer = document.getElementById('particles');
+        
+        // Create particles
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random size
+            const size = Math.random() * 8 + 2;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            // Random position
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.bottom = `-${size}px`;
+            
+            // Random horizontal movement
+            particle.style.setProperty('--tx', `${(Math.random() - 0.5) * 300}px`);
+            
+            // Random animation duration
+            particle.style.animationDuration = `${Math.random() * 7 + 3}s`;
+            
+            // Random animation delay
+            particle.style.animationDelay = `${Math.random() * 5}s`;
+            
+            particlesContainer.appendChild(particle);
+        }
+
+        // Add interactive effect to the button
+        const button = document.querySelector('.btn');
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            button.style.background = `radial-gradient(circle at ${x}px ${y}px, #95f871 0%, #ef4444 70%)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.background = 'linear-gradient(135deg, #95f871 0%, #ef4444 100%)';
+        });
+
+        // Make the figure and sign occasionally move slightly
+        function animateElements() {
+            const figure = document.querySelector('.human-figure');
+            const sign = document.querySelector('.road-sign');
+            
+            if (Math.random() > 0.5) {
+                figure.style.transform = `translateY(${Math.random() * 5 - 2.5}px)`;
+                setTimeout(() => {
+                    figure.style.transform = 'translateY(0)';
+                }, 500);
+            } else {
+                sign.style.transform = `translateY(${Math.random() * 5 - 2.5}px)`;
+                setTimeout(() => {
+                    sign.style.transform = 'translateY(0)';
+                }, 500);
+            }
+        }
+        
+        setInterval(animateElements, 3000);
+    </script>
+</body>
+</html>

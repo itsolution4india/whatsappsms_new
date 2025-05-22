@@ -1,17 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from ..models import ReportInfo,Templates, ScheduledMessage, CountryPermission, Whitelist_Blacklist, Group, Contact
+from ..models import ReportInfo,Templates, ScheduledMessage, CountryPermission, Whitelist_Blacklist
 from ..media_id import get_media_format,generate_id
 from django.contrib import messages
-import json, re, openpyxl
+import json, re
 from ..functions.template_msg import fetch_templates
 from django.utils.timezone import now
 from ..functions.send_messages import send_messages, display_phonenumber_id, save_schedule_messages
 from ..utils import check_schedule_timings, validate_balance, get_token_and_app_id, display_whatsapp_id, logger, show_discount, make_variables_list, get_template_details, clean_phone_number
 from .auth import check_user_permission
 from ..functions.flows import send_flow_messages_with_report, send_carousel_messages_with_report
-from .reports import get_latest_rows_by_contacts, get_unique_phone_numbers
-from ..fastapidata import send_validate_req, send_carousel_message_api
 import pandas as pd
 from ..media_id import process_media_file
 import time
@@ -24,11 +22,6 @@ def Send_Sms(request):
     ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
     token, _ = get_token_and_app_id(request)
     current_user = request.user
-    
-    scheduled_messages = ScheduledMessage.objects.filter(schedule_date=now().date())
-    scheduled_times = scheduled_messages.values_list('schedule_time', flat=True)
-    
-    groups = Group.objects.all()
     
     try:
         report_list = ReportInfo.objects.filter(email=request.user)
@@ -50,8 +43,6 @@ def Send_Sms(request):
             "template_images_three": json.dumps([template['image_three'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
-            "scheduled_times": scheduled_times,
-            "groups":groups
         }
     except Exception as e:
         logger.error(f"Error fetching templates: {e}")
@@ -65,7 +56,6 @@ def Send_Sms(request):
             "template_images_one": json.dumps([]),
             "template_images_two": json.dumps([]),
             "template_images_three": json.dumps([]),
-            "scheduled_times": scheduled_times
         }
 
     context.update({
@@ -90,7 +80,6 @@ def Send_Sms(request):
 
             campaign_title = request.POST.get("campaign_title")
             template_name = request.POST.get("params")
-            selectedGroup = request.POST.get("selectedGroup", None)
             add_91 = request.POST.get("add_91")
             for key in request.POST:
                 if key.startswith('variable'):
@@ -113,15 +102,8 @@ def Send_Sms(request):
             contacts = request.POST.get("contact_number", "").strip()
             action_type = request.POST.get("action_type")
 
-            if selectedGroup and selectedGroup != 'nan':
-                group = Group.objects.get(name=selectedGroup)
-                available_contacts = Contact.objects.filter(groups=group) if group else Contact.objects.all()
-                contact_list = [contact.phone_number for contact in available_contacts]
-            else:
-                contact_list = None
             numbers_list = set()
             
-            contacts = contact_list if contact_list and not contacts else contacts
             if contacts:
                 try:
                     numbers_list.update(contacts.split("\r\n"))
@@ -240,20 +222,20 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
 
     def whitelist(valid_numbers, whitelist_number, blacklist_numbers, discount):
         final_list = []
-        
-        # Add whitelisted numbers that aren't blacklisted
-        for num in valid_numbers:
-            if num in whitelist_number and num not in blacklist_numbers:
-                final_list.append(num)
-        
-        # Add non-whitelisted, non-blacklisted numbers after discount
+        whitelist_set = set(whitelist_number)
+        blacklist_set = set(blacklist_numbers)
+
+        # One pass through valid_numbers
         count = 0
         for num in valid_numbers:
-            if num not in whitelist_number and num not in blacklist_numbers:
+            if num in whitelist_set:
+                if num not in blacklist_set:
+                    final_list.append(num)
+            elif num not in blacklist_set:
                 count += 1
                 if count > discount:
                     final_list.append(num)
-        
+
         return final_list
 
     valid_numbers = list(valid_numbers)
@@ -272,7 +254,8 @@ def validate_phone_numbers(request, contacts, uploaded_file, discount, add_91=No
     final_list = whitelist(valid_numbers, whitelist_number, blacklist_number, discountnumber)
     
     if uploaded_file:
-        csv_variables = [record for record in csv_variables if record[0] in [num for num in final_list]]
+        final_set = set(final_list)
+        csv_variables = [record for record in csv_variables if record[0] in final_set]
     
     return valid_numbers, final_list, csv_variables
 
