@@ -3,7 +3,7 @@ import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.utils import timezone
 from pytz import timezone as pytz_timezone
-from datetime import datetime
+from datetime import datetime,timedelta
 import ast
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -31,12 +31,13 @@ def run_scheduled_message(message_id):
     logger.info(f"Executing message send for ID: {message_id} at {timezone.now()}")
     try:
         # Use shorter lock duration
-        with FileLock(lock_file, timeout=30):  # 30 second timeout on lock acquisition
+     # 30 second timeout on lock acquisition
             try:
                 # Use a shorter transaction
                 with transaction.atomic(using='default', savepoint=False):
                     try:
-                        message = ScheduledMessage.objects.select_for_update(nowait=True).get(id=message_id)
+                        message = ScheduledMessage.objects.select_for_update(skip_locked=True).get(id=message_id)
+                     
                         if message.is_sent:
                             logger.info(f"Message {message_id} has already been sent. Skipping.")
                             return
@@ -50,6 +51,7 @@ def run_scheduled_message(message_id):
                         campaign_title = message.campaign_title
                         admin_schedule = message.admin_schedule
                         submitted_variables = message.submitted_variables
+                        schedule_type=message.schedule_type
                         
                     except ScheduledMessage.DoesNotExist:
                         logger.error(f"Scheduled message with id {message_id} not found")
@@ -71,6 +73,7 @@ def run_scheduled_message(message_id):
                 
                 # Perform sending outside transaction
                 if admin_schedule:
+                    
                     # Admin sending logic
                     language = None
                     media_type = None
@@ -92,7 +95,28 @@ def run_scheduled_message(message_id):
                             submitted_variables, 
                             None
                         )
-                    
+
+                    if schedule_type=='Daily':
+                        current_date = datetime.strptime(message.schedule_date, '%Y-%m-%d').date()
+                        next_date = current_date + timedelta(days=1)
+                        message.schedule_date = next_date.strftime('%Y-%m-%d')
+                        message.is_sent = False
+                        message.save()
+                    else :
+                        current_datetime = datetime.strptime(f"{message.schedule_date} {message.schedule_time}", '%Y-%m-%d %H:%M:%S')
+    
+                        # Add one hour
+                        next_datetime = current_datetime + timedelta(hours=1)
+                        
+                        # Update date and time separately
+                        message.schedule_date = next_datetime.strftime('%Y-%m-%d')
+                        message.schedule_time = next_datetime.strftime('%H:%M:%S')
+                        
+                        message.is_sent = False
+                        message.save()
+
+                                  
+              
                 else:
                     # Regular sending
                     send_messages(
@@ -109,7 +133,7 @@ def run_scheduled_message(message_id):
                         submitted_variables=submitted_variables
                     )
                 
-                # Update message status in a separate transaction
+                # Update message status in a separate transaction   
                 with transaction.atomic():
                     message = ScheduledMessage.objects.select_for_update().get(id=message_id)
                     message.is_sent = True if not admin_schedule else False
@@ -167,7 +191,7 @@ def schedule_messages():
                     )
                     scheduled_datetime = india_timezone.localize(scheduled_datetime)
 
-                    if scheduled_datetime > now:
+                    if scheduled_datetime > now:    
                         job_id = f"message_{schedule.id}"
                         if job_id not in existing_jobs:
                             logger.info(f"Adding job: {job_id} with scheduled time: {scheduled_datetime}")
