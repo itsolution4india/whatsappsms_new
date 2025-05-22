@@ -141,10 +141,16 @@ class Templates(models.Model):
 class ScheduledMessage(models.Model):
     DAILY = 'Daily'
     ONCE = 'Once'
+    HOURLY='Hourly'
+    DAILYAT8='Dailyat8'
+    
+
     
     SCHEDULE_TYPE_CHOICES = [
         (DAILY, 'Daily'),
         (ONCE, 'Once'),
+        (HOURLY,'Hourly'),
+       
     ]
     current_user = models.CharField(max_length=50)
     template_name = models.CharField(max_length=255)
@@ -155,7 +161,7 @@ class ScheduledMessage(models.Model):
     schedule_date = models.CharField(max_length=50)
     schedule_time = models.CharField(max_length=50)
     schedule_type = models.CharField(
-        max_length=5,
+        max_length=7,
         choices=SCHEDULE_TYPE_CHOICES,
         default=ONCE,
     )

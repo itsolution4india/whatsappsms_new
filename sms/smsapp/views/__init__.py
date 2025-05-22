@@ -20,3 +20,4 @@ from .voice_call import dashboard, make_call
 from .create_carousels import TemplateCreateView, ImageUploadView
 from .profileuser import UserProfileView
 from .dynamic_error_view import dynamic_error_view
+from .adminschedule import admin_schedule
