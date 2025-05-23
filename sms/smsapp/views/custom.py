@@ -91,6 +91,9 @@ def facebook_sdk_view(request):
     else:
         # Handle other HTTP methods (shouldn't happen in your case)
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+def facebook_sdk_view_two(request):
+    return render(request, 'facebook_sdknew.html')
 
 def coins_history_list(request):
     # Handle custom date range
