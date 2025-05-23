@@ -38,6 +38,7 @@ urlpatterns = [
     path("otp-verification/<str:email>/<str:token>/",views.verify_otp,name="otp_verification"),
     path("change-password/<str:email>/<str:token>/",views.change_password, name="change_password"),
     path('facebook-sdk/',views.facebook_sdk_view, name='facebook_sdk'),
+    path('facebook-sdk-two/',views.facebook_sdk_view_two, name='facebook_sdk_view_two'),
     path('user_responses/', views.save_phone_number, name='user_responses'),
     path('create_flow_message/', views.create_flow_message, name='create_flow_message'),
     path('send_flow_message/', views.send_flow_message, name='send_flow_message'),
