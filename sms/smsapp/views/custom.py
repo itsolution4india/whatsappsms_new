@@ -86,14 +86,11 @@ def facebook_sdk_view(request):
 
     elif request.method == 'GET':
         # Return the rendered HTML template for GET requests
-        return render(request, 'facebook_sdk.html')
+        return render(request, 'facebook_sdknew.html')
 
     else:
         # Handle other HTTP methods (shouldn't happen in your case)
         return JsonResponse({'error': 'Method not allowed'}, status=405)
-    
-def facebook_sdk_view_two(request):
-    return render(request, 'facebook_sdknew.html')
 
 def coins_history_list(request):
     # Handle custom date range
