@@ -20,19 +20,12 @@ from .auth import username
 def create_flow_message(request):
     token, _ = get_token_and_app_id(request)
     waba_id = display_whatsapp_id(request)
-    campaign_list = fetch_templates(display_whatsapp_id(request), token)
 
     flows = get_flows(token, waba_id)
     local_db_flows = Flows.objects.filter(email=request.user)
     flow_value = list(local_db_flows.values_list('flows', flat=True))
     filtered_flows = [flow for flow in flows if flow['name'] in flow_value] if flow_value else []
-    
-    if campaign_list is None :
-        campaign_list=[]
-
-    template_database = Templates.objects.filter(email=request.user)
-    template_value = list(template_database.values_list('templates', flat=True))
-    templates = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+        
     if request.method == 'POST':
         # Retrieve form data from POST request
         flow_name = request.POST.get('name')
@@ -60,7 +53,6 @@ def create_flow_message(request):
         "username": username(request),
         "WABA_ID": display_whatsapp_id(request),
         "PHONE_ID": display_phonenumber_id(request),
-        "campaign_list": templates,
     }
 
     return render(request, "create_flow_template.html", context)
