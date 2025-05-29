@@ -142,14 +142,9 @@ def get_phone_numbers_api(request):
                     for record in last_replay_data
                 ]
                 
-                chart_data = process_response_data(data_as_dict)
-                today_responses, last_7_days_responses, _, _ = calculate_responses(chart_data)
-                
                 return JsonResponse({
                     'status': 'success',
                     'phone_numbers': data_as_dict,
-                    'today_responses': today_responses,
-                    'last_7_days_responses': last_7_days_responses
                 })
         
         return JsonResponse({

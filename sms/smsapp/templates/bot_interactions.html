@@ -202,8 +202,6 @@
 {% block content %}
     <div class="d-flex align-items-center mt-2 ms-2 border p-2" style="background-color: #f0f0f0;">
         <h4 style="width: 25%;">User Interactions</h4>
-        <h6 class="ms-2 mb-0">Today responses: <span id="todayResponses" class="custom_w bg-primary rounded-circle p-1">0</span></h6>
-        <h6 class="ms-2 mb-0">Last 7 days responses: <span id="last7DaysResponses" class="custom_w bg-primary rounded-circle p-1">0</span></h6>
     </div>
 
     <div class="d-flex">
@@ -376,8 +374,6 @@
                     
                     if (data.status === 'success') {
                         this.renderPhoneNumbers(data.phone_numbers);
-                        document.getElementById('todayResponses').textContent = data.today_responses;
-                        document.getElementById('last7DaysResponses').textContent = data.last_7_days_responses;
                     } else {
                         // Clear loading and show error
                         const container = document.getElementById('phoneNumberContainer');
