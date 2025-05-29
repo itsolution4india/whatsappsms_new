@@ -104,8 +104,8 @@ urlpatterns = [
     path('notifications/delete/<int:pk>/', views.delete_notification, name='delete_notification'),
     path('api/pushsms/', views.process_sms_request, name='process_sms_request'),
     
-    # path('api/get-phone-numbers/', views.get_phone_numbers_api, name='get_phone_numbers_api'),
-    # path('api/get-conversation/', views.get_conversation_api, name='get_conversation_api'),
-    # path('api/send-message/', views.send_message_api, name='send_message_api'),
+    path('api/get-phone-numbers/', views.get_phone_numbers_api, name='get_phone_numbers_api'),
+    path('api/get-conversation/', views.get_conversation_api, name='get_conversation_api'),
+    path('api/send-message/', views.send_message_api, name='send_message_api'),
  
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
