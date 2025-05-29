@@ -1,640 +1,574 @@
 {% extends 'base.html' %}
+
 {% block head %}
-<style>
-    .chat-container {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        padding: 20px;
-        max-height: 600px;
-        overflow-y: auto;
-    }
-    .message {
-        max-width: 70%;
-        margin-bottom: 10px;
-        padding: 10px;
-        border-radius: 10px;
-        clear: both;
-        position: relative;
-    }
-    .message-df {
-        background-color: #e5f3ff;
-        float: left;
-        margin-right: auto;
-        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    }
-    .message-messages {
-        background-color: #dcf8c6;
-        float: right;
-        margin-left: auto;
-        box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    }
-    .message-timestamp {
-        font-size: 0.7em;
-        color: #888;
-        text-align: right;
-        margin-top: 5px;
-    }
-    
-    .text-message { border-left: 4px solid #3498db; }
-    .list-message { border-left: 4px solid #2ecc71; }
-    .reply-button-message { border-left: 4px solid #e74c3c; }
-    h2 { color: #333; }
-    .message-type { 
-        font-weight: bold;
-        color: #666;
-        margin-bottom: 10px;
-    }
-    .message-details { 
-        background-color: #f9f9f9;
-        padding: 10px;
-        border-radius: 4px;
-    }
-    img {
-        width: 160px;
-        height: 100px;
-    }
-    .phone-selector {
-        width: 25%;
-        background: #d3e3ff;
-        margin: 10px;
-        padding: 15px;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .phone-selector div {
-        height: 55.50vh;
-        overflow-y: scroll;
-        scrollbar-width: thin;
-    }
-    
-    .phone-number-btn {
-        margin: 5px;
-        padding: 8px 15px;
-        border: 1px solid #dee2e6;
-        border-radius: 20px;
-        background-color: white;
-        cursor: pointer;
-        transition: all 0.2s;
-    }
-    
-    .phone-number-btn.active {
-        background-color: #007bff;
-        color: white;
-        border-color: #007bff;
-    }
-    
-    .phone-number-btn:hover {
-        background-color: #f8f9fa;
-    }
-    
-    .phone-number-btn.active:hover {
-        background-color: #0056b3;
-    }
-    .chat-container {
-        width: 100%;
-        margin-top: 10px;
-        background: #eafae6;
-        height: 75vh;
-        padding-bottom: 60px;
-    }
-    .dropdown-menu {
-        left: auto !important;
-    }
-    a {
-        text-decoration: none !important;
-    }
-
-.chat-form {
-    width: 100%;
-}
-
-.input-group {
-    display: flex;
-    gap: 10px;
-    position: fixed !important;
-    width: 55% !important;
-    bottom: 1% !important;
-    padding: 7px 15px !important;
-    background: #a5a6ff !important;
-    border-radius: 50px !important;
-}
-
-.form-control {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.btn-primary {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 80px;
-    padding: 8px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-primary:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-.spinner {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.spinner svg {
-    width: 20px;
-    height: 20px;
-}
-
-.hidden {
-    display: none !important;
-}
-
-.animate-spin {
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.form-feedback {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    color: white;
-    transform: translateY(-100px);
-    transition: transform 0.3s ease;
-    z-index: 5001;
-}
-
-.form-feedback.success {
-    background-color: #28a745;
-}
-
-.form-feedback.error {
-    background-color: #dc3545;
-}
-
-.form-feedback.show {
-    transform: translateY(0);
-}
-#phoneSearchInput {
-    margin: 10px 5px;
-    border-radius: 5px;
-    border: 1px solid gainsboro;
-    height: 35px;
-    padding: 10px;
-}
-.phone-number-btn {
-    color: #121212 !important;
-}
-.notification_count {
-    padding: 3px 10px;
-    background: #00b800;
-    border-radius: 50px;
-    color: #fff;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 12px;
-}
-@media only screen and (max-width: 460px) {
-  .phone-selector {
-    width: 100% !important;
-  }
-}
-#it-solution-chat-toggle {
-    display: none !important;
-}
-
-.upload-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .file-input {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-    .icon-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 40px;
-        height: 40px;
-        border: 2px solid #ccc;
-        border-radius: 8px;
-        transition: border-color 0.3s;
-    }
-
-    .icon-wrapper:hover {
-        border-color: #3b82f6;
-    }
-
-    .icon-wrapper i {
-        font-size: 24px;
-        color: #6b7280;
-    }
-
-    .success i {
-        color: #22c55e;
-    }
-    .custom_w {
-        width: 30px !important;
-        height: 30px;
-        text-align: center;
-        display: inline-block;
-        color: #fff;
-    }
-</style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-{% endblock %}
-{% block content %}
-
-<div class="d-flex align-items-center mt-2 ms-2 border p-2" style="background-color: #f0f0f0;">
-    <!-- <h4 class="mt-2">User Interactions {% if contact_name %}for <span style="background: #a5a6ff;color: white;padding: 0px 10px;">{{ contact_name }}</span> {% endif %}</h4> -->
-    <h4 style="width: 25%;">User Interactions</h4>
-    <h6 class="ms-2 mb-0">Today responses: <span class="custom_w bg-primary rounded-circle p-1">{{ today_responses }}</span></h6>
-    <h6 class="ms-2 mb-0">Last 7 days responses: <span class="custom_w bg-primary rounded-circle p-1">{{ last_7_days_responses }}</span></h6>
-</div>
-
-<div class="d-flex">
-    <div class="phone-selector">
-        <h5>Select Phone Number:</h5>
-        <input 
-            type="text" 
-            id="phoneSearchInput" 
-            class="search-input" 
-            placeholder="Search phone numbers..."
-        >
-        <div id="phoneNumberContainer" class="d-flex flex-column">
-            {% for row in all_replies_dict %}
-            <button 
-                class="phone-number-btn text-start position-relative {% if row.number == selected_phone %}active{% endif %}"
-                onclick="window.location.href='?phone_number={{ row.number }}'">
-                <span class="fw-bold">{{ row.name }}</span><br>
-                <span>{{ row.number }}</span><br>
-                {% if row.status == "unread" %}
-                <span class="notification_count {% if row.number == selected_phone %}d-none{% endif %}">{{ row.count }}</span>
-                {% endif %}
-            </button>
-            {% endfor %}
-        </div>
-    </div>
-    
-    <div class="chat-container" style="position: relative;">
-        {% for item in combined_data %}
-            <div class="message {% if item.source == 'df' %}message-df{% else %}message-messages{% endif %}">
-                {% if item.message_body %}
-                {% if item.message_type == 'image' %}
-                    <i class='bx bx-landscape d-flex justify-content-center' style="font-size: 100px;"></i>
-                    <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Image</button>
-                    </div>
-                {% elif item.message_type == 'document' %}
-                    <i class='bx bxs-file-doc d-flex justify-content-center' style="font-size: 100px;"></i>
-                    <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Document</button>
-                    </div>
-                {% elif item.message_type == 'video' %}
-                    <i class='bx bx-video d-flex justify-content-center' style="font-size: 100px;"></i>
-                    <div>
-                        <button onclick="downloadMedia('{{ item.message_body }}')" style="border-radius: 10px;">Download Video</button>
-                    </div>
-                {% else %}
-                    <div>
-                        {{ item.message_body }}
-                    </div>
-                {% endif %}
-            
-                    <div class="message-timestamp">
-                        {% if item.source == 'df' and item.Date %}
-                            {{ item.Date|date:"M d, Y H:i" }}
-                        {% elif item.source == 'messages' and item.created_at %}
-                            {{ item.created_at|date:"M d, Y H:i" }}
-                        {% endif %}
-                    </div>
-                    
-                {% endif %}
-    
-                {% if item.created_at %}
-                    <div class="message-timestamp">
-                        {% if item.source == 'messages' and item.created_at %}
-                            {{ item.created_at|date:"M d, Y H:i" }}
-                        {% endif %}
-                    </div>
-                    {% if item.message_type == 'text' %}
-                    <div>
-                        <p>{{ item.body }}</p>
-                    </div>
-                    {% endif %}
-                    
-                    {% if item.message_type == 'list_message' %}
-                        <div>
-                            <strong>{{ item.body }}</strong>
-                            {% for section in item.sections %}
-                                <div>{{ section.title }}</div>
-                                {% for row in section.rows %}
-                                    <div>
-                                        {{ row.title }} - {{ row.description }}
-                                    </div>
-                                {% endfor %}
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-    
-                    {% if item.message_type == 'reply_button_message' %}
-                        <div>
-                            <strong>{{ item.body }}</strong>
-                            <div id="button-container-{{ forloop.counter }}"></div>
-                        </div>
-                    {% endif %}
-    
-                    {% if item.message_type == 'location_message' %}
-                        <div style="width: 160px;">
-                            <strong>{{ item.body }}</strong><br>
-                            <img src="https://i.sstatic.net/HILmr.png" alt />
-                        </div>
-                    {% endif %}
-    
-                    {% if item.message_type == 'location_request_message' %}
-                        <div style="width: 160px;">
-                            <strong>{{ item.body }}</strong><br>
-                            <img src="https://i.sstatic.net/HILmr.png" alt />
-                        </div>
-                    {% endif %}
-    
-    
-                {% endif %}
-            </div>
-    
-            <!-- Move the JavaScript inside the loop to handle each message separately -->
-            <script type="text/javascript">
-                var buttonData = {{ item.button_data|safe }};
-                console.log("buttonData for message {{ forloop.counter }}", buttonData);
-                
-                // Iterate through the button data and display titles
-                window.onload = function() {
-                    var container = document.getElementById('button-container-{{ forloop.counter }}');
-                    if (Array.isArray(buttonData)) {
-                        // Iterate over buttonData directly since it's an array of objects
-                        buttonData.forEach(function(button) {
-                            var title = button.reply.title;
-                            var titleElement = document.createElement('div');
-                            titleElement.innerText = title;
-                            container.appendChild(titleElement);
-                        });
-                    } else {
-                        console.error("buttonData is not an array for message {{ forloop.counter }}");
-                    }
-                };
-            </script>
+    <style>
+        .phone-selector {
+            width: 300px;
+            border-right: 1px solid #ddd;
+            padding: 1rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        #refreshButton {
+            display: none;
+        }
         
-        {% endfor %}
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+        
+        .messages-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            margin: 1rem;
+        }
+        
+        .phone-number-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .phone-number-btn:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .phone-number-btn.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .phone-number-btn.hidden {
+            display: none;
+        }
+        
+        .message {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+        
+        .message-df {
+            background-color: #e3f2fd;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .message-messages {
+            background-color: #f5f5f5;
+            margin-right: auto;
+        }
+        
+        .message-timestamp {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .chat-input-form {
+            padding: 1rem;
+            border-top: 1px solid #ddd;
+            background: white;
+        }
+        
+        .chat-form {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .upload-container {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .icon-wrapper {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #007bff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .icon-wrapper.success {
+            background: #28a745;
+            border-color: #28a745;
+            color: white;
+        }
+        
+        .form-feedback {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .form-feedback.show {
+            transform: translateX(0);
+        }
+        
+        .form-feedback.success {
+            background-color: #28a745;
+        }
+        
+        .form-feedback.error {
+            background-color: #dc3545;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .spinner svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .animate-spin {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .notification_count {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #dc3545;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+    </style>
+{% endblock %}
 
-        {% if selected_phone %}
-<div class="chat-input-form">
-    <form id="chatForm" class="chat-form">
-        {% csrf_token %}
-        <input type="hidden" name="phone_number" value="{{ selected_phone }}" id="phoneNumber">
-        {% if user.email != 'samsungindia@gmail.com' %}
-        <div class="input-group">
-            <div class="upload-container">
-                <input 
-                    name="attachment" 
-                    id="attachment"
-                    type="file" 
-                    class="file-input" 
-                    accept=".jpeg,.png,.pdf,.mp4"
-                >
-                <div class="icon-wrapper">
-                    <i class='bx bx-upload'></i>
+{% block content %}
+    <div class="d-flex align-items-center mt-2 ms-2 border p-2" style="background-color: #f0f0f0;">
+        <h4 style="width: 25%;">User Interactions</h4>
+        <h6 class="ms-2 mb-0">Today responses: <span id="todayResponses" class="custom_w bg-primary rounded-circle p-1">0</span></h6>
+        <h6 class="ms-2 mb-0">Last 7 days responses: <span id="last7DaysResponses" class="custom_w bg-primary rounded-circle p-1">0</span></h6>
+    </div>
+
+    <div class="d-flex">
+        <div class="phone-selector">
+            <h5>Select Phone Number:</h5>
+            <input 
+                type="text" 
+                id="phoneSearchInput" 
+                class="search-input" 
+                placeholder="Search phone numbers..."
+            >
+            <div id="phoneNumberContainer" class="d-flex flex-column">
+                <!-- Phone numbers will be loaded here dynamically -->
+            </div>
+        </div>
+        
+        <div class="chat-container">
+            <div id="messagesContainer" class="messages-container" style="position: relative;">
+                <div class="text-center text-muted">
+                    Select a phone number to view conversation
                 </div>
             </div>
+            
+            <div id="chatInputForm" class="chat-input-form" style="display: none;">
+                <form id="chatForm" class="chat-form">
+                    <input type="hidden" name="phone_number" value="" id="phoneNumber">
+                    
+                    <div class="upload-container">
+                        <input 
+                            name="attachment" 
+                            id="attachment"
+                            type="file" 
+                            class="file-input" 
+                            accept=".jpeg,.png,.pdf,.mp4"
+                        >
+                        <div class="icon-wrapper">
+                            <i class='bx bx-upload'></i>
+                        </div>
+                    </div>
 
-            <input type="text" 
-                   name="chat_text" 
-                   id="chatText" 
-                   class="form-control" 
-                   placeholder="Type your message..." 
-                   required>
-            {% if user_status %}
-            {% if user_status == "active" %}
-            <button type="submit" class="btn btn-primary">
-                <span class="button-text">Send</span>
-                <span class="spinner hidden">
-                    <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                </span>
-            </button>
-            {% else %}
-            <button class="btn btn-secondary" disabled>User not active</button>
-            {% endif %}
-            {% endif %}
+                    <input type="text" 
+                           name="chat_text" 
+                           id="chatText" 
+                           class="form-control" 
+                           placeholder="Type your message..." 
+                           required>
+                           
+                    <button type="submit" class="btn btn-primary" id="sendButton">
+                        <span class="button-text">Send</span>
+                        <span class="spinner hidden">
+                            <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </span>
+                    </button>
+                </form>
+            </div>
         </div>
-        {% endif %}
-    </form>
-</div>
-{% endif %}
     </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-    const fileInput = document.querySelector('.file-input');
-    const iconWrapper = document.querySelector('.icon-wrapper');
-    const iconElement = iconWrapper.querySelector('i');
-    // const fileNameDiv = document.querySelector('.file-name');
+    <script>
+        class ChatInterface {
+            constructor() {
+                this.selectedPhone = null;
+                this.userStatus = null;
+                this.contactName = null;
+                this.init();
+            }
 
-    const allowedTypes = [
-        'image/jpeg',
-        'image/png',
-        'application/pdf',
-        'video/mp4'
-    ];
+            init() {
+                this.loadPhoneNumbers();
+                this.setupEventListeners();
+                this.createFeedbackDiv();
+            }
 
-    fileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        
-        if (file) {
-            if (allowedTypes.includes(file.type)) {
-                // Update icon and add success class
-                iconElement.className = 'bx bx-check';
-                iconWrapper.classList.add('success');
+            createFeedbackDiv() {
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'form-feedback';
+                feedbackDiv.id = 'feedbackDiv';
+                document.body.appendChild(feedbackDiv);
+            }
+
+            setupEventListeners() {
+                // Search functionality
+                document.getElementById('phoneSearchInput').addEventListener('input', (e) => {
+                    this.filterPhoneNumbers(e.target.value);
+                });
+
+                // File upload handler
+                const fileInput = document.querySelector('.file-input');
+                const iconWrapper = document.querySelector('.icon-wrapper');
+                const iconElement = iconWrapper.querySelector('i');
+
+                fileInput.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                    const allowedTypes = ['image/jpeg', 'image/png', 'application/pdf', 'video/mp4'];
+                    
+                    if (file) {
+                        if (allowedTypes.includes(file.type)) {
+                            iconElement.className = 'bx bx-check';
+                            iconWrapper.classList.add('success');
+                        } else {
+                            alert('Please select a valid file type (JPEG, PNG, PDF, or MP4)');
+                            fileInput.value = '';
+                            this.resetUploader();
+                        }
+                    } else {
+                        this.resetUploader();
+                    }
+                });
+
+                // Form submission
+                document.getElementById('chatForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.sendMessage();
+                });
+            }
+
+            resetUploader() {
+                const iconElement = document.querySelector('.icon-wrapper i');
+                const iconWrapper = document.querySelector('.icon-wrapper');
+                iconElement.className = 'bx bx-upload';
+                iconWrapper.classList.remove('success');
+            }
+
+            async loadPhoneNumbers() {
+                try {
+                    const response = await fetch('/api/get-phone-numbers/');
+                    const data = await response.json();
+                    
+                    if (data.status === 'success') {
+                        this.renderPhoneNumbers(data.phone_numbers);
+                        document.getElementById('todayResponses').textContent = data.today_responses;
+                        document.getElementById('last7DaysResponses').textContent = data.last_7_days_responses;
+                    } else {
+                        this.showFeedback('Error loading phone numbers', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    this.showFeedback('Error loading phone numbers', 'error');
+                }
+            }
+
+            renderPhoneNumbers(phoneNumbers) {
+                const container = document.getElementById('phoneNumberContainer');
+                container.innerHTML = '';
+
+                phoneNumbers.forEach(phone => {
+                    const button = document.createElement('button');
+                    button.className = 'phone-number-btn text-start position-relative text-dark';
+                    button.innerHTML = `
+                        <span class="fw-bold">${phone.name || 'Unknown'}</span><br>
+                        <span>${phone.number}</span><br>
+                        ${phone.status === 'unread' ? `<span class="notification_count">${phone.count}</span>` : ''}
+                    `;
+                    
+                    button.addEventListener('click', () => {
+                        this.selectPhoneNumber(phone.number, button);
+                    });
+                    
+                    container.appendChild(button);
+                });
+            }
+
+            filterPhoneNumbers(searchTerm) {
+                const phoneButtons = document.querySelectorAll('.phone-number-btn');
+                const term = searchTerm.toLowerCase();
                 
-                // Display file name
-                fileNameDiv.textContent = file.name;
-            } else {
-                // Reset if invalid file type
-                alert('Please select a valid file type (JPEG, PNG, PDF, or MP4)');
-                fileInput.value = '';
-                resetUploader();
+                phoneButtons.forEach(button => {
+                    const text = button.textContent.toLowerCase();
+                    button.classList.toggle('hidden', !text.includes(term));
+                });
             }
-        } else {
-            resetUploader();
-        }
-    });
 
-    function resetUploader() {
-        iconElement.className = 'bx bx-upload';
-        iconWrapper.classList.remove('success');
-        fileNameDiv.textContent = '';
-    }
-</script>
-<script>
-    function downloadMedia(mediaId) {
-        const url = `/download/${mediaId}/`;
-        
-        fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to fetch media.');
-            }
-            return response.blob();  // Convert response to a blob
-        })
-        .then(blob => {
-            // Create a download link and simulate a click
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = `facebook_media_${mediaId}`;  // Set the filename
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);  // Clean up
-        })
-        .catch(error => {
-            console.error('Error downloading media:', error);
-        });
-    }
-</script>
-
-<script>
-    // Call the function when the document is ready
-    $(document).ready(function() {
-        $('#BotInteractions').addClass('active');
-    });
-</script>
-<script>
-    document.getElementById('phoneSearchInput').addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const phoneButtons = document.querySelectorAll('.phone-number-btn');
-        
-        phoneButtons.forEach(button => {
-            const phoneNumber = button.textContent.toLowerCase();
-            
-            if (phoneNumber.includes(searchTerm)) {
-                button.classList.remove('hidden');
-            } else {
-                button.classList.add('hidden');
-            }
-        });
-    });
-</script>
-<script>
-    // Wait for DOM to be fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create feedback div
-        const feedbackDiv = document.createElement('div');
-        feedbackDiv.className = 'form-feedback';
-        document.body.appendChild(feedbackDiv);
-        
-        // Function to show feedback message
-        function showFeedback(message, type) {
-            feedbackDiv.textContent = message;
-            feedbackDiv.className = `form-feedback ${type}`;
-            
-            // Show the feedback
-            requestAnimationFrame(() => {
-                feedbackDiv.classList.add('show');
-            });
-            
-            // Hide after 3 seconds
-            setTimeout(() => {
-                feedbackDiv.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Function to set loading state
-        function setLoading(isLoading) {
-            const form = document.getElementById('chatForm');
-            const button = form.querySelector('button');
-            const buttonText = form.querySelector('.button-text');
-            const spinner = form.querySelector('.spinner');
-            const input = document.getElementById('chatText');
-            
-            if (isLoading) {
-                button.disabled = true;
-                input.disabled = true;
-                buttonText.classList.add('hidden');
-                spinner.classList.remove('hidden');
-            } else {
-                button.disabled = false;
-                input.disabled = false;
-                buttonText.classList.remove('hidden');
-                spinner.classList.add('hidden');
-            }
-        }
-        
-        // Form submission handler
-        const form = document.getElementById('chatForm');
-        if (form) {
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
+            async selectPhoneNumber(phoneNumber, buttonElement) {
+                // Update UI
+                document.querySelectorAll('.phone-number-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                buttonElement.classList.add('active');
                 
+                // Hide notification count
+                const notificationCount = buttonElement.querySelector('.notification_count');
+                if (notificationCount) {
+                    notificationCount.classList.add('d-none');
+                }
+
+                this.selectedPhone = phoneNumber;
+                document.getElementById('phoneNumber').value = phoneNumber;
+                
+                // Show loading in messages container
+                const messagesContainer = document.getElementById('messagesContainer');
+                messagesContainer.innerHTML = '<div class="loading-overlay"><div class="spinner-border"></div></div>';
+                
+                try {
+                    await this.loadConversation(phoneNumber);
+                } catch (error) {
+                    console.error('Error loading conversation:', error);
+                    messagesContainer.innerHTML = '<div class="text-center text-danger">Error loading conversation</div>';
+                }
+            }
+
+            async loadConversation(phoneNumber) {
+                try {
+                    const response = await fetch(`/api/get-conversation/?phone_number=${phoneNumber}`);
+                    const data = await response.json();
+                    
+                    if (data.status === 'success') {
+                        this.userStatus = data.user_status;
+                        this.contactName = data.contact_name;
+                        this.renderMessages(data.messages);
+                        this.updateChatInput();
+                    } else {
+                        this.showFeedback('Error loading conversation', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    this.showFeedback('Error loading conversation', 'error');
+                }
+            }
+
+            renderMessages(messages) {
+                const container = document.getElementById('messagesContainer');
+                container.innerHTML = '';
+
+                messages.forEach((message, index) => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = `message ${message.source === 'df' ? 'message-df' : 'message-messages'}`;
+                    
+                    let content = '';
+                    
+                    if (message.source === 'df') {
+                        // User messages
+                        if (message.message_type === 'image') {
+                            content = `
+                                <i class='bx bx-landscape d-flex justify-content-center' style="font-size: 100px;"></i>
+                                <div>
+                                    <button onclick="downloadMedia('${message.message_body}')" style="border-radius: 10px;">Download Image</button>
+                                </div>
+                            `;
+                        } else if (message.message_type === 'document') {
+                            content = `
+                                <i class='bx bxs-file-doc d-flex justify-content-center' style="font-size: 100px;"></i>
+                                <div>
+                                    <button onclick="downloadMedia('${message.message_body}')" style="border-radius: 10px;">Download Document</button>
+                                </div>
+                            `;
+                        } else if (message.message_type === 'video') {
+                            content = `
+                                <i class='bx bx-video d-flex justify-content-center' style="font-size: 100px;"></i>
+                                <div>
+                                    <button onclick="downloadMedia('${message.message_body}')" style="border-radius: 10px;">Download Video</button>
+                                </div>
+                            `;
+                        } else {
+                            content = `<div>${message.message_body || ''}</div>`;
+                        }
+                        
+                        if (message.Date) {
+                            content += `<div class="message-timestamp">${new Date(message.Date).toLocaleString()}</div>`;
+                        }
+                    } else {
+                        // Bot messages
+                        if (message.message_type === 'text') {
+                            content = `<div><p>${message.body || ''}</p></div>`;
+                        } else if (message.message_type === 'list_message') {
+                            content = `<div><strong>${message.body || ''}</strong>`;
+                            if (message.sections) {
+                                message.sections.forEach(section => {
+                                    content += `<div>${section.title}</div>`;
+                                    section.rows.forEach(row => {
+                                        content += `<div>${row.title} - ${row.description}</div>`;
+                                    });
+                                });
+                            }
+                            content += '</div>';
+                        } else if (message.message_type === 'reply_button_message') {
+                            content = `<div><strong>${message.body || ''}</strong>`;
+                            if (message.button_data) {
+                                try {
+                                    const buttonData = typeof message.button_data === 'string' ? 
+                                        JSON.parse(message.button_data) : message.button_data;
+                                    if (Array.isArray(buttonData)) {
+                                        buttonData.forEach(button => {
+                                            if (button.reply && button.reply.title) {
+                                                content += `<div>${button.reply.title}</div>`;
+                                            }
+                                        });
+                                    }
+                                } catch (e) {
+                                    console.error('Error parsing button data:', e);
+                                }
+                            }
+                            content += '</div>';
+                        } else if (message.message_type === 'location_message' || message.message_type === 'location_request_message') {
+                            content = `
+                                <div style="width: 160px;">
+                                    <strong>${message.body || ''}</strong><br>
+                                    <img src="https://i.sstatic.net/HILmr.png" alt="Location" />
+                                </div>
+                            `;
+                        }
+                        
+                        if (message.created_at) {
+                            content += `<div class="message-timestamp">${new Date(message.created_at).toLocaleString()}</div>`;
+                        }
+                    }
+                    
+                    messageDiv.innerHTML = content;
+                    container.appendChild(messageDiv);
+                });
+
+                // Scroll to bottom
+                container.scrollTop = container.scrollHeight;
+            }
+
+            updateChatInput() {
+                const chatInputForm = document.getElementById('chatInputForm');
+                const sendButton = document.getElementById('sendButton');
+                
+                if (this.selectedPhone) {
+                    chatInputForm.style.display = 'block';
+                    
+                    if (this.userStatus === 'active') {
+                        sendButton.disabled = false;
+                        sendButton.innerHTML = `
+                            <span class="button-text">Send</span>
+                            <span class="spinner hidden">
+                                <svg class="animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </span>
+                        `;
+                    } else {
+                        sendButton.disabled = true;
+                        sendButton.innerHTML = 'User not active';
+                    }
+                } else {
+                    chatInputForm.style.display = 'none';
+                }
+            }
+
+            async sendMessage() {
                 const chatText = document.getElementById('chatText').value.trim();
                 const phoneNumber = document.getElementById('phoneNumber').value.trim();
                 const attachmentInput = document.getElementById('attachment');
                 const attachment = attachmentInput ? attachmentInput.files[0] : null;
-                
-                // Validate inputs
+
                 if (!chatText) {
-                    showFeedback('Please enter a message', 'error');
+                    this.showFeedback('Please enter a message', 'error');
                     return;
                 }
-                
+
                 if (!phoneNumber) {
-                    showFeedback('Phone number is missing', 'error');
+                    this.showFeedback('Phone number is missing', 'error');
                     return;
                 }
-                
-                setLoading(true);
-                
+
+                this.setLoading(true);
+
                 try {
                     const formData = new FormData();
                     formData.append('chat_text', chatText);
@@ -642,30 +576,112 @@
                     if (attachment) {
                         formData.append('attachment', attachment);
                     }
-                    formData.append('phone_number', phoneNumber);
-                    
-                    const response = await fetch('{% url "user_interaction" %}', {
+
+                    const response = await fetch('/api/send-message/', {
                         method: 'POST',
-                        body: formData
+                        body: formData,
+                        headers: {
+                            'X-CSRFToken': this.getCsrfToken()
+                        }
                     });
-                    
+
                     const data = await response.json();
-                    console.log('Response:', data);
-                    
+
                     if (data.status === 'success') {
                         document.getElementById('chatText').value = '';
-                        showFeedback('Message sent successfully', 'success');
+                        attachmentInput.value = '';
+                        this.resetUploader();
+                        this.showFeedback('Message sent successfully', 'success');
+                        
+                        // Reload conversation to show the new message
+                        await this.loadConversation(phoneNumber);
                     } else {
-                        showFeedback(data.message || 'Error sending message', 'error');
+                        this.showFeedback(data.message || 'Error sending message', 'error');
                     }
                 } catch (error) {
                     console.error('Error:', error);
-                    showFeedback('Error sending message', 'error');
+                    this.showFeedback('Error sending message', 'error');
                 } finally {
-                    setLoading(false);
+                    this.setLoading(false);
                 }
+            }
+
+            setLoading(isLoading) {
+                const button = document.querySelector('#chatForm button');
+                const buttonText = button.querySelector('.button-text');
+                const spinner = button.querySelector('.spinner');
+                const input = document.getElementById('chatText');
+
+                if (isLoading) {
+                    button.disabled = true;
+                    input.disabled = true;
+                    buttonText.classList.add('hidden');
+                    spinner.classList.remove('hidden');
+                } else {
+                    if (this.userStatus === 'active') {
+                        button.disabled = false;
+                    }
+                    input.disabled = false;
+                    buttonText.classList.remove('hidden');
+                    spinner.classList.add('hidden');
+                }
+            }
+
+            showFeedback(message, type) {
+                const feedbackDiv = document.getElementById('feedbackDiv');
+                feedbackDiv.textContent = message;
+                feedbackDiv.className = `form-feedback ${type}`;
+
+                requestAnimationFrame(() => {
+                    feedbackDiv.classList.add('show');
+                });
+
+                setTimeout(() => {
+                    feedbackDiv.classList.remove('show');
+                }, 3000);
+            }
+
+            getCsrfToken() {
+                const cookies = document.cookie.split(';');
+                for (let cookie of cookies) {
+                    const [name, value] = cookie.trim().split('=');
+                    if (name === 'csrftoken') {
+                        return value;
+                    }
+                }
+                return '';
+            }
+        }
+
+        // Global function for downloading media (if needed)
+        function downloadMedia(mediaId) {
+            const url = `/download/${mediaId}/`;
+            
+            fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch media.');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = `facebook_media_${mediaId}`;
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error downloading media:', error);
             });
         }
-    });
+
+        // Initialize the chat interface when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new ChatInterface();
+        });
     </script>
 {% endblock %}
