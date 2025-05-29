@@ -1208,7 +1208,6 @@ def get_unique_phone_numbers():
 @login_required
 def get_user_responses(request):
     try:
-        Phone_ID = display_phonenumber_id(request)
         _, AppID = get_token_and_app_id(request)
         connection = mysql.connector.connect(
             host=os.getenv('SQLHOST'),
