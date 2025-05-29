@@ -433,7 +433,14 @@
                 const container = document.getElementById('messagesContainer');
                 container.innerHTML = '';
 
-                messages.forEach((message, index) => {
+                const sortedMessages = messages.sort((a, b) => {
+                    const dateA = a.source === 'df' ? new Date(a.Date) : new Date(a.created_at);
+                    const dateB = b.source === 'df' ? new Date(b.Date) : new Date(b.created_at);
+                    
+                    return dateA - dateB;
+                });
+
+                sortedMessages.forEach((message, index) => {
                     const messageDiv = document.createElement('div');
                     messageDiv.className = `message ${message.source === 'df' ? 'message-df' : 'message-messages'}`;
                     
