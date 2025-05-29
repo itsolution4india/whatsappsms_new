@@ -72,13 +72,8 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'template_name',
         'message_date',
         'message_delivery',
-        "contact_list",
-        "waba_id_list",
         "start_request_id",
         "end_request_id"
-        
-        
-
     )
     list_filter = (
         'email',
