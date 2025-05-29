@@ -208,7 +208,7 @@
 
     <div class="d-flex">
         <div class="phone-selector">
-            <h5>Select Phone Number:</h5>
+            <!-- <h5>Select Phone Number:</h5> -->
             <input 
                 type="text" 
                 id="phoneSearchInput" 
@@ -333,24 +333,6 @@
                 iconWrapper.classList.remove('success');
             }
 
-            async loadPhoneNumbers() {
-                try {
-                    const response = await fetch('/api/get-phone-numbers/');
-                    const data = await response.json();
-                    
-                    if (data.status === 'success') {
-                        this.renderPhoneNumbers(data.phone_numbers);
-                        document.getElementById('todayResponses').textContent = data.today_responses;
-                        document.getElementById('last7DaysResponses').textContent = data.last_7_days_responses;
-                    } else {
-                        this.showFeedback('Error loading phone numbers', 'error');
-                    }
-                } catch (error) {
-                    console.error('Error:', error);
-                    this.showFeedback('Error loading phone numbers', 'error');
-                }
-            }
-
             renderPhoneNumbers(phoneNumbers) {
                 const container = document.getElementById('phoneNumberContainer');
                 container.innerHTML = '';
@@ -370,6 +352,45 @@
                     
                     container.appendChild(button);
                 });
+            }
+
+            showPhoneNumbersLoading() {
+                const container = document.getElementById('phoneNumberContainer');
+                container.innerHTML = `
+                    <div class="d-flex justify-content-center align-items-center p-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <span class="ms-2">Loading phone numbers...</span>
+                    </div>
+                `;
+            }
+
+            async loadPhoneNumbers() {
+                try {
+                    // Show loading animation
+                    this.showPhoneNumbersLoading();
+                    
+                    const response = await fetch('/api/get-phone-numbers/');
+                    const data = await response.json();
+                    
+                    if (data.status === 'success') {
+                        this.renderPhoneNumbers(data.phone_numbers);
+                        document.getElementById('todayResponses').textContent = data.today_responses;
+                        document.getElementById('last7DaysResponses').textContent = data.last_7_days_responses;
+                    } else {
+                        // Clear loading and show error
+                        const container = document.getElementById('phoneNumberContainer');
+                        container.innerHTML = '<div class="text-center p-4 text-muted">No phone numbers found</div>';
+                        this.showFeedback('Error loading phone numbers', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Clear loading and show error message
+                    const container = document.getElementById('phoneNumberContainer');
+                    container.innerHTML = '<div class="text-center p-4 text-danger">Failed to load phone numbers</div>';
+                    this.showFeedback('Error loading phone numbers', 'error');
+                }
             }
 
             filterPhoneNumbers(searchTerm) {
