@@ -75,6 +75,12 @@ def save_phone_number(request):
                     filter_message_response = filtermessageresponse(emails, user_response)
 
                 if not filter_message_response:
+                    logger.info("No linktemplate match found, applying bot automation check")
+                    filter_message_response = MessageResponse.objects.filter(
+                        Q(user_response__iexact=reply_text) & Q(user__in=emails)
+                    ).first()
+
+                if not filter_message_response:
                     logger.info("No match found, applying default message fallback.")
                     filter_message_response = MessageResponse.objects.filter(
                         Q(user_response__iexact='default') & Q(user__in=emails)
