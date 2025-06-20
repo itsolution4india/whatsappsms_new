@@ -199,17 +199,11 @@ def user_login(request):
                     form.add_error(None, "Invalid email/username or password.")
             
             # Normal login logic
-            if not user:
-                if '@' in username_or_email:
-                    try:
-                        user = CustomUser.objects.get(email=username_or_email)
-                    except CustomUser.DoesNotExist:
-                        user = None
-                else:
-                    try:
-                        user = CustomUser.objects.get(username=username_or_email)
-                    except CustomUser.DoesNotExist:
-                        user = None
+            user = None
+            if '@' in username_or_email:
+                user = CustomUser.objects.filter(email=username_or_email).first()
+            else:
+                user = CustomUser.objects.filter(username=username_or_email).first()
 
             if user and user.check_password(password):
                 login_successful = True
@@ -254,11 +248,14 @@ def user_login(request):
                     logger.info(f"User {username_or_email}, {ip_address}, {location} logged in successfully.")
                     return redirect("dashboard")
             else:
-                LoginHistory.objects.create(
-                    user=user,
-                    ip_address=ip_address,
-                    location=location
-                )
+                # Only create LoginHistory if user exists (for security, you might want to log failed attempts differently)
+                if user:
+                    LoginHistory.objects.create(
+                        user=user,
+                        ip_address=ip_address,
+                        location=location
+                    )
+                
                 attempts = update_login_attempts(username_or_email, ip_address, False)
                 if attempts and attempts.get('block_until'):
                     remaining_time = attempts['block_until'] - timezone.now()
@@ -266,10 +263,10 @@ def user_login(request):
                     form.add_error(None, f"Too many failed attempts. Account blocked for {minutes} minutes.")
                 else:
                     remaining_attempts = 5 - attempts['count'] if attempts['block_count'] == 0 else 3 - attempts['count']
-                    form.add_error(None, f"Invalid credentials. {remaining_attempts} attempts remaining before temporary block.")
+                    form.add_error(None, f"Invalid username/email or password. {remaining_attempts} attempts remaining before temporary block.")
                     
                 logger.warning(f"Failed login attempt for {username_or_email}, {ip_address}, {location}")
-                form.add_error(None, "Invalid email/username or password.")
+                
             if login_successful:
                 LoginHistory.objects.create(
                     user=user,

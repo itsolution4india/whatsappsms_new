@@ -26,6 +26,7 @@ def filtermessageresponse(emails, user_response):
 @csrf_exempt
 def save_phone_number(request):
     if request.method == "POST":
+        filter_message_response = None
         try:
             data = json.loads(request.body)
             response = data.get('response')
@@ -59,6 +60,7 @@ def save_phone_number(request):
                         useremail__in=emails,
                         button_name=reply_text
                     ).order_by('-updated_at')
+                    logger.info("Found latest_template")
                     linked_template_names = [template.linked_template_name for template in latest_template]
                 except Exception as e:
                     logger.info(f"{emails}, {str(e)}")
@@ -71,6 +73,12 @@ def save_phone_number(request):
                     filter_message_response = filtermessageresponse(emails, interactive_text)
                 if reply_text and not latest_template:
                     filter_message_response = filtermessageresponse(emails, user_response)
+
+                if not filter_message_response:
+                    logger.info("No linktemplate match found, applying bot automation check")
+                    filter_message_response = MessageResponse.objects.filter(
+                        Q(user_response__iexact=reply_text) & Q(user__in=emails)
+                    ).first()
 
                 if not filter_message_response:
                     logger.info("No match found, applying default message fallback.")
