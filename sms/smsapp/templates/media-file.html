@@ -1,402 +1,613 @@
-<html lang="en" class="light-style layout-menu-fixed" dir="ltr" data-theme="theme-default" data-assets-path="../assets/"
-    data-template="vertical-menu-template-free" style="height: 1500px;">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+{% block head %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --danger-gradient: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        --glass-bg: rgba(255, 255, 255, 0.1);
+        --glass-border: rgba(255, 255, 255, 0.2);
+    }
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    body {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-    <meta name="description" content="" />
+    .upload-container {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
 
-    <link rel="icon" type="image/x-icon" href="/static/assets/img/favicon/favicon.ico" />
+    .upload-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+    }
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet" />
+    .upload-header {
+        background: var(--primary-gradient);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
 
-    <link rel="stylesheet" href="/static/assets/vendor/fonts/boxicons.css" />
+    .upload-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        animation: shimmer 3s infinite;
+    }
 
-    <link rel="stylesheet" href="/static/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="/static/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="/static/assets/css/demo.css" />
-    <link rel="stylesheet" href="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-    <link rel="stylesheet" href="/static/assets/vendor/libs/apex-charts/apex-charts.css" />
-    <!-- Page CSS -->
-    <!-- Helpers -->
-    <script src="/static/assets/vendor/js/helpers.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    @keyframes shimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
 
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="/static/assets/js/config.js"></script>
+    .upload-header h2 {
+        margin: 0;
+        font-weight: 700;
+        font-size: 2rem;
+        position: relative;
+        z-index: 1;
+    }
 
-    <!-- custom css -->
+    .upload-header p {
+        margin: 0.5rem 0 0 0;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+    }
 
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
+    .upload-zone {
+        border: 3px dashed #ddd;
+        border-radius: 16px;
+        padding: 3rem 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(45deg, #f8f9ff 0%, #fff 50%, #f8f9ff 100%);
+    }
+
+    .upload-zone:hover {
+        border-color: #667eea;
+        background: linear-gradient(45deg, #f0f2ff 0%, #fff 50%, #f0f2ff 100%);
+        transform: scale(1.02);
+    }
+
+    .upload-zone.dragover {
+        border-color: #667eea;
+        background: var(--primary-gradient);
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .upload-icon {
+        font-size: 4rem;
+        color: #667eea;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .upload-zone:hover .upload-icon {
+        transform: scale(1.1);
+        color: #764ba2;
+    }
+
+    .upload-zone.dragover .upload-icon {
+        color: white;
+        transform: scale(1.2);
+    }
+
+    .file-input {
+        display: none;
+    }
+
+    .upload-text {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .upload-subtext {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .file-info {
+        background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        display: none;
+        animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .file-preview {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .file-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-gradient);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    .file-details h6 {
+        margin: 0;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .file-details small {
+        color: #666;
+    }
+
+    .progress-container {
+        margin-top: 1rem;
+        display: none;
+    }
+
+    .progress {
+        height: 8px;
+        border-radius: 10px;
+        background: rgba(102, 126, 234, 0.2);
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        background: var(--primary-gradient);
+        border-radius: 10px;
+        transition: width 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        animation: progressShine 2s infinite;
+    }
+
+    @keyframes progressShine {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+    }
+
+    .btn-upload {
+        background: var(--primary-gradient);
+        border: none;
+        border-radius: 12px;
+        padding: 0.75rem 2rem;
+        color: white;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .btn-upload:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        color: white;
+    }
+
+    .btn-upload:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .response-section {
+        background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+        border-radius: 16px;
+        padding: 2rem;
+        margin-top: 2rem;
+        text-align: center;
+        display: none;
+        animation: slideIn 0.5s ease;
+    }
+
+    .media-id-display {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .media-id-label {
+        color: #667eea;
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .media-id-value {
+        font-family: 'Courier New', monospace;
+        background: #f8f9fa;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border: 2px dashed #667eea;
+        font-size: 1rem;
+        word-break: break-all;
+        color: #333;
+    }
+
+    .copy-btn {
+        background: var(--success-gradient);
+        border: none;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        color: white;
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+        font-size: 2rem;
+        color: #667eea;
+        margin-bottom: 1rem;
+    }
+
+    .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        color: white;
+        font-weight: 600;
+        z-index: 1000;
+        transform: translateX(400px);
+        transition: all 0.3s ease;
+    }
+
+    .notification.show {
+        transform: translateX(0);
+    }
+
+    .notification.success {
+        background: var(--success-gradient);
+    }
+
+    .notification.error {
+        background: var(--danger-gradient);
+    }
+
+    @media (max-width: 768px) {
+        .upload-container {
+            margin: 1rem;
+            border-radius: 16px;
         }
-
-        th,
-        td {
-            border: 1px solid #dddddd;
-            text-align: center;
-            padding: 8px;
+        
+        .upload-zone {
+            padding: 2rem 1rem;
         }
-
-        th {
-            background-color: #f2f2f2;
+        
+        .upload-icon {
+            font-size: 3rem;
         }
-    </style>
-</head>
+    }
+</style>
+{% endblock %}
 
-<body>
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-            <!-- Menu -->
-
-            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-                <div class="app-brand demo">
-                    <a href="/dashboard/" class="app-brand-link">
-                        <i class="menu-icon tf-icons bx bx-globe"></i>
-                        <span class="app-brand-text menu-text fw-bolder fs-4">IT Solutions</span>
-                    </a>
-
-                    <a href="javascript:void(0);"
-                        class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-                        <i class="bx bx-chevron-left bx-sm align-middle"></i>
-                    </a>
-                </div>
-
-                <div class="menu-inner-shadow"></div>
-
-                <ul class="menu-inner py-1">
-                    <!-- Dashboard -->
-                    <li class="menu-item">
-                        <a href="/dashboard/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-dashboard"></i>
-                            <div data-i18n="Analytics">Dashboard</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-header small text-uppercase">
-                        <span class="menu-header-text">Pages</span>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/campaign/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-unite"></i>
-                            <div>Campaign</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/create_flow_message/" class="menu-link">
-                            <i class='menu-icon tf-icons bx bx-layer bx-layer'></i>
-                            <div>Create Flows</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/send_flow_message/" class="menu-link">
-                            <i class='menu-icon bx bxs-send'></i>
-                            <div>Send Flows</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item active">
-                        <a href="/media_upload/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-                            <div data-i18n="Tables">Media ID</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/send-sms/" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                            <div data-i18n="Analytics">Send SMS</div>
-                        </a>
-                    </li>
-
-
-                    <!-- Tables -->
-                    <li class="menu-item">
-                        <a href="/reports" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-report"></i>
-                            <div data-i18n="Tables">Reports</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="/schedules/" class="menu-link">
-                            <i class="menu-icon bx bxs-calendar-event"></i>
-                          <div data-i18n="Tables">Schedules</div>
-                        </a>
-                      </li>
-
-                    <li class="menu-header small text-uppercase"><span class="menu-header-text">About</span></li>
-                    <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bxs-category"></i>
-                            <div data-i18n="Form Layouts">Services</div>
-                        </a>
-                        <ul class="menu-sub">
-                            <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/website-designing/web-development.php"
-                                    class="menu-link">
-                                    <div data-i18n="Horizontal Form">Web Development</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/digital-marketing.php" class="menu-link">
-                                    <div data-i18n="Horizontal Form">Digital Marketing</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/bulk-sms.php" class="menu-link">
-                                    <div data-i18n="Horizontal Form">Bulk SMS</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/bulk-sms/lead-generation.php"
-                                    class="menu-link">
-                                    <div data-i18n="Horizontal Form">Lead Generation</div>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://www.itsolution4india.com/dlt-registration.php" class="menu-link">
-                                    <div data-i18n="Horizontal Form">DLT Registration</div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="https://www.itsolution4india.com/privacy-policy.php" class="menu-link">
-                            <i class="menu-icon tf-icons bx bxs-check-shield"></i>
-                            <div data-i18n="Documentation">Privacy Policy</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="https://www.itsolution4india.com/contact.php" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-support"></i>
-                            <div data-i18n="Documentation">Support</div>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
-            <!-- / Menu -->
-
-            <!-- Layout container -->
-            <div class="layout-page" style="background-color: white; height: fit-content;">
-                <!-- Navbar -->
-
-                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center "
-                    id="layout-navbar" style="background-color: black;">
-                    <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
-                        <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-                            <i class="bx bx-menu bx-sm"></i>
-                        </a>
-                    </div>
-
-                    <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none" placeholder="Search..."
-                                    aria-label="Search..." />
+{% block content %}
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <div class="content-wrapper">
+            <div class="container-xxl flex-grow-1 container-p-y">
+                
+                <div class="upload-container mx-auto" style="max-width: 800px;">
+                    
+                    <div class="p-4">
+                        <form action="{% url 'upload_media' %}" method="post" enctype="multipart/form-data" id="uploadForm">
+                            {% csrf_token %}
+                            
+                            <div class="upload-zone" id="uploadZone">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <div class="upload-text">Drop your file here or click to browse</div>
+                                <div class="upload-subtext">Supports all media formats • Maximum size: 10MB</div>
+                                <input type="file" name="file" id="fileInput" class="file-input" accept="*/*">
                             </div>
-                        </div>
-                        <!-- /Search -->
-
-                        <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
-
-
-                            <!-- User -->
-                            <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
-                                    data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-online">
-                                        <img src="/static/assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
+                            
+                            <div class="file-info" id="fileInfo">
+                                <div class="file-preview">
+                                    <div class="file-icon" id="fileIcon">
+                                        <i class="fas fa-file"></i>
                                     </div>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            <div class="d-flex">
-                                                <div class="flex-shrink-0 me-3">
-                                                    <div class="avatar avatar-online">
-                                                        <img src="/static/assets/img/avatars/1.png" alt
-                                                            class="w-px-40 h-auto rounded-circle" />
-                                                    </div>
-                                                </div>
-                                                <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block fs-4 ml-5 mt-1">{{username}}</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    
-                    <li>
-                    <div class="accordion" id="accordionExample">
-                      <div class="accordion-item">
-                        <h2 class="accordion-header">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="font-weight: bold">
-                            My Profile
-                          </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show"
-                          data-bs-parent="#accordionExample">
-                          <div class="accordion-body">
-                            <p style="font-weight: bold">WABA ID : {{ WABA_ID }}</p>
-                            <p style="font-weight: bold">PHONE ID : {{ PHONE_ID }} </p>
-                            <p style="font-weight: bold">COINS : {{ coins }} </p>
-                          </div>
+                                    <div class="file-details">
+                                        <h6 id="fileName">No file selected</h6>
+                                        <small id="fileSize">0 KB</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="progress-container" id="progressContainer">
+                                    <div class="progress">
+                                        <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+                                    </div>
+                                    <small class="text-muted mt-1 d-block">Uploading... <span id="progressText">0%</span></small>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-upload w-100 mt-3" id="uploadBtn">
+                                    <i class="fas fa-upload me-2"></i>Upload File
+                                </button>
+                            </div>
+                        </form>
+                        
+                        {% if response %}
+                        <div class="response-section" id="responseSection" style="display: block;">
+                            <div class="text-center mb-3">
+                                <i class="fas fa-check-circle text-success" style="font-size: 3rem;"></i>
+                                <h4 class="mt-2 text-success">Upload Successful!</h4>
+                                <p class="text-muted">Your file has been processed and is ready for API integration</p>
+                            </div>
+                            
+                            <div class="media-id-display">
+                                <div class="media-id-label">
+                                    <i class="fas fa-key me-2"></i>Media ID
+                                </div>
+                                <div class="media-id-value" id="mediaIdValue">{{response}}</div>
+                                <button class="copy-btn" onclick="copyMediaId()">
+                                    <i class="fas fa-copy me-1"></i>Copy ID
+                                </button>
+                            </div>
                         </div>
-                      </div>
-                    </div>
-                  </li>
-
-   
-                                    <li>
-                                        <div class="dropdown-divider"></div>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="{% url 'logout' %}">
-                                            <i class="bx bx-power-off me-2"></i>
-                                            <span class="align-middle" style="font-weight: bold">Log Out</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!--/ User -->
-                        </ul>
-                    </div>
-                </nav>
-
-                <!-- / Navbar -->
-                <script>
-          $(document).ready(function () {
-            // Disable click behavior
-            $('.accordion-item .accordion-button').attr('data-bs-toggle', '');
-            $('.accordion-item .accordion-button').attr('aria-expanded', 'false');
-
-            // Enable hover behavior
-            $('.accordion-item').hover(function () {
-              $(this).find('.collapse').collapse('show');
-            }, function () {
-              $(this).find('.collapse').collapse('hide');
-            });
-          });
-
-        </script>
-
-
-                <!-- Content wrapper -->
-
-                <div class="content-wrapper" style="height: 1500px;">
-
-                    <!-- Content -->
-
-                    <div class="container-xxl flex-grow-1 container-p-y">
-
-                        <div class="row">
-                            <div class="w-100 p-3 text-white rounded-top bg-dark fs-5">
-                                Media File
+                        {% endif %}
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h6>Lightning Fast</h6>
+                                <small class="text-muted">Instant processing and ID generation</small>
                             </div>
-                            <div class="card w-50" style="box-shadow: none;">
-                                <form action="{% url 'upload_media' %}" method="post" enctype="multipart/form-data"
-                                    class="w-75">
-                                    {% csrf_token %}
-                                    <label class="form-label mt-5">
-                                        <h6>Upload File (max. 5 mb)</h6>
-                                    </label>
-                                    <input class="form-control" type="file" name="file" id="fileInput">
-                                    <button type="submit" class="btn btn-primary mt-3" id="button">Submit</button>
-                                </form>
-                                <p id="responseMessage" class="form-control ">
-                                    <font color="blue">Media Id: </font>{{response}}
-                                </p>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <h6>Secure Upload</h6>
+                                <small class="text-muted">Enterprise-grade security standards</small>
                             </div>
-
-                            <div class="card w-50" style="box-shadow: none;">
-                                <div id="fileIcon" style="width: 250px; height: 250px;"></div>
+                            
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h6>API Ready</h6>
+                                <small class="text-muted">Generated IDs work seamlessly with our APIs</small>
                             </div>
                         </div>
                     </div>
-                    <!-- / Content -->
                 </div>
-
-                <!-- <script>
-                    var responseMessage = document.getElementById('responseMessage');
-                    var button = document.getElementById('button');
-
-                    button.addEventListener('click', function toggleSubmit() {
-                        responseMessage.style.display = 'block'
-                    })
-                </script> -->
-
-
+                
             </div>
         </div>
     </div>
-    <!-- / Layout wrapper -->
+</div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    const uploadZone = document.getElementById('uploadZone');
+    const fileInput = document.getElementById('fileInput');
+    const fileInfo = document.getElementById('fileInfo');
+    const fileName = document.getElementById('fileName');
+    const fileSize = document.getElementById('fileSize');
+    const fileIcon = document.getElementById('fileIcon');
+    const uploadBtn = document.getElementById('uploadBtn');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const uploadForm = document.getElementById('uploadForm');
 
-    <!-- All Important Javascript files -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="/static/assets/vendor/libs/popper/popper.js"></script>
-    <script src="/static/assets/vendor/js/bootstrap.js"></script>
-    <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="/static/assets/vendor/js/vanillaEmojiPicker.js"></script>
+    // File type icons mapping
+    const fileIcons = {
+        'image': 'fas fa-image',
+        'video': 'fas fa-video',
+        'audio': 'fas fa-music',
+        'pdf': 'fas fa-file-pdf',
+        'doc': 'fas fa-file-word',
+        'xls': 'fas fa-file-excel',
+        'ppt': 'fas fa-file-powerpoint',
+        'zip': 'fas fa-file-archive',
+        'default': 'fas fa-file'
+    };
 
+    // Drag and drop functionality
+    uploadZone.addEventListener('click', () => fileInput.click());
+    
+    uploadZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadZone.classList.add('dragover');
+    });
+    
+    uploadZone.addEventListener('dragleave', () => {
+        uploadZone.classList.remove('dragover');
+    });
+    
+    uploadZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadZone.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+            fileInput.files = files;
+            handleFileSelect(files[0]);
+        }
+    });
 
-    <script>
+    fileInput.addEventListener('change', (e) => {
+        if (e.target.files.length > 0) {
+            handleFileSelect(e.target.files[0]);
+        }
+    });
 
-        new EmojiPicker({
-            trigger: [
-                {
-                    selector: '.first-btn',
-                    insertInto: ['.one', '.two'] // '.selector' can be used without array
-                },
-                {
-                    selector: '.second-btn',
-                    insertInto: '.two'
-                }
-            ],
-            closeButton: true,
-            //specialButtons: green
+    function handleFileSelect(file) {
+        const maxSize = 10 * 1024 * 1024; // 10MB
+        
+        if (file.size > maxSize) {
+            showNotification('File size exceeds 10MB limit', 'error');
+            return;
+        }
+
+        fileName.textContent = file.name;
+        fileSize.textContent = formatFileSize(file.size);
+        
+        // Set appropriate icon based on file type
+        const fileType = getFileType(file.type);
+        fileIcon.innerHTML = `<i class="${fileIcons[fileType] || fileIcons.default}"></i>`;
+        
+        fileInfo.style.display = 'block';
+        uploadBtn.disabled = false;
+    }
+
+    function getFileType(mimeType) {
+        if (mimeType.startsWith('image/')) return 'image';
+        if (mimeType.startsWith('video/')) return 'video';
+        if (mimeType.startsWith('audio/')) return 'audio';
+        if (mimeType.includes('pdf')) return 'pdf';
+        if (mimeType.includes('word') || mimeType.includes('document')) return 'doc';
+        if (mimeType.includes('sheet') || mimeType.includes('excel')) return 'xls';
+        if (mimeType.includes('presentation') || mimeType.includes('powerpoint')) return 'ppt';
+        if (mimeType.includes('zip') || mimeType.includes('archive')) return 'zip';
+        return 'default';
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Form submission with progress simulation
+    uploadForm.addEventListener('submit', (e) => {
+        if (!fileInput.files.length) {
+            e.preventDefault();
+            showNotification('Please select a file first', 'error');
+            return;
+        }
+        
+        uploadBtn.disabled = true;
+        uploadBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Uploading...';
+        progressContainer.style.display = 'block';
+        
+        // Simulate upload progress
+        let progress = 0;
+        const interval = setInterval(() => {
+            progress += Math.random() * 30;
+            if (progress > 90) progress = 90;
+            
+            progressBar.style.width = progress + '%';
+            progressText.textContent = Math.round(progress) + '%';
+            
+            if (progress >= 90) {
+                clearInterval(interval);
+            }
+        }, 200);
+    });
+
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'exclamation-triangle'} me-2"></i>${message}`;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => notification.classList.add('show'), 100);
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => document.body.removeChild(notification), 300);
+        }, 3000);
+    }
+
+    function copyMediaId() {
+        const mediaId = document.getElementById('mediaIdValue').textContent;
+        navigator.clipboard.writeText(mediaId).then(() => {
+            showNotification('Media ID copied to clipboard!', 'success');
         });
+    }
 
-    </script>
-
-
-    <script src="/static/assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-    <script src="/static/assets/vendor/libs/apex-charts/apexcharts.js"></script>
-
-    <!-- Main JS -->
-    <script src="/static/assets/js/main.js"></script>
-
-    <!-- Page JS -->
-    <script src="/static/assets/js/dashboards-analytics.js"></script>
-
-</body>
-
-</html>
+    // Show response section with animation if response exists
+    {% if response %}
+    setTimeout(() => {
+        document.getElementById('responseSection').style.display = 'block';
+    }, 500);
+    {% endif %}
+</script>
+{% endblock %}

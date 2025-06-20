@@ -86,7 +86,7 @@ def facebook_sdk_view(request):
 
     elif request.method == 'GET':
         # Return the rendered HTML template for GET requests
-        return render(request, 'facebook_sdk.html')
+        return render(request, 'facebooksdknew.html')
 
     else:
         # Handle other HTTP methods (shouldn't happen in your case)
