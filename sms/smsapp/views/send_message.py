@@ -22,11 +22,27 @@ def Send_Sms(request):
     ip_address = request.META.get("REMOTE_ADDR", "Unknown IP")
     token, _ = get_token_and_app_id(request)
     current_user = request.user
-    
+    messagea=''
+    block_campaign=False
     try:
+
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
+        reportss=ReportInfo.objects.filter(email=request.user).last()
+        print(reportss.campaign_title,"write campaign tittle")
+        
+      
+        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
+                block_campaign = True
+                messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
+         
+            
+
+        
+        
+     
+        
         
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "standard")
         if campaign_list is None :
@@ -43,6 +59,7 @@ def Send_Sms(request):
             "template_images_three": json.dumps([template['image_three'] for template in templates]),
             "template_button": json.dumps([json.dumps(template['button']) for template in templates]),
             "template_media": json.dumps([template.get('media_type', 'No media available') for template in templates]),
+          
         }
     except Exception as e:
         logger.error(f"Error fetching templates: {e}")
@@ -67,7 +84,10 @@ def Send_Sms(request):
         "campaign_list": campaign_list,
         "username": request.user.email if request.user.is_authenticated else None,
         "WABA_ID": display_whatsapp_id(request),
-        "PHONE_ID": display_phonenumber_id(request)
+        "PHONE_ID": display_phonenumber_id(request),
+        "messagea":messagea,
+        "block_campaign":block_campaign
+       
     })
 
     if request.method == "POST":
@@ -283,12 +303,21 @@ def send_flow_message(request):
     
     scheduled_messages = ScheduledMessage.objects.filter(schedule_date=now().date())
     scheduled_times = scheduled_messages.values_list('schedule_time', flat=True)
+    messagea=''
+    block_campaign=False
     
     try:
         coins = request.user.coins
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
+        reportss=ReportInfo.objects.filter(email=request.user).last()
+        print(reportss.campaign_title,"write campaign tittle")
+        
+      
+        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
+                    block_campaign = True
+                    messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "flow")
         if campaign_list is None :
@@ -326,7 +355,9 @@ def send_flow_message(request):
         "campaign_list": campaign_list,
         "username": request.user.email if request.user.is_authenticated else None,
         "WABA_ID": display_whatsapp_id(request),
-        "PHONE_ID": display_phonenumber_id(request)
+        "PHONE_ID": display_phonenumber_id(request),
+        "messagea":messagea,
+        "block_campaign":block_campaign
     })
 
     if request.method == 'POST':
@@ -369,11 +400,17 @@ def send_carousel_messages(request):
     phone_id = display_phonenumber_id(request)
     token, _ = get_token_and_app_id(request)
     current_user = request.user
+    messagea=''
+    block_campaign=False
     
     try:
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
+        reportss=ReportInfo.objects.filter(email=request.user).last()        
+        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
+                block_campaign = True
+                messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "carousel")
         if campaign_list is None :
@@ -412,7 +449,9 @@ def send_carousel_messages(request):
         "campaign_list": campaign_list,
         "username": request.user.email if request.user.is_authenticated else None,
         "WABA_ID": display_whatsapp_id(request),
-        "PHONE_ID": display_phonenumber_id(request)
+        "PHONE_ID": display_phonenumber_id(request),
+        "block_campaign":block_campaign,
+        "messagea":messagea
     })
 
     if request.method == 'POST':

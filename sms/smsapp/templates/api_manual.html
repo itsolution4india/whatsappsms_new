@@ -362,6 +362,14 @@
                         <button class="btn btn-sm curl-btn" onclick="showCurlForm('report')">Generate cURL</button>
                     </div>
                 </div>
+                <div class="endpoint-section">
+                    <h5>Get user_response</h5>
+                    <div class="api-url">
+                        <span class="api-method">GET</span>
+                        https://fastapi.wtsmessage.xyz/get_user_responses?user_id=<span class="api-param">USER_ID</span>&api_token=<span class="api-param">TOKEN</span>
+                        <button class="btn btn-sm curl-btn" onclick="showCurlForm('get_user_responses')">Generate cURL</button>
+                    </div>
+                </div>
 
                 <div class="endpoint-section">
                     <h5>Check balance</h5>
@@ -840,7 +848,8 @@ curl_close($ch);</code></pre>
             'report': [
                 { name: 'report_id', label: 'Report ID' }
             ],
-            'balance': []
+            'balance': [],
+            'get_user_responses':[]
         };
 
         function showCurlForm(endpoint) {
@@ -866,7 +875,7 @@ curl_close($ch);</code></pre>
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
             
-            let url, requestData;
+            let url, requestData,curlCommand = "";
             
             if (currentEndpoint === 'report') {
                 url = 'https://wtsdealnow.com/get-report/';
@@ -893,7 +902,18 @@ curl_close($ch);</code></pre>
                     contact_list: data.contact_list ? data.contact_list.split(',').map(num => num.trim()) : [],
                     variable_list: data.variable_list ? data.variable_list.split(',').map(num => num.trim()) : [],
                 };
-            } else {
+            } else if(currentEndpoint === 'get_user_responses'){
+                // url = 'https://fastapi.wtsmessage.xyz/get_user_responses/';
+                requestData = {
+                    user_id: data.user_id,
+                    api_token: data.api_token,
+                   
+                };
+                 url = `https://fastapi.wtsmessage.xyz/${currentEndpoint}?user_id=${encodeURIComponent(requestData.user_id)}&api_token=${encodeURIComponent(requestData.api_token)}`;
+                 curlCommand = `curl -X GET "${url}"`;
+            }
+            
+            else {
                 url = 'https://fastapi.wtsmessage.xyz/send_sms_api/';
                 requestData = {
                     user_id: data.user_id,
@@ -906,10 +926,15 @@ curl_close($ch);</code></pre>
                     variable_list: null
                 };
             }
+
+            if (!curlCommand) {
+            curlCommand = `curl --location '${url}' \\
+    --header 'Content-Type: application/json' \\
+    --data '${JSON.stringify(requestData, null, 2)}'`;
+        }
+                
             
-            const curlCommand = `curl --location '${url}' \\
---header 'Content-Type: application/json' \\
---data '${JSON.stringify(requestData, null, 2)}'`;
+           
 
             document.getElementById('curlCode').textContent = curlCommand;
             document.getElementById('curlResult').style.display = 'block';
