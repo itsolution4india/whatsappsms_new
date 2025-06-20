@@ -13,7 +13,9 @@ from ..functions.flows import send_flow_messages_with_report, send_carousel_mess
 import pandas as pd
 from ..media_id import process_media_file
 import time
-
+from django.utils import timezone
+from datetime import timedelta
+from django.db.models import Q
 
 @login_required
 def Send_Sms(request):
@@ -29,15 +31,14 @@ def Send_Sms(request):
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
-        reportss=ReportInfo.objects.filter(email=request.user).last()
-        print(reportss.campaign_title,"write campaign tittle")
-        
-      
-        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
-                block_campaign = True
-                messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
-         
-            
+        block_campaign = ReportInfo.objects.filter(
+            Q(email=request.user) &
+            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
+            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+        ).exists()
+
+        if block_campaign:
+            messagea = "⚠️ Your last campaign is still processing. Please wait for it to finish before starting a new one."
 
         
         
@@ -311,13 +312,15 @@ def send_flow_message(request):
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
-        reportss=ReportInfo.objects.filter(email=request.user).last()
-        print(reportss.campaign_title,"write campaign tittle")
-        
-      
-        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
-                    block_campaign = True
-                    messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
+        block_campaign = ReportInfo.objects.filter(
+            Q(email=request.user) &
+            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
+            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+        ).exists()
+
+        if block_campaign:
+            messagea = "⚠️ Your last campaign is still processing. Please wait for it to finish before starting a new one."
+
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "flow")
         if campaign_list is None :
@@ -407,10 +410,15 @@ def send_carousel_messages(request):
         report_list = ReportInfo.objects.filter(email=request.user)
         template_database = Templates.objects.filter(email=request.user)
         template_value = list(template_database.values_list('templates', flat=True))
-        reportss=ReportInfo.objects.filter(email=request.user).last()        
-        if reportss.start_request_id in [None, '', '0'] or reportss.end_request_id in [None, '', '0']:
-                block_campaign = True
-                messagea = "⚠️ Your last campaign was in progress, Please wait for sometime."
+        block_campaign = ReportInfo.objects.filter(
+            Q(email=request.user) &
+            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
+            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+        ).exists()
+
+        if block_campaign:
+            messagea = "⚠️ Your last campaign is still processing. Please wait for it to finish before starting a new one."
+
         # Assuming fetch_templates and display_whatsapp_id are defined elsewhere
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "carousel")
         if campaign_list is None :
