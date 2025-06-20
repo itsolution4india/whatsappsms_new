@@ -107,8 +107,22 @@
               </div>
               <p id="statusMsg" class="mt-2 fw-bold text-info"></p>
 
+              
+              {% if block_campaign %}
+              <button type="submit" class="btn btn-primary"    disabled>Submit</button>
+
+              {% else %}
               <button type="submit" class="btn btn-primary" onclick="setActionType('submit')" id="submitBtn" disabled>Submit</button>
-    
+              {% endif %}
+
+              
+           {% if messagea %}
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 my-3" role="alert">
+       <strong class="font-bold">Alert:</strong>
+    <span class="block sm:inline bg-light text-danger">{{ messagea }}</span>
+  </div>
+{% endif %}
+
               {% if messages %}
                 {% for message in messages %}
                     {% if message.tags == 'success' %}

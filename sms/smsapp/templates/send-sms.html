@@ -221,8 +221,13 @@
                   <p id="errorMsg" class="text-danger mt-1" style="display:none;">Remove special characters!</p>
                 </div>
                 <p id="statusMsg" class="mt-2 fw-bold text-info"></p>
+           
+              {% if block_campaign %}
+              <button type="submit" class="btn btn-primary"    disabled>Submit</button>
 
-                <button type="submit" class="btn btn-primary" onclick="setActionType('submit')" id="submitBtn" disabled>Submit</button>
+              {% else %}
+              <button type="submit" class="btn btn-primary" onclick="setActionType('submit')" id="submitBtn" disabled>Submit</button>
+              {% endif %}
               {% if api_doc_access %}
               <button type="button" class="btn btn-success" onclick="validateNumbers()">validate</button>
               {% endif %}
@@ -240,6 +245,12 @@
                 </div>
                 <button type="button" class="btn btn-success" onclick="confirmSchedule()">Confirm</button>
               </div>
+             {% if messagea %}
+  <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 my-3" role="alert">
+       <strong class="font-bold">Alert:</strong>
+    <span class="block sm:inline bg-light text-danger">{{ messagea }}</span>
+  </div>
+{% endif %}
 
               {% if messages %}
               {% for message in messages %}
@@ -358,6 +369,8 @@
         </div>
       </div>
     </div>
+
+   
     <div class="row">
       <div class="w-100 p-3 text-white rounded-top bg-dark">
         Message Report</div>
