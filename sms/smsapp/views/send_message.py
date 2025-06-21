@@ -33,18 +33,14 @@ def Send_Sms(request):
         template_value = list(template_database.values_list('templates', flat=True))
         block_campaign = ReportInfo.objects.filter(
             Q(email=request.user) &
-            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
-            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+            Q(created_at__date=timezone.now().date()) &
+            ~Q(start_request_id__in=[None, '', '0']) &
+            Q(end_request_id__in=[None, '', '0'])
         ).exists()
 
         if block_campaign:
             messagea = "⚠️ Your last campaign is still processing. Please wait for it to finish before starting a new one."
 
-        
-        
-     
-        
-        
         campaign_list = fetch_templates(display_whatsapp_id(request), token, None, False, "standard")
         if campaign_list is None :
             campaign_list=[]
