@@ -310,8 +310,9 @@ def send_flow_message(request):
         template_value = list(template_database.values_list('templates', flat=True))
         block_campaign = ReportInfo.objects.filter(
             Q(email=request.user) &
-            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
-            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+            Q(created_at__date=timezone.now().date()) &
+            ~Q(start_request_id__in=[None, '', '0']) &
+            Q(end_request_id__in=[None, '', '0'])
         ).exists()
 
         if block_campaign:
@@ -408,8 +409,9 @@ def send_carousel_messages(request):
         template_value = list(template_database.values_list('templates', flat=True))
         block_campaign = ReportInfo.objects.filter(
             Q(email=request.user) &
-            Q(created_at__gte=timezone.now() - timedelta(hours=24)) &
-            (Q(start_request_id__in=[None, '', '0']) | Q(end_request_id__in=[None, '', '0']))
+            Q(created_at__date=timezone.now().date()) &
+            ~Q(start_request_id__in=[None, '', '0']) &
+            Q(end_request_id__in=[None, '', '0'])
         ).exists()
 
         if block_campaign:
