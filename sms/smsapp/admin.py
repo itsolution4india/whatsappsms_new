@@ -50,16 +50,19 @@ class WhitelistBlacklistAdminForm(forms.ModelForm):
         }
 
 class Whitelist_BlacklistAdmin(admin.ModelAdmin):
-    list_display = ('whitelist_phone', 'blacklist_phone')
-    search_fields = ('whitelist_phone', 'blacklist_phone')
-    
+    form = WhitelistBlacklistAdminForm
+
+    # Show all fields in list_display (be mindful with TextFields here)
+    list_display = ('email', 'whitelist_phone', 'blacklist_phone')
+    search_fields = ('email__email', 'whitelist_phone', 'blacklist_phone')
+
+    # Show all fields in the admin form
     fieldsets = (
         (None, {
-            'fields': ('whitelist_phone', 'blacklist_phone'),
-            'description': "Enter new phone numbers to be whitelist and blacklist, each on a new line."
+            'fields': ('email', 'whitelist_phone', 'blacklist_phone'),
+            'description': "Enter email and phone numbers to be whitelisted/blacklisted (each on a new line)."
         }),
     )
-    form = WhitelistBlacklistAdminForm
 
 admin.site.register(Whitelist_Blacklist, Whitelist_BlacklistAdmin)
 
