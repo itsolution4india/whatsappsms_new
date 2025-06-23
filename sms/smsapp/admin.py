@@ -70,20 +70,13 @@ admin.site.register(Whitelist_Blacklist, Whitelist_BlacklistAdmin)
 class ReportInfoAdmin(admin.ModelAdmin):
     list_display = (
         'created_at',
-        'updated_at',
         'email',
         "campaign_title",
         'template_name',
         'message_date',
         'message_delivery',
         "start_request_id",
-        "end_request_id",
-        "deliver_count",
-        "sent_count",
-        "read_count",
-        "failed_count",
-        "reply_count",
-        "total_count"
+        "end_request_id"
     )
     list_filter = (
         'email',
@@ -97,7 +90,6 @@ class ReportInfoAdmin(admin.ModelAdmin):
 
     fields = (
         'created_at',
-        'updated_at',
         'email',
         "campaign_title",
         "contact_list",
@@ -106,13 +98,9 @@ class ReportInfoAdmin(admin.ModelAdmin):
         'message_delivery',
         'template_name',
         "start_request_id",
-        "end_request_id",
-        "deliver_count",
-        "sent_count",
-        "read_count",
-        "failed_count",
-        "reply_count",
-        "total_count"
+        "end_request_id"
+      
+ 
     )
 
 

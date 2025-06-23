@@ -122,7 +122,7 @@ class Whitelist_Blacklist(models.Model):
 
 class ReportInfo(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
+    # updated_at = models.DateTimeField(auto_now=True)
     
     email = models.CharField(max_length=100)
     campaign_title = models.CharField(max_length=200)
@@ -133,12 +133,12 @@ class ReportInfo(models.Model):
     message_delivery = models.BigIntegerField()
     start_request_id = models.CharField(max_length=200, default=0)
     end_request_id = models.CharField(max_length=200, default=0)
-    deliver_count = models.PositiveIntegerField(default=0)
-    sent_count = models.PositiveIntegerField(default=0)
-    read_count = models.PositiveIntegerField(default=0)
-    failed_count = models.PositiveIntegerField(default=0)
-    reply_count = models.PositiveIntegerField(default=0)
-    total_count = models.PositiveIntegerField(default=0)
+    # deliver_count = models.PositiveIntegerField(default=0)
+    # sent_count = models.PositiveIntegerField(default=0)
+    # read_count = models.PositiveIntegerField(default=0)
+    # failed_count = models.PositiveIntegerField(default=0)
+    # reply_count = models.PositiveIntegerField(default=0)
+    # total_count = models.PositiveIntegerField(default=0)
     
 
 
