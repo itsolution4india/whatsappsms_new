@@ -73,7 +73,8 @@ def Reports(request):
             
         # Order the reports
         report_list = report_query.only('contact_list').order_by('-created_at')
-        
+        total_numbers = report_list.message_delivery
+        print(total_numbers)
         # Pagination
         page = request.GET.get('page', 1)
         items_per_page = 10  # You can adjust this number
@@ -705,8 +706,12 @@ def get_non_reply_rows(request):
     )
     cursor = connection.cursor()
     
+    # Updated query to select only the columns needed (matching the header)
     query = """
-    SELECT * FROM webhook_responses 
+    SELECT Date, display_phone_number, phone_number_id, waba_id, contact_wa_id,
+           status, message_timestamp, error_code, error_message, contact_name,
+           message_from, message_type, message_body
+    FROM webhook_responses 
     WHERE status NOT IN (%s, %s)
     """
     
@@ -714,6 +719,8 @@ def get_non_reply_rows(request):
     cursor.execute(query, params)
     rows = cursor.fetchall()
     
+    cursor.close()
+    connection.close()
     return rows
 
 def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
