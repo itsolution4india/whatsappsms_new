@@ -90,8 +90,6 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
     try:
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
-            Phone_ID = display_phonenumber_id(request)
-            _, AppID = get_token_and_app_id(request)
             contacts = report.contact_list.split('\r\n')
             try:
                 wamids = report.waba_id_list.split('\r\n')
@@ -102,14 +100,18 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
             wamids_list = [wa_mid.strip() for wamid in wamids for wa_mid in wamid.split(',')] if wamids else None
             
             created_at = report.created_at.strftime('%Y-%m-%d %H:%M:%S')
+            updated_at = report.updated_at.strftime('%Y-%m-%d %H:%M:%S')
             if isinstance(created_at, str):
                 created_at = datetime.datetime.fromisoformat(created_at)
+            if isinstance(updated_at, str):
+                updated_at = datetime.datetime.fromisoformat(updated_at)
             time_delta = datetime.timedelta(hours=5, minutes=30)
             created_at += time_delta
+            updated_at += time_delta
         else:
             contact_all = contact_list
-            Phone_ID = display_phonenumber_id(request)
             created_at = None
+            time_delta = None
         if not report_id and not contact_all:
             if insight:
                 return pd.DataFrame()
@@ -118,13 +120,11 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                     'status': 'Failed to fetch Data or Messages not delivered'
                 })
         
-        contacts_str = "', '".join(contact_all)
         if wamids_list:
             wamids_list_str = "', '".join(wamids_list)
             wamids_list_str = f"'{wamids_list_str}'"
         else:
             wamids_list_str = None
-        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         now = timezone.now()
         if timezone.is_naive(created_at):
@@ -173,7 +173,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
             elif wamids_list_str:
                 return fetch_data_new(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
     except Exception as e:
-        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        logger.error(f"Error in download_campaign_report_new: {str(e)}")
         if insight:
             return pd.DataFrame()
         return JsonResponse({
