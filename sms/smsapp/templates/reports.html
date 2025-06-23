@@ -267,14 +267,14 @@
                             <button type="submit" class="btn btn-primary p-2" style="border-radius: 5px !important;">Apply Filters</button>
                             <a href="{% url 'reports' %}" class="btn btn-secondary">Clear Filters</a>
                             {% if show_button %}
-                            <!-- <div class="tooltip-wrapper">
+                            <div class="tooltip-wrapper">
                                 <button class="btn btn-warning p-2 download_hover" 
                                         style="border-radius: 5px !important;" 
                                         disabled>
                                     Download in bulk
                                 </button>
                                 <span class="tooltip-text">Select start end dates and complete Get Report before download in bulk</span>
-                            </div> -->
+                            </div>
                             {% else %}
                                 <button type="submit" class="btn btn-warning p-2" name="download_in_bulk" value="true" style="border-radius: 5px !important;">Download in bulk</button>
                             {% endif %}
@@ -310,13 +310,7 @@
                                             <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
                                                 <i class='bx bxs-download'></i>
                                             </a>
-                                            <a href="{% url 'report_download3' report.id %}" class="btn btn-warning d-none">
-                                                <i class='bx bxs-download'></i>
-                                            </a>
                                             <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
-                                                <i class='bx bx-line-chart'></i>
-                                            </button>
-                                            <button type="button" class="btn btn-warning d-none" onclick="showInsight3({{ report.id }})">
                                                 <i class='bx bx-line-chart'></i>
                                             </button>
                                         </div>
@@ -461,16 +455,15 @@
         $('#Reports').addClass('active');
     });
   </script>
-
 <script>
-    function showInsight3(reportId) {
+    function showInsight(reportId) {
         // Get the loading overlay element
         const loadingOverlay = document.getElementById('loadingOverlay');
 
         // Display the loading overlay
         loadingOverlay.style.display = 'flex';
 
-        fetch(`/report_insight3/${reportId}/`)
+        fetch(`/report_insight/${reportId}/`)
             .then(response => response.json())
             .then(data => {
                 // Hide the loading overlay when the data is received
