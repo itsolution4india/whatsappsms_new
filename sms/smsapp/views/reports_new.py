@@ -144,7 +144,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         ]
 
         # CASE 1: created_at is older than 24 hours
-        if time_since_created.total_seconds() > 86400:
+        if time_since_created.total_seconds() > 86400 and not insight:
             if any(count > 0 for count in counts):
                 status_counts_df = pd.DataFrame([
                     ['deliverd', report.deliver_count],
@@ -210,12 +210,14 @@ def update_report_insights(report_id, status_df):
         for _, row in status_df.iterrows():
             status = row['status']
             count = row['count']
-            if status == 'deliverd':
+            if status == 'delivered':
                 deliver_count = count
             elif status == 'sent':
                 sent_count = count
             elif status == 'read':
                 read_count = count
+            elif status == 'seen':
+                read_count = read_count + count
             elif status == 'failed':
                 failed_count = count
             elif status == 'reply':
