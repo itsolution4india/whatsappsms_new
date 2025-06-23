@@ -21,4 +21,3 @@ from .create_carousels import TemplateCreateView, ImageUploadView
 from .profileuser import UserProfileView
 from .dynamic_error_view import dynamic_error_view
 from .adminschedule import admin_schedule
-from .reports_new import Reports_new, download_campaign_report_new, get_report_insight_new
