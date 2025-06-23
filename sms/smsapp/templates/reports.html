@@ -310,7 +310,13 @@
                                             <a href="{% url 'report_download2' report.id %}" class="btn btn-primary">
                                                 <i class='bx bxs-download'></i>
                                             </a>
+                                            <a href="{% url 'report_download3' report.id %}" class="btn btn-warning d-none">
+                                                <i class='bx bxs-download'></i>
+                                            </a>
                                             <button type="button" class="btn btn-info" onclick="showInsight2({{ report.id }})">
+                                                <i class='bx bx-line-chart'></i>
+                                            </button>
+                                            <button type="button" class="btn btn-warning d-none" onclick="showInsight3({{ report.id }})">
                                                 <i class='bx bx-line-chart'></i>
                                             </button>
                                         </div>
@@ -455,15 +461,16 @@
         $('#Reports').addClass('active');
     });
   </script>
+
 <script>
-    function showInsight(reportId) {
+    function showInsight3(reportId) {
         // Get the loading overlay element
         const loadingOverlay = document.getElementById('loadingOverlay');
 
         // Display the loading overlay
         loadingOverlay.style.display = 'flex';
 
-        fetch(`/report_insight/${reportId}/`)
+        fetch(`/report_insight3/${reportId}/`)
             .then(response => response.json())
             .then(data => {
                 // Hide the loading overlay when the data is received
