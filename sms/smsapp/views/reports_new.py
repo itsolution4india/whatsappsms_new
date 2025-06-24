@@ -374,7 +374,7 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     now = timezone.now()
     time_since_created = now - created_at
     if time_since_created.total_seconds() > 86400:
-        message = f"{difference} messages could not be delivered due to an invalid phone number format." if difference > 0 else "ok"
+        message = f"status pending for {difference} numbers, Please check back later." if difference > 0 else "ok"
     else:
         message = f"The report is still in progress with {difference} messages pending. Please check back later." if difference > 0 else "ok"
     summary_data = [
