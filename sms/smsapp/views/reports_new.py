@@ -192,7 +192,10 @@ def get_non_reply_rows(request):
     cursor = connection.cursor()
     
     query = """
-    SELECT * FROM webhook_responses 
+    SELECT Date, display_phone_number, phone_number_id, waba_id, contact_wa_id,
+           status, message_timestamp, error_code, error_message, contact_name,
+           message_from, message_type, message_body
+    FROM webhook_responses 
     WHERE status NOT IN (%s, %s)
     """
     
@@ -200,6 +203,8 @@ def get_non_reply_rows(request):
     cursor.execute(query, params)
     rows = cursor.fetchall()
     
+    cursor.close()
+    connection.close()
     return rows
 
 def update_report_insights(report_id, status_df):
