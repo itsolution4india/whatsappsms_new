@@ -241,13 +241,15 @@ def update_report_insights(report_id, status_df):
                 failed_count = count
             elif status == 'reply':
                 reply_count = count
+            elif status == 'Total Contacts':
+                total = count
 
         report.deliver_count = deliver_count
         report.sent_count = sent_count
         report.read_count = read_count
         report.failed_count = failed_count
         report.reply_count = reply_count
-        report.total_count = deliver_count + sent_count + read_count + failed_count + reply_count
+        report.total_count = total
         report.updated_at = timezone.now()
         report.save()
     except ReportInfo.DoesNotExist:
@@ -366,7 +368,7 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     df = pd.DataFrame(updated_rows, columns=header)
     status_counts_df = df['status'].value_counts().reset_index()
     status_counts_df.columns = ['status', 'count']
-    total_unique_contacts = len(df['contact_wa_id'])
+    total_unique_contacts = len(df['contact_wa_id'].unique())
     total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
     status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
     
@@ -549,7 +551,7 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
     df = pd.DataFrame(updated_matched_rows, columns=header)
     status_counts_df = df['status'].value_counts().reset_index()
     status_counts_df.columns = ['status', 'count']
-    total_unique_contacts = len(df['contact_wa_id'])
+    total_unique_contacts = len(df['contact_wa_id'].unique())
     total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
     status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
     
