@@ -152,7 +152,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         if time_since_created.total_seconds() > 86400:
             if any(count > 0 for count in counts) and insight:
                 status_counts_df = pd.DataFrame([
-                    ['deliverd', report.deliver_count],
+                    ['delivered', report.deliver_count],
                     ['sent', report.sent_count],
                     ['read', report.read_count],
                     ['failed', report.failed_count],
@@ -171,7 +171,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         else:
             if time_since_updated.total_seconds() < 1200 and any(count > 0 for count in counts) and insight:
                 status_counts_df = pd.DataFrame([
-                    ['deliverd', report.deliver_count],
+                    ['delivered', report.deliver_count],
                     ['sent', report.sent_count],
                     ['read', report.read_count],
                     ['failed', report.failed_count],
@@ -372,7 +372,7 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     
     if match_stats:
         db_status = pd.DataFrame([
-            ['deliverd', report.deliver_count],
+            ['delivered', report.deliver_count],
             ['sent', report.sent_count],
             ['read', report.read_count],
             ['failed', report.failed_count],
@@ -555,7 +555,7 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
     
     if match_stats:
         db_status = pd.DataFrame([
-            ['deliverd', report.deliver_count],
+            ['delivered', report.deliver_count],
             ['sent', report.sent_count],
             ['read', report.read_count],
             ['failed', report.failed_count],
