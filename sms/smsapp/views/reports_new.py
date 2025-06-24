@@ -579,6 +579,7 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
 import numpy as np
   
 def adjust_status_counts(df, differences):
+    logger.info("adjust_status_counts called")
     df_copy = df.copy()
     statuses = df_copy['status'].values
 
