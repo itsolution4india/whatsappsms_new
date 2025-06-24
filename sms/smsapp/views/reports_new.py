@@ -382,6 +382,8 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
         target_counts = db_status.set_index('status')['count'].drop('Total Contacts', errors='ignore').to_dict()
         current_counts = df['status'].value_counts().to_dict()
         differences = {status: target_counts[status] - current_counts.get(status, 0) for status in target_counts}
+        for status, diff in differences.items():
+            logger.info(f"{status}: current={current_counts.get(status, 0)}, target={target_counts[status]}, diff={diff}")
         df = adjust_status_counts(df, differences)
     else:
         update_report_insights(report_id, status_counts_df)
@@ -579,7 +581,6 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
 import numpy as np
   
 def adjust_status_counts(df, differences):
-    logger.info("adjust_status_counts called")
     df_copy = df.copy()
     statuses = df_copy['status'].values
 
