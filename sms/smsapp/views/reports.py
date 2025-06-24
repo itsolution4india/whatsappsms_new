@@ -694,7 +694,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
             'status': f'Error: {str(e)}'
         })
 
-def get_non_reply_rows(request):
+def get_non_reply_rows():
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
         port=os.getenv('SQLPORT'),
@@ -787,7 +787,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
         else:
             error_message = 'Business eligibility payment issue'
             
-    non_reply_rows = get_non_reply_rows(request)
+    non_reply_rows = get_non_reply_rows()
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
@@ -854,23 +854,7 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
         return response
 
 def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None, report_id=None):
-    # Connect to the database
-    connection = mysql.connector.connect(
-        host=os.getenv('SQLHOST'),
-        port=os.getenv('SQLPORT'),
-        user=os.getenv('SQLUSER'),
-        password=os.getenv('SQLPASSWORD'),
-        database= os.getenv('SQLDATABASE'),
-        auth_plugin=os.getenv('SQLAUTH')
-    )
-    cursor = connection.cursor()
-    query = """
-    SELECT * FROM webhook_responses 
-    WHERE status NOT IN (%s, %s)
-    """
-    params = ["reply", "failed"]
-    cursor.execute(query, params)
-    non_reply_rows = cursor.fetchall()
+    non_reply_rows = get_non_reply_rows()
     
     if error_code:
         if str(error_code) == "131031":
