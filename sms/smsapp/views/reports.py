@@ -73,8 +73,7 @@ def Reports(request):
             
         # Order the reports
         report_list = report_query.only('contact_list').order_by('-created_at')
-        total_numbers = report_list.message_delivery
-        print(total_numbers)
+        
         # Pagination
         page = request.GET.get('page', 1)
         items_per_page = 10  # You can adjust this number
@@ -530,7 +529,7 @@ def download_campaign_report2(request, report_id=None, insight=False, contact_li
         date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         if wamids_list_str:
             logger.info("fetching data using wamids_list_str")
-            return fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+            return fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, report.campaign_title, insight, report.message_delivery)
         # SQL query to get unique record for each contact with prioritized selection
         query = f"""
             WITH LeastDateWaba AS (
@@ -723,7 +722,7 @@ def get_non_reply_rows(request):
     connection.close()
     return rows
 
-def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight):
+def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campaign_title, insight, total_messages):
     _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
@@ -835,8 +834,14 @@ def fetch_data(request, Phone_ID, wamids_list_str, report_id, created_at, campai
     status_counts_df = df['status'].value_counts().reset_index()
     status_counts_df.columns = ['status', 'count']
     total_unique_contacts = len(df['contact_wa_id'].unique())
-    total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
-    status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+    difference = total_messages - total_unique_contacts
+    message = f"The report is currently pending for {difference} numbers. Please try again after some time." if difference > 0 else "ok"
+    summary_data = [
+        ['Total Contacts', total_unique_contacts],
+        ['Message', message]
+    ]
+    summary_df = pd.DataFrame(summary_data, columns=['status', 'count'])
+    status_counts_df = pd.concat([status_counts_df, summary_df], ignore_index=True)
     
     if insight:
         return status_counts_df
