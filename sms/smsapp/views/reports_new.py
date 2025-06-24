@@ -391,8 +391,8 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
         return status_counts_df
     else:
         writer = csv.writer(response)
-        writer.writerow(header)
-        writer.writerows(updated_rows)
+        writer.writerow(df.columns)
+        writer.writerows(df.values.tolist())
         cursor.close()
         connection.close()
         return response
