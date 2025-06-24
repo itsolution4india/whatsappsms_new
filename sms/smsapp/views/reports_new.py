@@ -149,8 +149,8 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         ]
 
         # CASE 1: created_at is older than 24 hours
-        if time_since_created.total_seconds() > 86400 and insight:
-            if any(count > 0 for count in counts):
+        if time_since_created.total_seconds() > 86400:
+            if any(count > 0 for count in counts) and insight:
                 status_counts_df = pd.DataFrame([
                     ['deliverd', report.deliver_count],
                     ['sent', report.sent_count],
@@ -163,10 +163,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
             elif wamids_list_str:
                 return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
             else:
-                try:
-                    featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
-                except Exception as e:
-                    logger.error(f"Error in featch_data_using_numbers: {e}")
+                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
 
         # CASE 2: created_at is within 24 hours
         else:
@@ -183,10 +180,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
             elif wamids_list_str:
                 return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
             else:
-                try:
-                    featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
-                except Exception as e:
-                    logger.error(f"Error in featch_data_using_numbers: {e}")
+                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
                     
     except Exception as e:
         logger.error(f"Error in download_campaign_report_new: {str(e)}")
