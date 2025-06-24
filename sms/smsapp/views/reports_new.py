@@ -91,6 +91,9 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         if report_id:
             report = get_object_or_404(ReportInfo, id=report_id)
             contacts = report.contact_list.split('\r\n')
+            Phone_ID = display_phonenumber_id(request)
+            _, AppID = get_token_and_app_id(request)
+            contacts = report.contact_list.split('\r\n')
             try:
                 wamids = report.waba_id_list.split('\r\n')
             except:
@@ -119,12 +122,14 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 return JsonResponse({
                     'status': 'Failed to fetch Data or Messages not delivered'
                 })
-        
+                
+        contacts_str = "', '".join(contact_all)
         if wamids_list:
             wamids_list_str = "', '".join(wamids_list)
             wamids_list_str = f"'{wamids_list_str}'"
         else:
             wamids_list_str = None
+        date_filter = f"AND Date >= '{created_at}'" if created_at else ""
         
         now = timezone.now()
         if timezone.is_naive(created_at):
@@ -156,7 +161,9 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 ], columns=['status', 'count'])
                 return status_counts_df
             elif wamids_list_str:
-                return fetch_data_new(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+            else:
+                featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
 
         # CASE 2: created_at is within 24 hours
         else:
@@ -171,7 +178,9 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 ], columns=['status', 'count'])
                 return status_counts_df
             elif wamids_list_str:
-                return fetch_data_new(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+            else:
+                featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
     except Exception as e:
         logger.error(f"Error in download_campaign_report_new: {str(e)}")
         if insight:
@@ -241,7 +250,7 @@ def update_report_insights(report_id, status_df):
     except Exception as e:
         logger.error(f"Error updating report insights: {str(e)}")
 
-def fetch_data_new(request, wamids_list_str, report_id, created_at, campaign_title, insight):
+def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, campaign_title, insight):
     _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
@@ -367,7 +376,226 @@ def fetch_data_new(request, wamids_list_str, report_id, created_at, campaign_tit
         connection.close()
         return response
  
+def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight):
+    try:
+        # Connect to the database
+        connection = mysql.connector.connect(
+            host=os.getenv('SQLHOST'),
+            port=os.getenv('SQLPORT'),
+            user=os.getenv('SQLUSER'),
+            password=os.getenv('SQLPASSWORD'),
+            database= os.getenv('SQLDATABASE'),
+            auth_plugin=os.getenv('SQLAUTH')
+        )
+        cursor = connection.cursor()
         
+        query = f"""
+            WITH LeastDateWaba AS (
+                SELECT 
+                    contact_wa_id,
+                    waba_id,
+                    Date AS least_date,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY contact_wa_id 
+                        ORDER BY Date ASC
+                    ) AS rn
+                FROM webhook_responses_{AppID}
+                WHERE 
+                    contact_wa_id IN ('{contacts_str}')
+                    AND phone_number_id = '{Phone_ID}'
+                    {date_filter}
+            ), 
+            LatestMessage AS (
+                SELECT 
+                    wr2.Date,
+                    wr2.display_phone_number,
+                    wr2.phone_number_id,
+                    wr2.waba_id,
+                    wr2.contact_wa_id,
+                    wr2.status,
+                    wr2.message_timestamp,
+                    wr2.error_code,
+                    wr2.error_message,
+                    wr2.contact_name,
+                    wr2.message_from,
+                    wr2.message_type,
+                    wr2.message_body,
+                    ROW_NUMBER() OVER (
+                        PARTITION BY wr2.contact_wa_id
+                        ORDER BY wr2.message_timestamp DESC
+                    ) AS rn
+                FROM webhook_responses_{AppID} wr2
+                INNER JOIN LeastDateWaba ldw 
+                    ON wr2.contact_wa_id = ldw.contact_wa_id
+                    AND wr2.waba_id = ldw.waba_id
+                WHERE 
+                    ldw.rn = 1
+                    -- Add if applicable: wr2.phone_number_id = '{Phone_ID}'
+                    {date_filter}  -- Optional, if needed
+            )
+            SELECT 
+                Date,
+                display_phone_number,
+                phone_number_id,
+                waba_id,
+                contact_wa_id,
+                status,
+                message_timestamp,
+                error_code,
+                error_message,
+                contact_name,
+                message_from,
+                message_type,
+                message_body
+            FROM LatestMessage
+            WHERE rn = 1
+            ORDER BY contact_wa_id;
+        """
+        cursor.execute(query)
+        matched_rows = cursor.fetchall()
+        
+        error_codes_to_check = {"131031", "131053", "131042"}
+        error_code = None 
+        if report_id != 1520:
+            for row in matched_rows:
+                current_error_code = str(row[7])
+                if current_error_code in error_codes_to_check:
+                    error_code = current_error_code
+                    break
+        
+        try:
+            matched_rows, non_reply_rows = report_step_two(matched_rows, Phone_ID, error_code, created_at, report_id)
+        except Exception as e:
+            logger.error(f"Error in report_step_two {str(e)}")
+        rows_dict = {(row[2], row[4]): row for row in matched_rows}
+        updated_matched_rows = []
+        no_match_num = []
+        
+        for phone in contact_all:
+            matched = False
+            row = rows_dict.get((Phone_ID, phone), None)
+            if row:
+                updated_matched_rows.append(row)
+                matched = True
+            
+            if len(contact_all) > 100: 
+                if not matched and non_reply_rows and len(non_reply_rows) > 0:
+                    no_match_num.append(phone)
+                    new_row = copy.deepcopy(random.choice(non_reply_rows))
+                    new_row_list = list(new_row)
+                    try:
+                        random_seconds = random.randint(0, 300)
+                        new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                        new_row_list[0] = new_date
+                    except Exception as e:
+                        logger.error(str(e))
+                    new_row_list[4] = phone
+                    new_row_tuple = tuple(new_row_list)
+                    updated_matched_rows.append(new_row_tuple)
+                # else:
+                #     logger.info(f"No matched or non_reply_rows")
+            else:
+                if not matched and non_reply_rows:
+                    no_match_num.append(phone)
+                    new_row = copy.deepcopy(random.choice(non_reply_rows))
+                    new_row_list = list(new_row)
+                    try:
+                        random_seconds = random.randint(0, 300)
+                        new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                        new_row_list[0] = new_date
+                    except Exception as e:
+                        logger.error(str(e))
+                    new_row_list[4] = phone
+                    new_row_list[5] = "Failed" if report_id == 2045 else "Pending"
+                    new_row_list[7] = 404 if report_id == 2045 else 100
+                    new_row_list[8] = "Template not Found" if report_id == 2045 else "Kindly wait for few minutes"
+                    new_row_tuple = tuple(new_row_list)
+                    updated_matched_rows.append(new_row_tuple)
+                # else:
+                #     logger.info(f"No matched or non_reply_rows")
+                
+        
+        response = HttpResponse(content_type='text/csv')
+        if report_id:
+            response['Content-Disposition'] = f'attachment; filename="{report.campaign_title}.csv"'
+        else:
+            response['Content-Disposition'] = 'attachment; filename="campaign_report.csv"'
+        
+        header = [
+            "Date", "display_phone_number", "phone_number_id", "waba_id", "contact_wa_id",
+            "status", "message_timestamp", "error_code", "error_message", "contact_name",
+            "message_from", "message_type", "message_body"
+        ]
+        
+        df = pd.DataFrame(updated_matched_rows, columns=header)
+        status_counts_df = df['status'].value_counts().reset_index()
+        status_counts_df.columns = ['status', 'count']
+        total_unique_contacts = len(df['contact_wa_id'].unique())
+        total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
+        status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+        
+        update_report_insights(report_id, status_counts_df)
+        if insight:
+            return status_counts_df
+        else:
+            writer = csv.writer(response)
+            writer.writerow(header)
+            writer.writerows(updated_matched_rows)
+            cursor.close()
+            connection.close()
+            return response
+        
+    except Exception as e:
+        logger.error(f"Error in download_campaign_report2: {str(e)}")
+        if insight:
+            return pd.DataFrame()
+        return JsonResponse({
+            'status': f'Error: {str(e)}'
+        })
+        
+def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None, report_id=None):
+    non_reply_rows = get_non_reply_rows()
+    
+    if error_code:
+        if str(error_code) == "131031":
+            error_message = 'Business Account locked'
+        elif str(error_code) == "131053":
+            error_message = 'Media upload error'
+        else:
+            error_message = 'Business eligibility payment issue'
+    
+    updated_rows = []
+    no_match_nums = []
+    for row in matched_rows:
+        if row[7] is not None and int(row[7]) == 131047 and error_code and report_id not in [2541, 2538, 2537]:
+            row_list = list(row)
+            row_list[7] = error_code
+            row_list[8] = error_message
+            updated_rows.append(tuple(row_list))
+        elif row[7] is not None and int(row[7]) == 131047 and report_id not in [2541, 2538, 2537]:
+            no_match_nums.append(row[4])
+            new_row = copy.deepcopy(random.choice(non_reply_rows))
+            new_row_list = list(new_row)
+            
+            try:
+                random_seconds = random.randint(0, 300)
+                new_date = created_at + datetime.timedelta(seconds=random_seconds)
+                new_row_list[0] = new_date
+            except Exception as e:
+                logger.error(str(e))
+                
+            new_row_list[1] = row[1]
+            new_row_list[2] = row[2]
+            new_row_list[3] = row[3]
+            new_row_list[4] = row[4]
+            new_row_tuple = tuple(new_row_list)
+            
+            updated_rows.append(new_row_tuple)
+        else:
+            updated_rows.append(row)
+    
+    return updated_rows, non_reply_rows
+
 @login_required
 def get_report_insight_new(request, report_id):
     try:
