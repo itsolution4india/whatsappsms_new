@@ -225,6 +225,7 @@
                             <tbody id="insightTableBody">
                             </tbody>
                         </table>
+                        <p id="insightMessage" style="margin-top: 10px; font-weight: bold; color: #d9534f; display: none;"></p>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -506,29 +507,36 @@
 
 <script>
     function showInsight2(reportId) {
-        // Get the loading overlay element
         const loadingOverlay = document.getElementById('loadingOverlay');
-
-        // Display the loading overlay
         loadingOverlay.style.display = 'flex';
 
         fetch(`/report_insight2/${reportId}/`)
             .then(response => response.json())
             .then(data => {
-                // Hide the loading overlay when the data is received
                 loadingOverlay.style.display = 'none';
 
                 if (data.status === 'success') {
                     const tableBody = document.getElementById('insightTableBody');
+                    const messageParagraph = document.getElementById('insightMessage');
                     tableBody.innerHTML = '';
+                    messageParagraph.textContent = '';  // Clear previous message
 
                     data.data.forEach(row => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${row.status}</td>
-                            <td>${row.count}</td>
-                        `;
-                        tableBody.appendChild(tr);
+                        if (row.status === 'Message') {
+                            if (row.count !== 'ok') {
+                                messageParagraph.textContent = row.count;
+                                messageParagraph.style.display = 'block';
+                            } else {
+                                messageParagraph.style.display = 'none';
+                            }
+                        } else {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td>${row.status}</td>
+                                <td>${row.count}</td>
+                            `;
+                            tableBody.appendChild(tr);
+                        }
                     });
 
                     const modal = new bootstrap.Modal(document.getElementById('insightModal'));
@@ -539,7 +547,6 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Hide the loading overlay in case of error
                 loadingOverlay.style.display = 'none';
                 alert('Failed to load insights');
             });
