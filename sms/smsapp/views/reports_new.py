@@ -167,7 +167,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
 
         # CASE 2: created_at is within 24 hours
         else:
-            if time_since_updated.total_seconds() < 600 and any(count > 0 for count in counts):
+            if time_since_updated.total_seconds() < 600 and any(count > 0 for count in counts) and insight:
                 status_counts_df = pd.DataFrame([
                     ['deliverd', report.deliver_count],
                     ['sent', report.sent_count],
