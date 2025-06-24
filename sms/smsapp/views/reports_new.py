@@ -189,7 +189,7 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
             'status': f'Error: {str(e)}'
         })
 
-def get_non_reply_rows(request):
+def get_non_reply_rows():
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
         port=os.getenv('SQLPORT'),
@@ -315,7 +315,7 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
         else:
             error_message = 'Business eligibility payment issue'
             
-    non_reply_rows = get_non_reply_rows(request)
+    non_reply_rows = get_non_reply_rows()
     updated_rows = []
     no_match_nums = []
     for row in filtered_rows:
