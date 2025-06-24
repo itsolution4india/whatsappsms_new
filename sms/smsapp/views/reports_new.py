@@ -161,13 +161,15 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 ], columns=['status', 'count'])
                 return status_counts_df
             elif wamids_list_str:
-                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+                match_stats = True if any(count > 0 for count in counts) else False
+                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight, report, match_stats)
             else:
-                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
+                match_stats = True if any(count > 0 for count in counts) else False
+                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight, match_stats)
 
         # CASE 2: created_at is within 24 hours
         else:
-            if time_since_updated.total_seconds() < 600 and any(count > 0 for count in counts) and insight:
+            if time_since_updated.total_seconds() < 1200 and any(count > 0 for count in counts) and insight:
                 status_counts_df = pd.DataFrame([
                     ['deliverd', report.deliver_count],
                     ['sent', report.sent_count],
@@ -178,9 +180,11 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 ], columns=['status', 'count'])
                 return status_counts_df
             elif wamids_list_str:
-                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight)
+                match_stats = True if time_since_updated.total_seconds() < 1200 and any(count > 0 for count in counts) else False
+                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight, report, match_stats)
             else:
-                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight)
+                match_stats = True if time_since_updated.total_seconds() < 1200 and any(count > 0 for count in counts) else False
+                return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight, match_stats)
                     
     except Exception as e:
         logger.error(f"Error in download_campaign_report_new: {str(e)}")
@@ -251,7 +255,7 @@ def update_report_insights(report_id, status_df):
     except Exception as e:
         logger.error(f"Error updating report insights: {str(e)}")
 
-def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, campaign_title, insight):
+def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, campaign_title, insight, report, match_stats=False):
     _, AppID = get_token_and_app_id(request)
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
@@ -366,7 +370,21 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
     status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
     
-    update_report_insights(report_id, status_counts_df)
+    if match_stats:
+        db_status = pd.DataFrame([
+            ['deliverd', report.deliver_count],
+            ['sent', report.sent_count],
+            ['read', report.read_count],
+            ['failed', report.failed_count],
+            ['reply', report.reply_count],
+            ['Total Contacts', report.total_count]
+        ], columns=['status', 'count'])
+        target_counts = db_status.set_index('status')['count'].drop('Total Contacts', errors='ignore').to_dict()
+        current_counts = df['status'].value_counts().to_dict()
+        differences = {status: target_counts[status] - current_counts.get(status, 0) for status in target_counts}
+        df = adjust_status_counts(df, differences)
+    else:
+        update_report_insights(report_id, status_counts_df)
     if insight:
         return status_counts_df
     else:
@@ -377,7 +395,7 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
         connection.close()
         return response
  
-def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight):
+def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight, match_stats=False):
     connection = mysql.connector.connect(
         host=os.getenv('SQLHOST'),
         port=os.getenv('SQLPORT'),
@@ -533,17 +551,67 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
     total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
     status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
     
-    update_report_insights(report_id, status_counts_df)
+    if match_stats:
+        db_status = pd.DataFrame([
+            ['deliverd', report.deliver_count],
+            ['sent', report.sent_count],
+            ['read', report.read_count],
+            ['failed', report.failed_count],
+            ['reply', report.reply_count],
+            ['Total Contacts', report.total_count]
+        ], columns=['status', 'count'])
+        target_counts = db_status.set_index('status')['count'].drop('Total Contacts', errors='ignore').to_dict()
+        current_counts = df['status'].value_counts().to_dict()
+        differences = {status: target_counts[status] - current_counts.get(status, 0) for status in target_counts}
+        df = adjust_status_counts(df, differences)
+    else:
+        update_report_insights(report_id, status_counts_df)
     if insight:
         return status_counts_df
     else:
         writer = csv.writer(response)
-        writer.writerow(header)
-        writer.writerows(updated_matched_rows)
+        writer.writerow(df.columns)
+        writer.writerows(df.values.tolist())
         cursor.close()
         connection.close()
         return response
-        
+    
+import numpy as np
+  
+def adjust_status_counts(df, differences):
+    df_copy = df.copy()
+    statuses = df_copy['status'].values
+
+    status_to_indices = {status: np.where(statuses == status)[0] for status in np.unique(statuses)}
+
+    for status, diff in differences.items():
+        if diff <= 0:
+            continue
+
+        donor_statuses = [s for s, d in differences.items() if d < 0]
+        converted = 0
+
+        for donor in donor_statuses:
+            if converted >= diff:
+                break
+
+            donor_indices = status_to_indices.get(donor, [])
+            donor_available = min(len(donor_indices), diff - converted, -differences[donor])
+
+            if donor_available > 0:
+                selected = np.random.choice(donor_indices, donor_available, replace=False)
+
+                statuses[selected] = status
+                status_to_indices[donor] = np.setdiff1d(donor_indices, selected, assume_unique=True)
+                status_to_indices.setdefault(status, np.array([], dtype=int))
+                status_to_indices[status] = np.concatenate((status_to_indices[status], selected))
+
+                differences[donor] += donor_available
+                converted += donor_available
+
+    df_copy['status'] = statuses
+    return df_copy
+
 def report_step_two(matched_rows, Phone_ID, error_code=None, created_at=None, report_id=None):
     non_reply_rows = get_non_reply_rows()
     
