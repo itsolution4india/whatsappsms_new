@@ -369,8 +369,20 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     status_counts_df = df['status'].value_counts().reset_index()
     status_counts_df.columns = ['status', 'count']
     total_unique_contacts = len(df['contact_wa_id'].unique())
-    total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
-    status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+    total_messages = report.message_delivery
+    difference = total_messages - total_unique_contacts
+    now = timezone.now()
+    time_since_created = now - created_at
+    if time_since_created.total_seconds() > 86400:
+        message = f"{difference} messages could not be delivered due to an invalid phone number format." if difference > 0 else "ok"
+    else:
+        message = f"The report is still in progress with {difference} messages pending. Please check back later." if difference > 0 else "ok"
+    summary_data = [
+        ['Total Contacts', total_unique_contacts],
+        ['Message', message]
+    ]
+    summary_df = pd.DataFrame(summary_data, columns=['status', 'count'])
+    status_counts_df = pd.concat([status_counts_df, summary_df], ignore_index=True)
     
     if match_stats:
         db_status = pd.DataFrame([
@@ -552,8 +564,15 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
     status_counts_df = df['status'].value_counts().reset_index()
     status_counts_df.columns = ['status', 'count']
     total_unique_contacts = len(df['contact_wa_id'].unique())
-    total_row = pd.DataFrame([['Total Contacts', total_unique_contacts]], columns=['status', 'count'])
-    status_counts_df = pd.concat([status_counts_df, total_row], ignore_index=True)
+    total_messages = report.message_delivery
+    difference = total_messages - total_unique_contacts
+    message = f"The report is currently pending for {difference} numbers. Please try again after some time." if difference > 0 else "ok"
+    summary_data = [
+        ['Total Contacts', total_unique_contacts],
+        ['Message', message]
+    ]
+    summary_df = pd.DataFrame(summary_data, columns=['status', 'count'])
+    status_counts_df = pd.concat([status_counts_df, summary_df], ignore_index=True)
     
     if match_stats:
         db_status = pd.DataFrame([
