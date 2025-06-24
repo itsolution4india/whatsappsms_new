@@ -151,14 +151,18 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         # CASE 1: created_at is older than 24 hours
         if time_since_created.total_seconds() > 86400:
             if any(count > 0 for count in counts) and insight:
+                difference = report.message_delivery - report.total_count
+                message = f"status pending for {difference} numbers, Please check back later." if difference > 0 else "ok"
                 status_counts_df = pd.DataFrame([
                     ['delivered', report.deliver_count],
                     ['sent', report.sent_count],
                     ['read', report.read_count],
                     ['failed', report.failed_count],
                     ['reply', report.reply_count],
+                    ['Message', message],
                     ['Total Contacts', report.total_count]
                 ], columns=['status', 'count'])
+                
                 return status_counts_df
             elif wamids_list_str:
                 match_stats = True if any(count > 0 for count in counts) else False
@@ -170,12 +174,15 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
         # CASE 2: created_at is within 24 hours
         else:
             if time_since_updated.total_seconds() < 1200 and any(count > 0 for count in counts) and insight:
+                difference = report.message_delivery - report.total_count
+                message = f"The report is still in progress with {difference} messages pending. Please check back later." if difference > 0 else "ok"
                 status_counts_df = pd.DataFrame([
                     ['delivered', report.deliver_count],
                     ['sent', report.sent_count],
                     ['read', report.read_count],
                     ['failed', report.failed_count],
                     ['reply', report.reply_count],
+                    ['Message', message],
                     ['Total Contacts', report.total_count]
                 ], columns=['status', 'count'])
                 return status_counts_df
