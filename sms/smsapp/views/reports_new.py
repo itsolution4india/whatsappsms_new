@@ -164,9 +164,9 @@ def download_campaign_report_new(request, report_id=None, insight=False, contact
                 ], columns=['status', 'count'])
                 
                 return status_counts_df
-            elif wamids_list_str:
-                match_stats = True if any(count > 0 for count in counts) else False
-                return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight, report, match_stats)
+            # elif wamids_list_str:
+            #     match_stats = True if any(count > 0 for count in counts) else False
+            #     return fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, report.campaign_title, insight, report, match_stats)
             else:
                 match_stats = True if any(count > 0 for count in counts) else False
                 return featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report_id, created_at, contact_all, report, insight, match_stats)
