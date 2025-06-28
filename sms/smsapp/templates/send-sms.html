@@ -232,7 +232,7 @@
               <button type="button" class="btn btn-success" onclick="validateNumbers()">validate</button>
               {% endif %}
               <button type="button" id="toggleScheduleButton" class="btn btn-secondary"
-                onclick="toggleScheduleCall()">Schedule message</button>
+                onclick="toggleScheduleCall()" disabled>Schedule message</button>
 
               <div id="date-time-fields" style="display:none; margin-top: 15px;">
                 <div class="mb-3">
@@ -410,6 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const templateSelect = document.querySelector('select[name="params"]');
     const contactTextarea = document.querySelector('textarea[name="contact_number"]');
     const submitBtn = document.getElementById('submitBtn');
+    const toggleScheduleButton = document.getElementById('toggleScheduleButton');
     const fileInput = document.getElementById('id_files');  // CSV file input
     const add91Checkbox = document.getElementById('add_91'); // Add 91 checkbox
     const errorMsg = document.getElementById('errorMsg');
@@ -443,12 +444,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Enable the submit button if the conditions are met
         submitBtn.disabled = !(isCampaignFilled && isTemplateSelected && (isContactFilled || isFileUploaded));
+        toggleScheduleButton.disabled = !(isCampaignFilled && isTemplateSelected && (isContactFilled || isFileUploaded));
     }
 
     // Disable submit button on actual submission
     document.getElementById('mediaForm').addEventListener('submit', function () {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...'; // Optional: gives user feedback
+        submitBtn.textContent = 'Submitting...';
+        toggleScheduleButton.disabled = true;
+        toggleScheduleButton.textContent = 'Submitting...';
     });
 });
 </script>
