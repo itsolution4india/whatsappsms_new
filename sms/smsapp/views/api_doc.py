@@ -190,8 +190,12 @@ class GetReportAPI(APIView):
             return Response({"error": "999, An unexpected error occurred", "details": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 def api_manual(request):
-    user = CustomUser.objects.get(email=request.user.email)
-    if user.user_id and user.api_token:
+    try:
+        user = CustomUser.objects.get(email=request.user.email)
+    except Exception as e:
+        user = None
+        pass
+    if user and user.user_id and user.api_token:
         context = {
             "coins":request.user.marketing_coins + request.user.authentication_coins,
             "marketing_coins":request.user.marketing_coins,
@@ -204,4 +208,4 @@ def api_manual(request):
             }
         return render(request, "api_manual.html", context)
     else:
-        return redirect("access_denide")
+        return render(request, "api_manual.html")
