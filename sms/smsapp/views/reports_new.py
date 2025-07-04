@@ -373,7 +373,10 @@ def fetch_data_using_wamids(request, wamids_list_str, report_id, created_at, cam
     ]
     
     df = pd.DataFrame(updated_rows, columns=header)
-    df['Date'] = pd.to_datetime(df['Date'])
+    try:
+        df['Date'] = pd.to_datetime(df['Date'], utc=True)
+    except:
+        df['Date'] = pd.to_datetime(df['Date']).dt.tz_localize(None)
     df = df.sort_values('Date', ascending=False)
     df = df.drop_duplicates(subset='waba_id', keep='first')
     status_counts_df = df['status'].value_counts().reset_index()
