@@ -217,11 +217,10 @@ def get_non_reply_rows():
            status, message_timestamp, error_code, error_message, contact_name,
            message_from, message_type, message_body
     FROM webhook_responses 
-    WHERE status NOT IN (%s, %s)
+    WHERE status = %s
     """
     
-    params = ["reply", "failed"]
-    cursor.execute(query, params)
+    cursor.execute(query, ("sent",))
     rows = cursor.fetchall()
     
     cursor.close()
