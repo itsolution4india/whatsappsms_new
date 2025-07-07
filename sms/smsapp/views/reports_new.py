@@ -84,6 +84,83 @@ def Reports_new(request):
         logger.error(str(e))
         return render(request, "reports.html", context)
 
+@login_required
+def reports_list_view(request):
+    if not check_user_permission(request.user, 'can_view_reports'):
+        return redirect("access_denide")
+    
+    context = {}
+    try:
+        # Get user's templates
+        token, _ = get_token_and_app_id(request)
+        campaign_list = fetch_templates(display_whatsapp_id(request), token)
+        if campaign_list is None:
+            campaign_list = []
+        
+        template_value = list(Templates.objects.filter(email=request.user).values_list('templates', flat=True))
+        template_value2 = [campaign_list[i] for i in range(len(campaign_list)) if campaign_list[i]['template_name'] in template_value]
+        
+        # Get all reports for the user
+        report_query = ReportInfo.objects.filter(email=request.user)
+        
+        # Apply filters if provided
+        if request.GET.get('start_date'):
+            report_query = report_query.filter(message_date__gte=request.GET.get('start_date'))
+        
+        if request.GET.get('end_date'):
+            report_query = report_query.filter(message_date__lte=request.GET.get('end_date'))
+        
+        if request.GET.get('campaign_title'):
+            report_query = report_query.filter(
+                campaign_title__icontains=request.GET.get('campaign_title')
+            )
+        
+        if request.GET.get('template_name'):
+            report_query = report_query.filter(
+                template_name=request.GET.get('template_name')
+            )
+        
+        # Order reports by creation date
+        report_list = report_query.order_by('-created_at')
+        
+        # Pagination
+        page = request.GET.get('page', 1)
+        items_per_page = 10
+        paginator = Paginator(report_list, items_per_page)
+        
+        try:
+            report_list_paginated = paginator.page(page)
+        except PageNotAnInteger:
+            report_list_paginated = paginator.page(1)
+        except EmptyPage:
+            report_list_paginated = paginator.page(paginator.num_pages)
+        
+        context = {
+            "all_template_names": template_value2,
+            "template_names": template_value,
+            "coins": request.user.marketing_coins + request.user.authentication_coins,
+            "marketing_coins": request.user.marketing_coins,
+            "authentication_coins": request.user.authentication_coins,
+            "username": username(request),
+            "WABA_ID": display_whatsapp_id(request),
+            "PHONE_ID": display_phonenumber_id(request),
+            "report_list": report_list_paginated,
+            "paginator": paginator,
+            "current_page": page,
+            "filters": {
+                'start_date': request.GET.get('start_date', ''),
+                'end_date': request.GET.get('end_date', ''),
+                'campaign_title': request.GET.get('campaign_title', ''),
+                'template_name': request.GET.get('template_name', '')
+            }
+        }
+
+        return render(request, "reports_list.html", context)
+        
+    except Exception as e:
+        logger.error(f"Error in reports_list_view: {str(e)}")
+        return render(request, "reports_list.html", context)
+
 # version 4
 @login_required
 def download_campaign_report_new(request, report_id=None, insight=False, contact_list=None):
