@@ -17,6 +17,7 @@ urlpatterns = [
     path('accounts/login/', views.user_login, name='login'),
     path("send-sms/", views.Send_Sms, name="send-sms"),
     path('reports/', views.Reports_new, name='reports'),
+    path('reports_new/', views.reports_list_view, name='reports_list'),
     #path('download_report/<int:report_id>/',views.download_campaign_report, name='report_download'),
     path('download_report/<int:report_id>/', views.download_campaign_report, name='report_download'),
     path('download_report2/<int:report_id>/', views.download_campaign_report2, name='report_download2'),

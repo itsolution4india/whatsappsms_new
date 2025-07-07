@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campaign Reports</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .download-btn {
+            min-width: 100px;
+        }
+        .table-container {
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .loading {
+            display: none;
+            color: #6c757d;
+        }
+        .btn-download:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .status-badge {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Campaign Reports</h4>
+                        <small class="text-muted">Total Coins: {{ coins }} | Marketing: {{ marketing_coins }} | Authentication: {{ authentication_coins }}</small>
+                    </div>
+                    
+                    <div class="card-body">
+                        <!-- Filters -->
+                        <form method="GET" class="row g-3 mb-4">
+                            <div class="col-md-3">
+                                <label for="start_date" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="start_date" name="start_date" value="{{ filters.start_date }}">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="end_date" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="end_date" name="end_date" value="{{ filters.end_date }}">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="campaign_title" class="form-label">Campaign Title</label>
+                                <input type="text" class="form-control" id="campaign_title" name="campaign_title" value="{{ filters.campaign_title }}" placeholder="Search by title">
+                            </div>
+                            <div class="col-md-3">
+                                <label for="template_name" class="form-label">Template</label>
+                                <select class="form-select" id="template_name" name="template_name">
+                                    <option value="">All Templates</option>
+                                    {% for template in template_names %}
+                                    <option value="{{ template }}" {% if filters.template_name == template %}selected{% endif %}>{{ template }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Filter</button>
+                                <a href="{% url 'reports_list' %}" class="btn btn-secondary">Reset</a>
+                            </div>
+                        </form>
+                        
+                        <!-- Reports Table -->
+                        <div class="table-container">
+                            <table class="table table-striped table-hover">
+                                <thead class="table-dark sticky-top">
+                                    <tr>
+                                        <th>Campaign Title</th>
+                                        <th>Template</th>
+                                        <th>Total Contacts</th>
+                                        <th>Status</th>
+                                        <th>Created</th>
+                                        <th>Updated</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for report in report_list %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ report.campaign_title }}</strong>
+                                            <br>
+                                            <small class="text-muted">ID: {{ report.id }}</small>
+                                        </td>
+                                        <td>{{ report.template_name }}</td>
+                                        <td>
+                                            <span class="badge bg-info">{{ report.total_count }}</span>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex flex-wrap gap-1">
+                                                {% if report.deliver_count > 0 %}
+                                                <span class="badge bg-success status-badge">Delivered: {{ report.deliver_count }}</span>
+                                                {% endif %}
+                                                {% if report.sent_count > 0 %}
+                                                <span class="badge bg-primary status-badge">Sent: {{ report.sent_count }}</span>
+                                                {% endif %}
+                                                {% if report.read_count > 0 %}
+                                                <span class="badge bg-warning status-badge">Read: {{ report.read_count }}</span>
+                                                {% endif %}
+                                                {% if report.failed_count > 0 %}
+                                                <span class="badge bg-danger status-badge">Failed: {{ report.failed_count }}</span>
+                                                {% endif %}
+                                                {% if report.reply_count > 0 %}
+                                                <span class="badge bg-secondary status-badge">Reply: {{ report.reply_count }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ report.created_at|date:"M d, Y" }}
+                                            <br>
+                                            <small class="text-muted">{{ report.created_at|time:"H:i" }}</small>
+                                        </td>
+                                        <td>
+                                            {{ report.updated_at|date:"M d, Y" }}
+                                            <br>
+                                            <small class="text-muted">{{ report.updated_at|time:"H:i" }}</small>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success download-btn" 
+                                                    onclick="downloadReport({{ report.id }}, '{{ report.campaign_title }}', this)">
+                                                <span class="download-text">Download</span>
+                                                <span class="loading">
+                                                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                                    Downloading...
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="7" class="text-center py-4">
+                                            <div class="text-muted">
+                                                <h5>No reports found</h5>
+                                                <p>No campaign reports match your current filters.</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        {% if report_list.has_other_pages %}
+                        <nav aria-label="Page navigation" class="mt-4">
+                            <ul class="pagination justify-content-center">
+                                {% if report_list.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ report_list.previous_page_number }}{% if request.GET.start_date %}&start_date={{ request.GET.start_date }}{% endif %}{% if request.GET.end_date %}&end_date={{ request.GET.end_date }}{% endif %}{% if request.GET.campaign_title %}&campaign_title={{ request.GET.campaign_title }}{% endif %}{% if request.GET.template_name %}&template_name={{ request.GET.template_name }}{% endif %}">Previous</a>
+                                </li>
+                                {% endif %}
+                                
+                                {% for num in report_list.paginator.page_range %}
+                                {% if report_list.number == num %}
+                                <li class="page-item active">
+                                    <span class="page-link">{{ num }}</span>
+                                </li>
+                                {% elif num > report_list.number|add:'-3' and num < report_list.number|add:'3' %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ num }}{% if request.GET.start_date %}&start_date={{ request.GET.start_date }}{% endif %}{% if request.GET.end_date %}&end_date={{ request.GET.end_date }}{% endif %}{% if request.GET.campaign_title %}&campaign_title={{ request.GET.campaign_title }}{% endif %}{% if request.GET.template_name %}&template_name={{ request.GET.template_name }}{% endif %}">{{ num }}</a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                
+                                {% if report_list.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{ report_list.next_page_number }}{% if request.GET.start_date %}&start_date={{ request.GET.start_date }}{% endif %}{% if request.GET.end_date %}&end_date={{ request.GET.end_date }}{% endif %}{% if request.GET.campaign_title %}&campaign_title={{ request.GET.campaign_title }}{% endif %}{% if request.GET.template_name %}&template_name={{ request.GET.template_name }}{% endif %}">Next</a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function downloadReport(reportId, campaignTitle, button) {
+            // Show loading state
+            const downloadText = button.querySelector('.download-text');
+            const loadingSpinner = button.querySelector('.loading');
+            
+            downloadText.style.display = 'none';
+            loadingSpinner.style.display = 'inline-block';
+            button.disabled = true;
+            
+            // Create a temporary link to trigger download
+            const link = document.createElement('a');
+            link.href = `/download_report3/${reportId}/`;
+            link.download = `${campaignTitle}.csv`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Reset button state after a delay
+            setTimeout(() => {
+                downloadText.style.display = 'inline-block';
+                loadingSpinner.style.display = 'none';
+                button.disabled = false;
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
