@@ -10,7 +10,7 @@ import random
 from django.http import HttpResponse, JsonResponse
 from ..functions.template_msg import fetch_templates
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from datetime import datetime, time
+from datetime import time
 import numpy as np
 
 from dotenv import load_dotenv
