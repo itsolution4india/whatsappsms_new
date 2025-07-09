@@ -23,6 +23,7 @@ urlpatterns = [
     path('download_report2/<int:report_id>/', views.download_campaign_report2, name='report_download2'),
     path('download_report3/<int:report_id>/', views.download_campaign_report_new, name='report_download_new'),
     path('download_report4/<int:report_id>/', views.download_campaign_report3, name='report_download3'),
+    path('download-report/<int:report_id>/', views.download_report, name='download_report'),
     path('download/<str:media_id>/', views.download_facebook_media, name='download_media'),
     path('report_insight/<int:report_id>/', views.get_report_insight, name='report_insight'),
     path('report_insight2/<int:report_id>/', views.get_report_insight2, name='report_insight2'),

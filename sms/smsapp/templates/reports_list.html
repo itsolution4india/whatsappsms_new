@@ -186,28 +186,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function downloadReport(reportId, campaignTitle, button) {
-            // Show loading state
             const downloadText = button.querySelector('.download-text');
             const loadingSpinner = button.querySelector('.loading');
             
             downloadText.style.display = 'none';
             loadingSpinner.style.display = 'inline-block';
             button.disabled = true;
-            
-            // Create a temporary link to trigger download
-            const link = document.createElement('a');
-            link.href = `/download_report3/${reportId}/`;
-            link.download = `${campaignTitle}.csv`;
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Reset button state after a delay
-            setTimeout(() => {
-                downloadText.style.display = 'inline-block';
-                loadingSpinner.style.display = 'none';
-                button.disabled = false;
-            }, 3000);
+
+            fetch(`/download-report/${reportId}/`)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `${campaignTitle}.csv`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(err => {
+                    alert("Failed to download report.");
+                    console.error(err);
+                })
+                .finally(() => {
+                    downloadText.style.display = 'inline-block';
+                    loadingSpinner.style.display = 'none';
+                    button.disabled = false;
+                });
         }
     </script>
 </body>
