@@ -6,6 +6,7 @@ from ..utils import logger, display_whatsapp_id, display_phonenumber_id, get_tok
 import pandas as pd
 import mysql.connector
 import datetime
+import requests
 import csv, copy, random
 from django.http import HttpResponse, JsonResponse
 from ..functions.template_msg import fetch_templates
@@ -83,6 +84,34 @@ def Reports_new(request):
     except Exception as e:
         logger.error(str(e))
         return render(request, "reports.html", context)
+
+@login_required
+def download_report(request, report_id):
+    fastapi_url = "https://fastapi.wtsmessage.xyz/get_report/"
+    _, AppID = get_token_and_app_id(request)
+    Phone_ID = display_phonenumber_id(request)
+    payload = {
+        "app_id": str(AppID),
+        "phone_id": str(Phone_ID),
+        "report_id": str(report_id),
+    }
+
+    try:
+        response = requests.post(fastapi_url, json=payload, stream=True)
+
+        if response.status_code == 200:
+            filename = f"report_{report_id}.csv"
+            response.encoding = 'utf-8'
+            return HttpResponse(
+                response.iter_content(chunk_size=8192),
+                content_type="text/csv",
+                headers={"Content-Disposition": f'attachment; filename="{filename}"'}
+            )
+        else:
+            return HttpResponse(f"Error from API: {response.status_code} - {response.text}", status=400)
+
+    except Exception as e:
+        return HttpResponse(f"Failed to connect to FastAPI service: {e}", status=500)
 
 @login_required
 def reports_list_view(request):
