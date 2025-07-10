@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load humanize %}
 
 {% block title %}Report Detail - {{ report.campaign_title }}{% endblock %}
 
@@ -49,27 +48,27 @@
                     <table class="table table-sm">
                         <tr>
                             <td><strong>Total Count:</strong></td>
-                            <td><span class="badge badge-primary">{{ report.total_count|intcomma }}</span></td>
+                            <td><span class="badge badge-primary">{{ report.total_count }}</span></td>
                         </tr>
                         <tr>
                             <td><strong>Sent Count:</strong></td>
-                            <td><span class="badge badge-info">{{ report.sent_count|intcomma }}</span></td>
+                            <td><span class="badge badge-info">{{ report.sent_count }}</span></td>
                         </tr>
                         <tr>
                             <td><strong>Delivered:</strong></td>
-                            <td><span class="badge badge-success">{{ report.deliver_count|intcomma }}</span></td>
+                            <td><span class="badge badge-success">{{ report.deliver_count }}</span></td>
                         </tr>
                         <tr>
                             <td><strong>Read Count:</strong></td>
-                            <td><span class="badge badge-secondary">{{ report.read_count|intcomma }}</span></td>
+                            <td><span class="badge badge-secondary">{{ report.read_count }}</span></td>
                         </tr>
                         <tr>
                             <td><strong>Failed Count:</strong></td>
-                            <td><span class="badge badge-danger">{{ report.failed_count|intcomma }}</span></td>
+                            <td><span class="badge badge-danger">{{ report.failed_count }}</span></td>
                         </tr>
                         <tr>
                             <td><strong>Reply Count:</strong></td>
-                            <td><span class="badge badge-warning">{{ report.reply_count|intcomma }}</span></td>
+                            <td><span class="badge badge-warning">{{ report.reply_count }}</span></td>
                         </tr>
                     </table>
                 </div>

@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load humanize %}
 
 {% block title %}Report Files{% endblock %}
 
@@ -38,13 +37,13 @@
                                 <div class="col-md-6">
                                     <p><strong>Template:</strong> {{ report_data.report.template_name }}</p>
                                     <p><strong>Message Date:</strong> {{ report_data.report.message_date }}</p>
-                                    <p><strong>Total Count:</strong> {{ report_data.report.total_count|intcomma }}</p>
+                                    <p><strong>Total Count:</strong> {{ report_data.report.total_count }}</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Sent:</strong> {{ report_data.report.sent_count|intcomma }}</p>
-                                    <p><strong>Delivered:</strong> {{ report_data.report.deliver_count|intcomma }}</p>
-                                    <p><strong>Read:</strong> {{ report_data.report.read_count|intcomma }}</p>
-                                    <p><strong>Failed:</strong> {{ report_data.report.failed_count|intcomma }}</p>
+                                    <p><strong>Sent:</strong> {{ report_data.report.sent_count }}</p>
+                                    <p><strong>Delivered:</strong> {{ report_data.report.deliver_count }}</p>
+                                    <p><strong>Read:</strong> {{ report_data.report.read_count }}</p>
+                                    <p><strong>Failed:</strong> {{ report_data.report.failed_count }}</p>
                                 </div>
                             </div>
 
