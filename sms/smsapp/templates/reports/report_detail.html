@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Report Detail - {{ report.campaign_title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Report Details</h2>
+        <a href="{% url 'report_files_list' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Reports
+        </a>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4 class="mb-0">{{ report.campaign_title }}</h4>
+            <small class="text-muted">Report ID: {{ report.id }}</small>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>Basic Information</h6>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Email:</strong></td>
+                            <td>{{ report.email }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Template:</strong></td>
+                            <td>{{ report.template_name }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Message Date:</strong></td>
+                            <td>{{ report.message_date }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Created:</strong></td>
+                            <td>{{ report.created_at|date:"M d, Y H:i" }}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Updated:</strong></td>
+                            <td>{{ report.updated_at|date:"M d, Y H:i" }}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <h6>Statistics</h6>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Total Count:</strong></td>
+                            <td><span class="badge badge-primary">{{ report.total_count|intcomma }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sent Count:</strong></td>
+                            <td><span class="badge badge-info">{{ report.sent_count|intcomma }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Delivered:</strong></td>
+                            <td><span class="badge badge-success">{{ report.deliver_count|intcomma }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Read Count:</strong></td>
+                            <td><span class="badge badge-secondary">{{ report.read_count|intcomma }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Failed Count:</strong></td>
+                            <td><span class="badge badge-danger">{{ report.failed_count|intcomma }}</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reply Count:</strong></td>
+                            <td><span class="badge badge-warning">{{ report.reply_count|intcomma }}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <h6>Request Information</h6>
+                    <table class="table table-sm">
+                        <tr>
+                            <td><strong>Start Request ID:</strong></td>
+                            <td><code>{{ report.start_request_id }}</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>End Request ID:</strong></td>
+                            <td><code>{{ report.end_request_id }}</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Message Delivery:</strong></td>
+                            <td>{{ report.message_delivery }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            {% if report_files %}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <h6><i class="fas fa-download"></i> Available Files</h6>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Filename</th>
+                                        <th>Size</th>
+                                        <th>Last Modified</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for file in report_files %}
+                                        <tr>
+                                            <td>
+                                                <i class="fas fa-file-archive text-warning"></i>
+                                                {{ file.filename }}
+                                            </td>
+                                            <td>{{ file.size|filesizeformat }}</td>
+                                            <td>{{ file.modified|date:"M d, Y H:i:s" }}</td>
+                                            <td>
+                                                <a href="{% url 'download_report_file' report.id file.filename %}" 
+                                                   class="btn btn-success btn-sm">
+                                                    <i class="fas fa-download"></i> Download
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="alert alert-info mt-4">
+                    <i class="fas fa-info-circle"></i> No files available for this report.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .card {
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .card-header {
+        background-color: #f8f9fa;
+        border-bottom: 1px solid #dee2e6;
+    }
+    
+    .table-responsive {
+        border-radius: 0.375rem;
+    }
+    
+    .badge {
+        font-size: 0.875em;
+    }
+    
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+    }
+    
+    .btn-success:hover {
+        background-color: #218838;
+        border-color: #1e7e34;
+    }
+    
+    .thead-light th {
+        background-color: #f8f9fa;
+        border-color: #dee2e6;
+    }
+    
+    code {
+        background-color: #f8f9fa;
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.25rem;
+    }
+</style>
+{% endblock %}
