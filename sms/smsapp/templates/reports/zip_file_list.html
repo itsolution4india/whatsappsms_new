@@ -180,7 +180,7 @@
                                         </td>
                                         <td class="px-4 py-3 text-center">
                                             <div class="btn-group" role="group">
-                                                <a href="{% url 'download_zip_file' file.file_name %}" 
+                                                <a href="{% url 'download_zip_files' file.file_name %}" 
                                                    class="btn btn-primary btn-sm download-btn">
                                                     <i class="fas fa-download me-1"></i>
                                                     Download
@@ -192,7 +192,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
                                                     <li>
-                                                        <a class="dropdown-item" href="{% url 'download_zip_file' file.file_name %}">
+                                                        <a class="dropdown-item" href="{% url 'download_zip_files' file.file_name %}">
                                                             <i class="fas fa-download me-2"></i>Download ZIP
                                                         </a>
                                                     </li>
