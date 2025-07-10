@@ -1,0 +1,347 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+}
+
+.download-btn {
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.card {
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+.report-row {
+    transition: all 0.2s ease;
+}
+
+.bg-primary.bg-opacity-10 {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+.badge.bg-secondary.bg-opacity-10 {
+    background-color: rgba(108, 117, 125, 0.1) !important;
+}
+
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        border-radius: 0.375rem !important;
+        margin-bottom: 0.25rem;
+    }
+}
+</style>
+{% endblock %}
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <!-- Header Section -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h1 class="h3 mb-1 text-dark fw-bold">
+                        <i class="fas fa-file-archive text-primary me-2"></i>
+                        ZIP Reports
+                    </h1>
+                    <p class="text-muted mb-0">Download and manage your campaign reports</p>
+                </div>
+                <div class="d-flex align-items-center">
+                    <span class="badge bg-light text-dark me-2">
+                        <i class="fas fa-chart-bar me-1"></i>
+                        {% if zip_files %}{{ zip_files|length }} Report{{ zip_files|length|pluralize }}{% else %}No Reports{% endif %}
+                    </span>
+                </div>
+            </div>
+
+            {% if zip_files %}
+                <!-- Search and Filter Section -->
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body py-3">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light border-end-0">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input type="text" class="form-control border-start-0" 
+                                           placeholder="Search by campaign title or template name..." 
+                                           id="searchInput">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="sortSelect">
+                                    <option value="date-desc">Latest First</option>
+                                    <option value="date-asc">Oldest First</option>
+                                    <option value="title-asc">Campaign A-Z</option>
+                                    <option value="title-desc">Campaign Z-A</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <button class="btn btn-outline-secondary w-100" id="refreshBtn">
+                                    <i class="fas fa-sync-alt me-2"></i>Refresh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Table -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0" id="reportsTable">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th class="border-0 px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-hashtag text-muted me-2"></i>
+                                                Report ID
+                                            </div>
+                                        </th>
+                                        <th class="border-0 px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-bullhorn text-muted me-2"></i>
+                                                Campaign
+                                            </div>
+                                        </th>
+                                        <th class="border-0 px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-template text-muted me-2"></i>
+                                                Template
+                                            </div>
+                                        </th>
+                                        <th class="border-0 px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-calendar text-muted me-2"></i>
+                                                Date
+                                            </div>
+                                        </th>
+                                        <th class="border-0 px-4 py-3 text-center">
+                                            <div class="d-flex align-items-center justify-content-center">
+                                                <i class="fas fa-download text-muted me-2"></i>
+                                                Action
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for file in zip_files %}
+                                    <tr class="report-row">
+                                        <td class="px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                                                    <i class="fas fa-file-alt text-primary"></i>
+                                                </div>
+                                                <div>
+                                                    <span class="fw-semibold text-dark">{{ file.report_id }}</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div>
+                                                <div class="fw-semibold text-dark campaign-title">{{ file.campaign_title }}</div>
+                                                <small class="text-muted">Campaign Report</small>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <span class="badge bg-secondary bg-opacity-10 text-dark px-3 py-2 template-name">
+                                                {{ file.template_name }}
+                                            </span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-clock text-muted me-2"></i>
+                                                <span class="text-dark message-date">{{ file.message_date }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="btn-group" role="group">
+                                                <a href="{% url 'download_zip_file' file.file_name %}" 
+                                                   class="btn btn-primary btn-sm download-btn">
+                                                    <i class="fas fa-download me-1"></i>
+                                                    Download
+                                                </a>
+                                                <button type="button" 
+                                                        class="btn btn-outline-primary btn-sm dropdown-toggle dropdown-toggle-split" 
+                                                        data-bs-toggle="dropdown">
+                                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li>
+                                                        <a class="dropdown-item" href="{% url 'download_zip_file' file.file_name %}">
+                                                            <i class="fas fa-download me-2"></i>Download ZIP
+                                                        </a>
+                                                    </li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li>
+                                                        <a class="dropdown-item" href="#" onclick="copyToClipboard('{{ file.report_id }}')">
+                                                            <i class="fas fa-copy me-2"></i>Copy Report ID
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination (if needed) -->
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div>
+                        <small class="text-muted">
+                            Showing {{ zip_files|length }} of {{ zip_files|length }} reports
+                        </small>
+                    </div>
+                    <div>
+                        <!-- Add pagination controls here if needed -->
+                    </div>
+                </div>
+
+            {% else %}
+                <!-- Empty State -->
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body text-center py-5">
+                        <div class="mb-4">
+                            <i class="fas fa-file-archive text-muted" style="font-size: 4rem;"></i>
+                        </div>
+                        <h4 class="text-muted mb-3">No ZIP Reports Found</h4>
+                        <p class="text-muted mb-4">
+                            It looks like there are no ZIP reports available yet. Reports will appear here once campaigns are processed.
+                        </p>
+                        <button class="btn btn-primary" onclick="window.location.reload()">
+                            <i class="fas fa-sync-alt me-2"></i>
+                            Refresh Page
+                        </button>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Toast for notifications -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="copyToast" class="toast" role="alert">
+        <div class="toast-header">
+            <i class="fas fa-check-circle text-success me-2"></i>
+            <strong class="me-auto">Success</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            Report ID copied to clipboard!
+        </div>
+    </div>
+</div>
+
+<script>
+// Search functionality
+document.getElementById('searchInput').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#reportsTable tbody tr');
+    
+    rows.forEach(row => {
+        const campaignTitle = row.querySelector('.campaign-title').textContent.toLowerCase();
+        const templateName = row.querySelector('.template-name').textContent.toLowerCase();
+        
+        if (campaignTitle.includes(searchTerm) || templateName.includes(searchTerm)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+
+// Sort functionality
+document.getElementById('sortSelect').addEventListener('change', function() {
+    const sortBy = this.value;
+    const tbody = document.querySelector('#reportsTable tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    
+    rows.sort((a, b) => {
+        let aValue, bValue;
+        
+        switch(sortBy) {
+            case 'date-desc':
+                aValue = new Date(a.querySelector('.message-date').textContent);
+                bValue = new Date(b.querySelector('.message-date').textContent);
+                return bValue - aValue;
+            case 'date-asc':
+                aValue = new Date(a.querySelector('.message-date').textContent);
+                bValue = new Date(b.querySelector('.message-date').textContent);
+                return aValue - bValue;
+            case 'title-asc':
+                aValue = a.querySelector('.campaign-title').textContent.toLowerCase();
+                bValue = b.querySelector('.campaign-title').textContent.toLowerCase();
+                return aValue.localeCompare(bValue);
+            case 'title-desc':
+                aValue = a.querySelector('.campaign-title').textContent.toLowerCase();
+                bValue = b.querySelector('.campaign-title').textContent.toLowerCase();
+                return bValue.localeCompare(aValue);
+        }
+    });
+    
+    tbody.innerHTML = '';
+    rows.forEach(row => tbody.appendChild(row));
+});
+
+// Copy to clipboard functionality
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = new bootstrap.Toast(document.getElementById('copyToast'));
+        toast.show();
+    });
+}
+
+// Refresh button
+document.getElementById('refreshBtn').addEventListener('click', function() {
+    const icon = this.querySelector('i');
+    icon.classList.add('fa-spin');
+    
+    setTimeout(() => {
+        window.location.reload();
+    }, 500);
+});
+
+// Download button loading state
+document.querySelectorAll('.download-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        const originalContent = this.innerHTML;
+        this.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Downloading...';
+        this.disabled = true;
+        
+        setTimeout(() => {
+            this.innerHTML = originalContent;
+            this.disabled = false;
+        }, 2000);
+    });
+});
+</script>
+{% endblock %}
