@@ -86,10 +86,12 @@ def Reports_new(request):
         return render(request, "reports.html", context)
 
 @login_required
-def download_report(request, report_id):
-    fastapi_url = "https://fastapi.wtsmessage.xyz/get_report/"
+def start_report_generation(request, report_id):
+    """Start background report generation and return task ID"""
+    fastapi_url = "https://fastapi.wtsmessage.xyz/generate_report/"
     _, AppID = get_token_and_app_id(request)
     Phone_ID = display_phonenumber_id(request)
+    
     payload = {
         "app_id": str(AppID),
         "phone_id": str(Phone_ID),
@@ -97,21 +99,76 @@ def download_report(request, report_id):
     }
 
     try:
-        response = requests.post(fastapi_url, json=payload, stream=True)
-
+        response = requests.post(fastapi_url, json=payload)
+        
         if response.status_code == 200:
-            filename = f"report_{report_id}.csv"
-            response.encoding = 'utf-8'
-            return HttpResponse(
-                response.iter_content(chunk_size=8192),
-                content_type="text/csv",
-                headers={"Content-Disposition": f'attachment; filename="{filename}"'}
-            )
+            data = response.json()
+            return JsonResponse({
+                "success": True,
+                "task_id": data["task_id"],
+                "message": data["message"]
+            })
         else:
-            return HttpResponse(f"Error from API: {response.status_code} - {response.text}", status=400)
+            return JsonResponse({
+                "success": False,
+                "error": f"API Error: {response.status_code} - {response.text}"
+            }, status=400)
 
     except Exception as e:
-        return HttpResponse(f"Failed to connect to FastAPI service: {e}", status=500)
+        return JsonResponse({
+            "success": False,
+            "error": f"Failed to connect to FastAPI service: {e}"
+        }, status=500)
+
+@login_required
+def check_task_status(request, task_id):
+    """Check the status of a background task"""
+    fastapi_url = f"https://fastapi.wtsmessage.xyz/task_status/{task_id}"
+    
+    try:
+        response = requests.get(fastapi_url)
+        
+        if response.status_code == 200:
+            data = response.json()
+            return JsonResponse({
+                "success": True,
+                "status": data["status"],
+                "message": data["message"],
+                "progress": data.get("progress", 0),
+                "file_url": data.get("file_url")
+            })
+        else:
+            return JsonResponse({
+                "success": False,
+                "error": f"API Error: {response.status_code} - {response.text}"
+            }, status=400)
+
+    except Exception as e:
+        return JsonResponse({
+            "success": False,
+            "error": f"Failed to connect to FastAPI service: {e}"
+        }, status=500)
+
+@login_required
+def download_zip_file(request, filename):
+    """Download the generated ZIP file"""
+    fastapi_url = f"https://fastapi.wtsmessage.xyz/download-zip/{filename}"
+    
+    try:
+        response = requests.get(fastapi_url, stream=True)
+        
+        if response.status_code == 200:
+            django_response = HttpResponse(
+                response.iter_content(chunk_size=8192),
+                content_type="application/zip"
+            )
+            django_response["Content-Disposition"] = f'attachment; filename="{filename}"'
+            return django_response
+        else:
+            return HttpResponse(f"Error downloading file: {response.status_code} - {response.text}", status=400)
+
+    except Exception as e:
+        return HttpResponse(f"Failed to download file: {e}", status=500)
 
 @login_required
 def reports_list_view(request):
