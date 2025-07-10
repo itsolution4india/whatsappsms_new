@@ -61,10 +61,8 @@ def save_phone_number(request):
                         button_name=reply_text
                     ).order_by('-updated_at')
                     logger.info("Found latest_template")
-                    linked_template_names = [template.linked_template_name for template in latest_template]
                 except Exception as e:
                     logger.info(f"{emails}, {str(e)}")
-                    linked_template_names = []
                     latest_template = None
                    
                 if user_response: 
