@@ -103,8 +103,8 @@ def start_report_generation(request, report_id):
         logger.info(f"Sent report generation request for report_id={report_id} with payload={payload}")
         
         if response.status_code == 200:
-            logger.info(f"FastAPI responded with success for task_id={data.get('task_id')}")
             data = response.json()
+            logger.info(f"FastAPI responded with success for task_id={data.get('task_id')}")
             return JsonResponse({
                 "success": True,
                 "task_id": data["task_id"],
