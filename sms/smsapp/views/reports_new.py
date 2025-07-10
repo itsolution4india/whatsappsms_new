@@ -267,8 +267,6 @@ def report_zip_list(request):
     for report in reports:
         report_id = report.id
         expected_part = f"_{report_id}.zip"
-
-        # Find matching file in zip folder
         for file in os.listdir(ZIP_DIR):
             if file.endswith(expected_part):
                 zip_files.append({
@@ -278,9 +276,14 @@ def report_zip_list(request):
                     'message_date': report.message_date,
                     'file_name': file,
                 })
-                break  # assuming one file per report_id
+                break
 
-    return render(request, "reports/zip_file_list.html", {"zip_files": zip_files})
+    # Pagination — show 10 per page
+    paginator = Paginator(zip_files, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "reports/zip_file_list.html", {"page_obj": page_obj})
 
 
 def download_zip_files(request, file_name):
