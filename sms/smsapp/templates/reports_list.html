@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .download-btn {
-            min-width: 100px;
+            min-width: 120px;
         }
         .table-container {
             max-height: 600px;
@@ -17,6 +17,10 @@
             display: none;
             color: #6c757d;
         }
+        .processing {
+            display: none;
+            color: #0d6efd;
+        }
         .btn-download:disabled {
             opacity: 0.6;
             cursor: not-allowed;
@@ -24,6 +28,21 @@
         .status-badge {
             font-size: 0.875rem;
             padding: 0.25rem 0.5rem;
+        }
+        .progress-container {
+            display: none;
+            margin-top: 0.5rem;
+        }
+        .progress {
+            height: 1rem;
+        }
+        .download-ready {
+            display: none;
+            color: #198754;
+        }
+        .download-failed {
+            display: none;
+            color: #dc3545;
         }
     </style>
 </head>
@@ -123,14 +142,33 @@
                                             <small class="text-muted">{{ report.updated_at|time:"H:i" }}</small>
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-success download-btn" 
-                                                    onclick="downloadReport({{ report.id }}, '{{ report.campaign_title }}', this)">
-                                                <span class="download-text">Download</span>
-                                                <span class="loading">
-                                                    <span class="spinner-border spinner-border-sm me-1" role="status"></span>
-                                                    Downloading...
-                                                </span>
-                                            </button>
+                                            <div class="d-flex flex-column">
+                                                <button class="btn btn-sm btn-success download-btn" 
+                                                        onclick="startReportGeneration({{ report.id }}, '{{ report.campaign_title }}', this)">
+                                                    <span class="download-text">Generate Report</span>
+                                                    <span class="loading">
+                                                        <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                                        Starting...
+                                                    </span>
+                                                    <span class="processing">
+                                                        <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                                        Processing...
+                                                    </span>
+                                                    <span class="download-ready">
+                                                        <i class="bi bi-download"></i> Download ZIP
+                                                    </span>
+                                                    <span class="download-failed">
+                                                        <i class="bi bi-exclamation-triangle"></i> Failed
+                                                    </span>
+                                                </button>
+                                                <div class="progress-container">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                                             role="progressbar" style="width: 0%"></div>
+                                                    </div>
+                                                    <small class="text-muted progress-text">Preparing...</small>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     {% empty %}
@@ -185,36 +223,196 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function downloadReport(reportId, campaignTitle, button) {
+        // Track active tasks
+        const activeTasks = new Map();
+
+        function startReportGeneration(reportId, campaignTitle, button) {
             const downloadText = button.querySelector('.download-text');
             const loadingSpinner = button.querySelector('.loading');
+            const processingSpinner = button.querySelector('.processing');
+            const downloadReady = button.querySelector('.download-ready');
+            const downloadFailed = button.querySelector('.download-failed');
+            const progressContainer = button.parentElement.querySelector('.progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.progress-text');
             
+            // Show loading state
             downloadText.style.display = 'none';
             loadingSpinner.style.display = 'inline-block';
             button.disabled = true;
 
-            fetch(`/download-report/${reportId}/`)
-                .then(response => response.blob())
+            // Start report generation
+            fetch(`/start-report-generation/${reportId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Hide loading, show processing
+                        loadingSpinner.style.display = 'none';
+                        processingSpinner.style.display = 'inline-block';
+                        progressContainer.style.display = 'block';
+                        
+                        // Store task info
+                        activeTasks.set(reportId, {
+                            taskId: data.task_id,
+                            campaignTitle: campaignTitle,
+                            button: button
+                        });
+                        
+                        // Start polling for status
+                        pollTaskStatus(data.task_id, reportId);
+                    } else {
+                        showError(button, data.error);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error starting report generation:', err);
+                    showError(button, 'Failed to start report generation');
+                });
+        }
+
+        function pollTaskStatus(taskId, reportId) {
+            const taskInfo = activeTasks.get(reportId);
+            if (!taskInfo) return;
+
+            const button = taskInfo.button;
+            const progressContainer = button.parentElement.querySelector('.progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.progress-text');
+
+            fetch(`/check-task-status/${taskId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const status = data.status;
+                        const progress = data.progress || 0;
+                        
+                        // Update progress bar
+                        progressBar.style.width = `${progress}%`;
+                        progressText.textContent = data.message;
+                        
+                        if (status === 'completed') {
+                            showCompleted(button, data.file_url, taskInfo.campaignTitle);
+                            activeTasks.delete(reportId);
+                        } else if (status === 'failed') {
+                            showError(button, data.message);
+                            activeTasks.delete(reportId);
+                        } else if (status === 'processing' || status === 'pending') {
+                            // Continue polling
+                            setTimeout(() => pollTaskStatus(taskId, reportId), 2000);
+                        }
+                    } else {
+                        showError(button, data.error);
+                        activeTasks.delete(reportId);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error checking task status:', err);
+                    showError(button, 'Failed to check task status');
+                    activeTasks.delete(reportId);
+                });
+        }
+
+        function showCompleted(button, fileUrl, campaignTitle) {
+            const processingSpinner = button.querySelector('.processing');
+            const downloadReady = button.querySelector('.download-ready');
+            const progressContainer = button.parentElement.querySelector('.progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.progress-text');
+            
+            // Hide processing, show download ready
+            processingSpinner.style.display = 'none';
+            downloadReady.style.display = 'inline-block';
+            
+            // Update progress to 100%
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('progress-bar-animated');
+            progressBar.classList.add('bg-success');
+            progressText.textContent = 'Ready to download!';
+            
+            // Enable button and set up download
+            button.disabled = false;
+            button.onclick = () => downloadFile(fileUrl, campaignTitle);
+        }
+
+        function showError(button, errorMessage) {
+            const loadingSpinner = button.querySelector('.loading');
+            const processingSpinner = button.querySelector('.processing');
+            const downloadFailed = button.querySelector('.download-failed');
+            const progressContainer = button.parentElement.querySelector('.progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.progress-text');
+            
+            // Hide all spinners, show error
+            loadingSpinner.style.display = 'none';
+            processingSpinner.style.display = 'none';
+            downloadFailed.style.display = 'inline-block';
+            
+            // Update progress bar to show error
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('progress-bar-animated');
+            progressBar.classList.add('bg-danger');
+            progressText.textContent = errorMessage;
+            
+            // Enable button for retry
+            button.disabled = false;
+            setTimeout(() => resetButton(button), 3000);
+        }
+
+        function resetButton(button) {
+            const downloadText = button.querySelector('.download-text');
+            const loadingSpinner = button.querySelector('.loading');
+            const processingSpinner = button.querySelector('.processing');
+            const downloadReady = button.querySelector('.download-ready');
+            const downloadFailed = button.querySelector('.download-failed');
+            const progressContainer = button.parentElement.querySelector('.progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            
+            // Reset all states
+            downloadText.style.display = 'inline-block';
+            loadingSpinner.style.display = 'none';
+            processingSpinner.style.display = 'none';
+            downloadReady.style.display = 'none';
+            downloadFailed.style.display = 'none';
+            progressContainer.style.display = 'none';
+            
+            // Reset progress bar
+            progressBar.style.width = '0%';
+            progressBar.classList.remove('bg-success', 'bg-danger');
+            progressBar.classList.add('progress-bar-animated');
+            
+            button.disabled = false;
+        }
+
+        function downloadFile(fileUrl, campaignTitle) {
+            const filename = fileUrl.split('/').pop();
+            
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Download failed');
+                    }
+                    return response.blob();
+                })
                 .then(blob => {
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = `${campaignTitle}.csv`;
+                    a.download = filename;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
                     window.URL.revokeObjectURL(url);
                 })
                 .catch(err => {
-                    alert("Failed to download report.");
-                    console.error(err);
-                })
-                .finally(() => {
-                    downloadText.style.display = 'inline-block';
-                    loadingSpinner.style.display = 'none';
-                    button.disabled = false;
+                    console.error('Download error:', err);
+                    alert('Failed to download file');
                 });
         }
+
+        // Clean up tasks on page unload
+        window.addEventListener('beforeunload', () => {
+            activeTasks.clear();
+        });
     </script>
 </body>
 </html>
