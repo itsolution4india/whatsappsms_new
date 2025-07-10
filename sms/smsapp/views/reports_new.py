@@ -266,10 +266,12 @@ def report_zip_list(request):
 
     for report in reports:
         report_id = report.id
+        total_contacts = report.message_delivery
         expected_part = f"_{report_id}.zip"
         for file in os.listdir(ZIP_DIR):
             if file.endswith(expected_part):
                 zip_files.append({
+                    'total_contacts': total_contacts,
                     'report_id': report_id,
                     'campaign_title': report.campaign_title,
                     'template_name': report.template_name,
