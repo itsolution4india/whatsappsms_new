@@ -257,6 +257,139 @@ def reports_list_view(request):
         logger.error(f"Error in reports_list_view: {str(e)}")
         return render(request, "reports_list.html", context)
 
+from django.contrib import messages
+import os
+import glob
+from django.http import HttpResponse, Http404, FileResponse
+ZIP_FILES_DIR = '/var/www/zip_files/'
+
+@login_required
+def report_files_list(request):
+    """
+    Display all report files for the current user
+    """
+    # Get all reports for the current user
+    user_reports = ReportInfo.objects.filter(email=request.user.email).order_by('-created_at')
+    
+    # Get all available zip files
+    zip_files = glob.glob(os.path.join(ZIP_FILES_DIR, '*.zip'))
+    
+    # Create a list to store report data with file availability
+    reports_with_files = []
+    
+    for report in user_reports:
+        report_data = {
+            'report': report,
+            'files': [],
+            'has_files': False
+        }
+        
+        # Look for zip files that contain this report's ID
+        for zip_file in zip_files:
+            filename = os.path.basename(zip_file)
+            # Extract report_id from filename (last number before .zip)
+            try:
+                # Split by underscore and get the last part before .zip
+                parts = filename.replace('.zip', '').split('_')
+                if parts and parts[-1].isdigit():
+                    file_report_id = int(parts[-1])
+                    if file_report_id == report.id:
+                        report_data['files'].append({
+                            'filename': filename,
+                            'filepath': zip_file,
+                            'size': os.path.getsize(zip_file),
+                            'modified': os.path.getmtime(zip_file)
+                        })
+                        report_data['has_files'] = True
+            except (ValueError, IndexError):
+                continue
+        
+        reports_with_files.append(report_data)
+    
+    context = {
+        'reports_with_files': reports_with_files,
+        'user_email': request.user.email
+    }
+    
+    return render(request, 'reports/file_list.html', context)
+
+@login_required
+def download_report_file(request, report_id, filename):
+    """
+    Download a specific report file
+    """
+    # Verify the report belongs to the current user
+    report = get_object_or_404(ReportInfo, id=report_id, email=request.user.email)
+    
+    # Construct the full file path
+    file_path = os.path.join(ZIP_FILES_DIR, filename)
+    
+    # Security check: ensure the file exists and the filename matches the report_id
+    if not os.path.exists(file_path):
+        messages.error(request, 'File not found.')
+        raise Http404("File not found")
+    
+    # Verify the filename contains the correct report_id
+    try:
+        parts = filename.replace('.zip', '').split('_')
+        if parts and parts[-1].isdigit():
+            file_report_id = int(parts[-1])
+            if file_report_id != report_id:
+                messages.error(request, 'Invalid file access.')
+                raise Http404("Invalid file access")
+        else:
+            raise ValueError("Invalid filename format")
+    except (ValueError, IndexError):
+        messages.error(request, 'Invalid filename format.')
+        raise Http404("Invalid filename format")
+    
+    # Return the file as a download
+    try:
+        response = FileResponse(
+            open(file_path, 'rb'),
+            as_attachment=True,
+            filename=filename
+        )
+        return response
+    except IOError:
+        messages.error(request, 'Error reading file.')
+        raise Http404("Error reading file")
+
+@login_required
+def report_detail(request, report_id):
+    """
+    Display details of a specific report and its files
+    """
+    # Get the specific report for the current user
+    report = get_object_or_404(ReportInfo, id=report_id, email=request.user.email)
+    
+    # Get all zip files for this report
+    zip_files = glob.glob(os.path.join(ZIP_FILES_DIR, '*.zip'))
+    
+    report_files = []
+    for zip_file in zip_files:
+        filename = os.path.basename(zip_file)
+        try:
+            parts = filename.replace('.zip', '').split('_')
+            if parts and parts[-1].isdigit():
+                file_report_id = int(parts[-1])
+                if file_report_id == report_id:
+                    report_files.append({
+                        'filename': filename,
+                        'filepath': zip_file,
+                        'size': os.path.getsize(zip_file),
+                        'modified': os.path.getmtime(zip_file)
+                    })
+        except (ValueError, IndexError):
+            continue
+    
+    context = {
+        'report': report,
+        'report_files': report_files,
+    }
+    
+    return render(request, 'reports/report_detail.html', context)
+
 # version 4
 @login_required
 def download_campaign_report_new(request, report_id=None, insight=False, contact_list=None):
