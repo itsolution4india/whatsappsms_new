@@ -100,8 +100,10 @@ def start_report_generation(request, report_id):
 
     try:
         response = requests.post(fastapi_url, json=payload)
+        logger.info(f"Sent report generation request for report_id={report_id} with payload={payload}")
         
         if response.status_code == 200:
+            logger.info(f"FastAPI responded with success for task_id={data.get('task_id')}")
             data = response.json()
             return JsonResponse({
                 "success": True,
@@ -109,12 +111,14 @@ def start_report_generation(request, report_id):
                 "message": data["message"]
             })
         else:
+            logger.error(f"FastAPI error response: {response.status_code} - {response.text}")
             return JsonResponse({
                 "success": False,
                 "error": f"API Error: {response.status_code} - {response.text}"
             }, status=400)
 
     except Exception as e:
+        logger.error(f"Error in start_report_generation: {str(e)}", exc_info=True)
         return JsonResponse({
             "success": False,
             "error": f"Failed to connect to FastAPI service: {e}"
@@ -127,6 +131,7 @@ def check_task_status(request, task_id):
     
     try:
         response = requests.get(fastapi_url)
+        logger.info(f"Checking status for task_id={task_id}")
         
         if response.status_code == 200:
             data = response.json()
@@ -138,12 +143,14 @@ def check_task_status(request, task_id):
                 "file_url": data.get("file_url")
             })
         else:
+            logger.error(f"FastAPI error response while checking task status: {response.status_code} - {response.text}")
             return JsonResponse({
                 "success": False,
                 "error": f"API Error: {response.status_code} - {response.text}"
             }, status=400)
 
     except Exception as e:
+        logger.error(f"Error in check_task_status: {str(e)}", exc_info=True)
         return JsonResponse({
             "success": False,
             "error": f"Failed to connect to FastAPI service: {e}"
@@ -156,6 +163,7 @@ def download_zip_file(request, filename):
     
     try:
         response = requests.get(fastapi_url, stream=True)
+        logger.info(f"Downloading file: {filename}")
         
         if response.status_code == 200:
             django_response = HttpResponse(
@@ -165,9 +173,11 @@ def download_zip_file(request, filename):
             django_response["Content-Disposition"] = f'attachment; filename="{filename}"'
             return django_response
         else:
+            logger.error(f"FastAPI error during download: {response.status_code} - {response.text}")
             return HttpResponse(f"Error downloading file: {response.status_code} - {response.text}", status=400)
 
     except Exception as e:
+        logger.error(f"Error in download_zip_file: {str(e)}", exc_info=True)
         return HttpResponse(f"Failed to download file: {e}", status=500)
 
 @login_required
