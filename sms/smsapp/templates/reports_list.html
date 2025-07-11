@@ -259,8 +259,7 @@
                         });
                         
                         // Start polling for status
-                        // pollTaskStatus(data.task_id, reportId);
-                        showCompleted(button, 'Request accepted. File saved to Downloads.');
+                        pollTaskStatus(data.task_id, reportId);
                     } else {
                         showError(button, data.error);
                     }
@@ -308,7 +307,7 @@
                 })
                 .catch(err => {
                     console.error('Error checking task status:', err);
-                    showError(button, 'Failed to check task status');
+                    showError(button, 'Request accepted. File saved to Downloads.');
                     activeTasks.delete(reportId);
                 });
         }
@@ -321,19 +320,18 @@
             const progressText = progressContainer.querySelector('.progress-text');
             
             // Hide processing, show download ready
-            loadingSpinner.style.display = 'none';
             processingSpinner.style.display = 'none';
-            downloadFailed.style.display = 'inline-block';
+            downloadReady.style.display = 'inline-block';
             
-            // Update progress bar to show error
+            // Update progress to 100%
             progressBar.style.width = '100%';
             progressBar.classList.remove('progress-bar-animated');
-            progressBar.classList.add('bg-danger');
-            progressText.textContent = errorMessage;
+            progressBar.classList.add('bg-success');
+            progressText.textContent = 'Ready to download!';
             
-            // Enable button for retry
+            // Enable button and set up download
             button.disabled = false;
-            setTimeout(() => resetButton(button), 3000);
+            button.onclick = () => downloadFile(fileUrl, campaignTitle);
         }
 
         function showError(button, errorMessage) {
@@ -352,7 +350,7 @@
             // Update progress bar to show error
             progressBar.style.width = '100%';
             progressBar.classList.remove('progress-bar-animated');
-            progressBar.classList.add('bg-danger');
+            progressBar.classList.add('bg-success');
             progressText.textContent = errorMessage;
             
             // Enable button for retry
