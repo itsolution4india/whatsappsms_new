@@ -43,6 +43,32 @@
         thead tr th {
             color: aliceblue;
         }
+        .action-buttons {
+            display: flex;
+            flex-column;
+            gap: 0.5rem;
+        }
+        .insights-btn {
+            min-width: 120px;
+        }
+        .insights-modal .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .insights-content {
+            white-space: pre-wrap;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+        .insights-loading {
+            text-align: center;
+            padding: 2rem;
+        }
+        .insights-error {
+            color: #dc3545;
+            text-align: center;
+            padding: 2rem;
+        }
     </style>
 {% endblock %}
 
@@ -96,7 +122,7 @@
                                         <th>Total Contacts</th>
                                         <th>Status</th>
                                         <th>Date</th>
-                                        <th>Action</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -134,7 +160,8 @@
                                             <small class="text-muted">{{ report.created_at|time:"H:i" }}</small>
                                         </td>
                                         <td>
-                                            <div class="d-flex flex-column">
+                                            <div class="action-buttons">
+                                                <!-- Report Generation Button -->
                                                 <button class="btn btn-sm btn-success download-btn" 
                                                         onclick="startReportGeneration({{ report.id }}, '{{ report.campaign_title }}', this)">
                                                     <span class="download-text">Generate Report</span>
@@ -153,12 +180,42 @@
                                                         <i class="bi bi-exclamation-triangle"></i> Failed
                                                     </span>
                                                 </button>
+                                                
+                                                <!-- Insights Button -->
+                                                <button class="btn btn-sm btn-info insights-btn" 
+                                                        onclick="generateInsights({{ report.id }}, '{{ report.campaign_title }}', this)">
+                                                    <span class="insights-text">Get Insights</span>
+                                                    <span class="insights-loading">
+                                                        <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                                        Loading...
+                                                    </span>
+                                                    <span class="insights-processing">
+                                                        <span class="spinner-border spinner-border-sm me-1" role="status"></span>
+                                                        Processing...
+                                                    </span>
+                                                    <span class="insights-ready">
+                                                        <i class="bi bi-eye"></i> View Insights
+                                                    </span>
+                                                    <span class="insights-failed">
+                                                        <i class="bi bi-exclamation-triangle"></i> Failed
+                                                    </span>
+                                                </button>
+                                                
+                                                <!-- Progress containers -->
                                                 <div class="progress-container">
                                                     <div class="progress">
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated" 
                                                              role="progressbar" style="width: 0%"></div>
                                                     </div>
                                                     <small class="text-muted progress-text">Preparing...</small>
+                                                </div>
+                                                
+                                                <div class="insights-progress-container" style="display: none;">
+                                                    <div class="progress">
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
+                                                             role="progressbar" style="width: 0%"></div>
+                                                    </div>
+                                                    <small class="text-muted insights-progress-text">Analyzing...</small>
                                                 </div>
                                             </div>
                                         </td>
@@ -213,11 +270,31 @@
         </div>
     </div>
 
+    <!-- Insights Modal -->
+    <div class="modal fade insights-modal" id="insightsModal" tabindex="-1" aria-labelledby="insightsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="insightsModalLabel">Campaign Insights</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="insightsContent" class="insights-content"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Track active tasks
         const activeTasks = new Map();
+        const activeInsightsTasks = new Map();
 
+        // Report generation functions (existing)
         function startReportGeneration(reportId, campaignTitle, button) {
             const downloadText = button.querySelector('.download-text');
             const loadingSpinner = button.querySelector('.loading');
@@ -329,7 +406,7 @@
         function showError(button, errorMessage) {
             const loadingSpinner = button.querySelector('.loading');
             const processingSpinner = button.querySelector('.processing');
-            const downloadFailed = button.querySelector('.processing');
+            const downloadFailed = button.querySelector('.download-failed');
             const progressContainer = button.parentElement.querySelector('.progress-container');
             const progressBar = progressContainer.querySelector('.progress-bar');
             const progressText = progressContainer.querySelector('.progress-text');
@@ -401,9 +478,199 @@
                 });
         }
 
+        // Insights functions (new)
+        function generateInsights(reportId, campaignTitle, button) {
+            const insightsText = button.querySelector('.insights-text');
+            const insightsLoading = button.querySelector('.insights-loading');
+            const insightsProcessing = button.querySelector('.insights-processing');
+            const insightsReady = button.querySelector('.insights-ready');
+            const insightsFailed = button.querySelector('.insights-failed');
+            const progressContainer = button.parentElement.querySelector('.insights-progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.insights-progress-text');
+            
+            // Show loading state
+            insightsText.style.display = 'none';
+            insightsLoading.style.display = 'inline-block';
+            button.disabled = true;
+
+            // Start insights generation
+            fetch(`/get_insights/${reportId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Hide loading, show processing
+                        insightsLoading.style.display = 'none';
+                        insightsProcessing.style.display = 'inline-block';
+                        progressContainer.style.display = 'block';
+                        
+                        // Store task info
+                        activeInsightsTasks.set(reportId, {
+                            taskId: data.task_id,
+                            campaignTitle: campaignTitle,
+                            button: button
+                        });
+                        
+                        // Start polling for status
+                        pollInsightsStatus(data.task_id, reportId);
+                    } else {
+                        showInsightsError(button, data.error);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error starting insights generation:', err);
+                    showInsightsError(button, 'Failed to start insights generation');
+                });
+        }
+
+        function pollInsightsStatus(taskId, reportId) {
+            const taskInfo = activeInsightsTasks.get(reportId);
+            if (!taskInfo) return;
+
+            const button = taskInfo.button;
+            const progressContainer = button.parentElement.querySelector('.insights-progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.insights-progress-text');
+
+            fetch(`/check-task-status/${taskId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const status = data.status;
+                        const progress = data.progress || 0;
+                        
+                        // Update progress bar
+                        progressBar.style.width = `${progress}%`;
+                        progressText.textContent = data.message;
+                        
+                        if (status === 'completed') {
+                            showInsightsCompleted(button, data.file_url, taskInfo.campaignTitle);
+                            activeInsightsTasks.delete(reportId);
+                        } else if (status === 'failed') {
+                            showInsightsError(button, data.message);
+                            activeInsightsTasks.delete(reportId);
+                        } else if (status === 'processing' || status === 'pending') {
+                            // Continue polling
+                            setTimeout(() => pollInsightsStatus(taskId, reportId), 2000);
+                        }
+                    } else {
+                        showInsightsError(button, data.error);
+                        activeInsightsTasks.delete(reportId);
+                    }
+                })
+                .catch(err => {
+                    console.error('Error checking insights status:', err);
+                    showInsightsError(button, 'Failed to check insights status');
+                    activeInsightsTasks.delete(reportId);
+                });
+        }
+
+        function showInsightsCompleted(button, fileUrl, campaignTitle) {
+            const insightsProcessing = button.querySelector('.insights-processing');
+            const insightsReady = button.querySelector('.insights-ready');
+            const progressContainer = button.parentElement.querySelector('.insights-progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.insights-progress-text');
+            
+            // Hide processing, show insights ready
+            insightsProcessing.style.display = 'none';
+            insightsReady.style.display = 'inline-block';
+            
+            // Update progress to 100%
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('progress-bar-animated');
+            progressBar.classList.add('bg-success');
+            progressText.textContent = 'Insights ready!';
+            
+            // Enable button and set up insights viewing
+            button.disabled = false;
+            button.onclick = () => viewInsights(fileUrl, campaignTitle);
+        }
+
+        function showInsightsError(button, errorMessage) {
+            const insightsLoading = button.querySelector('.insights-loading');
+            const insightsProcessing = button.querySelector('.insights-processing');
+            const insightsFailed = button.querySelector('.insights-failed');
+            const progressContainer = button.parentElement.querySelector('.insights-progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            const progressText = progressContainer.querySelector('.insights-progress-text');
+            
+            // Hide all spinners, show error
+            insightsLoading.style.display = 'none';
+            insightsProcessing.style.display = 'none';
+            insightsFailed.style.display = 'inline-block';
+            
+            // Update progress bar to show error
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('progress-bar-animated');
+            progressBar.classList.add('bg-danger');
+            progressText.textContent = errorMessage;
+            
+            // Enable button for retry
+            button.disabled = false;
+            setTimeout(() => resetInsightsButton(button), 3000);
+        }
+
+        function resetInsightsButton(button) {
+            const insightsText = button.querySelector('.insights-text');
+            const insightsLoading = button.querySelector('.insights-loading');
+            const insightsProcessing = button.querySelector('.insights-processing');
+            const insightsReady = button.querySelector('.insights-ready');
+            const insightsFailed = button.querySelector('.insights-failed');
+            const progressContainer = button.parentElement.querySelector('.insights-progress-container');
+            const progressBar = progressContainer.querySelector('.progress-bar');
+            
+            // Reset all states
+            insightsText.style.display = 'inline-block';
+            insightsLoading.style.display = 'none';
+            insightsProcessing.style.display = 'none';
+            insightsReady.style.display = 'none';
+            insightsFailed.style.display = 'none';
+            progressContainer.style.display = 'none';
+            
+            // Reset progress bar
+            progressBar.style.width = '0%';
+            progressBar.classList.remove('bg-success', 'bg-danger');
+            progressBar.classList.add('progress-bar-animated');
+            
+            button.disabled = false;
+        }
+
+        function viewInsights(fileUrl, campaignTitle) {
+            const modal = new bootstrap.Modal(document.getElementById('insightsModal'));
+            const modalTitle = document.getElementById('insightsModalLabel');
+            const insightsContent = document.getElementById('insightsContent');
+            
+            // Set modal title
+            modalTitle.textContent = `Insights for ${campaignTitle}`;
+            
+            // Show loading state
+            insightsContent.innerHTML = '<div class="insights-loading"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading insights...</p></div>';
+            
+            // Show modal
+            modal.show();
+            
+            // Fetch insights content
+            fetch(fileUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Failed to load insights');
+                    }
+                    return response.text();
+                })
+                .then(content => {
+                    insightsContent.innerHTML = `<div class="insights-content">${content}</div>`;
+                })
+                .catch(err => {
+                    console.error('Error loading insights:', err);
+                    insightsContent.innerHTML = '<div class="insights-error"><i class="bi bi-exclamation-triangle"></i><p>Failed to load insights. Please try again.</p></div>';
+                });
+        }
+
         // Clean up tasks on page unload
         window.addEventListener('beforeunload', () => {
             activeTasks.clear();
+            activeInsightsTasks.clear();
         });
     </script>
 {% endblock %}

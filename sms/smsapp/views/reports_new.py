@@ -125,6 +125,45 @@ def start_report_generation(request, report_id):
         }, status=500)
 
 @login_required
+def get_insights(request, report_id):
+    """Start background insights generation and return task ID"""
+    fastapi_url = "https://fastapi.wtsmessage.xyz/get_insights/"
+    _, AppID = get_token_and_app_id(request)
+    Phone_ID = display_phonenumber_id(request)
+    
+    payload = {
+        "app_id": str(AppID),
+        "phone_id": str(Phone_ID),
+        "report_id": str(report_id),
+    }
+    
+    try:
+        response = requests.post(fastapi_url, json=payload)
+        logger.info(f"Sent insights request for report_id={report_id} with payload={payload}")
+        
+        if response.status_code == 200:
+            data = response.json()
+            logger.info(f"FastAPI responded with success for insights task_id={data.get('task_id')}")
+            return JsonResponse({
+                "success": True,
+                "task_id": data["task_id"],
+                "message": data["message"]
+            })
+        else:
+            logger.error(f"FastAPI error response: {response.status_code} - {response.text}")
+            return JsonResponse({
+                "success": False,
+                "error": f"API Error: {response.status_code} - {response.text}"
+            }, status=400)
+
+    except Exception as e:
+        logger.error(f"Error in get_insights: {str(e)}", exc_info=True)
+        return JsonResponse({
+            "success": False,
+            "error": f"Failed to connect to FastAPI service: {e}"
+        }, status=500)
+
+@login_required
 def check_task_status(request, task_id):
     """Check the status of a background task"""
     fastapi_url = f"https://fastapi.wtsmessage.xyz/task_status/{task_id}"
