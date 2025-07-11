@@ -259,7 +259,8 @@
                         });
                         
                         // Start polling for status
-                        pollTaskStatus(data.task_id, reportId);
+                        // pollTaskStatus(data.task_id, reportId);
+                        showCompleted(button, 'Request accepted. File saved to Downloads.');
                     } else {
                         showError(button, data.error);
                     }
@@ -320,18 +321,19 @@
             const progressText = progressContainer.querySelector('.progress-text');
             
             // Hide processing, show download ready
+            loadingSpinner.style.display = 'none';
             processingSpinner.style.display = 'none';
-            downloadReady.style.display = 'inline-block';
+            downloadFailed.style.display = 'inline-block';
             
-            // Update progress to 100%
+            // Update progress bar to show error
             progressBar.style.width = '100%';
             progressBar.classList.remove('progress-bar-animated');
-            progressBar.classList.add('bg-success');
-            progressText.textContent = 'Ready to download!';
+            progressBar.classList.add('bg-danger');
+            progressText.textContent = errorMessage;
             
-            // Enable button and set up download
+            // Enable button for retry
             button.disabled = false;
-            button.onclick = () => downloadFile(fileUrl, campaignTitle);
+            setTimeout(() => resetButton(button), 3000);
         }
 
         function showError(button, errorMessage) {
