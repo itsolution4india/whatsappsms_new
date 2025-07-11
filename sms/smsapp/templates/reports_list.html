@@ -376,16 +376,7 @@
             button.disabled = true;
 
             // Get insights
-            fetch(`/get_insights/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': getCookie('csrftoken')
-                },
-                body: JSON.stringify({
-                    'report_id': reportId
-                })
-            })
+            fetch(`/get_insights/${reportId}/`) 
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
