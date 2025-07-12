@@ -534,7 +534,15 @@
                     const tableBody = document.getElementById('insightTableBody');
                     const messageParagraph = document.getElementById('insightMessage');
                     tableBody.innerHTML = '';
-                    messageParagraph.textContent = '';  // Clear previous message
+                    messageParagraph.textContent = '';
+
+                    // Temporary object to aggregate counts
+                    const statusCounts = {
+                        delivered: 0,
+                        failed: 0
+                    };
+
+                    let total = 0;
 
                     data.data.forEach(row => {
                         if (row.status === 'Message') {
@@ -550,16 +558,38 @@
                             if (['read', 'sent', 'seen', 'reply'].includes(normalizedStatus)) {
                                 normalizedStatus = 'delivered';
                             }
+
                             if (['delivered', 'failed'].includes(normalizedStatus)) {
-                                const tr = document.createElement('tr');
-                                tr.innerHTML = `
-                                    <td>${normalizedStatus}</td>
-                                    <td>${row.count}</td>
-                                `;
-                                tableBody.appendChild(tr);
+                                const count = parseInt(row.count);
+                                if (count > 0) {
+                                    statusCounts[normalizedStatus] += count;
+                                    total += count;
+                                }
                             }
                         }
                     });
+
+                    // Now populate the table
+                    for (const status in statusCounts) {
+                        if (statusCounts[status] > 0) {
+                            const tr = document.createElement('tr');
+                            tr.innerHTML = `
+                                <td>${status}</td>
+                                <td>${statusCounts[status]}</td>
+                            `;
+                            tableBody.appendChild(tr);
+                        }
+                    }
+
+                    // Append total row
+                    if (total > 0) {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><strong>Total</strong></td>
+                            <td><strong>${total}</strong></td>
+                        `;
+                        tableBody.appendChild(tr);
+                    }
 
                     const modal = new bootstrap.Modal(document.getElementById('insightModal'));
                     modal.show();
@@ -574,5 +604,4 @@
             });
     }
 </script>
-
 {% endblock %}
