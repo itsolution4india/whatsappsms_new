@@ -194,6 +194,11 @@
                                             <small class="text-muted">{{ report.created_at|time:"H:i" }}</small>
                                         </td>
                                         <td>
+                                        {% if report.end_request_id == "0" and report.start_request_id == "0" %}
+                                            <span class="badge bg-danger">Failed</span>
+                                        {% elif report.end_request_id == "0" or report.start_request_id == "0" %}
+                                            <span class="badge bg-warning text-dark">Pending</span>
+                                        {% else %}
                                             <div class="action-buttons">
                                                 <!-- Report Generation Button -->
                                                 <button class="btn btn-sm btn-success download-btn" 
@@ -214,7 +219,7 @@
                                                         <i class="bi bi-exclamation-triangle"></i> Failed
                                                     </span>
                                                 </button>
-                                                
+
                                                 <!-- Insights Button -->
                                                 <button class="btn btn-sm btn-info insights-btn" 
                                                         onclick="getInsights({{ report.id }}, '{{ report.campaign_title }}', this)">
@@ -232,16 +237,18 @@
                                                         <i class="bi bi-exclamation-triangle"></i> Processing ...
                                                     </span>
                                                 </button>
-                                                
+
                                                 <div class="progress-container">
                                                     <div class="progress">
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                                                             role="progressbar" style="width: 0%"></div>
+                                                            role="progressbar" style="width: 0%"></div>
                                                     </div>
                                                     <small class="text-muted progress-text">Preparing...</small>
                                                 </div>
                                             </div>
-                                        </td>
+                                        {% endif %}
+                                    </td>
+
                                     </tr>
                                     {% empty %}
                                     <tr>
