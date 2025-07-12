@@ -469,7 +469,7 @@ def get_non_reply_rows():
     WHERE status = %s
     """
     
-    cursor.execute(query, ("sent",))
+    cursor.execute(query, ("delivered",))
     rows = cursor.fetchall()
     
     cursor.close()
@@ -850,6 +850,7 @@ def featch_data_using_numbers(AppID, Phone_ID, contacts_str, date_filter, report
         df = adjust_status_counts(df, differences)
     else:
         update_report_insights(report_id, status_counts_df)
+    df['status'] = df['status'].replace(['sent', 'read', 'seen', 'reply'], 'delivered')
     if insight:
         return status_counts_df
     else:
