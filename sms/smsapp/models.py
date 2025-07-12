@@ -136,6 +136,7 @@ class ReportInfo(models.Model):
     deliver_count = models.PositiveIntegerField(default=0)
     sent_count = models.PositiveIntegerField(default=0)
     read_count = models.PositiveIntegerField(default=0)
+    pending_count = models.PositiveIntegerField(default=0)
     failed_count = models.PositiveIntegerField(default=0)
     reply_count = models.PositiveIntegerField(default=0)
     total_count = models.PositiveIntegerField(default=0)
