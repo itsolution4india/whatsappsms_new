@@ -465,30 +465,46 @@
 
 <script>
     function showInsight2(reportId) {
-        // Get the loading overlay element
         const loadingOverlay = document.getElementById('loadingOverlay');
-
-        // Display the loading overlay
         loadingOverlay.style.display = 'flex';
 
         fetch(`/report_insight2/${reportId}/`)
             .then(response => response.json())
             .then(data => {
-                // Hide the loading overlay when the data is received
                 loadingOverlay.style.display = 'none';
 
                 if (data.status === 'success') {
                     const tableBody = document.getElementById('insightTableBody');
                     tableBody.innerHTML = '';
 
+                    // Aggregate statuses
+                    let deliveredCount = 0;
+                    let failedCount = 0;
+
                     data.data.forEach(row => {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td>${row.status}</td>
-                            <td>${row.count}</td>
-                        `;
-                        tableBody.appendChild(tr);
+                        const status = row.status.toLowerCase();
+
+                        if (["read", "sent", "delivered", "seen", "reply"].includes(status)) {
+                            deliveredCount += row.count;
+                        } else if (status === "failed") {
+                            failedCount += row.count;
+                        }
                     });
+
+                    // Add only the relevant rows
+                    const deliveredRow = document.createElement('tr');
+                    deliveredRow.innerHTML = `
+                        <td>delivered</td>
+                        <td>${deliveredCount}</td>
+                    `;
+                    tableBody.appendChild(deliveredRow);
+
+                    const failedRow = document.createElement('tr');
+                    failedRow.innerHTML = `
+                        <td>failed</td>
+                        <td>${failedCount}</td>
+                    `;
+                    tableBody.appendChild(failedRow);
 
                     const modal = new bootstrap.Modal(document.getElementById('insightModal'));
                     modal.show();
@@ -498,7 +514,6 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                // Hide the loading overlay in case of error
                 loadingOverlay.style.display = 'none';
                 alert('Failed to load insights');
             });
@@ -530,12 +545,19 @@
                                 messageParagraph.style.display = 'none';
                             }
                         } else {
-                            const tr = document.createElement('tr');
-                            tr.innerHTML = `
-                                <td>${row.status}</td>
-                                <td>${row.count}</td>
-                            `;
-                            tableBody.appendChild(tr);
+                            let normalizedStatus = row.status.toLowerCase();
+
+                            if (['read', 'sent', 'seen', 'reply'].includes(normalizedStatus)) {
+                                normalizedStatus = 'delivered';
+                            }
+                            if (['delivered', 'failed'].includes(normalizedStatus)) {
+                                const tr = document.createElement('tr');
+                                tr.innerHTML = `
+                                    <td>${normalizedStatus}</td>
+                                    <td>${row.count}</td>
+                                `;
+                                tableBody.appendChild(tr);
+                            }
                         }
                     });
 
@@ -552,4 +574,5 @@
             });
     }
 </script>
+
 {% endblock %}
