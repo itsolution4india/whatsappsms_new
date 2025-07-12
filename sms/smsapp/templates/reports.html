@@ -113,6 +113,7 @@
     }
     .modal-content {
         width: 100% !important;
+        height: 90vh !important;
     }
     .popup-container {
     position: fixed;
@@ -213,7 +214,7 @@
                     <h5 class="modal-title" id="insightModalLabel">Campaign Insights</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body pb-0">
                     <div class="table-responsive">
                         <table class="table table-bordered">
                             <thead>
@@ -226,6 +227,10 @@
                             </tbody>
                         </table>
                         <p id="insightMessage" style="margin-top: 10px; font-weight: bold; color: #40bc00; display: none;"></p>
+                        <p class="mt-0 mb-0 m-4 text-warning">
+                            <strong>Note:</strong> In accordance with the latest guidelines from Meta, we've simplified the status categories in this report.  
+                            All <b>sent</b>, <b>read</b>, <b>seen</b>, and <b>reply</b> statuses are now grouped under <b>delivered</b> for easier interpretation and reporting.
+                        </p>
                     </div>
                 </div>
                 <div class="modal-footer">
