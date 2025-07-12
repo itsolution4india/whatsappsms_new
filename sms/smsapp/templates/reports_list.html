@@ -212,14 +212,14 @@
                                                 <button class="btn btn-sm btn-info insights-btn" 
                                                         onclick="getInsights({{ report.id }}, '{{ report.campaign_title }}', this)">
                                                     <span class="insights-text">
-                                                        <i class="bi bi-bar-chart"></i> Get Insights
+                                                        <i class="bi bi-bar-chart"></i> Processing ...
                                                     </span>
                                                     <span class="insights-loading">
                                                         <span class="spinner-border spinner-border-sm me-1" role="status"></span>
                                                         Loading...
                                                     </span>
                                                     <span class="insights-ready">
-                                                        <i class="bi bi-eye"></i> View Insights
+                                                        <i class="bi bi-eye"></i> Refresh Page
                                                     </span>
                                                     <span class="insights-failed">
                                                         <i class="bi bi-exclamation-triangle"></i> Failed
@@ -612,7 +612,7 @@
         function showError(button, errorMessage) {
             const loadingSpinner = button.querySelector('.loading');
             const processingSpinner = button.querySelector('.processing');
-            const downloadFailed = button.querySelector('.download-failed');
+            const downloadFailed = button.querySelector('.processing');
             const progressContainer = button.parentElement.querySelector('.progress-container');
             const progressBar = progressContainer.querySelector('.progress-bar');
             const progressText = progressContainer.querySelector('.progress-text');
