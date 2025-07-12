@@ -96,6 +96,13 @@
             font-size: 0.9rem;
             margin-top: 0.25rem;
         }
+        table th {
+            color: #fff !important;
+            padding: 8px !important;
+        }
+        table td {
+            padding: 8px !important;
+        }
     </style>
 {% endblock %}
 
@@ -212,7 +219,7 @@
                                                 <button class="btn btn-sm btn-info insights-btn" 
                                                         onclick="getInsights({{ report.id }}, '{{ report.campaign_title }}', this)">
                                                     <span class="insights-text">
-                                                        <i class="bi bi-bar-chart"></i> Processing ...
+                                                        <i class="bi bi-bar-chart"></i> Get Insights
                                                     </span>
                                                     <span class="insights-loading">
                                                         <span class="spinner-border spinner-border-sm me-1" role="status"></span>
@@ -222,7 +229,7 @@
                                                         <i class="bi bi-eye"></i> Refresh Page
                                                     </span>
                                                     <span class="insights-failed">
-                                                        <i class="bi bi-exclamation-triangle"></i> Failed
+                                                        <i class="bi bi-exclamation-triangle"></i> Processing ...
                                                     </span>
                                                 </button>
                                                 
